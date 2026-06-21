@@ -1,0 +1,29 @@
+name: Design
+description: Design or architecture issue
+title: "[Design] "
+labels: ["type:design", "status:backlog"]
+body:
+  - type: textarea
+    id: conclusion
+    attributes:
+      label: Conclusion
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+    validations:
+      required: true
