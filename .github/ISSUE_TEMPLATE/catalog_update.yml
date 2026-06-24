@@ -1,0 +1,40 @@
+name: Catalog Update
+description: Request catalog, tag, search metadata, or relationship update
+title: "[Catalog] "
+labels: ["type:docs", "status:backlog", "area:governance"]
+body:
+  - type: textarea
+    id: target
+    attributes:
+      label: Catalog Target
+      description: Asset ID, index, tag, category, or relationship target.
+    validations:
+      required: true
+  - type: textarea
+    id: requested_change
+    attributes:
+      label: Requested Change
+    validations:
+      required: true
+  - type: textarea
+    id: automation_boundary
+    attributes:
+      label: Automation / Human Boundary
+      value: |
+        - Can ChatGPT/Codex/script handle this?
+        - Is Human approval required?
+        - Is Emergency Stop relevant?
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      value: |
+        - Catalog metadata is updated.
+        - Duplicate detection is considered.
+        - Relationships are recorded if applicable.
+        - Human is not assigned routine hygiene.
+        - Runtime implementation is not introduced.
+    validations:
+      required: true
