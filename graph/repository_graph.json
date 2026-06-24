@@ -43,6 +43,13 @@
       "source": "repository"
     },
     {
+      "id": "README_AGENT_RUNTIME_FOUNDATION_PACK.md",
+      "type": "readme",
+      "path": "README_AGENT_RUNTIME_FOUNDATION_PACK.md",
+      "title": "Agent Runtime Foundation Pack",
+      "source": "repository"
+    },
+    {
       "id": "CHANGELOG.md",
       "type": "document",
       "path": "CHANGELOG.md",
@@ -68,6 +75,13 @@
       "type": "readme",
       "path": "README_REPOSITORY_KNOWLEDGE_GRAPH_RUNTIME_INTEGRATION_PACK.md",
       "title": "ACIP Repository Knowledge Graph Runtime Integration Pack",
+      "source": "repository"
+    },
+    {
+      "id": "README_EP0001.md",
+      "type": "readme",
+      "path": "README_EP0001.md",
+      "title": "EP-0001 Runtime Capability Suite",
       "source": "repository"
     },
     {
@@ -138,6 +152,13 @@
       "type": "readme",
       "path": "README_ASSET_PRODUCTION_OPERATIONS_PACK.md",
       "title": "ACIP Asset Production Operations Pack",
+      "source": "repository"
+    },
+    {
+      "id": "MANIFEST.md",
+      "type": "document",
+      "path": "MANIFEST.md",
+      "title": "Manifest",
       "source": "repository"
     },
     {
@@ -232,6 +253,13 @@
       "source": "repository"
     },
     {
+      "id": "adr/ADR-0026-agent-runtime-foundation.md",
+      "type": "adr",
+      "path": "adr/ADR-0026-agent-runtime-foundation.md",
+      "title": "ADR-0026 Agent Runtime Foundation",
+      "source": "repository"
+    },
+    {
       "id": "adr/ADR-0024-repository-os-v1-baseline.md",
       "type": "adr",
       "path": "adr/ADR-0024-repository-os-v1-baseline.md",
@@ -278,6 +306,13 @@
       "type": "adr",
       "path": "adr/ADR-0020-runtime-integration-preparation.md",
       "title": "ADR-0020: Runtime Integration Preparation",
+      "source": "repository"
+    },
+    {
+      "id": "adr/ADR-0027-runtime-capability-suite.md",
+      "type": "adr",
+      "path": "adr/ADR-0027-runtime-capability-suite.md",
+      "title": "ADR-0027",
       "source": "repository"
     },
     {
@@ -540,10 +575,24 @@
       "source": "repository"
     },
     {
+      "id": "runtime/dry_run_adapter_report.md",
+      "type": "document",
+      "path": "runtime/dry_run_adapter_report.md",
+      "title": "Dry Run Adapter",
+      "source": "repository"
+    },
+    {
       "id": "runtime/RUNTIME_RISK_REGISTER.md",
       "type": "document",
       "path": "runtime/RUNTIME_RISK_REGISTER.md",
       "title": "Runtime Risk Register",
+      "source": "repository"
+    },
+    {
+      "id": "runtime/DRY_RUN_ADAPTER_SPEC.md",
+      "type": "document",
+      "path": "runtime/DRY_RUN_ADAPTER_SPEC.md",
+      "title": "Dry Run Adapter",
       "source": "repository"
     },
     {
@@ -855,10 +904,31 @@
       "source": "repository"
     },
     {
+      "id": "loader/CONTEXT_LOADER.md",
+      "type": "document",
+      "path": "loader/CONTEXT_LOADER.md",
+      "title": "Context Loader",
+      "source": "repository"
+    },
+    {
+      "id": "review/REVIEW_GATE_SUMMARY.md",
+      "type": "document",
+      "path": "review/REVIEW_GATE_SUMMARY.md",
+      "title": "Review Gate Summary",
+      "source": "repository"
+    },
+    {
       "id": "wbs/WBS-0016-repository-os-v1-baseline.md",
       "type": "wbs",
       "path": "wbs/WBS-0016-repository-os-v1-baseline.md",
       "title": "WBS-0016: Repository OS v1.0 Baseline",
+      "source": "repository"
+    },
+    {
+      "id": "wbs/WBS-0017-agent-runtime-foundation.md",
+      "type": "wbs",
+      "path": "wbs/WBS-0017-agent-runtime-foundation.md",
+      "title": "WBS-0017 Agent Runtime Foundation",
       "source": "repository"
     },
     {
@@ -873,6 +943,13 @@
       "type": "wbs",
       "path": "wbs/WBS-0013-repository-knowledge-graph-runtime-integration.md",
       "title": "WBS-0013: Repository Knowledge Graph and Runtime Integration Preparation",
+      "source": "repository"
+    },
+    {
+      "id": "wbs/WBS-0018-runtime-capability-suite.md",
+      "type": "wbs",
+      "path": "wbs/WBS-0018-runtime-capability-suite.md",
+      "title": "WBS-0018",
       "source": "repository"
     },
     {
@@ -1184,6 +1261,13 @@
       "source": "repository"
     },
     {
+      "id": "basis/085_review_engine_policy.md",
+      "type": "policy",
+      "path": "basis/085_review_engine_policy.md",
+      "title": "Review Engine Policy",
+      "source": "repository"
+    },
+    {
       "id": "basis/073_task_router_policy.md",
       "type": "policy",
       "path": "basis/073_task_router_policy.md",
@@ -1331,6 +1415,13 @@
       "source": "repository"
     },
     {
+      "id": "basis/083_incremental_execution_policy.md",
+      "type": "policy",
+      "path": "basis/083_incremental_execution_policy.md",
+      "title": "083 Incremental Execution Policy",
+      "source": "repository"
+    },
+    {
       "id": "basis/075_execution_queue_policy.md",
       "type": "policy",
       "path": "basis/075_execution_queue_policy.md",
@@ -1377,6 +1468,13 @@
       "type": "policy",
       "path": "basis/042_execution_contract_policy.md",
       "title": "042 Execution Contract Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/084_graph_cache_policy.md",
+      "type": "policy",
+      "path": "basis/084_graph_cache_policy.md",
+      "title": "Graph Cache Policy",
       "source": "repository"
     },
     {
@@ -1440,6 +1538,13 @@
       "type": "policy",
       "path": "basis/060_selftest_policy.md",
       "title": "selftest",
+      "source": "repository"
+    },
+    {
+      "id": "basis/082_context_loader_policy.md",
+      "type": "policy",
+      "path": "basis/082_context_loader_policy.md",
+      "title": "082 Context Loader Policy",
       "source": "repository"
     },
     {
@@ -1814,6 +1919,34 @@
       "source": "repository"
     },
     {
+      "id": "scripts/runtime/dry_run_adapter.py",
+      "type": "script",
+      "path": "scripts/runtime/dry_run_adapter.py",
+      "title": "dry_run_adapter",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/runtime/validate_runtime_capability.py",
+      "type": "script",
+      "path": "scripts/runtime/validate_runtime_capability.py",
+      "title": "validate_runtime_capability",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/runtime/context_loader.py",
+      "type": "script",
+      "path": "scripts/runtime/context_loader.py",
+      "title": "context_loader",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/runtime/validate_runtime_foundation.py",
+      "type": "script",
+      "path": "scripts/runtime/validate_runtime_foundation.py",
+      "title": "validate_runtime_foundation",
+      "source": "repository"
+    },
+    {
       "id": "scripts/runtime/dry_run_runtime_plan.py",
       "type": "script",
       "path": "scripts/runtime/dry_run_runtime_plan.py",
@@ -2017,10 +2150,24 @@
       "source": "repository"
     },
     {
+      "id": ".github/workflows/runtime-foundation.yml",
+      "type": "workflow",
+      "path": ".github/workflows/runtime-foundation.yml",
+      "title": "runtime-foundation",
+      "source": "repository"
+    },
+    {
       "id": ".github/workflows/repository-selftest-complete.yml",
       "type": "workflow",
       "path": ".github/workflows/repository-selftest-complete.yml",
       "title": "repository-selftest-complete",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/runtime-capability.yml",
+      "type": "workflow",
+      "path": ".github/workflows/runtime-capability.yml",
+      "title": "runtime-capability",
       "source": "repository"
     },
     {
@@ -2098,6 +2245,12 @@
       "target": "scripts/validate_continuous_governance.py",
       "type": "validates",
       "evidence": "scripts/validate_continuous_governance.py"
+    },
+    {
+      "source": "README_AGENT_RUNTIME_FOUNDATION_PACK.md",
+      "target": "scripts/runtime/validate_runtime_foundation.py",
+      "type": "validates",
+      "evidence": "scripts/runtime/validate_runtime_foundation.py"
     },
     {
       "source": "README_REPOSITORY_KNOWLEDGE_GRAPH_RUNTIME_INTEGRATION_PACK.md",
@@ -2179,6 +2332,12 @@
     },
     {
       "source": "README_AGENT_ORCHESTRATOR_PACK.md",
+      "target": "scripts/orchestrator/validate_orchestration.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/validate_orchestration.py"
+    },
+    {
+      "source": "review/REVIEW_GATE_SUMMARY.md",
       "target": "scripts/orchestrator/validate_orchestration.py",
       "type": "validates",
       "evidence": "scripts/orchestrator/validate_orchestration.py"
@@ -2370,10 +2529,22 @@
       "evidence": "scripts/selftest_v2/validate_semantic_selftest.py"
     },
     {
+      "source": ".github/workflows/runtime-foundation.yml",
+      "target": "scripts/runtime/validate_runtime_foundation.py",
+      "type": "validates",
+      "evidence": "scripts/runtime/validate_runtime_foundation.py"
+    },
+    {
       "source": ".github/workflows/repository-selftest-complete.yml",
       "target": "scripts/selftest/validate_repository_selftest_complete.py",
       "type": "validates",
       "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
+    },
+    {
+      "source": ".github/workflows/runtime-capability.yml",
+      "target": "scripts/runtime/validate_runtime_capability.py",
+      "type": "validates",
+      "evidence": "scripts/runtime/validate_runtime_capability.py"
     }
   ]
 }

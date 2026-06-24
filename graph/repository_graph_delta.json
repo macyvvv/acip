@@ -1,7 +1,7 @@
 {
   "baseline": "1.0.0-repository-os",
-  "node_count": 297,
-  "snapshot_count": 297,
+  "node_count": 318,
+  "snapshot_count": 318,
   "snapshot": [
     {
       "id": "README_REPOSITORY_SELFTEST_COMPLETE_PACK.md",
@@ -40,6 +40,12 @@
       "sha256": "14d5d53a8f740a0fb285e63f16f1091ee5b4c488c10c4af20277a92fb2ec3744"
     },
     {
+      "id": "README_AGENT_RUNTIME_FOUNDATION_PACK.md",
+      "path": "README_AGENT_RUNTIME_FOUNDATION_PACK.md",
+      "type": "readme",
+      "sha256": "818311678c0ff5864eafdd4142b9f002138712f70a8fa2b88856be6c1ff8fc16"
+    },
+    {
       "id": "CHANGELOG.md",
       "path": "CHANGELOG.md",
       "type": "document",
@@ -62,6 +68,12 @@
       "path": "README_REPOSITORY_KNOWLEDGE_GRAPH_RUNTIME_INTEGRATION_PACK.md",
       "type": "readme",
       "sha256": "56e56a1f41e5e66b8201c2cf21c372ec840524fcb806c868021c41c321491b78"
+    },
+    {
+      "id": "README_EP0001.md",
+      "path": "README_EP0001.md",
+      "type": "readme",
+      "sha256": "dea81e48ffe52831f8114f29fc83d2e92d694879d94dc8afab1d32d5df182d1e"
     },
     {
       "id": "PROJECT.md",
@@ -122,6 +134,12 @@
       "path": "README_ASSET_PRODUCTION_OPERATIONS_PACK.md",
       "type": "readme",
       "sha256": "25ac26b684e08976d53371043d163aa7f5f4f0f46e96784557f4e28fe3b634be"
+    },
+    {
+      "id": "MANIFEST.md",
+      "path": "MANIFEST.md",
+      "type": "document",
+      "sha256": "4e0e0719ad31283221a350029732fb4dd6034b35226b412b6ac480b8c7e21ffb"
     },
     {
       "id": "ROADMAP.md",
@@ -202,6 +220,12 @@
       "sha256": "a7be68d6b15748e766ea5d1c33bff27fef28966c017748aac8be3319a4d63082"
     },
     {
+      "id": "adr/ADR-0026-agent-runtime-foundation.md",
+      "path": "adr/ADR-0026-agent-runtime-foundation.md",
+      "type": "adr",
+      "sha256": "22010fda4cb35abdc0fb512b295cf6e5995a2fc5772db5713fd0e044c06fdb00"
+    },
+    {
       "id": "adr/ADR-0024-repository-os-v1-baseline.md",
       "path": "adr/ADR-0024-repository-os-v1-baseline.md",
       "type": "adr",
@@ -242,6 +266,12 @@
       "path": "adr/ADR-0020-runtime-integration-preparation.md",
       "type": "adr",
       "sha256": "22f9efd0c8e4179757be1e2cb5dedcf800338231e34daede1ab118d30e13368e"
+    },
+    {
+      "id": "adr/ADR-0027-runtime-capability-suite.md",
+      "path": "adr/ADR-0027-runtime-capability-suite.md",
+      "type": "adr",
+      "sha256": "a56058480bd1c97396c24081038865c07b1498425766118f4d0b688b9fb4db3f"
     },
     {
       "id": "context/CODEX_CONTEXT_PACK.md",
@@ -433,7 +463,7 @@
       "id": "graph/repository_graph.md",
       "path": "graph/repository_graph.md",
       "type": "document",
-      "sha256": "945171e836e77d5231d50601ef932551c0e371942fbd5f5cd972b27ec403f11f"
+      "sha256": "c5340d5ee7005f035df70c4d1b54985585ff7423c77423d20162fa998bcddfab"
     },
     {
       "id": "graph/GRAPH_SCHEMA.md",
@@ -466,10 +496,22 @@
       "sha256": "0f57f8724c9854d1317491625dcb695e83466cbb20b41c524480c57bcaddbf6e"
     },
     {
+      "id": "runtime/dry_run_adapter_report.md",
+      "path": "runtime/dry_run_adapter_report.md",
+      "type": "document",
+      "sha256": "50cb0e7f7cbb8e943ec4e20121e76dc00e1ca20a1f84d03fba50c75f958ba788"
+    },
+    {
       "id": "runtime/RUNTIME_RISK_REGISTER.md",
       "path": "runtime/RUNTIME_RISK_REGISTER.md",
       "type": "document",
       "sha256": "da819f2e8a8bb81551bc39470039f04eb7cadff8c75b3b3200920a472e324ed8"
+    },
+    {
+      "id": "runtime/DRY_RUN_ADAPTER_SPEC.md",
+      "path": "runtime/DRY_RUN_ADAPTER_SPEC.md",
+      "type": "document",
+      "sha256": "6468a8b358460366f667d2b87f0098d06ec3d87dd866c8f64eda2847c8418545"
     },
     {
       "id": "runtime/runtime_dry_run_report.md",
@@ -736,10 +778,28 @@
       "sha256": "ff837e4745ae784863c9ca435e3864403332a27beaef7a4c1bcc1e569033a191"
     },
     {
+      "id": "loader/CONTEXT_LOADER.md",
+      "path": "loader/CONTEXT_LOADER.md",
+      "type": "document",
+      "sha256": "84039456e528fc48bb04bea04a764205a3f5b0a7b5f85fa9debecadbe54e6a89"
+    },
+    {
+      "id": "review/REVIEW_GATE_SUMMARY.md",
+      "path": "review/REVIEW_GATE_SUMMARY.md",
+      "type": "document",
+      "sha256": "65d3abe2a3613e6f30646b03a0e812c6ee21e647a5ebdf4cc4be3eaf826c785d"
+    },
+    {
       "id": "wbs/WBS-0016-repository-os-v1-baseline.md",
       "path": "wbs/WBS-0016-repository-os-v1-baseline.md",
       "type": "wbs",
       "sha256": "2bdc4f592afef8052fe32ac9b037ca616a3909e58512b999c47082a06711888b"
+    },
+    {
+      "id": "wbs/WBS-0017-agent-runtime-foundation.md",
+      "path": "wbs/WBS-0017-agent-runtime-foundation.md",
+      "type": "wbs",
+      "sha256": "03e88399dce0c9e83b4734023c2c7f95d514e10e6d7f8b318bf8aef9caa19c58"
     },
     {
       "id": "wbs/WBS-0014-runtime-transition-readiness.md",
@@ -752,6 +812,12 @@
       "path": "wbs/WBS-0013-repository-knowledge-graph-runtime-integration.md",
       "type": "wbs",
       "sha256": "52d8508a508acc42a5c14195ff23d59d888da3438b95f099724773457f8f68e4"
+    },
+    {
+      "id": "wbs/WBS-0018-runtime-capability-suite.md",
+      "path": "wbs/WBS-0018-runtime-capability-suite.md",
+      "type": "wbs",
+      "sha256": "019e92fcf854329d45ebd58f07902430c508dc0f89e16f027c859d33e5356f62"
     },
     {
       "id": "wbs/WBS-0011-repository-operating-system-self-test.md",
@@ -1018,6 +1084,12 @@
       "sha256": "aa9bf15d73e81e92fdd0ea640ac8cd5676ec467b03030fdacdb671fb1a2f9a57"
     },
     {
+      "id": "basis/085_review_engine_policy.md",
+      "path": "basis/085_review_engine_policy.md",
+      "type": "policy",
+      "sha256": "16973f1d4ed5fa01a1788b677ccf4b817f0bbf594f0ad652d9b000cda99f5281"
+    },
+    {
       "id": "basis/073_task_router_policy.md",
       "path": "basis/073_task_router_policy.md",
       "type": "policy",
@@ -1144,6 +1216,12 @@
       "sha256": "5ad6e815d3bb7500d7c5e84dd41213566f901deb5250d5efe0311129966859c3"
     },
     {
+      "id": "basis/083_incremental_execution_policy.md",
+      "path": "basis/083_incremental_execution_policy.md",
+      "type": "policy",
+      "sha256": "0839584ce382bf1821d612817b4ac40f3d91b7f2e9133d4fc86a50a6c664795e"
+    },
+    {
       "id": "basis/075_execution_queue_policy.md",
       "path": "basis/075_execution_queue_policy.md",
       "type": "policy",
@@ -1184,6 +1262,12 @@
       "path": "basis/042_execution_contract_policy.md",
       "type": "policy",
       "sha256": "edf0c6c322e021d406eddadd4ec1c2a4e81b55be497f1a39ae0a557637cb4085"
+    },
+    {
+      "id": "basis/084_graph_cache_policy.md",
+      "path": "basis/084_graph_cache_policy.md",
+      "type": "policy",
+      "sha256": "991816c1351dab6f3e7bd373cd57b4099a363eba876acce600351e9ad37c28ad"
     },
     {
       "id": "basis/054_dead_asset_policy.md",
@@ -1238,6 +1322,12 @@
       "path": "basis/060_selftest_policy.md",
       "type": "policy",
       "sha256": "630faa8214c38d9f8a57910020f40bca947fa70fe26fab48cdcb4b4003272741"
+    },
+    {
+      "id": "basis/082_context_loader_policy.md",
+      "path": "basis/082_context_loader_policy.md",
+      "type": "policy",
+      "sha256": "cc285afb54fbc0e3224e007e7ca529b5c60dbae1ef5ba773a233c64d46512d6a"
     },
     {
       "id": "orchestrator/dispatcher.py",
@@ -1375,7 +1465,7 @@
       "id": "orchestrator/EXECUTION_QUEUE.md",
       "path": "orchestrator/EXECUTION_QUEUE.md",
       "type": "document",
-      "sha256": "967c849a115b7c48dd5bc261bf882966f624253aedb3f91593d9dbe5b0e59f4a"
+      "sha256": "8e8601c93f779d289aba75e171e6dbfc3d0de6aaa9afd35224878076fb7f7570"
     },
     {
       "id": "orchestrator/local_agent_runner.py",
@@ -1558,6 +1648,30 @@
       "sha256": "2c2fb3bb2d8da165de9a8a00ca83b624d9eb7536c286239d83406ae11985ad90"
     },
     {
+      "id": "scripts/runtime/dry_run_adapter.py",
+      "path": "scripts/runtime/dry_run_adapter.py",
+      "type": "script",
+      "sha256": "ea43a615fa7d578eed88b25c6a459c4d963ba71fa554d3ac9f6d8e298e349233"
+    },
+    {
+      "id": "scripts/runtime/validate_runtime_capability.py",
+      "path": "scripts/runtime/validate_runtime_capability.py",
+      "type": "script",
+      "sha256": "7cd95b6978dd391dda641ea485f1c450edfbc93d9579dd42bdc25ec6f5097480"
+    },
+    {
+      "id": "scripts/runtime/context_loader.py",
+      "path": "scripts/runtime/context_loader.py",
+      "type": "script",
+      "sha256": "301714a87deef51ccdb8cc6d7f8c6e6ac0d7fad91fba46f05da9ce58a08603da"
+    },
+    {
+      "id": "scripts/runtime/validate_runtime_foundation.py",
+      "path": "scripts/runtime/validate_runtime_foundation.py",
+      "type": "script",
+      "sha256": "4bdaf031bcc40e70090fc7a89f52b43f68986ef0b776ef4523493a5f8dde5d94"
+    },
+    {
       "id": "scripts/runtime/dry_run_runtime_plan.py",
       "path": "scripts/runtime/dry_run_runtime_plan.py",
       "type": "script",
@@ -1732,10 +1846,22 @@
       "sha256": "0f5f163655a3c3d3cd9f0df91849a782103749276bcaa41db670de723a2fdce5"
     },
     {
+      "id": ".github/workflows/runtime-foundation.yml",
+      "path": ".github/workflows/runtime-foundation.yml",
+      "type": "workflow",
+      "sha256": "3d16c8cdb6904c943953e216e793f69e940a3812ce0138bc672a18bd4ef3ee1d"
+    },
+    {
       "id": ".github/workflows/repository-selftest-complete.yml",
       "path": ".github/workflows/repository-selftest-complete.yml",
       "type": "workflow",
       "sha256": "3cbc5ef21bfece6edd6125a39301393ee9f7e68eaceb0ef0ecff8f993920b907"
+    },
+    {
+      "id": ".github/workflows/runtime-capability.yml",
+      "path": ".github/workflows/runtime-capability.yml",
+      "type": "workflow",
+      "sha256": "69ad3e897f995a9bbc30e6b77c19136d99885d5274274285728a7333bbd69110"
     },
     {
       "id": ".github/ISSUE_TEMPLATE/repository_selftest.yml",

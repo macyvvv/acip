@@ -1,7 +1,7 @@
 # Repository Graph
 
-- nodes: 297
-- edges: 49
+- nodes: 318
+- edges: 53
 
 ## Nodes
 - `README_REPOSITORY_SELFTEST_COMPLETE_PACK.md` (readme) ACIP Repository Self Test Complete Pack
@@ -10,10 +10,12 @@
 - `README_KNOWLEDGE_FACTORY.md` (readme) Knowledge Factory README
 - `README_GOVERNANCE.md` (readme) Governance README
 - `README_RUNTIME_READINESS.md` (readme) Runtime Readiness README
+- `README_AGENT_RUNTIME_FOUNDATION_PACK.md` (readme) Agent Runtime Foundation Pack
 - `CHANGELOG.md` (document) CHANGELOG
 - `README_AGENT_OS_PACK.md` (readme) Agent OS Pack
 - `selftest.yml` (document) selftest
 - `README_REPOSITORY_KNOWLEDGE_GRAPH_RUNTIME_INTEGRATION_PACK.md` (readme) ACIP Repository Knowledge Graph Runtime Integration Pack
+- `README_EP0001.md` (readme) EP-0001 Runtime Capability Suite
 - `PROJECT.md` (document) PROJECT
 - `STATE.md` (document) STATE
 - `README_ASSET_LIFECYCLE_PACK.md` (readme) ACIP Asset Lifecycle Pack
@@ -24,6 +26,7 @@
 - `README.md` (readme) ACIP GitHub Operations Kit v1
 - `README_AUTONOMOUS_WORKFLOW_CONTROL_PACK.md` (readme) ACIP Autonomous Workflow Control Pack
 - `README_ASSET_PRODUCTION_OPERATIONS_PACK.md` (readme) ACIP Asset Production Operations Pack
+- `MANIFEST.md` (document) Manifest
 - `ROADMAP.md` (document) ROADMAP
 - `README_ASSET_QUALITY_ROI_CLOSURE_PACK.md` (readme) ACIP Asset Quality ROI Closure Pack
 - `README_AUTOMATION_PACK.md` (readme) ACIP Automation Pack
@@ -37,6 +40,7 @@
 - `adr/ADR-0021-runtime-transition-readiness.md` (adr) ADR-0021 Runtime Transition Readiness
 - `adr/ADR-0022-agent-orchestrator.md` (adr) ADR-0022: Agent Orchestrator
 - `adr/ADR-0025-incremental-graph-and-context-diff.md` (adr) ADR-0025: Incremental Graph and Context Diff
+- `adr/ADR-0026-agent-runtime-foundation.md` (adr) ADR-0026 Agent Runtime Foundation
 - `adr/ADR-0024-repository-os-v1-baseline.md` (adr) ADR-0024: Repository OS v1.0 Baseline
 - `adr/ADR-0016-repository-operating-system-self-test.md` (adr) ADR-0016: Repository Operating System Self Test
 - `adr/ADR-0018-repository-semantic-selftest-v2.md` (adr) ADR-0018: Repository Semantic SelfTest v2
@@ -44,6 +48,7 @@
 - `adr/ADR-0019-repository-knowledge-graph.md` (adr) ADR-0019: Repository Knowledge Graph
 - `adr/ADR-0017-continuous-governance.md` (adr) ADR-0017: Continuous Governance
 - `adr/ADR-0020-runtime-integration-preparation.md` (adr) ADR-0020: Runtime Integration Preparation
+- `adr/ADR-0027-runtime-capability-suite.md` (adr) ADR-0027
 - `context/CODEX_CONTEXT_PACK.md` (document) Codex Context Pack
 - `context/AGENT_CONTEXT_PACK_SCHEMA.md` (document) Agent Context Pack Schema
 - `context/CHATGPT_CONTEXT_PACK.md` (document) ChatGPT Context Pack
@@ -81,7 +86,9 @@
 - `runtime/RUNTIME_INTEGRATION_SPEC.md` (document) Runtime Integration Specification
 - `runtime/RUNTIME_DRY_RUN_PLAN.md` (document) Runtime Dry Run Plan
 - `runtime/RUNTIME_APPROVAL_TEMPLATE.md` (document) Runtime Approval
+- `runtime/dry_run_adapter_report.md` (document) Dry Run Adapter
 - `runtime/RUNTIME_RISK_REGISTER.md` (document) Runtime Risk Register
+- `runtime/DRY_RUN_ADAPTER_SPEC.md` (document) Dry Run Adapter
 - `runtime/runtime_dry_run_report.md` (document) Runtime Dry Run Report
 - `runtime/RUNTIME_READINESS_CHECKLIST.md` (document) Runtime Readiness Checklist
 - `tests/test_result.py` (document) test_result
@@ -126,9 +133,13 @@
 - `docs/docs_1.md` (document) docs 1
 - `docs/docs_4.md` (document) docs 4
 - `knowledge/README.md` (knowledge_asset) Knowledge Layer
+- `loader/CONTEXT_LOADER.md` (document) Context Loader
+- `review/REVIEW_GATE_SUMMARY.md` (document) Review Gate Summary
 - `wbs/WBS-0016-repository-os-v1-baseline.md` (wbs) WBS-0016: Repository OS v1.0 Baseline
+- `wbs/WBS-0017-agent-runtime-foundation.md` (wbs) WBS-0017 Agent Runtime Foundation
 - `wbs/WBS-0014-runtime-transition-readiness.md` (wbs) WBS-0014 Runtime Transition Readiness
 - `wbs/WBS-0013-repository-knowledge-graph-runtime-integration.md` (wbs) WBS-0013: Repository Knowledge Graph and Runtime Integration Preparation
+- `wbs/WBS-0018-runtime-capability-suite.md` (wbs) WBS-0018
 - `wbs/WBS-0011-repository-operating-system-self-test.md` (wbs) WBS-0011: Repository Operating System Self Test
 - `wbs/WBS-0015-agent-orchestrator.md` (wbs) WBS-0015: Agent Orchestrator
 - `wbs/WBS-0012-repository-semantic-selftest-v2.md` (wbs) WBS-0012: Repository Semantic SelfTest v2
@@ -173,6 +184,7 @@
 - `basis/078_incremental_graph_policy.md` (policy) Incremental Graph Policy
 - `basis/053_repository_selftest_policy.md` (policy) 053 Repository Self Test Policy
 - `basis/059_duplicate_detection_policy.md` (policy) 059 Duplicate Detection Policy
+- `basis/085_review_engine_policy.md` (policy) Review Engine Policy
 - `basis/073_task_router_policy.md` (policy) 073 Task Router Policy
 - `basis/076_review_gate_policy.md` (policy) 076 Review Gate Policy
 - `basis/026_autonomy_first_policy.md` (policy) 026 Autonomy First Policy
@@ -194,6 +206,7 @@
 - `basis/058_drift_detection_policy.md` (policy) 058 Drift Detection Policy
 - `basis/055_dead_asset_detection_policy.md` (policy) 055 Dead Asset Detection Policy
 - `basis/046_runtime_readiness_boundary.md` (policy) 046 Runtime Readiness Boundary
+- `basis/083_incremental_execution_policy.md` (policy) 083 Incremental Execution Policy
 - `basis/075_execution_queue_policy.md` (policy) 075 Execution Queue Policy
 - `basis/062_policy_graph_policy.md` (policy) 062 Policy Graph Policy
 - `basis/074_context_resolution_policy.md` (policy) 074 Context Resolution Policy
@@ -201,6 +214,7 @@
 - `basis/069_agent_io_contract_policy.md` (policy) 069 Agent IO Contract Policy
 - `basis/072_agent_orchestrator_policy.md` (policy) 072 Agent Orchestrator Policy
 - `basis/042_execution_contract_policy.md` (policy) 042 Execution Contract Policy
+- `basis/084_graph_cache_policy.md` (policy) Graph Cache Policy
 - `basis/054_dead_asset_policy.md` (policy) dead_asset
 - `basis/055_orphan_asset_policy.md` (policy) orphan_asset
 - `basis/071_runtime_transition_readiness_policy.md` (policy) 071 Runtime Transition Readiness Policy
@@ -210,6 +224,7 @@
 - `basis/064_selftest_v2_archive_policy.md` (policy) 064 SelfTest v2 Archive Policy
 - `basis/057_boundary_validation_policy.md` (policy) 057 Boundary Validation Policy
 - `basis/060_selftest_policy.md` (policy) selftest
+- `basis/082_context_loader_policy.md` (policy) 082 Context Loader Policy
 - `orchestrator/dispatcher.py` (document) dispatcher
 - `orchestrator/queue.py` (document) queue
 - `orchestrator/worker.py` (document) worker
@@ -263,6 +278,10 @@
 - `scripts/graph/build_incremental_graph.py` (script) build_incremental_graph
 - `scripts/graph/validate_repository_graph.py` (script) validate_repository_graph
 - `scripts/graph/build_repository_graph.py` (script) build_repository_graph
+- `scripts/runtime/dry_run_adapter.py` (script) dry_run_adapter
+- `scripts/runtime/validate_runtime_capability.py` (script) validate_runtime_capability
+- `scripts/runtime/context_loader.py` (script) context_loader
+- `scripts/runtime/validate_runtime_foundation.py` (script) validate_runtime_foundation
 - `scripts/runtime/dry_run_runtime_plan.py` (script) dry_run_runtime_plan
 - `scripts/selftest/check_orphans.py` (script) check_orphans
 - `scripts/selftest/check_current_objective.py` (script) check_current_objective
@@ -292,7 +311,9 @@
 - `.github/workflows/continuous-governance.yml` (workflow) continuous-governance
 - `.github/workflows/repository-semantic-selftest-v2.yml` (workflow) repository-semantic-selftest-v2
 - `.github/workflows/repository-selftest.yml` (workflow) repository-selftest
+- `.github/workflows/runtime-foundation.yml` (workflow) runtime-foundation
 - `.github/workflows/repository-selftest-complete.yml` (workflow) repository-selftest-complete
+- `.github/workflows/runtime-capability.yml` (workflow) runtime-capability
 - `.github/ISSUE_TEMPLATE/repository_selftest.yml` (document) repository_selftest
 - `.github/ISSUE_TEMPLATE/runtime_integration_readiness.yml` (document) runtime_integration_readiness
 - `.github/ISSUE_TEMPLATE/repository_selftest_failure.yml` (document) repository_selftest_failure
