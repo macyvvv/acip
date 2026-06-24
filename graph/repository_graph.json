@@ -92,6 +92,13 @@
       "source": "repository"
     },
     {
+      "id": "README_RUNTIME_TRANSITION_READINESS_PACK.md",
+      "type": "readme",
+      "path": "README_RUNTIME_TRANSITION_READINESS_PACK.md",
+      "title": "Runtime Transition Readiness Pack",
+      "source": "repository"
+    },
+    {
       "id": "README_REPOSITORY_COMPLETE_PACK.md",
       "type": "readme",
       "path": "README_REPOSITORY_COMPLETE_PACK.md",
@@ -176,10 +183,31 @@
       "source": "repository"
     },
     {
+      "id": "README_AGENT_ORCHESTRATOR_PACK.md",
+      "type": "readme",
+      "path": "README_AGENT_ORCHESTRATOR_PACK.md",
+      "title": "ACIP Agent Orchestrator Pack",
+      "source": "repository"
+    },
+    {
       "id": "README_ASSET_REGISTRY_PACK.md",
       "type": "readme",
       "path": "README_ASSET_REGISTRY_PACK.md",
       "title": "ACIP Asset Registry Pack",
+      "source": "repository"
+    },
+    {
+      "id": "adr/ADR-0021-runtime-transition-readiness.md",
+      "type": "adr",
+      "path": "adr/ADR-0021-runtime-transition-readiness.md",
+      "title": "ADR-0021 Runtime Transition Readiness",
+      "source": "repository"
+    },
+    {
+      "id": "adr/ADR-0022-agent-orchestrator.md",
+      "type": "adr",
+      "path": "adr/ADR-0022-agent-orchestrator.md",
+      "title": "ADR-0022: Agent Orchestrator",
       "source": "repository"
     },
     {
@@ -194,6 +222,13 @@
       "type": "adr",
       "path": "adr/ADR-0018-repository-semantic-selftest-v2.md",
       "title": "ADR-0018: Repository Semantic SelfTest v2",
+      "source": "repository"
+    },
+    {
+      "id": "adr/ADR-0023-task-routing.md",
+      "type": "adr",
+      "path": "adr/ADR-0023-task-routing.md",
+      "title": "ADR-0023: Task Routing",
       "source": "repository"
     },
     {
@@ -435,6 +470,13 @@
       "source": "repository"
     },
     {
+      "id": "graph/repository_graph.md",
+      "type": "document",
+      "path": "graph/repository_graph.md",
+      "title": "Repository Graph",
+      "source": "repository"
+    },
+    {
       "id": "graph/GRAPH_SCHEMA.md",
       "type": "document",
       "path": "graph/GRAPH_SCHEMA.md",
@@ -460,6 +502,34 @@
       "type": "document",
       "path": "runtime/RUNTIME_DRY_RUN_PLAN.md",
       "title": "Runtime Dry Run Plan",
+      "source": "repository"
+    },
+    {
+      "id": "runtime/RUNTIME_APPROVAL_TEMPLATE.md",
+      "type": "document",
+      "path": "runtime/RUNTIME_APPROVAL_TEMPLATE.md",
+      "title": "Runtime Approval",
+      "source": "repository"
+    },
+    {
+      "id": "runtime/RUNTIME_RISK_REGISTER.md",
+      "type": "document",
+      "path": "runtime/RUNTIME_RISK_REGISTER.md",
+      "title": "Runtime Risk Register",
+      "source": "repository"
+    },
+    {
+      "id": "runtime/runtime_dry_run_report.md",
+      "type": "document",
+      "path": "runtime/runtime_dry_run_report.md",
+      "title": "Runtime Dry Run Report",
+      "source": "repository"
+    },
+    {
+      "id": "runtime/RUNTIME_READINESS_CHECKLIST.md",
+      "type": "document",
+      "path": "runtime/RUNTIME_READINESS_CHECKLIST.md",
+      "title": "Runtime Readiness Checklist",
       "source": "repository"
     },
     {
@@ -743,6 +813,13 @@
       "source": "repository"
     },
     {
+      "id": "wbs/WBS-0014-runtime-transition-readiness.md",
+      "type": "wbs",
+      "path": "wbs/WBS-0014-runtime-transition-readiness.md",
+      "title": "WBS-0014 Runtime Transition Readiness",
+      "source": "repository"
+    },
+    {
       "id": "wbs/WBS-0013-repository-knowledge-graph-runtime-integration.md",
       "type": "wbs",
       "path": "wbs/WBS-0013-repository-knowledge-graph-runtime-integration.md",
@@ -754,6 +831,13 @@
       "type": "wbs",
       "path": "wbs/WBS-0011-repository-operating-system-self-test.md",
       "title": "WBS-0011: Repository Operating System Self Test",
+      "source": "repository"
+    },
+    {
+      "id": "wbs/WBS-0015-agent-orchestrator.md",
+      "type": "wbs",
+      "path": "wbs/WBS-0015-agent-orchestrator.md",
+      "title": "WBS-0015: Agent Orchestrator",
       "source": "repository"
     },
     {
@@ -1037,6 +1121,20 @@
       "source": "repository"
     },
     {
+      "id": "basis/073_task_router_policy.md",
+      "type": "policy",
+      "path": "basis/073_task_router_policy.md",
+      "title": "073 Task Router Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/076_review_gate_policy.md",
+      "type": "policy",
+      "path": "basis/076_review_gate_policy.md",
+      "title": "076 Review Gate Policy",
+      "source": "repository"
+    },
+    {
       "id": "basis/026_autonomy_first_policy.md",
       "type": "policy",
       "path": "basis/026_autonomy_first_policy.md",
@@ -1149,10 +1247,24 @@
       "source": "repository"
     },
     {
+      "id": "basis/075_execution_queue_policy.md",
+      "type": "policy",
+      "path": "basis/075_execution_queue_policy.md",
+      "title": "075 Execution Queue Policy",
+      "source": "repository"
+    },
+    {
       "id": "basis/062_policy_graph_policy.md",
       "type": "policy",
       "path": "basis/062_policy_graph_policy.md",
       "title": "062 Policy Graph Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/074_context_resolution_policy.md",
+      "type": "policy",
+      "path": "basis/074_context_resolution_policy.md",
+      "title": "074 Context Resolution Policy",
       "source": "repository"
     },
     {
@@ -1167,6 +1279,13 @@
       "type": "policy",
       "path": "basis/069_agent_io_contract_policy.md",
       "title": "069 Agent IO Contract Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/072_agent_orchestrator_policy.md",
+      "type": "policy",
+      "path": "basis/072_agent_orchestrator_policy.md",
+      "title": "072 Agent Orchestrator Policy",
       "source": "repository"
     },
     {
@@ -1188,6 +1307,13 @@
       "type": "policy",
       "path": "basis/055_orphan_asset_policy.md",
       "title": "orphan_asset",
+      "source": "repository"
+    },
+    {
+      "id": "basis/071_runtime_transition_readiness_policy.md",
+      "type": "policy",
+      "path": "basis/071_runtime_transition_readiness_policy.md",
+      "title": "071 Runtime Transition Readiness Policy",
       "source": "repository"
     },
     {
@@ -1268,6 +1394,13 @@
       "source": "repository"
     },
     {
+      "id": "orchestrator/AGENT_ROUTER.md",
+      "type": "document",
+      "path": "orchestrator/AGENT_ROUTER.md",
+      "title": "Agent Router",
+      "source": "repository"
+    },
+    {
       "id": "orchestrator/ADR-0001.md",
       "type": "document",
       "path": "orchestrator/ADR-0001.md",
@@ -1317,10 +1450,31 @@
       "source": "repository"
     },
     {
+      "id": "orchestrator/CONTEXT_RESOLVER.md",
+      "type": "document",
+      "path": "orchestrator/CONTEXT_RESOLVER.md",
+      "title": "Context Resolver",
+      "source": "repository"
+    },
+    {
+      "id": "orchestrator/CONTEXT_BUNDLE_SCHEMA.md",
+      "type": "document",
+      "path": "orchestrator/CONTEXT_BUNDLE_SCHEMA.md",
+      "title": "Context Bundle Schema",
+      "source": "repository"
+    },
+    {
       "id": "orchestrator/result.py",
       "type": "document",
       "path": "orchestrator/result.py",
       "title": "result",
+      "source": "repository"
+    },
+    {
+      "id": "orchestrator/REVIEW_GATE.md",
+      "type": "document",
+      "path": "orchestrator/REVIEW_GATE.md",
+      "title": "Review Gate",
       "source": "repository"
     },
     {
@@ -1331,10 +1485,31 @@
       "source": "repository"
     },
     {
+      "id": "orchestrator/ORCHESTRATION_SEQUENCE.md",
+      "type": "document",
+      "path": "orchestrator/ORCHESTRATION_SEQUENCE.md",
+      "title": "Orchestration Sequence",
+      "source": "repository"
+    },
+    {
       "id": "orchestrator/agent_executor.py",
       "type": "document",
       "path": "orchestrator/agent_executor.py",
       "title": "agent_executor",
+      "source": "repository"
+    },
+    {
+      "id": "orchestrator/EXECUTION_PLAN_SCHEMA.md",
+      "type": "document",
+      "path": "orchestrator/EXECUTION_PLAN_SCHEMA.md",
+      "title": "Execution Plan Schema",
+      "source": "repository"
+    },
+    {
+      "id": "orchestrator/EXECUTION_QUEUE.md",
+      "type": "document",
+      "path": "orchestrator/EXECUTION_QUEUE.md",
+      "title": "Execution Queue",
       "source": "repository"
     },
     {
@@ -1646,10 +1821,38 @@
       "source": "repository"
     },
     {
+      "id": "scripts/orchestrator/build_context_bundle.py",
+      "type": "script",
+      "path": "scripts/orchestrator/build_context_bundle.py",
+      "title": "build_context_bundle",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/orchestrator/build_execution_plan.py",
+      "type": "script",
+      "path": "scripts/orchestrator/build_execution_plan.py",
+      "title": "build_execution_plan",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/orchestrator/validate_orchestration.py",
+      "type": "script",
+      "path": "scripts/orchestrator/validate_orchestration.py",
+      "title": "validate_orchestration",
+      "source": "repository"
+    },
+    {
       "id": ".github/workflows/boundary-validation.yml",
       "type": "workflow",
       "path": ".github/workflows/boundary-validation.yml",
       "title": "boundary-validation",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/agent-orchestrator-validation.yml",
+      "type": "workflow",
+      "path": ".github/workflows/agent-orchestrator-validation.yml",
+      "title": "agent-orchestrator-validation",
       "source": "repository"
     },
     {
@@ -1770,6 +1973,12 @@
       "evidence": "scripts/validate_repository_knowledge_graph_runtime_integration.py"
     },
     {
+      "source": "README_RUNTIME_TRANSITION_READINESS_PACK.md",
+      "target": "scripts/validate_repository_knowledge_graph_runtime_integration.py",
+      "type": "validates",
+      "evidence": "scripts/validate_repository_knowledge_graph_runtime_integration.py"
+    },
+    {
       "source": "README_SELFTEST_IMPORT_FIX_PACK.md",
       "target": "scripts/selftest/validate_repository_selftest_complete.py",
       "type": "validates",
@@ -1806,6 +2015,36 @@
       "evidence": "scripts/selftest/cleanup_selftest_skeleton.py"
     },
     {
+      "source": "README_AGENT_ORCHESTRATOR_PACK.md",
+      "target": "scripts/graph/build_repository_graph.py",
+      "type": "validates",
+      "evidence": "scripts/graph/build_repository_graph.py"
+    },
+    {
+      "source": "README_AGENT_ORCHESTRATOR_PACK.md",
+      "target": "scripts/context/build_agent_context_pack.py",
+      "type": "validates",
+      "evidence": "scripts/context/build_agent_context_pack.py"
+    },
+    {
+      "source": "README_AGENT_ORCHESTRATOR_PACK.md",
+      "target": "scripts/orchestrator/build_context_bundle.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/build_context_bundle.py"
+    },
+    {
+      "source": "README_AGENT_ORCHESTRATOR_PACK.md",
+      "target": "scripts/orchestrator/build_execution_plan.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/build_execution_plan.py"
+    },
+    {
+      "source": "README_AGENT_ORCHESTRATOR_PACK.md",
+      "target": "scripts/orchestrator/validate_orchestration.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/validate_orchestration.py"
+    },
+    {
       "source": "wbs/WBS-0013-repository-knowledge-graph-runtime-integration.md",
       "target": "scripts/graph/build_repository_graph.py",
       "type": "validates",
@@ -1830,6 +2069,24 @@
       "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
     },
     {
+      "source": "wbs/WBS-0015-agent-orchestrator.md",
+      "target": "scripts/orchestrator/build_context_bundle.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/build_context_bundle.py"
+    },
+    {
+      "source": "wbs/WBS-0015-agent-orchestrator.md",
+      "target": "scripts/orchestrator/build_execution_plan.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/build_execution_plan.py"
+    },
+    {
+      "source": "wbs/WBS-0015-agent-orchestrator.md",
+      "target": "scripts/orchestrator/validate_orchestration.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/validate_orchestration.py"
+    },
+    {
       "source": "wbs/WBS-0012-repository-semantic-selftest-v2.md",
       "target": "scripts/selftest_v2/validate_semantic_selftest.py",
       "type": "validates",
@@ -1840,6 +2097,12 @@
       "target": "orchestrator/local_agent_runner.py",
       "type": "validates",
       "evidence": "orchestrator/local_agent_runner.py"
+    },
+    {
+      "source": "orchestrator/EXECUTION_QUEUE.md",
+      "target": "scripts/orchestrator/validate_orchestration.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/validate_orchestration.py"
     },
     {
       "source": "scripts/context/build_agent_context_pack.py",
@@ -1872,10 +2135,52 @@
       "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
     },
     {
+      "source": "scripts/orchestrator/build_context_bundle.py",
+      "target": "scripts/orchestrator/build_context_bundle.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/build_context_bundle.py"
+    },
+    {
+      "source": "scripts/orchestrator/build_context_bundle.py",
+      "target": "scripts/orchestrator/build_execution_plan.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/build_execution_plan.py"
+    },
+    {
+      "source": "scripts/orchestrator/build_context_bundle.py",
+      "target": "scripts/orchestrator/validate_orchestration.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/validate_orchestration.py"
+    },
+    {
+      "source": "scripts/orchestrator/build_execution_plan.py",
+      "target": "scripts/orchestrator/validate_orchestration.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/validate_orchestration.py"
+    },
+    {
       "source": ".github/workflows/boundary-validation.yml",
       "target": "scripts/selftest/check_boundaries.py",
       "type": "validates",
       "evidence": "scripts/selftest/check_boundaries.py"
+    },
+    {
+      "source": ".github/workflows/agent-orchestrator-validation.yml",
+      "target": "scripts/graph/build_repository_graph.py",
+      "type": "validates",
+      "evidence": "scripts/graph/build_repository_graph.py"
+    },
+    {
+      "source": ".github/workflows/agent-orchestrator-validation.yml",
+      "target": "scripts/context/build_agent_context_pack.py",
+      "type": "validates",
+      "evidence": "scripts/context/build_agent_context_pack.py"
+    },
+    {
+      "source": ".github/workflows/agent-orchestrator-validation.yml",
+      "target": "scripts/orchestrator/validate_orchestration.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/validate_orchestration.py"
     },
     {
       "source": ".github/workflows/repository-knowledge-graph-runtime-integration.yml",

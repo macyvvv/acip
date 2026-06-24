@@ -1,0 +1,32 @@
+name: Agent Orchestrator Validation
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-agent-orchestrator:
+    name: Validate Agent Orchestrator
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Build repository graph
+        run: python scripts/graph/build_repository_graph.py
+
+      - name: Build agent context pack
+        run: python scripts/context/build_agent_context_pack.py
+
+      - name: Validate agent orchestrator
+        run: python scripts/orchestrator/validate_orchestration.py
