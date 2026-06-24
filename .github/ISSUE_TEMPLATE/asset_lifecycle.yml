@@ -1,0 +1,30 @@
+name: Asset Lifecycle
+description: Define or review lifecycle controls for Canonical Assets
+title: "[Asset Lifecycle] "
+labels: ["type:docs", "area:governance", "status:backlog"]
+body:
+  - type: textarea
+    id: target
+    attributes:
+      label: Target
+      description: Asset, document, or lifecycle rule being reviewed.
+    validations:
+      required: true
+  - type: textarea
+    id: current_status
+    attributes:
+      label: Current Status
+    validations:
+      required: true
+  - type: textarea
+    id: desired_status
+    attributes:
+      label: Desired Status
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+    validations:
+      required: true
