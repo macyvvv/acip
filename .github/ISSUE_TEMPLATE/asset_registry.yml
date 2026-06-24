@@ -1,0 +1,30 @@
+name: Asset Registry
+description: Request registry or traceability work for a Canonical Asset
+title: "[Asset Registry] "
+labels: ["type:docs", "status:backlog", "area:governance"]
+body:
+  - type: textarea
+    id: asset
+    attributes:
+      label: Asset / Registry Target
+      description: Identify the asset, registry row, or traceability gap.
+    validations:
+      required: true
+  - type: textarea
+    id: required_change
+    attributes:
+      label: Required Change
+      description: Describe the registry or traceability change.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      value: |
+        - Registry row is complete.
+        - Source asset id is present.
+        - Related ADR/WBS is recorded when applicable.
+        - No runtime implementation is introduced.
+    validations:
+      required: true
