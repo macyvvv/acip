@@ -1,0 +1,28 @@
+name: Canonical Asset Production Closure
+description: Request closure review for Canonical Asset Production objective
+title: "[Closure] Canonical Asset Production"
+labels: ["type:review", "status:needs-human", "area:governance"]
+body:
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Closure Evidence
+      description: Link validation scripts, workflows, policies, ADRs, and WBS.
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: Remaining Risks
+    validations:
+      required: true
+  - type: textarea
+    id: decision
+    attributes:
+      label: Requested Human Decision
+      value: |
+        - approve closure
+        - request revision
+        - keep objective open
+    validations:
+      required: true

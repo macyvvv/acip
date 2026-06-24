@@ -1,0 +1,36 @@
+name: Asset Quality Review
+description: Request quality, ROI, or risk review for a Canonical Asset
+title: "[Asset Quality Review] "
+labels: ["type:review", "status:ready", "area:governance"]
+body:
+  - type: textarea
+    id: asset
+    attributes:
+      label: Asset
+      description: Asset ID and source path.
+    validations:
+      required: true
+  - type: textarea
+    id: review_scope
+    attributes:
+      label: Review Scope
+      value: |
+        - Quality
+        - ROI
+        - Risk
+        - Registry
+        - Traceability
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      value: |
+        - Quality scorecard is completed.
+        - ROI canvas is completed.
+        - Risk review is completed.
+        - Registry is updated if needed.
+        - No runtime implementation is introduced.
+    validations:
+      required: true
