@@ -2,6 +2,12 @@ from __future__ import annotations
 
 import importlib
 import sys
+from pathlib import Path
+
+SELFTEST_DIR = Path(__file__).resolve().parent
+if str(SELFTEST_DIR) not in sys.path:
+    sys.path.insert(0, str(SELFTEST_DIR))
+
 from selftest_common import print_results, CheckResult
 
 CHECK_MODULES = [

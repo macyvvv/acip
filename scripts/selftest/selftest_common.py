@@ -31,8 +31,12 @@ def read(path: Path) -> str:
 def pass_result(check: str, detail: str = "passed") -> CheckResult:
     return CheckResult(check, True, "info", "-", detail)
 
-def fail(check: str, file: str, detail: str, severity: str = "error") -> CheckResult:
+def issue(check: str, file: str, detail: str, severity: str = "error") -> CheckResult:
     return CheckResult(check, False, severity, file, detail)
+
+# Backward-compatible alias for older selftest modules.
+def fail(check: str, file: str, detail: str, severity: str = "error") -> CheckResult:
+    return issue(check, file, detail, severity)
 
 def print_results(title: str, results: list[CheckResult]) -> int:
     failed = [r for r in results if not r.ok and r.severity == "error"]
@@ -52,10 +56,16 @@ def markdown_h1(text: str) -> str | None:
     return None
 
 def internal_markdown_links(text: str):
-    # [label](path.md) or [label](../path.md#anchor), ignore URLs and anchors only
     pattern = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
     for m in pattern.finditer(text):
         target = m.group(1).strip()
         if target.startswith(("http://", "https://", "mailto:", "#")):
             continue
         yield target.split("#", 1)[0]
+
+def is_selftest_script(path: Path) -> bool:
+    return "scripts" in path.parts and "selftest" in path.parts
+
+def is_template_or_report(path: Path) -> bool:
+    name = path.name.upper()
+    return "TEMPLATE" in name or "REPORT" in name or "CHECKLIST" in name
