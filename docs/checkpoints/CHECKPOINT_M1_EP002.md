@@ -9,7 +9,7 @@ ACIP’s repository foundation is improving, but Phase 0 still has unresolved is
 ## Confirmed Facts
 - `README.md` defines the read order and prohibits runtime implementation.
 - `AGENTS.md` now states Codex may review, detect contradictions, and propose refactoring, but may not implement runtime features.
-- `prompts/codex_phase0_prompt.md` now requires an explicit ready / not ready conclusion and separates authority boundaries.
+- `prompts/codex/CODEX_PHASE0_PROMPT.md` now requires an explicit ready / not ready conclusion and separates authority boundaries.
 - `basis/` is organized into constitution, strategy, architecture, governance, intelligence, and runtime policy.
 - `Content Object`, `Media Object`, `Platform Adapter`, `Safe Edge`, and `Adaptive Ocean Portfolio` are defined.
 

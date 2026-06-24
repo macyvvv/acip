@@ -1,4 +1,4 @@
-# 000_project_charter.md
+# 000_PROJECT_CHARTER
 
 ACIP is an AI Native Company operating system.
 

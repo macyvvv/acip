@@ -84,7 +84,7 @@ docs/checkpoints/CHECKPOINT_M1_EP003.md
 
 Worker
 
-.system/prompts/codex/checkpoint_worker.md
+.system/prompts/codex/CHECKPOINT_WORKER.md
 
 Canonical Asset Schema
 

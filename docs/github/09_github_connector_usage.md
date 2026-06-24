@@ -1,4 +1,4 @@
-# GitHub Connector Usage
+# 09_GITHUB_CONNECTOR_USAGE
 
 ## Recommendation
 

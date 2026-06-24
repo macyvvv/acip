@@ -1,4 +1,4 @@
-# 003_authority_matrix.md
+# 003_AUTHORITY_MATRIX
 
 | Decision | Human | ChatGPT | Codex | Runtime AI |
 |---|---|---|---|---|

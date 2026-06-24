@@ -1,4 +1,4 @@
-# 006_acceptance_criteria.md
+# 006_ACCEPTANCE_CRITERIA
 
 ## Phase 0 Acceptance Criteria
 

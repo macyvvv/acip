@@ -1,4 +1,4 @@
-# GitHub Organization Design
+# 01_ORGANIZATION_DESIGN
 
 ## Recommendation
 

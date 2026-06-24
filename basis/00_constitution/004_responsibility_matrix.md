@@ -1,4 +1,4 @@
-# 004_responsibility_matrix.md
+# 004_RESPONSIBILITY_MATRIX
 
 | Function | Human | ChatGPT | Codex | Runtime AI |
 |---|---|---|---|---|

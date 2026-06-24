@@ -1,4 +1,4 @@
-# ADR-XXXX: Title
+# ADR_TEMPLATE
 
 ## Status
 

@@ -1,4 +1,4 @@
-# Secrets Policy
+# 11_SECRETS_POLICY
 
 Never commit secrets.
 

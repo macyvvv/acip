@@ -1,4 +1,4 @@
-# Codex Phase 0 GitHub Prompt
+# CODEX_PHASE0_GITHUB_PROMPT
 
 You are working in the ACIP repository.
 

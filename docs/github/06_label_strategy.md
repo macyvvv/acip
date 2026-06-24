@@ -1,4 +1,4 @@
-# Label Strategy
+# 06_LABEL_STRATEGY
 
 ## Type
 

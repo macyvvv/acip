@@ -29,7 +29,7 @@ Checkpoint運用をRepository上の標準Workerとして定着させる。
 
 以下をRepositoryへ配置済み。
 
-.system/prompts/codex/checkpoint_worker.md
+.system/prompts/codex/CHECKPOINT_WORKER.md
 
 このWorker Promptは、ChatGPTが生成したCheckpoint文書をCodexがRepositoryへ同期するための標準手順である。
 
@@ -92,7 +92,7 @@ Status: Done
 - Current Repository: macyvvv/acip
 - Current Branch: main
 - Checkpoint path: docs/checkpoints/
-- Codex checkpoint worker path: .system/prompts/codex/checkpoint_worker.md
+- Codex checkpoint worker path: .system/prompts/codex/CHECKPOINT_WORKER.md
 - Checkpoint synchronization procedure
 
 ---

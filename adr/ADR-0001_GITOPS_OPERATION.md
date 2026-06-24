@@ -1,4 +1,4 @@
-# ADR-0001: Adopt GitOps Operation
+# ADR-0001_GITOPS_OPERATION
 
 ## Status
 

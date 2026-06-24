@@ -1,4 +1,4 @@
-# GitOps Workflow
+# 08_GITOPS_WORKFLOW
 
 ```text
 ChatGPT

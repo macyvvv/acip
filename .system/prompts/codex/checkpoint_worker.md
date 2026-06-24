@@ -1,4 +1,4 @@
-# ROLE
+# CHECKPOINT_WORKER
 
 You are the Repository Checkpoint Worker for ACIP.
 

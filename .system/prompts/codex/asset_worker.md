@@ -1,4 +1,4 @@
-# ROLE
+# ASSET_WORKER
 
 You are the ACIP Asset Worker.
 
