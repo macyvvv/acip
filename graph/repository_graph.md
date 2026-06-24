@@ -1,0 +1,255 @@
+# Repository Graph
+
+- nodes: 249
+- edges: 25
+
+## Nodes
+- `README_REPOSITORY_SELFTEST_COMPLETE_PACK.md` (readme) ACIP Repository Self Test Complete Pack
+- `README_CANONICAL_ASSET_PACK.md` (readme) ACIP Canonical Asset Production Pack
+- `README_CATALOG_LAYER_PACK.md` (readme) ACIP Catalog Layer Pack
+- `README_KNOWLEDGE_FACTORY.md` (readme) Knowledge Factory README
+- `README_GOVERNANCE.md` (readme) Governance README
+- `README_RUNTIME_READINESS.md` (readme) Runtime Readiness README
+- `CHANGELOG.md` (document) CHANGELOG
+- `README_AGENT_OS_PACK.md` (readme) Agent OS Pack
+- `selftest.yml` (document) selftest
+- `README_REPOSITORY_KNOWLEDGE_GRAPH_RUNTIME_INTEGRATION_PACK.md` (readme) ACIP Repository Knowledge Graph Runtime Integration Pack
+- `PROJECT.md` (document) PROJECT
+- `STATE.md` (document) STATE
+- `README_ASSET_LIFECYCLE_PACK.md` (readme) ACIP Asset Lifecycle Pack
+- `README_REPOSITORY_COMPLETE_PACK.md` (readme) ACIP Repository Complete Pack
+- `README_SELFTEST_IMPORT_FIX_PACK.md` (readme) ACIP SelfTest Import Fix Pack
+- `README.md` (readme) ACIP GitHub Operations Kit v1
+- `README_AUTONOMOUS_WORKFLOW_CONTROL_PACK.md` (readme) ACIP Autonomous Workflow Control Pack
+- `README_ASSET_PRODUCTION_OPERATIONS_PACK.md` (readme) ACIP Asset Production Operations Pack
+- `ROADMAP.md` (document) ROADMAP
+- `README_ASSET_QUALITY_ROI_CLOSURE_PACK.md` (readme) ACIP Asset Quality ROI Closure Pack
+- `README_AUTOMATION_PACK.md` (readme) ACIP Automation Pack
+- `README_SEMANTIC_SELFTEST_V2_PACK.md` (readme) ACIP Repository Semantic SelfTest v2 Pack
+- `README_AGENT_OS.md` (readme) Agent OS README
+- `AGENTS.md` (document) AGENTS.md
+- `README_SELFTEST_REMEDIATION_PACK.md` (readme) ACIP SelfTest Remediation Pack
+- `README_ASSET_REGISTRY_PACK.md` (readme) ACIP Asset Registry Pack
+- `adr/ADR-0016-repository-operating-system-self-test.md` (adr) ADR-0016: Repository Operating System Self Test
+- `adr/ADR-0018-repository-semantic-selftest-v2.md` (adr) ADR-0018: Repository Semantic SelfTest v2
+- `adr/ADR-0019-repository-knowledge-graph.md` (adr) ADR-0019: Repository Knowledge Graph
+- `adr/ADR-0017-continuous-governance.md` (adr) ADR-0017: Continuous Governance
+- `adr/ADR-0020-runtime-integration-preparation.md` (adr) ADR-0020: Runtime Integration Preparation
+- `context/CODEX_CONTEXT_PACK.md` (document) Codex Context Pack
+- `context/AGENT_CONTEXT_PACK_SCHEMA.md` (document) Agent Context Pack Schema
+- `context/CHATGPT_CONTEXT_PACK.md` (document) ChatGPT Context Pack
+- `contracts/EXECUTION_CONTRACT_TEMPLATE.md` (contract) Execution Contract Template
+- `contracts/RUNTIME_TRANSITION_APPROVAL_TEMPLATE.md` (contract) Runtime Transition Approval Template
+- `contracts/APPROVAL_RECORD_TEMPLATE.md` (contract) Approval Record Template
+- `contracts/ROLLBACK_RECORD_TEMPLATE.md` (contract) Rollback Record Template
+- `contracts/HANDOFF_CONTRACT_TEMPLATE.md` (contract) Handoff Contract Template
+- `contracts/SAFETY_GATE_RECORD_TEMPLATE.md` (contract) Safety Gate Record Template
+- `contracts/contracts_4.md` (contract) contracts 4
+- `contracts/contracts_1.md` (contract) contracts 1
+- `contracts/contracts_5.md` (contract) contracts 5
+- `contracts/AGENT_IO_CONTRACT_TEMPLATE.md` (contract) Agent IO Contract Template
+- `contracts/contracts_2.md` (contract) contracts 2
+- `contracts/contracts_3.md` (contract) contracts 3
+- `catalog/catalog_4.md` (catalog) catalog 4
+- `catalog/RUNTIME_BOUNDARY_MODEL.md` (catalog) Runtime Boundary Model
+- `catalog/CAPABILITY_TAXONOMY.md` (catalog) Capability Taxonomy
+- `catalog/catalog_5.md` (catalog) catalog 5
+- `catalog/catalog_1.md` (catalog) catalog 1
+- `catalog/TAG_STANDARD.md` (catalog) Tag Standard
+- `catalog/SAFETY_GATE_MODEL.md` (catalog) Safety Gate Model
+- `catalog/CATEGORY_TAXONOMY.md` (catalog) Category Taxonomy
+- `catalog/QUEUE_MODEL.md` (catalog) Queue Model
+- `catalog/RELATIONSHIP_MODEL.md` (catalog) Relationship Model
+- `catalog/NAMING_STANDARD.md` (catalog) Naming Standard
+- `catalog/catalog_2.md` (catalog) catalog 2
+- `catalog/SEARCH_GUIDELINE.md` (catalog) Search Guideline
+- `catalog/catalog_3.md` (catalog) catalog 3
+- `catalog/TOOL_REGISTRY.md` (catalog) Tool Registry
+- `graph/RELATIONSHIP_TYPES.md` (document) Relationship Types
+- `graph/GRAPH_SCHEMA.md` (document) Repository Knowledge Graph Schema
+- `graph/README_GRAPH.md` (readme) Repository Knowledge Graph
+- `runtime/RUNTIME_INTEGRATION_SPEC.md` (document) Runtime Integration Specification
+- `runtime/RUNTIME_DRY_RUN_PLAN.md` (document) Runtime Dry Run Plan
+- `tests/test_result.py` (document) test_result
+- `tests/test_task.py` (document) test_task
+- `tests/test_local_agent_runner.py` (document) test_local_agent_runner
+- `tests/test_context_loader.py` (document) test_context_loader
+- `tests/test_state.py` (document) Repository
+- `tests/test_agent_executor.py` (document) Repository
+- `tests/test_queue.py` (document) Repository
+- `tests/test_worker.py` (document) test_worker
+- `tests/test_dispatcher.py` (document) test_dispatcher
+- `tests/test_review_package.py` (document) test_review_package
+- `tests/test_codex_worker.py` (document) test_codex_worker
+- `runbooks/link-scan.md` (runbook) Runbook
+- `runbooks/full-selftest.md` (runbook) Runbook
+- `runbooks/runbooks_5.md` (runbook) runbooks 5
+- `runbooks/boundary-scan.md` (runbook) Runbook
+- `runbooks/governance-review.md` (runbook) Runbook
+- `runbooks/runbooks_1.md` (runbook) runbooks 1
+- `runbooks/runbooks_4.md` (runbook) runbooks 4
+- `runbooks/runbooks_3.md` (runbook) runbooks 3
+- `runbooks/drift-scan.md` (runbook) Runbook
+- `runbooks/runbooks_2.md` (runbook) runbooks 2
+- `runbooks/dead-asset-scan.md` (runbook) Runbook
+- `docs/docs_3.md` (document) docs 3
+- `docs/REPOSITORY_HEALTH_SCORECARD.md` (document) REPOSITORY_HEALTH_SCORECARD
+- `docs/CONTINUOUS_GOVERNANCE_REPORT.md` (document) CONTINUOUS_GOVERNANCE_REPORT
+- `docs/BOUNDARY_VIOLATION_REPORT_TEMPLATE.md` (document) Boundary Violation Report Template
+- `docs/SEMANTIC_SELFTEST_V2_CHECKLIST.md` (document) Semantic SelfTest v2 Checklist
+- `docs/DEAD_ASSET_REPORT_TEMPLATE.md` (document) DEAD_ASSET_REPORT_TEMPLATE
+- `docs/DRIFT_REPORT_TEMPLATE.md` (document) Drift Report Template
+- `docs/REPOSITORY_SELFTEST_COMPLETE_CHECKLIST.md` (document) Repository Self Test Complete Checklist
+- `docs/SELFTEST_REPORT_TEMPLATE.md` (document) Self Test Report Template
+- `docs/docs_2.md` (document) docs 2
+- `docs/SEMANTIC_SELFTEST_REPORT_TEMPLATE.md` (document) Semantic SelfTest Report Template
+- `docs/SELFTEST_CHECKLIST.md` (document) SELFTEST_CHECKLIST
+- `docs/BOUNDARY_REPORT_TEMPLATE.md` (document) BOUNDARY_REPORT_TEMPLATE
+- `docs/LINK_REPORT_TEMPLATE.md` (document) LINK_REPORT_TEMPLATE
+- `docs/docs_5.md` (document) docs 5
+- `docs/docs_1.md` (document) docs 1
+- `docs/docs_4.md` (document) docs 4
+- `knowledge/README.md` (knowledge_asset) Knowledge Layer
+- `wbs/WBS-0013-repository-knowledge-graph-runtime-integration.md` (wbs) WBS-0013: Repository Knowledge Graph and Runtime Integration Preparation
+- `wbs/WBS-0011-repository-operating-system-self-test.md` (wbs) WBS-0011: Repository Operating System Self Test
+- `wbs/WBS-0012-repository-semantic-selftest-v2.md` (wbs) WBS-0012: Repository Semantic SelfTest v2
+- `scripts/validate_boundaries.py` (script) validate_boundaries
+- `scripts/validate_links.py` (script) validate_links
+- `scripts/validate_drift.py` (script) validate_drift
+- `scripts/validate_continuous_governance.py` (script) validate_continuous_governance
+- `scripts/validate_repository_knowledge_graph_runtime_integration.py` (script) validate_repository_knowledge_graph_runtime_integration
+- `scripts/validate_dead_assets.py` (script) validate_dead_assets
+- `scripts/validate_repository_selftest.py` (script) validate_repository_selftest
+- `registry/registry_2.md` (registry) registry 2
+- `registry/QUEUE_INDEX.md` (registry) Queue Index
+- `registry/DEPRECATED_INDEX.md` (registry) Deprecated Index
+- `registry/DECISION_INDEX.md` (registry) Decision Index
+- `registry/registry_3.md` (registry) registry 3
+- `registry/ASSET_REGISTRY.md` (registry) Asset Registry
+- `registry/MEDIA_INDEX.md` (registry) Media Index
+- `registry/KNOWLEDGE_INDEX.md` (registry) Knowledge Index
+- `registry/CAPABILITY_INDEX.md` (registry) Capability Index
+- `registry/CONTENT_INDEX.md` (registry) Content Index
+- `registry/registry_4.md` (registry) registry 4
+- `registry/WORKFLOW_INDEX.md` (registry) Workflow Index
+- `registry/registry_1.md` (registry) registry 1
+- `registry/OPERATIONAL_INDEX.md` (registry) Operational Index
+- `registry/registry_5.md` (registry) registry 5
+- `.system/GLOSSARY.md` (document) GLOSSARY
+- `.system/STYLE.md` (document) STYLE
+- `.system/REVIEW.md` (document) REVIEW
+- `.system/DECISION.md` (document) DECISION
+- `.system/BOOT.md` (document) BOOT
+- `templates/ADR_TEMPLATE.md` (document) ADR_TEMPLATE
+- `control/control_4.md` (document) control 4
+- `control/control_1.md` (document) control 1
+- `control/control_5.md` (document) control 5
+- `control/HEALTH_QUEUE.md` (document) Queue
+- `control/ORPHAN_QUEUE.md` (document) Queue
+- `control/DRIFT_QUEUE.md` (document) Queue
+- `control/control_2.md` (document) control 2
+- `control/SELFTEST_QUEUE.md` (document) Queue
+- `control/control_3.md` (document) control 3
+- `basis/053_repository_selftest_policy.md` (policy) 053 Repository Self Test Policy
+- `basis/059_duplicate_detection_policy.md` (policy) 059 Duplicate Detection Policy
+- `basis/026_autonomy_first_policy.md` (policy) 026 Autonomy First Policy
+- `basis/065_repository_knowledge_graph_policy.md` (policy) 065 Repository Knowledge Graph Policy
+- `basis/070_runtime_dry_run_policy.md` (policy) 070 Runtime Dry Run Policy
+- `basis/061_semantic_selftest_policy.md` (policy) 061 Semantic SelfTest Policy
+- `basis/054_repository_health_policy.md` (policy) 054 Repository Health Policy
+- `basis/059_continuous_governance_policy.md` (policy) continuous_governance
+- `basis/056_link_integrity_policy.md` (policy) 056 Link Integrity Policy
+- `basis/056_drift_detection_policy.md` (policy) drift_detection
+- `basis/068_runtime_integration_boundary_policy.md` (policy) 068 Runtime Integration Boundary Policy
+- `basis/037_autonomous_workflow_policy.md` (policy) 037 Autonomous Workflow Policy
+- `basis/063_selftest_v2_boundary_policy.md` (policy) 063 SelfTest v2 Boundary Policy
+- `basis/067_agent_context_pack_policy.md` (policy) 067 Agent Context Pack Policy
+- `basis/058_link_integrity_policy.md` (policy) link_integrity
+- `basis/058_drift_detection_policy.md` (policy) 058 Drift Detection Policy
+- `basis/055_dead_asset_detection_policy.md` (policy) 055 Dead Asset Detection Policy
+- `basis/046_runtime_readiness_boundary.md` (policy) 046 Runtime Readiness Boundary
+- `basis/062_policy_graph_policy.md` (policy) 062 Policy Graph Policy
+- `basis/066_graph_extraction_policy.md` (policy) 066 Graph Extraction Policy
+- `basis/069_agent_io_contract_policy.md` (policy) 069 Agent IO Contract Policy
+- `basis/042_execution_contract_policy.md` (policy) 042 Execution Contract Policy
+- `basis/054_dead_asset_policy.md` (policy) dead_asset
+- `basis/055_orphan_asset_policy.md` (policy) orphan_asset
+- `basis/060_continuous_governance_policy.md` (policy) 060 Continuous Governance Policy
+- `basis/053_repository_health_policy.md` (policy) repository_health
+- `basis/064_selftest_v2_archive_policy.md` (policy) 064 SelfTest v2 Archive Policy
+- `basis/057_boundary_validation_policy.md` (policy) 057 Boundary Validation Policy
+- `basis/060_selftest_policy.md` (policy) selftest
+- `orchestrator/dispatcher.py` (document) dispatcher
+- `orchestrator/queue.py` (document) queue
+- `orchestrator/worker.py` (document) worker
+- `orchestrator/task.py` (document) task
+- `orchestrator/INBOX.md` (document) INBOX
+- `orchestrator/ARCHITECTURE.md` (document) ORCHESTRATOR ARCHITECTURE
+- `orchestrator/ADR-0001.md` (document) ADR-0001: Stateless Orchestrator with Repository as Single Source of Truth
+- `orchestrator/review_package.py` (document) review_package
+- `orchestrator/WBS.md` (document) ORCHESTRATOR WBS
+- `orchestrator/LOCAL_AGENT_RUNNER.md` (document) LOCAL_AGENT_RUNNER
+- `orchestrator/OUTBOX.md` (document) OUTBOX
+- `orchestrator/constants.py` (document) constants
+- `orchestrator/RUNBOOK.md` (document) RUNBOOK
+- `orchestrator/result.py` (document) result
+- `orchestrator/context_loader.py` (document) context_loader
+- `orchestrator/agent_executor.py` (document) agent_executor
+- `orchestrator/local_agent_runner.py` (document) local_agent_runner
+- `orchestrator/state.py` (document) state
+- `knowledge/draft/CA-0001.md` (knowledge_asset) CA-0001
+- `knowledge/draft/CA-0011.md` (knowledge_asset) CA-0011
+- `knowledge/draft/CA-0005.md` (knowledge_asset) CA-0005
+- `knowledge/draft/CA-0004.md` (knowledge_asset) CA-0004
+- `knowledge/draft/CA-0010.md` (knowledge_asset) CA-0010
+- `knowledge/draft/CA-0009.md` (knowledge_asset) CA-0009
+- `knowledge/draft/CA-0008.md` (knowledge_asset) CA-0008
+- `knowledge/draft/CA-0007.md` (knowledge_asset) CA-0007
+- `knowledge/draft/CA-0003.md` (knowledge_asset) CA-0003
+- `knowledge/draft/CA-0002.md` (knowledge_asset) CA-0002
+- `knowledge/draft/CA-0006.md` (knowledge_asset) CA-0006
+- `knowledge/competitor/README.md` (knowledge_asset) Competitor Intelligence
+- `knowledge/canonical/README.md` (knowledge_asset) README
+- `knowledge/canonical/CA-0001_SLEEP.md` (knowledge_asset) CA-0001_SLEEP
+- `knowledge/canonical/INDEX.md` (knowledge_asset) INDEX
+- `knowledge/learning/README.md` (knowledge_asset) Learning Repository
+- `knowledge/platform/README.md` (knowledge_asset) Platform Intelligence
+- `knowledge/prompt/README.md` (knowledge_asset) Prompt Library
+- `knowledge/market/README.md` (knowledge_asset) Market Intelligence
+- `knowledge/policy/README.md` (knowledge_asset) Policy Intelligence
+- `knowledge/strategy/CANONICAL_ASSET_BACKLOG.md` (knowledge_asset) CANONICAL_ASSET_BACKLOG
+- `knowledge/strategy/MARKET_VALIDATION_WBS.md` (knowledge_asset) MARKET_VALIDATION_WBS
+- `knowledge/strategy/PRODUCT_DEFINITION.md` (knowledge_asset) PRODUCT_DEFINITION
+- `scripts/context/build_agent_context_pack.py` (script) build_agent_context_pack
+- `scripts/graph/validate_repository_graph.py` (script) validate_repository_graph
+- `scripts/graph/build_repository_graph.py` (script) build_repository_graph
+- `scripts/runtime/dry_run_runtime_plan.py` (script) dry_run_runtime_plan
+- `scripts/selftest/check_orphans.py` (script) check_orphans
+- `scripts/selftest/check_current_objective.py` (script) check_current_objective
+- `scripts/selftest/check_repository_health.py` (script) check_repository_health
+- `scripts/selftest/check_boundaries.py` (script) Use separated fragments so this checker does not match itself.
+- `scripts/selftest/README_SELFTEST_REMEDIATION.md` (script) SelfTest Remediation
+- `scripts/selftest/validate_repository_selftest_complete.py` (script) validate_repository_selftest_complete
+- `scripts/selftest/check_duplicates.py` (script) Deprecated skeleton files are handled by cleanup_selftest_skeleton.py and reported as warnings here.
+- `scripts/selftest/check_link_integrity.py` (script) check_link_integrity
+- `scripts/selftest/check_secret_boundary.py` (script) check_secret_boundary
+- `scripts/selftest/check_workflows.py` (script) check_workflows
+- `scripts/selftest/cleanup_selftest_skeleton.py` (script) cleanup_selftest_skeleton
+- `scripts/selftest/selftest_common.py` (script) Backward-compatible alias for older selftest modules.
+- `scripts/selftest_v2/semantic_checks.py` (script) semantic_checks
+- `scripts/selftest_v2/validate_semantic_selftest.py` (script) validate_semantic_selftest
+- `scripts/selftest_v2/semantic_common.py` (script) semantic_common
+- `.github/workflows/boundary-validation.yml` (workflow) boundary-validation
+- `.github/workflows/repository-knowledge-graph-runtime-integration.yml` (workflow) repository-knowledge-graph-runtime-integration
+- `.github/workflows/continuous-governance.yml` (workflow) continuous-governance
+- `.github/workflows/repository-semantic-selftest-v2.yml` (workflow) repository-semantic-selftest-v2
+- `.github/workflows/repository-selftest.yml` (workflow) repository-selftest
+- `.github/workflows/repository-selftest-complete.yml` (workflow) repository-selftest-complete
+- `.github/ISSUE_TEMPLATE/repository_selftest.yml` (document) repository_selftest
+- `.github/ISSUE_TEMPLATE/runtime_integration_readiness.yml` (document) runtime_integration_readiness
+- `.github/ISSUE_TEMPLATE/repository_selftest_failure.yml` (document) repository_selftest_failure
+- `prompts/codex/CODEX_PHASE0_GITHUB_PROMPT.md` (document) CODEX_PHASE0_GITHUB_PROMPT
+- `.system/SOP/CONTENT_PIPELINE.md` (document) CONTENT_PIPELINE
+- `.system/prompts/codex/ASSET_WORKER.md` (document) ASSET_WORKER
+- `.system/prompts/codex/CHECKPOINT_WORKER.md` (document) CHECKPOINT_WORKER
+- `orchestrator/workers/codex_worker.py` (document) codex_worker

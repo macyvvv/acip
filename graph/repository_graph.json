@@ -1,0 +1,1899 @@
+{
+  "nodes": [
+    {
+      "id": "README_REPOSITORY_SELFTEST_COMPLETE_PACK.md",
+      "type": "readme",
+      "path": "README_REPOSITORY_SELFTEST_COMPLETE_PACK.md",
+      "title": "ACIP Repository Self Test Complete Pack",
+      "source": "repository"
+    },
+    {
+      "id": "README_CANONICAL_ASSET_PACK.md",
+      "type": "readme",
+      "path": "README_CANONICAL_ASSET_PACK.md",
+      "title": "ACIP Canonical Asset Production Pack",
+      "source": "repository"
+    },
+    {
+      "id": "README_CATALOG_LAYER_PACK.md",
+      "type": "readme",
+      "path": "README_CATALOG_LAYER_PACK.md",
+      "title": "ACIP Catalog Layer Pack",
+      "source": "repository"
+    },
+    {
+      "id": "README_KNOWLEDGE_FACTORY.md",
+      "type": "readme",
+      "path": "README_KNOWLEDGE_FACTORY.md",
+      "title": "Knowledge Factory README",
+      "source": "repository"
+    },
+    {
+      "id": "README_GOVERNANCE.md",
+      "type": "readme",
+      "path": "README_GOVERNANCE.md",
+      "title": "Governance README",
+      "source": "repository"
+    },
+    {
+      "id": "README_RUNTIME_READINESS.md",
+      "type": "readme",
+      "path": "README_RUNTIME_READINESS.md",
+      "title": "Runtime Readiness README",
+      "source": "repository"
+    },
+    {
+      "id": "CHANGELOG.md",
+      "type": "document",
+      "path": "CHANGELOG.md",
+      "title": "CHANGELOG",
+      "source": "repository"
+    },
+    {
+      "id": "README_AGENT_OS_PACK.md",
+      "type": "readme",
+      "path": "README_AGENT_OS_PACK.md",
+      "title": "Agent OS Pack",
+      "source": "repository"
+    },
+    {
+      "id": "selftest.yml",
+      "type": "document",
+      "path": "selftest.yml",
+      "title": "selftest",
+      "source": "repository"
+    },
+    {
+      "id": "README_REPOSITORY_KNOWLEDGE_GRAPH_RUNTIME_INTEGRATION_PACK.md",
+      "type": "readme",
+      "path": "README_REPOSITORY_KNOWLEDGE_GRAPH_RUNTIME_INTEGRATION_PACK.md",
+      "title": "ACIP Repository Knowledge Graph Runtime Integration Pack",
+      "source": "repository"
+    },
+    {
+      "id": "PROJECT.md",
+      "type": "document",
+      "path": "PROJECT.md",
+      "title": "PROJECT",
+      "source": "repository"
+    },
+    {
+      "id": "STATE.md",
+      "type": "document",
+      "path": "STATE.md",
+      "title": "STATE",
+      "source": "repository"
+    },
+    {
+      "id": "README_ASSET_LIFECYCLE_PACK.md",
+      "type": "readme",
+      "path": "README_ASSET_LIFECYCLE_PACK.md",
+      "title": "ACIP Asset Lifecycle Pack",
+      "source": "repository"
+    },
+    {
+      "id": "README_REPOSITORY_COMPLETE_PACK.md",
+      "type": "readme",
+      "path": "README_REPOSITORY_COMPLETE_PACK.md",
+      "title": "ACIP Repository Complete Pack",
+      "source": "repository"
+    },
+    {
+      "id": "README_SELFTEST_IMPORT_FIX_PACK.md",
+      "type": "readme",
+      "path": "README_SELFTEST_IMPORT_FIX_PACK.md",
+      "title": "ACIP SelfTest Import Fix Pack",
+      "source": "repository"
+    },
+    {
+      "id": "README.md",
+      "type": "readme",
+      "path": "README.md",
+      "title": "ACIP GitHub Operations Kit v1",
+      "source": "repository"
+    },
+    {
+      "id": "README_AUTONOMOUS_WORKFLOW_CONTROL_PACK.md",
+      "type": "readme",
+      "path": "README_AUTONOMOUS_WORKFLOW_CONTROL_PACK.md",
+      "title": "ACIP Autonomous Workflow Control Pack",
+      "source": "repository"
+    },
+    {
+      "id": "README_ASSET_PRODUCTION_OPERATIONS_PACK.md",
+      "type": "readme",
+      "path": "README_ASSET_PRODUCTION_OPERATIONS_PACK.md",
+      "title": "ACIP Asset Production Operations Pack",
+      "source": "repository"
+    },
+    {
+      "id": "ROADMAP.md",
+      "type": "document",
+      "path": "ROADMAP.md",
+      "title": "ROADMAP",
+      "source": "repository"
+    },
+    {
+      "id": "README_ASSET_QUALITY_ROI_CLOSURE_PACK.md",
+      "type": "readme",
+      "path": "README_ASSET_QUALITY_ROI_CLOSURE_PACK.md",
+      "title": "ACIP Asset Quality ROI Closure Pack",
+      "source": "repository"
+    },
+    {
+      "id": "README_AUTOMATION_PACK.md",
+      "type": "readme",
+      "path": "README_AUTOMATION_PACK.md",
+      "title": "ACIP Automation Pack",
+      "source": "repository"
+    },
+    {
+      "id": "README_SEMANTIC_SELFTEST_V2_PACK.md",
+      "type": "readme",
+      "path": "README_SEMANTIC_SELFTEST_V2_PACK.md",
+      "title": "ACIP Repository Semantic SelfTest v2 Pack",
+      "source": "repository"
+    },
+    {
+      "id": "README_AGENT_OS.md",
+      "type": "readme",
+      "path": "README_AGENT_OS.md",
+      "title": "Agent OS README",
+      "source": "repository"
+    },
+    {
+      "id": "AGENTS.md",
+      "type": "document",
+      "path": "AGENTS.md",
+      "title": "AGENTS.md",
+      "source": "repository"
+    },
+    {
+      "id": "README_SELFTEST_REMEDIATION_PACK.md",
+      "type": "readme",
+      "path": "README_SELFTEST_REMEDIATION_PACK.md",
+      "title": "ACIP SelfTest Remediation Pack",
+      "source": "repository"
+    },
+    {
+      "id": "README_ASSET_REGISTRY_PACK.md",
+      "type": "readme",
+      "path": "README_ASSET_REGISTRY_PACK.md",
+      "title": "ACIP Asset Registry Pack",
+      "source": "repository"
+    },
+    {
+      "id": "adr/ADR-0016-repository-operating-system-self-test.md",
+      "type": "adr",
+      "path": "adr/ADR-0016-repository-operating-system-self-test.md",
+      "title": "ADR-0016: Repository Operating System Self Test",
+      "source": "repository"
+    },
+    {
+      "id": "adr/ADR-0018-repository-semantic-selftest-v2.md",
+      "type": "adr",
+      "path": "adr/ADR-0018-repository-semantic-selftest-v2.md",
+      "title": "ADR-0018: Repository Semantic SelfTest v2",
+      "source": "repository"
+    },
+    {
+      "id": "adr/ADR-0019-repository-knowledge-graph.md",
+      "type": "adr",
+      "path": "adr/ADR-0019-repository-knowledge-graph.md",
+      "title": "ADR-0019: Repository Knowledge Graph",
+      "source": "repository"
+    },
+    {
+      "id": "adr/ADR-0017-continuous-governance.md",
+      "type": "adr",
+      "path": "adr/ADR-0017-continuous-governance.md",
+      "title": "ADR-0017: Continuous Governance",
+      "source": "repository"
+    },
+    {
+      "id": "adr/ADR-0020-runtime-integration-preparation.md",
+      "type": "adr",
+      "path": "adr/ADR-0020-runtime-integration-preparation.md",
+      "title": "ADR-0020: Runtime Integration Preparation",
+      "source": "repository"
+    },
+    {
+      "id": "context/CODEX_CONTEXT_PACK.md",
+      "type": "document",
+      "path": "context/CODEX_CONTEXT_PACK.md",
+      "title": "Codex Context Pack",
+      "source": "repository"
+    },
+    {
+      "id": "context/AGENT_CONTEXT_PACK_SCHEMA.md",
+      "type": "document",
+      "path": "context/AGENT_CONTEXT_PACK_SCHEMA.md",
+      "title": "Agent Context Pack Schema",
+      "source": "repository"
+    },
+    {
+      "id": "context/CHATGPT_CONTEXT_PACK.md",
+      "type": "document",
+      "path": "context/CHATGPT_CONTEXT_PACK.md",
+      "title": "ChatGPT Context Pack",
+      "source": "repository"
+    },
+    {
+      "id": "contracts/EXECUTION_CONTRACT_TEMPLATE.md",
+      "type": "contract",
+      "path": "contracts/EXECUTION_CONTRACT_TEMPLATE.md",
+      "title": "Execution Contract Template",
+      "source": "repository"
+    },
+    {
+      "id": "contracts/RUNTIME_TRANSITION_APPROVAL_TEMPLATE.md",
+      "type": "contract",
+      "path": "contracts/RUNTIME_TRANSITION_APPROVAL_TEMPLATE.md",
+      "title": "Runtime Transition Approval Template",
+      "source": "repository"
+    },
+    {
+      "id": "contracts/APPROVAL_RECORD_TEMPLATE.md",
+      "type": "contract",
+      "path": "contracts/APPROVAL_RECORD_TEMPLATE.md",
+      "title": "Approval Record Template",
+      "source": "repository"
+    },
+    {
+      "id": "contracts/ROLLBACK_RECORD_TEMPLATE.md",
+      "type": "contract",
+      "path": "contracts/ROLLBACK_RECORD_TEMPLATE.md",
+      "title": "Rollback Record Template",
+      "source": "repository"
+    },
+    {
+      "id": "contracts/HANDOFF_CONTRACT_TEMPLATE.md",
+      "type": "contract",
+      "path": "contracts/HANDOFF_CONTRACT_TEMPLATE.md",
+      "title": "Handoff Contract Template",
+      "source": "repository"
+    },
+    {
+      "id": "contracts/SAFETY_GATE_RECORD_TEMPLATE.md",
+      "type": "contract",
+      "path": "contracts/SAFETY_GATE_RECORD_TEMPLATE.md",
+      "title": "Safety Gate Record Template",
+      "source": "repository"
+    },
+    {
+      "id": "contracts/contracts_4.md",
+      "type": "contract",
+      "path": "contracts/contracts_4.md",
+      "title": "contracts 4",
+      "source": "repository"
+    },
+    {
+      "id": "contracts/contracts_1.md",
+      "type": "contract",
+      "path": "contracts/contracts_1.md",
+      "title": "contracts 1",
+      "source": "repository"
+    },
+    {
+      "id": "contracts/contracts_5.md",
+      "type": "contract",
+      "path": "contracts/contracts_5.md",
+      "title": "contracts 5",
+      "source": "repository"
+    },
+    {
+      "id": "contracts/AGENT_IO_CONTRACT_TEMPLATE.md",
+      "type": "contract",
+      "path": "contracts/AGENT_IO_CONTRACT_TEMPLATE.md",
+      "title": "Agent IO Contract Template",
+      "source": "repository"
+    },
+    {
+      "id": "contracts/contracts_2.md",
+      "type": "contract",
+      "path": "contracts/contracts_2.md",
+      "title": "contracts 2",
+      "source": "repository"
+    },
+    {
+      "id": "contracts/contracts_3.md",
+      "type": "contract",
+      "path": "contracts/contracts_3.md",
+      "title": "contracts 3",
+      "source": "repository"
+    },
+    {
+      "id": "catalog/catalog_4.md",
+      "type": "catalog",
+      "path": "catalog/catalog_4.md",
+      "title": "catalog 4",
+      "source": "repository"
+    },
+    {
+      "id": "catalog/RUNTIME_BOUNDARY_MODEL.md",
+      "type": "catalog",
+      "path": "catalog/RUNTIME_BOUNDARY_MODEL.md",
+      "title": "Runtime Boundary Model",
+      "source": "repository"
+    },
+    {
+      "id": "catalog/CAPABILITY_TAXONOMY.md",
+      "type": "catalog",
+      "path": "catalog/CAPABILITY_TAXONOMY.md",
+      "title": "Capability Taxonomy",
+      "source": "repository"
+    },
+    {
+      "id": "catalog/catalog_5.md",
+      "type": "catalog",
+      "path": "catalog/catalog_5.md",
+      "title": "catalog 5",
+      "source": "repository"
+    },
+    {
+      "id": "catalog/catalog_1.md",
+      "type": "catalog",
+      "path": "catalog/catalog_1.md",
+      "title": "catalog 1",
+      "source": "repository"
+    },
+    {
+      "id": "catalog/TAG_STANDARD.md",
+      "type": "catalog",
+      "path": "catalog/TAG_STANDARD.md",
+      "title": "Tag Standard",
+      "source": "repository"
+    },
+    {
+      "id": "catalog/SAFETY_GATE_MODEL.md",
+      "type": "catalog",
+      "path": "catalog/SAFETY_GATE_MODEL.md",
+      "title": "Safety Gate Model",
+      "source": "repository"
+    },
+    {
+      "id": "catalog/CATEGORY_TAXONOMY.md",
+      "type": "catalog",
+      "path": "catalog/CATEGORY_TAXONOMY.md",
+      "title": "Category Taxonomy",
+      "source": "repository"
+    },
+    {
+      "id": "catalog/QUEUE_MODEL.md",
+      "type": "catalog",
+      "path": "catalog/QUEUE_MODEL.md",
+      "title": "Queue Model",
+      "source": "repository"
+    },
+    {
+      "id": "catalog/RELATIONSHIP_MODEL.md",
+      "type": "catalog",
+      "path": "catalog/RELATIONSHIP_MODEL.md",
+      "title": "Relationship Model",
+      "source": "repository"
+    },
+    {
+      "id": "catalog/NAMING_STANDARD.md",
+      "type": "catalog",
+      "path": "catalog/NAMING_STANDARD.md",
+      "title": "Naming Standard",
+      "source": "repository"
+    },
+    {
+      "id": "catalog/catalog_2.md",
+      "type": "catalog",
+      "path": "catalog/catalog_2.md",
+      "title": "catalog 2",
+      "source": "repository"
+    },
+    {
+      "id": "catalog/SEARCH_GUIDELINE.md",
+      "type": "catalog",
+      "path": "catalog/SEARCH_GUIDELINE.md",
+      "title": "Search Guideline",
+      "source": "repository"
+    },
+    {
+      "id": "catalog/catalog_3.md",
+      "type": "catalog",
+      "path": "catalog/catalog_3.md",
+      "title": "catalog 3",
+      "source": "repository"
+    },
+    {
+      "id": "catalog/TOOL_REGISTRY.md",
+      "type": "catalog",
+      "path": "catalog/TOOL_REGISTRY.md",
+      "title": "Tool Registry",
+      "source": "repository"
+    },
+    {
+      "id": "graph/RELATIONSHIP_TYPES.md",
+      "type": "document",
+      "path": "graph/RELATIONSHIP_TYPES.md",
+      "title": "Relationship Types",
+      "source": "repository"
+    },
+    {
+      "id": "graph/GRAPH_SCHEMA.md",
+      "type": "document",
+      "path": "graph/GRAPH_SCHEMA.md",
+      "title": "Repository Knowledge Graph Schema",
+      "source": "repository"
+    },
+    {
+      "id": "graph/README_GRAPH.md",
+      "type": "readme",
+      "path": "graph/README_GRAPH.md",
+      "title": "Repository Knowledge Graph",
+      "source": "repository"
+    },
+    {
+      "id": "runtime/RUNTIME_INTEGRATION_SPEC.md",
+      "type": "document",
+      "path": "runtime/RUNTIME_INTEGRATION_SPEC.md",
+      "title": "Runtime Integration Specification",
+      "source": "repository"
+    },
+    {
+      "id": "runtime/RUNTIME_DRY_RUN_PLAN.md",
+      "type": "document",
+      "path": "runtime/RUNTIME_DRY_RUN_PLAN.md",
+      "title": "Runtime Dry Run Plan",
+      "source": "repository"
+    },
+    {
+      "id": "tests/test_result.py",
+      "type": "document",
+      "path": "tests/test_result.py",
+      "title": "test_result",
+      "source": "repository"
+    },
+    {
+      "id": "tests/test_task.py",
+      "type": "document",
+      "path": "tests/test_task.py",
+      "title": "test_task",
+      "source": "repository"
+    },
+    {
+      "id": "tests/test_local_agent_runner.py",
+      "type": "document",
+      "path": "tests/test_local_agent_runner.py",
+      "title": "test_local_agent_runner",
+      "source": "repository"
+    },
+    {
+      "id": "tests/test_context_loader.py",
+      "type": "document",
+      "path": "tests/test_context_loader.py",
+      "title": "test_context_loader",
+      "source": "repository"
+    },
+    {
+      "id": "tests/test_state.py",
+      "type": "document",
+      "path": "tests/test_state.py",
+      "title": "Repository",
+      "source": "repository"
+    },
+    {
+      "id": "tests/test_agent_executor.py",
+      "type": "document",
+      "path": "tests/test_agent_executor.py",
+      "title": "Repository",
+      "source": "repository"
+    },
+    {
+      "id": "tests/test_queue.py",
+      "type": "document",
+      "path": "tests/test_queue.py",
+      "title": "Repository",
+      "source": "repository"
+    },
+    {
+      "id": "tests/test_worker.py",
+      "type": "document",
+      "path": "tests/test_worker.py",
+      "title": "test_worker",
+      "source": "repository"
+    },
+    {
+      "id": "tests/test_dispatcher.py",
+      "type": "document",
+      "path": "tests/test_dispatcher.py",
+      "title": "test_dispatcher",
+      "source": "repository"
+    },
+    {
+      "id": "tests/test_review_package.py",
+      "type": "document",
+      "path": "tests/test_review_package.py",
+      "title": "test_review_package",
+      "source": "repository"
+    },
+    {
+      "id": "tests/test_codex_worker.py",
+      "type": "document",
+      "path": "tests/test_codex_worker.py",
+      "title": "test_codex_worker",
+      "source": "repository"
+    },
+    {
+      "id": "runbooks/link-scan.md",
+      "type": "runbook",
+      "path": "runbooks/link-scan.md",
+      "title": "Runbook",
+      "source": "repository"
+    },
+    {
+      "id": "runbooks/full-selftest.md",
+      "type": "runbook",
+      "path": "runbooks/full-selftest.md",
+      "title": "Runbook",
+      "source": "repository"
+    },
+    {
+      "id": "runbooks/runbooks_5.md",
+      "type": "runbook",
+      "path": "runbooks/runbooks_5.md",
+      "title": "runbooks 5",
+      "source": "repository"
+    },
+    {
+      "id": "runbooks/boundary-scan.md",
+      "type": "runbook",
+      "path": "runbooks/boundary-scan.md",
+      "title": "Runbook",
+      "source": "repository"
+    },
+    {
+      "id": "runbooks/governance-review.md",
+      "type": "runbook",
+      "path": "runbooks/governance-review.md",
+      "title": "Runbook",
+      "source": "repository"
+    },
+    {
+      "id": "runbooks/runbooks_1.md",
+      "type": "runbook",
+      "path": "runbooks/runbooks_1.md",
+      "title": "runbooks 1",
+      "source": "repository"
+    },
+    {
+      "id": "runbooks/runbooks_4.md",
+      "type": "runbook",
+      "path": "runbooks/runbooks_4.md",
+      "title": "runbooks 4",
+      "source": "repository"
+    },
+    {
+      "id": "runbooks/runbooks_3.md",
+      "type": "runbook",
+      "path": "runbooks/runbooks_3.md",
+      "title": "runbooks 3",
+      "source": "repository"
+    },
+    {
+      "id": "runbooks/drift-scan.md",
+      "type": "runbook",
+      "path": "runbooks/drift-scan.md",
+      "title": "Runbook",
+      "source": "repository"
+    },
+    {
+      "id": "runbooks/runbooks_2.md",
+      "type": "runbook",
+      "path": "runbooks/runbooks_2.md",
+      "title": "runbooks 2",
+      "source": "repository"
+    },
+    {
+      "id": "runbooks/dead-asset-scan.md",
+      "type": "runbook",
+      "path": "runbooks/dead-asset-scan.md",
+      "title": "Runbook",
+      "source": "repository"
+    },
+    {
+      "id": "docs/docs_3.md",
+      "type": "document",
+      "path": "docs/docs_3.md",
+      "title": "docs 3",
+      "source": "repository"
+    },
+    {
+      "id": "docs/REPOSITORY_HEALTH_SCORECARD.md",
+      "type": "document",
+      "path": "docs/REPOSITORY_HEALTH_SCORECARD.md",
+      "title": "REPOSITORY_HEALTH_SCORECARD",
+      "source": "repository"
+    },
+    {
+      "id": "docs/CONTINUOUS_GOVERNANCE_REPORT.md",
+      "type": "document",
+      "path": "docs/CONTINUOUS_GOVERNANCE_REPORT.md",
+      "title": "CONTINUOUS_GOVERNANCE_REPORT",
+      "source": "repository"
+    },
+    {
+      "id": "docs/BOUNDARY_VIOLATION_REPORT_TEMPLATE.md",
+      "type": "document",
+      "path": "docs/BOUNDARY_VIOLATION_REPORT_TEMPLATE.md",
+      "title": "Boundary Violation Report Template",
+      "source": "repository"
+    },
+    {
+      "id": "docs/SEMANTIC_SELFTEST_V2_CHECKLIST.md",
+      "type": "document",
+      "path": "docs/SEMANTIC_SELFTEST_V2_CHECKLIST.md",
+      "title": "Semantic SelfTest v2 Checklist",
+      "source": "repository"
+    },
+    {
+      "id": "docs/DEAD_ASSET_REPORT_TEMPLATE.md",
+      "type": "document",
+      "path": "docs/DEAD_ASSET_REPORT_TEMPLATE.md",
+      "title": "DEAD_ASSET_REPORT_TEMPLATE",
+      "source": "repository"
+    },
+    {
+      "id": "docs/DRIFT_REPORT_TEMPLATE.md",
+      "type": "document",
+      "path": "docs/DRIFT_REPORT_TEMPLATE.md",
+      "title": "Drift Report Template",
+      "source": "repository"
+    },
+    {
+      "id": "docs/REPOSITORY_SELFTEST_COMPLETE_CHECKLIST.md",
+      "type": "document",
+      "path": "docs/REPOSITORY_SELFTEST_COMPLETE_CHECKLIST.md",
+      "title": "Repository Self Test Complete Checklist",
+      "source": "repository"
+    },
+    {
+      "id": "docs/SELFTEST_REPORT_TEMPLATE.md",
+      "type": "document",
+      "path": "docs/SELFTEST_REPORT_TEMPLATE.md",
+      "title": "Self Test Report Template",
+      "source": "repository"
+    },
+    {
+      "id": "docs/docs_2.md",
+      "type": "document",
+      "path": "docs/docs_2.md",
+      "title": "docs 2",
+      "source": "repository"
+    },
+    {
+      "id": "docs/SEMANTIC_SELFTEST_REPORT_TEMPLATE.md",
+      "type": "document",
+      "path": "docs/SEMANTIC_SELFTEST_REPORT_TEMPLATE.md",
+      "title": "Semantic SelfTest Report Template",
+      "source": "repository"
+    },
+    {
+      "id": "docs/SELFTEST_CHECKLIST.md",
+      "type": "document",
+      "path": "docs/SELFTEST_CHECKLIST.md",
+      "title": "SELFTEST_CHECKLIST",
+      "source": "repository"
+    },
+    {
+      "id": "docs/BOUNDARY_REPORT_TEMPLATE.md",
+      "type": "document",
+      "path": "docs/BOUNDARY_REPORT_TEMPLATE.md",
+      "title": "BOUNDARY_REPORT_TEMPLATE",
+      "source": "repository"
+    },
+    {
+      "id": "docs/LINK_REPORT_TEMPLATE.md",
+      "type": "document",
+      "path": "docs/LINK_REPORT_TEMPLATE.md",
+      "title": "LINK_REPORT_TEMPLATE",
+      "source": "repository"
+    },
+    {
+      "id": "docs/docs_5.md",
+      "type": "document",
+      "path": "docs/docs_5.md",
+      "title": "docs 5",
+      "source": "repository"
+    },
+    {
+      "id": "docs/docs_1.md",
+      "type": "document",
+      "path": "docs/docs_1.md",
+      "title": "docs 1",
+      "source": "repository"
+    },
+    {
+      "id": "docs/docs_4.md",
+      "type": "document",
+      "path": "docs/docs_4.md",
+      "title": "docs 4",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/README.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/README.md",
+      "title": "Knowledge Layer",
+      "source": "repository"
+    },
+    {
+      "id": "wbs/WBS-0013-repository-knowledge-graph-runtime-integration.md",
+      "type": "wbs",
+      "path": "wbs/WBS-0013-repository-knowledge-graph-runtime-integration.md",
+      "title": "WBS-0013: Repository Knowledge Graph and Runtime Integration Preparation",
+      "source": "repository"
+    },
+    {
+      "id": "wbs/WBS-0011-repository-operating-system-self-test.md",
+      "type": "wbs",
+      "path": "wbs/WBS-0011-repository-operating-system-self-test.md",
+      "title": "WBS-0011: Repository Operating System Self Test",
+      "source": "repository"
+    },
+    {
+      "id": "wbs/WBS-0012-repository-semantic-selftest-v2.md",
+      "type": "wbs",
+      "path": "wbs/WBS-0012-repository-semantic-selftest-v2.md",
+      "title": "WBS-0012: Repository Semantic SelfTest v2",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/validate_boundaries.py",
+      "type": "script",
+      "path": "scripts/validate_boundaries.py",
+      "title": "validate_boundaries",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/validate_links.py",
+      "type": "script",
+      "path": "scripts/validate_links.py",
+      "title": "validate_links",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/validate_drift.py",
+      "type": "script",
+      "path": "scripts/validate_drift.py",
+      "title": "validate_drift",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/validate_continuous_governance.py",
+      "type": "script",
+      "path": "scripts/validate_continuous_governance.py",
+      "title": "validate_continuous_governance",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/validate_repository_knowledge_graph_runtime_integration.py",
+      "type": "script",
+      "path": "scripts/validate_repository_knowledge_graph_runtime_integration.py",
+      "title": "validate_repository_knowledge_graph_runtime_integration",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/validate_dead_assets.py",
+      "type": "script",
+      "path": "scripts/validate_dead_assets.py",
+      "title": "validate_dead_assets",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/validate_repository_selftest.py",
+      "type": "script",
+      "path": "scripts/validate_repository_selftest.py",
+      "title": "validate_repository_selftest",
+      "source": "repository"
+    },
+    {
+      "id": "registry/registry_2.md",
+      "type": "registry",
+      "path": "registry/registry_2.md",
+      "title": "registry 2",
+      "source": "repository"
+    },
+    {
+      "id": "registry/QUEUE_INDEX.md",
+      "type": "registry",
+      "path": "registry/QUEUE_INDEX.md",
+      "title": "Queue Index",
+      "source": "repository"
+    },
+    {
+      "id": "registry/DEPRECATED_INDEX.md",
+      "type": "registry",
+      "path": "registry/DEPRECATED_INDEX.md",
+      "title": "Deprecated Index",
+      "source": "repository"
+    },
+    {
+      "id": "registry/DECISION_INDEX.md",
+      "type": "registry",
+      "path": "registry/DECISION_INDEX.md",
+      "title": "Decision Index",
+      "source": "repository"
+    },
+    {
+      "id": "registry/registry_3.md",
+      "type": "registry",
+      "path": "registry/registry_3.md",
+      "title": "registry 3",
+      "source": "repository"
+    },
+    {
+      "id": "registry/ASSET_REGISTRY.md",
+      "type": "registry",
+      "path": "registry/ASSET_REGISTRY.md",
+      "title": "Asset Registry",
+      "source": "repository"
+    },
+    {
+      "id": "registry/MEDIA_INDEX.md",
+      "type": "registry",
+      "path": "registry/MEDIA_INDEX.md",
+      "title": "Media Index",
+      "source": "repository"
+    },
+    {
+      "id": "registry/KNOWLEDGE_INDEX.md",
+      "type": "registry",
+      "path": "registry/KNOWLEDGE_INDEX.md",
+      "title": "Knowledge Index",
+      "source": "repository"
+    },
+    {
+      "id": "registry/CAPABILITY_INDEX.md",
+      "type": "registry",
+      "path": "registry/CAPABILITY_INDEX.md",
+      "title": "Capability Index",
+      "source": "repository"
+    },
+    {
+      "id": "registry/CONTENT_INDEX.md",
+      "type": "registry",
+      "path": "registry/CONTENT_INDEX.md",
+      "title": "Content Index",
+      "source": "repository"
+    },
+    {
+      "id": "registry/registry_4.md",
+      "type": "registry",
+      "path": "registry/registry_4.md",
+      "title": "registry 4",
+      "source": "repository"
+    },
+    {
+      "id": "registry/WORKFLOW_INDEX.md",
+      "type": "registry",
+      "path": "registry/WORKFLOW_INDEX.md",
+      "title": "Workflow Index",
+      "source": "repository"
+    },
+    {
+      "id": "registry/registry_1.md",
+      "type": "registry",
+      "path": "registry/registry_1.md",
+      "title": "registry 1",
+      "source": "repository"
+    },
+    {
+      "id": "registry/OPERATIONAL_INDEX.md",
+      "type": "registry",
+      "path": "registry/OPERATIONAL_INDEX.md",
+      "title": "Operational Index",
+      "source": "repository"
+    },
+    {
+      "id": "registry/registry_5.md",
+      "type": "registry",
+      "path": "registry/registry_5.md",
+      "title": "registry 5",
+      "source": "repository"
+    },
+    {
+      "id": ".system/GLOSSARY.md",
+      "type": "document",
+      "path": ".system/GLOSSARY.md",
+      "title": "GLOSSARY",
+      "source": "repository"
+    },
+    {
+      "id": ".system/STYLE.md",
+      "type": "document",
+      "path": ".system/STYLE.md",
+      "title": "STYLE",
+      "source": "repository"
+    },
+    {
+      "id": ".system/REVIEW.md",
+      "type": "document",
+      "path": ".system/REVIEW.md",
+      "title": "REVIEW",
+      "source": "repository"
+    },
+    {
+      "id": ".system/DECISION.md",
+      "type": "document",
+      "path": ".system/DECISION.md",
+      "title": "DECISION",
+      "source": "repository"
+    },
+    {
+      "id": ".system/BOOT.md",
+      "type": "document",
+      "path": ".system/BOOT.md",
+      "title": "BOOT",
+      "source": "repository"
+    },
+    {
+      "id": "templates/ADR_TEMPLATE.md",
+      "type": "document",
+      "path": "templates/ADR_TEMPLATE.md",
+      "title": "ADR_TEMPLATE",
+      "source": "repository"
+    },
+    {
+      "id": "control/control_4.md",
+      "type": "document",
+      "path": "control/control_4.md",
+      "title": "control 4",
+      "source": "repository"
+    },
+    {
+      "id": "control/control_1.md",
+      "type": "document",
+      "path": "control/control_1.md",
+      "title": "control 1",
+      "source": "repository"
+    },
+    {
+      "id": "control/control_5.md",
+      "type": "document",
+      "path": "control/control_5.md",
+      "title": "control 5",
+      "source": "repository"
+    },
+    {
+      "id": "control/HEALTH_QUEUE.md",
+      "type": "document",
+      "path": "control/HEALTH_QUEUE.md",
+      "title": "Queue",
+      "source": "repository"
+    },
+    {
+      "id": "control/ORPHAN_QUEUE.md",
+      "type": "document",
+      "path": "control/ORPHAN_QUEUE.md",
+      "title": "Queue",
+      "source": "repository"
+    },
+    {
+      "id": "control/DRIFT_QUEUE.md",
+      "type": "document",
+      "path": "control/DRIFT_QUEUE.md",
+      "title": "Queue",
+      "source": "repository"
+    },
+    {
+      "id": "control/control_2.md",
+      "type": "document",
+      "path": "control/control_2.md",
+      "title": "control 2",
+      "source": "repository"
+    },
+    {
+      "id": "control/SELFTEST_QUEUE.md",
+      "type": "document",
+      "path": "control/SELFTEST_QUEUE.md",
+      "title": "Queue",
+      "source": "repository"
+    },
+    {
+      "id": "control/control_3.md",
+      "type": "document",
+      "path": "control/control_3.md",
+      "title": "control 3",
+      "source": "repository"
+    },
+    {
+      "id": "basis/053_repository_selftest_policy.md",
+      "type": "policy",
+      "path": "basis/053_repository_selftest_policy.md",
+      "title": "053 Repository Self Test Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/059_duplicate_detection_policy.md",
+      "type": "policy",
+      "path": "basis/059_duplicate_detection_policy.md",
+      "title": "059 Duplicate Detection Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/026_autonomy_first_policy.md",
+      "type": "policy",
+      "path": "basis/026_autonomy_first_policy.md",
+      "title": "026 Autonomy First Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/065_repository_knowledge_graph_policy.md",
+      "type": "policy",
+      "path": "basis/065_repository_knowledge_graph_policy.md",
+      "title": "065 Repository Knowledge Graph Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/070_runtime_dry_run_policy.md",
+      "type": "policy",
+      "path": "basis/070_runtime_dry_run_policy.md",
+      "title": "070 Runtime Dry Run Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/061_semantic_selftest_policy.md",
+      "type": "policy",
+      "path": "basis/061_semantic_selftest_policy.md",
+      "title": "061 Semantic SelfTest Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/054_repository_health_policy.md",
+      "type": "policy",
+      "path": "basis/054_repository_health_policy.md",
+      "title": "054 Repository Health Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/059_continuous_governance_policy.md",
+      "type": "policy",
+      "path": "basis/059_continuous_governance_policy.md",
+      "title": "continuous_governance",
+      "source": "repository"
+    },
+    {
+      "id": "basis/056_link_integrity_policy.md",
+      "type": "policy",
+      "path": "basis/056_link_integrity_policy.md",
+      "title": "056 Link Integrity Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/056_drift_detection_policy.md",
+      "type": "policy",
+      "path": "basis/056_drift_detection_policy.md",
+      "title": "drift_detection",
+      "source": "repository"
+    },
+    {
+      "id": "basis/068_runtime_integration_boundary_policy.md",
+      "type": "policy",
+      "path": "basis/068_runtime_integration_boundary_policy.md",
+      "title": "068 Runtime Integration Boundary Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/037_autonomous_workflow_policy.md",
+      "type": "policy",
+      "path": "basis/037_autonomous_workflow_policy.md",
+      "title": "037 Autonomous Workflow Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/063_selftest_v2_boundary_policy.md",
+      "type": "policy",
+      "path": "basis/063_selftest_v2_boundary_policy.md",
+      "title": "063 SelfTest v2 Boundary Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/067_agent_context_pack_policy.md",
+      "type": "policy",
+      "path": "basis/067_agent_context_pack_policy.md",
+      "title": "067 Agent Context Pack Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/058_link_integrity_policy.md",
+      "type": "policy",
+      "path": "basis/058_link_integrity_policy.md",
+      "title": "link_integrity",
+      "source": "repository"
+    },
+    {
+      "id": "basis/058_drift_detection_policy.md",
+      "type": "policy",
+      "path": "basis/058_drift_detection_policy.md",
+      "title": "058 Drift Detection Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/055_dead_asset_detection_policy.md",
+      "type": "policy",
+      "path": "basis/055_dead_asset_detection_policy.md",
+      "title": "055 Dead Asset Detection Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/046_runtime_readiness_boundary.md",
+      "type": "policy",
+      "path": "basis/046_runtime_readiness_boundary.md",
+      "title": "046 Runtime Readiness Boundary",
+      "source": "repository"
+    },
+    {
+      "id": "basis/062_policy_graph_policy.md",
+      "type": "policy",
+      "path": "basis/062_policy_graph_policy.md",
+      "title": "062 Policy Graph Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/066_graph_extraction_policy.md",
+      "type": "policy",
+      "path": "basis/066_graph_extraction_policy.md",
+      "title": "066 Graph Extraction Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/069_agent_io_contract_policy.md",
+      "type": "policy",
+      "path": "basis/069_agent_io_contract_policy.md",
+      "title": "069 Agent IO Contract Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/042_execution_contract_policy.md",
+      "type": "policy",
+      "path": "basis/042_execution_contract_policy.md",
+      "title": "042 Execution Contract Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/054_dead_asset_policy.md",
+      "type": "policy",
+      "path": "basis/054_dead_asset_policy.md",
+      "title": "dead_asset",
+      "source": "repository"
+    },
+    {
+      "id": "basis/055_orphan_asset_policy.md",
+      "type": "policy",
+      "path": "basis/055_orphan_asset_policy.md",
+      "title": "orphan_asset",
+      "source": "repository"
+    },
+    {
+      "id": "basis/060_continuous_governance_policy.md",
+      "type": "policy",
+      "path": "basis/060_continuous_governance_policy.md",
+      "title": "060 Continuous Governance Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/053_repository_health_policy.md",
+      "type": "policy",
+      "path": "basis/053_repository_health_policy.md",
+      "title": "repository_health",
+      "source": "repository"
+    },
+    {
+      "id": "basis/064_selftest_v2_archive_policy.md",
+      "type": "policy",
+      "path": "basis/064_selftest_v2_archive_policy.md",
+      "title": "064 SelfTest v2 Archive Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/057_boundary_validation_policy.md",
+      "type": "policy",
+      "path": "basis/057_boundary_validation_policy.md",
+      "title": "057 Boundary Validation Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/060_selftest_policy.md",
+      "type": "policy",
+      "path": "basis/060_selftest_policy.md",
+      "title": "selftest",
+      "source": "repository"
+    },
+    {
+      "id": "orchestrator/dispatcher.py",
+      "type": "document",
+      "path": "orchestrator/dispatcher.py",
+      "title": "dispatcher",
+      "source": "repository"
+    },
+    {
+      "id": "orchestrator/queue.py",
+      "type": "document",
+      "path": "orchestrator/queue.py",
+      "title": "queue",
+      "source": "repository"
+    },
+    {
+      "id": "orchestrator/worker.py",
+      "type": "document",
+      "path": "orchestrator/worker.py",
+      "title": "worker",
+      "source": "repository"
+    },
+    {
+      "id": "orchestrator/task.py",
+      "type": "document",
+      "path": "orchestrator/task.py",
+      "title": "task",
+      "source": "repository"
+    },
+    {
+      "id": "orchestrator/INBOX.md",
+      "type": "document",
+      "path": "orchestrator/INBOX.md",
+      "title": "INBOX",
+      "source": "repository"
+    },
+    {
+      "id": "orchestrator/ARCHITECTURE.md",
+      "type": "document",
+      "path": "orchestrator/ARCHITECTURE.md",
+      "title": "ORCHESTRATOR ARCHITECTURE",
+      "source": "repository"
+    },
+    {
+      "id": "orchestrator/ADR-0001.md",
+      "type": "document",
+      "path": "orchestrator/ADR-0001.md",
+      "title": "ADR-0001: Stateless Orchestrator with Repository as Single Source of Truth",
+      "source": "repository"
+    },
+    {
+      "id": "orchestrator/review_package.py",
+      "type": "document",
+      "path": "orchestrator/review_package.py",
+      "title": "review_package",
+      "source": "repository"
+    },
+    {
+      "id": "orchestrator/WBS.md",
+      "type": "document",
+      "path": "orchestrator/WBS.md",
+      "title": "ORCHESTRATOR WBS",
+      "source": "repository"
+    },
+    {
+      "id": "orchestrator/LOCAL_AGENT_RUNNER.md",
+      "type": "document",
+      "path": "orchestrator/LOCAL_AGENT_RUNNER.md",
+      "title": "LOCAL_AGENT_RUNNER",
+      "source": "repository"
+    },
+    {
+      "id": "orchestrator/OUTBOX.md",
+      "type": "document",
+      "path": "orchestrator/OUTBOX.md",
+      "title": "OUTBOX",
+      "source": "repository"
+    },
+    {
+      "id": "orchestrator/constants.py",
+      "type": "document",
+      "path": "orchestrator/constants.py",
+      "title": "constants",
+      "source": "repository"
+    },
+    {
+      "id": "orchestrator/RUNBOOK.md",
+      "type": "document",
+      "path": "orchestrator/RUNBOOK.md",
+      "title": "RUNBOOK",
+      "source": "repository"
+    },
+    {
+      "id": "orchestrator/result.py",
+      "type": "document",
+      "path": "orchestrator/result.py",
+      "title": "result",
+      "source": "repository"
+    },
+    {
+      "id": "orchestrator/context_loader.py",
+      "type": "document",
+      "path": "orchestrator/context_loader.py",
+      "title": "context_loader",
+      "source": "repository"
+    },
+    {
+      "id": "orchestrator/agent_executor.py",
+      "type": "document",
+      "path": "orchestrator/agent_executor.py",
+      "title": "agent_executor",
+      "source": "repository"
+    },
+    {
+      "id": "orchestrator/local_agent_runner.py",
+      "type": "document",
+      "path": "orchestrator/local_agent_runner.py",
+      "title": "local_agent_runner",
+      "source": "repository"
+    },
+    {
+      "id": "orchestrator/state.py",
+      "type": "document",
+      "path": "orchestrator/state.py",
+      "title": "state",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/draft/CA-0001.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/draft/CA-0001.md",
+      "title": "CA-0001",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/draft/CA-0011.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/draft/CA-0011.md",
+      "title": "CA-0011",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/draft/CA-0005.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/draft/CA-0005.md",
+      "title": "CA-0005",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/draft/CA-0004.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/draft/CA-0004.md",
+      "title": "CA-0004",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/draft/CA-0010.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/draft/CA-0010.md",
+      "title": "CA-0010",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/draft/CA-0009.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/draft/CA-0009.md",
+      "title": "CA-0009",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/draft/CA-0008.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/draft/CA-0008.md",
+      "title": "CA-0008",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/draft/CA-0007.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/draft/CA-0007.md",
+      "title": "CA-0007",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/draft/CA-0003.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/draft/CA-0003.md",
+      "title": "CA-0003",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/draft/CA-0002.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/draft/CA-0002.md",
+      "title": "CA-0002",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/draft/CA-0006.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/draft/CA-0006.md",
+      "title": "CA-0006",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/competitor/README.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/competitor/README.md",
+      "title": "Competitor Intelligence",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/canonical/README.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/canonical/README.md",
+      "title": "README",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/canonical/CA-0001_SLEEP.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/canonical/CA-0001_SLEEP.md",
+      "title": "CA-0001_SLEEP",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/canonical/INDEX.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/canonical/INDEX.md",
+      "title": "INDEX",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/learning/README.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/learning/README.md",
+      "title": "Learning Repository",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/platform/README.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/platform/README.md",
+      "title": "Platform Intelligence",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/prompt/README.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/prompt/README.md",
+      "title": "Prompt Library",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/market/README.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/market/README.md",
+      "title": "Market Intelligence",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/policy/README.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/policy/README.md",
+      "title": "Policy Intelligence",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/strategy/CANONICAL_ASSET_BACKLOG.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/strategy/CANONICAL_ASSET_BACKLOG.md",
+      "title": "CANONICAL_ASSET_BACKLOG",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/strategy/MARKET_VALIDATION_WBS.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/strategy/MARKET_VALIDATION_WBS.md",
+      "title": "MARKET_VALIDATION_WBS",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/strategy/PRODUCT_DEFINITION.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/strategy/PRODUCT_DEFINITION.md",
+      "title": "PRODUCT_DEFINITION",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/context/build_agent_context_pack.py",
+      "type": "script",
+      "path": "scripts/context/build_agent_context_pack.py",
+      "title": "build_agent_context_pack",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/graph/validate_repository_graph.py",
+      "type": "script",
+      "path": "scripts/graph/validate_repository_graph.py",
+      "title": "validate_repository_graph",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/graph/build_repository_graph.py",
+      "type": "script",
+      "path": "scripts/graph/build_repository_graph.py",
+      "title": "build_repository_graph",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/runtime/dry_run_runtime_plan.py",
+      "type": "script",
+      "path": "scripts/runtime/dry_run_runtime_plan.py",
+      "title": "dry_run_runtime_plan",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest/check_orphans.py",
+      "type": "script",
+      "path": "scripts/selftest/check_orphans.py",
+      "title": "check_orphans",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest/check_current_objective.py",
+      "type": "script",
+      "path": "scripts/selftest/check_current_objective.py",
+      "title": "check_current_objective",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest/check_repository_health.py",
+      "type": "script",
+      "path": "scripts/selftest/check_repository_health.py",
+      "title": "check_repository_health",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest/check_boundaries.py",
+      "type": "script",
+      "path": "scripts/selftest/check_boundaries.py",
+      "title": "Use separated fragments so this checker does not match itself.",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest/README_SELFTEST_REMEDIATION.md",
+      "type": "script",
+      "path": "scripts/selftest/README_SELFTEST_REMEDIATION.md",
+      "title": "SelfTest Remediation",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest/validate_repository_selftest_complete.py",
+      "type": "script",
+      "path": "scripts/selftest/validate_repository_selftest_complete.py",
+      "title": "validate_repository_selftest_complete",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest/check_duplicates.py",
+      "type": "script",
+      "path": "scripts/selftest/check_duplicates.py",
+      "title": "Deprecated skeleton files are handled by cleanup_selftest_skeleton.py and reported as warnings here.",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest/check_link_integrity.py",
+      "type": "script",
+      "path": "scripts/selftest/check_link_integrity.py",
+      "title": "check_link_integrity",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest/check_secret_boundary.py",
+      "type": "script",
+      "path": "scripts/selftest/check_secret_boundary.py",
+      "title": "check_secret_boundary",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest/check_workflows.py",
+      "type": "script",
+      "path": "scripts/selftest/check_workflows.py",
+      "title": "check_workflows",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest/cleanup_selftest_skeleton.py",
+      "type": "script",
+      "path": "scripts/selftest/cleanup_selftest_skeleton.py",
+      "title": "cleanup_selftest_skeleton",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest/selftest_common.py",
+      "type": "script",
+      "path": "scripts/selftest/selftest_common.py",
+      "title": "Backward-compatible alias for older selftest modules.",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest_v2/semantic_checks.py",
+      "type": "script",
+      "path": "scripts/selftest_v2/semantic_checks.py",
+      "title": "semantic_checks",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest_v2/validate_semantic_selftest.py",
+      "type": "script",
+      "path": "scripts/selftest_v2/validate_semantic_selftest.py",
+      "title": "validate_semantic_selftest",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest_v2/semantic_common.py",
+      "type": "script",
+      "path": "scripts/selftest_v2/semantic_common.py",
+      "title": "semantic_common",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/boundary-validation.yml",
+      "type": "workflow",
+      "path": ".github/workflows/boundary-validation.yml",
+      "title": "boundary-validation",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/repository-knowledge-graph-runtime-integration.yml",
+      "type": "workflow",
+      "path": ".github/workflows/repository-knowledge-graph-runtime-integration.yml",
+      "title": "repository-knowledge-graph-runtime-integration",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/continuous-governance.yml",
+      "type": "workflow",
+      "path": ".github/workflows/continuous-governance.yml",
+      "title": "continuous-governance",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/repository-semantic-selftest-v2.yml",
+      "type": "workflow",
+      "path": ".github/workflows/repository-semantic-selftest-v2.yml",
+      "title": "repository-semantic-selftest-v2",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/repository-selftest.yml",
+      "type": "workflow",
+      "path": ".github/workflows/repository-selftest.yml",
+      "title": "repository-selftest",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/repository-selftest-complete.yml",
+      "type": "workflow",
+      "path": ".github/workflows/repository-selftest-complete.yml",
+      "title": "repository-selftest-complete",
+      "source": "repository"
+    },
+    {
+      "id": ".github/ISSUE_TEMPLATE/repository_selftest.yml",
+      "type": "document",
+      "path": ".github/ISSUE_TEMPLATE/repository_selftest.yml",
+      "title": "repository_selftest",
+      "source": "repository"
+    },
+    {
+      "id": ".github/ISSUE_TEMPLATE/runtime_integration_readiness.yml",
+      "type": "document",
+      "path": ".github/ISSUE_TEMPLATE/runtime_integration_readiness.yml",
+      "title": "runtime_integration_readiness",
+      "source": "repository"
+    },
+    {
+      "id": ".github/ISSUE_TEMPLATE/repository_selftest_failure.yml",
+      "type": "document",
+      "path": ".github/ISSUE_TEMPLATE/repository_selftest_failure.yml",
+      "title": "repository_selftest_failure",
+      "source": "repository"
+    },
+    {
+      "id": "prompts/codex/CODEX_PHASE0_GITHUB_PROMPT.md",
+      "type": "document",
+      "path": "prompts/codex/CODEX_PHASE0_GITHUB_PROMPT.md",
+      "title": "CODEX_PHASE0_GITHUB_PROMPT",
+      "source": "repository"
+    },
+    {
+      "id": ".system/SOP/CONTENT_PIPELINE.md",
+      "type": "document",
+      "path": ".system/SOP/CONTENT_PIPELINE.md",
+      "title": "CONTENT_PIPELINE",
+      "source": "repository"
+    },
+    {
+      "id": ".system/prompts/codex/ASSET_WORKER.md",
+      "type": "document",
+      "path": ".system/prompts/codex/ASSET_WORKER.md",
+      "title": "ASSET_WORKER",
+      "source": "repository"
+    },
+    {
+      "id": ".system/prompts/codex/CHECKPOINT_WORKER.md",
+      "type": "document",
+      "path": ".system/prompts/codex/CHECKPOINT_WORKER.md",
+      "title": "CHECKPOINT_WORKER",
+      "source": "repository"
+    },
+    {
+      "id": "orchestrator/workers/codex_worker.py",
+      "type": "document",
+      "path": "orchestrator/workers/codex_worker.py",
+      "title": "codex_worker",
+      "source": "repository"
+    }
+  ],
+  "edges": [
+    {
+      "source": "README_REPOSITORY_SELFTEST_COMPLETE_PACK.md",
+      "target": "scripts/selftest/validate_repository_selftest_complete.py",
+      "type": "validates",
+      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
+    },
+    {
+      "source": "README_REPOSITORY_SELFTEST_COMPLETE_PACK.md",
+      "target": "scripts/validate_repository_selftest.py",
+      "type": "validates",
+      "evidence": "scripts/validate_repository_selftest.py"
+    },
+    {
+      "source": "README_REPOSITORY_SELFTEST_COMPLETE_PACK.md",
+      "target": "scripts/validate_continuous_governance.py",
+      "type": "validates",
+      "evidence": "scripts/validate_continuous_governance.py"
+    },
+    {
+      "source": "README_REPOSITORY_KNOWLEDGE_GRAPH_RUNTIME_INTEGRATION_PACK.md",
+      "target": "scripts/validate_repository_knowledge_graph_runtime_integration.py",
+      "type": "validates",
+      "evidence": "scripts/validate_repository_knowledge_graph_runtime_integration.py"
+    },
+    {
+      "source": "README_SELFTEST_IMPORT_FIX_PACK.md",
+      "target": "scripts/selftest/validate_repository_selftest_complete.py",
+      "type": "validates",
+      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
+    },
+    {
+      "source": "README_SEMANTIC_SELFTEST_V2_PACK.md",
+      "target": "scripts/selftest_v2/validate_semantic_selftest.py",
+      "type": "validates",
+      "evidence": "scripts/selftest_v2/validate_semantic_selftest.py"
+    },
+    {
+      "source": "README_SEMANTIC_SELFTEST_V2_PACK.md",
+      "target": "scripts/selftest/validate_repository_selftest_complete.py",
+      "type": "validates",
+      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
+    },
+    {
+      "source": "README_SEMANTIC_SELFTEST_V2_PACK.md",
+      "target": "scripts/validate_repository_selftest.py",
+      "type": "validates",
+      "evidence": "scripts/validate_repository_selftest.py"
+    },
+    {
+      "source": "README_SELFTEST_REMEDIATION_PACK.md",
+      "target": "scripts/selftest/validate_repository_selftest_complete.py",
+      "type": "validates",
+      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
+    },
+    {
+      "source": "README_SELFTEST_REMEDIATION_PACK.md",
+      "target": "scripts/selftest/cleanup_selftest_skeleton.py",
+      "type": "validates",
+      "evidence": "scripts/selftest/cleanup_selftest_skeleton.py"
+    },
+    {
+      "source": "wbs/WBS-0013-repository-knowledge-graph-runtime-integration.md",
+      "target": "scripts/graph/build_repository_graph.py",
+      "type": "validates",
+      "evidence": "scripts/graph/build_repository_graph.py"
+    },
+    {
+      "source": "wbs/WBS-0013-repository-knowledge-graph-runtime-integration.md",
+      "target": "scripts/graph/validate_repository_graph.py",
+      "type": "validates",
+      "evidence": "scripts/graph/validate_repository_graph.py"
+    },
+    {
+      "source": "wbs/WBS-0013-repository-knowledge-graph-runtime-integration.md",
+      "target": "scripts/context/build_agent_context_pack.py",
+      "type": "validates",
+      "evidence": "scripts/context/build_agent_context_pack.py"
+    },
+    {
+      "source": "wbs/WBS-0011-repository-operating-system-self-test.md",
+      "target": "scripts/selftest/validate_repository_selftest_complete.py",
+      "type": "validates",
+      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
+    },
+    {
+      "source": "wbs/WBS-0012-repository-semantic-selftest-v2.md",
+      "target": "scripts/selftest_v2/validate_semantic_selftest.py",
+      "type": "validates",
+      "evidence": "scripts/selftest_v2/validate_semantic_selftest.py"
+    },
+    {
+      "source": "orchestrator/RUNBOOK.md",
+      "target": "orchestrator/local_agent_runner.py",
+      "type": "validates",
+      "evidence": "orchestrator/local_agent_runner.py"
+    },
+    {
+      "source": "scripts/context/build_agent_context_pack.py",
+      "target": "scripts/graph/build_repository_graph.py",
+      "type": "validates",
+      "evidence": "scripts/graph/build_repository_graph.py"
+    },
+    {
+      "source": "scripts/context/build_agent_context_pack.py",
+      "target": "scripts/graph/validate_repository_graph.py",
+      "type": "validates",
+      "evidence": "scripts/graph/validate_repository_graph.py"
+    },
+    {
+      "source": "scripts/context/build_agent_context_pack.py",
+      "target": "scripts/context/build_agent_context_pack.py",
+      "type": "validates",
+      "evidence": "scripts/context/build_agent_context_pack.py"
+    },
+    {
+      "source": "scripts/selftest/README_SELFTEST_REMEDIATION.md",
+      "target": "scripts/selftest/cleanup_selftest_skeleton.py",
+      "type": "validates",
+      "evidence": "scripts/selftest/cleanup_selftest_skeleton.py"
+    },
+    {
+      "source": "scripts/selftest/README_SELFTEST_REMEDIATION.md",
+      "target": "scripts/selftest/validate_repository_selftest_complete.py",
+      "type": "validates",
+      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
+    },
+    {
+      "source": ".github/workflows/boundary-validation.yml",
+      "target": "scripts/selftest/check_boundaries.py",
+      "type": "validates",
+      "evidence": "scripts/selftest/check_boundaries.py"
+    },
+    {
+      "source": ".github/workflows/repository-knowledge-graph-runtime-integration.yml",
+      "target": "scripts/validate_repository_knowledge_graph_runtime_integration.py",
+      "type": "validates",
+      "evidence": "scripts/validate_repository_knowledge_graph_runtime_integration.py"
+    },
+    {
+      "source": ".github/workflows/repository-semantic-selftest-v2.yml",
+      "target": "scripts/selftest_v2/validate_semantic_selftest.py",
+      "type": "validates",
+      "evidence": "scripts/selftest_v2/validate_semantic_selftest.py"
+    },
+    {
+      "source": ".github/workflows/repository-selftest-complete.yml",
+      "target": "scripts/selftest/validate_repository_selftest_complete.py",
+      "type": "validates",
+      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
+    }
+  ]
+}

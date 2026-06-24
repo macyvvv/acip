@@ -1,0 +1,30 @@
+name: Runtime Integration Readiness
+description: Request review of runtime integration readiness without approving runtime execution
+title: "[Runtime Readiness] "
+labels: ["type:review", "status:needs-human", "area:runtime"]
+body:
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Graph, context pack, IO contracts, validation, and dry-run evidence.
+    validations:
+      required: true
+  - type: textarea
+    id: boundary
+    attributes:
+      label: Runtime Boundary
+      value: Runtime execution remains prohibited until explicit Human approval.
+    validations:
+      required: true
+  - type: textarea
+    id: decision
+    attributes:
+      label: Requested Decision
+      value: |
+        - approve preparation only
+        - request revision
+        - approve runtime transition
+        - reject runtime transition
+    validations:
+      required: true
