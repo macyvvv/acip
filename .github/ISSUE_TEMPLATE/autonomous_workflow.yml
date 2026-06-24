@@ -1,0 +1,31 @@
+name: Autonomous Workflow
+description: Request autonomous workflow or runbook execution preparation
+title: "[Autonomous Workflow] "
+labels: ["type:implementation", "status:ready", "area:governance"]
+body:
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+    validations:
+      required: true
+  - type: textarea
+    id: runbook
+    attributes:
+      label: Runbook / WBS
+    validations:
+      required: true
+  - type: textarea
+    id: human_boundary
+    attributes:
+      label: Human Boundary
+      value: |
+        Human handles Mission, Approval, Emergency Stop only.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+    validations:
+      required: true

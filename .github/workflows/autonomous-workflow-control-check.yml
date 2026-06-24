@@ -1,0 +1,26 @@
+name: Autonomous Workflow Control Check
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-autonomous-workflow-control:
+    name: Validate Autonomous Workflow Control
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run autonomous workflow control validation
+        run: python scripts/validate_autonomous_workflow_control.py
