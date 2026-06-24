@@ -2,9 +2,9 @@
   "baseline": "1.0.0-repository-os",
   "current_phase": "Knowledge Factory",
   "current_objective": "Repository Operating System Stabilization",
-  "node_count": 325,
-  "edge_count": 54,
-  "snapshot_count": 325,
+  "node_count": 339,
+  "edge_count": 55,
+  "snapshot_count": 339,
   "status": "derived",
   "runtime_execution": "not_performed"
 }

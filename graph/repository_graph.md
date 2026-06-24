@@ -1,7 +1,7 @@
 # Repository Graph
 
-- nodes: 325
-- edges: 54
+- nodes: 339
+- edges: 55
 
 ## Nodes
 - `README_REPOSITORY_SELFTEST_COMPLETE_PACK.md` (readme) ACIP Repository Self Test Complete Pack
@@ -25,6 +25,7 @@
 - `README_SELFTEST_IMPORT_FIX_PACK.md` (readme) ACIP SelfTest Import Fix Pack
 - `README.md` (readme) ACIP GitHub Operations Kit v1
 - `README_AUTONOMOUS_WORKFLOW_CONTROL_PACK.md` (readme) ACIP Autonomous Workflow Control Pack
+- `README_EP0003.md` (readme) EP-0003 Agent Capability Suite
 - `README_ASSET_PRODUCTION_OPERATIONS_PACK.md` (readme) ACIP Asset Production Operations Pack
 - `MANIFEST.md` (document) MANIFEST
 - `ROADMAP.md` (document) ROADMAP
@@ -42,6 +43,7 @@
 - `adr/ADR-0022-agent-orchestrator.md` (adr) ADR-0022: Agent Orchestrator
 - `adr/ADR-0025-incremental-graph-and-context-diff.md` (adr) ADR-0025: Incremental Graph and Context Diff
 - `adr/ADR-0026-agent-runtime-foundation.md` (adr) ADR-0026 Agent Runtime Foundation
+- `adr/ADR-0029-agent-capability-suite.md` (adr) ADR-0029 Agent Capability Suite
 - `adr/ADR-0024-repository-os-v1-baseline.md` (adr) ADR-0024: Repository OS v1.0 Baseline
 - `adr/ADR-0016-repository-operating-system-self-test.md` (adr) ADR-0016: Repository Operating System Self Test
 - `adr/ADR-0018-repository-semantic-selftest-v2.md` (adr) ADR-0018: Repository Semantic SelfTest v2
@@ -54,6 +56,8 @@
 - `context/CODEX_CONTEXT_PACK.md` (document) Codex Context Pack
 - `context/AGENT_CONTEXT_PACK_SCHEMA.md` (document) Agent Context Pack Schema
 - `context/CHATGPT_CONTEXT_PACK.md` (document) ChatGPT Context Pack
+- `cache/GRAPH_CACHE.md` (document) Graph Cache
+- `cache/CONTEXT_CACHE.md` (document) Context Cache
 - `contracts/EXECUTION_CONTRACT_TEMPLATE.md` (contract) Execution Contract Template
 - `contracts/RUNTIME_TRANSITION_APPROVAL_TEMPLATE.md` (contract) Runtime Transition Approval Template
 - `contracts/APPROVAL_RECORD_TEMPLATE.md` (contract) Approval Record Template
@@ -86,6 +90,7 @@
 - `graph/GRAPH_SCHEMA.md` (document) Repository Knowledge Graph Schema
 - `graph/README_GRAPH.md` (readme) Repository Knowledge Graph
 - `runtime/RUNTIME_INTEGRATION_SPEC.md` (document) Runtime Integration Specification
+- `runtime/REPLAY_ENGINE.md` (document) Replay Engine
 - `runtime/RUNTIME_DRY_RUN_PLAN.md` (document) Runtime Dry Run Plan
 - `runtime/RUNTIME_APPROVAL_TEMPLATE.md` (document) Runtime Approval
 - `runtime/dry_run_adapter_report.md` (document) Dry Run Adapter
@@ -93,6 +98,7 @@
 - `runtime/DRY_RUN_ADAPTER_SPEC.md` (document) Dry Run Adapter
 - `runtime/runtime_dry_run_report.md` (document) Runtime Dry Run Report
 - `runtime/RUNTIME_READINESS_CHECKLIST.md` (document) Runtime Readiness Checklist
+- `runtime/AUDIT_ENGINE.md` (document) Audit Engine
 - `tests/test_result.py` (document) test_result
 - `tests/test_task.py` (document) test_task
 - `tests/test_local_agent_runner.py` (document) test_local_agent_runner
@@ -137,7 +143,9 @@
 - `knowledge/README.md` (knowledge_asset) Knowledge Layer
 - `loader/CONTEXT_LOADER.md` (document) Context Loader
 - `review/REVIEW_GATE_SUMMARY.md` (document) Review Gate Summary
+- `review/REVIEW_ENGINE.md` (document) Review Engine
 - `wbs/WBS-0016-repository-os-v1-baseline.md` (wbs) WBS-0016: Repository OS v1.0 Baseline
+- `wbs/WBS-0020-agent-capability-suite.md` (wbs) WBS-0020 Agent Capability Suite
 - `wbs/WBS-0019-runtime-coordination.md` (wbs) WBS-0019 Runtime Coordination
 - `wbs/WBS-0017-agent-runtime-foundation.md` (wbs) WBS-0017 Agent Runtime Foundation
 - `wbs/WBS-0014-runtime-transition-readiness.md` (wbs) WBS-0014 Runtime Transition Readiness
@@ -147,6 +155,7 @@
 - `wbs/WBS-0015-agent-orchestrator.md` (wbs) WBS-0015: Agent Orchestrator
 - `wbs/WBS-0012-repository-semantic-selftest-v2.md` (wbs) WBS-0012: Repository Semantic SelfTest v2
 - `scripts/validate_boundaries.py` (script) validate_boundaries
+- `scripts/validate_ep_0003.py` (script) validate_ep_0003
 - `scripts/validate_links.py` (script) validate_links
 - `scripts/validate_drift.py` (script) validate_drift
 - `scripts/validate_continuous_governance.py` (script) validate_continuous_governance
@@ -154,6 +163,7 @@
 - `scripts/validate_dead_assets.py` (script) validate_dead_assets
 - `scripts/validate_repository_selftest.py` (script) validate_repository_selftest
 - `scripts/validate_repository_os_v1_baseline.py` (script) validate_repository_os_v1_baseline
+- `queue/QUEUE_ENGINE.md` (document) Queue Engine
 - `registry/registry_2.md` (registry) registry 2
 - `registry/QUEUE_INDEX.md` (registry) Queue Index
 - `registry/DEPRECATED_INDEX.md` (registry) Deprecated Index
@@ -187,6 +197,7 @@
 - `basis/078_incremental_graph_policy.md` (policy) Incremental Graph Policy
 - `basis/053_repository_selftest_policy.md` (policy) 053 Repository Self Test Policy
 - `basis/059_duplicate_detection_policy.md` (policy) 059 Duplicate Detection Policy
+- `basis/090_audit_engine_policy.md` (policy) Audit Engine Policy
 - `basis/085_review_engine_policy.md` (policy) Review Engine Policy
 - `basis/073_task_router_policy.md` (policy) 073 Task Router Policy
 - `basis/076_review_gate_policy.md` (policy) 076 Review Gate Policy
@@ -194,7 +205,9 @@
 - `basis/065_repository_knowledge_graph_policy.md` (policy) 065 Repository Knowledge Graph Policy
 - `basis/070_runtime_dry_run_policy.md` (policy) 070 Runtime Dry Run Policy
 - `basis/061_semantic_selftest_policy.md` (policy) 061 Semantic SelfTest Policy
+- `basis/089_replay_engine_policy.md` (policy) Replay Engine Policy
 - `basis/054_repository_health_policy.md` (policy) 054 Repository Health Policy
+- `basis/088_context_cache_engine_policy.md` (policy) Context Cache Engine Policy
 - `basis/059_continuous_governance_policy.md` (policy) continuous_governance
 - `basis/056_link_integrity_policy.md` (policy) 056 Link Integrity Policy
 - `basis/056_drift_detection_policy.md` (policy) drift_detection
@@ -321,6 +334,7 @@
 - `.github/workflows/repository-selftest-complete.yml` (workflow) repository-selftest-complete
 - `.github/workflows/runtime-capability.yml` (workflow) runtime-capability
 - `.github/workflows/runtime-coordination.yml` (workflow) runtime-coordination
+- `.github/workflows/ep0003.yml` (workflow) ep0003
 - `.github/ISSUE_TEMPLATE/repository_selftest.yml` (document) repository_selftest
 - `.github/ISSUE_TEMPLATE/runtime_integration_readiness.yml` (document) runtime_integration_readiness
 - `.github/ISSUE_TEMPLATE/repository_selftest_failure.yml` (document) repository_selftest_failure

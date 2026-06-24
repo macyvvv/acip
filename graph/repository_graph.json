@@ -148,6 +148,13 @@
       "source": "repository"
     },
     {
+      "id": "README_EP0003.md",
+      "type": "readme",
+      "path": "README_EP0003.md",
+      "title": "EP-0003 Agent Capability Suite",
+      "source": "repository"
+    },
+    {
       "id": "README_ASSET_PRODUCTION_OPERATIONS_PACK.md",
       "type": "readme",
       "path": "README_ASSET_PRODUCTION_OPERATIONS_PACK.md",
@@ -267,6 +274,13 @@
       "source": "repository"
     },
     {
+      "id": "adr/ADR-0029-agent-capability-suite.md",
+      "type": "adr",
+      "path": "adr/ADR-0029-agent-capability-suite.md",
+      "title": "ADR-0029 Agent Capability Suite",
+      "source": "repository"
+    },
+    {
       "id": "adr/ADR-0024-repository-os-v1-baseline.md",
       "type": "adr",
       "path": "adr/ADR-0024-repository-os-v1-baseline.md",
@@ -348,6 +362,20 @@
       "type": "document",
       "path": "context/CHATGPT_CONTEXT_PACK.md",
       "title": "ChatGPT Context Pack",
+      "source": "repository"
+    },
+    {
+      "id": "cache/GRAPH_CACHE.md",
+      "type": "document",
+      "path": "cache/GRAPH_CACHE.md",
+      "title": "Graph Cache",
+      "source": "repository"
+    },
+    {
+      "id": "cache/CONTEXT_CACHE.md",
+      "type": "document",
+      "path": "cache/CONTEXT_CACHE.md",
+      "title": "Context Cache",
       "source": "repository"
     },
     {
@@ -575,6 +603,13 @@
       "source": "repository"
     },
     {
+      "id": "runtime/REPLAY_ENGINE.md",
+      "type": "document",
+      "path": "runtime/REPLAY_ENGINE.md",
+      "title": "Replay Engine",
+      "source": "repository"
+    },
+    {
       "id": "runtime/RUNTIME_DRY_RUN_PLAN.md",
       "type": "document",
       "path": "runtime/RUNTIME_DRY_RUN_PLAN.md",
@@ -621,6 +656,13 @@
       "type": "document",
       "path": "runtime/RUNTIME_READINESS_CHECKLIST.md",
       "title": "Runtime Readiness Checklist",
+      "source": "repository"
+    },
+    {
+      "id": "runtime/AUDIT_ENGINE.md",
+      "type": "document",
+      "path": "runtime/AUDIT_ENGINE.md",
+      "title": "Audit Engine",
       "source": "repository"
     },
     {
@@ -932,10 +974,24 @@
       "source": "repository"
     },
     {
+      "id": "review/REVIEW_ENGINE.md",
+      "type": "document",
+      "path": "review/REVIEW_ENGINE.md",
+      "title": "Review Engine",
+      "source": "repository"
+    },
+    {
       "id": "wbs/WBS-0016-repository-os-v1-baseline.md",
       "type": "wbs",
       "path": "wbs/WBS-0016-repository-os-v1-baseline.md",
       "title": "WBS-0016: Repository OS v1.0 Baseline",
+      "source": "repository"
+    },
+    {
+      "id": "wbs/WBS-0020-agent-capability-suite.md",
+      "type": "wbs",
+      "path": "wbs/WBS-0020-agent-capability-suite.md",
+      "title": "WBS-0020 Agent Capability Suite",
       "source": "repository"
     },
     {
@@ -1002,6 +1058,13 @@
       "source": "repository"
     },
     {
+      "id": "scripts/validate_ep_0003.py",
+      "type": "script",
+      "path": "scripts/validate_ep_0003.py",
+      "title": "validate_ep_0003",
+      "source": "repository"
+    },
+    {
       "id": "scripts/validate_links.py",
       "type": "script",
       "path": "scripts/validate_links.py",
@@ -1048,6 +1111,13 @@
       "type": "script",
       "path": "scripts/validate_repository_os_v1_baseline.py",
       "title": "validate_repository_os_v1_baseline",
+      "source": "repository"
+    },
+    {
+      "id": "queue/QUEUE_ENGINE.md",
+      "type": "document",
+      "path": "queue/QUEUE_ENGINE.md",
+      "title": "Queue Engine",
       "source": "repository"
     },
     {
@@ -1282,6 +1352,13 @@
       "source": "repository"
     },
     {
+      "id": "basis/090_audit_engine_policy.md",
+      "type": "policy",
+      "path": "basis/090_audit_engine_policy.md",
+      "title": "Audit Engine Policy",
+      "source": "repository"
+    },
+    {
       "id": "basis/085_review_engine_policy.md",
       "type": "policy",
       "path": "basis/085_review_engine_policy.md",
@@ -1331,10 +1408,24 @@
       "source": "repository"
     },
     {
+      "id": "basis/089_replay_engine_policy.md",
+      "type": "policy",
+      "path": "basis/089_replay_engine_policy.md",
+      "title": "Replay Engine Policy",
+      "source": "repository"
+    },
+    {
       "id": "basis/054_repository_health_policy.md",
       "type": "policy",
       "path": "basis/054_repository_health_policy.md",
       "title": "054 Repository Health Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/088_context_cache_engine_policy.md",
+      "type": "policy",
+      "path": "basis/088_context_cache_engine_policy.md",
+      "title": "Context Cache Engine Policy",
       "source": "repository"
     },
     {
@@ -2220,6 +2311,13 @@
       "source": "repository"
     },
     {
+      "id": ".github/workflows/ep0003.yml",
+      "type": "workflow",
+      "path": ".github/workflows/ep0003.yml",
+      "title": "ep0003",
+      "source": "repository"
+    },
+    {
       "id": ".github/ISSUE_TEMPLATE/repository_selftest.yml",
       "type": "document",
       "path": ".github/ISSUE_TEMPLATE/repository_selftest.yml",
@@ -2600,6 +2698,12 @@
       "target": "scripts/runtime/validate_runtime_coordination.py",
       "type": "validates",
       "evidence": "scripts/runtime/validate_runtime_coordination.py"
+    },
+    {
+      "source": ".github/workflows/ep0003.yml",
+      "target": "scripts/validate_ep_0003.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0003.py"
     }
   ]
 }

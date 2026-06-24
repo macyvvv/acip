@@ -1,7 +1,7 @@
 {
   "baseline": "1.0.0-repository-os",
-  "node_count": 325,
-  "snapshot_count": 325,
+  "node_count": 339,
+  "snapshot_count": 339,
   "snapshot": [
     {
       "id": "README_REPOSITORY_SELFTEST_COMPLETE_PACK.md",
@@ -130,6 +130,12 @@
       "sha256": "f455fcc0652e78507baf14beb07d4b1dd8c7a5cf7e30db12abfdb77aa6e46a40"
     },
     {
+      "id": "README_EP0003.md",
+      "path": "README_EP0003.md",
+      "type": "readme",
+      "sha256": "733a2a855d9b7cc2e0298fe6db5774165261dedb2b7b4525e14b85d94ad1955b"
+    },
+    {
       "id": "README_ASSET_PRODUCTION_OPERATIONS_PACK.md",
       "path": "README_ASSET_PRODUCTION_OPERATIONS_PACK.md",
       "type": "readme",
@@ -139,7 +145,7 @@
       "id": "MANIFEST.md",
       "path": "MANIFEST.md",
       "type": "document",
-      "sha256": "1b5684ba3ffe505669e01f1a946579760fc8ddbafd475d7a7bd536112544d90d"
+      "sha256": "c998b1518e1b45d82dca5e0bd31f16e40faa935aad381a0996ddcf3ed7b968db"
     },
     {
       "id": "ROADMAP.md",
@@ -232,6 +238,12 @@
       "sha256": "22010fda4cb35abdc0fb512b295cf6e5995a2fc5772db5713fd0e044c06fdb00"
     },
     {
+      "id": "adr/ADR-0029-agent-capability-suite.md",
+      "path": "adr/ADR-0029-agent-capability-suite.md",
+      "type": "adr",
+      "sha256": "1e974d8132af2b7581901df784efbd2c6cde03b434f9ad6f586b422dbc65649a"
+    },
+    {
       "id": "adr/ADR-0024-repository-os-v1-baseline.md",
       "path": "adr/ADR-0024-repository-os-v1-baseline.md",
       "type": "adr",
@@ -302,6 +314,18 @@
       "path": "context/CHATGPT_CONTEXT_PACK.md",
       "type": "document",
       "sha256": "f047b08146018d1254f3c9da17750a2878bf55862e5061c34b52452d584c9142"
+    },
+    {
+      "id": "cache/GRAPH_CACHE.md",
+      "path": "cache/GRAPH_CACHE.md",
+      "type": "document",
+      "sha256": "f2904b35eb0b1839df190649e4b7f84518aea5ac433a332287cba43a967e535b"
+    },
+    {
+      "id": "cache/CONTEXT_CACHE.md",
+      "path": "cache/CONTEXT_CACHE.md",
+      "type": "document",
+      "sha256": "90b4cc7ac9ff4096e23e04a450571c1cef8bedb7ce18ad74680f8d78dbcfcc4d"
     },
     {
       "id": "contracts/EXECUTION_CONTRACT_TEMPLATE.md",
@@ -475,7 +499,7 @@
       "id": "graph/repository_graph.md",
       "path": "graph/repository_graph.md",
       "type": "document",
-      "sha256": "2ce33273cd0b33dfe1064d037343d9c3b7186f79541cd80e79b4a781a0883eba"
+      "sha256": "1f4abb1f808f3492c1e2de36fa06122a57ed8513c44bba2b84c0a832e4b3dffc"
     },
     {
       "id": "graph/GRAPH_SCHEMA.md",
@@ -494,6 +518,12 @@
       "path": "runtime/RUNTIME_INTEGRATION_SPEC.md",
       "type": "document",
       "sha256": "f6b9dd1912b562d9ef26fffafc24b1b36156ae816b20957671fa5f0c50371292"
+    },
+    {
+      "id": "runtime/REPLAY_ENGINE.md",
+      "path": "runtime/REPLAY_ENGINE.md",
+      "type": "document",
+      "sha256": "38d88316d589ccf7739fb9fba2641d9178ec8c1c179e740964bfb806330390bf"
     },
     {
       "id": "runtime/RUNTIME_DRY_RUN_PLAN.md",
@@ -536,6 +566,12 @@
       "path": "runtime/RUNTIME_READINESS_CHECKLIST.md",
       "type": "document",
       "sha256": "70df06d277bd18827e85df2df540caef26d2663c5c6ffacf985b37257f9666db"
+    },
+    {
+      "id": "runtime/AUDIT_ENGINE.md",
+      "path": "runtime/AUDIT_ENGINE.md",
+      "type": "document",
+      "sha256": "ea9eb8fed3c424d6b8648ad697806829e9f79e0cf82396313d644cd8b55ec1b4"
     },
     {
       "id": "tests/test_result.py",
@@ -802,10 +838,22 @@
       "sha256": "65d3abe2a3613e6f30646b03a0e812c6ee21e647a5ebdf4cc4be3eaf826c785d"
     },
     {
+      "id": "review/REVIEW_ENGINE.md",
+      "path": "review/REVIEW_ENGINE.md",
+      "type": "document",
+      "sha256": "14f6dffd7d84d8be458264101a5a09fa36c84ce17509e6302cf3164f0dea72a6"
+    },
+    {
       "id": "wbs/WBS-0016-repository-os-v1-baseline.md",
       "path": "wbs/WBS-0016-repository-os-v1-baseline.md",
       "type": "wbs",
       "sha256": "2bdc4f592afef8052fe32ac9b037ca616a3909e58512b999c47082a06711888b"
+    },
+    {
+      "id": "wbs/WBS-0020-agent-capability-suite.md",
+      "path": "wbs/WBS-0020-agent-capability-suite.md",
+      "type": "wbs",
+      "sha256": "863c7372c1389fd99af8d03b63bd9c7dd850a05962a04b5503c84ab4bee475e8"
     },
     {
       "id": "wbs/WBS-0019-runtime-coordination.md",
@@ -862,6 +910,12 @@
       "sha256": "4b8d68085427481e5b402c32fe40a6ce2895935df33bab178db130bb26b11c0b"
     },
     {
+      "id": "scripts/validate_ep_0003.py",
+      "path": "scripts/validate_ep_0003.py",
+      "type": "script",
+      "sha256": "f9422958afb2817ba109e4a27df86847bd2ff5a15fb5bd88ead969731c63de22"
+    },
+    {
       "id": "scripts/validate_links.py",
       "path": "scripts/validate_links.py",
       "type": "script",
@@ -902,6 +956,12 @@
       "path": "scripts/validate_repository_os_v1_baseline.py",
       "type": "script",
       "sha256": "8cd4baa93a43d86841ded9ccb519cdfa2492539ee226605428a757e86c381ba5"
+    },
+    {
+      "id": "queue/QUEUE_ENGINE.md",
+      "path": "queue/QUEUE_ENGINE.md",
+      "type": "document",
+      "sha256": "b4e25b746f9a8836301a8571e66f0f0b3eabb87bccc23847c614a4e492cab8ba"
     },
     {
       "id": "registry/registry_2.md",
@@ -1102,6 +1162,12 @@
       "sha256": "aa9bf15d73e81e92fdd0ea640ac8cd5676ec467b03030fdacdb671fb1a2f9a57"
     },
     {
+      "id": "basis/090_audit_engine_policy.md",
+      "path": "basis/090_audit_engine_policy.md",
+      "type": "policy",
+      "sha256": "962c8d0285085925bda742435dbcb39f1360d4cbe37c4441a6c755aba4e13985"
+    },
+    {
       "id": "basis/085_review_engine_policy.md",
       "path": "basis/085_review_engine_policy.md",
       "type": "policy",
@@ -1144,10 +1210,22 @@
       "sha256": "2a2d43d4a077c92ad117d3559bfbc4b55bcf65f24b2411706d842b530fbdf148"
     },
     {
+      "id": "basis/089_replay_engine_policy.md",
+      "path": "basis/089_replay_engine_policy.md",
+      "type": "policy",
+      "sha256": "a30407d1548e2f3894cb3852161069120ab72e3ec10f6fd38168a5b98357c7b7"
+    },
+    {
       "id": "basis/054_repository_health_policy.md",
       "path": "basis/054_repository_health_policy.md",
       "type": "policy",
       "sha256": "35a70153392139354981388f6dc6b755e6b610b9e6ae3723eac1a85de941c05d"
+    },
+    {
+      "id": "basis/088_context_cache_engine_policy.md",
+      "path": "basis/088_context_cache_engine_policy.md",
+      "type": "policy",
+      "sha256": "ab9484d24ca36c3f1ae2439263169508e2daf055a368e0a4e0cefaebeb5571f8"
     },
     {
       "id": "basis/059_continuous_governance_policy.md",
@@ -1904,6 +1982,12 @@
       "path": ".github/workflows/runtime-coordination.yml",
       "type": "workflow",
       "sha256": "0664042411d98ab8272354b3e828c92bef01e109eb3b526beb0bc0aa4acdaeaa"
+    },
+    {
+      "id": ".github/workflows/ep0003.yml",
+      "path": ".github/workflows/ep0003.yml",
+      "type": "workflow",
+      "sha256": "5d5e63543bddc07c7b2f93aa0715c52cfaef0d502d6dfef8049aa7b91fecb980"
     },
     {
       "id": ".github/ISSUE_TEMPLATE/repository_selftest.yml",
