@@ -1,3 +1,0 @@
-name: Agent OS Check
-on:
- workflow_dispatch:

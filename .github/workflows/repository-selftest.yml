@@ -1,0 +1,3 @@
+name: selftest
+on:
+ workflow_dispatch:
