@@ -1,0 +1,30 @@
+name: Asset Review Cadence
+description: Request scheduled or triggered review of a Canonical Asset
+title: "[Asset Review] "
+labels: ["type:review", "status:ready", "area:governance"]
+body:
+  - type: textarea
+    id: asset
+    attributes:
+      label: Asset
+      description: Asset ID and source path.
+    validations:
+      required: true
+  - type: textarea
+    id: trigger
+    attributes:
+      label: Review Trigger
+      description: Cadence, drift, risk change, source change, or Human request.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      value: |
+        - Review outcome is recorded.
+        - Registry is updated if needed.
+        - Derivative drift is checked.
+        - No runtime implementation is introduced.
+    validations:
+      required: true

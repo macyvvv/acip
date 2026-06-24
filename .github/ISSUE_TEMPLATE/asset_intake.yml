@@ -1,0 +1,32 @@
+name: Asset Intake
+description: Propose a new Canonical Asset candidate
+title: "[Asset Intake] "
+labels: ["type:docs", "status:backlog", "area:basis"]
+body:
+  - type: textarea
+    id: source_context
+    attributes:
+      label: Source Context
+      description: What triggered this asset candidate?
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_asset
+    attributes:
+      label: Proposed Asset
+      description: Title, type, objective, scope, and out of scope.
+    validations:
+      required: true
+  - type: textarea
+    id: value
+    attributes:
+      label: Value
+      description: Business, operational, learning, strategic, and revenue link.
+    validations:
+      required: true
+  - type: textarea
+    id: risk
+    attributes:
+      label: Risk Notes
+    validations:
+      required: true
