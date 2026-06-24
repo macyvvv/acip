@@ -1,7 +1,7 @@
 # Repository Graph
 
-- nodes: 362
-- edges: 66
+- nodes: 374
+- edges: 70
 
 ## Nodes
 - `README_REPOSITORY_SELFTEST_COMPLETE_PACK.md` (readme) ACIP Repository Self Test Complete Pack
@@ -23,6 +23,7 @@
 - `README_EP0100_1_AGENT_RUNTIME_IMPORT_FIX.md` (readme) EP-0100.1 Agent Runtime MVP Import Fix
 - `README_ASSET_LIFECYCLE_PACK.md` (readme) ACIP Asset Lifecycle Pack
 - `README_REPOSITORY_OS_V1_BASELINE_PACK.md` (readme) ACIP Repository OS v1 Baseline Pack
+- `MANIFEST_EP0101.md` (document) EP-0101 Manifest
 - `README_RUNTIME_TRANSITION_READINESS_PACK.md` (readme) Runtime Transition Readiness Pack
 - `README_REPOSITORY_COMPLETE_PACK.md` (readme) ACIP Repository Complete Pack
 - `README_SELFTEST_IMPORT_FIX_PACK.md` (readme) ACIP SelfTest Import Fix Pack
@@ -44,10 +45,12 @@
 - `README_AGENT_ORCHESTRATOR_PACK.md` (readme) ACIP Agent Orchestrator Pack
 - `README_EP0100_2_AGENT_RUNTIME_RESTORE_IMPORT_FIX.md` (readme) EP-0100.2 Agent Runtime MVP Restore + Import Fix
 - `README_ASSET_REGISTRY_PACK.md` (readme) ACIP Asset Registry Pack
+- `README_EP0101_AGENT_RUNTIME_TASK_INTAKE.md` (readme) EP-0101 Agent Runtime Task Intake
 - `releases/RELEASE_v1.0.0-repository-os.md` (document) ACIP Repository Operating System v1.0
 - `adr/ADR-0021-runtime-transition-readiness.md` (adr) ADR-0021 Runtime Transition Readiness
 - `adr/ADR-0030-agent-runtime-mvp.md` (adr) ADR-0030: Agent Runtime MVP
 - `adr/ADR-0022-agent-orchestrator.md` (adr) ADR-0022: Agent Orchestrator
+- `adr/ADR-0031-agent-runtime-task-intake.md` (adr) ADR-0031: Agent Runtime Task Intake
 - `adr/ADR-0025-incremental-graph-and-context-diff.md` (adr) ADR-0025: Incremental Graph and Context Diff
 - `adr/ADR-0026-agent-runtime-foundation.md` (adr) ADR-0026 Agent Runtime Foundation
 - `adr/ADR-0029-agent-capability-suite.md` (adr) ADR-0029 Agent Capability Suite
@@ -156,6 +159,7 @@
 - `wbs/WBS-0016-repository-os-v1-baseline.md` (wbs) WBS-0016: Repository OS v1.0 Baseline
 - `wbs/WBS-0020-agent-capability-suite.md` (wbs) WBS-0020 Agent Capability Suite
 - `wbs/WBS-0019-runtime-coordination.md` (wbs) WBS-0019 Runtime Coordination
+- `wbs/WBS-0101-agent-runtime-task-intake.md` (wbs) WBS-0101: Agent Runtime Task Intake
 - `wbs/WBS-0017-agent-runtime-foundation.md` (wbs) WBS-0017 Agent Runtime Foundation
 - `wbs/WBS-0014-runtime-transition-readiness.md` (wbs) WBS-0014 Runtime Transition Readiness
 - `wbs/WBS-0013-repository-knowledge-graph-runtime-integration.md` (wbs) WBS-0013: Repository Knowledge Graph and Runtime Integration Preparation
@@ -172,6 +176,7 @@
 - `scripts/validate_dead_assets.py` (script) validate_dead_assets
 - `scripts/validate_ep_0100.py` (script) validate_ep_0100
 - `scripts/validate_repository_selftest.py` (script) validate_repository_selftest
+- `scripts/validate_ep_0101.py` (script) validate_ep_0101
 - `scripts/validate_repository_os_v1_baseline.py` (script) validate_repository_os_v1_baseline
 - `queue/QUEUE_ENGINE.md` (document) Queue Engine
 - `registry/registry_2.md` (registry) registry 2
@@ -191,9 +196,11 @@
 - `registry/registry_5.md` (registry) registry 5
 - `agent_runtime/cycle.py` (document) cycle
 - `agent_runtime/planner.py` (document) planner
+- `agent_runtime/task_cycle.py` (document) task_cycle
 - `agent_runtime/models.py` (document) models
 - `agent_runtime/approval_gate.py` (document) approval_gate
 - `agent_runtime/__init__.py` (document) __init__
+- `agent_runtime/task_intake.py` (document) task_intake
 - `agent_runtime/loader.py` (document) loader
 - `agent_runtime/queue_engine.py` (document) queue_engine
 - `agent_runtime/repository.py` (document) repository
@@ -240,6 +247,7 @@
 - `basis/058_link_integrity_policy.md` (policy) link_integrity
 - `basis/058_drift_detection_policy.md` (policy) 058 Drift Detection Policy
 - `basis/087_approval_gate_engine_policy.md` (policy) Approval Gate Engine Policy
+- `basis/092_agent_runtime_task_intake_policy.md` (policy) 092 Agent Runtime Task Intake Policy
 - `basis/055_dead_asset_detection_policy.md` (policy) 055 Dead Asset Detection Policy
 - `basis/046_runtime_readiness_boundary.md` (policy) 046 Runtime Readiness Boundary
 - `basis/083_incremental_execution_policy.md` (policy) 083 Incremental Execution Policy
@@ -288,6 +296,7 @@
 - `orchestrator/EXECUTION_QUEUE.md` (document) Execution Queue
 - `orchestrator/local_agent_runner.py` (document) local_agent_runner
 - `orchestrator/state.py` (document) state
+- `runtime/agent_runtime_mvp/DRY_RUN_REPORT.md` (document) Agent Runtime MVP Dry Run Report\n\n## Conclusion\n\nDry-run agent cycle completed without runtime external execution.\n\n## Generated Artifacts\n\n- `runtime/agent_runtime_mvp/runtime_context.json`\n- `runtime/agent_runtime_mvp/runtime_plan.json`\n- `runtime/agent_runtime_mvp/queue_item.json`\n- `runtime/agent_runtime_mvp/review_summary.json`\n- `runtime/agent_runtime_mvp/approval_gate.json`\n\n## Boundary\n\n- Runtime external execution: not performed\n- Platform API mutation: not performed\n- Auto posting: not performed\n- Secret use: not performed\n- Human approval: required for runtime transition\n
 - `knowledge/draft/CA-0001.md` (knowledge_asset) CA-0001
 - `knowledge/draft/CA-0011.md` (knowledge_asset) CA-0011
 - `knowledge/draft/CA-0005.md` (knowledge_asset) CA-0005
@@ -339,7 +348,9 @@
 - `scripts/selftest_v2/validate_semantic_selftest.py` (script) validate_semantic_selftest
 - `scripts/selftest_v2/semantic_common.py` (script) semantic_common
 - `scripts/review/build_review_gate_summary.py` (script) build_review_gate_summary
+- `scripts/agent_runtime/run_task_intake_cycle.py` (script) run_task_intake_cycle
 - `scripts/agent_runtime/run_dry_run_cycle.py` (script) run_dry_run_cycle
+- `scripts/agent_runtime/validate_task_intake.py` (script) validate_task_intake
 - `scripts/agent_runtime/validate_agent_runtime_mvp.py` (script) validate_agent_runtime_mvp
 - `scripts/orchestrator/build_context_bundle.py` (script) build_context_bundle
 - `scripts/orchestrator/build_execution_plan.py` (script) build_execution_plan
@@ -357,6 +368,7 @@
 - `.github/workflows/repository-selftest-complete.yml` (workflow) repository-selftest-complete
 - `.github/workflows/runtime-capability.yml` (workflow) runtime-capability
 - `.github/workflows/runtime-coordination.yml` (workflow) runtime-coordination
+- `.github/workflows/ep0101-agent-runtime-task-intake.yml` (workflow) ep0101-agent-runtime-task-intake
 - `.github/workflows/ep0003.yml` (workflow) ep0003
 - `.github/ISSUE_TEMPLATE/repository_selftest.yml` (document) repository_selftest
 - `.github/ISSUE_TEMPLATE/runtime_integration_readiness.yml` (document) runtime_integration_readiness

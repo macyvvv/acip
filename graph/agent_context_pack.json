@@ -24,8 +24,8 @@
   },
   "current_phase": "Knowledge Factory",
   "current_objective": "Repository Operating System Stabilization",
-  "node_count": 362,
-  "edge_count": 66,
+  "node_count": 374,
+  "edge_count": 70,
   "required_boundaries": [
     "Repository overrides conversation",
     "Runtime implementation remains out of scope until explicitly approved",
@@ -35,6 +35,7 @@
     "adr/ADR-0021-runtime-transition-readiness.md",
     "adr/ADR-0030-agent-runtime-mvp.md",
     "adr/ADR-0022-agent-orchestrator.md",
+    "adr/ADR-0031-agent-runtime-task-intake.md",
     "adr/ADR-0025-incremental-graph-and-context-diff.md",
     "adr/ADR-0026-agent-runtime-foundation.md",
     "adr/ADR-0029-agent-capability-suite.md",
@@ -74,6 +75,7 @@
     "wbs/WBS-0016-repository-os-v1-baseline.md",
     "wbs/WBS-0020-agent-capability-suite.md",
     "wbs/WBS-0019-runtime-coordination.md",
+    "wbs/WBS-0101-agent-runtime-task-intake.md",
     "wbs/WBS-0017-agent-runtime-foundation.md",
     "wbs/WBS-0014-runtime-transition-readiness.md",
     "wbs/WBS-0013-repository-knowledge-graph-runtime-integration.md",
@@ -108,6 +110,7 @@
     "basis/058_link_integrity_policy.md",
     "basis/058_drift_detection_policy.md",
     "basis/087_approval_gate_engine_policy.md",
+    "basis/092_agent_runtime_task_intake_policy.md",
     "basis/055_dead_asset_detection_policy.md",
     "basis/046_runtime_readiness_boundary.md",
     "basis/083_incremental_execution_policy.md",
@@ -143,6 +146,7 @@
     ".github/workflows/repository-selftest-complete.yml",
     ".github/workflows/runtime-capability.yml",
     ".github/workflows/runtime-coordination.yml",
+    ".github/workflows/ep0101-agent-runtime-task-intake.yml",
     ".github/workflows/ep0003.yml"
   ],
   "validation_commands": [

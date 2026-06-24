@@ -1,0 +1,26 @@
+name: EP0101 Agent Runtime Task Intake
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-ep0101:
+    name: Validate EP0101 Agent Runtime Task Intake
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate EP0101
+        run: python scripts/validate_ep_0101.py
