@@ -1,0 +1,47 @@
+name: Canonical Asset
+description: Propose or create a repository-canonical asset
+title: "[Canonical Asset] "
+labels: ["type:docs", "status:backlog", "area:basis"]
+body:
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: What value should this asset create?
+    validations:
+      required: true
+  - type: dropdown
+    id: asset_type
+    attributes:
+      label: Asset Type
+      options:
+        - Knowledge Asset
+        - Content Object
+        - Media Object
+        - Operational Asset
+    validations:
+      required: true
+  - type: textarea
+    id: source_context
+    attributes:
+      label: Source Context
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+    validations:
+      required: true
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: Out of Scope
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+    validations:
+      required: true

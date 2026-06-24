@@ -1,0 +1,33 @@
+name: Asset Review
+description: Request CSO/Codex review for a Canonical Asset
+title: "[Asset Review] "
+labels: ["type:review", "status:ready", "area:basis"]
+body:
+  - type: textarea
+    id: target
+    attributes:
+      label: Review Target
+      description: File path and asset ID.
+    validations:
+      required: true
+  - type: textarea
+    id: required_gates
+    attributes:
+      label: Required Gates
+      value: |
+        - Objective Fit
+        - Reusability
+        - Maintainability
+        - Robustness
+        - Scope Control
+        - Risk Control
+        - ROI Link
+        - Repository Fit
+    validations:
+      required: true
+  - type: textarea
+    id: known_risks
+    attributes:
+      label: Known Risks
+    validations:
+      required: false
