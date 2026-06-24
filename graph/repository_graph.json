@@ -92,6 +92,13 @@
       "source": "repository"
     },
     {
+      "id": "README_REPOSITORY_OS_V1_BASELINE_PACK.md",
+      "type": "readme",
+      "path": "README_REPOSITORY_OS_V1_BASELINE_PACK.md",
+      "title": "ACIP Repository OS v1 Baseline Pack",
+      "source": "repository"
+    },
+    {
       "id": "README_RUNTIME_TRANSITION_READINESS_PACK.md",
       "type": "readme",
       "path": "README_RUNTIME_TRANSITION_READINESS_PACK.md",
@@ -197,6 +204,13 @@
       "source": "repository"
     },
     {
+      "id": "releases/RELEASE_v1.0.0-repository-os.md",
+      "type": "document",
+      "path": "releases/RELEASE_v1.0.0-repository-os.md",
+      "title": "ACIP Repository Operating System v1.0",
+      "source": "repository"
+    },
+    {
       "id": "adr/ADR-0021-runtime-transition-readiness.md",
       "type": "adr",
       "path": "adr/ADR-0021-runtime-transition-readiness.md",
@@ -208,6 +222,20 @@
       "type": "adr",
       "path": "adr/ADR-0022-agent-orchestrator.md",
       "title": "ADR-0022: Agent Orchestrator",
+      "source": "repository"
+    },
+    {
+      "id": "adr/ADR-0025-incremental-graph-and-context-diff.md",
+      "type": "adr",
+      "path": "adr/ADR-0025-incremental-graph-and-context-diff.md",
+      "title": "ADR-0025: Incremental Graph and Context Diff",
+      "source": "repository"
+    },
+    {
+      "id": "adr/ADR-0024-repository-os-v1-baseline.md",
+      "type": "adr",
+      "path": "adr/ADR-0024-repository-os-v1-baseline.md",
+      "title": "ADR-0024: Repository OS v1.0 Baseline",
       "source": "repository"
     },
     {
@@ -687,6 +715,20 @@
       "source": "repository"
     },
     {
+      "id": "baseline/BASELINE_CHANGE_POLICY.md",
+      "type": "document",
+      "path": "baseline/BASELINE_CHANGE_POLICY.md",
+      "title": "Baseline Change Policy",
+      "source": "repository"
+    },
+    {
+      "id": "baseline/BASELINE_MANIFEST.md",
+      "type": "document",
+      "path": "baseline/BASELINE_MANIFEST.md",
+      "title": "Baseline Manifest",
+      "source": "repository"
+    },
+    {
       "id": "docs/docs_3.md",
       "type": "document",
       "path": "docs/docs_3.md",
@@ -813,6 +855,13 @@
       "source": "repository"
     },
     {
+      "id": "wbs/WBS-0016-repository-os-v1-baseline.md",
+      "type": "wbs",
+      "path": "wbs/WBS-0016-repository-os-v1-baseline.md",
+      "title": "WBS-0016: Repository OS v1.0 Baseline",
+      "source": "repository"
+    },
+    {
       "id": "wbs/WBS-0014-runtime-transition-readiness.md",
       "type": "wbs",
       "path": "wbs/WBS-0014-runtime-transition-readiness.md",
@@ -894,6 +943,13 @@
       "type": "script",
       "path": "scripts/validate_repository_selftest.py",
       "title": "validate_repository_selftest",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/validate_repository_os_v1_baseline.py",
+      "type": "script",
+      "path": "scripts/validate_repository_os_v1_baseline.py",
+      "title": "validate_repository_os_v1_baseline",
       "source": "repository"
     },
     {
@@ -1107,6 +1163,13 @@
       "source": "repository"
     },
     {
+      "id": "basis/078_incremental_graph_policy.md",
+      "type": "policy",
+      "path": "basis/078_incremental_graph_policy.md",
+      "title": "Incremental Graph Policy",
+      "source": "repository"
+    },
+    {
       "id": "basis/053_repository_selftest_policy.md",
       "type": "policy",
       "path": "basis/053_repository_selftest_policy.md",
@@ -1205,10 +1268,31 @@
       "source": "repository"
     },
     {
+      "id": "basis/077_baseline_policy.md",
+      "type": "policy",
+      "path": "basis/077_baseline_policy.md",
+      "title": "Baseline Policy",
+      "source": "repository"
+    },
+    {
       "id": "basis/063_selftest_v2_boundary_policy.md",
       "type": "policy",
       "path": "basis/063_selftest_v2_boundary_policy.md",
       "title": "063 SelfTest v2 Boundary Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/081_review_gate_summary_policy.md",
+      "type": "policy",
+      "path": "basis/081_review_gate_summary_policy.md",
+      "title": "Review Gate Summary Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/080_execution_queue_automation_policy.md",
+      "type": "policy",
+      "path": "basis/080_execution_queue_automation_policy.md",
+      "title": "Execution Queue Automation Policy",
       "source": "repository"
     },
     {
@@ -1321,6 +1405,13 @@
       "type": "policy",
       "path": "basis/060_continuous_governance_policy.md",
       "title": "060 Continuous Governance Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/079_context_diff_policy.md",
+      "type": "policy",
+      "path": "basis/079_context_diff_policy.md",
+      "title": "Context Diff Policy",
       "source": "repository"
     },
     {
@@ -1688,10 +1779,24 @@
       "source": "repository"
     },
     {
+      "id": "scripts/context/build_context_diff.py",
+      "type": "script",
+      "path": "scripts/context/build_context_diff.py",
+      "title": "build_context_diff",
+      "source": "repository"
+    },
+    {
       "id": "scripts/context/build_agent_context_pack.py",
       "type": "script",
       "path": "scripts/context/build_agent_context_pack.py",
       "title": "build_agent_context_pack",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/graph/build_incremental_graph.py",
+      "type": "script",
+      "path": "scripts/graph/build_incremental_graph.py",
+      "title": "build_incremental_graph",
       "source": "repository"
     },
     {
@@ -1800,6 +1905,13 @@
       "source": "repository"
     },
     {
+      "id": "scripts/baseline/validate_baseline.py",
+      "type": "script",
+      "path": "scripts/baseline/validate_baseline.py",
+      "title": "validate_baseline",
+      "source": "repository"
+    },
+    {
       "id": "scripts/selftest_v2/semantic_checks.py",
       "type": "script",
       "path": "scripts/selftest_v2/semantic_checks.py",
@@ -1821,6 +1933,13 @@
       "source": "repository"
     },
     {
+      "id": "scripts/review/build_review_gate_summary.py",
+      "type": "script",
+      "path": "scripts/review/build_review_gate_summary.py",
+      "title": "build_review_gate_summary",
+      "source": "repository"
+    },
+    {
       "id": "scripts/orchestrator/build_context_bundle.py",
       "type": "script",
       "path": "scripts/orchestrator/build_context_bundle.py",
@@ -1835,10 +1954,24 @@
       "source": "repository"
     },
     {
+      "id": "scripts/orchestrator/update_execution_queue.py",
+      "type": "script",
+      "path": "scripts/orchestrator/update_execution_queue.py",
+      "title": "update_execution_queue",
+      "source": "repository"
+    },
+    {
       "id": "scripts/orchestrator/validate_orchestration.py",
       "type": "script",
       "path": "scripts/orchestrator/validate_orchestration.py",
       "title": "validate_orchestration",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/repository-os-v1-baseline.yml",
+      "type": "workflow",
+      "path": ".github/workflows/repository-os-v1-baseline.yml",
+      "title": "repository-os-v1-baseline",
       "source": "repository"
     },
     {
@@ -1973,6 +2106,12 @@
       "evidence": "scripts/validate_repository_knowledge_graph_runtime_integration.py"
     },
     {
+      "source": "README_REPOSITORY_OS_V1_BASELINE_PACK.md",
+      "target": "scripts/validate_repository_os_v1_baseline.py",
+      "type": "validates",
+      "evidence": "scripts/validate_repository_os_v1_baseline.py"
+    },
+    {
       "source": "README_RUNTIME_TRANSITION_READINESS_PACK.md",
       "target": "scripts/validate_repository_knowledge_graph_runtime_integration.py",
       "type": "validates",
@@ -2043,6 +2182,36 @@
       "target": "scripts/orchestrator/validate_orchestration.py",
       "type": "validates",
       "evidence": "scripts/orchestrator/validate_orchestration.py"
+    },
+    {
+      "source": "wbs/WBS-0016-repository-os-v1-baseline.md",
+      "target": "scripts/baseline/validate_baseline.py",
+      "type": "validates",
+      "evidence": "scripts/baseline/validate_baseline.py"
+    },
+    {
+      "source": "wbs/WBS-0016-repository-os-v1-baseline.md",
+      "target": "scripts/graph/build_incremental_graph.py",
+      "type": "validates",
+      "evidence": "scripts/graph/build_incremental_graph.py"
+    },
+    {
+      "source": "wbs/WBS-0016-repository-os-v1-baseline.md",
+      "target": "scripts/context/build_context_diff.py",
+      "type": "validates",
+      "evidence": "scripts/context/build_context_diff.py"
+    },
+    {
+      "source": "wbs/WBS-0016-repository-os-v1-baseline.md",
+      "target": "scripts/orchestrator/update_execution_queue.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/update_execution_queue.py"
+    },
+    {
+      "source": "wbs/WBS-0016-repository-os-v1-baseline.md",
+      "target": "scripts/review/build_review_gate_summary.py",
+      "type": "validates",
+      "evidence": "scripts/review/build_review_gate_summary.py"
     },
     {
       "source": "wbs/WBS-0013-repository-knowledge-graph-runtime-integration.md",
@@ -2157,6 +2326,12 @@
       "target": "scripts/orchestrator/validate_orchestration.py",
       "type": "validates",
       "evidence": "scripts/orchestrator/validate_orchestration.py"
+    },
+    {
+      "source": ".github/workflows/repository-os-v1-baseline.yml",
+      "target": "scripts/validate_repository_os_v1_baseline.py",
+      "type": "validates",
+      "evidence": "scripts/validate_repository_os_v1_baseline.py"
     },
     {
       "source": ".github/workflows/boundary-validation.yml",

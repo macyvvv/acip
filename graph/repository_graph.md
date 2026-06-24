@@ -1,7 +1,7 @@
 # Repository Graph
 
-- nodes: 278
-- edges: 42
+- nodes: 297
+- edges: 49
 
 ## Nodes
 - `README_REPOSITORY_SELFTEST_COMPLETE_PACK.md` (readme) ACIP Repository Self Test Complete Pack
@@ -17,6 +17,7 @@
 - `PROJECT.md` (document) PROJECT
 - `STATE.md` (document) STATE
 - `README_ASSET_LIFECYCLE_PACK.md` (readme) ACIP Asset Lifecycle Pack
+- `README_REPOSITORY_OS_V1_BASELINE_PACK.md` (readme) ACIP Repository OS v1 Baseline Pack
 - `README_RUNTIME_TRANSITION_READINESS_PACK.md` (readme) Runtime Transition Readiness Pack
 - `README_REPOSITORY_COMPLETE_PACK.md` (readme) ACIP Repository Complete Pack
 - `README_SELFTEST_IMPORT_FIX_PACK.md` (readme) ACIP SelfTest Import Fix Pack
@@ -32,8 +33,11 @@
 - `README_SELFTEST_REMEDIATION_PACK.md` (readme) ACIP SelfTest Remediation Pack
 - `README_AGENT_ORCHESTRATOR_PACK.md` (readme) ACIP Agent Orchestrator Pack
 - `README_ASSET_REGISTRY_PACK.md` (readme) ACIP Asset Registry Pack
+- `releases/RELEASE_v1.0.0-repository-os.md` (document) ACIP Repository Operating System v1.0
 - `adr/ADR-0021-runtime-transition-readiness.md` (adr) ADR-0021 Runtime Transition Readiness
 - `adr/ADR-0022-agent-orchestrator.md` (adr) ADR-0022: Agent Orchestrator
+- `adr/ADR-0025-incremental-graph-and-context-diff.md` (adr) ADR-0025: Incremental Graph and Context Diff
+- `adr/ADR-0024-repository-os-v1-baseline.md` (adr) ADR-0024: Repository OS v1.0 Baseline
 - `adr/ADR-0016-repository-operating-system-self-test.md` (adr) ADR-0016: Repository Operating System Self Test
 - `adr/ADR-0018-repository-semantic-selftest-v2.md` (adr) ADR-0018: Repository Semantic SelfTest v2
 - `adr/ADR-0023-task-routing.md` (adr) ADR-0023: Task Routing
@@ -102,6 +106,8 @@
 - `runbooks/drift-scan.md` (runbook) Runbook
 - `runbooks/runbooks_2.md` (runbook) runbooks 2
 - `runbooks/dead-asset-scan.md` (runbook) Runbook
+- `baseline/BASELINE_CHANGE_POLICY.md` (document) Baseline Change Policy
+- `baseline/BASELINE_MANIFEST.md` (document) Baseline Manifest
 - `docs/docs_3.md` (document) docs 3
 - `docs/REPOSITORY_HEALTH_SCORECARD.md` (document) REPOSITORY_HEALTH_SCORECARD
 - `docs/CONTINUOUS_GOVERNANCE_REPORT.md` (document) CONTINUOUS_GOVERNANCE_REPORT
@@ -120,6 +126,7 @@
 - `docs/docs_1.md` (document) docs 1
 - `docs/docs_4.md` (document) docs 4
 - `knowledge/README.md` (knowledge_asset) Knowledge Layer
+- `wbs/WBS-0016-repository-os-v1-baseline.md` (wbs) WBS-0016: Repository OS v1.0 Baseline
 - `wbs/WBS-0014-runtime-transition-readiness.md` (wbs) WBS-0014 Runtime Transition Readiness
 - `wbs/WBS-0013-repository-knowledge-graph-runtime-integration.md` (wbs) WBS-0013: Repository Knowledge Graph and Runtime Integration Preparation
 - `wbs/WBS-0011-repository-operating-system-self-test.md` (wbs) WBS-0011: Repository Operating System Self Test
@@ -132,6 +139,7 @@
 - `scripts/validate_repository_knowledge_graph_runtime_integration.py` (script) validate_repository_knowledge_graph_runtime_integration
 - `scripts/validate_dead_assets.py` (script) validate_dead_assets
 - `scripts/validate_repository_selftest.py` (script) validate_repository_selftest
+- `scripts/validate_repository_os_v1_baseline.py` (script) validate_repository_os_v1_baseline
 - `registry/registry_2.md` (registry) registry 2
 - `registry/QUEUE_INDEX.md` (registry) Queue Index
 - `registry/DEPRECATED_INDEX.md` (registry) Deprecated Index
@@ -162,6 +170,7 @@
 - `control/control_2.md` (document) control 2
 - `control/SELFTEST_QUEUE.md` (document) Queue
 - `control/control_3.md` (document) control 3
+- `basis/078_incremental_graph_policy.md` (policy) Incremental Graph Policy
 - `basis/053_repository_selftest_policy.md` (policy) 053 Repository Self Test Policy
 - `basis/059_duplicate_detection_policy.md` (policy) 059 Duplicate Detection Policy
 - `basis/073_task_router_policy.md` (policy) 073 Task Router Policy
@@ -176,7 +185,10 @@
 - `basis/056_drift_detection_policy.md` (policy) drift_detection
 - `basis/068_runtime_integration_boundary_policy.md` (policy) 068 Runtime Integration Boundary Policy
 - `basis/037_autonomous_workflow_policy.md` (policy) 037 Autonomous Workflow Policy
+- `basis/077_baseline_policy.md` (policy) Baseline Policy
 - `basis/063_selftest_v2_boundary_policy.md` (policy) 063 SelfTest v2 Boundary Policy
+- `basis/081_review_gate_summary_policy.md` (policy) Review Gate Summary Policy
+- `basis/080_execution_queue_automation_policy.md` (policy) Execution Queue Automation Policy
 - `basis/067_agent_context_pack_policy.md` (policy) 067 Agent Context Pack Policy
 - `basis/058_link_integrity_policy.md` (policy) link_integrity
 - `basis/058_drift_detection_policy.md` (policy) 058 Drift Detection Policy
@@ -193,6 +205,7 @@
 - `basis/055_orphan_asset_policy.md` (policy) orphan_asset
 - `basis/071_runtime_transition_readiness_policy.md` (policy) 071 Runtime Transition Readiness Policy
 - `basis/060_continuous_governance_policy.md` (policy) 060 Continuous Governance Policy
+- `basis/079_context_diff_policy.md` (policy) Context Diff Policy
 - `basis/053_repository_health_policy.md` (policy) repository_health
 - `basis/064_selftest_v2_archive_policy.md` (policy) 064 SelfTest v2 Archive Policy
 - `basis/057_boundary_validation_policy.md` (policy) 057 Boundary Validation Policy
@@ -245,7 +258,9 @@
 - `knowledge/strategy/CANONICAL_ASSET_BACKLOG.md` (knowledge_asset) CANONICAL_ASSET_BACKLOG
 - `knowledge/strategy/MARKET_VALIDATION_WBS.md` (knowledge_asset) MARKET_VALIDATION_WBS
 - `knowledge/strategy/PRODUCT_DEFINITION.md` (knowledge_asset) PRODUCT_DEFINITION
+- `scripts/context/build_context_diff.py` (script) build_context_diff
 - `scripts/context/build_agent_context_pack.py` (script) build_agent_context_pack
+- `scripts/graph/build_incremental_graph.py` (script) build_incremental_graph
 - `scripts/graph/validate_repository_graph.py` (script) validate_repository_graph
 - `scripts/graph/build_repository_graph.py` (script) build_repository_graph
 - `scripts/runtime/dry_run_runtime_plan.py` (script) dry_run_runtime_plan
@@ -261,12 +276,16 @@
 - `scripts/selftest/check_workflows.py` (script) check_workflows
 - `scripts/selftest/cleanup_selftest_skeleton.py` (script) cleanup_selftest_skeleton
 - `scripts/selftest/selftest_common.py` (script) Backward-compatible alias for older selftest modules.
+- `scripts/baseline/validate_baseline.py` (script) validate_baseline
 - `scripts/selftest_v2/semantic_checks.py` (script) semantic_checks
 - `scripts/selftest_v2/validate_semantic_selftest.py` (script) validate_semantic_selftest
 - `scripts/selftest_v2/semantic_common.py` (script) semantic_common
+- `scripts/review/build_review_gate_summary.py` (script) build_review_gate_summary
 - `scripts/orchestrator/build_context_bundle.py` (script) build_context_bundle
 - `scripts/orchestrator/build_execution_plan.py` (script) build_execution_plan
+- `scripts/orchestrator/update_execution_queue.py` (script) update_execution_queue
 - `scripts/orchestrator/validate_orchestration.py` (script) validate_orchestration
+- `.github/workflows/repository-os-v1-baseline.yml` (workflow) repository-os-v1-baseline
 - `.github/workflows/boundary-validation.yml` (workflow) boundary-validation
 - `.github/workflows/agent-orchestrator-validation.yml` (workflow) agent-orchestrator-validation
 - `.github/workflows/repository-knowledge-graph-runtime-integration.yml` (workflow) repository-knowledge-graph-runtime-integration
