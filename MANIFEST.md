@@ -1,2 +1,1 @@
-# Manifest
-Version: EP-0001
+EP-0002

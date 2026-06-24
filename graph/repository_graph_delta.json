@@ -1,7 +1,7 @@
 {
   "baseline": "1.0.0-repository-os",
-  "node_count": 318,
-  "snapshot_count": 318,
+  "node_count": 325,
+  "snapshot_count": 325,
   "snapshot": [
     {
       "id": "README_REPOSITORY_SELFTEST_COMPLETE_PACK.md",
@@ -139,7 +139,7 @@
       "id": "MANIFEST.md",
       "path": "MANIFEST.md",
       "type": "document",
-      "sha256": "4e0e0719ad31283221a350029732fb4dd6034b35226b412b6ac480b8c7e21ffb"
+      "sha256": "1b5684ba3ffe505669e01f1a946579760fc8ddbafd475d7a7bd536112544d90d"
     },
     {
       "id": "ROADMAP.md",
@@ -164,6 +164,12 @@
       "path": "README_SEMANTIC_SELFTEST_V2_PACK.md",
       "type": "readme",
       "sha256": "d6e76b4321a1f9b2938928104b3ceea777af650af39fb67b42bdb544c5ff56f9"
+    },
+    {
+      "id": "README_EP0002.md",
+      "path": "README_EP0002.md",
+      "type": "readme",
+      "sha256": "73f2c40f8c2149e153b52af0228366f69a8a3238431b94e40222565aaba46f22"
     },
     {
       "id": "README_AGENT_OS.md",
@@ -254,6 +260,12 @@
       "path": "adr/ADR-0019-repository-knowledge-graph.md",
       "type": "adr",
       "sha256": "d7d68261de5ad9534e8137f1fe8b105f8a2df398ef2daf3079b2480feae428bc"
+    },
+    {
+      "id": "adr/ADR-0028-runtime-coordination.md",
+      "path": "adr/ADR-0028-runtime-coordination.md",
+      "type": "adr",
+      "sha256": "4e57b87c9d1c755f45c2bd00be85416151aea2cc3fc7fc47f118829d99d430eb"
     },
     {
       "id": "adr/ADR-0017-continuous-governance.md",
@@ -463,7 +475,7 @@
       "id": "graph/repository_graph.md",
       "path": "graph/repository_graph.md",
       "type": "document",
-      "sha256": "c5340d5ee7005f035df70c4d1b54985585ff7423c77423d20162fa998bcddfab"
+      "sha256": "2ce33273cd0b33dfe1064d037343d9c3b7186f79541cd80e79b4a781a0883eba"
     },
     {
       "id": "graph/GRAPH_SCHEMA.md",
@@ -794,6 +806,12 @@
       "path": "wbs/WBS-0016-repository-os-v1-baseline.md",
       "type": "wbs",
       "sha256": "2bdc4f592afef8052fe32ac9b037ca616a3909e58512b999c47082a06711888b"
+    },
+    {
+      "id": "wbs/WBS-0019-runtime-coordination.md",
+      "path": "wbs/WBS-0019-runtime-coordination.md",
+      "type": "wbs",
+      "sha256": "e114308cf1d96011c70b1eb324a7142017f6768b01307cdf3e0345d81c8bff09"
     },
     {
       "id": "wbs/WBS-0017-agent-runtime-foundation.md",
@@ -1204,6 +1222,12 @@
       "sha256": "4f0f4bcc87d0e3881a38013b9dd07935859cfc120be85845dcaeb6062ee2afdf"
     },
     {
+      "id": "basis/087_approval_gate_engine_policy.md",
+      "path": "basis/087_approval_gate_engine_policy.md",
+      "type": "policy",
+      "sha256": "1976a022d96890e65b6905c00b8d79a0d278d34cf8519a29bd68ed2758619cfd"
+    },
+    {
       "id": "basis/055_dead_asset_detection_policy.md",
       "path": "basis/055_dead_asset_detection_policy.md",
       "type": "policy",
@@ -1232,6 +1256,12 @@
       "path": "basis/062_policy_graph_policy.md",
       "type": "policy",
       "sha256": "8206a7e734f2e7b5498ee3816b2627680cab2447100fe9190efb75cd0bf8a850"
+    },
+    {
+      "id": "basis/086_queue_coordination_policy.md",
+      "path": "basis/086_queue_coordination_policy.md",
+      "type": "policy",
+      "sha256": "e4765dc257a72c9f39b295f74b97002bd1bd95e99de3638c256fb8df7142031a"
     },
     {
       "id": "basis/074_context_resolution_policy.md",
@@ -1678,6 +1708,12 @@
       "sha256": "e48e71943bb8bd72de056c47fb6691a6360141120b58e07d4b93638e68e07c9c"
     },
     {
+      "id": "scripts/runtime/validate_runtime_coordination.py",
+      "path": "scripts/runtime/validate_runtime_coordination.py",
+      "type": "script",
+      "sha256": "fb17c092b17ef303897c460d0b2dc0c6854f7d76cfbc2d79e6d9259572cf9f5a"
+    },
+    {
       "id": "scripts/selftest/check_orphans.py",
       "path": "scripts/selftest/check_orphans.py",
       "type": "script",
@@ -1862,6 +1898,12 @@
       "path": ".github/workflows/runtime-capability.yml",
       "type": "workflow",
       "sha256": "69ad3e897f995a9bbc30e6b77c19136d99885d5274274285728a7333bbd69110"
+    },
+    {
+      "id": ".github/workflows/runtime-coordination.yml",
+      "path": ".github/workflows/runtime-coordination.yml",
+      "type": "workflow",
+      "sha256": "0664042411d98ab8272354b3e828c92bef01e109eb3b526beb0bc0aa4acdaeaa"
     },
     {
       "id": ".github/ISSUE_TEMPLATE/repository_selftest.yml",

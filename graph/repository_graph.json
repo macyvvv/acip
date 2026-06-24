@@ -158,7 +158,7 @@
       "id": "MANIFEST.md",
       "type": "document",
       "path": "MANIFEST.md",
-      "title": "Manifest",
+      "title": "MANIFEST",
       "source": "repository"
     },
     {
@@ -187,6 +187,13 @@
       "type": "readme",
       "path": "README_SEMANTIC_SELFTEST_V2_PACK.md",
       "title": "ACIP Repository Semantic SelfTest v2 Pack",
+      "source": "repository"
+    },
+    {
+      "id": "README_EP0002.md",
+      "type": "readme",
+      "path": "README_EP0002.md",
+      "title": "EP-0002 Runtime Coordination Suite",
       "source": "repository"
     },
     {
@@ -292,6 +299,13 @@
       "type": "adr",
       "path": "adr/ADR-0019-repository-knowledge-graph.md",
       "title": "ADR-0019: Repository Knowledge Graph",
+      "source": "repository"
+    },
+    {
+      "id": "adr/ADR-0028-runtime-coordination.md",
+      "type": "adr",
+      "path": "adr/ADR-0028-runtime-coordination.md",
+      "title": "ADR-0028 Runtime Coordination",
       "source": "repository"
     },
     {
@@ -925,6 +939,13 @@
       "source": "repository"
     },
     {
+      "id": "wbs/WBS-0019-runtime-coordination.md",
+      "type": "wbs",
+      "path": "wbs/WBS-0019-runtime-coordination.md",
+      "title": "WBS-0019 Runtime Coordination",
+      "source": "repository"
+    },
+    {
       "id": "wbs/WBS-0017-agent-runtime-foundation.md",
       "type": "wbs",
       "path": "wbs/WBS-0017-agent-runtime-foundation.md",
@@ -1401,6 +1422,13 @@
       "source": "repository"
     },
     {
+      "id": "basis/087_approval_gate_engine_policy.md",
+      "type": "policy",
+      "path": "basis/087_approval_gate_engine_policy.md",
+      "title": "Approval Gate Engine Policy",
+      "source": "repository"
+    },
+    {
       "id": "basis/055_dead_asset_detection_policy.md",
       "type": "policy",
       "path": "basis/055_dead_asset_detection_policy.md",
@@ -1433,6 +1461,13 @@
       "type": "policy",
       "path": "basis/062_policy_graph_policy.md",
       "title": "062 Policy Graph Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/086_queue_coordination_policy.md",
+      "type": "policy",
+      "path": "basis/086_queue_coordination_policy.md",
+      "title": "Queue Coordination Policy",
       "source": "repository"
     },
     {
@@ -1954,6 +1989,13 @@
       "source": "repository"
     },
     {
+      "id": "scripts/runtime/validate_runtime_coordination.py",
+      "type": "script",
+      "path": "scripts/runtime/validate_runtime_coordination.py",
+      "title": "validate_runtime_coordination",
+      "source": "repository"
+    },
+    {
       "id": "scripts/selftest/check_orphans.py",
       "type": "script",
       "path": "scripts/selftest/check_orphans.py",
@@ -2168,6 +2210,13 @@
       "type": "workflow",
       "path": ".github/workflows/runtime-capability.yml",
       "title": "runtime-capability",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/runtime-coordination.yml",
+      "type": "workflow",
+      "path": ".github/workflows/runtime-coordination.yml",
+      "title": "runtime-coordination",
       "source": "repository"
     },
     {
@@ -2545,6 +2594,12 @@
       "target": "scripts/runtime/validate_runtime_capability.py",
       "type": "validates",
       "evidence": "scripts/runtime/validate_runtime_capability.py"
+    },
+    {
+      "source": ".github/workflows/runtime-coordination.yml",
+      "target": "scripts/runtime/validate_runtime_coordination.py",
+      "type": "validates",
+      "evidence": "scripts/runtime/validate_runtime_coordination.py"
     }
   ]
 }

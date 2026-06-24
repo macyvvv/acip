@@ -1,7 +1,7 @@
 # Repository Graph
 
-- nodes: 318
-- edges: 53
+- nodes: 325
+- edges: 54
 
 ## Nodes
 - `README_REPOSITORY_SELFTEST_COMPLETE_PACK.md` (readme) ACIP Repository Self Test Complete Pack
@@ -26,11 +26,12 @@
 - `README.md` (readme) ACIP GitHub Operations Kit v1
 - `README_AUTONOMOUS_WORKFLOW_CONTROL_PACK.md` (readme) ACIP Autonomous Workflow Control Pack
 - `README_ASSET_PRODUCTION_OPERATIONS_PACK.md` (readme) ACIP Asset Production Operations Pack
-- `MANIFEST.md` (document) Manifest
+- `MANIFEST.md` (document) MANIFEST
 - `ROADMAP.md` (document) ROADMAP
 - `README_ASSET_QUALITY_ROI_CLOSURE_PACK.md` (readme) ACIP Asset Quality ROI Closure Pack
 - `README_AUTOMATION_PACK.md` (readme) ACIP Automation Pack
 - `README_SEMANTIC_SELFTEST_V2_PACK.md` (readme) ACIP Repository Semantic SelfTest v2 Pack
+- `README_EP0002.md` (readme) EP-0002 Runtime Coordination Suite
 - `README_AGENT_OS.md` (readme) Agent OS README
 - `AGENTS.md` (document) AGENTS.md
 - `README_SELFTEST_REMEDIATION_PACK.md` (readme) ACIP SelfTest Remediation Pack
@@ -46,6 +47,7 @@
 - `adr/ADR-0018-repository-semantic-selftest-v2.md` (adr) ADR-0018: Repository Semantic SelfTest v2
 - `adr/ADR-0023-task-routing.md` (adr) ADR-0023: Task Routing
 - `adr/ADR-0019-repository-knowledge-graph.md` (adr) ADR-0019: Repository Knowledge Graph
+- `adr/ADR-0028-runtime-coordination.md` (adr) ADR-0028 Runtime Coordination
 - `adr/ADR-0017-continuous-governance.md` (adr) ADR-0017: Continuous Governance
 - `adr/ADR-0020-runtime-integration-preparation.md` (adr) ADR-0020: Runtime Integration Preparation
 - `adr/ADR-0027-runtime-capability-suite.md` (adr) ADR-0027
@@ -136,6 +138,7 @@
 - `loader/CONTEXT_LOADER.md` (document) Context Loader
 - `review/REVIEW_GATE_SUMMARY.md` (document) Review Gate Summary
 - `wbs/WBS-0016-repository-os-v1-baseline.md` (wbs) WBS-0016: Repository OS v1.0 Baseline
+- `wbs/WBS-0019-runtime-coordination.md` (wbs) WBS-0019 Runtime Coordination
 - `wbs/WBS-0017-agent-runtime-foundation.md` (wbs) WBS-0017 Agent Runtime Foundation
 - `wbs/WBS-0014-runtime-transition-readiness.md` (wbs) WBS-0014 Runtime Transition Readiness
 - `wbs/WBS-0013-repository-knowledge-graph-runtime-integration.md` (wbs) WBS-0013: Repository Knowledge Graph and Runtime Integration Preparation
@@ -204,11 +207,13 @@
 - `basis/067_agent_context_pack_policy.md` (policy) 067 Agent Context Pack Policy
 - `basis/058_link_integrity_policy.md` (policy) link_integrity
 - `basis/058_drift_detection_policy.md` (policy) 058 Drift Detection Policy
+- `basis/087_approval_gate_engine_policy.md` (policy) Approval Gate Engine Policy
 - `basis/055_dead_asset_detection_policy.md` (policy) 055 Dead Asset Detection Policy
 - `basis/046_runtime_readiness_boundary.md` (policy) 046 Runtime Readiness Boundary
 - `basis/083_incremental_execution_policy.md` (policy) 083 Incremental Execution Policy
 - `basis/075_execution_queue_policy.md` (policy) 075 Execution Queue Policy
 - `basis/062_policy_graph_policy.md` (policy) 062 Policy Graph Policy
+- `basis/086_queue_coordination_policy.md` (policy) Queue Coordination Policy
 - `basis/074_context_resolution_policy.md` (policy) 074 Context Resolution Policy
 - `basis/066_graph_extraction_policy.md` (policy) 066 Graph Extraction Policy
 - `basis/069_agent_io_contract_policy.md` (policy) 069 Agent IO Contract Policy
@@ -283,6 +288,7 @@
 - `scripts/runtime/context_loader.py` (script) context_loader
 - `scripts/runtime/validate_runtime_foundation.py` (script) validate_runtime_foundation
 - `scripts/runtime/dry_run_runtime_plan.py` (script) dry_run_runtime_plan
+- `scripts/runtime/validate_runtime_coordination.py` (script) validate_runtime_coordination
 - `scripts/selftest/check_orphans.py` (script) check_orphans
 - `scripts/selftest/check_current_objective.py` (script) check_current_objective
 - `scripts/selftest/check_repository_health.py` (script) check_repository_health
@@ -314,6 +320,7 @@
 - `.github/workflows/runtime-foundation.yml` (workflow) runtime-foundation
 - `.github/workflows/repository-selftest-complete.yml` (workflow) repository-selftest-complete
 - `.github/workflows/runtime-capability.yml` (workflow) runtime-capability
+- `.github/workflows/runtime-coordination.yml` (workflow) runtime-coordination
 - `.github/ISSUE_TEMPLATE/repository_selftest.yml` (document) repository_selftest
 - `.github/ISSUE_TEMPLATE/runtime_integration_readiness.yml` (document) runtime_integration_readiness
 - `.github/ISSUE_TEMPLATE/repository_selftest_failure.yml` (document) repository_selftest_failure
