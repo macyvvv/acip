@@ -1,9 +1,3 @@
-
----
-
-## `orchestrator/WBS.md`
-
-```markdown
 # ORCHESTRATOR WBS
 
 Version: v0.1
