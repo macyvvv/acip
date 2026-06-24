@@ -1,7 +1,11 @@
-# Tool Policy
+# 028 Tool Policy
 
-Repository overrides conversation.
+## Conclusion
 
-Human handles only Mission, Approval, Emergency Stop.
+Tool use must be bounded by role, scope, safety gate, and repository context.
 
-Routine planning, delegation, validation, queue management, and metadata work should be handled by ChatGPT, Codex, scripts, GitHub Actions, or approved future automation.
+## Rules
+
+- Tools must not bypass approval.
+- Tools must not introduce runtime implementation without approval.
+- Repository overrides conversation.

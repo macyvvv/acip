@@ -1,9 +1,15 @@
 # Review Queue
 
-| review_id | target | reviewer | decision_required | risk_level | status |
+## Conclusion
+
+Review Queue is part of ACIP's repository-governed control plane.
+
+## Table
+
+| id | target | owner | status | next_action | done_condition |
 |---|---|---|---|---|---|
 |  |  |  |  |  |  |
 
 ## Rule
 
-Human receives only decision-ready review items.
+Human handles Mission, Approval, Emergency Stop. Routine control-plane hygiene should be delegated.

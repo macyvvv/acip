@@ -2,25 +2,22 @@
 
 ## Objective
 
-Define the Human emergency stop path.
-
-## Trigger
-
-Human issues Emergency Stop or a severe policy/risk violation is detected.
+Execute emergency stop as a repeatable repository-governed operation.
 
 ## Steps
 
-1. Stop current execution.
-2. Record stop reason.
-3. Identify affected files/issues/PRs.
-4. Freeze new execution.
-5. Prepare recovery options.
-6. Wait for Human approval before resuming.
+1. Confirm Current Phase.
+2. Confirm Current Objective.
+3. Read repository sources.
+4. Execute only approved scope.
+5. Run validation.
+6. Prepare decision-ready status.
+7. Escalate only for Mission, Approval, Emergency Stop, Risk Acceptance, Capital Allocation, or runtime transition.
 
 ## Human Boundary
 
-Human owns Emergency Stop decision.
+Human is not assigned routine execution work.
 
 ## Done Condition
 
-Execution is stopped, reason is recorded, and recovery path is prepared.
+Operation is complete, validated, and recorded.

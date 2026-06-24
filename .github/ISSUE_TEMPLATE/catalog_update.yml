@@ -1,40 +1,30 @@
 name: Catalog Update
-description: Request catalog, tag, search metadata, or relationship update
-title: "[Catalog] "
-labels: ["type:docs", "status:backlog", "area:governance"]
+description: ACIP catalog update request
+title: "[Catalog Update] "
+labels: ["type:review", "status:backlog", "area:governance"]
 body:
   - type: textarea
-    id: target
+    id: objective
     attributes:
-      label: Catalog Target
-      description: Asset ID, index, tag, category, or relationship target.
+      label: Objective
     validations:
       required: true
   - type: textarea
-    id: requested_change
+    id: scope
     attributes:
-      label: Requested Change
+      label: Scope / Out of Scope
     validations:
       required: true
   - type: textarea
-    id: automation_boundary
+    id: human_boundary
     attributes:
-      label: Automation / Human Boundary
-      value: |
-        - Can ChatGPT/Codex/script handle this?
-        - Is Human approval required?
-        - Is Emergency Stop relevant?
+      label: Human Boundary
+      value: Human handles Mission, Approval, Emergency Stop only unless risk acceptance, capital allocation, or runtime transition approval is required.
     validations:
       required: true
   - type: textarea
     id: acceptance
     attributes:
       label: Acceptance Criteria
-      value: |
-        - Catalog metadata is updated.
-        - Duplicate detection is considered.
-        - Relationships are recorded if applicable.
-        - Human is not assigned routine hygiene.
-        - Runtime implementation is not introduced.
     validations:
       required: true

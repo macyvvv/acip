@@ -2,19 +2,16 @@
 
 ## Conclusion
 
-This file is the initial repository-governed registry for Canonical Assets.
+This index supports repository-governed discovery, traceability, review, and reuse.
 
 Repository overrides conversation.
 
-## Registry
+## Index
 
-| asset_id | title | asset_type | lifecycle_status | owner | version | source_path | parent_asset_id | derived_asset_ids | related_adr | related_wbs | quality_gate_status | reuse_status | risk_level | revenue_link | last_reviewed |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| REG-0000 | Asset Registry Control | Operational Asset | canonical | Human | 0.1.0 | registry/ASSET_REGISTRY.md |  |  | ADR-0005 | WBS-0003 | pending | reusable | low | TBD | 2026-06-24 |
+| id | title | type | status | source_path | owner | risk_level | last_reviewed |
+|---|---|---|---|---|---|---|---|
+|  |  |  |  |  |  |  |  |
 
-## Rules
+## Rule
 
-- Every canonical asset should have one registry row.
-- Every derivative should reference source asset id.
-- Deprecated assets remain listed.
-- Registry changes must go through PR review.
+Routine index hygiene should be delegated away from Human wherever feasible.

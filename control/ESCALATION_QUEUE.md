@@ -1,14 +1,15 @@
 # Escalation Queue
 
-| escalation_id | reason | required_decision | owner | risk_level | status |
+## Conclusion
+
+Escalation Queue is part of ACIP's repository-governed control plane.
+
+## Table
+
+| id | target | owner | status | next_action | done_condition |
 |---|---|---|---|---|---|
 |  |  |  |  |  |  |
 
-## Escalation Reasons
+## Rule
 
-- Human approval
-- risk acceptance
-- capital allocation
-- emergency stop
-- ambiguous mission
-- policy conflict
+Human handles Mission, Approval, Emergency Stop. Routine control-plane hygiene should be delegated.

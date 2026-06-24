@@ -6,41 +6,18 @@ Proposed
 
 ## Context
 
-ACIP has defined Canonical Assets, lifecycle control, registry control, and traceability. The next requirement is an operational document set that allows repeatable asset production without introducing runtime automation or platform integration.
+ACIP requires repository-governed, repeatable, auditable operating controls while keeping Human focused on Mission, Approval, and Emergency Stop.
 
 ## Decision
 
-Adopt Asset Production Operations as a repository-governed control set.
+Adopt Asset Production Operations as part of the ACIP Repository Operating System.
 
-This includes:
+## Human Boundary
 
-- intake policy
-- production workflow
-- review cadence
-- output policy
-- intake templates
-- production checklist
-- review cadence checklist
-- output template
-- validation automation
-
-## Alternatives Considered
-
-### Continue producing assets manually without operations docs
-
-Rejected because it does not scale and creates review inconsistency.
-
-### Build runtime production system now
-
-Rejected because runtime implementation remains out of scope.
-
-### Use chat as the operating layer
-
-Rejected because repository overrides conversation.
+Human is not assigned routine execution work when ChatGPT, Codex, scripts, GitHub Actions, or approved future automation can perform it.
 
 ## Consequences
 
-- Asset production becomes repeatable.
-- Review and reuse become more consistent.
-- Additional documentation overhead is introduced.
-- Runtime implementation remains out of scope.
+- Repository governance becomes stronger.
+- Human routine workload decreases.
+- Runtime implementation remains out of scope until explicitly approved.

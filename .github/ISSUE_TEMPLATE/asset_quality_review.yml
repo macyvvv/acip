@@ -1,36 +1,30 @@
 name: Asset Quality Review
-description: Request quality, ROI, or risk review for a Canonical Asset
+description: ACIP asset quality review request
 title: "[Asset Quality Review] "
-labels: ["type:review", "status:ready", "area:governance"]
+labels: ["type:review", "status:backlog", "area:governance"]
 body:
   - type: textarea
-    id: asset
+    id: objective
     attributes:
-      label: Asset
-      description: Asset ID and source path.
+      label: Objective
     validations:
       required: true
   - type: textarea
-    id: review_scope
+    id: scope
     attributes:
-      label: Review Scope
-      value: |
-        - Quality
-        - ROI
-        - Risk
-        - Registry
-        - Traceability
+      label: Scope / Out of Scope
+    validations:
+      required: true
+  - type: textarea
+    id: human_boundary
+    attributes:
+      label: Human Boundary
+      value: Human handles Mission, Approval, Emergency Stop only unless risk acceptance, capital allocation, or runtime transition approval is required.
     validations:
       required: true
   - type: textarea
     id: acceptance
     attributes:
       label: Acceptance Criteria
-      value: |
-        - Quality scorecard is completed.
-        - ROI canvas is completed.
-        - Risk review is completed.
-        - Registry is updated if needed.
-        - No runtime implementation is introduced.
     validations:
       required: true

@@ -1,28 +1,30 @@
-name: Canonical Asset Production Closure
-description: Request closure review for Canonical Asset Production objective
-title: "[Closure] Canonical Asset Production"
-labels: ["type:review", "status:needs-human", "area:governance"]
+name: Canonical Asset Closure
+description: ACIP canonical asset closure request
+title: "[Canonical Asset Closure] "
+labels: ["type:review", "status:backlog", "area:governance"]
 body:
   - type: textarea
-    id: evidence
+    id: objective
     attributes:
-      label: Closure Evidence
-      description: Link validation scripts, workflows, policies, ADRs, and WBS.
+      label: Objective
     validations:
       required: true
   - type: textarea
-    id: risks
+    id: scope
     attributes:
-      label: Remaining Risks
+      label: Scope / Out of Scope
     validations:
       required: true
   - type: textarea
-    id: decision
+    id: human_boundary
     attributes:
-      label: Requested Human Decision
-      value: |
-        - approve closure
-        - request revision
-        - keep objective open
+      label: Human Boundary
+      value: Human handles Mission, Approval, Emergency Stop only unless risk acceptance, capital allocation, or runtime transition approval is required.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
     validations:
       required: true

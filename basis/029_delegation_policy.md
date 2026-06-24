@@ -1,7 +1,12 @@
-# Delegation Policy
+# 029 Delegation Policy
 
-Repository overrides conversation.
+## Conclusion
 
-Human handles only Mission, Approval, Emergency Stop.
+Delegation assigns routine work away from Human wherever safe.
 
-Routine planning, delegation, validation, queue management, and metadata work should be handled by ChatGPT, Codex, scripts, GitHub Actions, or approved future automation.
+## Rules
+
+- Human handles Mission, Approval, Emergency Stop.
+- ChatGPT plans, reviews, prioritizes, and delegates.
+- Codex implements, tests, and commits.
+- Scripts and CI validate.

@@ -1,30 +1,31 @@
 # Asset Risk Review
 
+## Conclusion
+
+This template supports repository-governed execution with minimal Human routine workload.
+
 ## Metadata
 
-- asset_id:
+- id:
 - title:
-- reviewer:
-- review_date:
+- owner:
+- current_phase:
+- current_objective:
+- source_path:
+- related_adr:
+- related_wbs:
+- status:
 
-## Risk Assessment
+## Human Boundary
 
-| Risk Category | Level | Notes |
-|---|---|---|
-| Policy Risk | low / medium / high |  |
-| Legal / Compliance Risk | low / medium / high |  |
-| Brand Risk | low / medium / high |  |
-| Operational Risk | low / medium / high |  |
-| Strategic Risk | low / medium / high |  |
-| Maintenance Risk | low / medium / high |  |
-| Source Drift Risk | low / medium / high |  |
-| Derivative Drift Risk | low / medium / high |  |
-| Revenue Misalignment Risk | low / medium / high |  |
+Human handles Mission, Approval, Emergency Stop, Risk Acceptance, Capital Allocation, and runtime transition approval.
 
-## Required Action
+## Automation Boundary
 
-- No action:
-- Review before reuse:
-- Human approval required:
-- ADR required:
-- Deprecation required:
+Routine drafting, validation, normalization, review preparation, and retry preparation should be delegated to ChatGPT, Codex, scripts, GitHub Actions, or approved future automation.
+
+## Done Condition
+
+- Repository evidence exists.
+- Validation passes.
+- Scope is preserved.

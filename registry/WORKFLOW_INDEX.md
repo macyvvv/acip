@@ -1,7 +1,17 @@
 # Workflow Index
 
+## Conclusion
+
+This index supports repository-governed discovery, traceability, review, and reuse.
+
 Repository overrides conversation.
 
-Human handles only Mission, Approval, Emergency Stop.
+## Index
 
-Routine planning, delegation, validation, queue management, and metadata work should be handled by ChatGPT, Codex, scripts, GitHub Actions, or approved future automation.
+| id | title | type | status | source_path | owner | risk_level | last_reviewed |
+|---|---|---|---|---|---|---|---|
+|  |  |  |  |  |  |  |  |
+
+## Rule
+
+Routine index hygiene should be delegated away from Human wherever feasible.

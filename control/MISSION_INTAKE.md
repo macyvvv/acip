@@ -1,21 +1,15 @@
 # Mission Intake
 
-## Current Mission
+## Conclusion
 
-TBD
+Mission Intake is part of ACIP's repository-governed control plane.
 
-## Intake Fields
+## Table
 
-- mission_id:
-- mission_statement:
-- current_phase:
-- current_objective:
-- scope:
-- out_of_scope:
-- approval_required:
-- emergency_stop_condition:
-- next_action:
+| id | target | owner | status | next_action | done_condition |
+|---|---|---|---|---|---|
+|  |  |  |  |  |  |
 
 ## Rule
 
-Human provides Mission. ChatGPT and Codex structure execution.
+Human handles Mission, Approval, Emergency Stop. Routine control-plane hygiene should be delegated.

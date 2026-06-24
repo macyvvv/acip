@@ -1,36 +1,31 @@
 # Catalog Entry Template
 
+## Conclusion
+
+This template supports repository-governed execution with minimal Human routine workload.
+
 ## Metadata
 
-- asset_id:
+- id:
 - title:
-- asset_type:
-- category:
-- tags:
-- source_path:
-- lifecycle_status:
 - owner:
-- version:
-- last_reviewed:
-
-## Search Metadata
-
-- keywords:
-- aliases:
-- related_assets:
+- current_phase:
+- current_objective:
+- source_path:
 - related_adr:
 - related_wbs:
-- risk_level:
-- value_category:
-
-## Reuse
-
-- reuse_status:
-- reuse_notes:
-- source_asset_id:
-- derived_asset_ids:
+- status:
 
 ## Human Boundary
 
-- Requires Human judgment:
-- Can be handled by ChatGPT/Codex/automation:
+Human handles Mission, Approval, Emergency Stop, Risk Acceptance, Capital Allocation, and runtime transition approval.
+
+## Automation Boundary
+
+Routine drafting, validation, normalization, review preparation, and retry preparation should be delegated to ChatGPT, Codex, scripts, GitHub Actions, or approved future automation.
+
+## Done Condition
+
+- Repository evidence exists.
+- Validation passes.
+- Scope is preserved.

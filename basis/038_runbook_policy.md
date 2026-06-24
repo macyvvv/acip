@@ -6,8 +6,6 @@ Repeatable operations must be converted into runbooks so Codex and future approv
 
 ## Runbook Requirements
 
-Each runbook must define:
-
 - objective
 - trigger
 - inputs
@@ -18,15 +16,4 @@ Each runbook must define:
 - retry rules
 - escalation rules
 - done condition
-- owner
-- Human boundary
-
-## Human Boundary
-
-Runbooks must avoid assigning mechanical work to Human.
-
-Human should appear only where approval, risk acceptance, capital allocation, or emergency stop is required.
-
-## Repository Rule
-
-Repository overrides conversation.
+- Human Boundary

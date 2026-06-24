@@ -1,32 +1,30 @@
 name: Asset Intake
-description: Propose a new Canonical Asset candidate
+description: ACIP asset intake request
 title: "[Asset Intake] "
-labels: ["type:docs", "status:backlog", "area:basis"]
+labels: ["type:review", "status:backlog", "area:governance"]
 body:
   - type: textarea
-    id: source_context
+    id: objective
     attributes:
-      label: Source Context
-      description: What triggered this asset candidate?
+      label: Objective
     validations:
       required: true
   - type: textarea
-    id: proposed_asset
+    id: scope
     attributes:
-      label: Proposed Asset
-      description: Title, type, objective, scope, and out of scope.
+      label: Scope / Out of Scope
     validations:
       required: true
   - type: textarea
-    id: value
+    id: human_boundary
     attributes:
-      label: Value
-      description: Business, operational, learning, strategic, and revenue link.
+      label: Human Boundary
+      value: Human handles Mission, Approval, Emergency Stop only unless risk acceptance, capital allocation, or runtime transition approval is required.
     validations:
       required: true
   - type: textarea
-    id: risk
+    id: acceptance
     attributes:
-      label: Risk Notes
+      label: Acceptance Criteria
     validations:
       required: true

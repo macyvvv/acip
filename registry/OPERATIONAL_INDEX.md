@@ -2,17 +2,16 @@
 
 ## Conclusion
 
-This index lists Operational Assets such as SOPs, checklists, prompts, templates, and workflows.
+This index supports repository-governed discovery, traceability, review, and reuse.
 
 Repository overrides conversation.
 
 ## Index
 
-| asset_id | title | operational_type | category | tags | source_path | lifecycle_status | owner | last_reviewed |
-|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |  |
+| id | title | type | status | source_path | owner | risk_level | last_reviewed |
+|---|---|---|---|---|---|---|---|
+|  |  |  |  |  |  |  |  |
 
-## Rules
+## Rule
 
-- Every repeatable operation should become an Operational Asset.
-- Human should not perform repeatable operations manually when delegation or automation is feasible.
+Routine index hygiene should be delegated away from Human wherever feasible.

@@ -1,7 +1,13 @@
-# Queue Policy
+# 036 Queue Policy
 
-Repository overrides conversation.
+## Conclusion
 
-Human handles only Mission, Approval, Emergency Stop.
+Queues make autonomous work visible and reviewable.
 
-Routine planning, delegation, validation, queue management, and metadata work should be handled by ChatGPT, Codex, scripts, GitHub Actions, or approved future automation.
+## Queues
+
+- Task Queue
+- Review Queue
+- Retry Queue
+- Escalation Queue
+- Parking Lot

@@ -2,38 +2,12 @@
 
 ## Conclusion
 
-Names must support stable retrieval, reuse, and review.
+Naming Standard provides stable governance metadata for ACIP.
 
-## Asset ID Prefixes
+## Rules
 
-| Prefix | Meaning |
-|---|---|
-| KA | Knowledge Asset |
-| CO | Content Object |
-| MO | Media Object |
-| OA | Operational Asset |
-| GOV | Governance Asset |
-| REG | Registry Asset |
-
-## File Naming
-
-Use:
-
-```text
-<prefix>-<number>-<short-kebab-title>.md
-```
-
-Example:
-
-```text
-KA-0001-company-os-principles.md
-```
-
-## Title Rules
-
-- Be stable.
-- Be searchable.
-- Avoid vague titles.
-- Avoid channel-specific naming unless asset is channel-specific.
-- Preserve source meaning.
 - Repository overrides conversation.
+- Use lowercase kebab-case where applicable.
+- Preserve traceability.
+- Do not assign routine hygiene to Human.
+- Runtime implementation remains out of scope unless approved.

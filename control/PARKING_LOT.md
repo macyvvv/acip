@@ -1,11 +1,15 @@
 # Parking Lot
 
-## Items
+## Conclusion
 
-| item_id | topic | reason_parked | revisit_condition | owner |
-|---|---|---|---|---|
-|  |  |  |  |  |
+Parking Lot is part of ACIP's repository-governed control plane.
+
+## Table
+
+| id | target | owner | status | next_action | done_condition |
+|---|---|---|---|---|---|
+|  |  |  |  |  |  |
 
 ## Rule
 
-Parking Lot prevents Current Objective drift.
+Human handles Mission, Approval, Emergency Stop. Routine control-plane hygiene should be delegated.

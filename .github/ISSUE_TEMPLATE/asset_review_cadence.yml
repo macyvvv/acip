@@ -1,30 +1,30 @@
 name: Asset Review Cadence
-description: Request scheduled or triggered review of a Canonical Asset
-title: "[Asset Review] "
-labels: ["type:review", "status:ready", "area:governance"]
+description: ACIP asset review cadence request
+title: "[Asset Review Cadence] "
+labels: ["type:review", "status:backlog", "area:governance"]
 body:
   - type: textarea
-    id: asset
+    id: objective
     attributes:
-      label: Asset
-      description: Asset ID and source path.
+      label: Objective
     validations:
       required: true
   - type: textarea
-    id: trigger
+    id: scope
     attributes:
-      label: Review Trigger
-      description: Cadence, drift, risk change, source change, or Human request.
+      label: Scope / Out of Scope
+    validations:
+      required: true
+  - type: textarea
+    id: human_boundary
+    attributes:
+      label: Human Boundary
+      value: Human handles Mission, Approval, Emergency Stop only unless risk acceptance, capital allocation, or runtime transition approval is required.
     validations:
       required: true
   - type: textarea
     id: acceptance
     attributes:
       label: Acceptance Criteria
-      value: |
-        - Review outcome is recorded.
-        - Registry is updated if needed.
-        - Derivative drift is checked.
-        - No runtime implementation is introduced.
     validations:
       required: true

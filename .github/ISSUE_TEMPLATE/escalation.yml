@@ -1,1 +1,30 @@
 name: Escalation
+description: ACIP escalation request
+title: "[Escalation] "
+labels: ["type:review", "status:backlog", "area:governance"]
+body:
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope / Out of Scope
+    validations:
+      required: true
+  - type: textarea
+    id: human_boundary
+    attributes:
+      label: Human Boundary
+      value: Human handles Mission, Approval, Emergency Stop only unless risk acceptance, capital allocation, or runtime transition approval is required.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+    validations:
+      required: true

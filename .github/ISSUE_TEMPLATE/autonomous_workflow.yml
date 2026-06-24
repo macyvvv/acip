@@ -1,7 +1,7 @@
 name: Autonomous Workflow
-description: Request autonomous workflow or runbook execution preparation
+description: ACIP autonomous workflow request
 title: "[Autonomous Workflow] "
-labels: ["type:implementation", "status:ready", "area:governance"]
+labels: ["type:review", "status:backlog", "area:governance"]
 body:
   - type: textarea
     id: objective
@@ -10,17 +10,16 @@ body:
     validations:
       required: true
   - type: textarea
-    id: runbook
+    id: scope
     attributes:
-      label: Runbook / WBS
+      label: Scope / Out of Scope
     validations:
       required: true
   - type: textarea
     id: human_boundary
     attributes:
       label: Human Boundary
-      value: |
-        Human handles Mission, Approval, Emergency Stop only.
+      value: Human handles Mission, Approval, Emergency Stop only unless risk acceptance, capital allocation, or runtime transition approval is required.
     validations:
       required: true
   - type: textarea

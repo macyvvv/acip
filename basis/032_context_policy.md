@@ -1,7 +1,13 @@
-# Context Policy
+# 032 Context Policy
 
-Repository overrides conversation.
+## Conclusion
 
-Human handles only Mission, Approval, Emergency Stop.
+Context must be drawn from repository sources before conversation.
 
-Routine planning, delegation, validation, queue management, and metadata work should be handled by ChatGPT, Codex, scripts, GitHub Actions, or approved future automation.
+## Priority
+
+1. REPOSITORY_CONVENTIONS
+2. CURRENT_STATE
+3. ARCHITECTURE
+4. ADR
+5. WBS

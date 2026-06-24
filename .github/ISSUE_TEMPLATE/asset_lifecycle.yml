@@ -1,25 +1,25 @@
 name: Asset Lifecycle
-description: Define or review lifecycle controls for Canonical Assets
+description: ACIP asset lifecycle request
 title: "[Asset Lifecycle] "
-labels: ["type:docs", "area:governance", "status:backlog"]
+labels: ["type:review", "status:backlog", "area:governance"]
 body:
   - type: textarea
-    id: target
+    id: objective
     attributes:
-      label: Target
-      description: Asset, document, or lifecycle rule being reviewed.
+      label: Objective
     validations:
       required: true
   - type: textarea
-    id: current_status
+    id: scope
     attributes:
-      label: Current Status
+      label: Scope / Out of Scope
     validations:
       required: true
   - type: textarea
-    id: desired_status
+    id: human_boundary
     attributes:
-      label: Desired Status
+      label: Human Boundary
+      value: Human handles Mission, Approval, Emergency Stop only unless risk acceptance, capital allocation, or runtime transition approval is required.
     validations:
       required: true
   - type: textarea

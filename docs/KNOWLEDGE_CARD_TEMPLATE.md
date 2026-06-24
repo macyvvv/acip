@@ -1,37 +1,31 @@
 # Knowledge Card Template
 
-## Card Metadata
+## Conclusion
 
-- asset_id:
+This template supports repository-governed execution with minimal Human routine workload.
+
+## Metadata
+
+- id:
 - title:
-- category:
-- tags:
+- owner:
+- current_phase:
+- current_objective:
 - source_path:
+- related_adr:
+- related_wbs:
+- status:
 
-## Summary
+## Human Boundary
 
-One paragraph summary.
+Human handles Mission, Approval, Emergency Stop, Risk Acceptance, Capital Allocation, and runtime transition approval.
 
-## When To Use
+## Automation Boundary
 
-- 
+Routine drafting, validation, normalization, review preparation, and retry preparation should be delegated to ChatGPT, Codex, scripts, GitHub Actions, or approved future automation.
 
-## When Not To Use
+## Done Condition
 
-- 
-
-## Key Principles
-
-- 
-
-## Related Assets
-
-- 
-
-## Risk Notes
-
-- 
-
-## Reuse Notes
-
--
+- Repository evidence exists.
+- Validation passes.
+- Scope is preserved.

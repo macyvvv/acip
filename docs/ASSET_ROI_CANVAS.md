@@ -1,45 +1,31 @@
 # Asset ROI Canvas
 
+## Conclusion
+
+This template supports repository-governed execution with minimal Human routine workload.
+
 ## Metadata
 
-- asset_id:
+- id:
 - title:
-- asset_type:
 - owner:
-- version:
+- current_phase:
+- current_objective:
+- source_path:
+- related_adr:
+- related_wbs:
+- status:
 
-## Value Hypothesis
+## Human Boundary
 
-- Business Value:
-- Operational Value:
-- Learning Value:
-- Strategic Value:
-- Brand Value:
+Human handles Mission, Approval, Emergency Stop, Risk Acceptance, Capital Allocation, and runtime transition approval.
 
-## Revenue Path
+## Automation Boundary
 
-- Direct Revenue Path:
-- Indirect Revenue Path:
-- Leading Indicator:
-- Lagging Indicator:
+Routine drafting, validation, normalization, review preparation, and retry preparation should be delegated to ChatGPT, Codex, scripts, GitHub Actions, or approved future automation.
 
-## Cost
+## Done Condition
 
-- Production Cost:
-- Review Cost:
-- Maintenance Cost:
-- Reuse Cost:
-
-## Measurement
-
-- 30 day expectation:
-- 90 day expectation:
-- 365 day expectation:
-- lifetime expectation:
-
-## Decision
-
-- Keep:
-- Revise:
-- Restrict:
-- Deprecate:
+- Repository evidence exists.
+- Validation passes.
+- Scope is preserved.

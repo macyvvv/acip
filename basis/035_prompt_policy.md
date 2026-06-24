@@ -1,7 +1,16 @@
-# Prompt Policy
+# 035 Prompt Policy
 
-Repository overrides conversation.
+## Conclusion
 
-Human handles only Mission, Approval, Emergency Stop.
+Prompts must be structured as execution contracts where possible.
 
-Routine planning, delegation, validation, queue management, and metadata work should be handled by ChatGPT, Codex, scripts, GitHub Actions, or approved future automation.
+## Required Sections
+
+- conclusion
+- objective
+- context
+- scope
+- out of scope
+- files
+- validation
+- done condition

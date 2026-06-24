@@ -1,39 +1,31 @@
 # Asset Quality Scorecard
 
+## Conclusion
+
+This template supports repository-governed execution with minimal Human routine workload.
+
 ## Metadata
 
-- asset_id:
+- id:
 - title:
-- reviewer:
-- review_date:
+- owner:
+- current_phase:
+- current_objective:
+- source_path:
+- related_adr:
+- related_wbs:
+- status:
 
-## Scorecard
+## Human Boundary
 
-| Dimension | Score 0-3 | Notes |
-|---|---:|---|
-| Objective Fit |  |  |
-| Source Clarity |  |  |
-| Scope Control |  |  |
-| Reusability |  |  |
-| Traceability |  |  |
-| Risk Visibility |  |  |
-| Maintenance Cost |  |  |
-| ROI Link |  |  |
-| Strategic Fit |  |  |
-| Operational Usability |  |  |
+Human handles Mission, Approval, Emergency Stop, Risk Acceptance, Capital Allocation, and runtime transition approval.
 
-## Scoring
+## Automation Boundary
 
-| Score | Meaning |
-|---:|---|
-| 0 | Missing |
-| 1 | Weak |
-| 2 | Acceptable |
-| 3 | Strong |
+Routine drafting, validation, normalization, review preparation, and retry preparation should be delegated to ChatGPT, Codex, scripts, GitHub Actions, or approved future automation.
 
-## Decision
+## Done Condition
 
-- Pass:
-- Fail:
-- Waive:
-- Required Fixes:
+- Repository evidence exists.
+- Validation passes.
+- Scope is preserved.

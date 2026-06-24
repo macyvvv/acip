@@ -1,29 +1,23 @@
-# RB-0003: WBS to Codex Instruction
+# RB-0003: Wbs To Codex Instruction
 
 ## Objective
 
-Convert WBS into precise Codex implementation instruction.
+Execute wbs to codex instruction as a repeatable repository-governed operation.
 
-## Required Sections
+## Steps
 
-- conclusion
-- objective
-- repository context
-- files to create or modify
-- scope
-- out of scope
-- acceptance criteria
-- validation commands
-- commit expectation
-- prohibited actions
+1. Confirm Current Phase.
+2. Confirm Current Objective.
+3. Read repository sources.
+4. Execute only approved scope.
+5. Run validation.
+6. Prepare decision-ready status.
+7. Escalate only for Mission, Approval, Emergency Stop, Risk Acceptance, Capital Allocation, or runtime transition.
 
-## Rules
+## Human Boundary
 
-- Repository overrides conversation.
-- Codex must not change Current Objective.
-- Codex must not introduce runtime implementation unless approved.
-- Codex must not assign routine execution to Human.
+Human is not assigned routine execution work.
 
 ## Done Condition
 
-Codex can execute without further Human clarification.
+Operation is complete, validated, and recorded.

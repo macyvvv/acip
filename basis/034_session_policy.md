@@ -1,7 +1,9 @@
-# Session Policy
+# 034 Session Policy
 
-Repository overrides conversation.
+## Conclusion
 
-Human handles only Mission, Approval, Emergency Stop.
+Sessions must preserve Current Objective and avoid drift.
 
-Routine planning, delegation, validation, queue management, and metadata work should be handled by ChatGPT, Codex, scripts, GitHub Actions, or approved future automation.
+## Rule
+
+Continue current execution unless Human changes Mission, Approval, or Emergency Stop.

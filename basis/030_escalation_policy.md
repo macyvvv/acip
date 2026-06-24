@@ -1,7 +1,15 @@
-# Escalation Policy
+# 030 Escalation Policy
 
-Repository overrides conversation.
+## Conclusion
 
-Human handles only Mission, Approval, Emergency Stop.
+Escalation occurs only when Human judgment is required.
 
-Routine planning, delegation, validation, queue management, and metadata work should be handled by ChatGPT, Codex, scripts, GitHub Actions, or approved future automation.
+## Escalation Triggers
+
+- Mission ambiguity
+- Approval required
+- Emergency Stop
+- Risk acceptance
+- Capital allocation
+- Runtime transition
+- Architecture change

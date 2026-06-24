@@ -1,23 +1,23 @@
-# RB-0004: PR Review Preparation
+# RB-0004: Pr Review Prep
 
 ## Objective
 
-Prepare a PR review package so Human receives only decision-relevant information.
+Execute pr review prep as a repeatable repository-governed operation.
 
 ## Steps
 
-1. Summarize changes.
-2. Compare against Current Objective.
-3. Check scope and out of scope.
-4. Check validation results.
-5. Identify risks.
-6. Identify Human decision required.
-7. Recommend approve / request changes / stop.
+1. Confirm Current Phase.
+2. Confirm Current Objective.
+3. Read repository sources.
+4. Execute only approved scope.
+5. Run validation.
+6. Prepare decision-ready status.
+7. Escalate only for Mission, Approval, Emergency Stop, Risk Acceptance, Capital Allocation, or runtime transition.
 
 ## Human Boundary
 
-Human reviews decision summary, not raw file inventory.
+Human is not assigned routine execution work.
 
 ## Done Condition
 
-Review package is decision-ready.
+Operation is complete, validated, and recorded.

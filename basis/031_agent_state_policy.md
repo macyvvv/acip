@@ -1,7 +1,16 @@
-# Agent State Policy
+# 031 Agent State Policy
 
-Repository overrides conversation.
+## Conclusion
 
-Human handles only Mission, Approval, Emergency Stop.
+Agent state must be explicit enough to resume execution without relying on chat memory.
 
-Routine planning, delegation, validation, queue management, and metadata work should be handled by ChatGPT, Codex, scripts, GitHub Actions, or approved future automation.
+## State Fields
+
+- current_phase
+- current_objective
+- current_task
+- owner
+- status
+- blockers
+- next_action
+- done_condition

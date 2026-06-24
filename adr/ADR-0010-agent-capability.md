@@ -1,7 +1,23 @@
-# ADR Agent Capability
+# ADR-0010: Agent Capability
 
-Repository overrides conversation.
+## Status
 
-Human handles only Mission, Approval, Emergency Stop.
+Proposed
 
-Routine planning, delegation, validation, queue management, and metadata work should be handled by ChatGPT, Codex, scripts, GitHub Actions, or approved future automation.
+## Context
+
+ACIP requires repository-governed, repeatable, auditable operating controls while keeping Human focused on Mission, Approval, and Emergency Stop.
+
+## Decision
+
+Adopt Agent Capability as part of the ACIP Repository Operating System.
+
+## Human Boundary
+
+Human is not assigned routine execution work when ChatGPT, Codex, scripts, GitHub Actions, or approved future automation can perform it.
+
+## Consequences
+
+- Repository governance becomes stronger.
+- Human routine workload decreases.
+- Runtime implementation remains out of scope until explicitly approved.

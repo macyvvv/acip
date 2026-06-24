@@ -1,32 +1,31 @@
 # Search Metadata Template
 
-## Required Metadata
+## Conclusion
 
-- asset_id:
+This template supports repository-governed execution with minimal Human routine workload.
+
+## Metadata
+
+- id:
 - title:
-- aliases:
-- keywords:
-- category:
-- tags:
-- asset_type:
-- lifecycle_status:
+- owner:
+- current_phase:
+- current_objective:
 - source_path:
-- related_assets:
 - related_adr:
 - related_wbs:
-- risk_level:
-- value_category:
-- last_reviewed:
+- status:
 
-## Search Notes
+## Human Boundary
 
-- likely search terms:
-- duplicate candidates:
-- superseded assets:
-- derivative candidates:
+Human handles Mission, Approval, Emergency Stop, Risk Acceptance, Capital Allocation, and runtime transition approval.
 
-## Automation Notes
+## Automation Boundary
 
-- metadata can be normalized by:
-- duplicate detection can be performed by:
-- Human judgment required for:
+Routine drafting, validation, normalization, review preparation, and retry preparation should be delegated to ChatGPT, Codex, scripts, GitHub Actions, or approved future automation.
+
+## Done Condition
+
+- Repository evidence exists.
+- Validation passes.
+- Scope is preserved.

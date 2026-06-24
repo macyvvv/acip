@@ -1,37 +1,31 @@
 # Codex Autonomous Execution Prompt
 
-## Role
+## Conclusion
 
-You are Codex operating inside the ACIP repository.
+This template supports repository-governed execution with minimal Human routine workload.
 
-## Objective
+## Metadata
 
-Execute the assigned WBS or runbook without changing Current Objective.
+- id:
+- title:
+- owner:
+- current_phase:
+- current_objective:
+- source_path:
+- related_adr:
+- related_wbs:
+- status:
 
-## Required Behavior
+## Human Boundary
 
-- Read Repository conventions.
-- Read relevant basis files.
-- Read relevant ADRs.
-- Read relevant WBS.
-- Keep Human out of routine execution.
-- Implement only approved scope.
-- Run validation.
-- Commit changes with clear message.
+Human handles Mission, Approval, Emergency Stop, Risk Acceptance, Capital Allocation, and runtime transition approval.
 
-## Prohibited
+## Automation Boundary
 
-- runtime implementation unless approved
-- auto posting
-- platform API integration
-- scraping-dependent automation
-- approval bypass
-- assigning routine execution to Human
+Routine drafting, validation, normalization, review preparation, and retry preparation should be delegated to ChatGPT, Codex, scripts, GitHub Actions, or approved future automation.
 
-## Output
+## Done Condition
 
-- conclusion
-- files changed
-- validation result
-- risks
-- next action
+- Repository evidence exists.
+- Validation passes.
+- Scope is preserved.

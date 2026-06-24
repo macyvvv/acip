@@ -2,20 +2,14 @@
 
 ## Conclusion
 
-## Current Phase
+Status Report Template is part of ACIP's repository-governed control plane.
 
-## Current Objective
+## Table
 
-## Completed
+| id | target | owner | status | next_action | done_condition |
+|---|---|---|---|---|---|
+|  |  |  |  |  |  |
 
-## Blocked
+## Rule
 
-## Risks
-
-## Human Decision Required
-
-## Next Action
-
--成果物:
--担当:
--Done条件:
+Human handles Mission, Approval, Emergency Stop. Routine control-plane hygiene should be delegated.

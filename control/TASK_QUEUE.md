@@ -1,21 +1,15 @@
 # Task Queue
 
-## Queue
+## Conclusion
 
-| task_id | objective | owner | status | source | validation | done_condition |
-|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |
+Task Queue is part of ACIP's repository-governed control plane.
 
-## Status Values
+## Table
 
-- backlog
-- ready
-- executing
-- blocked
-- review
-- done
-- parked
+| id | target | owner | status | next_action | done_condition |
+|---|---|---|---|---|---|
+|  |  |  |  |  |  |
 
 ## Rule
 
-Routine queue hygiene should be handled by ChatGPT, Codex, scripts, or future approved automation.
+Human handles Mission, Approval, Emergency Stop. Routine control-plane hygiene should be delegated.

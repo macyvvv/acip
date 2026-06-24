@@ -1,9 +1,15 @@
 # Decision Log
 
-| decision_id | date | decision | owner | source | related_adr | related_wbs |
-|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |
+## Conclusion
+
+Decision Log is part of ACIP's repository-governed control plane.
+
+## Table
+
+| id | target | owner | status | next_action | done_condition |
+|---|---|---|---|---|---|
+|  |  |  |  |  |  |
 
 ## Rule
 
-Repository decisions override conversation.
+Human handles Mission, Approval, Emergency Stop. Routine control-plane hygiene should be delegated.

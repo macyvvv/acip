@@ -1,9 +1,15 @@
 # Retry Queue
 
-| retry_id | failed_target | failure_class | owner | retry_plan | escalation_required | status |
-|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |
+## Conclusion
+
+Retry Queue is part of ACIP's repository-governed control plane.
+
+## Table
+
+| id | target | owner | status | next_action | done_condition |
+|---|---|---|---|---|---|
+|  |  |  |  |  |  |
 
 ## Rule
 
-Retry should be mechanical when possible and escalated only when approval or judgment is required.
+Human handles Mission, Approval, Emergency Stop. Routine control-plane hygiene should be delegated.

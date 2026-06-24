@@ -6,46 +6,18 @@ Proposed
 
 ## Context
 
-ACIP's long-term objective is autonomous operation. Human should not be assigned routine execution work that can be delegated to ChatGPT, Codex, scripts, GitHub Actions, or future approved automation.
+ACIP requires repository-governed, repeatable, auditable operating controls while keeping Human focused on Mission, Approval, and Emergency Stop.
 
 ## Decision
 
-Adopt Autonomy First as an operating boundary.
+Adopt Autonomy First Operating Boundary as part of the ACIP Repository Operating System.
 
-Human responsibilities are limited by default to:
+## Human Boundary
 
-- Mission
-- Approval
-- Emergency Stop
-- Risk acceptance
-- Capital allocation
-- Final strategic judgment
-
-All repeatable, mechanical, review-preparable, or validation-oriented work should be delegated away from Human whenever feasible.
-
-## Current Constraint
-
-Runtime implementation remains out of scope until explicitly approved.
-
-Therefore, current autonomy is limited to repository-governed workflows, validation scripts, GitHub Actions, Codex implementation, and ChatGPT review / prioritization.
-
-## Alternatives Considered
-
-### Human performs all repository hygiene
-
-Rejected because it does not scale and contradicts autonomy priority.
-
-### Implement runtime autonomy immediately
-
-Rejected because current governance prohibits runtime implementation until approved.
-
-### Leave boundary implicit
-
-Rejected because unclear responsibility boundaries create unnecessary Human work.
+Human is not assigned routine execution work when ChatGPT, Codex, scripts, GitHub Actions, or approved future automation can perform it.
 
 ## Consequences
 
-- Human workload should decrease.
-- Documentation must identify automation/delegation candidates.
-- Future automation work has a clear policy basis.
-- Runtime implementation still requires approval.
+- Repository governance becomes stronger.
+- Human routine workload decreases.
+- Runtime implementation remains out of scope until explicitly approved.

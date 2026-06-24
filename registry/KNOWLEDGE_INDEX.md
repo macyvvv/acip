@@ -2,18 +2,16 @@
 
 ## Conclusion
 
-This index lists Knowledge Assets for discovery and reuse.
+This index supports repository-governed discovery, traceability, review, and reuse.
 
 Repository overrides conversation.
 
 ## Index
 
-| asset_id | title | category | tags | source_path | lifecycle_status | quality_gate_status | risk_level | last_reviewed |
-|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |  |
+| id | title | type | status | source_path | owner | risk_level | last_reviewed |
+|---|---|---|---|---|---|---|---|
+|  |  |  |  |  |  |  |  |
 
-## Rules
+## Rule
 
-- Every Knowledge Asset should appear here.
-- Use stable categories and tags.
-- Deprecated assets move or copy to `registry/DEPRECATED_INDEX.md`.
+Routine index hygiene should be delegated away from Human wherever feasible.

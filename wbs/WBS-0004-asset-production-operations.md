@@ -10,46 +10,33 @@ Canonical Asset Production
 
 ## Conclusion
 
-This WBS adds repeatable production operations for Canonical Assets without introducing runtime implementation.
+This WBS defines repository-governed work for Asset Production Operations.
 
 ## Scope
 
-- Asset intake policy
-- Asset production workflow
-- Asset review cadence
-- Asset output policy
-- Intake template
-- Triage template
-- Production checklist
-- Review cadence checklist
-- Derived output template
-- Validation script
-- GitHub Actions workflow
+- policies
+- ADR
+- templates
+- checklists
+- validation
+- CI
 
 ## Out of Scope
 
 - runtime implementation
 - auto posting
 - platform API integration
-- scraping-dependent workflows
-- new application frameworks
+- scraping-dependent automation
 - external database
+- new frameworks
 
-## Work Breakdown
+## Human Boundary
 
-| ID | Task | Owner | Done Condition |
-|---|---|---|---|
-| WBS-0004-01 | Add intake policy | Codex | Policy exists |
-| WBS-0004-02 | Add production workflow | Codex | Workflow exists |
-| WBS-0004-03 | Add review cadence | Codex | Cadence exists |
-| WBS-0004-04 | Add output policy | Codex | Output policy exists |
-| WBS-0004-05 | Add templates | Codex | Templates exist |
-| WBS-0004-06 | Add validation script | Codex | Script exits 0 |
-| WBS-0004-07 | Add CI workflow | Codex | Workflow runs |
+Human handles Mission, Approval, Emergency Stop, Risk Acceptance, Capital Allocation, and runtime transition approval.
 
 ## Acceptance Criteria
 
-- `python scripts/validate_asset_production_operations.py` passes.
-- `Asset Production Operations Check` passes in GitHub Actions.
-- Repository remains SSOT.
-- Runtime implementation remains out of scope.
+- validation passes
+- CI passes
+- Repository remains SSOT
+- runtime implementation remains out of scope unless explicitly approved

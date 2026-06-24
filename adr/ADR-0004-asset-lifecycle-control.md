@@ -6,48 +6,18 @@ Proposed
 
 ## Context
 
-ACIP has established Canonical Asset Production. The next operational risk is uncontrolled drift after assets are created: assets may be reused, modified, deprecated, or copied without preserving source meaning.
+ACIP requires repository-governed, repeatable, auditable operating controls while keeping Human focused on Mission, Approval, and Emergency Stop.
 
 ## Decision
 
-Adopt an explicit Canonical Asset lifecycle:
+Adopt Asset Lifecycle Control as part of the ACIP Repository Operating System.
 
-```text
-Intake → Draft → Review → Approved → Canonical → Reuse → Revision → Deprecated
-```
+## Human Boundary
 
-Repository paths, metadata, status definitions, and validation checks will govern lifecycle control.
-
-## Alternatives Considered
-
-1. Keep assets as ordinary Markdown files.
-   - Rejected because reuse and revision would become hard to audit.
-
-2. Add runtime asset management software.
-   - Rejected for this phase because runtime implementation remains out of scope.
-
-3. Use issue labels only.
-   - Rejected because labels do not preserve canonical asset metadata inside the repository.
+Human is not assigned routine execution work when ChatGPT, Codex, scripts, GitHub Actions, or approved future automation can perform it.
 
 ## Consequences
 
-### Positive
-
-- Better auditability
-- Lower drift risk
-- Clearer reuse path
-- Stronger future automation readiness
-
-### Negative
-
-- More required metadata
-- More review overhead
-- Requires discipline in file naming and status updates
-
-## Related Files
-
-- `basis/008_canonical_asset_definition.md`
-- `basis/009_asset_production_policy.md`
-- `basis/010_quality_gate.md`
-- `basis/011_asset_lifecycle.md`
-- `basis/012_asset_repository_conventions.md`
+- Repository governance becomes stronger.
+- Human routine workload decreases.
+- Runtime implementation remains out of scope until explicitly approved.

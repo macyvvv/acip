@@ -1,7 +1,13 @@
 # Capability Taxonomy
 
-Repository overrides conversation.
+## Conclusion
 
-Human handles only Mission, Approval, Emergency Stop.
+Capability Taxonomy provides stable governance metadata for ACIP.
 
-Routine planning, delegation, validation, queue management, and metadata work should be handled by ChatGPT, Codex, scripts, GitHub Actions, or approved future automation.
+## Rules
+
+- Repository overrides conversation.
+- Use lowercase kebab-case where applicable.
+- Preserve traceability.
+- Do not assign routine hygiene to Human.
+- Runtime implementation remains out of scope unless approved.
