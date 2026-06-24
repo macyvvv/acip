@@ -106,6 +106,13 @@
       "source": "repository"
     },
     {
+      "id": "README_EP0100_1_AGENT_RUNTIME_IMPORT_FIX.md",
+      "type": "readme",
+      "path": "README_EP0100_1_AGENT_RUNTIME_IMPORT_FIX.md",
+      "title": "EP-0100.1 Agent Runtime MVP Import Fix",
+      "source": "repository"
+    },
+    {
       "id": "README_ASSET_LIFECYCLE_PACK.md",
       "type": "readme",
       "path": "README_ASSET_LIFECYCLE_PACK.md",
@@ -194,6 +201,13 @@
       "type": "readme",
       "path": "README_ASSET_QUALITY_ROI_CLOSURE_PACK.md",
       "title": "ACIP Asset Quality ROI Closure Pack",
+      "source": "repository"
+    },
+    {
+      "id": "MANIFEST_EP0100_1.md",
+      "type": "document",
+      "path": "MANIFEST_EP0100_1.md",
+      "title": "EP-0100.1 Manifest",
       "source": "repository"
     },
     {
@@ -1265,69 +1279,6 @@
       "type": "registry",
       "path": "registry/registry_5.md",
       "title": "registry 5",
-      "source": "repository"
-    },
-    {
-      "id": "agent_runtime/cycle.py",
-      "type": "document",
-      "path": "agent_runtime/cycle.py",
-      "title": "cycle",
-      "source": "repository"
-    },
-    {
-      "id": "agent_runtime/planner.py",
-      "type": "document",
-      "path": "agent_runtime/planner.py",
-      "title": "planner",
-      "source": "repository"
-    },
-    {
-      "id": "agent_runtime/models.py",
-      "type": "document",
-      "path": "agent_runtime/models.py",
-      "title": "models",
-      "source": "repository"
-    },
-    {
-      "id": "agent_runtime/approval_gate.py",
-      "type": "document",
-      "path": "agent_runtime/approval_gate.py",
-      "title": "approval_gate",
-      "source": "repository"
-    },
-    {
-      "id": "agent_runtime/__init__.py",
-      "type": "document",
-      "path": "agent_runtime/__init__.py",
-      "title": "__init__",
-      "source": "repository"
-    },
-    {
-      "id": "agent_runtime/loader.py",
-      "type": "document",
-      "path": "agent_runtime/loader.py",
-      "title": "loader",
-      "source": "repository"
-    },
-    {
-      "id": "agent_runtime/queue_engine.py",
-      "type": "document",
-      "path": "agent_runtime/queue_engine.py",
-      "title": "queue_engine",
-      "source": "repository"
-    },
-    {
-      "id": "agent_runtime/repository.py",
-      "type": "document",
-      "path": "agent_runtime/repository.py",
-      "title": "repository",
-      "source": "repository"
-    },
-    {
-      "id": "agent_runtime/review_engine.py",
-      "type": "document",
-      "path": "agent_runtime/review_engine.py",
-      "title": "review_engine",
       "source": "repository"
     },
     {
@@ -2545,6 +2496,12 @@
       "evidence": "scripts/validate_repository_knowledge_graph_runtime_integration.py"
     },
     {
+      "source": "README_EP0100_1_AGENT_RUNTIME_IMPORT_FIX.md",
+      "target": "scripts/validate_ep_0100.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0100.py"
+    },
+    {
       "source": "README_REPOSITORY_OS_V1_BASELINE_PACK.md",
       "target": "scripts/validate_repository_os_v1_baseline.py",
       "type": "validates",
@@ -2564,6 +2521,12 @@
     },
     {
       "source": "README_EP0100_AGENT_RUNTIME_MVP.md",
+      "target": "scripts/validate_ep_0100.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0100.py"
+    },
+    {
+      "source": "MANIFEST_EP0100_1.md",
       "target": "scripts/validate_ep_0100.py",
       "type": "validates",
       "evidence": "scripts/validate_ep_0100.py"
@@ -2717,24 +2680,6 @@
       "target": "scripts/selftest_v2/validate_semantic_selftest.py",
       "type": "validates",
       "evidence": "scripts/selftest_v2/validate_semantic_selftest.py"
-    },
-    {
-      "source": "agent_runtime/planner.py",
-      "target": "scripts/agent_runtime/run_dry_run_cycle.py",
-      "type": "validates",
-      "evidence": "scripts/agent_runtime/run_dry_run_cycle.py"
-    },
-    {
-      "source": "agent_runtime/planner.py",
-      "target": "scripts/agent_runtime/validate_agent_runtime_mvp.py",
-      "type": "validates",
-      "evidence": "scripts/agent_runtime/validate_agent_runtime_mvp.py"
-    },
-    {
-      "source": "agent_runtime/queue_engine.py",
-      "target": "scripts/agent_runtime/validate_agent_runtime_mvp.py",
-      "type": "validates",
-      "evidence": "scripts/agent_runtime/validate_agent_runtime_mvp.py"
     },
     {
       "source": "orchestrator/RUNBOOK.md",

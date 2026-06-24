@@ -6,6 +6,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 COMMANDS = [
     [sys.executable, "scripts/graph/build_repository_graph.py"],
@@ -15,12 +17,14 @@ COMMANDS = [
     [sys.executable, "scripts/agent_runtime/validate_agent_runtime_mvp.py"],
 ]
 
+
 def main() -> int:
     for cmd in COMMANDS:
         print("$ " + " ".join(cmd))
         subprocess.check_call(cmd, cwd=ROOT)
     print("EP-0100 Validation passed.")
     return 0
+
 
 if __name__ == "__main__":
     raise SystemExit(main())
