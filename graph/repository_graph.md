@@ -1,7 +1,7 @@
 # Repository Graph
 
-- nodes: 339
-- edges: 55
+- nodes: 358
+- edges: 62
 
 ## Nodes
 - `README_REPOSITORY_SELFTEST_COMPLETE_PACK.md` (readme) ACIP Repository Self Test Complete Pack
@@ -13,6 +13,7 @@
 - `README_AGENT_RUNTIME_FOUNDATION_PACK.md` (readme) Agent Runtime Foundation Pack
 - `CHANGELOG.md` (document) CHANGELOG
 - `README_AGENT_OS_PACK.md` (readme) Agent OS Pack
+- `MANIFEST_EP0100.md` (document) EP-0100 Manifest
 - `selftest.yml` (document) selftest
 - `README_REPOSITORY_KNOWLEDGE_GRAPH_RUNTIME_INTEGRATION_PACK.md` (readme) ACIP Repository Knowledge Graph Runtime Integration Pack
 - `README_EP0001.md` (readme) EP-0001 Runtime Capability Suite
@@ -25,6 +26,7 @@
 - `README_SELFTEST_IMPORT_FIX_PACK.md` (readme) ACIP SelfTest Import Fix Pack
 - `README.md` (readme) ACIP GitHub Operations Kit v1
 - `README_AUTONOMOUS_WORKFLOW_CONTROL_PACK.md` (readme) ACIP Autonomous Workflow Control Pack
+- `README_EP0100_AGENT_RUNTIME_MVP.md` (readme) EP-0100 Agent Runtime MVP
 - `README_EP0003.md` (readme) EP-0003 Agent Capability Suite
 - `README_ASSET_PRODUCTION_OPERATIONS_PACK.md` (readme) ACIP Asset Production Operations Pack
 - `MANIFEST.md` (document) MANIFEST
@@ -40,6 +42,7 @@
 - `README_ASSET_REGISTRY_PACK.md` (readme) ACIP Asset Registry Pack
 - `releases/RELEASE_v1.0.0-repository-os.md` (document) ACIP Repository Operating System v1.0
 - `adr/ADR-0021-runtime-transition-readiness.md` (adr) ADR-0021 Runtime Transition Readiness
+- `adr/ADR-0030-agent-runtime-mvp.md` (adr) ADR-0030: Agent Runtime MVP
 - `adr/ADR-0022-agent-orchestrator.md` (adr) ADR-0022: Agent Orchestrator
 - `adr/ADR-0025-incremental-graph-and-context-diff.md` (adr) ADR-0025: Incremental Graph and Context Diff
 - `adr/ADR-0026-agent-runtime-foundation.md` (adr) ADR-0026 Agent Runtime Foundation
@@ -99,6 +102,7 @@
 - `runtime/runtime_dry_run_report.md` (document) Runtime Dry Run Report
 - `runtime/RUNTIME_READINESS_CHECKLIST.md` (document) Runtime Readiness Checklist
 - `runtime/AUDIT_ENGINE.md` (document) Audit Engine
+- `runtime/AGENT_RUNTIME_MVP_SPEC.md` (document) Agent Runtime MVP Specification
 - `tests/test_result.py` (document) test_result
 - `tests/test_task.py` (document) test_task
 - `tests/test_local_agent_runner.py` (document) test_local_agent_runner
@@ -144,6 +148,7 @@
 - `loader/CONTEXT_LOADER.md` (document) Context Loader
 - `review/REVIEW_GATE_SUMMARY.md` (document) Review Gate Summary
 - `review/REVIEW_ENGINE.md` (document) Review Engine
+- `wbs/WBS-0100-agent-runtime-mvp.md` (wbs) WBS-0100: Agent Runtime MVP
 - `wbs/WBS-0016-repository-os-v1-baseline.md` (wbs) WBS-0016: Repository OS v1.0 Baseline
 - `wbs/WBS-0020-agent-capability-suite.md` (wbs) WBS-0020 Agent Capability Suite
 - `wbs/WBS-0019-runtime-coordination.md` (wbs) WBS-0019 Runtime Coordination
@@ -161,6 +166,7 @@
 - `scripts/validate_continuous_governance.py` (script) validate_continuous_governance
 - `scripts/validate_repository_knowledge_graph_runtime_integration.py` (script) validate_repository_knowledge_graph_runtime_integration
 - `scripts/validate_dead_assets.py` (script) validate_dead_assets
+- `scripts/validate_ep_0100.py` (script) validate_ep_0100
 - `scripts/validate_repository_selftest.py` (script) validate_repository_selftest
 - `scripts/validate_repository_os_v1_baseline.py` (script) validate_repository_os_v1_baseline
 - `queue/QUEUE_ENGINE.md` (document) Queue Engine
@@ -179,6 +185,15 @@
 - `registry/registry_1.md` (registry) registry 1
 - `registry/OPERATIONAL_INDEX.md` (registry) Operational Index
 - `registry/registry_5.md` (registry) registry 5
+- `agent_runtime/cycle.py` (document) cycle
+- `agent_runtime/planner.py` (document) planner
+- `agent_runtime/models.py` (document) models
+- `agent_runtime/approval_gate.py` (document) approval_gate
+- `agent_runtime/__init__.py` (document) __init__
+- `agent_runtime/loader.py` (document) loader
+- `agent_runtime/queue_engine.py` (document) queue_engine
+- `agent_runtime/repository.py` (document) repository
+- `agent_runtime/review_engine.py` (document) review_engine
 - `.system/GLOSSARY.md` (document) GLOSSARY
 - `.system/STYLE.md` (document) STYLE
 - `.system/REVIEW.md` (document) REVIEW
@@ -231,6 +246,7 @@
 - `basis/066_graph_extraction_policy.md` (policy) 066 Graph Extraction Policy
 - `basis/069_agent_io_contract_policy.md` (policy) 069 Agent IO Contract Policy
 - `basis/072_agent_orchestrator_policy.md` (policy) 072 Agent Orchestrator Policy
+- `basis/091_agent_runtime_mvp_policy.md` (policy) 091 Agent Runtime MVP Policy
 - `basis/042_execution_contract_policy.md` (policy) 042 Execution Contract Policy
 - `basis/084_graph_cache_policy.md` (policy) Graph Cache Policy
 - `basis/054_dead_asset_policy.md` (policy) dead_asset
@@ -319,6 +335,8 @@
 - `scripts/selftest_v2/validate_semantic_selftest.py` (script) validate_semantic_selftest
 - `scripts/selftest_v2/semantic_common.py` (script) semantic_common
 - `scripts/review/build_review_gate_summary.py` (script) build_review_gate_summary
+- `scripts/agent_runtime/run_dry_run_cycle.py` (script) run_dry_run_cycle
+- `scripts/agent_runtime/validate_agent_runtime_mvp.py` (script) validate_agent_runtime_mvp
 - `scripts/orchestrator/build_context_bundle.py` (script) build_context_bundle
 - `scripts/orchestrator/build_execution_plan.py` (script) build_execution_plan
 - `scripts/orchestrator/update_execution_queue.py` (script) update_execution_queue
@@ -329,6 +347,7 @@
 - `.github/workflows/repository-knowledge-graph-runtime-integration.yml` (workflow) repository-knowledge-graph-runtime-integration
 - `.github/workflows/continuous-governance.yml` (workflow) continuous-governance
 - `.github/workflows/repository-semantic-selftest-v2.yml` (workflow) repository-semantic-selftest-v2
+- `.github/workflows/ep0100-agent-runtime-mvp.yml` (workflow) ep0100-agent-runtime-mvp
 - `.github/workflows/repository-selftest.yml` (workflow) repository-selftest
 - `.github/workflows/runtime-foundation.yml` (workflow) runtime-foundation
 - `.github/workflows/repository-selftest-complete.yml` (workflow) repository-selftest-complete

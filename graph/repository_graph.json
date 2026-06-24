@@ -64,6 +64,13 @@
       "source": "repository"
     },
     {
+      "id": "MANIFEST_EP0100.md",
+      "type": "document",
+      "path": "MANIFEST_EP0100.md",
+      "title": "EP-0100 Manifest",
+      "source": "repository"
+    },
+    {
       "id": "selftest.yml",
       "type": "document",
       "path": "selftest.yml",
@@ -145,6 +152,13 @@
       "type": "readme",
       "path": "README_AUTONOMOUS_WORKFLOW_CONTROL_PACK.md",
       "title": "ACIP Autonomous Workflow Control Pack",
+      "source": "repository"
+    },
+    {
+      "id": "README_EP0100_AGENT_RUNTIME_MVP.md",
+      "type": "readme",
+      "path": "README_EP0100_AGENT_RUNTIME_MVP.md",
+      "title": "EP-0100 Agent Runtime MVP",
       "source": "repository"
     },
     {
@@ -250,6 +264,13 @@
       "type": "adr",
       "path": "adr/ADR-0021-runtime-transition-readiness.md",
       "title": "ADR-0021 Runtime Transition Readiness",
+      "source": "repository"
+    },
+    {
+      "id": "adr/ADR-0030-agent-runtime-mvp.md",
+      "type": "adr",
+      "path": "adr/ADR-0030-agent-runtime-mvp.md",
+      "title": "ADR-0030: Agent Runtime MVP",
       "source": "repository"
     },
     {
@@ -666,6 +687,13 @@
       "source": "repository"
     },
     {
+      "id": "runtime/AGENT_RUNTIME_MVP_SPEC.md",
+      "type": "document",
+      "path": "runtime/AGENT_RUNTIME_MVP_SPEC.md",
+      "title": "Agent Runtime MVP Specification",
+      "source": "repository"
+    },
+    {
       "id": "tests/test_result.py",
       "type": "document",
       "path": "tests/test_result.py",
@@ -981,6 +1009,13 @@
       "source": "repository"
     },
     {
+      "id": "wbs/WBS-0100-agent-runtime-mvp.md",
+      "type": "wbs",
+      "path": "wbs/WBS-0100-agent-runtime-mvp.md",
+      "title": "WBS-0100: Agent Runtime MVP",
+      "source": "repository"
+    },
+    {
       "id": "wbs/WBS-0016-repository-os-v1-baseline.md",
       "type": "wbs",
       "path": "wbs/WBS-0016-repository-os-v1-baseline.md",
@@ -1097,6 +1132,13 @@
       "type": "script",
       "path": "scripts/validate_dead_assets.py",
       "title": "validate_dead_assets",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/validate_ep_0100.py",
+      "type": "script",
+      "path": "scripts/validate_ep_0100.py",
+      "title": "validate_ep_0100",
       "source": "repository"
     },
     {
@@ -1223,6 +1265,69 @@
       "type": "registry",
       "path": "registry/registry_5.md",
       "title": "registry 5",
+      "source": "repository"
+    },
+    {
+      "id": "agent_runtime/cycle.py",
+      "type": "document",
+      "path": "agent_runtime/cycle.py",
+      "title": "cycle",
+      "source": "repository"
+    },
+    {
+      "id": "agent_runtime/planner.py",
+      "type": "document",
+      "path": "agent_runtime/planner.py",
+      "title": "planner",
+      "source": "repository"
+    },
+    {
+      "id": "agent_runtime/models.py",
+      "type": "document",
+      "path": "agent_runtime/models.py",
+      "title": "models",
+      "source": "repository"
+    },
+    {
+      "id": "agent_runtime/approval_gate.py",
+      "type": "document",
+      "path": "agent_runtime/approval_gate.py",
+      "title": "approval_gate",
+      "source": "repository"
+    },
+    {
+      "id": "agent_runtime/__init__.py",
+      "type": "document",
+      "path": "agent_runtime/__init__.py",
+      "title": "__init__",
+      "source": "repository"
+    },
+    {
+      "id": "agent_runtime/loader.py",
+      "type": "document",
+      "path": "agent_runtime/loader.py",
+      "title": "loader",
+      "source": "repository"
+    },
+    {
+      "id": "agent_runtime/queue_engine.py",
+      "type": "document",
+      "path": "agent_runtime/queue_engine.py",
+      "title": "queue_engine",
+      "source": "repository"
+    },
+    {
+      "id": "agent_runtime/repository.py",
+      "type": "document",
+      "path": "agent_runtime/repository.py",
+      "title": "repository",
+      "source": "repository"
+    },
+    {
+      "id": "agent_runtime/review_engine.py",
+      "type": "document",
+      "path": "agent_runtime/review_engine.py",
+      "title": "review_engine",
       "source": "repository"
     },
     {
@@ -1587,6 +1692,13 @@
       "type": "policy",
       "path": "basis/072_agent_orchestrator_policy.md",
       "title": "072 Agent Orchestrator Policy",
+      "source": "repository"
+    },
+    {
+      "id": "basis/091_agent_runtime_mvp_policy.md",
+      "type": "policy",
+      "path": "basis/091_agent_runtime_mvp_policy.md",
+      "title": "091 Agent Runtime MVP Policy",
       "source": "repository"
     },
     {
@@ -2206,6 +2318,20 @@
       "source": "repository"
     },
     {
+      "id": "scripts/agent_runtime/run_dry_run_cycle.py",
+      "type": "script",
+      "path": "scripts/agent_runtime/run_dry_run_cycle.py",
+      "title": "run_dry_run_cycle",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/agent_runtime/validate_agent_runtime_mvp.py",
+      "type": "script",
+      "path": "scripts/agent_runtime/validate_agent_runtime_mvp.py",
+      "title": "validate_agent_runtime_mvp",
+      "source": "repository"
+    },
+    {
       "id": "scripts/orchestrator/build_context_bundle.py",
       "type": "script",
       "path": "scripts/orchestrator/build_context_bundle.py",
@@ -2273,6 +2399,13 @@
       "type": "workflow",
       "path": ".github/workflows/repository-semantic-selftest-v2.yml",
       "title": "repository-semantic-selftest-v2",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/ep0100-agent-runtime-mvp.yml",
+      "type": "workflow",
+      "path": ".github/workflows/ep0100-agent-runtime-mvp.yml",
+      "title": "ep0100-agent-runtime-mvp",
       "source": "repository"
     },
     {
@@ -2400,6 +2533,12 @@
       "evidence": "scripts/runtime/validate_runtime_foundation.py"
     },
     {
+      "source": "MANIFEST_EP0100.md",
+      "target": "scripts/validate_ep_0100.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0100.py"
+    },
+    {
       "source": "README_REPOSITORY_KNOWLEDGE_GRAPH_RUNTIME_INTEGRATION_PACK.md",
       "target": "scripts/validate_repository_knowledge_graph_runtime_integration.py",
       "type": "validates",
@@ -2422,6 +2561,12 @@
       "target": "scripts/selftest/validate_repository_selftest_complete.py",
       "type": "validates",
       "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
+    },
+    {
+      "source": "README_EP0100_AGENT_RUNTIME_MVP.md",
+      "target": "scripts/validate_ep_0100.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0100.py"
     },
     {
       "source": "README_SEMANTIC_SELFTEST_V2_PACK.md",
@@ -2488,6 +2633,12 @@
       "target": "scripts/orchestrator/validate_orchestration.py",
       "type": "validates",
       "evidence": "scripts/orchestrator/validate_orchestration.py"
+    },
+    {
+      "source": "wbs/WBS-0100-agent-runtime-mvp.md",
+      "target": "scripts/validate_ep_0100.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0100.py"
     },
     {
       "source": "wbs/WBS-0016-repository-os-v1-baseline.md",
@@ -2566,6 +2717,24 @@
       "target": "scripts/selftest_v2/validate_semantic_selftest.py",
       "type": "validates",
       "evidence": "scripts/selftest_v2/validate_semantic_selftest.py"
+    },
+    {
+      "source": "agent_runtime/planner.py",
+      "target": "scripts/agent_runtime/run_dry_run_cycle.py",
+      "type": "validates",
+      "evidence": "scripts/agent_runtime/run_dry_run_cycle.py"
+    },
+    {
+      "source": "agent_runtime/planner.py",
+      "target": "scripts/agent_runtime/validate_agent_runtime_mvp.py",
+      "type": "validates",
+      "evidence": "scripts/agent_runtime/validate_agent_runtime_mvp.py"
+    },
+    {
+      "source": "agent_runtime/queue_engine.py",
+      "target": "scripts/agent_runtime/validate_agent_runtime_mvp.py",
+      "type": "validates",
+      "evidence": "scripts/agent_runtime/validate_agent_runtime_mvp.py"
     },
     {
       "source": "orchestrator/RUNBOOK.md",
@@ -2674,6 +2843,12 @@
       "target": "scripts/selftest_v2/validate_semantic_selftest.py",
       "type": "validates",
       "evidence": "scripts/selftest_v2/validate_semantic_selftest.py"
+    },
+    {
+      "source": ".github/workflows/ep0100-agent-runtime-mvp.yml",
+      "target": "scripts/validate_ep_0100.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0100.py"
     },
     {
       "source": ".github/workflows/runtime-foundation.yml",
