@@ -1,0 +1,20 @@
+name: Boundary Validation
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  boundary-validation:
+    name: Boundary Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Run boundary validation
+        run: python scripts/selftest/check_boundaries.py

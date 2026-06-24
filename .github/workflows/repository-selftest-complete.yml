@@ -1,0 +1,26 @@
+name: Repository Self Test Complete
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  repository-selftest-complete:
+    name: Repository Self Test Complete
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run complete repository self-test
+        run: python scripts/selftest/validate_repository_selftest_complete.py

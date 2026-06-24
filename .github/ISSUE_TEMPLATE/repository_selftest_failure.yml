@@ -1,0 +1,24 @@
+name: Repository Self Test Failure
+description: Track repository self-test failure or warning
+title: "[SelfTest] "
+labels: ["type:review", "status:needs-codex", "area:governance"]
+body:
+  - type: textarea
+    id: failure
+    attributes:
+      label: Failure Evidence
+    validations:
+      required: true
+  - type: textarea
+    id: recommended_fix
+    attributes:
+      label: Recommended Fix
+    validations:
+      required: true
+  - type: textarea
+    id: human_boundary
+    attributes:
+      label: Human Boundary
+      value: Human should only decide when approval, risk acceptance, or emergency stop is required.
+    validations:
+      required: true

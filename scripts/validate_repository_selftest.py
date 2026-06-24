@@ -1,5 +1,6 @@
-from pathlib import Path
-r=Path(__file__).resolve().parents[1]
-req=["basis","adr","wbs","docs","catalog","registry","contracts","runbooks","control",".github"]
+#!/usr/bin/env python3
 import sys
-sys.exit(0 if all((r/x).exists() for x in req) else 1)
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent / "selftest"))
+from validate_repository_selftest_complete import main
+raise SystemExit(main())
