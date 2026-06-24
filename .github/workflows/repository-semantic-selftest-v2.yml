@@ -1,0 +1,26 @@
+name: Repository Semantic SelfTest v2
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  semantic-selftest-v2:
+    name: Repository Semantic SelfTest v2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run semantic selftest v2
+        run: python scripts/selftest_v2/validate_semantic_selftest.py

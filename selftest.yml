@@ -1,0 +1,126 @@
+version: 2
+name: Repository Semantic SelfTest
+
+repository:
+  root: "."
+
+canonical_space:
+  include_dirs:
+    - basis
+    - adr
+    - wbs
+    - docs
+    - catalog
+    - registry
+    - contracts
+    - runbooks
+    - control
+    - scripts
+    - .github
+    - .system
+    - orchestrator
+    - knowledge
+    - prompts
+  exclude_dirs:
+    - .git
+    - archive
+    - node_modules
+    - .venv
+    - venv
+    - __pycache__
+    - .pytest_cache
+  exclude_files:
+    - README_SELFTEST_PACK.md
+    - README_REPOSITORY_SELFTEST_PACK.md
+
+entrypoints:
+  - README.md
+  - README_REPOSITORY_COMPLETE_PACK.md
+  - README_AGENT_OS.md
+  - README_RUNTIME_READINESS.md
+  - README_GOVERNANCE.md
+  - README_KNOWLEDGE_FACTORY.md
+  - PROJECT.md
+  - STATE.md
+  - ROADMAP.md
+  - CHANGELOG.md
+  - AGENTS.md
+
+draft_dirs:
+  - knowledge/draft
+
+template_markers:
+  filename_contains:
+    - TEMPLATE
+    - REPORT
+    - CHECKLIST
+    - PROMPT
+  heading_contains:
+    - Template
+    - Report
+    - Checklist
+    - Prompt
+
+index_markers:
+  filename_contains:
+    - INDEX
+    - QUEUE
+    - REGISTRY
+
+approved_current_objectives:
+  - Canonical Asset Production
+  - Agent OS Foundation
+  - Repository Operating System Stabilization
+
+current_objective_declaration_patterns:
+  - "^Current Objective\\s*:\\s*(.+)$"
+  - "^current_objective\\s*:\\s*(.+)$"
+  - "^Current Objective\\s*=\\s*(.+)$"
+  - "^current_objective\\s*=\\s*(.+)$"
+
+human_boundary:
+  allowed_responsibilities:
+    - Mission
+    - Approval
+    - Emergency Stop
+    - Risk Acceptance
+    - Capital Allocation
+    - Runtime Transition Approval
+  prohibited_routine_patterns:
+    - "human must manually"
+    - "human should manually"
+    - "human is responsible for routine"
+    - "human performs routine"
+
+runtime_boundary:
+  prohibited_keyword_fragments:
+    - ["auto", "_post("]
+    - ["publish", "_to_platform("]
+    - ["run", "_runtime_agent("]
+    - ["scrape", "_platform("]
+  prohibited_unapproved_phrases:
+    - "runtime agent execution is approved"
+    - "auto posting is approved"
+    - "platform api integration is approved"
+
+secret_boundary:
+  allowlist_files:
+    - .env.example
+  patterns:
+    openai_key: "sk-[A-Za-z0-9_-]{20,}"
+    github_token: "gh[pousr]_[A-Za-z0-9_]{20,}"
+    aws_access_key: "AKIA[0-9A-Z]{16}"
+    private_key: "-----BEGIN (RSA |EC |OPENSSH |)PRIVATE KEY-----"
+
+duplicate_rules:
+  adr_number_scope: canonical_only
+  wbs_number_scope: canonical_only
+  h1_duplicates_are_warning: true
+
+orphan_rules:
+  report_unreferenced_as_warning: true
+  ignore_entrypoints: true
+  ignore_drafts: true
+  ignore_templates: true
+  ignore_indexes: true
+  ignore_archives: true
