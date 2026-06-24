@@ -1,7 +1,7 @@
 # Repository Graph
 
-- nodes: 351
-- edges: 61
+- nodes: 362
+- edges: 66
 
 ## Nodes
 - `README_REPOSITORY_SELFTEST_COMPLETE_PACK.md` (readme) ACIP Repository Self Test Complete Pack
@@ -16,6 +16,7 @@
 - `MANIFEST_EP0100.md` (document) EP-0100 Manifest
 - `selftest.yml` (document) selftest
 - `README_REPOSITORY_KNOWLEDGE_GRAPH_RUNTIME_INTEGRATION_PACK.md` (readme) ACIP Repository Knowledge Graph Runtime Integration Pack
+- `MANIFEST_EP0100_2.md` (document) EP-0100.2 Manifest
 - `README_EP0001.md` (readme) EP-0001 Runtime Capability Suite
 - `PROJECT.md` (document) PROJECT
 - `STATE.md` (document) STATE
@@ -41,6 +42,7 @@
 - `AGENTS.md` (document) AGENTS.md
 - `README_SELFTEST_REMEDIATION_PACK.md` (readme) ACIP SelfTest Remediation Pack
 - `README_AGENT_ORCHESTRATOR_PACK.md` (readme) ACIP Agent Orchestrator Pack
+- `README_EP0100_2_AGENT_RUNTIME_RESTORE_IMPORT_FIX.md` (readme) EP-0100.2 Agent Runtime MVP Restore + Import Fix
 - `README_ASSET_REGISTRY_PACK.md` (readme) ACIP Asset Registry Pack
 - `releases/RELEASE_v1.0.0-repository-os.md` (document) ACIP Repository Operating System v1.0
 - `adr/ADR-0021-runtime-transition-readiness.md` (adr) ADR-0021 Runtime Transition Readiness
@@ -187,6 +189,15 @@
 - `registry/registry_1.md` (registry) registry 1
 - `registry/OPERATIONAL_INDEX.md` (registry) Operational Index
 - `registry/registry_5.md` (registry) registry 5
+- `agent_runtime/cycle.py` (document) cycle
+- `agent_runtime/planner.py` (document) planner
+- `agent_runtime/models.py` (document) models
+- `agent_runtime/approval_gate.py` (document) approval_gate
+- `agent_runtime/__init__.py` (document) __init__
+- `agent_runtime/loader.py` (document) loader
+- `agent_runtime/queue_engine.py` (document) queue_engine
+- `agent_runtime/repository.py` (document) repository
+- `agent_runtime/review_engine.py` (document) review_engine
 - `.system/GLOSSARY.md` (document) GLOSSARY
 - `.system/STYLE.md` (document) STYLE
 - `.system/REVIEW.md` (document) REVIEW

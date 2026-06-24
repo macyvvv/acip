@@ -24,8 +24,8 @@
   },
   "current_phase": "Knowledge Factory",
   "current_objective": "Repository Operating System Stabilization",
-  "node_count": 351,
-  "edge_count": 61,
+  "node_count": 362,
+  "edge_count": 66,
   "required_boundaries": [
     "Repository overrides conversation",
     "Runtime implementation remains out of scope until explicitly approved",

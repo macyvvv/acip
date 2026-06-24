@@ -1,0 +1,16 @@
+{
+  "repository_root": "/Users/ariel/Documents/tools/AI Native Company",
+  "current_phase": "Knowledge Factory",
+  "current_objective": "Repository Operating System Stabilization",
+  "graph_path": "graph/repository_graph.json",
+  "context_pack_path": "graph/agent_context_pack.json",
+  "node_count": 362,
+  "edge_count": 66,
+  "boundary": {
+    "runtime_execution": "not_performed",
+    "external_actions": "prohibited",
+    "secret_use": "prohibited",
+    "human_boundary": "Mission / Approval / Emergency Stop",
+    "repository_rule": "Repository overrides conversation"
+  }
+}
