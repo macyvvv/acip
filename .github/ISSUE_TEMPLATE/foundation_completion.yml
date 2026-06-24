@@ -1,0 +1,33 @@
+name: Foundation Completion
+description: Verify Phase 0 GitHub foundation completion
+name: Foundation Completion
+title: "[Foundation] Complete Phase 0 GitHub foundation"
+labels: ["type:review", "area:github", "status:needs-human"]
+body:
+  - type: textarea
+    id: conclusion
+    attributes:
+      label: Conclusion
+      value: |
+        Phase 0 GitHub Foundation is ready for Human review after validation passes.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      value: |
+        - [ ] `python scripts/validate_foundation.py` passes locally
+        - [ ] GitHub Actions `Foundation Check` passes on PR
+        - [ ] No runtime implementation introduced
+        - [ ] No auto posting introduced
+        - [ ] No platform API integration introduced
+        - [ ] Human approval recorded
+    validations:
+      required: true
+  - type: textarea
+    id: remaining_risks
+    attributes:
+      label: Remaining Risks
+    validations:
+      required: true
