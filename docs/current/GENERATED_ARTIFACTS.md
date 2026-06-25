@@ -1,0 +1,9 @@
+# GENERATED_ARTIFACTS
+
+- `graph/agent_context_pack.json`
+- `graph/repository_graph.json`
+- `graph/repository_graph.md`
+- `orchestrator/context_bundle.json`
+- `orchestrator/execution_plan.json`
+- `runtime/validation/validation_report.json`
+- `runtime/validation/VALIDATION_REPORT.md`
