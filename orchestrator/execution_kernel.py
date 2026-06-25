@@ -9,6 +9,7 @@ from orchestrator.capability_router import CapabilityRoute, CapabilityRouter
 from orchestrator.context_loader import Context, load_context
 from orchestrator.dispatcher import Dispatcher
 from orchestrator.output_contract import CodexOutputContract
+from orchestrator.review_output_integration import ReviewOutputIntegrationResult, build_review_output_integration
 from orchestrator.planner import PlannerDecision, load_planner_decision
 from orchestrator.queue_state import QueueState, read_queue_state
 from orchestrator.state import State, read_state
@@ -32,6 +33,7 @@ class ExecutionKernelResult:
     task_decomposition: TaskDecompositionResult | None = None
     validation_result: ValidationOrchestrationResult | None = None
     output_contract: CodexOutputContract | None = None
+    review_output_integration: ReviewOutputIntegrationResult | None = None
     worker_registry: WorkerRegistry | None = None
     capability_route: CapabilityRoute | None = None
 
@@ -97,6 +99,7 @@ class ExecutionKernel:
             capability_route = self.route_worker()
             task = self._task_from_state()
             task_decomposition = self.decompose_task(task)
+            review_output_integration = build_review_output_integration(task_decomposition, capability_route)
             loop = run_autonomous_execution_loop(self.dispatcher, self._root())
             return ExecutionKernelResult(
                 success=True,
@@ -108,6 +111,7 @@ class ExecutionKernel:
                 autonomous_loop=loop,
                 task_decomposition=task_decomposition,
                 output_contract=loop.output_contract,
+                review_output_integration=review_output_integration,
                 worker_registry=worker_registry,
                 capability_route=capability_route,
             )
