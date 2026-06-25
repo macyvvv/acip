@@ -1,0 +1,6 @@
+- `orchestrator/specification_generator.py`
+- `docs/current/SPECIFICATION_GENERATOR.md`
+- `runtime/solution/specifications/specification.json`
+- `scripts/validate_ep_0139.py`
+- `tests/test_specification_generator.py`
+- `docs/ep/README_EP0139_SPECIFICATION_GENERATOR.md`
