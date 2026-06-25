@@ -1,0 +1,8 @@
+{
+  "request_id": null,
+  "request_status": "pending_approval",
+  "request_priority": 0,
+  "approval_required": false,
+  "dependency": [],
+  "worker_assignment": null
+}
