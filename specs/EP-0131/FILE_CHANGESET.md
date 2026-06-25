@@ -1,0 +1,3 @@
+- `orchestrator/execution_session.py`
+- `docs/current/EXECUTION_SESSION.md`
+- `runtime/session/execution_session.json`
