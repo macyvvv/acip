@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 import json
+import hashlib
 
 
 @dataclass(frozen=True)
@@ -30,7 +31,7 @@ class RequirementIntake:
         objective = text.strip()
         if not objective:
             raise RequirementIntakeError("Requirement text cannot be empty")
-        requirement_id = f"REQ-{abs(hash(objective)) % 10000:04d}"
+        requirement_id = self._stable_requirement_id(objective)
         value_type = self._infer_value_type(objective)
         risk = "medium" if any(word in objective.lower() for word in ("migrate", "delete", "destroy")) else "low"
         approval_required = risk != "low"
@@ -71,3 +72,7 @@ class RequirementIntake:
         if any(word in text for word in ("learn", "research", "study")):
             return "learning"
         return "strategic"
+
+    def _stable_requirement_id(self, objective: str) -> str:
+        digest = hashlib.sha1(objective.encode("utf-8")).hexdigest()[:8]
+        return f"REQ-{digest.upper()}"
