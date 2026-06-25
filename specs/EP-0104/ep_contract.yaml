@@ -1,0 +1,20 @@
+id: EP-0104
+name: Executable Specification Foundation
+status: ready
+objective: Executable Specification Foundation
+inputs:
+  - specs/EP-0104/README.md
+  - specs/EP-0104/IMPLEMENTATION_SPEC.md
+outputs:
+  - specs/schema/ep_contract.schema.json
+  - specs/templates/ep_contract.template.yaml
+  - specs/EP-0104/ep_contract.yaml
+  - scripts/specs/validate_ep_contract.py
+  - scripts/specs/load_active_ep_contract.py
+  - scripts/validate_ep_0104.py
+validation:
+  - python scripts/validate_ep_0104.py
+  - python scripts/validate_ep_0103.py
+  - python scripts/validate_ep_0102.py
+  - python scripts/validate_ep_0101.py
+  - python scripts/validate_ep_0100.py

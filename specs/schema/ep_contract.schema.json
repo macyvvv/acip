@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EP Contract",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "status",
+    "objective",
+    "inputs",
+    "outputs",
+    "validation"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^EP-[0-9]{4}$" },
+    "name": { "type": "string", "minLength": 1 },
+    "status": { "type": "string", "enum": ["ready", "draft", "completed", "archived"] },
+    "objective": { "type": "string", "minLength": 1 },
+    "inputs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "outputs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "validation": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": true
+}
