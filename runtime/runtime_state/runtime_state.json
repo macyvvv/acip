@@ -1,0 +1,9 @@
+{
+  "repository_state": {
+    "queue_status": "READY",
+    "active_ep": "EP-0108",
+    "next_ep": "EP-0109"
+  },
+  "governor_recommendation_version": 1,
+  "next_action": "await human approval"
+}
