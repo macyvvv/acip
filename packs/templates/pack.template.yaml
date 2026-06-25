@@ -1,0 +1,9 @@
+pack_id: PACK-0000
+name: Example Pack
+objective: Example objective
+scope: Example scope
+ep_range:
+  - EP-0000
+  - EP-0000
+dependencies: []
+done_conditions: []
