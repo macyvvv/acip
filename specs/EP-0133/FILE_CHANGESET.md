@@ -1,0 +1,3 @@
+- `orchestrator/execution_journal.py`
+- `docs/current/EXECUTION_JOURNAL.md`
+- `runtime/journal/execution_journal.jsonl`
