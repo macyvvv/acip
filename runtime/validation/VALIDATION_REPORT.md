@@ -13,6 +13,15 @@
 - PASS `/Library/Developer/CommandLineTools/usr/bin/python3 scripts/validate_ep_0109.py` (exit 0)
 - PASS `/Library/Developer/CommandLineTools/usr/bin/python3 scripts/validate_ep_0110.py` (exit 0)
 - PASS `/Library/Developer/CommandLineTools/usr/bin/python3 scripts/validate_ep_0111.py` (exit 0)
+- PASS `/Library/Developer/CommandLineTools/usr/bin/python3 scripts/validate_ep_0112.py` (exit 0)
+- PASS `/Library/Developer/CommandLineTools/usr/bin/python3 scripts/validate_ep_0113.py` (exit 0)
+- PASS `/Library/Developer/CommandLineTools/usr/bin/python3 scripts/validate_ep_0114.py` (exit 0)
+- PASS `/Library/Developer/CommandLineTools/usr/bin/python3 scripts/validate_ep_0115.py` (exit 0)
+- PASS `/Library/Developer/CommandLineTools/usr/bin/python3 scripts/validate_ep_0116.py` (exit 0)
+- PASS `/Library/Developer/CommandLineTools/usr/bin/python3 scripts/validate_ep_0117.py` (exit 0)
+- PASS `/Library/Developer/CommandLineTools/usr/bin/python3 scripts/validate_ep_0118.py` (exit 0)
+- PASS `/Library/Developer/CommandLineTools/usr/bin/python3 scripts/validate_ep_0119.py` (exit 0)
+- PASS `/Library/Developer/CommandLineTools/usr/bin/python3 scripts/validate_ep_0120.py` (exit 0)
 - PASS `/Library/Developer/CommandLineTools/usr/bin/python3 -m pytest -q` (exit 0)
 
 overall_success: true

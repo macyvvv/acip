@@ -69,6 +69,46 @@
       "command": "/Library/Developer/CommandLineTools/usr/bin/python3 scripts/validate_ep_0112.py",
       "exit_code": 0,
       "success": true
+    },
+    {
+      "command": "/Library/Developer/CommandLineTools/usr/bin/python3 scripts/validate_ep_0113.py",
+      "exit_code": 0,
+      "success": true
+    },
+    {
+      "command": "/Library/Developer/CommandLineTools/usr/bin/python3 scripts/validate_ep_0114.py",
+      "exit_code": 0,
+      "success": true
+    },
+    {
+      "command": "/Library/Developer/CommandLineTools/usr/bin/python3 scripts/validate_ep_0115.py",
+      "exit_code": 0,
+      "success": true
+    },
+    {
+      "command": "/Library/Developer/CommandLineTools/usr/bin/python3 scripts/validate_ep_0116.py",
+      "exit_code": 0,
+      "success": true
+    },
+    {
+      "command": "/Library/Developer/CommandLineTools/usr/bin/python3 scripts/validate_ep_0117.py",
+      "exit_code": 0,
+      "success": true
+    },
+    {
+      "command": "/Library/Developer/CommandLineTools/usr/bin/python3 scripts/validate_ep_0118.py",
+      "exit_code": 0,
+      "success": true
+    },
+    {
+      "command": "/Library/Developer/CommandLineTools/usr/bin/python3 scripts/validate_ep_0119.py",
+      "exit_code": 0,
+      "success": true
+    },
+    {
+      "command": "/Library/Developer/CommandLineTools/usr/bin/python3 scripts/validate_ep_0120.py",
+      "exit_code": 0,
+      "success": true
     }
   ],
   "pytest": {

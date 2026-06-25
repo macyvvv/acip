@@ -1,7 +1,7 @@
 # Repository Graph
 
-- nodes: 480
-- edges: 176
+- nodes: 619
+- edges: 202
 
 ## Nodes
 - `selftest.yml` (document) selftest
@@ -31,6 +31,42 @@
 - `cache/CONTEXT_CACHE.md` (document) Context Cache
 - `specs/WORKFLOW.md` (document) WORKFLOW
 - `specs/completed/README.md` (readme) COMPLETED_SPECS
+- `specs/EP-0117/WORKER_INSTRUCTIONS.md` (document) WORKER_INSTRUCTIONS
+- `specs/EP-0117/VALIDATION.md` (document) EP-0117 Validation
+- `specs/EP-0117/README.md` (readme) EP-0117 Refactoring Governance Gate
+- `specs/EP-0117/IMPLEMENTATION_SPEC.md` (document) EP-0117 Implementation Spec
+- `specs/EP-0117/MANIFEST.md` (document) MANIFEST
+- `specs/EP-0117/FILE_CHANGESET.md` (document) FILE_CHANGESET
+- `specs/EP-0119/WORKER_INSTRUCTIONS.md` (document) WORKER_INSTRUCTIONS
+- `specs/EP-0119/VALIDATION.md` (document) EP-0119 Validation
+- `specs/EP-0119/README.md` (readme) EP-0119 Review Output Integration
+- `specs/EP-0119/IMPLEMENTATION_SPEC.md` (document) EP-0119 Implementation Spec
+- `specs/EP-0119/MANIFEST.md` (document) MANIFEST
+- `specs/EP-0119/FILE_CHANGESET.md` (document) FILE_CHANGESET
+- `specs/EP-0120/WORKER_INSTRUCTIONS.md` (document) WORKER_INSTRUCTIONS
+- `specs/EP-0120/VALIDATION.md` (document) EP-0120 Validation
+- `specs/EP-0120/README.md` (readme) EP-0120 Worker Output Semantics
+- `specs/EP-0120/IMPLEMENTATION_SPEC.md` (document) EP-0120 Implementation Spec
+- `specs/EP-0120/MANIFEST.md` (document) MANIFEST
+- `specs/EP-0120/FILE_CHANGESET.md` (document) FILE_CHANGESET
+- `specs/EP-0118/WORKER_INSTRUCTIONS.md` (document) WORKER_INSTRUCTIONS
+- `specs/EP-0118/VALIDATION.md` (document) EP-0118 Validation
+- `specs/EP-0118/README.md` (readme) EP-0118 Root Hygiene Migration 1
+- `specs/EP-0118/IMPLEMENTATION_SPEC.md` (document) EP-0118 Implementation Spec
+- `specs/EP-0118/MANIFEST.md` (document) MANIFEST
+- `specs/EP-0118/FILE_CHANGESET.md` (document) FILE_CHANGESET
+- `specs/EP-0111/WORKER_INSTRUCTIONS.md` (document) WORKER_INSTRUCTIONS
+- `specs/EP-0111/VALIDATION.md` (document) EP-0111 Validation
+- `specs/EP-0111/README.md` (readme) EP-0111 Validation Orchestrator
+- `specs/EP-0111/IMPLEMENTATION_SPEC.md` (document) EP-0111 Implementation Spec
+- `specs/EP-0111/MANIFEST.md` (document) MANIFEST
+- `specs/EP-0111/FILE_CHANGESET.md` (document) FILE_CHANGESET
+- `specs/EP-0116/WORKER_INSTRUCTIONS.md` (document) WORKER_INSTRUCTIONS
+- `specs/EP-0116/VALIDATION.md` (document) EP-0116 Validation
+- `specs/EP-0116/README.md` (readme) EP-0116 Repository Hygiene & Code Quality Baseline
+- `specs/EP-0116/IMPLEMENTATION_SPEC.md` (document) EP-0116 Implementation Spec
+- `specs/EP-0116/MANIFEST.md` (document) MANIFEST
+- `specs/EP-0116/FILE_CHANGESET.md` (document) FILE_CHANGESET
 - `specs/EP-0105/WORKER_INSTRUCTIONS.md` (document) EP-0105 Worker Instructions
 - `specs/EP-0105/VALIDATION.md` (document) EP-0105 Validation
 - `specs/EP-0105/README.md` (readme) EP-0105
@@ -59,6 +95,30 @@
 - `specs/EP-0104/MANIFEST.md` (document) EP-0104 Manifest
 - `specs/EP-0104/FILE_CHANGESET.md` (document) EP-0104 File Changeset
 - `specs/EP-0104/ep_contract.yaml` (document) ep_contract
+- `specs/EP-0113/WORKER_INSTRUCTIONS.md` (document) WORKER_INSTRUCTIONS
+- `specs/EP-0113/VALIDATION.md` (document) EP-0113 Validation
+- `specs/EP-0113/README.md` (readme) EP-0113 Worker Registry
+- `specs/EP-0113/IMPLEMENTATION_SPEC.md` (document) EP-0113 Implementation Spec
+- `specs/EP-0113/MANIFEST.md` (document) MANIFEST
+- `specs/EP-0113/FILE_CHANGESET.md` (document) FILE_CHANGESET
+- `specs/EP-0114/WORKER_INSTRUCTIONS.md` (document) WORKER_INSTRUCTIONS
+- `specs/EP-0114/VALIDATION.md` (document) EP-0114 Validation
+- `specs/EP-0114/README.md` (readme) EP-0114 Capability Router
+- `specs/EP-0114/IMPLEMENTATION_SPEC.md` (document) EP-0114 Implementation Spec
+- `specs/EP-0114/MANIFEST.md` (document) MANIFEST
+- `specs/EP-0114/FILE_CHANGESET.md` (document) FILE_CHANGESET
+- `specs/EP-0115/WORKER_INSTRUCTIONS.md` (document) WORKER_INSTRUCTIONS
+- `specs/EP-0115/VALIDATION.md` (document) EP-0115 Validation
+- `specs/EP-0115/README.md` (readme) EP-0115 Task Decomposer
+- `specs/EP-0115/IMPLEMENTATION_SPEC.md` (document) EP-0115 Implementation Spec
+- `specs/EP-0115/MANIFEST.md` (document) MANIFEST
+- `specs/EP-0115/FILE_CHANGESET.md` (document) FILE_CHANGESET
+- `specs/EP-0112/WORKER_INSTRUCTIONS.md` (document) WORKER_INSTRUCTIONS
+- `specs/EP-0112/VALIDATION.md` (document) EP-0112 Validation
+- `specs/EP-0112/README.md` (readme) EP-0112 Execution Kernel
+- `specs/EP-0112/IMPLEMENTATION_SPEC.md` (document) EP-0112 Implementation Spec
+- `specs/EP-0112/MANIFEST.md` (document) MANIFEST
+- `specs/EP-0112/FILE_CHANGESET.md` (document) FILE_CHANGESET
 - `specs/templates/ep_contract.template.yaml` (document) ep_contract.template
 - `specs/templates/ROLLBACK_TEMPLATE.md` (document) ROLLBACK_TEMPLATE
 - `specs/templates/MANIFEST_TEMPLATE.md` (document) MANIFEST_TEMPLATE
@@ -90,11 +150,14 @@
 - `contracts/SAFETY_GATE_RECORD_TEMPLATE.md` (contract) Safety Gate Record Template
 - `contracts/contracts_4.md` (contract) contracts 4
 - `contracts/WORKER_EXECUTION_CONTRACT.md` (contract) WORKER_EXECUTION_CONTRACT
+- `contracts/REFACTORING_GOVERNANCE_CONTRACT.md` (contract) REFACTORING_GOVERNANCE_CONTRACT
 - `contracts/contracts_1.md` (contract) contracts 1
 - `contracts/contracts_5.md` (contract) contracts 5
 - `contracts/AGENT_IO_CONTRACT_TEMPLATE.md` (contract) Agent IO Contract Template
 - `contracts/contracts_2.md` (contract) contracts 2
 - `contracts/contracts_3.md` (contract) contracts 3
+- `contracts/CODE_QUALITY_CONTRACT.md` (contract) CODE_QUALITY_CONTRACT
+- `contracts/ROOT_HYGIENE_CONTRACT.md` (contract) ROOT_HYGIENE_CONTRACT
 - `catalog/catalog_4.md` (catalog) catalog 4
 - `catalog/RUNTIME_BOUNDARY_MODEL.md` (catalog) Runtime Boundary Model
 - `catalog/CAPABILITY_TAXONOMY.md` (catalog) Capability Taxonomy
@@ -127,20 +190,34 @@
 - `runtime/AGENT_RUNTIME_MVP_SPEC.md` (document) Agent Runtime MVP Specification
 - `runtime/task_intake/ART-SAMPLE-0001/TASK_INTAKE_REPORT.md` (document) Agent Runtime Task Intake Dry Run Report
 - `runtime/agent_runtime_mvp/DRY_RUN_REPORT.md` (document) Agent Runtime MVP Dry Run Report\n\n## Conclusion\n\nDry-run agent cycle completed without runtime external execution.\n\n## Generated Artifacts\n\n- `runtime/agent_runtime_mvp/runtime_context.json`\n- `runtime/agent_runtime_mvp/runtime_plan.json`\n- `runtime/agent_runtime_mvp/queue_item.json`\n- `runtime/agent_runtime_mvp/review_summary.json`\n- `runtime/agent_runtime_mvp/approval_gate.json`\n\n## Boundary\n\n- Runtime external execution: not performed\n- Platform API mutation: not performed\n- Auto posting: not performed\n- Secret use: not performed\n- Human approval: required for runtime transition\n
+- `runtime/validation/VALIDATION_REPORT.md` (document) VALIDATION REPORT
+- `tests/test_root_hygiene_migration.py` (document) test_root_hygiene_migration
 - `tests/test_result.py` (document) test_result
 - `tests/test_task.py` (document) test_task
 - `tests/test_local_agent_runner.py` (document) test_local_agent_runner
+- `tests/test_planner.py` (document) test_planner
+- `tests/test_review_output_integration.py` (document) test_review_output_integration
+- `tests/test_task_decomposer.py` (document) test_task_decomposer
+- `tests/test_execution_kernel.py` (document) Repository
 - `tests/test_context_loader.py` (document) test_context_loader
+- `tests/test_worker_registry.py` (document) test_worker_registry
+- `tests/test_repository_hygiene.py` (document) test_repository_hygiene
+- `tests/test_autonomous_loop.py` (document) Repository
+- `tests/test_code_quality_baseline.py` (document) test_code_quality_baseline
 - `tests/test_state.py` (document) Repository
 - `tests/test_queue_transition.py` (document) test_queue_transition
 - `tests/test_agent_executor.py` (document) Repository
 - `tests/test_queue.py` (document) Repository
 - `tests/test_worker.py` (document) test_worker
 - `tests/test_output_contract.py` (document) test_output_contract
+- `tests/test_validation_orchestrator.py` (document) test_validation_orchestrator
+- `tests/test_output_semantics.py` (document) test_output_semantics
 - `tests/test_execution_record.py` (document) test_execution_record
 - `tests/test_dispatcher.py` (document) test_dispatcher
 - `tests/test_review_package.py` (document) test_review_package
 - `tests/test_codex_worker.py` (document) test_codex_worker
+- `tests/test_capability_router.py` (document) test_capability_router
+- `tests/test_refactoring_governance.py` (document) test_refactoring_governance
 - `runbooks/link-scan.md` (runbook) Runbook
 - `runbooks/full-selftest.md` (runbook) Runbook
 - `runbooks/runbooks_5.md` (runbook) runbooks 5
@@ -173,19 +250,29 @@
 - `docs/docs_5.md` (document) docs 5
 - `docs/docs_1.md` (document) docs 1
 - `docs/docs_4.md` (document) docs 4
+- `docs/ep/README_EP0118_ROOT_HYGIENE_MIGRATION_1.md` (readme) EP-0118 Root Hygiene Migration 1
+- `docs/ep/README_EP0116_REPOSITORY_HYGIENE_CODE_QUALITY.md` (readme) EP-0116 Repository Hygiene & Code Quality Baseline
+- `docs/ep/README_EP0115_TASK_DECOMPOSER.md` (readme) EP-0115 Task Decomposer
+- `docs/ep/README_EP0111_VALIDATION_ORCHESTRATOR.md` (readme) EP-0111 Validation Orchestrator
 - `docs/ep/README_EP0105_REPOSITORY_SCHEDULER_DISPATCHER.md` (readme) README_EP0105_REPOSITORY_SCHEDULER_DISPATCHER
+- `docs/ep/README_EP0113_WORKER_REGISTRY.md` (readme) EP-0113 Worker Registry
 - `docs/ep/README_EP0001.md` (readme) EP-0001 Runtime Capability Suite
+- `docs/ep/README_EP0112_EXECUTION_KERNEL.md` (readme) EP-0112 Execution Kernel
 - `docs/ep/README_EP0100_1_AGENT_RUNTIME_IMPORT_FIX.md` (readme) EP-0100.1 Agent Runtime MVP Import Fix
 - `docs/ep/README_EP0106_QUEUE_STATE_TRANSITION_ENGINE.md` (readme) README_EP0106_QUEUE_STATE_TRANSITION_ENGINE
 - `docs/ep/README_EP0100_AGENT_RUNTIME_MVP.md` (readme) EP-0100 Agent Runtime MVP
 - `docs/ep/README_EP0102_CODEX_DEVELOPMENT_PIPELINE.md` (readme) README_EP0102_CODEX_DEVELOPMENT_PIPELINE
 - `docs/ep/README_EP0003.md` (readme) EP-0003 Agent Capability Suite
 - `docs/ep/README_EP0103_WORKER_CONTRACT_LAYER.md` (readme) README_EP0103_WORKER_CONTRACT_LAYER
+- `docs/ep/README_EP0120_WORKER_OUTPUT_SEMANTICS.md` (readme) EP-0120 Worker Output Semantics
 - `docs/ep/README_EP0107_WORKER_OUTPUT_CONTRACT.md` (readme) README_EP0107_WORKER_OUTPUT_CONTRACT
+- `docs/ep/README_EP0117_REFACTORING_GOVERNANCE.md` (readme) EP-0117 Refactoring Governance Gate
 - `docs/ep/README_EP0102_SPEC_PACK.md` (readme) EP-0102 Codex Development Pipeline Spec Pack
 - `docs/ep/README_EP0002.md` (readme) EP-0002 Runtime Coordination Suite
+- `docs/ep/README_EP0114_CAPABILITY_ROUTER.md` (readme) EP-0114 Capability Router
 - `docs/ep/README_EP0104_EXECUTABLE_SPECIFICATION.md` (readme) README_EP0104_EXECUTABLE_SPECIFICATION
 - `docs/ep/README_EP0100_2_AGENT_RUNTIME_RESTORE_IMPORT_FIX.md` (readme) EP-0100.2 Agent Runtime MVP Restore + Import Fix
+- `docs/ep/README_EP0119_REVIEW_OUTPUT_INTEGRATION.md` (readme) EP-0119 Review Output Integration
 - `docs/ep/README_EP0101_AGENT_RUNTIME_TASK_INTAKE.md` (readme) EP-0101 Agent Runtime Task Intake
 - `docs/packs/README_REPOSITORY_SELFTEST_COMPLETE_PACK.md` (readme) ACIP Repository Self Test Complete Pack
 - `docs/packs/README_CANONICAL_ASSET_PACK.md` (readme) ACIP Canonical Asset Production Pack
@@ -210,12 +297,27 @@
 - `docs/packs/README_SELFTEST_REMEDIATION_PACK.md` (readme) ACIP SelfTest Remediation Pack
 - `docs/packs/README_AGENT_ORCHESTRATOR_PACK.md` (readme) ACIP Agent Orchestrator Pack
 - `docs/packs/README_ASSET_REGISTRY_PACK.md` (readme) ACIP Asset Registry Pack
+- `docs/current/CODE_QUALITY_BASELINE.md` (document) CODE_QUALITY_BASELINE
+- `docs/current/REFACTORING_QUEUE.md` (document) REFACTORING_QUEUE
 - `docs/current/QUEUE_TRANSITION.md` (document) QUEUE_TRANSITION
 - `docs/current/CODEX_OUTPUT_CONTRACT.md` (document) CODEX_OUTPUT_CONTRACT
+- `docs/current/REVIEW_OUTPUT_INTEGRATION.md` (document) REVIEW_OUTPUT_INTEGRATION
+- `docs/current/REFACTORING_DECISION_RECORD.md` (document) REFACTORING_DECISION_RECORD
+- `docs/current/EXECUTION_KERNEL.md` (document) EXECUTION_KERNEL
+- `docs/current/VALIDATION_STATE.md` (document) VALIDATION_STATE
+- `docs/current/REFACTORING_GOVERNANCE_GATE.md` (document) REFACTORING_GOVERNANCE_GATE
+- `docs/current/CAPABILITY_ROUTING.md` (document) CAPABILITY_ROUTING
+- `docs/current/ROOT_HYGIENE_REPORT.md` (document) ROOT_HYGIENE_REPORT
+- `docs/current/WORKER_REGISTRY.md` (document) WORKER_REGISTRY
 - `docs/current/PROJECT.md` (document) PROJECT
 - `docs/current/STATE.md` (document) STATE
+- `docs/current/WORKER_OUTPUT_SEMANTICS.md` (document) WORKER_OUTPUT_SEMANTICS
 - `docs/current/WORKER_EXECUTION_RECORD.md` (document) WORKER_EXECUTION_RECORD
+- `docs/current/WORKER_ASSIGNMENT.md` (document) WORKER_ASSIGNMENT
+- `docs/current/TASK_DECOMPOSITION.md` (document) TASK_DECOMPOSITION
+- `docs/current/WORKER_OUTPUT_CONTRACT.md` (document) WORKER_OUTPUT_CONTRACT
 - `docs/current/ROADMAP.md` (document) ROADMAP
+- `docs/current/ROOT_HYGIENE_MIGRATION_PLAN.md` (document) ROOT_HYGIENE_MIGRATION_PLAN
 - `docs/current/WORKER_STATE.md` (document) WORKER_STATE
 - `docs/current/QUEUE_STATE.md` (document) QUEUE_STATE
 - `docs/manifests/MANIFEST_EP0100.md` (document) EP-0100 Manifest
@@ -263,23 +365,36 @@
 - `wbs/WBS-0015-agent-orchestrator.md` (wbs) WBS-0015: Agent Orchestrator
 - `wbs/WBS-0012-repository-semantic-selftest-v2.md` (wbs) WBS-0012: Repository Semantic SelfTest v2
 - `scripts/validate_ep_0102.py` (script) validate_ep_0102
+- `scripts/validate_ep_0112.py` (script) validate_ep_0112
 - `scripts/validate_boundaries.py` (script) validate_boundaries
 - `scripts/validate_ep_0003.py` (script) validate_ep_0003
 - `scripts/validate_ep_0106.py` (script) validate_ep_0106
+- `scripts/validate_ep_0116.py` (script) validate_ep_0116
 - `scripts/validate_ep_0107.py` (script) validate_ep_0107
+- `scripts/validate_ep_0117.py` (script) validate_ep_0117
 - `scripts/validate_ep_0103.py` (script) validate_ep_0103
+- `scripts/validate_ep_0113.py` (script) validate_ep_0113
 - `scripts/validate_ep_0108.py` (script) validate_ep_0108
+- `scripts/validate_ep_0118.py` (script) validate_ep_0118
 - `scripts/validate_links.py` (script) validate_links
 - `scripts/validate_drift.py` (script) validate_drift
 - `scripts/validate_continuous_governance.py` (script) validate_continuous_governance
+- `scripts/validate_ep_0109.py` (script) validate_ep_0109
 - `scripts/validate_repository_knowledge_graph_runtime_integration.py` (script) validate_repository_knowledge_graph_runtime_integration
+- `scripts/validate_ep_0119.py` (script) validate_ep_0119
+- `scripts/validate_all.py` (script) validate_all
 - `scripts/validate_dead_assets.py` (script) validate_dead_assets
 - `scripts/validate_ep_0104.py` (script) validate_ep_0104
+- `scripts/validate_ep_0120.py` (script) validate_ep_0120
+- `scripts/validate_ep_0114.py` (script) validate_ep_0114
 - `scripts/validate_ep_0100.py` (script) validate_ep_0100
+- `scripts/validate_ep_0110.py` (script) validate_ep_0110
 - `scripts/validate_repository_selftest.py` (script) validate_repository_selftest
 - `scripts/validate_ep_0101.py` (script) validate_ep_0101
+- `scripts/validate_ep_0111.py` (script) validate_ep_0111
 - `scripts/validate_ep_0105.py` (script) validate_ep_0105
 - `scripts/validate_repository_os_v1_baseline.py` (script) validate_repository_os_v1_baseline
+- `scripts/validate_ep_0115.py` (script) validate_ep_0115
 - `scripts/context/build_context_diff.py` (script) build_context_diff
 - `scripts/context/build_agent_context_pack.py` (script) build_agent_context_pack
 - `scripts/specs/validate_ep_contract.py` (script) validate_ep_contract
@@ -309,6 +424,9 @@
 - `scripts/selftest/cleanup_selftest_skeleton.py` (script) cleanup_selftest_skeleton
 - `scripts/selftest/selftest_common.py` (script) Backward-compatible alias for older selftest modules.
 - `scripts/baseline/validate_baseline.py` (script) validate_baseline
+- `scripts/hygiene/audit_code_quality.py` (script) audit_code_quality
+- `scripts/hygiene/validate_refactoring_governance.py` (script) validate_refactoring_governance
+- `scripts/hygiene/audit_repository_root.py` (script) audit_repository_root
 - `scripts/selftest_v2/semantic_checks.py` (script) semantic_checks
 - `scripts/selftest_v2/validate_semantic_selftest.py` (script) validate_semantic_selftest
 - `scripts/selftest_v2/semantic_common.py` (script) semantic_common
@@ -328,20 +446,30 @@
 - `.github/workflows/boundary-validation.yml` (workflow) boundary-validation
 - `.github/workflows/ep0103-worker-contract-layer.yml` (workflow) ep0103-worker-contract-layer
 - `.github/workflows/ep0107-worker-output-contract.yml` (workflow) ep0107-worker-output-contract
+- `.github/workflows/ep0114-capability-router.yml` (workflow) ep0114-capability-router
 - `.github/workflows/ep0102-codex-development-pipeline.yml` (workflow) ep0102-codex-development-pipeline
 - `.github/workflows/agent-orchestrator-validation.yml` (workflow) agent-orchestrator-validation
 - `.github/workflows/repository-knowledge-graph-runtime-integration.yml` (workflow) repository-knowledge-graph-runtime-integration
 - `.github/workflows/continuous-governance.yml` (workflow) continuous-governance
 - `.github/workflows/repository-semantic-selftest-v2.yml` (workflow) repository-semantic-selftest-v2
 - `.github/workflows/ep0100-agent-runtime-mvp.yml` (workflow) ep0100-agent-runtime-mvp
+- `.github/workflows/ep0115-task-decomposer.yml` (workflow) ep0115-task-decomposer
+- `.github/workflows/ep0119-review-output-integration.yml` (workflow) ep0119-review-output-integration
 - `.github/workflows/repository-selftest.yml` (workflow) repository-selftest
 - `.github/workflows/runtime-foundation.yml` (workflow) runtime-foundation
 - `.github/workflows/repository-selftest-complete.yml` (workflow) repository-selftest-complete
 - `.github/workflows/runtime-capability.yml` (workflow) runtime-capability
 - `.github/workflows/runtime-coordination.yml` (workflow) runtime-coordination
+- `.github/workflows/ep0118-root-hygiene-migration-1.yml` (workflow) ep0118-root-hygiene-migration-1
 - `.github/workflows/ep0101-agent-runtime-task-intake.yml` (workflow) ep0101-agent-runtime-task-intake
+- `.github/workflows/ep0120-worker-output-semantics.yml` (workflow) ep0120-worker-output-semantics
 - `.github/workflows/ep0003.yml` (workflow) ep0003
+- `.github/workflows/ep0117-refactoring-governance.yml` (workflow) ep0117-refactoring-governance
+- `.github/workflows/ep0116-repository-hygiene-code-quality.yml` (workflow) ep0116-repository-hygiene-code-quality
+- `.github/workflows/ep0112-execution-kernel.yml` (workflow) ep0112-execution-kernel
 - `.github/workflows/ep0104-executable-specification.yml` (workflow) ep0104-executable-specification
+- `.github/workflows/ep0113-worker-registry.yml` (workflow) ep0113-worker-registry
+- `.github/workflows/validate-all.yml` (workflow) validate-all
 - `.github/ISSUE_TEMPLATE/repository_selftest.yml` (document) repository_selftest
 - `.github/ISSUE_TEMPLATE/runtime_integration_readiness.yml` (document) runtime_integration_readiness
 - `.github/ISSUE_TEMPLATE/repository_selftest_failure.yml` (document) repository_selftest_failure
@@ -388,6 +516,9 @@
 - `.system/prompts/codex/ASSET_WORKER.md` (document) ASSET_WORKER
 - `.system/prompts/codex/CHECKPOINT_WORKER.md` (document) CHECKPOINT_WORKER
 - `templates/ADR_TEMPLATE.md` (document) ADR_TEMPLATE
+- `workers/registry.yaml` (document) registry
+- `workers/registry.py` (document) registry
+- `workers/capability_matcher.py` (document) capability_matcher
 - `workers/CODEX_WORKER_PROFILE.md` (document) CODEX_WORKER_PROFILE
 - `workers/CHATGPT_WORKER_PROFILE.md` (document) CHATGPT_WORKER_PROFILE
 - `workers/README_WORKERS.md` (readme) README_WORKERS
@@ -454,7 +585,9 @@
 - `orchestrator/dispatcher.py` (document) dispatcher
 - `orchestrator/queue.py` (document) queue
 - `orchestrator/worker.py` (document) worker
+- `orchestrator/output_semantics.py` (document) output_semantics
 - `orchestrator/output_contract.py` (document) output_contract
+- `orchestrator/planner.py` (document) planner
 - `orchestrator/task.py` (document) task
 - `orchestrator/execution_record.py` (document) execution_record
 - `orchestrator/INBOX.md` (document) INBOX
@@ -471,7 +604,10 @@
 - `orchestrator/worker_state.py` (document) worker_state
 - `orchestrator/CONTEXT_RESOLVER.md` (document) Context Resolver
 - `orchestrator/WORKER_ROUTING.md` (document) WORKER_ROUTING
+- `orchestrator/capability_router.py` (document) capability_router
+- `orchestrator/execution_kernel.py` (document) execution_kernel
 - `orchestrator/CONTEXT_BUNDLE_SCHEMA.md` (document) Context Bundle Schema
+- `orchestrator/review_output_integration.py` (document) review_output_integration
 - `orchestrator/result.py` (document) result
 - `orchestrator/REVIEW_GATE.md` (document) Review Gate
 - `orchestrator/context_loader.py` (document) context_loader
@@ -479,8 +615,11 @@
 - `orchestrator/agent_executor.py` (document) agent_executor
 - `orchestrator/queue_transition.py` (document) queue_transition
 - `orchestrator/scheduler.py` (document) scheduler
+- `orchestrator/autonomous_loop.py` (document) autonomous_loop
 - `orchestrator/EXECUTION_PLAN_SCHEMA.md` (document) Execution Plan Schema
+- `orchestrator/validation_orchestrator.py` (document) validation_orchestrator
 - `orchestrator/EXECUTION_QUEUE.md` (document) Execution Queue
+- `orchestrator/task_decomposer.py` (document) task_decomposer
 - `orchestrator/local_agent_runner.py` (document) local_agent_runner
 - `orchestrator/state.py` (document) state
 - `orchestrator/workers/codex_worker.py` (document) codex_worker
