@@ -6,8 +6,8 @@ from selftest_common import iter_text_files, rel, read, markdown_h1, pass_result
 KNOWN_DEPRECATED_DUPLICATE_FILES = {
     "adr/ADR-0016-repository-self-test.md",
     "wbs/WBS-0011-repository-selftest.md",
-    "README_SELFTEST_PACK.md",
-    "README_REPOSITORY_SELFTEST_PACK.md",
+    "archive/README_SELFTEST_PACK.md",
+    "archive/README_REPOSITORY_SELFTEST_PACK.md",
 }
 
 def run():

@@ -1,55 +1,12 @@
 # Repository Graph
 
-- nodes: 435
-- edges: 130
+- nodes: 480
+- edges: 176
 
 ## Nodes
-- `README_REPOSITORY_SELFTEST_COMPLETE_PACK.md` (readme) ACIP Repository Self Test Complete Pack
-- `README_CANONICAL_ASSET_PACK.md` (readme) ACIP Canonical Asset Production Pack
-- `README_CATALOG_LAYER_PACK.md` (readme) ACIP Catalog Layer Pack
-- `README_KNOWLEDGE_FACTORY.md` (readme) Knowledge Factory README
-- `README_GOVERNANCE.md` (readme) Governance README
-- `README_RUNTIME_READINESS.md` (readme) Runtime Readiness README
-- `README_AGENT_RUNTIME_FOUNDATION_PACK.md` (readme) Agent Runtime Foundation Pack
-- `CHANGELOG.md` (document) CHANGELOG
-- `README_AGENT_OS_PACK.md` (readme) Agent OS Pack
-- `MANIFEST_EP0100.md` (document) EP-0100 Manifest
 - `selftest.yml` (document) selftest
-- `README_REPOSITORY_KNOWLEDGE_GRAPH_RUNTIME_INTEGRATION_PACK.md` (readme) ACIP Repository Knowledge Graph Runtime Integration Pack
-- `MANIFEST_EP0100_2.md` (document) EP-0100.2 Manifest
-- `README_EP0001.md` (readme) EP-0001 Runtime Capability Suite
-- `PROJECT.md` (document) PROJECT
-- `STATE.md` (document) STATE
-- `README_EP0100_1_AGENT_RUNTIME_IMPORT_FIX.md` (readme) EP-0100.1 Agent Runtime MVP Import Fix
-- `README_ASSET_LIFECYCLE_PACK.md` (readme) ACIP Asset Lifecycle Pack
-- `README_REPOSITORY_OS_V1_BASELINE_PACK.md` (readme) ACIP Repository OS v1 Baseline Pack
-- `MANIFEST_EP0101.md` (document) EP-0101 Manifest
-- `README_RUNTIME_TRANSITION_READINESS_PACK.md` (readme) Runtime Transition Readiness Pack
-- `README_REPOSITORY_COMPLETE_PACK.md` (readme) ACIP Repository Complete Pack
-- `README_SELFTEST_IMPORT_FIX_PACK.md` (readme) ACIP SelfTest Import Fix Pack
 - `README.md` (readme) ACIP GitHub Operations Kit v1
-- `README_AUTONOMOUS_WORKFLOW_CONTROL_PACK.md` (readme) ACIP Autonomous Workflow Control Pack
-- `README_EP0100_AGENT_RUNTIME_MVP.md` (readme) EP-0100 Agent Runtime MVP
-- `README_EP0102_CODEX_DEVELOPMENT_PIPELINE.md` (readme) README_EP0102_CODEX_DEVELOPMENT_PIPELINE
-- `README_EP0003.md` (readme) EP-0003 Agent Capability Suite
-- `README_ASSET_PRODUCTION_OPERATIONS_PACK.md` (readme) ACIP Asset Production Operations Pack
-- `MANIFEST.md` (document) MANIFEST
-- `ROADMAP.md` (document) ROADMAP
-- `README_EP0103_WORKER_CONTRACT_LAYER.md` (readme) README_EP0103_WORKER_CONTRACT_LAYER
-- `README_ASSET_QUALITY_ROI_CLOSURE_PACK.md` (readme) ACIP Asset Quality ROI Closure Pack
-- `MANIFEST_EP0100_1.md` (document) EP-0100.1 Manifest
-- `README_AUTOMATION_PACK.md` (readme) ACIP Automation Pack
-- `README_SEMANTIC_SELFTEST_V2_PACK.md` (readme) ACIP Repository Semantic SelfTest v2 Pack
-- `README_EP0102_SPEC_PACK.md` (readme) EP-0102 Codex Development Pipeline Spec Pack
-- `README_EP0002.md` (readme) EP-0002 Runtime Coordination Suite
-- `README_AGENT_OS.md` (readme) Agent OS README
 - `AGENTS.md` (document) AGENTS.md
-- `README_SELFTEST_REMEDIATION_PACK.md` (readme) ACIP SelfTest Remediation Pack
-- `README_AGENT_ORCHESTRATOR_PACK.md` (readme) ACIP Agent Orchestrator Pack
-- `README_EP0104_EXECUTABLE_SPECIFICATION.md` (readme) README_EP0104_EXECUTABLE_SPECIFICATION
-- `README_EP0100_2_AGENT_RUNTIME_RESTORE_IMPORT_FIX.md` (readme) EP-0100.2 Agent Runtime MVP Restore + Import Fix
-- `README_ASSET_REGISTRY_PACK.md` (readme) ACIP Asset Registry Pack
-- `README_EP0101_AGENT_RUNTIME_TASK_INTAKE.md` (readme) EP-0101 Agent Runtime Task Intake
 - `releases/RELEASE_v1.0.0-repository-os.md` (document) ACIP Repository Operating System v1.0
 - `adr/ADR-0021-runtime-transition-readiness.md` (adr) ADR-0021 Runtime Transition Readiness
 - `adr/ADR-0030-agent-runtime-mvp.md` (adr) ADR-0030: Agent Runtime MVP
@@ -73,6 +30,58 @@
 - `cache/GRAPH_CACHE.md` (document) Graph Cache
 - `cache/CONTEXT_CACHE.md` (document) Context Cache
 - `specs/WORKFLOW.md` (document) WORKFLOW
+- `specs/completed/README.md` (readme) COMPLETED_SPECS
+- `specs/EP-0105/WORKER_INSTRUCTIONS.md` (document) EP-0105 Worker Instructions
+- `specs/EP-0105/VALIDATION.md` (document) EP-0105 Validation
+- `specs/EP-0105/README.md` (readme) EP-0105
+- `specs/EP-0105/IMPLEMENTATION_SPEC.md` (document) EP-0105 Implementation Spec
+- `specs/EP-0105/MANIFEST.md` (document) EP-0105 Manifest
+- `specs/EP-0105/FILE_CHANGESET.md` (document) EP-0105 File Changeset
+- `specs/EP-0105/ep_contract.yaml` (document) ep_contract
+- `specs/EP-0102/ACCEPTANCE_TEST.md` (document) EP-0102 Acceptance Test
+- `specs/EP-0102/CODEX_PROMPT.md` (document) Codex Prompt for EP-0102
+- `specs/EP-0102/VALIDATION.md` (document) EP-0102 Validation
+- `specs/EP-0102/IMPLEMENTATION_SPEC.md` (document) EP-0102 Implementation Spec
+- `specs/EP-0102/MANIFEST.md` (document) EP-0102 Manifest
+- `specs/EP-0102/ROLLBACK.md` (document) EP-0102 Rollback
+- `specs/EP-0102/FILE_CHANGESET.md` (document) EP-0102 File Changeset
+- `specs/EP-0103/WORKER_INSTRUCTIONS.md` (document) EP-0103 Worker Instructions
+- `specs/EP-0103/VALIDATION.md` (document) EP-0103 Validation
+- `specs/EP-0103/README.md` (readme) EP-0103
+- `specs/EP-0103/IMPLEMENTATION_SPEC.md` (document) EP-0103 Implementation Spec
+- `specs/EP-0103/MANIFEST.md` (document) EP-0103 Manifest
+- `specs/EP-0103/FILE_CHANGESET.md` (document) EP-0103 File Changeset
+- `specs/EP-0103/ACCEPTANCE.md` (document) EP-0103 Acceptance
+- `specs/EP-0104/WORKER_INSTRUCTIONS.md` (document) EP-0104 Worker Instructions
+- `specs/EP-0104/VALIDATION.md` (document) EP-0104 Validation
+- `specs/EP-0104/README.md` (readme) EP-0104 Executable Specification Foundation
+- `specs/EP-0104/IMPLEMENTATION_SPEC.md` (document) EP-0104 Implementation Spec
+- `specs/EP-0104/MANIFEST.md` (document) EP-0104 Manifest
+- `specs/EP-0104/FILE_CHANGESET.md` (document) EP-0104 File Changeset
+- `specs/EP-0104/ep_contract.yaml` (document) ep_contract
+- `specs/templates/ep_contract.template.yaml` (document) ep_contract.template
+- `specs/templates/ROLLBACK_TEMPLATE.md` (document) ROLLBACK_TEMPLATE
+- `specs/templates/MANIFEST_TEMPLATE.md` (document) MANIFEST_TEMPLATE
+- `specs/templates/ACCEPTANCE_TEST_TEMPLATE.md` (document) ACCEPTANCE_TEST_TEMPLATE
+- `specs/templates/VALIDATION_TEMPLATE.md` (document) VALIDATION_TEMPLATE
+- `specs/templates/FILE_CHANGESET_TEMPLATE.md` (document) FILE_CHANGESET_TEMPLATE
+- `specs/templates/IMPLEMENTATION_SPEC_TEMPLATE.md` (document) IMPLEMENTATION_SPEC_TEMPLATE
+- `specs/active/README.md` (readme) ACTIVE_SPECS
+- `specs/archived/README.md` (readme) ARCHIVED_SPECS
+- `specs/EP-0106/WORKER_INSTRUCTIONS.md` (document) EP-0106 Worker Instructions
+- `specs/EP-0106/VALIDATION.md` (document) EP-0106 Validation
+- `specs/EP-0106/README.md` (readme) EP-0106
+- `specs/EP-0106/IMPLEMENTATION_SPEC.md` (document) EP-0106 Implementation Spec
+- `specs/EP-0106/MANIFEST.md` (document) EP-0106 Manifest
+- `specs/EP-0106/FILE_CHANGESET.md` (document) EP-0106 File Changeset
+- `specs/EP-0106/ep_contract.yaml` (document) ep_contract
+- `specs/EP-0107/WORKER_INSTRUCTIONS.md` (document) EP-0107 Worker Instructions
+- `specs/EP-0107/VALIDATION.md` (document) EP-0107 Validation
+- `specs/EP-0107/README.md` (readme) EP-0107
+- `specs/EP-0107/IMPLEMENTATION_SPEC.md` (document) EP-0107 Implementation Spec
+- `specs/EP-0107/MANIFEST.md` (document) EP-0107 Manifest
+- `specs/EP-0107/FILE_CHANGESET.md` (document) EP-0107 File Changeset
+- `specs/EP-0107/ep_contract.yaml` (document) ep_contract
 - `contracts/EXECUTION_CONTRACT_TEMPLATE.md` (contract) Execution Contract Template
 - `contracts/RUNTIME_TRANSITION_APPROVAL_TEMPLATE.md` (contract) Runtime Transition Approval Template
 - `contracts/APPROVAL_RECORD_TEMPLATE.md` (contract) Approval Record Template
@@ -116,14 +125,19 @@
 - `runtime/RUNTIME_READINESS_CHECKLIST.md` (document) Runtime Readiness Checklist
 - `runtime/AUDIT_ENGINE.md` (document) Audit Engine
 - `runtime/AGENT_RUNTIME_MVP_SPEC.md` (document) Agent Runtime MVP Specification
+- `runtime/task_intake/ART-SAMPLE-0001/TASK_INTAKE_REPORT.md` (document) Agent Runtime Task Intake Dry Run Report
+- `runtime/agent_runtime_mvp/DRY_RUN_REPORT.md` (document) Agent Runtime MVP Dry Run Report\n\n## Conclusion\n\nDry-run agent cycle completed without runtime external execution.\n\n## Generated Artifacts\n\n- `runtime/agent_runtime_mvp/runtime_context.json`\n- `runtime/agent_runtime_mvp/runtime_plan.json`\n- `runtime/agent_runtime_mvp/queue_item.json`\n- `runtime/agent_runtime_mvp/review_summary.json`\n- `runtime/agent_runtime_mvp/approval_gate.json`\n\n## Boundary\n\n- Runtime external execution: not performed\n- Platform API mutation: not performed\n- Auto posting: not performed\n- Secret use: not performed\n- Human approval: required for runtime transition\n
 - `tests/test_result.py` (document) test_result
 - `tests/test_task.py` (document) test_task
 - `tests/test_local_agent_runner.py` (document) test_local_agent_runner
 - `tests/test_context_loader.py` (document) test_context_loader
 - `tests/test_state.py` (document) Repository
+- `tests/test_queue_transition.py` (document) test_queue_transition
 - `tests/test_agent_executor.py` (document) Repository
 - `tests/test_queue.py` (document) Repository
 - `tests/test_worker.py` (document) test_worker
+- `tests/test_output_contract.py` (document) test_output_contract
+- `tests/test_execution_record.py` (document) test_execution_record
 - `tests/test_dispatcher.py` (document) test_dispatcher
 - `tests/test_review_package.py` (document) test_review_package
 - `tests/test_codex_worker.py` (document) test_codex_worker
@@ -151,6 +165,7 @@
 - `docs/REPOSITORY_SELFTEST_COMPLETE_CHECKLIST.md` (document) Repository Self Test Complete Checklist
 - `docs/SELFTEST_REPORT_TEMPLATE.md` (document) Self Test Report Template
 - `docs/docs_2.md` (document) docs 2
+- `docs/CHANGELOG.md` (document) CHANGELOG
 - `docs/SEMANTIC_SELFTEST_REPORT_TEMPLATE.md` (document) Semantic SelfTest Report Template
 - `docs/SELFTEST_CHECKLIST.md` (document) SELFTEST_CHECKLIST
 - `docs/BOUNDARY_REPORT_TEMPLATE.md` (document) BOUNDARY_REPORT_TEMPLATE
@@ -158,7 +173,80 @@
 - `docs/docs_5.md` (document) docs 5
 - `docs/docs_1.md` (document) docs 1
 - `docs/docs_4.md` (document) docs 4
+- `docs/ep/README_EP0105_REPOSITORY_SCHEDULER_DISPATCHER.md` (readme) README_EP0105_REPOSITORY_SCHEDULER_DISPATCHER
+- `docs/ep/README_EP0001.md` (readme) EP-0001 Runtime Capability Suite
+- `docs/ep/README_EP0100_1_AGENT_RUNTIME_IMPORT_FIX.md` (readme) EP-0100.1 Agent Runtime MVP Import Fix
+- `docs/ep/README_EP0106_QUEUE_STATE_TRANSITION_ENGINE.md` (readme) README_EP0106_QUEUE_STATE_TRANSITION_ENGINE
+- `docs/ep/README_EP0100_AGENT_RUNTIME_MVP.md` (readme) EP-0100 Agent Runtime MVP
+- `docs/ep/README_EP0102_CODEX_DEVELOPMENT_PIPELINE.md` (readme) README_EP0102_CODEX_DEVELOPMENT_PIPELINE
+- `docs/ep/README_EP0003.md` (readme) EP-0003 Agent Capability Suite
+- `docs/ep/README_EP0103_WORKER_CONTRACT_LAYER.md` (readme) README_EP0103_WORKER_CONTRACT_LAYER
+- `docs/ep/README_EP0107_WORKER_OUTPUT_CONTRACT.md` (readme) README_EP0107_WORKER_OUTPUT_CONTRACT
+- `docs/ep/README_EP0102_SPEC_PACK.md` (readme) EP-0102 Codex Development Pipeline Spec Pack
+- `docs/ep/README_EP0002.md` (readme) EP-0002 Runtime Coordination Suite
+- `docs/ep/README_EP0104_EXECUTABLE_SPECIFICATION.md` (readme) README_EP0104_EXECUTABLE_SPECIFICATION
+- `docs/ep/README_EP0100_2_AGENT_RUNTIME_RESTORE_IMPORT_FIX.md` (readme) EP-0100.2 Agent Runtime MVP Restore + Import Fix
+- `docs/ep/README_EP0101_AGENT_RUNTIME_TASK_INTAKE.md` (readme) EP-0101 Agent Runtime Task Intake
+- `docs/packs/README_REPOSITORY_SELFTEST_COMPLETE_PACK.md` (readme) ACIP Repository Self Test Complete Pack
+- `docs/packs/README_CANONICAL_ASSET_PACK.md` (readme) ACIP Canonical Asset Production Pack
+- `docs/packs/README_CATALOG_LAYER_PACK.md` (readme) ACIP Catalog Layer Pack
+- `docs/packs/README_KNOWLEDGE_FACTORY.md` (readme) Knowledge Factory README
+- `docs/packs/README_GOVERNANCE.md` (readme) Governance README
+- `docs/packs/README_RUNTIME_READINESS.md` (readme) Runtime Readiness README
+- `docs/packs/README_AGENT_RUNTIME_FOUNDATION_PACK.md` (readme) Agent Runtime Foundation Pack
+- `docs/packs/README_AGENT_OS_PACK.md` (readme) Agent OS Pack
+- `docs/packs/README_REPOSITORY_KNOWLEDGE_GRAPH_RUNTIME_INTEGRATION_PACK.md` (readme) ACIP Repository Knowledge Graph Runtime Integration Pack
+- `docs/packs/README_ASSET_LIFECYCLE_PACK.md` (readme) ACIP Asset Lifecycle Pack
+- `docs/packs/README_REPOSITORY_OS_V1_BASELINE_PACK.md` (readme) ACIP Repository OS v1 Baseline Pack
+- `docs/packs/README_RUNTIME_TRANSITION_READINESS_PACK.md` (readme) Runtime Transition Readiness Pack
+- `docs/packs/README_REPOSITORY_COMPLETE_PACK.md` (readme) ACIP Repository Complete Pack
+- `docs/packs/README_SELFTEST_IMPORT_FIX_PACK.md` (readme) ACIP SelfTest Import Fix Pack
+- `docs/packs/README_AUTONOMOUS_WORKFLOW_CONTROL_PACK.md` (readme) ACIP Autonomous Workflow Control Pack
+- `docs/packs/README_ASSET_PRODUCTION_OPERATIONS_PACK.md` (readme) ACIP Asset Production Operations Pack
+- `docs/packs/README_ASSET_QUALITY_ROI_CLOSURE_PACK.md` (readme) ACIP Asset Quality ROI Closure Pack
+- `docs/packs/README_AUTOMATION_PACK.md` (readme) ACIP Automation Pack
+- `docs/packs/README_SEMANTIC_SELFTEST_V2_PACK.md` (readme) ACIP Repository Semantic SelfTest v2 Pack
+- `docs/packs/README_AGENT_OS.md` (readme) Agent OS README
+- `docs/packs/README_SELFTEST_REMEDIATION_PACK.md` (readme) ACIP SelfTest Remediation Pack
+- `docs/packs/README_AGENT_ORCHESTRATOR_PACK.md` (readme) ACIP Agent Orchestrator Pack
+- `docs/packs/README_ASSET_REGISTRY_PACK.md` (readme) ACIP Asset Registry Pack
+- `docs/current/QUEUE_TRANSITION.md` (document) QUEUE_TRANSITION
+- `docs/current/CODEX_OUTPUT_CONTRACT.md` (document) CODEX_OUTPUT_CONTRACT
+- `docs/current/PROJECT.md` (document) PROJECT
+- `docs/current/STATE.md` (document) STATE
+- `docs/current/WORKER_EXECUTION_RECORD.md` (document) WORKER_EXECUTION_RECORD
+- `docs/current/ROADMAP.md` (document) ROADMAP
+- `docs/current/WORKER_STATE.md` (document) WORKER_STATE
+- `docs/current/QUEUE_STATE.md` (document) QUEUE_STATE
+- `docs/manifests/MANIFEST_EP0100.md` (document) EP-0100 Manifest
+- `docs/manifests/MANIFEST_EP0100_2.md` (document) EP-0100.2 Manifest
+- `docs/manifests/MANIFEST_EP0101.md` (document) EP-0101 Manifest
+- `docs/manifests/MANIFEST.md` (document) MANIFEST
+- `docs/manifests/MANIFEST_EP0100_1.md` (document) EP-0100.1 Manifest
 - `knowledge/README.md` (knowledge_asset) Knowledge Layer
+- `knowledge/draft/CA-0001.md` (knowledge_asset) CA-0001
+- `knowledge/draft/CA-0011.md` (knowledge_asset) CA-0011
+- `knowledge/draft/CA-0005.md` (knowledge_asset) CA-0005
+- `knowledge/draft/CA-0004.md` (knowledge_asset) CA-0004
+- `knowledge/draft/CA-0010.md` (knowledge_asset) CA-0010
+- `knowledge/draft/CA-0009.md` (knowledge_asset) CA-0009
+- `knowledge/draft/CA-0008.md` (knowledge_asset) CA-0008
+- `knowledge/draft/CA-0007.md` (knowledge_asset) CA-0007
+- `knowledge/draft/CA-0003.md` (knowledge_asset) CA-0003
+- `knowledge/draft/CA-0002.md` (knowledge_asset) CA-0002
+- `knowledge/draft/CA-0006.md` (knowledge_asset) CA-0006
+- `knowledge/competitor/README.md` (knowledge_asset) Competitor Intelligence
+- `knowledge/canonical/README.md` (knowledge_asset) README
+- `knowledge/canonical/CA-0001_SLEEP.md` (knowledge_asset) CA-0001_SLEEP
+- `knowledge/canonical/INDEX.md` (knowledge_asset) INDEX
+- `knowledge/learning/README.md` (knowledge_asset) Learning Repository
+- `knowledge/platform/README.md` (knowledge_asset) Platform Intelligence
+- `knowledge/prompt/README.md` (knowledge_asset) Prompt Library
+- `knowledge/market/README.md` (knowledge_asset) Market Intelligence
+- `knowledge/policy/README.md` (knowledge_asset) Policy Intelligence
+- `knowledge/strategy/CANONICAL_ASSET_BACKLOG.md` (knowledge_asset) CANONICAL_ASSET_BACKLOG
+- `knowledge/strategy/MARKET_VALIDATION_WBS.md` (knowledge_asset) MARKET_VALIDATION_WBS
+- `knowledge/strategy/PRODUCT_DEFINITION.md` (knowledge_asset) PRODUCT_DEFINITION
 - `loader/CONTEXT_LOADER.md` (document) Context Loader
 - `review/REVIEW_GATE_SUMMARY.md` (document) Review Gate Summary
 - `review/REVIEW_ENGINE.md` (document) Review Engine
@@ -177,7 +265,10 @@
 - `scripts/validate_ep_0102.py` (script) validate_ep_0102
 - `scripts/validate_boundaries.py` (script) validate_boundaries
 - `scripts/validate_ep_0003.py` (script) validate_ep_0003
+- `scripts/validate_ep_0106.py` (script) validate_ep_0106
+- `scripts/validate_ep_0107.py` (script) validate_ep_0107
 - `scripts/validate_ep_0103.py` (script) validate_ep_0103
+- `scripts/validate_ep_0108.py` (script) validate_ep_0108
 - `scripts/validate_links.py` (script) validate_links
 - `scripts/validate_drift.py` (script) validate_drift
 - `scripts/validate_continuous_governance.py` (script) validate_continuous_governance
@@ -187,7 +278,73 @@
 - `scripts/validate_ep_0100.py` (script) validate_ep_0100
 - `scripts/validate_repository_selftest.py` (script) validate_repository_selftest
 - `scripts/validate_ep_0101.py` (script) validate_ep_0101
+- `scripts/validate_ep_0105.py` (script) validate_ep_0105
 - `scripts/validate_repository_os_v1_baseline.py` (script) validate_repository_os_v1_baseline
+- `scripts/context/build_context_diff.py` (script) build_context_diff
+- `scripts/context/build_agent_context_pack.py` (script) build_agent_context_pack
+- `scripts/specs/validate_ep_contract.py` (script) validate_ep_contract
+- `scripts/specs/scaffold_ep_spec.py` (script) scaffold_ep_spec
+- `scripts/specs/validate_ep_spec.py` (script) validate_ep_spec
+- `scripts/specs/validate_spec_lifecycle.py` (script) validate_spec_lifecycle
+- `scripts/specs/load_active_ep_contract.py` (script) load_active_ep_contract
+- `scripts/graph/build_incremental_graph.py` (script) build_incremental_graph
+- `scripts/graph/validate_repository_graph.py` (script) validate_repository_graph
+- `scripts/graph/build_repository_graph.py` (script) build_repository_graph
+- `scripts/runtime/dry_run_adapter.py` (script) dry_run_adapter
+- `scripts/runtime/validate_runtime_capability.py` (script) validate_runtime_capability
+- `scripts/runtime/context_loader.py` (script) context_loader
+- `scripts/runtime/validate_runtime_foundation.py` (script) validate_runtime_foundation
+- `scripts/runtime/dry_run_runtime_plan.py` (script) dry_run_runtime_plan
+- `scripts/runtime/validate_runtime_coordination.py` (script) validate_runtime_coordination
+- `scripts/selftest/check_orphans.py` (script) check_orphans
+- `scripts/selftest/check_current_objective.py` (script) check_current_objective
+- `scripts/selftest/check_repository_health.py` (script) check_repository_health
+- `scripts/selftest/check_boundaries.py` (script) Use separated fragments so this checker does not match itself.
+- `scripts/selftest/README_SELFTEST_REMEDIATION.md` (script) SelfTest Remediation
+- `scripts/selftest/validate_repository_selftest_complete.py` (script) validate_repository_selftest_complete
+- `scripts/selftest/check_duplicates.py` (script) Deprecated skeleton files are handled by cleanup_selftest_skeleton.py and reported as warnings here.
+- `scripts/selftest/check_link_integrity.py` (script) check_link_integrity
+- `scripts/selftest/check_secret_boundary.py` (script) check_secret_boundary
+- `scripts/selftest/check_workflows.py` (script) check_workflows
+- `scripts/selftest/cleanup_selftest_skeleton.py` (script) cleanup_selftest_skeleton
+- `scripts/selftest/selftest_common.py` (script) Backward-compatible alias for older selftest modules.
+- `scripts/baseline/validate_baseline.py` (script) validate_baseline
+- `scripts/selftest_v2/semantic_checks.py` (script) semantic_checks
+- `scripts/selftest_v2/validate_semantic_selftest.py` (script) validate_semantic_selftest
+- `scripts/selftest_v2/semantic_common.py` (script) semantic_common
+- `scripts/review/build_review_gate_summary.py` (script) build_review_gate_summary
+- `scripts/agent_runtime/run_task_intake_cycle.py` (script) run_task_intake_cycle
+- `scripts/agent_runtime/run_dry_run_cycle.py` (script) run_dry_run_cycle
+- `scripts/agent_runtime/validate_task_intake.py` (script) validate_task_intake
+- `scripts/agent_runtime/validate_agent_runtime_mvp.py` (script) validate_agent_runtime_mvp
+- `scripts/workers/validate_worker_contracts.py` (script) validate_worker_contracts
+- `scripts/orchestrator/build_context_bundle.py` (script) build_context_bundle
+- `scripts/orchestrator/build_execution_plan.py` (script) build_execution_plan
+- `scripts/orchestrator/update_execution_queue.py` (script) update_execution_queue
+- `scripts/orchestrator/validate_orchestration.py` (script) validate_orchestration
+- `.github/workflows/ep0106-queue-state-transition-engine.yml` (workflow) ep0106-queue-state-transition-engine
+- `.github/workflows/repository-os-v1-baseline.yml` (workflow) repository-os-v1-baseline
+- `.github/workflows/ep0105-scheduler-dispatcher.yml` (workflow) ep0105-scheduler-dispatcher
+- `.github/workflows/boundary-validation.yml` (workflow) boundary-validation
+- `.github/workflows/ep0103-worker-contract-layer.yml` (workflow) ep0103-worker-contract-layer
+- `.github/workflows/ep0107-worker-output-contract.yml` (workflow) ep0107-worker-output-contract
+- `.github/workflows/ep0102-codex-development-pipeline.yml` (workflow) ep0102-codex-development-pipeline
+- `.github/workflows/agent-orchestrator-validation.yml` (workflow) agent-orchestrator-validation
+- `.github/workflows/repository-knowledge-graph-runtime-integration.yml` (workflow) repository-knowledge-graph-runtime-integration
+- `.github/workflows/continuous-governance.yml` (workflow) continuous-governance
+- `.github/workflows/repository-semantic-selftest-v2.yml` (workflow) repository-semantic-selftest-v2
+- `.github/workflows/ep0100-agent-runtime-mvp.yml` (workflow) ep0100-agent-runtime-mvp
+- `.github/workflows/repository-selftest.yml` (workflow) repository-selftest
+- `.github/workflows/runtime-foundation.yml` (workflow) runtime-foundation
+- `.github/workflows/repository-selftest-complete.yml` (workflow) repository-selftest-complete
+- `.github/workflows/runtime-capability.yml` (workflow) runtime-capability
+- `.github/workflows/runtime-coordination.yml` (workflow) runtime-coordination
+- `.github/workflows/ep0101-agent-runtime-task-intake.yml` (workflow) ep0101-agent-runtime-task-intake
+- `.github/workflows/ep0003.yml` (workflow) ep0003
+- `.github/workflows/ep0104-executable-specification.yml` (workflow) ep0104-executable-specification
+- `.github/ISSUE_TEMPLATE/repository_selftest.yml` (document) repository_selftest
+- `.github/ISSUE_TEMPLATE/runtime_integration_readiness.yml` (document) runtime_integration_readiness
+- `.github/ISSUE_TEMPLATE/repository_selftest_failure.yml` (document) repository_selftest_failure
 - `queue/QUEUE_ENGINE.md` (document) Queue Engine
 - `registry/registry_2.md` (registry) registry 2
 - `registry/QUEUE_INDEX.md` (registry) Queue Index
@@ -210,6 +367,7 @@
 - `prompts/CODEX_REVIEWER.md` (document) CODEX_REVIEWER
 - `prompts/CODEX_RELEASE.md` (document) CODEX_RELEASE
 - `prompts/CODEX_IMPLEMENTER.md` (document) CODEX_IMPLEMENTER
+- `prompts/codex/CODEX_PHASE0_GITHUB_PROMPT.md` (document) CODEX_PHASE0_GITHUB_PROMPT
 - `agent_runtime/cycle.py` (document) cycle
 - `agent_runtime/planner.py` (document) planner
 - `agent_runtime/task_cycle.py` (document) task_cycle
@@ -226,6 +384,9 @@
 - `.system/REVIEW.md` (document) REVIEW
 - `.system/DECISION.md` (document) DECISION
 - `.system/BOOT.md` (document) BOOT
+- `.system/SOP/CONTENT_PIPELINE.md` (document) CONTENT_PIPELINE
+- `.system/prompts/codex/ASSET_WORKER.md` (document) ASSET_WORKER
+- `.system/prompts/codex/CHECKPOINT_WORKER.md` (document) CHECKPOINT_WORKER
 - `templates/ADR_TEMPLATE.md` (document) ADR_TEMPLATE
 - `workers/CODEX_WORKER_PROFILE.md` (document) CODEX_WORKER_PROFILE
 - `workers/CHATGPT_WORKER_PROFILE.md` (document) CHATGPT_WORKER_PROFILE
@@ -293,7 +454,9 @@
 - `orchestrator/dispatcher.py` (document) dispatcher
 - `orchestrator/queue.py` (document) queue
 - `orchestrator/worker.py` (document) worker
+- `orchestrator/output_contract.py` (document) output_contract
 - `orchestrator/task.py` (document) task
+- `orchestrator/execution_record.py` (document) execution_record
 - `orchestrator/INBOX.md` (document) INBOX
 - `orchestrator/ARCHITECTURE.md` (document) ORCHESTRATOR ARCHITECTURE
 - `orchestrator/AGENT_ROUTER.md` (document) Agent Router
@@ -303,7 +466,9 @@
 - `orchestrator/LOCAL_AGENT_RUNNER.md` (document) LOCAL_AGENT_RUNNER
 - `orchestrator/OUTBOX.md` (document) OUTBOX
 - `orchestrator/constants.py` (document) constants
+- `orchestrator/queue_state.py` (document) queue_state
 - `orchestrator/RUNBOOK.md` (document) RUNBOOK
+- `orchestrator/worker_state.py` (document) worker_state
 - `orchestrator/CONTEXT_RESOLVER.md` (document) Context Resolver
 - `orchestrator/WORKER_ROUTING.md` (document) WORKER_ROUTING
 - `orchestrator/CONTEXT_BUNDLE_SCHEMA.md` (document) Context Bundle Schema
@@ -312,130 +477,10 @@
 - `orchestrator/context_loader.py` (document) context_loader
 - `orchestrator/ORCHESTRATION_SEQUENCE.md` (document) Orchestration Sequence
 - `orchestrator/agent_executor.py` (document) agent_executor
+- `orchestrator/queue_transition.py` (document) queue_transition
+- `orchestrator/scheduler.py` (document) scheduler
 - `orchestrator/EXECUTION_PLAN_SCHEMA.md` (document) Execution Plan Schema
 - `orchestrator/EXECUTION_QUEUE.md` (document) Execution Queue
 - `orchestrator/local_agent_runner.py` (document) local_agent_runner
 - `orchestrator/state.py` (document) state
 - `orchestrator/workers/codex_worker.py` (document) codex_worker
-- `.system/SOP/CONTENT_PIPELINE.md` (document) CONTENT_PIPELINE
-- `.system/prompts/codex/ASSET_WORKER.md` (document) ASSET_WORKER
-- `.system/prompts/codex/CHECKPOINT_WORKER.md` (document) CHECKPOINT_WORKER
-- `prompts/codex/CODEX_PHASE0_GITHUB_PROMPT.md` (document) CODEX_PHASE0_GITHUB_PROMPT
-- `.github/workflows/repository-os-v1-baseline.yml` (workflow) repository-os-v1-baseline
-- `.github/workflows/boundary-validation.yml` (workflow) boundary-validation
-- `.github/workflows/ep0103-worker-contract-layer.yml` (workflow) ep0103-worker-contract-layer
-- `.github/workflows/ep0102-codex-development-pipeline.yml` (workflow) ep0102-codex-development-pipeline
-- `.github/workflows/agent-orchestrator-validation.yml` (workflow) agent-orchestrator-validation
-- `.github/workflows/repository-knowledge-graph-runtime-integration.yml` (workflow) repository-knowledge-graph-runtime-integration
-- `.github/workflows/continuous-governance.yml` (workflow) continuous-governance
-- `.github/workflows/repository-semantic-selftest-v2.yml` (workflow) repository-semantic-selftest-v2
-- `.github/workflows/ep0100-agent-runtime-mvp.yml` (workflow) ep0100-agent-runtime-mvp
-- `.github/workflows/repository-selftest.yml` (workflow) repository-selftest
-- `.github/workflows/runtime-foundation.yml` (workflow) runtime-foundation
-- `.github/workflows/repository-selftest-complete.yml` (workflow) repository-selftest-complete
-- `.github/workflows/runtime-capability.yml` (workflow) runtime-capability
-- `.github/workflows/runtime-coordination.yml` (workflow) runtime-coordination
-- `.github/workflows/ep0101-agent-runtime-task-intake.yml` (workflow) ep0101-agent-runtime-task-intake
-- `.github/workflows/ep0003.yml` (workflow) ep0003
-- `.github/workflows/ep0104-executable-specification.yml` (workflow) ep0104-executable-specification
-- `.github/ISSUE_TEMPLATE/repository_selftest.yml` (document) repository_selftest
-- `.github/ISSUE_TEMPLATE/runtime_integration_readiness.yml` (document) runtime_integration_readiness
-- `.github/ISSUE_TEMPLATE/repository_selftest_failure.yml` (document) repository_selftest_failure
-- `scripts/context/build_context_diff.py` (script) build_context_diff
-- `scripts/context/build_agent_context_pack.py` (script) build_agent_context_pack
-- `scripts/specs/validate_ep_contract.py` (script) validate_ep_contract
-- `scripts/specs/scaffold_ep_spec.py` (script) scaffold_ep_spec
-- `scripts/specs/validate_ep_spec.py` (script) validate_ep_spec
-- `scripts/specs/validate_spec_lifecycle.py` (script) validate_spec_lifecycle
-- `scripts/specs/load_active_ep_contract.py` (script) load_active_ep_contract
-- `scripts/graph/build_incremental_graph.py` (script) build_incremental_graph
-- `scripts/graph/validate_repository_graph.py` (script) validate_repository_graph
-- `scripts/graph/build_repository_graph.py` (script) build_repository_graph
-- `scripts/runtime/dry_run_adapter.py` (script) dry_run_adapter
-- `scripts/runtime/validate_runtime_capability.py` (script) validate_runtime_capability
-- `scripts/runtime/context_loader.py` (script) context_loader
-- `scripts/runtime/validate_runtime_foundation.py` (script) validate_runtime_foundation
-- `scripts/runtime/dry_run_runtime_plan.py` (script) dry_run_runtime_plan
-- `scripts/runtime/validate_runtime_coordination.py` (script) validate_runtime_coordination
-- `scripts/selftest/check_orphans.py` (script) check_orphans
-- `scripts/selftest/check_current_objective.py` (script) check_current_objective
-- `scripts/selftest/check_repository_health.py` (script) check_repository_health
-- `scripts/selftest/check_boundaries.py` (script) Use separated fragments so this checker does not match itself.
-- `scripts/selftest/README_SELFTEST_REMEDIATION.md` (script) SelfTest Remediation
-- `scripts/selftest/validate_repository_selftest_complete.py` (script) validate_repository_selftest_complete
-- `scripts/selftest/check_duplicates.py` (script) Deprecated skeleton files are handled by cleanup_selftest_skeleton.py and reported as warnings here.
-- `scripts/selftest/check_link_integrity.py` (script) check_link_integrity
-- `scripts/selftest/check_secret_boundary.py` (script) check_secret_boundary
-- `scripts/selftest/check_workflows.py` (script) check_workflows
-- `scripts/selftest/cleanup_selftest_skeleton.py` (script) cleanup_selftest_skeleton
-- `scripts/selftest/selftest_common.py` (script) Backward-compatible alias for older selftest modules.
-- `scripts/baseline/validate_baseline.py` (script) validate_baseline
-- `scripts/selftest_v2/semantic_checks.py` (script) semantic_checks
-- `scripts/selftest_v2/validate_semantic_selftest.py` (script) validate_semantic_selftest
-- `scripts/selftest_v2/semantic_common.py` (script) semantic_common
-- `scripts/review/build_review_gate_summary.py` (script) build_review_gate_summary
-- `scripts/agent_runtime/run_task_intake_cycle.py` (script) run_task_intake_cycle
-- `scripts/agent_runtime/run_dry_run_cycle.py` (script) run_dry_run_cycle
-- `scripts/agent_runtime/validate_task_intake.py` (script) validate_task_intake
-- `scripts/agent_runtime/validate_agent_runtime_mvp.py` (script) validate_agent_runtime_mvp
-- `scripts/workers/validate_worker_contracts.py` (script) validate_worker_contracts
-- `scripts/orchestrator/build_context_bundle.py` (script) build_context_bundle
-- `scripts/orchestrator/build_execution_plan.py` (script) build_execution_plan
-- `scripts/orchestrator/update_execution_queue.py` (script) update_execution_queue
-- `scripts/orchestrator/validate_orchestration.py` (script) validate_orchestration
-- `knowledge/draft/CA-0001.md` (knowledge_asset) CA-0001
-- `knowledge/draft/CA-0011.md` (knowledge_asset) CA-0011
-- `knowledge/draft/CA-0005.md` (knowledge_asset) CA-0005
-- `knowledge/draft/CA-0004.md` (knowledge_asset) CA-0004
-- `knowledge/draft/CA-0010.md` (knowledge_asset) CA-0010
-- `knowledge/draft/CA-0009.md` (knowledge_asset) CA-0009
-- `knowledge/draft/CA-0008.md` (knowledge_asset) CA-0008
-- `knowledge/draft/CA-0007.md` (knowledge_asset) CA-0007
-- `knowledge/draft/CA-0003.md` (knowledge_asset) CA-0003
-- `knowledge/draft/CA-0002.md` (knowledge_asset) CA-0002
-- `knowledge/draft/CA-0006.md` (knowledge_asset) CA-0006
-- `knowledge/competitor/README.md` (knowledge_asset) Competitor Intelligence
-- `knowledge/canonical/README.md` (knowledge_asset) README
-- `knowledge/canonical/CA-0001_SLEEP.md` (knowledge_asset) CA-0001_SLEEP
-- `knowledge/canonical/INDEX.md` (knowledge_asset) INDEX
-- `knowledge/learning/README.md` (knowledge_asset) Learning Repository
-- `knowledge/platform/README.md` (knowledge_asset) Platform Intelligence
-- `knowledge/prompt/README.md` (knowledge_asset) Prompt Library
-- `knowledge/market/README.md` (knowledge_asset) Market Intelligence
-- `knowledge/policy/README.md` (knowledge_asset) Policy Intelligence
-- `knowledge/strategy/CANONICAL_ASSET_BACKLOG.md` (knowledge_asset) CANONICAL_ASSET_BACKLOG
-- `knowledge/strategy/MARKET_VALIDATION_WBS.md` (knowledge_asset) MARKET_VALIDATION_WBS
-- `knowledge/strategy/PRODUCT_DEFINITION.md` (knowledge_asset) PRODUCT_DEFINITION
-- `runtime/agent_runtime_mvp/DRY_RUN_REPORT.md` (document) Agent Runtime MVP Dry Run Report\n\n## Conclusion\n\nDry-run agent cycle completed without runtime external execution.\n\n## Generated Artifacts\n\n- `runtime/agent_runtime_mvp/runtime_context.json`\n- `runtime/agent_runtime_mvp/runtime_plan.json`\n- `runtime/agent_runtime_mvp/queue_item.json`\n- `runtime/agent_runtime_mvp/review_summary.json`\n- `runtime/agent_runtime_mvp/approval_gate.json`\n\n## Boundary\n\n- Runtime external execution: not performed\n- Platform API mutation: not performed\n- Auto posting: not performed\n- Secret use: not performed\n- Human approval: required for runtime transition\n
-- `runtime/task_intake/ART-SAMPLE-0001/TASK_INTAKE_REPORT.md` (document) Agent Runtime Task Intake Dry Run Report
-- `specs/completed/README.md` (readme) COMPLETED_SPECS
-- `specs/EP-0102/ACCEPTANCE_TEST.md` (document) EP-0102 Acceptance Test
-- `specs/EP-0102/CODEX_PROMPT.md` (document) Codex Prompt for EP-0102
-- `specs/EP-0102/VALIDATION.md` (document) EP-0102 Validation
-- `specs/EP-0102/IMPLEMENTATION_SPEC.md` (document) EP-0102 Implementation Spec
-- `specs/EP-0102/MANIFEST.md` (document) EP-0102 Manifest
-- `specs/EP-0102/ROLLBACK.md` (document) EP-0102 Rollback
-- `specs/EP-0102/FILE_CHANGESET.md` (document) EP-0102 File Changeset
-- `specs/EP-0103/WORKER_INSTRUCTIONS.md` (document) EP-0103 Worker Instructions
-- `specs/EP-0103/VALIDATION.md` (document) EP-0103 Validation
-- `specs/EP-0103/README.md` (readme) EP-0103
-- `specs/EP-0103/IMPLEMENTATION_SPEC.md` (document) EP-0103 Implementation Spec
-- `specs/EP-0103/MANIFEST.md` (document) EP-0103 Manifest
-- `specs/EP-0103/FILE_CHANGESET.md` (document) EP-0103 File Changeset
-- `specs/EP-0103/ACCEPTANCE.md` (document) EP-0103 Acceptance
-- `specs/EP-0104/WORKER_INSTRUCTIONS.md` (document) EP-0104 Worker Instructions
-- `specs/EP-0104/VALIDATION.md` (document) EP-0104 Validation
-- `specs/EP-0104/README.md` (readme) EP-0104 Executable Specification Foundation
-- `specs/EP-0104/IMPLEMENTATION_SPEC.md` (document) EP-0104 Implementation Spec
-- `specs/EP-0104/MANIFEST.md` (document) EP-0104 Manifest
-- `specs/EP-0104/FILE_CHANGESET.md` (document) EP-0104 File Changeset
-- `specs/EP-0104/ep_contract.yaml` (document) ep_contract
-- `specs/templates/ep_contract.template.yaml` (document) ep_contract.template
-- `specs/templates/ROLLBACK_TEMPLATE.md` (document) ROLLBACK_TEMPLATE
-- `specs/templates/MANIFEST_TEMPLATE.md` (document) MANIFEST_TEMPLATE
-- `specs/templates/ACCEPTANCE_TEST_TEMPLATE.md` (document) ACCEPTANCE_TEST_TEMPLATE
-- `specs/templates/VALIDATION_TEMPLATE.md` (document) VALIDATION_TEMPLATE
-- `specs/templates/FILE_CHANGESET_TEMPLATE.md` (document) FILE_CHANGESET_TEMPLATE
-- `specs/templates/IMPLEMENTATION_SPEC_TEMPLATE.md` (document) IMPLEMENTATION_SPEC_TEMPLATE
-- `specs/active/README.md` (readme) ACTIVE_SPECS
-- `specs/archived/README.md` (readme) ARCHIVED_SPECS

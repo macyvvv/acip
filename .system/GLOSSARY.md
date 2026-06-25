@@ -26,7 +26,7 @@ Implemented by:
 
 - basis/
 - ADR
-- PROJECT.md
+- docs/current/PROJECT.md
 
 ---
 
@@ -45,7 +45,7 @@ Implemented by:
 
 Long-term mission, objectives, KPIs, and responsibilities.
 
-Stored in PROJECT.md.
+Stored in docs/current/PROJECT.md.
 
 ---
 
@@ -53,7 +53,7 @@ Stored in PROJECT.md.
 
 Current operational status.
 
-Stored in STATE.md.
+Stored in docs/current/STATE.md.
 
 ---
 
@@ -215,9 +215,9 @@ Repository artifacts always take priority over conversation history.
 
 Priority:
 
-PROJECT.md
+docs/current/PROJECT.md
 
-STATE.md
+docs/current/STATE.md
 
 AGENTS.md
 

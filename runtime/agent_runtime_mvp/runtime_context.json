@@ -4,8 +4,8 @@
   "current_objective": "Repository Operating System Stabilization",
   "graph_path": "graph/repository_graph.json",
   "context_pack_path": "graph/agent_context_pack.json",
-  "node_count": 435,
-  "edge_count": 130,
+  "node_count": 480,
+  "edge_count": 176,
   "boundary": {
     "runtime_execution": "not_performed",
     "external_actions": "prohibited",

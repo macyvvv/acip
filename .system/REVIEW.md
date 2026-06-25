@@ -20,8 +20,8 @@ Before responding, verify:
 
 Check:
 
-- consistency with PROJECT.md
-- consistency with STATE.md
+- consistency with docs/current/PROJECT.md
+- consistency with docs/current/STATE.md
 - consistency with basis/
 - consistency with ADRs
 - responsibility boundaries

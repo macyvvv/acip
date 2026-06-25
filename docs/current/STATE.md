@@ -11,7 +11,7 @@ It should answer:
 - Who should act next?
 - What defines completion?
 
-Long-term principles belong to PROJECT.md or basis/.
+Long-term principles belong to docs/current/PROJECT.md or basis/.
 
 ---
 
@@ -87,11 +87,11 @@ A repository-wide knowledge architecture is defined and approved.
 
 ## Repository Priority
 
-PROJECT.md
+docs/current/PROJECT.md
 
 ↓
 
-STATE.md
+docs/current/STATE.md
 
 ↓
 

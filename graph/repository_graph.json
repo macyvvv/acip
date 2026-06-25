@@ -1,164 +1,10 @@
 {
   "nodes": [
     {
-      "id": "README_REPOSITORY_SELFTEST_COMPLETE_PACK.md",
-      "type": "readme",
-      "path": "README_REPOSITORY_SELFTEST_COMPLETE_PACK.md",
-      "title": "ACIP Repository Self Test Complete Pack",
-      "source": "repository"
-    },
-    {
-      "id": "README_CANONICAL_ASSET_PACK.md",
-      "type": "readme",
-      "path": "README_CANONICAL_ASSET_PACK.md",
-      "title": "ACIP Canonical Asset Production Pack",
-      "source": "repository"
-    },
-    {
-      "id": "README_CATALOG_LAYER_PACK.md",
-      "type": "readme",
-      "path": "README_CATALOG_LAYER_PACK.md",
-      "title": "ACIP Catalog Layer Pack",
-      "source": "repository"
-    },
-    {
-      "id": "README_KNOWLEDGE_FACTORY.md",
-      "type": "readme",
-      "path": "README_KNOWLEDGE_FACTORY.md",
-      "title": "Knowledge Factory README",
-      "source": "repository"
-    },
-    {
-      "id": "README_GOVERNANCE.md",
-      "type": "readme",
-      "path": "README_GOVERNANCE.md",
-      "title": "Governance README",
-      "source": "repository"
-    },
-    {
-      "id": "README_RUNTIME_READINESS.md",
-      "type": "readme",
-      "path": "README_RUNTIME_READINESS.md",
-      "title": "Runtime Readiness README",
-      "source": "repository"
-    },
-    {
-      "id": "README_AGENT_RUNTIME_FOUNDATION_PACK.md",
-      "type": "readme",
-      "path": "README_AGENT_RUNTIME_FOUNDATION_PACK.md",
-      "title": "Agent Runtime Foundation Pack",
-      "source": "repository"
-    },
-    {
-      "id": "CHANGELOG.md",
-      "type": "document",
-      "path": "CHANGELOG.md",
-      "title": "CHANGELOG",
-      "source": "repository"
-    },
-    {
-      "id": "README_AGENT_OS_PACK.md",
-      "type": "readme",
-      "path": "README_AGENT_OS_PACK.md",
-      "title": "Agent OS Pack",
-      "source": "repository"
-    },
-    {
-      "id": "MANIFEST_EP0100.md",
-      "type": "document",
-      "path": "MANIFEST_EP0100.md",
-      "title": "EP-0100 Manifest",
-      "source": "repository"
-    },
-    {
       "id": "selftest.yml",
       "type": "document",
       "path": "selftest.yml",
       "title": "selftest",
-      "source": "repository"
-    },
-    {
-      "id": "README_REPOSITORY_KNOWLEDGE_GRAPH_RUNTIME_INTEGRATION_PACK.md",
-      "type": "readme",
-      "path": "README_REPOSITORY_KNOWLEDGE_GRAPH_RUNTIME_INTEGRATION_PACK.md",
-      "title": "ACIP Repository Knowledge Graph Runtime Integration Pack",
-      "source": "repository"
-    },
-    {
-      "id": "MANIFEST_EP0100_2.md",
-      "type": "document",
-      "path": "MANIFEST_EP0100_2.md",
-      "title": "EP-0100.2 Manifest",
-      "source": "repository"
-    },
-    {
-      "id": "README_EP0001.md",
-      "type": "readme",
-      "path": "README_EP0001.md",
-      "title": "EP-0001 Runtime Capability Suite",
-      "source": "repository"
-    },
-    {
-      "id": "PROJECT.md",
-      "type": "document",
-      "path": "PROJECT.md",
-      "title": "PROJECT",
-      "source": "repository"
-    },
-    {
-      "id": "STATE.md",
-      "type": "document",
-      "path": "STATE.md",
-      "title": "STATE",
-      "source": "repository"
-    },
-    {
-      "id": "README_EP0100_1_AGENT_RUNTIME_IMPORT_FIX.md",
-      "type": "readme",
-      "path": "README_EP0100_1_AGENT_RUNTIME_IMPORT_FIX.md",
-      "title": "EP-0100.1 Agent Runtime MVP Import Fix",
-      "source": "repository"
-    },
-    {
-      "id": "README_ASSET_LIFECYCLE_PACK.md",
-      "type": "readme",
-      "path": "README_ASSET_LIFECYCLE_PACK.md",
-      "title": "ACIP Asset Lifecycle Pack",
-      "source": "repository"
-    },
-    {
-      "id": "README_REPOSITORY_OS_V1_BASELINE_PACK.md",
-      "type": "readme",
-      "path": "README_REPOSITORY_OS_V1_BASELINE_PACK.md",
-      "title": "ACIP Repository OS v1 Baseline Pack",
-      "source": "repository"
-    },
-    {
-      "id": "MANIFEST_EP0101.md",
-      "type": "document",
-      "path": "MANIFEST_EP0101.md",
-      "title": "EP-0101 Manifest",
-      "source": "repository"
-    },
-    {
-      "id": "README_RUNTIME_TRANSITION_READINESS_PACK.md",
-      "type": "readme",
-      "path": "README_RUNTIME_TRANSITION_READINESS_PACK.md",
-      "title": "Runtime Transition Readiness Pack",
-      "source": "repository"
-    },
-    {
-      "id": "README_REPOSITORY_COMPLETE_PACK.md",
-      "type": "readme",
-      "path": "README_REPOSITORY_COMPLETE_PACK.md",
-      "title": "ACIP Repository Complete Pack",
-      "source": "repository"
-    },
-    {
-      "id": "README_SELFTEST_IMPORT_FIX_PACK.md",
-      "type": "readme",
-      "path": "README_SELFTEST_IMPORT_FIX_PACK.md",
-      "title": "ACIP SelfTest Import Fix Pack",
       "source": "repository"
     },
     {
@@ -169,157 +15,10 @@
       "source": "repository"
     },
     {
-      "id": "README_AUTONOMOUS_WORKFLOW_CONTROL_PACK.md",
-      "type": "readme",
-      "path": "README_AUTONOMOUS_WORKFLOW_CONTROL_PACK.md",
-      "title": "ACIP Autonomous Workflow Control Pack",
-      "source": "repository"
-    },
-    {
-      "id": "README_EP0100_AGENT_RUNTIME_MVP.md",
-      "type": "readme",
-      "path": "README_EP0100_AGENT_RUNTIME_MVP.md",
-      "title": "EP-0100 Agent Runtime MVP",
-      "source": "repository"
-    },
-    {
-      "id": "README_EP0102_CODEX_DEVELOPMENT_PIPELINE.md",
-      "type": "readme",
-      "path": "README_EP0102_CODEX_DEVELOPMENT_PIPELINE.md",
-      "title": "README_EP0102_CODEX_DEVELOPMENT_PIPELINE",
-      "source": "repository"
-    },
-    {
-      "id": "README_EP0003.md",
-      "type": "readme",
-      "path": "README_EP0003.md",
-      "title": "EP-0003 Agent Capability Suite",
-      "source": "repository"
-    },
-    {
-      "id": "README_ASSET_PRODUCTION_OPERATIONS_PACK.md",
-      "type": "readme",
-      "path": "README_ASSET_PRODUCTION_OPERATIONS_PACK.md",
-      "title": "ACIP Asset Production Operations Pack",
-      "source": "repository"
-    },
-    {
-      "id": "MANIFEST.md",
-      "type": "document",
-      "path": "MANIFEST.md",
-      "title": "MANIFEST",
-      "source": "repository"
-    },
-    {
-      "id": "ROADMAP.md",
-      "type": "document",
-      "path": "ROADMAP.md",
-      "title": "ROADMAP",
-      "source": "repository"
-    },
-    {
-      "id": "README_EP0103_WORKER_CONTRACT_LAYER.md",
-      "type": "readme",
-      "path": "README_EP0103_WORKER_CONTRACT_LAYER.md",
-      "title": "README_EP0103_WORKER_CONTRACT_LAYER",
-      "source": "repository"
-    },
-    {
-      "id": "README_ASSET_QUALITY_ROI_CLOSURE_PACK.md",
-      "type": "readme",
-      "path": "README_ASSET_QUALITY_ROI_CLOSURE_PACK.md",
-      "title": "ACIP Asset Quality ROI Closure Pack",
-      "source": "repository"
-    },
-    {
-      "id": "MANIFEST_EP0100_1.md",
-      "type": "document",
-      "path": "MANIFEST_EP0100_1.md",
-      "title": "EP-0100.1 Manifest",
-      "source": "repository"
-    },
-    {
-      "id": "README_AUTOMATION_PACK.md",
-      "type": "readme",
-      "path": "README_AUTOMATION_PACK.md",
-      "title": "ACIP Automation Pack",
-      "source": "repository"
-    },
-    {
-      "id": "README_SEMANTIC_SELFTEST_V2_PACK.md",
-      "type": "readme",
-      "path": "README_SEMANTIC_SELFTEST_V2_PACK.md",
-      "title": "ACIP Repository Semantic SelfTest v2 Pack",
-      "source": "repository"
-    },
-    {
-      "id": "README_EP0102_SPEC_PACK.md",
-      "type": "readme",
-      "path": "README_EP0102_SPEC_PACK.md",
-      "title": "EP-0102 Codex Development Pipeline Spec Pack",
-      "source": "repository"
-    },
-    {
-      "id": "README_EP0002.md",
-      "type": "readme",
-      "path": "README_EP0002.md",
-      "title": "EP-0002 Runtime Coordination Suite",
-      "source": "repository"
-    },
-    {
-      "id": "README_AGENT_OS.md",
-      "type": "readme",
-      "path": "README_AGENT_OS.md",
-      "title": "Agent OS README",
-      "source": "repository"
-    },
-    {
       "id": "AGENTS.md",
       "type": "document",
       "path": "AGENTS.md",
       "title": "AGENTS.md",
-      "source": "repository"
-    },
-    {
-      "id": "README_SELFTEST_REMEDIATION_PACK.md",
-      "type": "readme",
-      "path": "README_SELFTEST_REMEDIATION_PACK.md",
-      "title": "ACIP SelfTest Remediation Pack",
-      "source": "repository"
-    },
-    {
-      "id": "README_AGENT_ORCHESTRATOR_PACK.md",
-      "type": "readme",
-      "path": "README_AGENT_ORCHESTRATOR_PACK.md",
-      "title": "ACIP Agent Orchestrator Pack",
-      "source": "repository"
-    },
-    {
-      "id": "README_EP0104_EXECUTABLE_SPECIFICATION.md",
-      "type": "readme",
-      "path": "README_EP0104_EXECUTABLE_SPECIFICATION.md",
-      "title": "README_EP0104_EXECUTABLE_SPECIFICATION",
-      "source": "repository"
-    },
-    {
-      "id": "README_EP0100_2_AGENT_RUNTIME_RESTORE_IMPORT_FIX.md",
-      "type": "readme",
-      "path": "README_EP0100_2_AGENT_RUNTIME_RESTORE_IMPORT_FIX.md",
-      "title": "EP-0100.2 Agent Runtime MVP Restore + Import Fix",
-      "source": "repository"
-    },
-    {
-      "id": "README_ASSET_REGISTRY_PACK.md",
-      "type": "readme",
-      "path": "README_ASSET_REGISTRY_PACK.md",
-      "title": "ACIP Asset Registry Pack",
-      "source": "repository"
-    },
-    {
-      "id": "README_EP0101_AGENT_RUNTIME_TASK_INTAKE.md",
-      "type": "readme",
-      "path": "README_EP0101_AGENT_RUNTIME_TASK_INTAKE.md",
-      "title": "EP-0101 Agent Runtime Task Intake",
       "source": "repository"
     },
     {
@@ -481,6 +180,370 @@
       "type": "document",
       "path": "specs/WORKFLOW.md",
       "title": "WORKFLOW",
+      "source": "repository"
+    },
+    {
+      "id": "specs/completed/README.md",
+      "type": "readme",
+      "path": "specs/completed/README.md",
+      "title": "COMPLETED_SPECS",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0105/WORKER_INSTRUCTIONS.md",
+      "type": "document",
+      "path": "specs/EP-0105/WORKER_INSTRUCTIONS.md",
+      "title": "EP-0105 Worker Instructions",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0105/VALIDATION.md",
+      "type": "document",
+      "path": "specs/EP-0105/VALIDATION.md",
+      "title": "EP-0105 Validation",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0105/README.md",
+      "type": "readme",
+      "path": "specs/EP-0105/README.md",
+      "title": "EP-0105",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0105/IMPLEMENTATION_SPEC.md",
+      "type": "document",
+      "path": "specs/EP-0105/IMPLEMENTATION_SPEC.md",
+      "title": "EP-0105 Implementation Spec",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0105/MANIFEST.md",
+      "type": "document",
+      "path": "specs/EP-0105/MANIFEST.md",
+      "title": "EP-0105 Manifest",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0105/FILE_CHANGESET.md",
+      "type": "document",
+      "path": "specs/EP-0105/FILE_CHANGESET.md",
+      "title": "EP-0105 File Changeset",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0105/ep_contract.yaml",
+      "type": "document",
+      "path": "specs/EP-0105/ep_contract.yaml",
+      "title": "ep_contract",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0102/ACCEPTANCE_TEST.md",
+      "type": "document",
+      "path": "specs/EP-0102/ACCEPTANCE_TEST.md",
+      "title": "EP-0102 Acceptance Test",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0102/CODEX_PROMPT.md",
+      "type": "document",
+      "path": "specs/EP-0102/CODEX_PROMPT.md",
+      "title": "Codex Prompt for EP-0102",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0102/VALIDATION.md",
+      "type": "document",
+      "path": "specs/EP-0102/VALIDATION.md",
+      "title": "EP-0102 Validation",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0102/IMPLEMENTATION_SPEC.md",
+      "type": "document",
+      "path": "specs/EP-0102/IMPLEMENTATION_SPEC.md",
+      "title": "EP-0102 Implementation Spec",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0102/MANIFEST.md",
+      "type": "document",
+      "path": "specs/EP-0102/MANIFEST.md",
+      "title": "EP-0102 Manifest",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0102/ROLLBACK.md",
+      "type": "document",
+      "path": "specs/EP-0102/ROLLBACK.md",
+      "title": "EP-0102 Rollback",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0102/FILE_CHANGESET.md",
+      "type": "document",
+      "path": "specs/EP-0102/FILE_CHANGESET.md",
+      "title": "EP-0102 File Changeset",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0103/WORKER_INSTRUCTIONS.md",
+      "type": "document",
+      "path": "specs/EP-0103/WORKER_INSTRUCTIONS.md",
+      "title": "EP-0103 Worker Instructions",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0103/VALIDATION.md",
+      "type": "document",
+      "path": "specs/EP-0103/VALIDATION.md",
+      "title": "EP-0103 Validation",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0103/README.md",
+      "type": "readme",
+      "path": "specs/EP-0103/README.md",
+      "title": "EP-0103",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0103/IMPLEMENTATION_SPEC.md",
+      "type": "document",
+      "path": "specs/EP-0103/IMPLEMENTATION_SPEC.md",
+      "title": "EP-0103 Implementation Spec",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0103/MANIFEST.md",
+      "type": "document",
+      "path": "specs/EP-0103/MANIFEST.md",
+      "title": "EP-0103 Manifest",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0103/FILE_CHANGESET.md",
+      "type": "document",
+      "path": "specs/EP-0103/FILE_CHANGESET.md",
+      "title": "EP-0103 File Changeset",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0103/ACCEPTANCE.md",
+      "type": "document",
+      "path": "specs/EP-0103/ACCEPTANCE.md",
+      "title": "EP-0103 Acceptance",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0104/WORKER_INSTRUCTIONS.md",
+      "type": "document",
+      "path": "specs/EP-0104/WORKER_INSTRUCTIONS.md",
+      "title": "EP-0104 Worker Instructions",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0104/VALIDATION.md",
+      "type": "document",
+      "path": "specs/EP-0104/VALIDATION.md",
+      "title": "EP-0104 Validation",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0104/README.md",
+      "type": "readme",
+      "path": "specs/EP-0104/README.md",
+      "title": "EP-0104 Executable Specification Foundation",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0104/IMPLEMENTATION_SPEC.md",
+      "type": "document",
+      "path": "specs/EP-0104/IMPLEMENTATION_SPEC.md",
+      "title": "EP-0104 Implementation Spec",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0104/MANIFEST.md",
+      "type": "document",
+      "path": "specs/EP-0104/MANIFEST.md",
+      "title": "EP-0104 Manifest",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0104/FILE_CHANGESET.md",
+      "type": "document",
+      "path": "specs/EP-0104/FILE_CHANGESET.md",
+      "title": "EP-0104 File Changeset",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0104/ep_contract.yaml",
+      "type": "document",
+      "path": "specs/EP-0104/ep_contract.yaml",
+      "title": "ep_contract",
+      "source": "repository"
+    },
+    {
+      "id": "specs/templates/ep_contract.template.yaml",
+      "type": "document",
+      "path": "specs/templates/ep_contract.template.yaml",
+      "title": "ep_contract.template",
+      "source": "repository"
+    },
+    {
+      "id": "specs/templates/ROLLBACK_TEMPLATE.md",
+      "type": "document",
+      "path": "specs/templates/ROLLBACK_TEMPLATE.md",
+      "title": "ROLLBACK_TEMPLATE",
+      "source": "repository"
+    },
+    {
+      "id": "specs/templates/MANIFEST_TEMPLATE.md",
+      "type": "document",
+      "path": "specs/templates/MANIFEST_TEMPLATE.md",
+      "title": "MANIFEST_TEMPLATE",
+      "source": "repository"
+    },
+    {
+      "id": "specs/templates/ACCEPTANCE_TEST_TEMPLATE.md",
+      "type": "document",
+      "path": "specs/templates/ACCEPTANCE_TEST_TEMPLATE.md",
+      "title": "ACCEPTANCE_TEST_TEMPLATE",
+      "source": "repository"
+    },
+    {
+      "id": "specs/templates/VALIDATION_TEMPLATE.md",
+      "type": "document",
+      "path": "specs/templates/VALIDATION_TEMPLATE.md",
+      "title": "VALIDATION_TEMPLATE",
+      "source": "repository"
+    },
+    {
+      "id": "specs/templates/FILE_CHANGESET_TEMPLATE.md",
+      "type": "document",
+      "path": "specs/templates/FILE_CHANGESET_TEMPLATE.md",
+      "title": "FILE_CHANGESET_TEMPLATE",
+      "source": "repository"
+    },
+    {
+      "id": "specs/templates/IMPLEMENTATION_SPEC_TEMPLATE.md",
+      "type": "document",
+      "path": "specs/templates/IMPLEMENTATION_SPEC_TEMPLATE.md",
+      "title": "IMPLEMENTATION_SPEC_TEMPLATE",
+      "source": "repository"
+    },
+    {
+      "id": "specs/active/README.md",
+      "type": "readme",
+      "path": "specs/active/README.md",
+      "title": "ACTIVE_SPECS",
+      "source": "repository"
+    },
+    {
+      "id": "specs/archived/README.md",
+      "type": "readme",
+      "path": "specs/archived/README.md",
+      "title": "ARCHIVED_SPECS",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0106/WORKER_INSTRUCTIONS.md",
+      "type": "document",
+      "path": "specs/EP-0106/WORKER_INSTRUCTIONS.md",
+      "title": "EP-0106 Worker Instructions",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0106/VALIDATION.md",
+      "type": "document",
+      "path": "specs/EP-0106/VALIDATION.md",
+      "title": "EP-0106 Validation",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0106/README.md",
+      "type": "readme",
+      "path": "specs/EP-0106/README.md",
+      "title": "EP-0106",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0106/IMPLEMENTATION_SPEC.md",
+      "type": "document",
+      "path": "specs/EP-0106/IMPLEMENTATION_SPEC.md",
+      "title": "EP-0106 Implementation Spec",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0106/MANIFEST.md",
+      "type": "document",
+      "path": "specs/EP-0106/MANIFEST.md",
+      "title": "EP-0106 Manifest",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0106/FILE_CHANGESET.md",
+      "type": "document",
+      "path": "specs/EP-0106/FILE_CHANGESET.md",
+      "title": "EP-0106 File Changeset",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0106/ep_contract.yaml",
+      "type": "document",
+      "path": "specs/EP-0106/ep_contract.yaml",
+      "title": "ep_contract",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0107/WORKER_INSTRUCTIONS.md",
+      "type": "document",
+      "path": "specs/EP-0107/WORKER_INSTRUCTIONS.md",
+      "title": "EP-0107 Worker Instructions",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0107/VALIDATION.md",
+      "type": "document",
+      "path": "specs/EP-0107/VALIDATION.md",
+      "title": "EP-0107 Validation",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0107/README.md",
+      "type": "readme",
+      "path": "specs/EP-0107/README.md",
+      "title": "EP-0107",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0107/IMPLEMENTATION_SPEC.md",
+      "type": "document",
+      "path": "specs/EP-0107/IMPLEMENTATION_SPEC.md",
+      "title": "EP-0107 Implementation Spec",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0107/MANIFEST.md",
+      "type": "document",
+      "path": "specs/EP-0107/MANIFEST.md",
+      "title": "EP-0107 Manifest",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0107/FILE_CHANGESET.md",
+      "type": "document",
+      "path": "specs/EP-0107/FILE_CHANGESET.md",
+      "title": "EP-0107 File Changeset",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0107/ep_contract.yaml",
+      "type": "document",
+      "path": "specs/EP-0107/ep_contract.yaml",
+      "title": "ep_contract",
       "source": "repository"
     },
     {
@@ -785,6 +848,20 @@
       "source": "repository"
     },
     {
+      "id": "runtime/task_intake/ART-SAMPLE-0001/TASK_INTAKE_REPORT.md",
+      "type": "document",
+      "path": "runtime/task_intake/ART-SAMPLE-0001/TASK_INTAKE_REPORT.md",
+      "title": "Agent Runtime Task Intake Dry Run Report",
+      "source": "repository"
+    },
+    {
+      "id": "runtime/agent_runtime_mvp/DRY_RUN_REPORT.md",
+      "type": "document",
+      "path": "runtime/agent_runtime_mvp/DRY_RUN_REPORT.md",
+      "title": "Agent Runtime MVP Dry Run Report\\n\\n## Conclusion\\n\\nDry-run agent cycle completed without runtime external execution.\\n\\n## Generated Artifacts\\n\\n- `runtime/agent_runtime_mvp/runtime_context.json`\\n- `runtime/agent_runtime_mvp/runtime_plan.json`\\n- `runtime/agent_runtime_mvp/queue_item.json`\\n- `runtime/agent_runtime_mvp/review_summary.json`\\n- `runtime/agent_runtime_mvp/approval_gate.json`\\n\\n## Boundary\\n\\n- Runtime external execution: not performed\\n- Platform API mutation: not performed\\n- Auto posting: not performed\\n- Secret use: not performed\\n- Human approval: required for runtime transition\\n",
+      "source": "repository"
+    },
+    {
       "id": "tests/test_result.py",
       "type": "document",
       "path": "tests/test_result.py",
@@ -820,6 +897,13 @@
       "source": "repository"
     },
     {
+      "id": "tests/test_queue_transition.py",
+      "type": "document",
+      "path": "tests/test_queue_transition.py",
+      "title": "test_queue_transition",
+      "source": "repository"
+    },
+    {
       "id": "tests/test_agent_executor.py",
       "type": "document",
       "path": "tests/test_agent_executor.py",
@@ -838,6 +922,20 @@
       "type": "document",
       "path": "tests/test_worker.py",
       "title": "test_worker",
+      "source": "repository"
+    },
+    {
+      "id": "tests/test_output_contract.py",
+      "type": "document",
+      "path": "tests/test_output_contract.py",
+      "title": "test_output_contract",
+      "source": "repository"
+    },
+    {
+      "id": "tests/test_execution_record.py",
+      "type": "document",
+      "path": "tests/test_execution_record.py",
+      "title": "test_execution_record",
       "source": "repository"
     },
     {
@@ -1030,6 +1128,13 @@
       "source": "repository"
     },
     {
+      "id": "docs/CHANGELOG.md",
+      "type": "document",
+      "path": "docs/CHANGELOG.md",
+      "title": "CHANGELOG",
+      "source": "repository"
+    },
+    {
       "id": "docs/SEMANTIC_SELFTEST_REPORT_TEMPLATE.md",
       "type": "document",
       "path": "docs/SEMANTIC_SELFTEST_REPORT_TEMPLATE.md",
@@ -1079,10 +1184,521 @@
       "source": "repository"
     },
     {
+      "id": "docs/ep/README_EP0105_REPOSITORY_SCHEDULER_DISPATCHER.md",
+      "type": "readme",
+      "path": "docs/ep/README_EP0105_REPOSITORY_SCHEDULER_DISPATCHER.md",
+      "title": "README_EP0105_REPOSITORY_SCHEDULER_DISPATCHER",
+      "source": "repository"
+    },
+    {
+      "id": "docs/ep/README_EP0001.md",
+      "type": "readme",
+      "path": "docs/ep/README_EP0001.md",
+      "title": "EP-0001 Runtime Capability Suite",
+      "source": "repository"
+    },
+    {
+      "id": "docs/ep/README_EP0100_1_AGENT_RUNTIME_IMPORT_FIX.md",
+      "type": "readme",
+      "path": "docs/ep/README_EP0100_1_AGENT_RUNTIME_IMPORT_FIX.md",
+      "title": "EP-0100.1 Agent Runtime MVP Import Fix",
+      "source": "repository"
+    },
+    {
+      "id": "docs/ep/README_EP0106_QUEUE_STATE_TRANSITION_ENGINE.md",
+      "type": "readme",
+      "path": "docs/ep/README_EP0106_QUEUE_STATE_TRANSITION_ENGINE.md",
+      "title": "README_EP0106_QUEUE_STATE_TRANSITION_ENGINE",
+      "source": "repository"
+    },
+    {
+      "id": "docs/ep/README_EP0100_AGENT_RUNTIME_MVP.md",
+      "type": "readme",
+      "path": "docs/ep/README_EP0100_AGENT_RUNTIME_MVP.md",
+      "title": "EP-0100 Agent Runtime MVP",
+      "source": "repository"
+    },
+    {
+      "id": "docs/ep/README_EP0102_CODEX_DEVELOPMENT_PIPELINE.md",
+      "type": "readme",
+      "path": "docs/ep/README_EP0102_CODEX_DEVELOPMENT_PIPELINE.md",
+      "title": "README_EP0102_CODEX_DEVELOPMENT_PIPELINE",
+      "source": "repository"
+    },
+    {
+      "id": "docs/ep/README_EP0003.md",
+      "type": "readme",
+      "path": "docs/ep/README_EP0003.md",
+      "title": "EP-0003 Agent Capability Suite",
+      "source": "repository"
+    },
+    {
+      "id": "docs/ep/README_EP0103_WORKER_CONTRACT_LAYER.md",
+      "type": "readme",
+      "path": "docs/ep/README_EP0103_WORKER_CONTRACT_LAYER.md",
+      "title": "README_EP0103_WORKER_CONTRACT_LAYER",
+      "source": "repository"
+    },
+    {
+      "id": "docs/ep/README_EP0107_WORKER_OUTPUT_CONTRACT.md",
+      "type": "readme",
+      "path": "docs/ep/README_EP0107_WORKER_OUTPUT_CONTRACT.md",
+      "title": "README_EP0107_WORKER_OUTPUT_CONTRACT",
+      "source": "repository"
+    },
+    {
+      "id": "docs/ep/README_EP0102_SPEC_PACK.md",
+      "type": "readme",
+      "path": "docs/ep/README_EP0102_SPEC_PACK.md",
+      "title": "EP-0102 Codex Development Pipeline Spec Pack",
+      "source": "repository"
+    },
+    {
+      "id": "docs/ep/README_EP0002.md",
+      "type": "readme",
+      "path": "docs/ep/README_EP0002.md",
+      "title": "EP-0002 Runtime Coordination Suite",
+      "source": "repository"
+    },
+    {
+      "id": "docs/ep/README_EP0104_EXECUTABLE_SPECIFICATION.md",
+      "type": "readme",
+      "path": "docs/ep/README_EP0104_EXECUTABLE_SPECIFICATION.md",
+      "title": "README_EP0104_EXECUTABLE_SPECIFICATION",
+      "source": "repository"
+    },
+    {
+      "id": "docs/ep/README_EP0100_2_AGENT_RUNTIME_RESTORE_IMPORT_FIX.md",
+      "type": "readme",
+      "path": "docs/ep/README_EP0100_2_AGENT_RUNTIME_RESTORE_IMPORT_FIX.md",
+      "title": "EP-0100.2 Agent Runtime MVP Restore + Import Fix",
+      "source": "repository"
+    },
+    {
+      "id": "docs/ep/README_EP0101_AGENT_RUNTIME_TASK_INTAKE.md",
+      "type": "readme",
+      "path": "docs/ep/README_EP0101_AGENT_RUNTIME_TASK_INTAKE.md",
+      "title": "EP-0101 Agent Runtime Task Intake",
+      "source": "repository"
+    },
+    {
+      "id": "docs/packs/README_REPOSITORY_SELFTEST_COMPLETE_PACK.md",
+      "type": "readme",
+      "path": "docs/packs/README_REPOSITORY_SELFTEST_COMPLETE_PACK.md",
+      "title": "ACIP Repository Self Test Complete Pack",
+      "source": "repository"
+    },
+    {
+      "id": "docs/packs/README_CANONICAL_ASSET_PACK.md",
+      "type": "readme",
+      "path": "docs/packs/README_CANONICAL_ASSET_PACK.md",
+      "title": "ACIP Canonical Asset Production Pack",
+      "source": "repository"
+    },
+    {
+      "id": "docs/packs/README_CATALOG_LAYER_PACK.md",
+      "type": "readme",
+      "path": "docs/packs/README_CATALOG_LAYER_PACK.md",
+      "title": "ACIP Catalog Layer Pack",
+      "source": "repository"
+    },
+    {
+      "id": "docs/packs/README_KNOWLEDGE_FACTORY.md",
+      "type": "readme",
+      "path": "docs/packs/README_KNOWLEDGE_FACTORY.md",
+      "title": "Knowledge Factory README",
+      "source": "repository"
+    },
+    {
+      "id": "docs/packs/README_GOVERNANCE.md",
+      "type": "readme",
+      "path": "docs/packs/README_GOVERNANCE.md",
+      "title": "Governance README",
+      "source": "repository"
+    },
+    {
+      "id": "docs/packs/README_RUNTIME_READINESS.md",
+      "type": "readme",
+      "path": "docs/packs/README_RUNTIME_READINESS.md",
+      "title": "Runtime Readiness README",
+      "source": "repository"
+    },
+    {
+      "id": "docs/packs/README_AGENT_RUNTIME_FOUNDATION_PACK.md",
+      "type": "readme",
+      "path": "docs/packs/README_AGENT_RUNTIME_FOUNDATION_PACK.md",
+      "title": "Agent Runtime Foundation Pack",
+      "source": "repository"
+    },
+    {
+      "id": "docs/packs/README_AGENT_OS_PACK.md",
+      "type": "readme",
+      "path": "docs/packs/README_AGENT_OS_PACK.md",
+      "title": "Agent OS Pack",
+      "source": "repository"
+    },
+    {
+      "id": "docs/packs/README_REPOSITORY_KNOWLEDGE_GRAPH_RUNTIME_INTEGRATION_PACK.md",
+      "type": "readme",
+      "path": "docs/packs/README_REPOSITORY_KNOWLEDGE_GRAPH_RUNTIME_INTEGRATION_PACK.md",
+      "title": "ACIP Repository Knowledge Graph Runtime Integration Pack",
+      "source": "repository"
+    },
+    {
+      "id": "docs/packs/README_ASSET_LIFECYCLE_PACK.md",
+      "type": "readme",
+      "path": "docs/packs/README_ASSET_LIFECYCLE_PACK.md",
+      "title": "ACIP Asset Lifecycle Pack",
+      "source": "repository"
+    },
+    {
+      "id": "docs/packs/README_REPOSITORY_OS_V1_BASELINE_PACK.md",
+      "type": "readme",
+      "path": "docs/packs/README_REPOSITORY_OS_V1_BASELINE_PACK.md",
+      "title": "ACIP Repository OS v1 Baseline Pack",
+      "source": "repository"
+    },
+    {
+      "id": "docs/packs/README_RUNTIME_TRANSITION_READINESS_PACK.md",
+      "type": "readme",
+      "path": "docs/packs/README_RUNTIME_TRANSITION_READINESS_PACK.md",
+      "title": "Runtime Transition Readiness Pack",
+      "source": "repository"
+    },
+    {
+      "id": "docs/packs/README_REPOSITORY_COMPLETE_PACK.md",
+      "type": "readme",
+      "path": "docs/packs/README_REPOSITORY_COMPLETE_PACK.md",
+      "title": "ACIP Repository Complete Pack",
+      "source": "repository"
+    },
+    {
+      "id": "docs/packs/README_SELFTEST_IMPORT_FIX_PACK.md",
+      "type": "readme",
+      "path": "docs/packs/README_SELFTEST_IMPORT_FIX_PACK.md",
+      "title": "ACIP SelfTest Import Fix Pack",
+      "source": "repository"
+    },
+    {
+      "id": "docs/packs/README_AUTONOMOUS_WORKFLOW_CONTROL_PACK.md",
+      "type": "readme",
+      "path": "docs/packs/README_AUTONOMOUS_WORKFLOW_CONTROL_PACK.md",
+      "title": "ACIP Autonomous Workflow Control Pack",
+      "source": "repository"
+    },
+    {
+      "id": "docs/packs/README_ASSET_PRODUCTION_OPERATIONS_PACK.md",
+      "type": "readme",
+      "path": "docs/packs/README_ASSET_PRODUCTION_OPERATIONS_PACK.md",
+      "title": "ACIP Asset Production Operations Pack",
+      "source": "repository"
+    },
+    {
+      "id": "docs/packs/README_ASSET_QUALITY_ROI_CLOSURE_PACK.md",
+      "type": "readme",
+      "path": "docs/packs/README_ASSET_QUALITY_ROI_CLOSURE_PACK.md",
+      "title": "ACIP Asset Quality ROI Closure Pack",
+      "source": "repository"
+    },
+    {
+      "id": "docs/packs/README_AUTOMATION_PACK.md",
+      "type": "readme",
+      "path": "docs/packs/README_AUTOMATION_PACK.md",
+      "title": "ACIP Automation Pack",
+      "source": "repository"
+    },
+    {
+      "id": "docs/packs/README_SEMANTIC_SELFTEST_V2_PACK.md",
+      "type": "readme",
+      "path": "docs/packs/README_SEMANTIC_SELFTEST_V2_PACK.md",
+      "title": "ACIP Repository Semantic SelfTest v2 Pack",
+      "source": "repository"
+    },
+    {
+      "id": "docs/packs/README_AGENT_OS.md",
+      "type": "readme",
+      "path": "docs/packs/README_AGENT_OS.md",
+      "title": "Agent OS README",
+      "source": "repository"
+    },
+    {
+      "id": "docs/packs/README_SELFTEST_REMEDIATION_PACK.md",
+      "type": "readme",
+      "path": "docs/packs/README_SELFTEST_REMEDIATION_PACK.md",
+      "title": "ACIP SelfTest Remediation Pack",
+      "source": "repository"
+    },
+    {
+      "id": "docs/packs/README_AGENT_ORCHESTRATOR_PACK.md",
+      "type": "readme",
+      "path": "docs/packs/README_AGENT_ORCHESTRATOR_PACK.md",
+      "title": "ACIP Agent Orchestrator Pack",
+      "source": "repository"
+    },
+    {
+      "id": "docs/packs/README_ASSET_REGISTRY_PACK.md",
+      "type": "readme",
+      "path": "docs/packs/README_ASSET_REGISTRY_PACK.md",
+      "title": "ACIP Asset Registry Pack",
+      "source": "repository"
+    },
+    {
+      "id": "docs/current/QUEUE_TRANSITION.md",
+      "type": "document",
+      "path": "docs/current/QUEUE_TRANSITION.md",
+      "title": "QUEUE_TRANSITION",
+      "source": "repository"
+    },
+    {
+      "id": "docs/current/CODEX_OUTPUT_CONTRACT.md",
+      "type": "document",
+      "path": "docs/current/CODEX_OUTPUT_CONTRACT.md",
+      "title": "CODEX_OUTPUT_CONTRACT",
+      "source": "repository"
+    },
+    {
+      "id": "docs/current/PROJECT.md",
+      "type": "document",
+      "path": "docs/current/PROJECT.md",
+      "title": "PROJECT",
+      "source": "repository"
+    },
+    {
+      "id": "docs/current/STATE.md",
+      "type": "document",
+      "path": "docs/current/STATE.md",
+      "title": "STATE",
+      "source": "repository"
+    },
+    {
+      "id": "docs/current/WORKER_EXECUTION_RECORD.md",
+      "type": "document",
+      "path": "docs/current/WORKER_EXECUTION_RECORD.md",
+      "title": "WORKER_EXECUTION_RECORD",
+      "source": "repository"
+    },
+    {
+      "id": "docs/current/ROADMAP.md",
+      "type": "document",
+      "path": "docs/current/ROADMAP.md",
+      "title": "ROADMAP",
+      "source": "repository"
+    },
+    {
+      "id": "docs/current/WORKER_STATE.md",
+      "type": "document",
+      "path": "docs/current/WORKER_STATE.md",
+      "title": "WORKER_STATE",
+      "source": "repository"
+    },
+    {
+      "id": "docs/current/QUEUE_STATE.md",
+      "type": "document",
+      "path": "docs/current/QUEUE_STATE.md",
+      "title": "QUEUE_STATE",
+      "source": "repository"
+    },
+    {
+      "id": "docs/manifests/MANIFEST_EP0100.md",
+      "type": "document",
+      "path": "docs/manifests/MANIFEST_EP0100.md",
+      "title": "EP-0100 Manifest",
+      "source": "repository"
+    },
+    {
+      "id": "docs/manifests/MANIFEST_EP0100_2.md",
+      "type": "document",
+      "path": "docs/manifests/MANIFEST_EP0100_2.md",
+      "title": "EP-0100.2 Manifest",
+      "source": "repository"
+    },
+    {
+      "id": "docs/manifests/MANIFEST_EP0101.md",
+      "type": "document",
+      "path": "docs/manifests/MANIFEST_EP0101.md",
+      "title": "EP-0101 Manifest",
+      "source": "repository"
+    },
+    {
+      "id": "docs/manifests/MANIFEST.md",
+      "type": "document",
+      "path": "docs/manifests/MANIFEST.md",
+      "title": "MANIFEST",
+      "source": "repository"
+    },
+    {
+      "id": "docs/manifests/MANIFEST_EP0100_1.md",
+      "type": "document",
+      "path": "docs/manifests/MANIFEST_EP0100_1.md",
+      "title": "EP-0100.1 Manifest",
+      "source": "repository"
+    },
+    {
       "id": "knowledge/README.md",
       "type": "knowledge_asset",
       "path": "knowledge/README.md",
       "title": "Knowledge Layer",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/draft/CA-0001.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/draft/CA-0001.md",
+      "title": "CA-0001",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/draft/CA-0011.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/draft/CA-0011.md",
+      "title": "CA-0011",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/draft/CA-0005.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/draft/CA-0005.md",
+      "title": "CA-0005",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/draft/CA-0004.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/draft/CA-0004.md",
+      "title": "CA-0004",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/draft/CA-0010.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/draft/CA-0010.md",
+      "title": "CA-0010",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/draft/CA-0009.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/draft/CA-0009.md",
+      "title": "CA-0009",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/draft/CA-0008.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/draft/CA-0008.md",
+      "title": "CA-0008",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/draft/CA-0007.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/draft/CA-0007.md",
+      "title": "CA-0007",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/draft/CA-0003.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/draft/CA-0003.md",
+      "title": "CA-0003",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/draft/CA-0002.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/draft/CA-0002.md",
+      "title": "CA-0002",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/draft/CA-0006.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/draft/CA-0006.md",
+      "title": "CA-0006",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/competitor/README.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/competitor/README.md",
+      "title": "Competitor Intelligence",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/canonical/README.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/canonical/README.md",
+      "title": "README",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/canonical/CA-0001_SLEEP.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/canonical/CA-0001_SLEEP.md",
+      "title": "CA-0001_SLEEP",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/canonical/INDEX.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/canonical/INDEX.md",
+      "title": "INDEX",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/learning/README.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/learning/README.md",
+      "title": "Learning Repository",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/platform/README.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/platform/README.md",
+      "title": "Platform Intelligence",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/prompt/README.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/prompt/README.md",
+      "title": "Prompt Library",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/market/README.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/market/README.md",
+      "title": "Market Intelligence",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/policy/README.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/policy/README.md",
+      "title": "Policy Intelligence",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/strategy/CANONICAL_ASSET_BACKLOG.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/strategy/CANONICAL_ASSET_BACKLOG.md",
+      "title": "CANONICAL_ASSET_BACKLOG",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/strategy/MARKET_VALIDATION_WBS.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/strategy/MARKET_VALIDATION_WBS.md",
+      "title": "MARKET_VALIDATION_WBS",
+      "source": "repository"
+    },
+    {
+      "id": "knowledge/strategy/PRODUCT_DEFINITION.md",
+      "type": "knowledge_asset",
+      "path": "knowledge/strategy/PRODUCT_DEFINITION.md",
+      "title": "PRODUCT_DEFINITION",
       "source": "repository"
     },
     {
@@ -1212,10 +1828,31 @@
       "source": "repository"
     },
     {
+      "id": "scripts/validate_ep_0106.py",
+      "type": "script",
+      "path": "scripts/validate_ep_0106.py",
+      "title": "validate_ep_0106",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/validate_ep_0107.py",
+      "type": "script",
+      "path": "scripts/validate_ep_0107.py",
+      "title": "validate_ep_0107",
+      "source": "repository"
+    },
+    {
       "id": "scripts/validate_ep_0103.py",
       "type": "script",
       "path": "scripts/validate_ep_0103.py",
       "title": "validate_ep_0103",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/validate_ep_0108.py",
+      "type": "script",
+      "path": "scripts/validate_ep_0108.py",
+      "title": "validate_ep_0108",
       "source": "repository"
     },
     {
@@ -1282,10 +1919,472 @@
       "source": "repository"
     },
     {
+      "id": "scripts/validate_ep_0105.py",
+      "type": "script",
+      "path": "scripts/validate_ep_0105.py",
+      "title": "validate_ep_0105",
+      "source": "repository"
+    },
+    {
       "id": "scripts/validate_repository_os_v1_baseline.py",
       "type": "script",
       "path": "scripts/validate_repository_os_v1_baseline.py",
       "title": "validate_repository_os_v1_baseline",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/context/build_context_diff.py",
+      "type": "script",
+      "path": "scripts/context/build_context_diff.py",
+      "title": "build_context_diff",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/context/build_agent_context_pack.py",
+      "type": "script",
+      "path": "scripts/context/build_agent_context_pack.py",
+      "title": "build_agent_context_pack",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/specs/validate_ep_contract.py",
+      "type": "script",
+      "path": "scripts/specs/validate_ep_contract.py",
+      "title": "validate_ep_contract",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/specs/scaffold_ep_spec.py",
+      "type": "script",
+      "path": "scripts/specs/scaffold_ep_spec.py",
+      "title": "scaffold_ep_spec",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/specs/validate_ep_spec.py",
+      "type": "script",
+      "path": "scripts/specs/validate_ep_spec.py",
+      "title": "validate_ep_spec",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/specs/validate_spec_lifecycle.py",
+      "type": "script",
+      "path": "scripts/specs/validate_spec_lifecycle.py",
+      "title": "validate_spec_lifecycle",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/specs/load_active_ep_contract.py",
+      "type": "script",
+      "path": "scripts/specs/load_active_ep_contract.py",
+      "title": "load_active_ep_contract",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/graph/build_incremental_graph.py",
+      "type": "script",
+      "path": "scripts/graph/build_incremental_graph.py",
+      "title": "build_incremental_graph",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/graph/validate_repository_graph.py",
+      "type": "script",
+      "path": "scripts/graph/validate_repository_graph.py",
+      "title": "validate_repository_graph",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/graph/build_repository_graph.py",
+      "type": "script",
+      "path": "scripts/graph/build_repository_graph.py",
+      "title": "build_repository_graph",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/runtime/dry_run_adapter.py",
+      "type": "script",
+      "path": "scripts/runtime/dry_run_adapter.py",
+      "title": "dry_run_adapter",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/runtime/validate_runtime_capability.py",
+      "type": "script",
+      "path": "scripts/runtime/validate_runtime_capability.py",
+      "title": "validate_runtime_capability",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/runtime/context_loader.py",
+      "type": "script",
+      "path": "scripts/runtime/context_loader.py",
+      "title": "context_loader",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/runtime/validate_runtime_foundation.py",
+      "type": "script",
+      "path": "scripts/runtime/validate_runtime_foundation.py",
+      "title": "validate_runtime_foundation",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/runtime/dry_run_runtime_plan.py",
+      "type": "script",
+      "path": "scripts/runtime/dry_run_runtime_plan.py",
+      "title": "dry_run_runtime_plan",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/runtime/validate_runtime_coordination.py",
+      "type": "script",
+      "path": "scripts/runtime/validate_runtime_coordination.py",
+      "title": "validate_runtime_coordination",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest/check_orphans.py",
+      "type": "script",
+      "path": "scripts/selftest/check_orphans.py",
+      "title": "check_orphans",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest/check_current_objective.py",
+      "type": "script",
+      "path": "scripts/selftest/check_current_objective.py",
+      "title": "check_current_objective",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest/check_repository_health.py",
+      "type": "script",
+      "path": "scripts/selftest/check_repository_health.py",
+      "title": "check_repository_health",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest/check_boundaries.py",
+      "type": "script",
+      "path": "scripts/selftest/check_boundaries.py",
+      "title": "Use separated fragments so this checker does not match itself.",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest/README_SELFTEST_REMEDIATION.md",
+      "type": "script",
+      "path": "scripts/selftest/README_SELFTEST_REMEDIATION.md",
+      "title": "SelfTest Remediation",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest/validate_repository_selftest_complete.py",
+      "type": "script",
+      "path": "scripts/selftest/validate_repository_selftest_complete.py",
+      "title": "validate_repository_selftest_complete",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest/check_duplicates.py",
+      "type": "script",
+      "path": "scripts/selftest/check_duplicates.py",
+      "title": "Deprecated skeleton files are handled by cleanup_selftest_skeleton.py and reported as warnings here.",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest/check_link_integrity.py",
+      "type": "script",
+      "path": "scripts/selftest/check_link_integrity.py",
+      "title": "check_link_integrity",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest/check_secret_boundary.py",
+      "type": "script",
+      "path": "scripts/selftest/check_secret_boundary.py",
+      "title": "check_secret_boundary",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest/check_workflows.py",
+      "type": "script",
+      "path": "scripts/selftest/check_workflows.py",
+      "title": "check_workflows",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest/cleanup_selftest_skeleton.py",
+      "type": "script",
+      "path": "scripts/selftest/cleanup_selftest_skeleton.py",
+      "title": "cleanup_selftest_skeleton",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest/selftest_common.py",
+      "type": "script",
+      "path": "scripts/selftest/selftest_common.py",
+      "title": "Backward-compatible alias for older selftest modules.",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/baseline/validate_baseline.py",
+      "type": "script",
+      "path": "scripts/baseline/validate_baseline.py",
+      "title": "validate_baseline",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest_v2/semantic_checks.py",
+      "type": "script",
+      "path": "scripts/selftest_v2/semantic_checks.py",
+      "title": "semantic_checks",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest_v2/validate_semantic_selftest.py",
+      "type": "script",
+      "path": "scripts/selftest_v2/validate_semantic_selftest.py",
+      "title": "validate_semantic_selftest",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/selftest_v2/semantic_common.py",
+      "type": "script",
+      "path": "scripts/selftest_v2/semantic_common.py",
+      "title": "semantic_common",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/review/build_review_gate_summary.py",
+      "type": "script",
+      "path": "scripts/review/build_review_gate_summary.py",
+      "title": "build_review_gate_summary",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/agent_runtime/run_task_intake_cycle.py",
+      "type": "script",
+      "path": "scripts/agent_runtime/run_task_intake_cycle.py",
+      "title": "run_task_intake_cycle",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/agent_runtime/run_dry_run_cycle.py",
+      "type": "script",
+      "path": "scripts/agent_runtime/run_dry_run_cycle.py",
+      "title": "run_dry_run_cycle",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/agent_runtime/validate_task_intake.py",
+      "type": "script",
+      "path": "scripts/agent_runtime/validate_task_intake.py",
+      "title": "validate_task_intake",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/agent_runtime/validate_agent_runtime_mvp.py",
+      "type": "script",
+      "path": "scripts/agent_runtime/validate_agent_runtime_mvp.py",
+      "title": "validate_agent_runtime_mvp",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/workers/validate_worker_contracts.py",
+      "type": "script",
+      "path": "scripts/workers/validate_worker_contracts.py",
+      "title": "validate_worker_contracts",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/orchestrator/build_context_bundle.py",
+      "type": "script",
+      "path": "scripts/orchestrator/build_context_bundle.py",
+      "title": "build_context_bundle",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/orchestrator/build_execution_plan.py",
+      "type": "script",
+      "path": "scripts/orchestrator/build_execution_plan.py",
+      "title": "build_execution_plan",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/orchestrator/update_execution_queue.py",
+      "type": "script",
+      "path": "scripts/orchestrator/update_execution_queue.py",
+      "title": "update_execution_queue",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/orchestrator/validate_orchestration.py",
+      "type": "script",
+      "path": "scripts/orchestrator/validate_orchestration.py",
+      "title": "validate_orchestration",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/ep0106-queue-state-transition-engine.yml",
+      "type": "workflow",
+      "path": ".github/workflows/ep0106-queue-state-transition-engine.yml",
+      "title": "ep0106-queue-state-transition-engine",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/repository-os-v1-baseline.yml",
+      "type": "workflow",
+      "path": ".github/workflows/repository-os-v1-baseline.yml",
+      "title": "repository-os-v1-baseline",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/ep0105-scheduler-dispatcher.yml",
+      "type": "workflow",
+      "path": ".github/workflows/ep0105-scheduler-dispatcher.yml",
+      "title": "ep0105-scheduler-dispatcher",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/boundary-validation.yml",
+      "type": "workflow",
+      "path": ".github/workflows/boundary-validation.yml",
+      "title": "boundary-validation",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/ep0103-worker-contract-layer.yml",
+      "type": "workflow",
+      "path": ".github/workflows/ep0103-worker-contract-layer.yml",
+      "title": "ep0103-worker-contract-layer",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/ep0107-worker-output-contract.yml",
+      "type": "workflow",
+      "path": ".github/workflows/ep0107-worker-output-contract.yml",
+      "title": "ep0107-worker-output-contract",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/ep0102-codex-development-pipeline.yml",
+      "type": "workflow",
+      "path": ".github/workflows/ep0102-codex-development-pipeline.yml",
+      "title": "ep0102-codex-development-pipeline",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/agent-orchestrator-validation.yml",
+      "type": "workflow",
+      "path": ".github/workflows/agent-orchestrator-validation.yml",
+      "title": "agent-orchestrator-validation",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/repository-knowledge-graph-runtime-integration.yml",
+      "type": "workflow",
+      "path": ".github/workflows/repository-knowledge-graph-runtime-integration.yml",
+      "title": "repository-knowledge-graph-runtime-integration",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/continuous-governance.yml",
+      "type": "workflow",
+      "path": ".github/workflows/continuous-governance.yml",
+      "title": "continuous-governance",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/repository-semantic-selftest-v2.yml",
+      "type": "workflow",
+      "path": ".github/workflows/repository-semantic-selftest-v2.yml",
+      "title": "repository-semantic-selftest-v2",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/ep0100-agent-runtime-mvp.yml",
+      "type": "workflow",
+      "path": ".github/workflows/ep0100-agent-runtime-mvp.yml",
+      "title": "ep0100-agent-runtime-mvp",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/repository-selftest.yml",
+      "type": "workflow",
+      "path": ".github/workflows/repository-selftest.yml",
+      "title": "repository-selftest",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/runtime-foundation.yml",
+      "type": "workflow",
+      "path": ".github/workflows/runtime-foundation.yml",
+      "title": "runtime-foundation",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/repository-selftest-complete.yml",
+      "type": "workflow",
+      "path": ".github/workflows/repository-selftest-complete.yml",
+      "title": "repository-selftest-complete",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/runtime-capability.yml",
+      "type": "workflow",
+      "path": ".github/workflows/runtime-capability.yml",
+      "title": "runtime-capability",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/runtime-coordination.yml",
+      "type": "workflow",
+      "path": ".github/workflows/runtime-coordination.yml",
+      "title": "runtime-coordination",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/ep0101-agent-runtime-task-intake.yml",
+      "type": "workflow",
+      "path": ".github/workflows/ep0101-agent-runtime-task-intake.yml",
+      "title": "ep0101-agent-runtime-task-intake",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/ep0003.yml",
+      "type": "workflow",
+      "path": ".github/workflows/ep0003.yml",
+      "title": "ep0003",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/ep0104-executable-specification.yml",
+      "type": "workflow",
+      "path": ".github/workflows/ep0104-executable-specification.yml",
+      "title": "ep0104-executable-specification",
+      "source": "repository"
+    },
+    {
+      "id": ".github/ISSUE_TEMPLATE/repository_selftest.yml",
+      "type": "document",
+      "path": ".github/ISSUE_TEMPLATE/repository_selftest.yml",
+      "title": "repository_selftest",
+      "source": "repository"
+    },
+    {
+      "id": ".github/ISSUE_TEMPLATE/runtime_integration_readiness.yml",
+      "type": "document",
+      "path": ".github/ISSUE_TEMPLATE/runtime_integration_readiness.yml",
+      "title": "runtime_integration_readiness",
+      "source": "repository"
+    },
+    {
+      "id": ".github/ISSUE_TEMPLATE/repository_selftest_failure.yml",
+      "type": "document",
+      "path": ".github/ISSUE_TEMPLATE/repository_selftest_failure.yml",
+      "title": "repository_selftest_failure",
       "source": "repository"
     },
     {
@@ -1443,6 +2542,13 @@
       "source": "repository"
     },
     {
+      "id": "prompts/codex/CODEX_PHASE0_GITHUB_PROMPT.md",
+      "type": "document",
+      "path": "prompts/codex/CODEX_PHASE0_GITHUB_PROMPT.md",
+      "title": "CODEX_PHASE0_GITHUB_PROMPT",
+      "source": "repository"
+    },
+    {
       "id": "agent_runtime/cycle.py",
       "type": "document",
       "path": "agent_runtime/cycle.py",
@@ -1552,6 +2658,27 @@
       "type": "document",
       "path": ".system/BOOT.md",
       "title": "BOOT",
+      "source": "repository"
+    },
+    {
+      "id": ".system/SOP/CONTENT_PIPELINE.md",
+      "type": "document",
+      "path": ".system/SOP/CONTENT_PIPELINE.md",
+      "title": "CONTENT_PIPELINE",
+      "source": "repository"
+    },
+    {
+      "id": ".system/prompts/codex/ASSET_WORKER.md",
+      "type": "document",
+      "path": ".system/prompts/codex/ASSET_WORKER.md",
+      "title": "ASSET_WORKER",
+      "source": "repository"
+    },
+    {
+      "id": ".system/prompts/codex/CHECKPOINT_WORKER.md",
+      "type": "document",
+      "path": ".system/prompts/codex/CHECKPOINT_WORKER.md",
+      "title": "CHECKPOINT_WORKER",
       "source": "repository"
     },
     {
@@ -2024,10 +3151,24 @@
       "source": "repository"
     },
     {
+      "id": "orchestrator/output_contract.py",
+      "type": "document",
+      "path": "orchestrator/output_contract.py",
+      "title": "output_contract",
+      "source": "repository"
+    },
+    {
       "id": "orchestrator/task.py",
       "type": "document",
       "path": "orchestrator/task.py",
       "title": "task",
+      "source": "repository"
+    },
+    {
+      "id": "orchestrator/execution_record.py",
+      "type": "document",
+      "path": "orchestrator/execution_record.py",
+      "title": "execution_record",
       "source": "repository"
     },
     {
@@ -2094,10 +3235,24 @@
       "source": "repository"
     },
     {
+      "id": "orchestrator/queue_state.py",
+      "type": "document",
+      "path": "orchestrator/queue_state.py",
+      "title": "queue_state",
+      "source": "repository"
+    },
+    {
       "id": "orchestrator/RUNBOOK.md",
       "type": "document",
       "path": "orchestrator/RUNBOOK.md",
       "title": "RUNBOOK",
+      "source": "repository"
+    },
+    {
+      "id": "orchestrator/worker_state.py",
+      "type": "document",
+      "path": "orchestrator/worker_state.py",
+      "title": "worker_state",
       "source": "repository"
     },
     {
@@ -2157,6 +3312,20 @@
       "source": "repository"
     },
     {
+      "id": "orchestrator/queue_transition.py",
+      "type": "document",
+      "path": "orchestrator/queue_transition.py",
+      "title": "queue_transition",
+      "source": "repository"
+    },
+    {
+      "id": "orchestrator/scheduler.py",
+      "type": "document",
+      "path": "orchestrator/scheduler.py",
+      "title": "scheduler",
+      "source": "repository"
+    },
+    {
       "id": "orchestrator/EXECUTION_PLAN_SCHEMA.md",
       "type": "document",
       "path": "orchestrator/EXECUTION_PLAN_SCHEMA.md",
@@ -2190,1390 +3359,80 @@
       "path": "orchestrator/workers/codex_worker.py",
       "title": "codex_worker",
       "source": "repository"
-    },
-    {
-      "id": ".system/SOP/CONTENT_PIPELINE.md",
-      "type": "document",
-      "path": ".system/SOP/CONTENT_PIPELINE.md",
-      "title": "CONTENT_PIPELINE",
-      "source": "repository"
-    },
-    {
-      "id": ".system/prompts/codex/ASSET_WORKER.md",
-      "type": "document",
-      "path": ".system/prompts/codex/ASSET_WORKER.md",
-      "title": "ASSET_WORKER",
-      "source": "repository"
-    },
-    {
-      "id": ".system/prompts/codex/CHECKPOINT_WORKER.md",
-      "type": "document",
-      "path": ".system/prompts/codex/CHECKPOINT_WORKER.md",
-      "title": "CHECKPOINT_WORKER",
-      "source": "repository"
-    },
-    {
-      "id": "prompts/codex/CODEX_PHASE0_GITHUB_PROMPT.md",
-      "type": "document",
-      "path": "prompts/codex/CODEX_PHASE0_GITHUB_PROMPT.md",
-      "title": "CODEX_PHASE0_GITHUB_PROMPT",
-      "source": "repository"
-    },
-    {
-      "id": ".github/workflows/repository-os-v1-baseline.yml",
-      "type": "workflow",
-      "path": ".github/workflows/repository-os-v1-baseline.yml",
-      "title": "repository-os-v1-baseline",
-      "source": "repository"
-    },
-    {
-      "id": ".github/workflows/boundary-validation.yml",
-      "type": "workflow",
-      "path": ".github/workflows/boundary-validation.yml",
-      "title": "boundary-validation",
-      "source": "repository"
-    },
-    {
-      "id": ".github/workflows/ep0103-worker-contract-layer.yml",
-      "type": "workflow",
-      "path": ".github/workflows/ep0103-worker-contract-layer.yml",
-      "title": "ep0103-worker-contract-layer",
-      "source": "repository"
-    },
-    {
-      "id": ".github/workflows/ep0102-codex-development-pipeline.yml",
-      "type": "workflow",
-      "path": ".github/workflows/ep0102-codex-development-pipeline.yml",
-      "title": "ep0102-codex-development-pipeline",
-      "source": "repository"
-    },
-    {
-      "id": ".github/workflows/agent-orchestrator-validation.yml",
-      "type": "workflow",
-      "path": ".github/workflows/agent-orchestrator-validation.yml",
-      "title": "agent-orchestrator-validation",
-      "source": "repository"
-    },
-    {
-      "id": ".github/workflows/repository-knowledge-graph-runtime-integration.yml",
-      "type": "workflow",
-      "path": ".github/workflows/repository-knowledge-graph-runtime-integration.yml",
-      "title": "repository-knowledge-graph-runtime-integration",
-      "source": "repository"
-    },
-    {
-      "id": ".github/workflows/continuous-governance.yml",
-      "type": "workflow",
-      "path": ".github/workflows/continuous-governance.yml",
-      "title": "continuous-governance",
-      "source": "repository"
-    },
-    {
-      "id": ".github/workflows/repository-semantic-selftest-v2.yml",
-      "type": "workflow",
-      "path": ".github/workflows/repository-semantic-selftest-v2.yml",
-      "title": "repository-semantic-selftest-v2",
-      "source": "repository"
-    },
-    {
-      "id": ".github/workflows/ep0100-agent-runtime-mvp.yml",
-      "type": "workflow",
-      "path": ".github/workflows/ep0100-agent-runtime-mvp.yml",
-      "title": "ep0100-agent-runtime-mvp",
-      "source": "repository"
-    },
-    {
-      "id": ".github/workflows/repository-selftest.yml",
-      "type": "workflow",
-      "path": ".github/workflows/repository-selftest.yml",
-      "title": "repository-selftest",
-      "source": "repository"
-    },
-    {
-      "id": ".github/workflows/runtime-foundation.yml",
-      "type": "workflow",
-      "path": ".github/workflows/runtime-foundation.yml",
-      "title": "runtime-foundation",
-      "source": "repository"
-    },
-    {
-      "id": ".github/workflows/repository-selftest-complete.yml",
-      "type": "workflow",
-      "path": ".github/workflows/repository-selftest-complete.yml",
-      "title": "repository-selftest-complete",
-      "source": "repository"
-    },
-    {
-      "id": ".github/workflows/runtime-capability.yml",
-      "type": "workflow",
-      "path": ".github/workflows/runtime-capability.yml",
-      "title": "runtime-capability",
-      "source": "repository"
-    },
-    {
-      "id": ".github/workflows/runtime-coordination.yml",
-      "type": "workflow",
-      "path": ".github/workflows/runtime-coordination.yml",
-      "title": "runtime-coordination",
-      "source": "repository"
-    },
-    {
-      "id": ".github/workflows/ep0101-agent-runtime-task-intake.yml",
-      "type": "workflow",
-      "path": ".github/workflows/ep0101-agent-runtime-task-intake.yml",
-      "title": "ep0101-agent-runtime-task-intake",
-      "source": "repository"
-    },
-    {
-      "id": ".github/workflows/ep0003.yml",
-      "type": "workflow",
-      "path": ".github/workflows/ep0003.yml",
-      "title": "ep0003",
-      "source": "repository"
-    },
-    {
-      "id": ".github/workflows/ep0104-executable-specification.yml",
-      "type": "workflow",
-      "path": ".github/workflows/ep0104-executable-specification.yml",
-      "title": "ep0104-executable-specification",
-      "source": "repository"
-    },
-    {
-      "id": ".github/ISSUE_TEMPLATE/repository_selftest.yml",
-      "type": "document",
-      "path": ".github/ISSUE_TEMPLATE/repository_selftest.yml",
-      "title": "repository_selftest",
-      "source": "repository"
-    },
-    {
-      "id": ".github/ISSUE_TEMPLATE/runtime_integration_readiness.yml",
-      "type": "document",
-      "path": ".github/ISSUE_TEMPLATE/runtime_integration_readiness.yml",
-      "title": "runtime_integration_readiness",
-      "source": "repository"
-    },
-    {
-      "id": ".github/ISSUE_TEMPLATE/repository_selftest_failure.yml",
-      "type": "document",
-      "path": ".github/ISSUE_TEMPLATE/repository_selftest_failure.yml",
-      "title": "repository_selftest_failure",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/context/build_context_diff.py",
-      "type": "script",
-      "path": "scripts/context/build_context_diff.py",
-      "title": "build_context_diff",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/context/build_agent_context_pack.py",
-      "type": "script",
-      "path": "scripts/context/build_agent_context_pack.py",
-      "title": "build_agent_context_pack",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/specs/validate_ep_contract.py",
-      "type": "script",
-      "path": "scripts/specs/validate_ep_contract.py",
-      "title": "validate_ep_contract",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/specs/scaffold_ep_spec.py",
-      "type": "script",
-      "path": "scripts/specs/scaffold_ep_spec.py",
-      "title": "scaffold_ep_spec",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/specs/validate_ep_spec.py",
-      "type": "script",
-      "path": "scripts/specs/validate_ep_spec.py",
-      "title": "validate_ep_spec",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/specs/validate_spec_lifecycle.py",
-      "type": "script",
-      "path": "scripts/specs/validate_spec_lifecycle.py",
-      "title": "validate_spec_lifecycle",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/specs/load_active_ep_contract.py",
-      "type": "script",
-      "path": "scripts/specs/load_active_ep_contract.py",
-      "title": "load_active_ep_contract",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/graph/build_incremental_graph.py",
-      "type": "script",
-      "path": "scripts/graph/build_incremental_graph.py",
-      "title": "build_incremental_graph",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/graph/validate_repository_graph.py",
-      "type": "script",
-      "path": "scripts/graph/validate_repository_graph.py",
-      "title": "validate_repository_graph",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/graph/build_repository_graph.py",
-      "type": "script",
-      "path": "scripts/graph/build_repository_graph.py",
-      "title": "build_repository_graph",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/runtime/dry_run_adapter.py",
-      "type": "script",
-      "path": "scripts/runtime/dry_run_adapter.py",
-      "title": "dry_run_adapter",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/runtime/validate_runtime_capability.py",
-      "type": "script",
-      "path": "scripts/runtime/validate_runtime_capability.py",
-      "title": "validate_runtime_capability",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/runtime/context_loader.py",
-      "type": "script",
-      "path": "scripts/runtime/context_loader.py",
-      "title": "context_loader",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/runtime/validate_runtime_foundation.py",
-      "type": "script",
-      "path": "scripts/runtime/validate_runtime_foundation.py",
-      "title": "validate_runtime_foundation",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/runtime/dry_run_runtime_plan.py",
-      "type": "script",
-      "path": "scripts/runtime/dry_run_runtime_plan.py",
-      "title": "dry_run_runtime_plan",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/runtime/validate_runtime_coordination.py",
-      "type": "script",
-      "path": "scripts/runtime/validate_runtime_coordination.py",
-      "title": "validate_runtime_coordination",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/selftest/check_orphans.py",
-      "type": "script",
-      "path": "scripts/selftest/check_orphans.py",
-      "title": "check_orphans",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/selftest/check_current_objective.py",
-      "type": "script",
-      "path": "scripts/selftest/check_current_objective.py",
-      "title": "check_current_objective",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/selftest/check_repository_health.py",
-      "type": "script",
-      "path": "scripts/selftest/check_repository_health.py",
-      "title": "check_repository_health",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/selftest/check_boundaries.py",
-      "type": "script",
-      "path": "scripts/selftest/check_boundaries.py",
-      "title": "Use separated fragments so this checker does not match itself.",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/selftest/README_SELFTEST_REMEDIATION.md",
-      "type": "script",
-      "path": "scripts/selftest/README_SELFTEST_REMEDIATION.md",
-      "title": "SelfTest Remediation",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/selftest/validate_repository_selftest_complete.py",
-      "type": "script",
-      "path": "scripts/selftest/validate_repository_selftest_complete.py",
-      "title": "validate_repository_selftest_complete",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/selftest/check_duplicates.py",
-      "type": "script",
-      "path": "scripts/selftest/check_duplicates.py",
-      "title": "Deprecated skeleton files are handled by cleanup_selftest_skeleton.py and reported as warnings here.",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/selftest/check_link_integrity.py",
-      "type": "script",
-      "path": "scripts/selftest/check_link_integrity.py",
-      "title": "check_link_integrity",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/selftest/check_secret_boundary.py",
-      "type": "script",
-      "path": "scripts/selftest/check_secret_boundary.py",
-      "title": "check_secret_boundary",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/selftest/check_workflows.py",
-      "type": "script",
-      "path": "scripts/selftest/check_workflows.py",
-      "title": "check_workflows",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/selftest/cleanup_selftest_skeleton.py",
-      "type": "script",
-      "path": "scripts/selftest/cleanup_selftest_skeleton.py",
-      "title": "cleanup_selftest_skeleton",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/selftest/selftest_common.py",
-      "type": "script",
-      "path": "scripts/selftest/selftest_common.py",
-      "title": "Backward-compatible alias for older selftest modules.",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/baseline/validate_baseline.py",
-      "type": "script",
-      "path": "scripts/baseline/validate_baseline.py",
-      "title": "validate_baseline",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/selftest_v2/semantic_checks.py",
-      "type": "script",
-      "path": "scripts/selftest_v2/semantic_checks.py",
-      "title": "semantic_checks",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/selftest_v2/validate_semantic_selftest.py",
-      "type": "script",
-      "path": "scripts/selftest_v2/validate_semantic_selftest.py",
-      "title": "validate_semantic_selftest",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/selftest_v2/semantic_common.py",
-      "type": "script",
-      "path": "scripts/selftest_v2/semantic_common.py",
-      "title": "semantic_common",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/review/build_review_gate_summary.py",
-      "type": "script",
-      "path": "scripts/review/build_review_gate_summary.py",
-      "title": "build_review_gate_summary",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/agent_runtime/run_task_intake_cycle.py",
-      "type": "script",
-      "path": "scripts/agent_runtime/run_task_intake_cycle.py",
-      "title": "run_task_intake_cycle",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/agent_runtime/run_dry_run_cycle.py",
-      "type": "script",
-      "path": "scripts/agent_runtime/run_dry_run_cycle.py",
-      "title": "run_dry_run_cycle",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/agent_runtime/validate_task_intake.py",
-      "type": "script",
-      "path": "scripts/agent_runtime/validate_task_intake.py",
-      "title": "validate_task_intake",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/agent_runtime/validate_agent_runtime_mvp.py",
-      "type": "script",
-      "path": "scripts/agent_runtime/validate_agent_runtime_mvp.py",
-      "title": "validate_agent_runtime_mvp",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/workers/validate_worker_contracts.py",
-      "type": "script",
-      "path": "scripts/workers/validate_worker_contracts.py",
-      "title": "validate_worker_contracts",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/orchestrator/build_context_bundle.py",
-      "type": "script",
-      "path": "scripts/orchestrator/build_context_bundle.py",
-      "title": "build_context_bundle",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/orchestrator/build_execution_plan.py",
-      "type": "script",
-      "path": "scripts/orchestrator/build_execution_plan.py",
-      "title": "build_execution_plan",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/orchestrator/update_execution_queue.py",
-      "type": "script",
-      "path": "scripts/orchestrator/update_execution_queue.py",
-      "title": "update_execution_queue",
-      "source": "repository"
-    },
-    {
-      "id": "scripts/orchestrator/validate_orchestration.py",
-      "type": "script",
-      "path": "scripts/orchestrator/validate_orchestration.py",
-      "title": "validate_orchestration",
-      "source": "repository"
-    },
-    {
-      "id": "knowledge/draft/CA-0001.md",
-      "type": "knowledge_asset",
-      "path": "knowledge/draft/CA-0001.md",
-      "title": "CA-0001",
-      "source": "repository"
-    },
-    {
-      "id": "knowledge/draft/CA-0011.md",
-      "type": "knowledge_asset",
-      "path": "knowledge/draft/CA-0011.md",
-      "title": "CA-0011",
-      "source": "repository"
-    },
-    {
-      "id": "knowledge/draft/CA-0005.md",
-      "type": "knowledge_asset",
-      "path": "knowledge/draft/CA-0005.md",
-      "title": "CA-0005",
-      "source": "repository"
-    },
-    {
-      "id": "knowledge/draft/CA-0004.md",
-      "type": "knowledge_asset",
-      "path": "knowledge/draft/CA-0004.md",
-      "title": "CA-0004",
-      "source": "repository"
-    },
-    {
-      "id": "knowledge/draft/CA-0010.md",
-      "type": "knowledge_asset",
-      "path": "knowledge/draft/CA-0010.md",
-      "title": "CA-0010",
-      "source": "repository"
-    },
-    {
-      "id": "knowledge/draft/CA-0009.md",
-      "type": "knowledge_asset",
-      "path": "knowledge/draft/CA-0009.md",
-      "title": "CA-0009",
-      "source": "repository"
-    },
-    {
-      "id": "knowledge/draft/CA-0008.md",
-      "type": "knowledge_asset",
-      "path": "knowledge/draft/CA-0008.md",
-      "title": "CA-0008",
-      "source": "repository"
-    },
-    {
-      "id": "knowledge/draft/CA-0007.md",
-      "type": "knowledge_asset",
-      "path": "knowledge/draft/CA-0007.md",
-      "title": "CA-0007",
-      "source": "repository"
-    },
-    {
-      "id": "knowledge/draft/CA-0003.md",
-      "type": "knowledge_asset",
-      "path": "knowledge/draft/CA-0003.md",
-      "title": "CA-0003",
-      "source": "repository"
-    },
-    {
-      "id": "knowledge/draft/CA-0002.md",
-      "type": "knowledge_asset",
-      "path": "knowledge/draft/CA-0002.md",
-      "title": "CA-0002",
-      "source": "repository"
-    },
-    {
-      "id": "knowledge/draft/CA-0006.md",
-      "type": "knowledge_asset",
-      "path": "knowledge/draft/CA-0006.md",
-      "title": "CA-0006",
-      "source": "repository"
-    },
-    {
-      "id": "knowledge/competitor/README.md",
-      "type": "knowledge_asset",
-      "path": "knowledge/competitor/README.md",
-      "title": "Competitor Intelligence",
-      "source": "repository"
-    },
-    {
-      "id": "knowledge/canonical/README.md",
-      "type": "knowledge_asset",
-      "path": "knowledge/canonical/README.md",
-      "title": "README",
-      "source": "repository"
-    },
-    {
-      "id": "knowledge/canonical/CA-0001_SLEEP.md",
-      "type": "knowledge_asset",
-      "path": "knowledge/canonical/CA-0001_SLEEP.md",
-      "title": "CA-0001_SLEEP",
-      "source": "repository"
-    },
-    {
-      "id": "knowledge/canonical/INDEX.md",
-      "type": "knowledge_asset",
-      "path": "knowledge/canonical/INDEX.md",
-      "title": "INDEX",
-      "source": "repository"
-    },
-    {
-      "id": "knowledge/learning/README.md",
-      "type": "knowledge_asset",
-      "path": "knowledge/learning/README.md",
-      "title": "Learning Repository",
-      "source": "repository"
-    },
-    {
-      "id": "knowledge/platform/README.md",
-      "type": "knowledge_asset",
-      "path": "knowledge/platform/README.md",
-      "title": "Platform Intelligence",
-      "source": "repository"
-    },
-    {
-      "id": "knowledge/prompt/README.md",
-      "type": "knowledge_asset",
-      "path": "knowledge/prompt/README.md",
-      "title": "Prompt Library",
-      "source": "repository"
-    },
-    {
-      "id": "knowledge/market/README.md",
-      "type": "knowledge_asset",
-      "path": "knowledge/market/README.md",
-      "title": "Market Intelligence",
-      "source": "repository"
-    },
-    {
-      "id": "knowledge/policy/README.md",
-      "type": "knowledge_asset",
-      "path": "knowledge/policy/README.md",
-      "title": "Policy Intelligence",
-      "source": "repository"
-    },
-    {
-      "id": "knowledge/strategy/CANONICAL_ASSET_BACKLOG.md",
-      "type": "knowledge_asset",
-      "path": "knowledge/strategy/CANONICAL_ASSET_BACKLOG.md",
-      "title": "CANONICAL_ASSET_BACKLOG",
-      "source": "repository"
-    },
-    {
-      "id": "knowledge/strategy/MARKET_VALIDATION_WBS.md",
-      "type": "knowledge_asset",
-      "path": "knowledge/strategy/MARKET_VALIDATION_WBS.md",
-      "title": "MARKET_VALIDATION_WBS",
-      "source": "repository"
-    },
-    {
-      "id": "knowledge/strategy/PRODUCT_DEFINITION.md",
-      "type": "knowledge_asset",
-      "path": "knowledge/strategy/PRODUCT_DEFINITION.md",
-      "title": "PRODUCT_DEFINITION",
-      "source": "repository"
-    },
-    {
-      "id": "runtime/agent_runtime_mvp/DRY_RUN_REPORT.md",
-      "type": "document",
-      "path": "runtime/agent_runtime_mvp/DRY_RUN_REPORT.md",
-      "title": "Agent Runtime MVP Dry Run Report\\n\\n## Conclusion\\n\\nDry-run agent cycle completed without runtime external execution.\\n\\n## Generated Artifacts\\n\\n- `runtime/agent_runtime_mvp/runtime_context.json`\\n- `runtime/agent_runtime_mvp/runtime_plan.json`\\n- `runtime/agent_runtime_mvp/queue_item.json`\\n- `runtime/agent_runtime_mvp/review_summary.json`\\n- `runtime/agent_runtime_mvp/approval_gate.json`\\n\\n## Boundary\\n\\n- Runtime external execution: not performed\\n- Platform API mutation: not performed\\n- Auto posting: not performed\\n- Secret use: not performed\\n- Human approval: required for runtime transition\\n",
-      "source": "repository"
-    },
-    {
-      "id": "runtime/task_intake/ART-SAMPLE-0001/TASK_INTAKE_REPORT.md",
-      "type": "document",
-      "path": "runtime/task_intake/ART-SAMPLE-0001/TASK_INTAKE_REPORT.md",
-      "title": "Agent Runtime Task Intake Dry Run Report",
-      "source": "repository"
-    },
-    {
-      "id": "specs/completed/README.md",
-      "type": "readme",
-      "path": "specs/completed/README.md",
-      "title": "COMPLETED_SPECS",
-      "source": "repository"
-    },
-    {
-      "id": "specs/EP-0102/ACCEPTANCE_TEST.md",
-      "type": "document",
-      "path": "specs/EP-0102/ACCEPTANCE_TEST.md",
-      "title": "EP-0102 Acceptance Test",
-      "source": "repository"
-    },
-    {
-      "id": "specs/EP-0102/CODEX_PROMPT.md",
-      "type": "document",
-      "path": "specs/EP-0102/CODEX_PROMPT.md",
-      "title": "Codex Prompt for EP-0102",
-      "source": "repository"
-    },
-    {
-      "id": "specs/EP-0102/VALIDATION.md",
-      "type": "document",
-      "path": "specs/EP-0102/VALIDATION.md",
-      "title": "EP-0102 Validation",
-      "source": "repository"
-    },
-    {
-      "id": "specs/EP-0102/IMPLEMENTATION_SPEC.md",
-      "type": "document",
-      "path": "specs/EP-0102/IMPLEMENTATION_SPEC.md",
-      "title": "EP-0102 Implementation Spec",
-      "source": "repository"
-    },
-    {
-      "id": "specs/EP-0102/MANIFEST.md",
-      "type": "document",
-      "path": "specs/EP-0102/MANIFEST.md",
-      "title": "EP-0102 Manifest",
-      "source": "repository"
-    },
-    {
-      "id": "specs/EP-0102/ROLLBACK.md",
-      "type": "document",
-      "path": "specs/EP-0102/ROLLBACK.md",
-      "title": "EP-0102 Rollback",
-      "source": "repository"
-    },
-    {
-      "id": "specs/EP-0102/FILE_CHANGESET.md",
-      "type": "document",
-      "path": "specs/EP-0102/FILE_CHANGESET.md",
-      "title": "EP-0102 File Changeset",
-      "source": "repository"
-    },
-    {
-      "id": "specs/EP-0103/WORKER_INSTRUCTIONS.md",
-      "type": "document",
-      "path": "specs/EP-0103/WORKER_INSTRUCTIONS.md",
-      "title": "EP-0103 Worker Instructions",
-      "source": "repository"
-    },
-    {
-      "id": "specs/EP-0103/VALIDATION.md",
-      "type": "document",
-      "path": "specs/EP-0103/VALIDATION.md",
-      "title": "EP-0103 Validation",
-      "source": "repository"
-    },
-    {
-      "id": "specs/EP-0103/README.md",
-      "type": "readme",
-      "path": "specs/EP-0103/README.md",
-      "title": "EP-0103",
-      "source": "repository"
-    },
-    {
-      "id": "specs/EP-0103/IMPLEMENTATION_SPEC.md",
-      "type": "document",
-      "path": "specs/EP-0103/IMPLEMENTATION_SPEC.md",
-      "title": "EP-0103 Implementation Spec",
-      "source": "repository"
-    },
-    {
-      "id": "specs/EP-0103/MANIFEST.md",
-      "type": "document",
-      "path": "specs/EP-0103/MANIFEST.md",
-      "title": "EP-0103 Manifest",
-      "source": "repository"
-    },
-    {
-      "id": "specs/EP-0103/FILE_CHANGESET.md",
-      "type": "document",
-      "path": "specs/EP-0103/FILE_CHANGESET.md",
-      "title": "EP-0103 File Changeset",
-      "source": "repository"
-    },
-    {
-      "id": "specs/EP-0103/ACCEPTANCE.md",
-      "type": "document",
-      "path": "specs/EP-0103/ACCEPTANCE.md",
-      "title": "EP-0103 Acceptance",
-      "source": "repository"
-    },
-    {
-      "id": "specs/EP-0104/WORKER_INSTRUCTIONS.md",
-      "type": "document",
-      "path": "specs/EP-0104/WORKER_INSTRUCTIONS.md",
-      "title": "EP-0104 Worker Instructions",
-      "source": "repository"
-    },
-    {
-      "id": "specs/EP-0104/VALIDATION.md",
-      "type": "document",
-      "path": "specs/EP-0104/VALIDATION.md",
-      "title": "EP-0104 Validation",
-      "source": "repository"
-    },
-    {
-      "id": "specs/EP-0104/README.md",
-      "type": "readme",
-      "path": "specs/EP-0104/README.md",
-      "title": "EP-0104 Executable Specification Foundation",
-      "source": "repository"
-    },
-    {
-      "id": "specs/EP-0104/IMPLEMENTATION_SPEC.md",
-      "type": "document",
-      "path": "specs/EP-0104/IMPLEMENTATION_SPEC.md",
-      "title": "EP-0104 Implementation Spec",
-      "source": "repository"
-    },
-    {
-      "id": "specs/EP-0104/MANIFEST.md",
-      "type": "document",
-      "path": "specs/EP-0104/MANIFEST.md",
-      "title": "EP-0104 Manifest",
-      "source": "repository"
-    },
-    {
-      "id": "specs/EP-0104/FILE_CHANGESET.md",
-      "type": "document",
-      "path": "specs/EP-0104/FILE_CHANGESET.md",
-      "title": "EP-0104 File Changeset",
-      "source": "repository"
-    },
-    {
-      "id": "specs/EP-0104/ep_contract.yaml",
-      "type": "document",
-      "path": "specs/EP-0104/ep_contract.yaml",
-      "title": "ep_contract",
-      "source": "repository"
-    },
-    {
-      "id": "specs/templates/ep_contract.template.yaml",
-      "type": "document",
-      "path": "specs/templates/ep_contract.template.yaml",
-      "title": "ep_contract.template",
-      "source": "repository"
-    },
-    {
-      "id": "specs/templates/ROLLBACK_TEMPLATE.md",
-      "type": "document",
-      "path": "specs/templates/ROLLBACK_TEMPLATE.md",
-      "title": "ROLLBACK_TEMPLATE",
-      "source": "repository"
-    },
-    {
-      "id": "specs/templates/MANIFEST_TEMPLATE.md",
-      "type": "document",
-      "path": "specs/templates/MANIFEST_TEMPLATE.md",
-      "title": "MANIFEST_TEMPLATE",
-      "source": "repository"
-    },
-    {
-      "id": "specs/templates/ACCEPTANCE_TEST_TEMPLATE.md",
-      "type": "document",
-      "path": "specs/templates/ACCEPTANCE_TEST_TEMPLATE.md",
-      "title": "ACCEPTANCE_TEST_TEMPLATE",
-      "source": "repository"
-    },
-    {
-      "id": "specs/templates/VALIDATION_TEMPLATE.md",
-      "type": "document",
-      "path": "specs/templates/VALIDATION_TEMPLATE.md",
-      "title": "VALIDATION_TEMPLATE",
-      "source": "repository"
-    },
-    {
-      "id": "specs/templates/FILE_CHANGESET_TEMPLATE.md",
-      "type": "document",
-      "path": "specs/templates/FILE_CHANGESET_TEMPLATE.md",
-      "title": "FILE_CHANGESET_TEMPLATE",
-      "source": "repository"
-    },
-    {
-      "id": "specs/templates/IMPLEMENTATION_SPEC_TEMPLATE.md",
-      "type": "document",
-      "path": "specs/templates/IMPLEMENTATION_SPEC_TEMPLATE.md",
-      "title": "IMPLEMENTATION_SPEC_TEMPLATE",
-      "source": "repository"
-    },
-    {
-      "id": "specs/active/README.md",
-      "type": "readme",
-      "path": "specs/active/README.md",
-      "title": "ACTIVE_SPECS",
-      "source": "repository"
-    },
-    {
-      "id": "specs/archived/README.md",
-      "type": "readme",
-      "path": "specs/archived/README.md",
-      "title": "ARCHIVED_SPECS",
-      "source": "repository"
     }
   ],
   "edges": [
     {
-      "source": "README_REPOSITORY_SELFTEST_COMPLETE_PACK.md",
-      "target": "scripts/selftest/validate_repository_selftest_complete.py",
+      "source": "specs/EP-0105/VALIDATION.md",
+      "target": "scripts/validate_ep_0105.py",
       "type": "validates",
-      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
+      "evidence": "scripts/validate_ep_0105.py"
     },
     {
-      "source": "README_REPOSITORY_SELFTEST_COMPLETE_PACK.md",
-      "target": "scripts/validate_repository_selftest.py",
-      "type": "validates",
-      "evidence": "scripts/validate_repository_selftest.py"
-    },
-    {
-      "source": "README_REPOSITORY_SELFTEST_COMPLETE_PACK.md",
-      "target": "scripts/validate_continuous_governance.py",
-      "type": "validates",
-      "evidence": "scripts/validate_continuous_governance.py"
-    },
-    {
-      "source": "README_AGENT_RUNTIME_FOUNDATION_PACK.md",
-      "target": "scripts/runtime/validate_runtime_foundation.py",
-      "type": "validates",
-      "evidence": "scripts/runtime/validate_runtime_foundation.py"
-    },
-    {
-      "source": "MANIFEST_EP0100.md",
-      "target": "scripts/validate_ep_0100.py",
-      "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
-    },
-    {
-      "source": "README_REPOSITORY_KNOWLEDGE_GRAPH_RUNTIME_INTEGRATION_PACK.md",
-      "target": "scripts/validate_repository_knowledge_graph_runtime_integration.py",
-      "type": "validates",
-      "evidence": "scripts/validate_repository_knowledge_graph_runtime_integration.py"
-    },
-    {
-      "source": "MANIFEST_EP0100_2.md",
-      "target": "scripts/validate_ep_0100.py",
-      "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
-    },
-    {
-      "source": "README_EP0100_1_AGENT_RUNTIME_IMPORT_FIX.md",
-      "target": "scripts/validate_ep_0100.py",
-      "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
-    },
-    {
-      "source": "README_REPOSITORY_OS_V1_BASELINE_PACK.md",
-      "target": "scripts/validate_repository_os_v1_baseline.py",
-      "type": "validates",
-      "evidence": "scripts/validate_repository_os_v1_baseline.py"
-    },
-    {
-      "source": "MANIFEST_EP0101.md",
-      "target": "scripts/validate_ep_0101.py",
-      "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
-    },
-    {
-      "source": "README_RUNTIME_TRANSITION_READINESS_PACK.md",
-      "target": "scripts/validate_repository_knowledge_graph_runtime_integration.py",
-      "type": "validates",
-      "evidence": "scripts/validate_repository_knowledge_graph_runtime_integration.py"
-    },
-    {
-      "source": "README_SELFTEST_IMPORT_FIX_PACK.md",
-      "target": "scripts/selftest/validate_repository_selftest_complete.py",
-      "type": "validates",
-      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
-    },
-    {
-      "source": "README_EP0100_AGENT_RUNTIME_MVP.md",
-      "target": "scripts/validate_ep_0100.py",
-      "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
-    },
-    {
-      "source": "README_EP0102_CODEX_DEVELOPMENT_PIPELINE.md",
-      "target": "scripts/validate_ep_0102.py",
-      "type": "validates",
-      "evidence": "scripts/validate_ep_0102.py"
-    },
-    {
-      "source": "README_EP0102_CODEX_DEVELOPMENT_PIPELINE.md",
-      "target": "scripts/validate_ep_0100.py",
-      "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
-    },
-    {
-      "source": "README_EP0102_CODEX_DEVELOPMENT_PIPELINE.md",
-      "target": "scripts/validate_ep_0101.py",
-      "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
-    },
-    {
-      "source": "README_EP0103_WORKER_CONTRACT_LAYER.md",
-      "target": "scripts/validate_ep_0103.py",
-      "type": "validates",
-      "evidence": "scripts/validate_ep_0103.py"
-    },
-    {
-      "source": "README_EP0103_WORKER_CONTRACT_LAYER.md",
-      "target": "scripts/validate_ep_0102.py",
-      "type": "validates",
-      "evidence": "scripts/validate_ep_0102.py"
-    },
-    {
-      "source": "README_EP0103_WORKER_CONTRACT_LAYER.md",
-      "target": "scripts/validate_ep_0101.py",
-      "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
-    },
-    {
-      "source": "README_EP0103_WORKER_CONTRACT_LAYER.md",
-      "target": "scripts/validate_ep_0100.py",
-      "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
-    },
-    {
-      "source": "MANIFEST_EP0100_1.md",
-      "target": "scripts/validate_ep_0100.py",
-      "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
-    },
-    {
-      "source": "README_SEMANTIC_SELFTEST_V2_PACK.md",
-      "target": "scripts/selftest_v2/validate_semantic_selftest.py",
-      "type": "validates",
-      "evidence": "scripts/selftest_v2/validate_semantic_selftest.py"
-    },
-    {
-      "source": "README_SEMANTIC_SELFTEST_V2_PACK.md",
-      "target": "scripts/selftest/validate_repository_selftest_complete.py",
-      "type": "validates",
-      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
-    },
-    {
-      "source": "README_SEMANTIC_SELFTEST_V2_PACK.md",
-      "target": "scripts/validate_repository_selftest.py",
-      "type": "validates",
-      "evidence": "scripts/validate_repository_selftest.py"
-    },
-    {
-      "source": "README_EP0102_SPEC_PACK.md",
-      "target": "scripts/validate_ep_0102.py",
-      "type": "validates",
-      "evidence": "scripts/validate_ep_0102.py"
-    },
-    {
-      "source": "README_EP0102_SPEC_PACK.md",
-      "target": "scripts/validate_ep_0100.py",
-      "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
-    },
-    {
-      "source": "README_EP0102_SPEC_PACK.md",
-      "target": "scripts/validate_ep_0101.py",
-      "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
-    },
-    {
-      "source": "README_SELFTEST_REMEDIATION_PACK.md",
-      "target": "scripts/selftest/validate_repository_selftest_complete.py",
-      "type": "validates",
-      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
-    },
-    {
-      "source": "README_SELFTEST_REMEDIATION_PACK.md",
-      "target": "scripts/selftest/cleanup_selftest_skeleton.py",
-      "type": "validates",
-      "evidence": "scripts/selftest/cleanup_selftest_skeleton.py"
-    },
-    {
-      "source": "README_AGENT_ORCHESTRATOR_PACK.md",
-      "target": "scripts/graph/build_repository_graph.py",
-      "type": "validates",
-      "evidence": "scripts/graph/build_repository_graph.py"
-    },
-    {
-      "source": "README_AGENT_ORCHESTRATOR_PACK.md",
-      "target": "scripts/context/build_agent_context_pack.py",
-      "type": "validates",
-      "evidence": "scripts/context/build_agent_context_pack.py"
-    },
-    {
-      "source": "README_AGENT_ORCHESTRATOR_PACK.md",
-      "target": "scripts/orchestrator/build_context_bundle.py",
-      "type": "validates",
-      "evidence": "scripts/orchestrator/build_context_bundle.py"
-    },
-    {
-      "source": "README_AGENT_ORCHESTRATOR_PACK.md",
-      "target": "scripts/orchestrator/build_execution_plan.py",
-      "type": "validates",
-      "evidence": "scripts/orchestrator/build_execution_plan.py"
-    },
-    {
-      "source": "README_AGENT_ORCHESTRATOR_PACK.md",
-      "target": "scripts/orchestrator/validate_orchestration.py",
-      "type": "validates",
-      "evidence": "scripts/orchestrator/validate_orchestration.py"
-    },
-    {
-      "source": "README_EP0104_EXECUTABLE_SPECIFICATION.md",
+      "source": "specs/EP-0105/VALIDATION.md",
       "target": "scripts/validate_ep_0104.py",
       "type": "validates",
       "evidence": "scripts/validate_ep_0104.py"
     },
     {
-      "source": "README_EP0104_EXECUTABLE_SPECIFICATION.md",
+      "source": "specs/EP-0105/VALIDATION.md",
       "target": "scripts/validate_ep_0103.py",
       "type": "validates",
       "evidence": "scripts/validate_ep_0103.py"
     },
     {
-      "source": "README_EP0104_EXECUTABLE_SPECIFICATION.md",
+      "source": "specs/EP-0105/VALIDATION.md",
       "target": "scripts/validate_ep_0102.py",
       "type": "validates",
       "evidence": "scripts/validate_ep_0102.py"
     },
     {
-      "source": "README_EP0104_EXECUTABLE_SPECIFICATION.md",
+      "source": "specs/EP-0105/VALIDATION.md",
       "target": "scripts/validate_ep_0101.py",
       "type": "validates",
       "evidence": "scripts/validate_ep_0101.py"
     },
     {
-      "source": "README_EP0104_EXECUTABLE_SPECIFICATION.md",
+      "source": "specs/EP-0105/VALIDATION.md",
       "target": "scripts/validate_ep_0100.py",
       "type": "validates",
       "evidence": "scripts/validate_ep_0100.py"
     },
     {
-      "source": "README_EP0100_2_AGENT_RUNTIME_RESTORE_IMPORT_FIX.md",
-      "target": "scripts/validate_ep_0100.py",
+      "source": "specs/EP-0105/ep_contract.yaml",
+      "target": "scripts/validate_ep_0105.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "scripts/validate_ep_0105.py"
     },
     {
-      "source": "README_EP0101_AGENT_RUNTIME_TASK_INTAKE.md",
-      "target": "scripts/validate_ep_0101.py",
-      "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
-    },
-    {
-      "source": "review/REVIEW_GATE_SUMMARY.md",
-      "target": "scripts/orchestrator/validate_orchestration.py",
-      "type": "validates",
-      "evidence": "scripts/orchestrator/validate_orchestration.py"
-    },
-    {
-      "source": "wbs/WBS-0100-agent-runtime-mvp.md",
-      "target": "scripts/validate_ep_0100.py",
-      "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
-    },
-    {
-      "source": "wbs/WBS-0016-repository-os-v1-baseline.md",
-      "target": "scripts/baseline/validate_baseline.py",
-      "type": "validates",
-      "evidence": "scripts/baseline/validate_baseline.py"
-    },
-    {
-      "source": "wbs/WBS-0016-repository-os-v1-baseline.md",
-      "target": "scripts/graph/build_incremental_graph.py",
-      "type": "validates",
-      "evidence": "scripts/graph/build_incremental_graph.py"
-    },
-    {
-      "source": "wbs/WBS-0016-repository-os-v1-baseline.md",
-      "target": "scripts/context/build_context_diff.py",
-      "type": "validates",
-      "evidence": "scripts/context/build_context_diff.py"
-    },
-    {
-      "source": "wbs/WBS-0016-repository-os-v1-baseline.md",
-      "target": "scripts/orchestrator/update_execution_queue.py",
-      "type": "validates",
-      "evidence": "scripts/orchestrator/update_execution_queue.py"
-    },
-    {
-      "source": "wbs/WBS-0016-repository-os-v1-baseline.md",
-      "target": "scripts/review/build_review_gate_summary.py",
-      "type": "validates",
-      "evidence": "scripts/review/build_review_gate_summary.py"
-    },
-    {
-      "source": "wbs/WBS-0101-agent-runtime-task-intake.md",
-      "target": "scripts/validate_ep_0101.py",
-      "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
-    },
-    {
-      "source": "wbs/WBS-0013-repository-knowledge-graph-runtime-integration.md",
-      "target": "scripts/graph/build_repository_graph.py",
-      "type": "validates",
-      "evidence": "scripts/graph/build_repository_graph.py"
-    },
-    {
-      "source": "wbs/WBS-0013-repository-knowledge-graph-runtime-integration.md",
-      "target": "scripts/graph/validate_repository_graph.py",
-      "type": "validates",
-      "evidence": "scripts/graph/validate_repository_graph.py"
-    },
-    {
-      "source": "wbs/WBS-0013-repository-knowledge-graph-runtime-integration.md",
-      "target": "scripts/context/build_agent_context_pack.py",
-      "type": "validates",
-      "evidence": "scripts/context/build_agent_context_pack.py"
-    },
-    {
-      "source": "wbs/WBS-0011-repository-operating-system-self-test.md",
-      "target": "scripts/selftest/validate_repository_selftest_complete.py",
-      "type": "validates",
-      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
-    },
-    {
-      "source": "wbs/WBS-0015-agent-orchestrator.md",
-      "target": "scripts/orchestrator/build_context_bundle.py",
-      "type": "validates",
-      "evidence": "scripts/orchestrator/build_context_bundle.py"
-    },
-    {
-      "source": "wbs/WBS-0015-agent-orchestrator.md",
-      "target": "scripts/orchestrator/build_execution_plan.py",
-      "type": "validates",
-      "evidence": "scripts/orchestrator/build_execution_plan.py"
-    },
-    {
-      "source": "wbs/WBS-0015-agent-orchestrator.md",
-      "target": "scripts/orchestrator/validate_orchestration.py",
-      "type": "validates",
-      "evidence": "scripts/orchestrator/validate_orchestration.py"
-    },
-    {
-      "source": "wbs/WBS-0012-repository-semantic-selftest-v2.md",
-      "target": "scripts/selftest_v2/validate_semantic_selftest.py",
-      "type": "validates",
-      "evidence": "scripts/selftest_v2/validate_semantic_selftest.py"
-    },
-    {
-      "source": "agent_runtime/planner.py",
-      "target": "scripts/agent_runtime/run_dry_run_cycle.py",
-      "type": "validates",
-      "evidence": "scripts/agent_runtime/run_dry_run_cycle.py"
-    },
-    {
-      "source": "agent_runtime/planner.py",
-      "target": "scripts/agent_runtime/validate_agent_runtime_mvp.py",
-      "type": "validates",
-      "evidence": "scripts/agent_runtime/validate_agent_runtime_mvp.py"
-    },
-    {
-      "source": "agent_runtime/queue_engine.py",
-      "target": "scripts/agent_runtime/validate_agent_runtime_mvp.py",
-      "type": "validates",
-      "evidence": "scripts/agent_runtime/validate_agent_runtime_mvp.py"
-    },
-    {
-      "source": "orchestrator/RUNBOOK.md",
-      "target": "orchestrator/local_agent_runner.py",
-      "type": "validates",
-      "evidence": "orchestrator/local_agent_runner.py"
-    },
-    {
-      "source": "orchestrator/EXECUTION_QUEUE.md",
-      "target": "scripts/orchestrator/validate_orchestration.py",
-      "type": "validates",
-      "evidence": "scripts/orchestrator/validate_orchestration.py"
-    },
-    {
-      "source": ".github/workflows/repository-os-v1-baseline.yml",
-      "target": "scripts/validate_repository_os_v1_baseline.py",
-      "type": "validates",
-      "evidence": "scripts/validate_repository_os_v1_baseline.py"
-    },
-    {
-      "source": ".github/workflows/boundary-validation.yml",
-      "target": "scripts/selftest/check_boundaries.py",
-      "type": "validates",
-      "evidence": "scripts/selftest/check_boundaries.py"
-    },
-    {
-      "source": ".github/workflows/ep0103-worker-contract-layer.yml",
-      "target": "scripts/validate_ep_0103.py",
-      "type": "validates",
-      "evidence": "scripts/validate_ep_0103.py"
-    },
-    {
-      "source": ".github/workflows/ep0102-codex-development-pipeline.yml",
-      "target": "scripts/validate_ep_0102.py",
-      "type": "validates",
-      "evidence": "scripts/validate_ep_0102.py"
-    },
-    {
-      "source": ".github/workflows/agent-orchestrator-validation.yml",
-      "target": "scripts/graph/build_repository_graph.py",
-      "type": "validates",
-      "evidence": "scripts/graph/build_repository_graph.py"
-    },
-    {
-      "source": ".github/workflows/agent-orchestrator-validation.yml",
-      "target": "scripts/context/build_agent_context_pack.py",
-      "type": "validates",
-      "evidence": "scripts/context/build_agent_context_pack.py"
-    },
-    {
-      "source": ".github/workflows/agent-orchestrator-validation.yml",
-      "target": "scripts/orchestrator/validate_orchestration.py",
-      "type": "validates",
-      "evidence": "scripts/orchestrator/validate_orchestration.py"
-    },
-    {
-      "source": ".github/workflows/repository-knowledge-graph-runtime-integration.yml",
-      "target": "scripts/validate_repository_knowledge_graph_runtime_integration.py",
-      "type": "validates",
-      "evidence": "scripts/validate_repository_knowledge_graph_runtime_integration.py"
-    },
-    {
-      "source": ".github/workflows/repository-semantic-selftest-v2.yml",
-      "target": "scripts/selftest_v2/validate_semantic_selftest.py",
-      "type": "validates",
-      "evidence": "scripts/selftest_v2/validate_semantic_selftest.py"
-    },
-    {
-      "source": ".github/workflows/ep0100-agent-runtime-mvp.yml",
-      "target": "scripts/validate_ep_0100.py",
-      "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
-    },
-    {
-      "source": ".github/workflows/runtime-foundation.yml",
-      "target": "scripts/runtime/validate_runtime_foundation.py",
-      "type": "validates",
-      "evidence": "scripts/runtime/validate_runtime_foundation.py"
-    },
-    {
-      "source": ".github/workflows/repository-selftest-complete.yml",
-      "target": "scripts/selftest/validate_repository_selftest_complete.py",
-      "type": "validates",
-      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
-    },
-    {
-      "source": ".github/workflows/runtime-capability.yml",
-      "target": "scripts/runtime/validate_runtime_capability.py",
-      "type": "validates",
-      "evidence": "scripts/runtime/validate_runtime_capability.py"
-    },
-    {
-      "source": ".github/workflows/runtime-coordination.yml",
-      "target": "scripts/runtime/validate_runtime_coordination.py",
-      "type": "validates",
-      "evidence": "scripts/runtime/validate_runtime_coordination.py"
-    },
-    {
-      "source": ".github/workflows/ep0101-agent-runtime-task-intake.yml",
-      "target": "scripts/validate_ep_0101.py",
-      "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
-    },
-    {
-      "source": ".github/workflows/ep0003.yml",
-      "target": "scripts/validate_ep_0003.py",
-      "type": "validates",
-      "evidence": "scripts/validate_ep_0003.py"
-    },
-    {
-      "source": ".github/workflows/ep0104-executable-specification.yml",
+      "source": "specs/EP-0105/ep_contract.yaml",
       "target": "scripts/validate_ep_0104.py",
       "type": "validates",
       "evidence": "scripts/validate_ep_0104.py"
     },
     {
-      "source": "scripts/context/build_agent_context_pack.py",
-      "target": "scripts/graph/build_repository_graph.py",
+      "source": "specs/EP-0105/ep_contract.yaml",
+      "target": "scripts/validate_ep_0103.py",
       "type": "validates",
-      "evidence": "scripts/graph/build_repository_graph.py"
+      "evidence": "scripts/validate_ep_0103.py"
     },
     {
-      "source": "scripts/context/build_agent_context_pack.py",
-      "target": "scripts/graph/validate_repository_graph.py",
+      "source": "specs/EP-0105/ep_contract.yaml",
+      "target": "scripts/validate_ep_0102.py",
       "type": "validates",
-      "evidence": "scripts/graph/validate_repository_graph.py"
+      "evidence": "scripts/validate_ep_0102.py"
     },
     {
-      "source": "scripts/context/build_agent_context_pack.py",
-      "target": "scripts/context/build_agent_context_pack.py",
+      "source": "specs/EP-0105/ep_contract.yaml",
+      "target": "scripts/validate_ep_0101.py",
       "type": "validates",
-      "evidence": "scripts/context/build_agent_context_pack.py"
+      "evidence": "scripts/validate_ep_0101.py"
     },
     {
-      "source": "scripts/selftest/README_SELFTEST_REMEDIATION.md",
-      "target": "scripts/selftest/cleanup_selftest_skeleton.py",
+      "source": "specs/EP-0105/ep_contract.yaml",
+      "target": "scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/selftest/cleanup_selftest_skeleton.py"
-    },
-    {
-      "source": "scripts/selftest/README_SELFTEST_REMEDIATION.md",
-      "target": "scripts/selftest/validate_repository_selftest_complete.py",
-      "type": "validates",
-      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
-    },
-    {
-      "source": "scripts/orchestrator/build_context_bundle.py",
-      "target": "scripts/orchestrator/build_context_bundle.py",
-      "type": "validates",
-      "evidence": "scripts/orchestrator/build_context_bundle.py"
-    },
-    {
-      "source": "scripts/orchestrator/build_context_bundle.py",
-      "target": "scripts/orchestrator/build_execution_plan.py",
-      "type": "validates",
-      "evidence": "scripts/orchestrator/build_execution_plan.py"
-    },
-    {
-      "source": "scripts/orchestrator/build_context_bundle.py",
-      "target": "scripts/orchestrator/validate_orchestration.py",
-      "type": "validates",
-      "evidence": "scripts/orchestrator/validate_orchestration.py"
-    },
-    {
-      "source": "scripts/orchestrator/build_execution_plan.py",
-      "target": "scripts/orchestrator/validate_orchestration.py",
-      "type": "validates",
-      "evidence": "scripts/orchestrator/validate_orchestration.py"
+      "evidence": "scripts/validate_ep_0100.py"
     },
     {
       "source": "specs/EP-0102/ACCEPTANCE_TEST.md",
@@ -3826,6 +3685,738 @@
       "target": "scripts/validate_ep_0100.py",
       "type": "validates",
       "evidence": "scripts/validate_ep_0100.py"
+    },
+    {
+      "source": "specs/EP-0106/VALIDATION.md",
+      "target": "scripts/validate_ep_0106.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0106.py"
+    },
+    {
+      "source": "specs/EP-0106/VALIDATION.md",
+      "target": "scripts/validate_ep_0105.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0105.py"
+    },
+    {
+      "source": "specs/EP-0106/VALIDATION.md",
+      "target": "scripts/validate_ep_0104.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0104.py"
+    },
+    {
+      "source": "specs/EP-0106/VALIDATION.md",
+      "target": "scripts/validate_ep_0103.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0103.py"
+    },
+    {
+      "source": "specs/EP-0106/VALIDATION.md",
+      "target": "scripts/validate_ep_0102.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0102.py"
+    },
+    {
+      "source": "specs/EP-0106/VALIDATION.md",
+      "target": "scripts/validate_ep_0101.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0101.py"
+    },
+    {
+      "source": "specs/EP-0106/VALIDATION.md",
+      "target": "scripts/validate_ep_0100.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0100.py"
+    },
+    {
+      "source": "specs/EP-0106/ep_contract.yaml",
+      "target": "scripts/validate_ep_0106.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0106.py"
+    },
+    {
+      "source": "specs/EP-0106/ep_contract.yaml",
+      "target": "scripts/validate_ep_0105.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0105.py"
+    },
+    {
+      "source": "specs/EP-0106/ep_contract.yaml",
+      "target": "scripts/validate_ep_0104.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0104.py"
+    },
+    {
+      "source": "specs/EP-0106/ep_contract.yaml",
+      "target": "scripts/validate_ep_0103.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0103.py"
+    },
+    {
+      "source": "specs/EP-0106/ep_contract.yaml",
+      "target": "scripts/validate_ep_0102.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0102.py"
+    },
+    {
+      "source": "specs/EP-0106/ep_contract.yaml",
+      "target": "scripts/validate_ep_0101.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0101.py"
+    },
+    {
+      "source": "specs/EP-0106/ep_contract.yaml",
+      "target": "scripts/validate_ep_0100.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0100.py"
+    },
+    {
+      "source": "specs/EP-0107/VALIDATION.md",
+      "target": "scripts/validate_ep_0107.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0107.py"
+    },
+    {
+      "source": "specs/EP-0107/VALIDATION.md",
+      "target": "scripts/validate_ep_0106.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0106.py"
+    },
+    {
+      "source": "specs/EP-0107/VALIDATION.md",
+      "target": "scripts/validate_ep_0105.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0105.py"
+    },
+    {
+      "source": "specs/EP-0107/VALIDATION.md",
+      "target": "scripts/validate_ep_0104.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0104.py"
+    },
+    {
+      "source": "specs/EP-0107/VALIDATION.md",
+      "target": "scripts/validate_ep_0103.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0103.py"
+    },
+    {
+      "source": "specs/EP-0107/VALIDATION.md",
+      "target": "scripts/validate_ep_0102.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0102.py"
+    },
+    {
+      "source": "specs/EP-0107/VALIDATION.md",
+      "target": "scripts/validate_ep_0101.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0101.py"
+    },
+    {
+      "source": "specs/EP-0107/VALIDATION.md",
+      "target": "scripts/validate_ep_0100.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0100.py"
+    },
+    {
+      "source": "specs/EP-0107/ep_contract.yaml",
+      "target": "scripts/validate_ep_0107.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0107.py"
+    },
+    {
+      "source": "specs/EP-0107/ep_contract.yaml",
+      "target": "scripts/validate_ep_0106.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0106.py"
+    },
+    {
+      "source": "specs/EP-0107/ep_contract.yaml",
+      "target": "scripts/validate_ep_0105.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0105.py"
+    },
+    {
+      "source": "specs/EP-0107/ep_contract.yaml",
+      "target": "scripts/validate_ep_0104.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0104.py"
+    },
+    {
+      "source": "specs/EP-0107/ep_contract.yaml",
+      "target": "scripts/validate_ep_0103.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0103.py"
+    },
+    {
+      "source": "specs/EP-0107/ep_contract.yaml",
+      "target": "scripts/validate_ep_0102.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0102.py"
+    },
+    {
+      "source": "specs/EP-0107/ep_contract.yaml",
+      "target": "scripts/validate_ep_0101.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0101.py"
+    },
+    {
+      "source": "specs/EP-0107/ep_contract.yaml",
+      "target": "scripts/validate_ep_0100.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0100.py"
+    },
+    {
+      "source": "docs/ep/README_EP0100_1_AGENT_RUNTIME_IMPORT_FIX.md",
+      "target": "scripts/validate_ep_0100.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0100.py"
+    },
+    {
+      "source": "docs/ep/README_EP0100_AGENT_RUNTIME_MVP.md",
+      "target": "scripts/validate_ep_0100.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0100.py"
+    },
+    {
+      "source": "docs/ep/README_EP0102_CODEX_DEVELOPMENT_PIPELINE.md",
+      "target": "scripts/validate_ep_0102.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0102.py"
+    },
+    {
+      "source": "docs/ep/README_EP0102_CODEX_DEVELOPMENT_PIPELINE.md",
+      "target": "scripts/validate_ep_0100.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0100.py"
+    },
+    {
+      "source": "docs/ep/README_EP0102_CODEX_DEVELOPMENT_PIPELINE.md",
+      "target": "scripts/validate_ep_0101.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0101.py"
+    },
+    {
+      "source": "docs/ep/README_EP0103_WORKER_CONTRACT_LAYER.md",
+      "target": "scripts/validate_ep_0103.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0103.py"
+    },
+    {
+      "source": "docs/ep/README_EP0103_WORKER_CONTRACT_LAYER.md",
+      "target": "scripts/validate_ep_0102.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0102.py"
+    },
+    {
+      "source": "docs/ep/README_EP0103_WORKER_CONTRACT_LAYER.md",
+      "target": "scripts/validate_ep_0101.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0101.py"
+    },
+    {
+      "source": "docs/ep/README_EP0103_WORKER_CONTRACT_LAYER.md",
+      "target": "scripts/validate_ep_0100.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0100.py"
+    },
+    {
+      "source": "docs/ep/README_EP0102_SPEC_PACK.md",
+      "target": "scripts/validate_ep_0102.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0102.py"
+    },
+    {
+      "source": "docs/ep/README_EP0102_SPEC_PACK.md",
+      "target": "scripts/validate_ep_0100.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0100.py"
+    },
+    {
+      "source": "docs/ep/README_EP0102_SPEC_PACK.md",
+      "target": "scripts/validate_ep_0101.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0101.py"
+    },
+    {
+      "source": "docs/ep/README_EP0104_EXECUTABLE_SPECIFICATION.md",
+      "target": "scripts/validate_ep_0104.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0104.py"
+    },
+    {
+      "source": "docs/ep/README_EP0104_EXECUTABLE_SPECIFICATION.md",
+      "target": "scripts/validate_ep_0103.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0103.py"
+    },
+    {
+      "source": "docs/ep/README_EP0104_EXECUTABLE_SPECIFICATION.md",
+      "target": "scripts/validate_ep_0102.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0102.py"
+    },
+    {
+      "source": "docs/ep/README_EP0104_EXECUTABLE_SPECIFICATION.md",
+      "target": "scripts/validate_ep_0101.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0101.py"
+    },
+    {
+      "source": "docs/ep/README_EP0104_EXECUTABLE_SPECIFICATION.md",
+      "target": "scripts/validate_ep_0100.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0100.py"
+    },
+    {
+      "source": "docs/ep/README_EP0100_2_AGENT_RUNTIME_RESTORE_IMPORT_FIX.md",
+      "target": "scripts/validate_ep_0100.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0100.py"
+    },
+    {
+      "source": "docs/ep/README_EP0101_AGENT_RUNTIME_TASK_INTAKE.md",
+      "target": "scripts/validate_ep_0101.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0101.py"
+    },
+    {
+      "source": "docs/packs/README_REPOSITORY_SELFTEST_COMPLETE_PACK.md",
+      "target": "scripts/selftest/validate_repository_selftest_complete.py",
+      "type": "validates",
+      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
+    },
+    {
+      "source": "docs/packs/README_REPOSITORY_SELFTEST_COMPLETE_PACK.md",
+      "target": "scripts/validate_repository_selftest.py",
+      "type": "validates",
+      "evidence": "scripts/validate_repository_selftest.py"
+    },
+    {
+      "source": "docs/packs/README_REPOSITORY_SELFTEST_COMPLETE_PACK.md",
+      "target": "scripts/validate_continuous_governance.py",
+      "type": "validates",
+      "evidence": "scripts/validate_continuous_governance.py"
+    },
+    {
+      "source": "docs/packs/README_AGENT_RUNTIME_FOUNDATION_PACK.md",
+      "target": "scripts/runtime/validate_runtime_foundation.py",
+      "type": "validates",
+      "evidence": "scripts/runtime/validate_runtime_foundation.py"
+    },
+    {
+      "source": "docs/packs/README_REPOSITORY_KNOWLEDGE_GRAPH_RUNTIME_INTEGRATION_PACK.md",
+      "target": "scripts/validate_repository_knowledge_graph_runtime_integration.py",
+      "type": "validates",
+      "evidence": "scripts/validate_repository_knowledge_graph_runtime_integration.py"
+    },
+    {
+      "source": "docs/packs/README_REPOSITORY_OS_V1_BASELINE_PACK.md",
+      "target": "scripts/validate_repository_os_v1_baseline.py",
+      "type": "validates",
+      "evidence": "scripts/validate_repository_os_v1_baseline.py"
+    },
+    {
+      "source": "docs/packs/README_RUNTIME_TRANSITION_READINESS_PACK.md",
+      "target": "scripts/validate_repository_knowledge_graph_runtime_integration.py",
+      "type": "validates",
+      "evidence": "scripts/validate_repository_knowledge_graph_runtime_integration.py"
+    },
+    {
+      "source": "docs/packs/README_SELFTEST_IMPORT_FIX_PACK.md",
+      "target": "scripts/selftest/validate_repository_selftest_complete.py",
+      "type": "validates",
+      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
+    },
+    {
+      "source": "docs/packs/README_SEMANTIC_SELFTEST_V2_PACK.md",
+      "target": "scripts/selftest_v2/validate_semantic_selftest.py",
+      "type": "validates",
+      "evidence": "scripts/selftest_v2/validate_semantic_selftest.py"
+    },
+    {
+      "source": "docs/packs/README_SEMANTIC_SELFTEST_V2_PACK.md",
+      "target": "scripts/selftest/validate_repository_selftest_complete.py",
+      "type": "validates",
+      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
+    },
+    {
+      "source": "docs/packs/README_SEMANTIC_SELFTEST_V2_PACK.md",
+      "target": "scripts/validate_repository_selftest.py",
+      "type": "validates",
+      "evidence": "scripts/validate_repository_selftest.py"
+    },
+    {
+      "source": "docs/packs/README_SELFTEST_REMEDIATION_PACK.md",
+      "target": "scripts/selftest/validate_repository_selftest_complete.py",
+      "type": "validates",
+      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
+    },
+    {
+      "source": "docs/packs/README_SELFTEST_REMEDIATION_PACK.md",
+      "target": "scripts/selftest/cleanup_selftest_skeleton.py",
+      "type": "validates",
+      "evidence": "scripts/selftest/cleanup_selftest_skeleton.py"
+    },
+    {
+      "source": "docs/packs/README_AGENT_ORCHESTRATOR_PACK.md",
+      "target": "scripts/graph/build_repository_graph.py",
+      "type": "validates",
+      "evidence": "scripts/graph/build_repository_graph.py"
+    },
+    {
+      "source": "docs/packs/README_AGENT_ORCHESTRATOR_PACK.md",
+      "target": "scripts/context/build_agent_context_pack.py",
+      "type": "validates",
+      "evidence": "scripts/context/build_agent_context_pack.py"
+    },
+    {
+      "source": "docs/packs/README_AGENT_ORCHESTRATOR_PACK.md",
+      "target": "scripts/orchestrator/build_context_bundle.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/build_context_bundle.py"
+    },
+    {
+      "source": "docs/packs/README_AGENT_ORCHESTRATOR_PACK.md",
+      "target": "scripts/orchestrator/build_execution_plan.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/build_execution_plan.py"
+    },
+    {
+      "source": "docs/packs/README_AGENT_ORCHESTRATOR_PACK.md",
+      "target": "scripts/orchestrator/validate_orchestration.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/validate_orchestration.py"
+    },
+    {
+      "source": "docs/current/CODEX_OUTPUT_CONTRACT.md",
+      "target": "scripts/validate_ep_0107.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0107.py"
+    },
+    {
+      "source": "docs/manifests/MANIFEST_EP0100.md",
+      "target": "scripts/validate_ep_0100.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0100.py"
+    },
+    {
+      "source": "docs/manifests/MANIFEST_EP0100_2.md",
+      "target": "scripts/validate_ep_0100.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0100.py"
+    },
+    {
+      "source": "docs/manifests/MANIFEST_EP0101.md",
+      "target": "scripts/validate_ep_0101.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0101.py"
+    },
+    {
+      "source": "docs/manifests/MANIFEST_EP0100_1.md",
+      "target": "scripts/validate_ep_0100.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0100.py"
+    },
+    {
+      "source": "review/REVIEW_GATE_SUMMARY.md",
+      "target": "scripts/orchestrator/validate_orchestration.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/validate_orchestration.py"
+    },
+    {
+      "source": "wbs/WBS-0100-agent-runtime-mvp.md",
+      "target": "scripts/validate_ep_0100.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0100.py"
+    },
+    {
+      "source": "wbs/WBS-0016-repository-os-v1-baseline.md",
+      "target": "scripts/baseline/validate_baseline.py",
+      "type": "validates",
+      "evidence": "scripts/baseline/validate_baseline.py"
+    },
+    {
+      "source": "wbs/WBS-0016-repository-os-v1-baseline.md",
+      "target": "scripts/graph/build_incremental_graph.py",
+      "type": "validates",
+      "evidence": "scripts/graph/build_incremental_graph.py"
+    },
+    {
+      "source": "wbs/WBS-0016-repository-os-v1-baseline.md",
+      "target": "scripts/context/build_context_diff.py",
+      "type": "validates",
+      "evidence": "scripts/context/build_context_diff.py"
+    },
+    {
+      "source": "wbs/WBS-0016-repository-os-v1-baseline.md",
+      "target": "scripts/orchestrator/update_execution_queue.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/update_execution_queue.py"
+    },
+    {
+      "source": "wbs/WBS-0016-repository-os-v1-baseline.md",
+      "target": "scripts/review/build_review_gate_summary.py",
+      "type": "validates",
+      "evidence": "scripts/review/build_review_gate_summary.py"
+    },
+    {
+      "source": "wbs/WBS-0101-agent-runtime-task-intake.md",
+      "target": "scripts/validate_ep_0101.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0101.py"
+    },
+    {
+      "source": "wbs/WBS-0013-repository-knowledge-graph-runtime-integration.md",
+      "target": "scripts/graph/build_repository_graph.py",
+      "type": "validates",
+      "evidence": "scripts/graph/build_repository_graph.py"
+    },
+    {
+      "source": "wbs/WBS-0013-repository-knowledge-graph-runtime-integration.md",
+      "target": "scripts/graph/validate_repository_graph.py",
+      "type": "validates",
+      "evidence": "scripts/graph/validate_repository_graph.py"
+    },
+    {
+      "source": "wbs/WBS-0013-repository-knowledge-graph-runtime-integration.md",
+      "target": "scripts/context/build_agent_context_pack.py",
+      "type": "validates",
+      "evidence": "scripts/context/build_agent_context_pack.py"
+    },
+    {
+      "source": "wbs/WBS-0011-repository-operating-system-self-test.md",
+      "target": "scripts/selftest/validate_repository_selftest_complete.py",
+      "type": "validates",
+      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
+    },
+    {
+      "source": "wbs/WBS-0015-agent-orchestrator.md",
+      "target": "scripts/orchestrator/build_context_bundle.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/build_context_bundle.py"
+    },
+    {
+      "source": "wbs/WBS-0015-agent-orchestrator.md",
+      "target": "scripts/orchestrator/build_execution_plan.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/build_execution_plan.py"
+    },
+    {
+      "source": "wbs/WBS-0015-agent-orchestrator.md",
+      "target": "scripts/orchestrator/validate_orchestration.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/validate_orchestration.py"
+    },
+    {
+      "source": "wbs/WBS-0012-repository-semantic-selftest-v2.md",
+      "target": "scripts/selftest_v2/validate_semantic_selftest.py",
+      "type": "validates",
+      "evidence": "scripts/selftest_v2/validate_semantic_selftest.py"
+    },
+    {
+      "source": "scripts/context/build_agent_context_pack.py",
+      "target": "scripts/graph/build_repository_graph.py",
+      "type": "validates",
+      "evidence": "scripts/graph/build_repository_graph.py"
+    },
+    {
+      "source": "scripts/context/build_agent_context_pack.py",
+      "target": "scripts/graph/validate_repository_graph.py",
+      "type": "validates",
+      "evidence": "scripts/graph/validate_repository_graph.py"
+    },
+    {
+      "source": "scripts/context/build_agent_context_pack.py",
+      "target": "scripts/context/build_agent_context_pack.py",
+      "type": "validates",
+      "evidence": "scripts/context/build_agent_context_pack.py"
+    },
+    {
+      "source": "scripts/selftest/README_SELFTEST_REMEDIATION.md",
+      "target": "scripts/selftest/cleanup_selftest_skeleton.py",
+      "type": "validates",
+      "evidence": "scripts/selftest/cleanup_selftest_skeleton.py"
+    },
+    {
+      "source": "scripts/selftest/README_SELFTEST_REMEDIATION.md",
+      "target": "scripts/selftest/validate_repository_selftest_complete.py",
+      "type": "validates",
+      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
+    },
+    {
+      "source": "scripts/orchestrator/build_context_bundle.py",
+      "target": "scripts/orchestrator/build_context_bundle.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/build_context_bundle.py"
+    },
+    {
+      "source": "scripts/orchestrator/build_context_bundle.py",
+      "target": "scripts/orchestrator/build_execution_plan.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/build_execution_plan.py"
+    },
+    {
+      "source": "scripts/orchestrator/build_context_bundle.py",
+      "target": "scripts/orchestrator/validate_orchestration.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/validate_orchestration.py"
+    },
+    {
+      "source": "scripts/orchestrator/build_execution_plan.py",
+      "target": "scripts/orchestrator/validate_orchestration.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/validate_orchestration.py"
+    },
+    {
+      "source": ".github/workflows/ep0106-queue-state-transition-engine.yml",
+      "target": "scripts/validate_ep_0106.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0106.py"
+    },
+    {
+      "source": ".github/workflows/repository-os-v1-baseline.yml",
+      "target": "scripts/validate_repository_os_v1_baseline.py",
+      "type": "validates",
+      "evidence": "scripts/validate_repository_os_v1_baseline.py"
+    },
+    {
+      "source": ".github/workflows/ep0105-scheduler-dispatcher.yml",
+      "target": "scripts/validate_ep_0105.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0105.py"
+    },
+    {
+      "source": ".github/workflows/boundary-validation.yml",
+      "target": "scripts/selftest/check_boundaries.py",
+      "type": "validates",
+      "evidence": "scripts/selftest/check_boundaries.py"
+    },
+    {
+      "source": ".github/workflows/ep0103-worker-contract-layer.yml",
+      "target": "scripts/validate_ep_0103.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0103.py"
+    },
+    {
+      "source": ".github/workflows/ep0107-worker-output-contract.yml",
+      "target": "scripts/validate_ep_0107.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0107.py"
+    },
+    {
+      "source": ".github/workflows/ep0102-codex-development-pipeline.yml",
+      "target": "scripts/validate_ep_0102.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0102.py"
+    },
+    {
+      "source": ".github/workflows/agent-orchestrator-validation.yml",
+      "target": "scripts/graph/build_repository_graph.py",
+      "type": "validates",
+      "evidence": "scripts/graph/build_repository_graph.py"
+    },
+    {
+      "source": ".github/workflows/agent-orchestrator-validation.yml",
+      "target": "scripts/context/build_agent_context_pack.py",
+      "type": "validates",
+      "evidence": "scripts/context/build_agent_context_pack.py"
+    },
+    {
+      "source": ".github/workflows/agent-orchestrator-validation.yml",
+      "target": "scripts/orchestrator/validate_orchestration.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/validate_orchestration.py"
+    },
+    {
+      "source": ".github/workflows/repository-knowledge-graph-runtime-integration.yml",
+      "target": "scripts/validate_repository_knowledge_graph_runtime_integration.py",
+      "type": "validates",
+      "evidence": "scripts/validate_repository_knowledge_graph_runtime_integration.py"
+    },
+    {
+      "source": ".github/workflows/repository-semantic-selftest-v2.yml",
+      "target": "scripts/selftest_v2/validate_semantic_selftest.py",
+      "type": "validates",
+      "evidence": "scripts/selftest_v2/validate_semantic_selftest.py"
+    },
+    {
+      "source": ".github/workflows/ep0100-agent-runtime-mvp.yml",
+      "target": "scripts/validate_ep_0100.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0100.py"
+    },
+    {
+      "source": ".github/workflows/runtime-foundation.yml",
+      "target": "scripts/runtime/validate_runtime_foundation.py",
+      "type": "validates",
+      "evidence": "scripts/runtime/validate_runtime_foundation.py"
+    },
+    {
+      "source": ".github/workflows/repository-selftest-complete.yml",
+      "target": "scripts/selftest/validate_repository_selftest_complete.py",
+      "type": "validates",
+      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
+    },
+    {
+      "source": ".github/workflows/runtime-capability.yml",
+      "target": "scripts/runtime/validate_runtime_capability.py",
+      "type": "validates",
+      "evidence": "scripts/runtime/validate_runtime_capability.py"
+    },
+    {
+      "source": ".github/workflows/runtime-coordination.yml",
+      "target": "scripts/runtime/validate_runtime_coordination.py",
+      "type": "validates",
+      "evidence": "scripts/runtime/validate_runtime_coordination.py"
+    },
+    {
+      "source": ".github/workflows/ep0101-agent-runtime-task-intake.yml",
+      "target": "scripts/validate_ep_0101.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0101.py"
+    },
+    {
+      "source": ".github/workflows/ep0003.yml",
+      "target": "scripts/validate_ep_0003.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0003.py"
+    },
+    {
+      "source": ".github/workflows/ep0104-executable-specification.yml",
+      "target": "scripts/validate_ep_0104.py",
+      "type": "validates",
+      "evidence": "scripts/validate_ep_0104.py"
+    },
+    {
+      "source": "agent_runtime/planner.py",
+      "target": "scripts/agent_runtime/run_dry_run_cycle.py",
+      "type": "validates",
+      "evidence": "scripts/agent_runtime/run_dry_run_cycle.py"
+    },
+    {
+      "source": "agent_runtime/planner.py",
+      "target": "scripts/agent_runtime/validate_agent_runtime_mvp.py",
+      "type": "validates",
+      "evidence": "scripts/agent_runtime/validate_agent_runtime_mvp.py"
+    },
+    {
+      "source": "agent_runtime/queue_engine.py",
+      "target": "scripts/agent_runtime/validate_agent_runtime_mvp.py",
+      "type": "validates",
+      "evidence": "scripts/agent_runtime/validate_agent_runtime_mvp.py"
+    },
+    {
+      "source": "orchestrator/RUNBOOK.md",
+      "target": "orchestrator/local_agent_runner.py",
+      "type": "validates",
+      "evidence": "orchestrator/local_agent_runner.py"
+    },
+    {
+      "source": "orchestrator/EXECUTION_QUEUE.md",
+      "target": "scripts/orchestrator/validate_orchestration.py",
+      "type": "validates",
+      "evidence": "scripts/orchestrator/validate_orchestration.py"
     }
   ]
 }

@@ -6,9 +6,9 @@ REQUIRED_DIRS = [
 ]
 
 REQUIRED_FILES = [
-    "README_REPOSITORY_COMPLETE_PACK.md",
-    "README_AGENT_OS.md",
-    "README_RUNTIME_READINESS.md",
+    "docs/packs/README_REPOSITORY_COMPLETE_PACK.md",
+    "docs/packs/README_AGENT_OS.md",
+    "docs/packs/README_RUNTIME_READINESS.md",
     "basis/026_autonomy_first_policy.md",
     "basis/037_autonomous_workflow_policy.md",
     "basis/042_execution_contract_policy.md",
