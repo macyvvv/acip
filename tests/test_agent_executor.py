@@ -82,7 +82,15 @@ ChatGPT
 
 Definition of Done
 Done
-""",
+        """,
+        encoding="utf-8",
+    )
+    (root / "docs" / "current" / "QUEUE_STATE.md").write_text(
+        "# QUEUE_STATE\n\nstatus: READY\nactive_ep: EP-0108\nnext_ep: EP-0109\n",
+        encoding="utf-8",
+    )
+    (root / "docs" / "current" / "WORKER_STATE.md").write_text(
+        "# WORKER_STATE\n\nworker_name: Codex\ncurrent_ep: EP-0108\nqueue_status: READY\n",
         encoding="utf-8",
     )
 
