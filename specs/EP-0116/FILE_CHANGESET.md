@@ -1,0 +1,10 @@
+- `docs/current/ROOT_HYGIENE_REPORT.md`
+- `docs/current/CODE_QUALITY_BASELINE.md`
+- `docs/current/REFACTORING_QUEUE.md`
+- `contracts/ROOT_HYGIENE_CONTRACT.md`
+- `contracts/CODE_QUALITY_CONTRACT.md`
+- `scripts/hygiene/audit_repository_root.py`
+- `scripts/hygiene/audit_code_quality.py`
+- `scripts/validate_ep_0116.py`
+- `tests/test_repository_hygiene.py`
+- `tests/test_code_quality_baseline.py`
