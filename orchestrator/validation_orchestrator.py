@@ -25,6 +25,21 @@ class ValidationOrchestrationResult:
     validation_steps: list[ValidationStepResult] = field(default_factory=list)
     pytest_result: ValidationStepResult | None = None
     overall_success: bool = False
+    validation_owner: str = "Codex"
+    rerun_required_when: tuple[str, ...] = (
+        "any validation step fails",
+        "pytest fails",
+        "runtime validation report is stale",
+        "validation state does not match repository outputs",
+    )
+    human_rerun_policy: str = (
+        "Human reruns validation only when repository outputs changed, validation artifacts are stale, "
+        "or the latest validation failed."
+    )
+    relation_to_worker_output_contract: str = (
+        "Validation state is a repository-level summary of validation execution and is referenced by "
+        "Worker Output Contract as the canonical validation status for review and handoff."
+    )
 
 
 class ValidationOrchestratorError(RuntimeError):
@@ -75,6 +90,10 @@ class ValidationOrchestrator:
                 "success": result.pytest_result.success,
             },
             "overall_success": result.overall_success,
+            "validation_owner": result.validation_owner,
+            "rerun_required_when": list(result.rerun_required_when),
+            "human_rerun_policy": result.human_rerun_policy,
+            "relation_to_worker_output_contract": result.relation_to_worker_output_contract,
         }
         json_report = json.dumps(payload, ensure_ascii=False, indent=2)
 
@@ -104,9 +123,15 @@ class ValidationOrchestrator:
                 [
                     "# VALIDATION_STATE",
                     "",
-                    f"overall_success: {str(result.overall_success).lower()}",
-                    f"validation_steps: {len(result.validation_steps)}",
-                    f"pytest_success: {str(result.pytest_result.success).lower() if result.pytest_result else 'false'}",
+                    f"last_validation_status: {'success' if result.overall_success else 'failure'}",
+                    f"last_validation_command: python scripts/validate_all.py",
+                    f"last_validation_report_json: runtime/validation/validation_report.json",
+                    f"last_validation_report_md: runtime/validation/VALIDATION_REPORT.md",
+                    f"validation_owner: {result.validation_owner}",
+                    "rerun_required_when:",
+                    *[f"  - {item}" for item in result.rerun_required_when],
+                    f"human_rerun_policy: {result.human_rerun_policy}",
+                    f"relation_to_worker_output_contract: {result.relation_to_worker_output_contract}",
                     "",
                 ]
             ),

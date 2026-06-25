@@ -21,6 +21,22 @@ def main() -> int:
     if missing:
         print("FAIL: missing validation orchestrator files:", ", ".join(missing))
         return 1
+
+    validation_state = (ROOT / "docs" / "current" / "VALIDATION_STATE.md").read_text(encoding="utf-8")
+    required_fields = [
+        "last_validation_status:",
+        "last_validation_command:",
+        "last_validation_report_json:",
+        "last_validation_report_md:",
+        "validation_owner:",
+        "rerun_required_when:",
+        "human_rerun_policy:",
+        "relation_to_worker_output_contract:",
+    ]
+    missing_fields = [field for field in required_fields if field not in validation_state]
+    if missing_fields:
+        print("FAIL: missing validation state fields:", ", ".join(missing_fields))
+        return 1
     print("EP-0111 Validation passed.")
     return 0
 

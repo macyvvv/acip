@@ -71,5 +71,14 @@
     "exit_code": 0,
     "success": true
   },
-  "overall_success": true
+  "overall_success": true,
+  "validation_owner": "Codex",
+  "rerun_required_when": [
+    "any validation step fails",
+    "pytest fails",
+    "runtime validation report is stale",
+    "validation state does not match repository outputs"
+  ],
+  "human_rerun_policy": "Human reruns validation only when repository outputs changed, validation artifacts are stale, or the latest validation failed.",
+  "relation_to_worker_output_contract": "Validation state is a repository-level summary of validation execution and is referenced by Worker Output Contract as the canonical validation status for review and handoff."
 }

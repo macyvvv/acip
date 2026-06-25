@@ -33,7 +33,11 @@ def test_build_and_write_reports(tmp_path: Path) -> None:
     orchestrator.write_reports(result)
 
     assert '"overall_success": true' in json_report
+    assert '"validation_owner": "Codex"' in json_report
     assert "# VALIDATION REPORT" in markdown_report
     assert (tmp_path / "runtime" / "validation" / "validation_report.json").exists()
     assert (tmp_path / "runtime" / "validation" / "VALIDATION_REPORT.md").exists()
     assert (tmp_path / "docs" / "current" / "VALIDATION_STATE.md").exists()
+    state_text = (tmp_path / "docs" / "current" / "VALIDATION_STATE.md").read_text(encoding="utf-8")
+    assert "last_validation_status: success" in state_text
+    assert "validation_owner: Codex" in state_text
