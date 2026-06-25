@@ -109,6 +109,16 @@
       "command": "/Library/Developer/CommandLineTools/usr/bin/python3 scripts/validate_ep_0120.py",
       "exit_code": 0,
       "success": true
+    },
+    {
+      "command": "/Library/Developer/CommandLineTools/usr/bin/python3 scripts/validate_ep_0121.py",
+      "exit_code": 0,
+      "success": true
+    },
+    {
+      "command": "/Library/Developer/CommandLineTools/usr/bin/python3 scripts/validate_ep_0122.py",
+      "exit_code": 0,
+      "success": true
     }
   ],
   "pytest": {

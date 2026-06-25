@@ -13,6 +13,7 @@
     "basis/073_task_router_policy.md",
     "basis/076_review_gate_policy.md",
     "basis/026_autonomy_first_policy.md",
+    "basis/REPOSITORY_CONVENTIONS.md",
     "basis/065_repository_knowledge_graph_policy.md",
     "basis/070_runtime_dry_run_policy.md",
     "basis/061_semantic_selftest_policy.md",
@@ -85,8 +86,8 @@
     "wbs/WBS-0015-agent-orchestrator.md",
     "wbs/WBS-0012-repository-semantic-selftest-v2.md"
   ],
-  "graph_nodes": 619,
-  "graph_edges": 202,
+  "graph_nodes": 650,
+  "graph_edges": 206,
   "required_policies": [
     "basis/088_context_cache_engine_policy.md",
     "basis/067_agent_context_pack_policy.md",

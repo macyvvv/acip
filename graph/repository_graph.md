@@ -1,7 +1,7 @@
 # Repository Graph
 
-- nodes: 619
-- edges: 202
+- nodes: 650
+- edges: 206
 
 ## Nodes
 - `selftest.yml` (document) selftest
@@ -43,6 +43,12 @@
 - `specs/EP-0119/IMPLEMENTATION_SPEC.md` (document) EP-0119 Implementation Spec
 - `specs/EP-0119/MANIFEST.md` (document) MANIFEST
 - `specs/EP-0119/FILE_CHANGESET.md` (document) FILE_CHANGESET
+- `specs/EP-0121/WORKER_INSTRUCTIONS.md` (document) WORKER_INSTRUCTIONS
+- `specs/EP-0121/VALIDATION.md` (document) EP-0121 Validation
+- `specs/EP-0121/README.md` (readme) EP-0121 Repository Layout Canonicalization
+- `specs/EP-0121/IMPLEMENTATION_SPEC.md` (document) EP-0121 Implementation Spec
+- `specs/EP-0121/MANIFEST.md` (document) MANIFEST
+- `specs/EP-0121/FILE_CHANGESET.md` (document) FILE_CHANGESET
 - `specs/EP-0120/WORKER_INSTRUCTIONS.md` (document) WORKER_INSTRUCTIONS
 - `specs/EP-0120/VALIDATION.md` (document) EP-0120 Validation
 - `specs/EP-0120/README.md` (readme) EP-0120 Worker Output Semantics
@@ -107,6 +113,12 @@
 - `specs/EP-0114/IMPLEMENTATION_SPEC.md` (document) EP-0114 Implementation Spec
 - `specs/EP-0114/MANIFEST.md` (document) MANIFEST
 - `specs/EP-0114/FILE_CHANGESET.md` (document) FILE_CHANGESET
+- `specs/EP-0122/WORKER_INSTRUCTIONS.md` (document) WORKER_INSTRUCTIONS
+- `specs/EP-0122/VALIDATION.md` (document) EP-0122 Validation
+- `specs/EP-0122/README.md` (readme) EP-0122 Repository Governor
+- `specs/EP-0122/IMPLEMENTATION_SPEC.md` (document) EP-0122 Implementation Spec
+- `specs/EP-0122/MANIFEST.md` (document) MANIFEST
+- `specs/EP-0122/FILE_CHANGESET.md` (document) FILE_CHANGESET
 - `specs/EP-0115/WORKER_INSTRUCTIONS.md` (document) WORKER_INSTRUCTIONS
 - `specs/EP-0115/VALIDATION.md` (document) EP-0115 Validation
 - `specs/EP-0115/README.md` (readme) EP-0115 Task Decomposer
@@ -155,6 +167,7 @@
 - `contracts/contracts_5.md` (contract) contracts 5
 - `contracts/AGENT_IO_CONTRACT_TEMPLATE.md` (contract) Agent IO Contract Template
 - `contracts/contracts_2.md` (contract) contracts 2
+- `contracts/REPOSITORY_LAYOUT_CONTRACT.md` (contract) REPOSITORY_LAYOUT_CONTRACT
 - `contracts/contracts_3.md` (contract) contracts 3
 - `contracts/CODE_QUALITY_CONTRACT.md` (contract) CODE_QUALITY_CONTRACT
 - `contracts/ROOT_HYGIENE_CONTRACT.md` (contract) ROOT_HYGIENE_CONTRACT
@@ -188,6 +201,7 @@
 - `runtime/RUNTIME_READINESS_CHECKLIST.md` (document) Runtime Readiness Checklist
 - `runtime/AUDIT_ENGINE.md` (document) Audit Engine
 - `runtime/AGENT_RUNTIME_MVP_SPEC.md` (document) Agent Runtime MVP Specification
+- `runtime/governor/GOVERNOR_RECOMMENDATIONS.md` (document) GOVERNOR_RECOMMENDATIONS
 - `runtime/task_intake/ART-SAMPLE-0001/TASK_INTAKE_REPORT.md` (document) Agent Runtime Task Intake Dry Run Report
 - `runtime/agent_runtime_mvp/DRY_RUN_REPORT.md` (document) Agent Runtime MVP Dry Run Report\n\n## Conclusion\n\nDry-run agent cycle completed without runtime external execution.\n\n## Generated Artifacts\n\n- `runtime/agent_runtime_mvp/runtime_context.json`\n- `runtime/agent_runtime_mvp/runtime_plan.json`\n- `runtime/agent_runtime_mvp/queue_item.json`\n- `runtime/agent_runtime_mvp/review_summary.json`\n- `runtime/agent_runtime_mvp/approval_gate.json`\n\n## Boundary\n\n- Runtime external execution: not performed\n- Platform API mutation: not performed\n- Auto posting: not performed\n- Secret use: not performed\n- Human approval: required for runtime transition\n
 - `runtime/validation/VALIDATION_REPORT.md` (document) VALIDATION REPORT
@@ -197,10 +211,12 @@
 - `tests/test_local_agent_runner.py` (document) test_local_agent_runner
 - `tests/test_planner.py` (document) test_planner
 - `tests/test_review_output_integration.py` (document) test_review_output_integration
+- `tests/test_repository_governor.py` (document) test_repository_governor
 - `tests/test_task_decomposer.py` (document) test_task_decomposer
 - `tests/test_execution_kernel.py` (document) Repository
 - `tests/test_context_loader.py` (document) test_context_loader
 - `tests/test_worker_registry.py` (document) test_worker_registry
+- `tests/test_repository_layout.py` (document) test_repository_layout
 - `tests/test_repository_hygiene.py` (document) test_repository_hygiene
 - `tests/test_autonomous_loop.py` (document) Repository
 - `tests/test_code_quality_baseline.py` (document) test_code_quality_baseline
@@ -269,6 +285,8 @@
 - `docs/ep/README_EP0117_REFACTORING_GOVERNANCE.md` (readme) EP-0117 Refactoring Governance Gate
 - `docs/ep/README_EP0102_SPEC_PACK.md` (readme) EP-0102 Codex Development Pipeline Spec Pack
 - `docs/ep/README_EP0002.md` (readme) EP-0002 Runtime Coordination Suite
+- `docs/ep/README_EP0122_REPOSITORY_GOVERNOR.md` (readme) EP-0122 Repository Governor
+- `docs/ep/README_EP0121_REPOSITORY_LAYOUT_CANONICALIZATION.md` (readme) EP-0121 Repository Layout Canonicalization
 - `docs/ep/README_EP0114_CAPABILITY_ROUTER.md` (readme) EP-0114 Capability Router
 - `docs/ep/README_EP0104_EXECUTABLE_SPECIFICATION.md` (readme) README_EP0104_EXECUTABLE_SPECIFICATION
 - `docs/ep/README_EP0100_2_AGENT_RUNTIME_RESTORE_IMPORT_FIX.md` (readme) EP-0100.2 Agent Runtime MVP Restore + Import Fix
@@ -298,6 +316,7 @@
 - `docs/packs/README_AGENT_ORCHESTRATOR_PACK.md` (readme) ACIP Agent Orchestrator Pack
 - `docs/packs/README_ASSET_REGISTRY_PACK.md` (readme) ACIP Asset Registry Pack
 - `docs/current/CODE_QUALITY_BASELINE.md` (document) CODE_QUALITY_BASELINE
+- `docs/current/GOVERNOR_STATE.md` (document) GOVERNOR_STATE
 - `docs/current/REFACTORING_QUEUE.md` (document) REFACTORING_QUEUE
 - `docs/current/QUEUE_TRANSITION.md` (document) QUEUE_TRANSITION
 - `docs/current/CODEX_OUTPUT_CONTRACT.md` (document) CODEX_OUTPUT_CONTRACT
@@ -310,16 +329,21 @@
 - `docs/current/ROOT_HYGIENE_REPORT.md` (document) ROOT_HYGIENE_REPORT
 - `docs/current/WORKER_REGISTRY.md` (document) WORKER_REGISTRY
 - `docs/current/PROJECT.md` (document) PROJECT
+- `docs/current/CURRENT_STATE.md` (document) CURRENT_STATE
 - `docs/current/STATE.md` (document) STATE
 - `docs/current/WORKER_OUTPUT_SEMANTICS.md` (document) WORKER_OUTPUT_SEMANTICS
+- `docs/current/CANONICAL_REPOSITORY_LAYOUT.md` (document) CANONICAL_REPOSITORY_LAYOUT
 - `docs/current/WORKER_EXECUTION_RECORD.md` (document) WORKER_EXECUTION_RECORD
 - `docs/current/WORKER_ASSIGNMENT.md` (document) WORKER_ASSIGNMENT
 - `docs/current/TASK_DECOMPOSITION.md` (document) TASK_DECOMPOSITION
 - `docs/current/WORKER_OUTPUT_CONTRACT.md` (document) WORKER_OUTPUT_CONTRACT
 - `docs/current/ROADMAP.md` (document) ROADMAP
+- `docs/current/ROOT_ALLOWLIST.md` (document) ROOT_ALLOWLIST
 - `docs/current/ROOT_HYGIENE_MIGRATION_PLAN.md` (document) ROOT_HYGIENE_MIGRATION_PLAN
+- `docs/current/REPOSITORY_GOVERNOR.md` (document) REPOSITORY_GOVERNOR
 - `docs/current/WORKER_STATE.md` (document) WORKER_STATE
 - `docs/current/QUEUE_STATE.md` (document) QUEUE_STATE
+- `docs/current/LAYOUT_MIGRATION_RULES.md` (document) LAYOUT_MIGRATION_RULES
 - `docs/manifests/MANIFEST_EP0100.md` (document) EP-0100 Manifest
 - `docs/manifests/MANIFEST_EP0100_2.md` (document) EP-0100.2 Manifest
 - `docs/manifests/MANIFEST_EP0101.md` (document) EP-0101 Manifest
@@ -369,6 +393,7 @@
 - `scripts/validate_boundaries.py` (script) validate_boundaries
 - `scripts/validate_ep_0003.py` (script) validate_ep_0003
 - `scripts/validate_ep_0106.py` (script) validate_ep_0106
+- `scripts/validate_ep_0122.py` (script) validate_ep_0122
 - `scripts/validate_ep_0116.py` (script) validate_ep_0116
 - `scripts/validate_ep_0107.py` (script) validate_ep_0107
 - `scripts/validate_ep_0117.py` (script) validate_ep_0117
@@ -394,6 +419,7 @@
 - `scripts/validate_ep_0111.py` (script) validate_ep_0111
 - `scripts/validate_ep_0105.py` (script) validate_ep_0105
 - `scripts/validate_repository_os_v1_baseline.py` (script) validate_repository_os_v1_baseline
+- `scripts/validate_ep_0121.py` (script) validate_ep_0121
 - `scripts/validate_ep_0115.py` (script) validate_ep_0115
 - `scripts/context/build_context_diff.py` (script) build_context_diff
 - `scripts/context/build_agent_context_pack.py` (script) build_agent_context_pack
@@ -425,6 +451,7 @@
 - `scripts/selftest/selftest_common.py` (script) Backward-compatible alias for older selftest modules.
 - `scripts/baseline/validate_baseline.py` (script) validate_baseline
 - `scripts/hygiene/audit_code_quality.py` (script) audit_code_quality
+- `scripts/hygiene/validate_repository_layout.py` (script) validate_repository_layout
 - `scripts/hygiene/validate_refactoring_governance.py` (script) validate_refactoring_governance
 - `scripts/hygiene/audit_repository_root.py` (script) audit_repository_root
 - `scripts/selftest_v2/semantic_checks.py` (script) semantic_checks
@@ -450,6 +477,7 @@
 - `.github/workflows/ep0102-codex-development-pipeline.yml` (workflow) ep0102-codex-development-pipeline
 - `.github/workflows/agent-orchestrator-validation.yml` (workflow) agent-orchestrator-validation
 - `.github/workflows/repository-knowledge-graph-runtime-integration.yml` (workflow) repository-knowledge-graph-runtime-integration
+- `.github/workflows/ep0122-repository-governor.yml` (workflow) ep0122-repository-governor
 - `.github/workflows/continuous-governance.yml` (workflow) continuous-governance
 - `.github/workflows/repository-semantic-selftest-v2.yml` (workflow) repository-semantic-selftest-v2
 - `.github/workflows/ep0100-agent-runtime-mvp.yml` (workflow) ep0100-agent-runtime-mvp
@@ -469,6 +497,7 @@
 - `.github/workflows/ep0112-execution-kernel.yml` (workflow) ep0112-execution-kernel
 - `.github/workflows/ep0104-executable-specification.yml` (workflow) ep0104-executable-specification
 - `.github/workflows/ep0113-worker-registry.yml` (workflow) ep0113-worker-registry
+- `.github/workflows/ep0121-repository-layout-canonicalization.yml` (workflow) ep0121-repository-layout-canonicalization
 - `.github/workflows/validate-all.yml` (workflow) validate-all
 - `.github/ISSUE_TEMPLATE/repository_selftest.yml` (document) repository_selftest
 - `.github/ISSUE_TEMPLATE/runtime_integration_readiness.yml` (document) runtime_integration_readiness
@@ -539,6 +568,7 @@
 - `basis/073_task_router_policy.md` (policy) 073 Task Router Policy
 - `basis/076_review_gate_policy.md` (policy) 076 Review Gate Policy
 - `basis/026_autonomy_first_policy.md` (policy) 026 Autonomy First Policy
+- `basis/REPOSITORY_CONVENTIONS.md` (policy) REPOSITORY_CONVENTIONS
 - `basis/065_repository_knowledge_graph_policy.md` (policy) 065 Repository Knowledge Graph Policy
 - `basis/070_runtime_dry_run_policy.md` (policy) 070 Runtime Dry Run Policy
 - `basis/061_semantic_selftest_policy.md` (policy) 061 Semantic SelfTest Policy
@@ -590,6 +620,7 @@
 - `orchestrator/planner.py` (document) planner
 - `orchestrator/task.py` (document) task
 - `orchestrator/execution_record.py` (document) execution_record
+- `orchestrator/repository_governor.py` (document) repository_governor
 - `orchestrator/INBOX.md` (document) INBOX
 - `orchestrator/ARCHITECTURE.md` (document) ORCHESTRATOR ARCHITECTURE
 - `orchestrator/AGENT_ROUTER.md` (document) Agent Router

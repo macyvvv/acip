@@ -274,6 +274,48 @@
       "source": "repository"
     },
     {
+      "id": "specs/EP-0121/WORKER_INSTRUCTIONS.md",
+      "type": "document",
+      "path": "specs/EP-0121/WORKER_INSTRUCTIONS.md",
+      "title": "WORKER_INSTRUCTIONS",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0121/VALIDATION.md",
+      "type": "document",
+      "path": "specs/EP-0121/VALIDATION.md",
+      "title": "EP-0121 Validation",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0121/README.md",
+      "type": "readme",
+      "path": "specs/EP-0121/README.md",
+      "title": "EP-0121 Repository Layout Canonicalization",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0121/IMPLEMENTATION_SPEC.md",
+      "type": "document",
+      "path": "specs/EP-0121/IMPLEMENTATION_SPEC.md",
+      "title": "EP-0121 Implementation Spec",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0121/MANIFEST.md",
+      "type": "document",
+      "path": "specs/EP-0121/MANIFEST.md",
+      "title": "MANIFEST",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0121/FILE_CHANGESET.md",
+      "type": "document",
+      "path": "specs/EP-0121/FILE_CHANGESET.md",
+      "title": "FILE_CHANGESET",
+      "source": "repository"
+    },
+    {
       "id": "specs/EP-0120/WORKER_INSTRUCTIONS.md",
       "type": "document",
       "path": "specs/EP-0120/WORKER_INSTRUCTIONS.md",
@@ -722,6 +764,48 @@
       "source": "repository"
     },
     {
+      "id": "specs/EP-0122/WORKER_INSTRUCTIONS.md",
+      "type": "document",
+      "path": "specs/EP-0122/WORKER_INSTRUCTIONS.md",
+      "title": "WORKER_INSTRUCTIONS",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0122/VALIDATION.md",
+      "type": "document",
+      "path": "specs/EP-0122/VALIDATION.md",
+      "title": "EP-0122 Validation",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0122/README.md",
+      "type": "readme",
+      "path": "specs/EP-0122/README.md",
+      "title": "EP-0122 Repository Governor",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0122/IMPLEMENTATION_SPEC.md",
+      "type": "document",
+      "path": "specs/EP-0122/IMPLEMENTATION_SPEC.md",
+      "title": "EP-0122 Implementation Spec",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0122/MANIFEST.md",
+      "type": "document",
+      "path": "specs/EP-0122/MANIFEST.md",
+      "title": "MANIFEST",
+      "source": "repository"
+    },
+    {
+      "id": "specs/EP-0122/FILE_CHANGESET.md",
+      "type": "document",
+      "path": "specs/EP-0122/FILE_CHANGESET.md",
+      "title": "FILE_CHANGESET",
+      "source": "repository"
+    },
+    {
       "id": "specs/EP-0115/WORKER_INSTRUCTIONS.md",
       "type": "document",
       "path": "specs/EP-0115/WORKER_INSTRUCTIONS.md",
@@ -1058,6 +1142,13 @@
       "source": "repository"
     },
     {
+      "id": "contracts/REPOSITORY_LAYOUT_CONTRACT.md",
+      "type": "contract",
+      "path": "contracts/REPOSITORY_LAYOUT_CONTRACT.md",
+      "title": "REPOSITORY_LAYOUT_CONTRACT",
+      "source": "repository"
+    },
+    {
       "id": "contracts/contracts_3.md",
       "type": "contract",
       "path": "contracts/contracts_3.md",
@@ -1289,6 +1380,13 @@
       "source": "repository"
     },
     {
+      "id": "runtime/governor/GOVERNOR_RECOMMENDATIONS.md",
+      "type": "document",
+      "path": "runtime/governor/GOVERNOR_RECOMMENDATIONS.md",
+      "title": "GOVERNOR_RECOMMENDATIONS",
+      "source": "repository"
+    },
+    {
       "id": "runtime/task_intake/ART-SAMPLE-0001/TASK_INTAKE_REPORT.md",
       "type": "document",
       "path": "runtime/task_intake/ART-SAMPLE-0001/TASK_INTAKE_REPORT.md",
@@ -1352,6 +1450,13 @@
       "source": "repository"
     },
     {
+      "id": "tests/test_repository_governor.py",
+      "type": "document",
+      "path": "tests/test_repository_governor.py",
+      "title": "test_repository_governor",
+      "source": "repository"
+    },
+    {
       "id": "tests/test_task_decomposer.py",
       "type": "document",
       "path": "tests/test_task_decomposer.py",
@@ -1377,6 +1482,13 @@
       "type": "document",
       "path": "tests/test_worker_registry.py",
       "title": "test_worker_registry",
+      "source": "repository"
+    },
+    {
+      "id": "tests/test_repository_layout.py",
+      "type": "document",
+      "path": "tests/test_repository_layout.py",
+      "title": "test_repository_layout",
       "source": "repository"
     },
     {
@@ -1856,6 +1968,20 @@
       "source": "repository"
     },
     {
+      "id": "docs/ep/README_EP0122_REPOSITORY_GOVERNOR.md",
+      "type": "readme",
+      "path": "docs/ep/README_EP0122_REPOSITORY_GOVERNOR.md",
+      "title": "EP-0122 Repository Governor",
+      "source": "repository"
+    },
+    {
+      "id": "docs/ep/README_EP0121_REPOSITORY_LAYOUT_CANONICALIZATION.md",
+      "type": "readme",
+      "path": "docs/ep/README_EP0121_REPOSITORY_LAYOUT_CANONICALIZATION.md",
+      "title": "EP-0121 Repository Layout Canonicalization",
+      "source": "repository"
+    },
+    {
       "id": "docs/ep/README_EP0114_CAPABILITY_ROUTER.md",
       "type": "readme",
       "path": "docs/ep/README_EP0114_CAPABILITY_ROUTER.md",
@@ -2059,6 +2185,13 @@
       "source": "repository"
     },
     {
+      "id": "docs/current/GOVERNOR_STATE.md",
+      "type": "document",
+      "path": "docs/current/GOVERNOR_STATE.md",
+      "title": "GOVERNOR_STATE",
+      "source": "repository"
+    },
+    {
       "id": "docs/current/REFACTORING_QUEUE.md",
       "type": "document",
       "path": "docs/current/REFACTORING_QUEUE.md",
@@ -2143,6 +2276,13 @@
       "source": "repository"
     },
     {
+      "id": "docs/current/CURRENT_STATE.md",
+      "type": "document",
+      "path": "docs/current/CURRENT_STATE.md",
+      "title": "CURRENT_STATE",
+      "source": "repository"
+    },
+    {
       "id": "docs/current/STATE.md",
       "type": "document",
       "path": "docs/current/STATE.md",
@@ -2154,6 +2294,13 @@
       "type": "document",
       "path": "docs/current/WORKER_OUTPUT_SEMANTICS.md",
       "title": "WORKER_OUTPUT_SEMANTICS",
+      "source": "repository"
+    },
+    {
+      "id": "docs/current/CANONICAL_REPOSITORY_LAYOUT.md",
+      "type": "document",
+      "path": "docs/current/CANONICAL_REPOSITORY_LAYOUT.md",
+      "title": "CANONICAL_REPOSITORY_LAYOUT",
       "source": "repository"
     },
     {
@@ -2192,10 +2339,24 @@
       "source": "repository"
     },
     {
+      "id": "docs/current/ROOT_ALLOWLIST.md",
+      "type": "document",
+      "path": "docs/current/ROOT_ALLOWLIST.md",
+      "title": "ROOT_ALLOWLIST",
+      "source": "repository"
+    },
+    {
       "id": "docs/current/ROOT_HYGIENE_MIGRATION_PLAN.md",
       "type": "document",
       "path": "docs/current/ROOT_HYGIENE_MIGRATION_PLAN.md",
       "title": "ROOT_HYGIENE_MIGRATION_PLAN",
+      "source": "repository"
+    },
+    {
+      "id": "docs/current/REPOSITORY_GOVERNOR.md",
+      "type": "document",
+      "path": "docs/current/REPOSITORY_GOVERNOR.md",
+      "title": "REPOSITORY_GOVERNOR",
       "source": "repository"
     },
     {
@@ -2210,6 +2371,13 @@
       "type": "document",
       "path": "docs/current/QUEUE_STATE.md",
       "title": "QUEUE_STATE",
+      "source": "repository"
+    },
+    {
+      "id": "docs/current/LAYOUT_MIGRATION_RULES.md",
+      "type": "document",
+      "path": "docs/current/LAYOUT_MIGRATION_RULES.md",
+      "title": "LAYOUT_MIGRATION_RULES",
       "source": "repository"
     },
     {
@@ -2556,6 +2724,13 @@
       "source": "repository"
     },
     {
+      "id": "scripts/validate_ep_0122.py",
+      "type": "script",
+      "path": "scripts/validate_ep_0122.py",
+      "title": "validate_ep_0122",
+      "source": "repository"
+    },
+    {
       "id": "scripts/validate_ep_0116.py",
       "type": "script",
       "path": "scripts/validate_ep_0116.py",
@@ -2728,6 +2903,13 @@
       "type": "script",
       "path": "scripts/validate_repository_os_v1_baseline.py",
       "title": "validate_repository_os_v1_baseline",
+      "source": "repository"
+    },
+    {
+      "id": "scripts/validate_ep_0121.py",
+      "type": "script",
+      "path": "scripts/validate_ep_0121.py",
+      "title": "validate_ep_0121",
       "source": "repository"
     },
     {
@@ -2948,6 +3130,13 @@
       "source": "repository"
     },
     {
+      "id": "scripts/hygiene/validate_repository_layout.py",
+      "type": "script",
+      "path": "scripts/hygiene/validate_repository_layout.py",
+      "title": "validate_repository_layout",
+      "source": "repository"
+    },
+    {
       "id": "scripts/hygiene/validate_refactoring_governance.py",
       "type": "script",
       "path": "scripts/hygiene/validate_refactoring_governance.py",
@@ -3123,6 +3312,13 @@
       "source": "repository"
     },
     {
+      "id": ".github/workflows/ep0122-repository-governor.yml",
+      "type": "workflow",
+      "path": ".github/workflows/ep0122-repository-governor.yml",
+      "title": "ep0122-repository-governor",
+      "source": "repository"
+    },
+    {
       "id": ".github/workflows/continuous-governance.yml",
       "type": "workflow",
       "path": ".github/workflows/continuous-governance.yml",
@@ -3253,6 +3449,13 @@
       "type": "workflow",
       "path": ".github/workflows/ep0113-worker-registry.yml",
       "title": "ep0113-worker-registry",
+      "source": "repository"
+    },
+    {
+      "id": ".github/workflows/ep0121-repository-layout-canonicalization.yml",
+      "type": "workflow",
+      "path": ".github/workflows/ep0121-repository-layout-canonicalization.yml",
+      "title": "ep0121-repository-layout-canonicalization",
       "source": "repository"
     },
     {
@@ -3746,6 +3949,13 @@
       "source": "repository"
     },
     {
+      "id": "basis/REPOSITORY_CONVENTIONS.md",
+      "type": "policy",
+      "path": "basis/REPOSITORY_CONVENTIONS.md",
+      "title": "REPOSITORY_CONVENTIONS",
+      "source": "repository"
+    },
+    {
       "id": "basis/065_repository_knowledge_graph_policy.md",
       "type": "policy",
       "path": "basis/065_repository_knowledge_graph_policy.md",
@@ -4103,6 +4313,13 @@
       "source": "repository"
     },
     {
+      "id": "orchestrator/repository_governor.py",
+      "type": "document",
+      "path": "orchestrator/repository_governor.py",
+      "title": "repository_governor",
+      "source": "repository"
+    },
+    {
       "id": "orchestrator/INBOX.md",
       "type": "document",
       "path": "orchestrator/INBOX.md",
@@ -4343,6 +4560,12 @@
     },
     {
       "source": "specs/EP-0119/VALIDATION.md",
+      "target": "scripts/validate_all.py",
+      "type": "validates",
+      "evidence": "scripts/validate_all.py"
+    },
+    {
+      "source": "specs/EP-0121/VALIDATION.md",
       "target": "scripts/validate_all.py",
       "type": "validates",
       "evidence": "scripts/validate_all.py"
@@ -4709,6 +4932,12 @@
     },
     {
       "source": "specs/EP-0114/VALIDATION.md",
+      "target": "scripts/validate_all.py",
+      "type": "validates",
+      "evidence": "scripts/validate_all.py"
+    },
+    {
+      "source": "specs/EP-0122/VALIDATION.md",
       "target": "scripts/validate_all.py",
       "type": "validates",
       "evidence": "scripts/validate_all.py"
@@ -5398,6 +5627,12 @@
       "evidence": "scripts/validate_repository_knowledge_graph_runtime_integration.py"
     },
     {
+      "source": ".github/workflows/ep0122-repository-governor.yml",
+      "target": "scripts/validate_all.py",
+      "type": "validates",
+      "evidence": "scripts/validate_all.py"
+    },
+    {
       "source": ".github/workflows/repository-semantic-selftest-v2.yml",
       "target": "scripts/selftest_v2/validate_semantic_selftest.py",
       "type": "validates",
@@ -5495,6 +5730,12 @@
     },
     {
       "source": ".github/workflows/ep0113-worker-registry.yml",
+      "target": "scripts/validate_all.py",
+      "type": "validates",
+      "evidence": "scripts/validate_all.py"
+    },
+    {
+      "source": ".github/workflows/ep0121-repository-layout-canonicalization.yml",
       "target": "scripts/validate_all.py",
       "type": "validates",
       "evidence": "scripts/validate_all.py"
