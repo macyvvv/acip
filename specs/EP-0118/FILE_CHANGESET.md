@@ -1,0 +1,10 @@
+- `docs/current/ROOT_HYGIENE_MIGRATION_PLAN.md`
+- `docs/ep/README_EP0118_ROOT_HYGIENE_MIGRATION_1.md`
+- `specs/EP-0118/README.md`
+- `specs/EP-0118/IMPLEMENTATION_SPEC.md`
+- `specs/EP-0118/MANIFEST.md`
+- `specs/EP-0118/VALIDATION.md`
+- `specs/EP-0118/WORKER_INSTRUCTIONS.md`
+- `specs/EP-0118/FILE_CHANGESET.md`
+- `scripts/validate_ep_0118.py`
+- `tests/test_root_hygiene_migration.py`
