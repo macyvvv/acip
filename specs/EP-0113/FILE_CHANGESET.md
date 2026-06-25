@@ -1,0 +1,6 @@
+- `workers/registry.py`
+- `workers/registry.yaml`
+- `docs/current/WORKER_REGISTRY.md`
+- `docs/ep/README_EP0113_WORKER_REGISTRY.md`
+- `scripts/validate_ep_0113.py`
+- `tests/test_worker_registry.py`

@@ -12,6 +12,7 @@ from orchestrator.planner import PlannerDecision, load_planner_decision
 from orchestrator.queue_state import QueueState, read_queue_state
 from orchestrator.validation_orchestrator import ValidationOrchestrationResult, ValidationOrchestrator
 from orchestrator.worker_state import WorkerState, read_worker_state
+from workers.registry import WorkerRegistry, load_worker_registry
 
 
 @dataclass(frozen=True)
@@ -26,6 +27,7 @@ class ExecutionKernelResult:
     autonomous_loop: AutonomousExecutionSummary | None = None
     validation_result: ValidationOrchestrationResult | None = None
     output_contract: CodexOutputContract | None = None
+    worker_registry: WorkerRegistry | None = None
 
 
 class ExecutionKernelError(RuntimeError):
@@ -42,6 +44,9 @@ class ExecutionKernel:
 
     def load_context(self) -> Context:
         return load_context(self._root())
+
+    def load_worker_registry(self) -> WorkerRegistry:
+        return load_worker_registry(self._root() / "workers" / "registry.yaml")
 
     def load_queue_state(self) -> QueueState:
         return read_queue_state(self._root() / "docs" / "current" / "QUEUE_STATE.md")
@@ -63,6 +68,7 @@ class ExecutionKernel:
 
     def run_autonomous_cycle(self) -> ExecutionKernelResult:
         try:
+            worker_registry = self.load_worker_registry()
             loop = run_autonomous_execution_loop(self.dispatcher, self._root())
             return ExecutionKernelResult(
                 success=True,
@@ -73,6 +79,7 @@ class ExecutionKernel:
                 worker_assignment=loop.planner.next_ep,
                 autonomous_loop=loop,
                 output_contract=loop.output_contract,
+                worker_registry=worker_registry,
             )
         except Exception as exc:  # pragma: no cover - kernel boundary
             return ExecutionKernelResult(success=False, next_action=None, error=str(exc))
@@ -84,6 +91,7 @@ class ExecutionKernel:
                 success=result.overall_success,
                 next_action="python scripts/validate_all.py",
                 validation_result=result,
+                worker_registry=self.load_worker_registry(),
             )
         except Exception as exc:  # pragma: no cover - kernel boundary
             return ExecutionKernelResult(success=False, next_action=None, error=str(exc))
