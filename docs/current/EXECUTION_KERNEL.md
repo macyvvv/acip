@@ -7,6 +7,7 @@ The Execution Kernel is the thin orchestration layer that composes Planner, Queu
 - load repository context
 - read queue state
 - produce planner decisions
+- execute the default autonomous planning cycle
 - resolve worker assignment
 - execute one autonomous cycle
 - execute validation pipeline

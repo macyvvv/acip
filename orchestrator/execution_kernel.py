@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Any
 
 from orchestrator.autonomous_loop import AutonomousExecutionSummary, run_autonomous_execution_loop
+from orchestrator.autonomous_planning_cycle import AutonomousPlanningCycle, AutonomousPlanningCycleResult
 from orchestrator.capability_router import CapabilityRoute, CapabilityRouter
 from orchestrator.context_loader import Context, load_context
 from orchestrator.dispatcher import Dispatcher
@@ -36,6 +37,7 @@ class ExecutionKernelResult:
     review_output_integration: ReviewOutputIntegrationResult | None = None
     worker_registry: WorkerRegistry | None = None
     capability_route: CapabilityRoute | None = None
+    planning_cycle: AutonomousPlanningCycleResult | None = None
 
 
 class ExecutionKernelError(RuntimeError):
@@ -127,6 +129,20 @@ class ExecutionKernel:
                 validation_result=result,
                 worker_registry=self.load_worker_registry(),
                 capability_route=self.route_worker(),
+            )
+        except Exception as exc:  # pragma: no cover - kernel boundary
+            return ExecutionKernelResult(success=False, next_action=None, error=str(exc))
+
+    def run_default_planning_cycle(self) -> ExecutionKernelResult:
+        try:
+            cycle = AutonomousPlanningCycle(self, self._root())
+            result = cycle.run()
+            cycle.write_runtime_plan(result)
+            return ExecutionKernelResult(
+                success=True,
+                next_action=result.next_action,
+                worker_registry=self.load_worker_registry(),
+                planning_cycle=result,
             )
         except Exception as exc:  # pragma: no cover - kernel boundary
             return ExecutionKernelResult(success=False, next_action=None, error=str(exc))

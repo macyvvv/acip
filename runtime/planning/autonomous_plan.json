@@ -1,4 +1,11 @@
 {
-  "approvals_required": [],
-  "next_action": "python scripts/validate_all.py"
+  "approvals_required": [
+    "EP-0123"
+  ],
+  "execution_ready": [
+    "EP-0109",
+    "EP-0121",
+    "EP-0117"
+  ],
+  "next_action": "await human approval"
 }
