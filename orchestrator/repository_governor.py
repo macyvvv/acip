@@ -31,6 +31,7 @@ class GovernorState:
 
 @dataclass(frozen=True)
 class GovernorRecommendation:
+    version: int
     state: GovernorState
     candidates: tuple[GovernorCandidate, ...] = ()
 
@@ -40,6 +41,8 @@ class RepositoryGovernorError(RuntimeError):
 
 
 class RepositoryGovernor:
+    RECOMMENDATION_VERSION = 1
+
     def __init__(self, base_path: str | Path = ".") -> None:
         self.base_path = Path(base_path)
 
@@ -95,12 +98,39 @@ class RepositoryGovernor:
             candidates=candidates,
             validation_status=self._validation_status(),
         )
-        return GovernorRecommendation(state=state, candidates=candidates)
+        return GovernorRecommendation(version=self.RECOMMENDATION_VERSION, state=state, candidates=candidates)
+
+    def load_recommendation(self) -> GovernorRecommendation:
+        path = self.base_path / "runtime" / "governor" / "governor_recommendations.json"
+        if not path.exists():
+            return self.recommend()
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        state_payload = payload.get("state", {})
+        candidates = tuple(
+            GovernorCandidate(
+                ep=item["ep"],
+                priority=item["priority"],
+                reason=item["reason"],
+                required_capability=item["required_capability"],
+                risk_level=item["risk_level"],
+                human_approval_required=item["human_approval_required"],
+            )
+            for item in payload.get("candidates", [])
+        )
+        state = GovernorState(
+            source_state=state_payload.get("source_state", "docs/current/STATE.md"),
+            active_ep=state_payload.get("active_ep", "unknown"),
+            next_ep=state_payload.get("next_ep", "unknown"),
+            candidates=candidates,
+            validation_status=state_payload.get("validation_status", "unknown"),
+        )
+        return GovernorRecommendation(version=payload.get("version", self.RECOMMENDATION_VERSION), state=state, candidates=candidates)
 
     def write_artifacts(self, recommendation: GovernorRecommendation) -> None:
         runtime_dir = self.base_path / "runtime" / "governor"
         runtime_dir.mkdir(parents=True, exist_ok=True)
         payload = {
+            "version": recommendation.version,
             "state": {
                 "source_state": recommendation.state.source_state,
                 "active_ep": recommendation.state.active_ep,
