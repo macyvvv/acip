@@ -1,0 +1,4 @@
+{
+  "approvals_required": [],
+  "next_action": "python scripts/validate_all.py"
+}
