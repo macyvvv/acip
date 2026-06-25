@@ -24,8 +24,8 @@
   },
   "current_phase": "Knowledge Factory",
   "current_objective": "Repository Operating System Stabilization",
-  "node_count": 374,
-  "edge_count": 70,
+  "node_count": 435,
+  "edge_count": 130,
   "required_boundaries": [
     "Repository overrides conversation",
     "Runtime implementation remains out of scope until explicitly approved",
@@ -55,6 +55,7 @@
     "contracts/HANDOFF_CONTRACT_TEMPLATE.md",
     "contracts/SAFETY_GATE_RECORD_TEMPLATE.md",
     "contracts/contracts_4.md",
+    "contracts/WORKER_EXECUTION_CONTRACT.md",
     "contracts/contracts_1.md",
     "contracts/contracts_5.md",
     "contracts/AGENT_IO_CONTRACT_TEMPLATE.md",
@@ -66,6 +67,7 @@
     "runbooks/boundary-scan.md",
     "runbooks/governance-review.md",
     "runbooks/runbooks_1.md",
+    "runbooks/CODEX_EXECUTION_RUNBOOK.md",
     "runbooks/runbooks_4.md",
     "runbooks/runbooks_3.md",
     "runbooks/drift-scan.md",
@@ -136,6 +138,8 @@
     "basis/082_context_loader_policy.md",
     ".github/workflows/repository-os-v1-baseline.yml",
     ".github/workflows/boundary-validation.yml",
+    ".github/workflows/ep0103-worker-contract-layer.yml",
+    ".github/workflows/ep0102-codex-development-pipeline.yml",
     ".github/workflows/agent-orchestrator-validation.yml",
     ".github/workflows/repository-knowledge-graph-runtime-integration.yml",
     ".github/workflows/continuous-governance.yml",
@@ -147,7 +151,8 @@
     ".github/workflows/runtime-capability.yml",
     ".github/workflows/runtime-coordination.yml",
     ".github/workflows/ep0101-agent-runtime-task-intake.yml",
-    ".github/workflows/ep0003.yml"
+    ".github/workflows/ep0003.yml",
+    ".github/workflows/ep0104-executable-specification.yml"
   ],
   "validation_commands": [
     "python scripts/graph/build_repository_graph.py",

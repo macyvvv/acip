@@ -85,8 +85,8 @@
     "wbs/WBS-0015-agent-orchestrator.md",
     "wbs/WBS-0012-repository-semantic-selftest-v2.md"
   ],
-  "graph_nodes": 374,
-  "graph_edges": 70,
+  "graph_nodes": 435,
+  "graph_edges": 130,
   "required_policies": [
     "basis/088_context_cache_engine_policy.md",
     "basis/067_agent_context_pack_policy.md",
