@@ -1,0 +1,8 @@
+- `contracts/REPOSITORY_LAYOUT_CONTRACT.md`
+- `docs/current/CANONICAL_REPOSITORY_LAYOUT.md`
+- `docs/current/ROOT_ALLOWLIST.md`
+- `docs/current/LAYOUT_MIGRATION_RULES.md`
+- `scripts/hygiene/validate_repository_layout.py`
+- `scripts/validate_ep_0121.py`
+- `tests/test_repository_layout.py`
+- `docs/ep/README_EP0121_REPOSITORY_LAYOUT_CANONICALIZATION.md`
