@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Any
 
 from orchestrator.autonomous_loop import AutonomousExecutionSummary, run_autonomous_execution_loop
+from orchestrator.capability_router import CapabilityRoute, CapabilityRouter
 from orchestrator.context_loader import Context, load_context
 from orchestrator.dispatcher import Dispatcher
 from orchestrator.output_contract import CodexOutputContract
@@ -28,6 +29,7 @@ class ExecutionKernelResult:
     validation_result: ValidationOrchestrationResult | None = None
     output_contract: CodexOutputContract | None = None
     worker_registry: WorkerRegistry | None = None
+    capability_route: CapabilityRoute | None = None
 
 
 class ExecutionKernelError(RuntimeError):
@@ -58,7 +60,19 @@ class ExecutionKernel:
         return load_planner_decision(self._root())
 
     def worker_assignment(self) -> str:
-        return self.plan().next_ep
+        route = self.route_worker()
+        return route.worker_name
+
+    def route_worker(self) -> CapabilityRoute:
+        planner = self.plan()
+        router = CapabilityRouter(self._root())
+        return router.route(
+            planner,
+            required_capabilities=("repository_implementation", "validation_execution"),
+            prohibited_actions=("approve", "deploy"),
+            required_validation_responsibility=("run_repository_validation",),
+            execution_boundary=("push_directly_to_main",),
+        )
 
     def run_validation(self) -> ValidationOrchestrationResult:
         orchestrator = ValidationOrchestrator(self._root())
@@ -69,6 +83,7 @@ class ExecutionKernel:
     def run_autonomous_cycle(self) -> ExecutionKernelResult:
         try:
             worker_registry = self.load_worker_registry()
+            capability_route = self.route_worker()
             loop = run_autonomous_execution_loop(self.dispatcher, self._root())
             return ExecutionKernelResult(
                 success=True,
@@ -76,10 +91,11 @@ class ExecutionKernel:
                 planner=loop.planner,
                 queue_state=loop.queue_state,
                 worker_state=loop.worker_state,
-                worker_assignment=loop.planner.next_ep,
+                worker_assignment=capability_route.worker_name,
                 autonomous_loop=loop,
                 output_contract=loop.output_contract,
                 worker_registry=worker_registry,
+                capability_route=capability_route,
             )
         except Exception as exc:  # pragma: no cover - kernel boundary
             return ExecutionKernelResult(success=False, next_action=None, error=str(exc))
@@ -92,6 +108,7 @@ class ExecutionKernel:
                 next_action="python scripts/validate_all.py",
                 validation_result=result,
                 worker_registry=self.load_worker_registry(),
+                capability_route=self.route_worker(),
             )
         except Exception as exc:  # pragma: no cover - kernel boundary
             return ExecutionKernelResult(success=False, next_action=None, error=str(exc))

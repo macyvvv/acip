@@ -1,0 +1,6 @@
+- `orchestrator/capability_router.py`
+- `workers/capability_matcher.py`
+- `docs/current/CAPABILITY_ROUTING.md`
+- `docs/current/WORKER_ASSIGNMENT.md`
+- `scripts/validate_ep_0114.py`
+- `tests/test_capability_router.py`

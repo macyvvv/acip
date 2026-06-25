@@ -139,6 +139,6 @@ def test_execution_kernel_runs_cycle(tmp_path: Path) -> None:
     cycle = kernel.run_autonomous_cycle()
 
     assert plan.next_ep == "EP-0112"
-    assert assignment == "EP-0112"
+    assert assignment == "Codex"
     assert cycle.success is True
     assert "artifact" in cycle.next_action.lower()
