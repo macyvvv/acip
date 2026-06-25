@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Requirement",
+  "type": "object",
+  "required": ["requirement_id", "objective", "context", "constraints", "value_type", "acceptance_criteria", "risk", "approval_required", "source"],
+  "properties": {
+    "requirement_id": {"type": "string"},
+    "objective": {"type": "string"},
+    "context": {"type": "string"},
+    "constraints": {"type": "array", "items": {"type": "string"}},
+    "value_type": {"type": "string"},
+    "acceptance_criteria": {"type": "array", "items": {"type": "string"}},
+    "risk": {"type": "string"},
+    "approval_required": {"type": "boolean"},
+    "source": {"type": "string"}
+  }
+}
