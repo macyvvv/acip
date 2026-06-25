@@ -11,6 +11,9 @@ from orchestrator.dispatcher import Dispatcher
 from orchestrator.output_contract import CodexOutputContract
 from orchestrator.planner import PlannerDecision, load_planner_decision
 from orchestrator.queue_state import QueueState, read_queue_state
+from orchestrator.state import State, read_state
+from orchestrator.task import Task
+from orchestrator.task_decomposer import TaskDecompositionResult, TaskDecomposer
 from orchestrator.validation_orchestrator import ValidationOrchestrationResult, ValidationOrchestrator
 from orchestrator.worker_state import WorkerState, read_worker_state
 from workers.registry import WorkerRegistry, load_worker_registry
@@ -26,6 +29,7 @@ class ExecutionKernelResult:
     worker_state: WorkerState | None = None
     worker_assignment: str | None = None
     autonomous_loop: AutonomousExecutionSummary | None = None
+    task_decomposition: TaskDecompositionResult | None = None
     validation_result: ValidationOrchestrationResult | None = None
     output_contract: CodexOutputContract | None = None
     worker_registry: WorkerRegistry | None = None
@@ -56,6 +60,9 @@ class ExecutionKernel:
     def load_worker_state(self) -> WorkerState:
         return read_worker_state(self._root() / "docs" / "current" / "WORKER_STATE.md")
 
+    def load_state(self) -> State:
+        return read_state(self._root() / "docs" / "current" / "CURRENT_STATE.md")
+
     def plan(self) -> PlannerDecision:
         return load_planner_decision(self._root())
 
@@ -74,6 +81,10 @@ class ExecutionKernel:
             execution_boundary=("push_directly_to_main",),
         )
 
+    def decompose_task(self, task_or_objective: str) -> TaskDecompositionResult:
+        decomposer = TaskDecomposer(self._root())
+        return decomposer.decompose(task_or_objective)
+
     def run_validation(self) -> ValidationOrchestrationResult:
         orchestrator = ValidationOrchestrator(self._root())
         result = orchestrator.run()
@@ -84,6 +95,8 @@ class ExecutionKernel:
         try:
             worker_registry = self.load_worker_registry()
             capability_route = self.route_worker()
+            task = self._task_from_state()
+            task_decomposition = self.decompose_task(task)
             loop = run_autonomous_execution_loop(self.dispatcher, self._root())
             return ExecutionKernelResult(
                 success=True,
@@ -93,6 +106,7 @@ class ExecutionKernel:
                 worker_state=loop.worker_state,
                 worker_assignment=capability_route.worker_name,
                 autonomous_loop=loop,
+                task_decomposition=task_decomposition,
                 output_contract=loop.output_contract,
                 worker_registry=worker_registry,
                 capability_route=capability_route,
@@ -112,3 +126,8 @@ class ExecutionKernel:
             )
         except Exception as exc:  # pragma: no cover - kernel boundary
             return ExecutionKernelResult(success=False, next_action=None, error=str(exc))
+
+    def _task_from_state(self) -> Task:
+        from orchestrator.queue import state_to_task
+
+        return state_to_task(self.load_state())
