@@ -35,9 +35,10 @@ def _load_contract(path: Path) -> dict[str, object]:
 
 
 def main() -> int:
-    contract_path = ROOT / "specs" / "EP-0104" / "ep_contract.yaml"
+    contract_rel = sys.argv[1] if len(sys.argv) > 1 else "specs/EP-0104/ep_contract.yaml"
+    contract_path = ROOT / contract_rel
     if not contract_path.exists():
-        print("FAIL: missing specs/EP-0104/ep_contract.yaml")
+        print(f"FAIL: missing {contract_rel}")
         return 1
     contract = _load_contract(contract_path)
     required = ["id", "name", "status", "objective", "inputs", "outputs", "validation"]
@@ -47,9 +48,9 @@ def main() -> int:
         for key in missing:
             print(f"FAIL: missing {key}")
         return 1
-    if contract.get("id") != "EP-0104":
+    if contract.get("id") != contract_path.parent.name:
         print("# EP Contract Validation")
-        print("FAIL: id must be EP-0104")
+        print(f"FAIL: id must be {contract_path.parent.name}")
         return 1
     print("# EP Contract Validation")
     print("Validation passed.")

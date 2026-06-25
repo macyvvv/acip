@@ -1,0 +1,18 @@
+id: EP-0105
+name: Repository Scheduler & Dispatcher
+status: ready
+objective: Repository-managed queue and worker state with deterministic next EP selection
+inputs:
+  - docs/current/QUEUE_STATE.md
+  - docs/current/WORKER_STATE.md
+outputs:
+  - orchestrator/queue_state.py
+  - orchestrator/worker_state.py
+  - orchestrator/scheduler.py
+validation:
+  - python scripts/validate_ep_0105.py
+  - python scripts/validate_ep_0104.py
+  - python scripts/validate_ep_0103.py
+  - python scripts/validate_ep_0102.py
+  - python scripts/validate_ep_0101.py
+  - python scripts/validate_ep_0100.py
