@@ -4,6 +4,7 @@ from dataclasses import dataclass, field
 from typing import Iterable
 
 from orchestrator.capability_router import CapabilityRoute
+from orchestrator.output_semantics import determine_worker_output_status, worker_output_semantic
 from orchestrator.task_decomposer import TaskDecompositionResult, DecomposedSubtask
 
 
@@ -25,13 +26,22 @@ def build_review_output_integration(
     decomposition_result: TaskDecompositionResult,
     routing_result: CapabilityRoute,
     review_notes: Iterable[str] | None = None,
+    *,
+    has_errors: bool = False,
+    is_blocked: bool = False,
+    is_skipped: bool = False,
 ) -> ReviewOutputIntegrationResult:
     notes = tuple(review_notes or ())
-    status = "success"
-    if not decomposition_result.subtasks:
-        status = "failure"
-    elif any(subtask.worker_candidate != routing_result.worker_name for subtask in decomposition_result.subtasks):
-        status = "partial_success"
+    status = determine_worker_output_status(
+        has_subtasks=bool(decomposition_result.subtasks),
+        all_subtasks_routed=all(
+            subtask.worker_candidate == routing_result.worker_name for subtask in decomposition_result.subtasks
+        ),
+        has_errors=has_errors,
+        is_blocked=is_blocked,
+        is_skipped=is_skipped,
+    )
+    semantic = worker_output_semantic(status)
     worker_output = {
         "task_id": decomposition_result.source,
         "objective": decomposition_result.objective,
@@ -53,6 +63,8 @@ def build_review_output_integration(
         "review_summary": {
             "status": status,
             "notes": list(notes),
+            "meaning": semantic.meaning,
+            "next_action": semantic.next_action,
         },
     }
     return ReviewOutputIntegrationResult(
