@@ -107,3 +107,19 @@
     - Supervisor summary is frozen
     - Work Planner summary is frozen
     - Release acceptance criteria are frozen
+- pack_id: PACK-0014
+  name: First Product Launch System
+  objective: Use Repository OS v2 as the operating system for the first production outcome.
+  scope: Mission decomposition through feedback loop.
+  ep_range:
+    - EP-0201
+    - EP-0206
+  dependencies:
+    - PACK-0013
+  done_conditions:
+    - Mission decomposition is deterministic
+    - Business roadmap is deterministic
+    - First product WBS is deterministic
+    - Background system architecture is deterministic
+    - Content and implementation pipeline is deterministic
+    - Review and approval workflow is deterministic
