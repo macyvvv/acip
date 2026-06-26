@@ -1,0 +1,16 @@
+pack_id: PACK-0005
+name: Event Runtime
+objective: Reduce Human as the runtime trigger between GitHub Issue state, repository completion markers, and the next Codex work cycle.
+scope: Event contract through runtime safety gate.
+ep_range:
+  - EP-0161
+  - EP-0166
+dependencies:
+  - PACK-0004
+done_conditions:
+  - Event contract is deterministic
+  - Issue event intake is deterministic
+  - Completion marker intake is deterministic
+  - Event to queue resolution is deterministic
+  - Event runtime dry run is deterministic
+  - Event runtime safety gate is deterministic
