@@ -13,7 +13,6 @@ from orchestrator.validation_orchestrator import ValidationOrchestrator
 def main() -> int:
     orchestrator = ValidationOrchestrator(ROOT)
     result = orchestrator.run()
-    orchestrator.write_reports(result)
     for step in result.validation_steps:
         print(f"$ {step.command}")
         if step.output:
