@@ -1,0 +1,15 @@
+pack_id: PACK-0008
+name: Low Risk Root Migration
+objective: Move only the low-risk root migration subset while leaving medium-risk and high-risk subsets untouched.
+scope: Low-risk root entries only.
+ep_range:
+  - EP-0178
+  - EP-0178
+dependencies:
+  - PACK-0007
+done_conditions:
+  - Low-risk candidates are fixed
+  - Final from-to migration table is fixed
+  - Reference update plan is fixed
+  - Rollback table is fixed
+  - Explicit approval gate exists before any file move
