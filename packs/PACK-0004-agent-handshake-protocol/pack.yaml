@@ -1,0 +1,15 @@
+pack_id: PACK-0004
+name: Agent Handshake Protocol
+objective: Establish a deterministic handshake protocol between ChatGPT and Codex.
+scope: Completion protocol through handshake validation.
+ep_range:
+  - EP-0156
+  - EP-0160
+dependencies:
+  - PACK-0003
+done_conditions:
+  - Completion payload is deterministic
+  - Latest completion marker is repository SSOT
+  - ChatGPT review intake is deterministic
+  - Issue synchronization payload is deterministic
+  - Handshake validation is deterministic

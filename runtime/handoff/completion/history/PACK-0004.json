@@ -1,0 +1,12 @@
+{
+  "status": "partial_success",
+  "pack_id": "PACK-0004",
+  "parent_issue": 9,
+  "ep_id": "EP-0160",
+  "commit_sha": "PENDING",
+  "validation_result": "python3 scripts/validate_all.py",
+  "pytest_result": "python3 -m pytest -q",
+  "worktree_state": "unknown",
+  "next_action": "Implement EP-0156 through EP-0160",
+  "requires_human_approval": false
+}
