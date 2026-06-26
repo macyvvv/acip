@@ -1,0 +1,4 @@
+- `docs/current/GENERATED_ARTIFACT_REGISTRY.md`
+- `runtime/generated_artifacts/generated_artifacts.json`
+- `scripts/validate_ep_0151.py`
+- `tests/test_generated_artifact_registry.py`
