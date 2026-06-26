@@ -1,0 +1,16 @@
+pack_id: PACK-0007
+name: Repository Structure Hygiene
+objective: Reduce root-level directory and file clutter by moving toward a coherent repository layout without breaking existing Runtime, Validation, Issue, Pack, or Queue flows.
+scope: Root inventory through layout enforcement.
+ep_range:
+  - EP-0173
+  - EP-0179
+dependencies:
+  - PACK-0006
+done_conditions:
+  - Root inventory is deterministic
+  - Target layout contract is deterministic
+  - Reference impact analysis is deterministic
+  - Root migration dry run is deterministic
+  - Root migration approval gate is deterministic
+  - Layout enforcement gate is deterministic

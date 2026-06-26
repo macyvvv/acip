@@ -1,0 +1,16 @@
+pack_id: PACK-0006
+name: External Trigger Bridge
+objective: Bridge GitHub events or manual workflow dispatch into the repository Event Runtime without unsafe auto-push, secrets, or destructive behavior.
+scope: Event fixture intake through external trigger dry-run validation.
+ep_range:
+  - EP-0167
+  - EP-0172
+dependencies:
+  - PACK-0005
+done_conditions:
+  - GitHub Actions event fixture is deterministic
+  - Workflow dispatch runtime is deterministic
+  - Event runtime CLI entrypoint is deterministic
+  - Codex intake trigger contract is deterministic
+  - Approval-hold workflow is deterministic
+  - External trigger dry run validation is deterministic
