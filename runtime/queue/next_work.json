@@ -1,0 +1,11 @@
+{
+  "selected": {
+    "queue_path": "queue/READY/EP-0144-agent-handoff-automation-pack.md",
+    "pack_id": "PACK-0002",
+    "objective": "Remove Human from ChatGPT-to-Codex handoff by making the repository queue item the durable source of truth.",
+    "priority": 100,
+    "dependencies": [],
+    "approval_required": false
+  },
+  "candidates": []
+}
