@@ -1,0 +1,8 @@
+- `docs/current/REPOSITORY_OS_V1_COMPLETION_REVIEW.md`
+- `docs/current/REPOSITORY_OS_V1_CAPABILITY_MAP.md`
+- `docs/current/REPOSITORY_OS_V1_RISK_REGISTER.md`
+- `docs/current/REPOSITORY_OS_V1_NEXT_PHASE_CRITERIA.md`
+- `runtime/reviews/repository_os_v1_completion_review.json`
+- `scripts/validate_ep_0143.py`
+- `tests/test_repository_os_v1_completion_review.py`
+- `docs/ep/README_EP0143_REPOSITORY_OS_V1_COMPLETION_REVIEW.md`

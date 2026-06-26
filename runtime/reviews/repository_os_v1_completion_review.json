@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "scope": "EP-0100..EP-0142",
+  "status": "complete",
+  "repository_os_v1": true,
+  "completed_capabilities": [
+    "Repository state loading and normalization",
+    "Queue and task handling",
+    "Worker registry and capability routing",
+    "Execution kernel and autonomous planning cycle",
+    "Validation orchestration and validation state",
+    "Governor recommendations and improvement candidate generation",
+    "Human approval gating",
+    "Pack management and solution development runtime"
+  ],
+  "human_responsibilities": [
+    "Strategy",
+    "Approval for high-risk or destructive change",
+    "Capital allocation",
+    "Reviewing residual risks and parking lot items"
+  ],
+  "entry_points": [
+    "python scripts/validate_all.py",
+    "python -m pytest -q",
+    "orchestrator/execution_kernel.py",
+    "orchestrator/solution_development_runtime.py",
+    "orchestrator/repository_governor.py"
+  ],
+  "risks": [
+    "Root layout remains warn-only.",
+    "Generated artifact churn.",
+    "Non-destructive validation drift.",
+    "Human approval load."
+  ],
+  "next_phase_criteria": [
+    "Repository OS v1 completion review is accepted.",
+    "Root hygiene remains classified and tracked.",
+    "Generated artifact handling is stable enough for incremental cleanup.",
+    "Validation and pytest continue to pass through validate_all and pytest.",
+    "Root layout migration is planned as a separate EP."
+  ]
+}
