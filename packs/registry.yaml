@@ -57,3 +57,37 @@
     - Event to queue resolution is deterministic
     - Event runtime dry run is deterministic
     - Event runtime safety gate is deterministic
+- pack_id: PACK-0011
+  name: Local Agent Supervisor Bridge
+  objective: Eliminate Human as the ChatGPT-to-Codex courier after the local supervisor is started by Human.
+  scope: Local supervisor contract through dry-run validation.
+  ep_range:
+    - EP-0187
+    - EP-0193
+  dependencies:
+    - PACK-0010
+  done_conditions:
+    - Local supervisor contract is deterministic
+    - Work discovery loop is deterministic
+    - Codex intake adapter is deterministic
+    - Execution launch contract is deterministic
+    - Completion capture adapter is deterministic
+    - Supervisor safety gate is deterministic
+    - Supervisor dry run validation is deterministic
+- pack_id: PACK-0012
+  name: Work Planner
+  objective: Generate prioritized next-work candidates from repository projections without becoming an independent source of truth.
+  scope: Candidate aggregation through review gate.
+  ep_range:
+    - EP-0194
+    - EP-0200
+  dependencies:
+    - PACK-0011
+  done_conditions:
+    - Work planner contract is deterministic
+    - Candidate source aggregation is deterministic
+    - Candidate scoring is deterministic
+    - Issue candidate rendering is deterministic
+    - Parking lot and blocked candidate handling is deterministic
+    - Review gate is deterministic
+    - Work planner validation is deterministic

@@ -1,0 +1,17 @@
+pack_id: PACK-0012
+name: Work Planner
+objective: Generate prioritized next-work candidates from repository projections without becoming an independent source of truth.
+scope: Candidate aggregation through review gate.
+ep_range:
+  - EP-0194
+  - EP-0200
+dependencies:
+  - PACK-0011
+done_conditions:
+  - Work planner contract is deterministic
+  - Candidate source aggregation is deterministic
+  - Candidate scoring is deterministic
+  - Issue candidate rendering is deterministic
+  - Parking lot and blocked candidate handling is deterministic
+  - Review gate is deterministic
+  - Work planner validation is deterministic
