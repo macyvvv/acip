@@ -1,0 +1,17 @@
+pack_id: PACK-0011
+name: Local Agent Supervisor Bridge
+objective: Eliminate Human as the ChatGPT-to-Codex courier after the local supervisor is started by Human.
+scope: Local supervisor contract through dry-run validation.
+ep_range:
+  - EP-0187
+  - EP-0193
+dependencies:
+  - PACK-0010
+done_conditions:
+  - Local supervisor contract is deterministic
+  - Work discovery loop is deterministic
+  - Codex intake adapter is deterministic
+  - Execution launch contract is deterministic
+  - Completion capture adapter is deterministic
+  - Supervisor safety gate is deterministic
+  - Supervisor dry run validation is deterministic
