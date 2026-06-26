@@ -1,0 +1,17 @@
+pack_id: PACK-0015
+name: Local Execution Adapter
+objective: Transform supervisor execution requests into safe Codex CLI invocations and completion artifacts.
+scope: Execution request contract through local execution validation.
+ep_range:
+  - EP-0201
+  - EP-0207
+dependencies:
+  - PACK-0014
+done_conditions:
+  - Execution request contract is hardened
+  - Codex adapter contract is deterministic
+  - Codex CLI dry-run adapter is deterministic
+  - Codex CLI execution adapter is gated and deterministic
+  - Completion capture adapter is deterministic
+  - Local execution safety gate is deterministic
+  - Local execution validation is deterministic
