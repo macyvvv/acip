@@ -1,0 +1,6 @@
+- `queue/READY/EP-0146-queue-state-automation.md`
+- `orchestrator/queue_automation.py`
+- `docs/current/QUEUE_STATE_AUTOMATION.md`
+- `runtime/queue/queue_state.json`
+- `scripts/validate_ep_0146.py`
+- `tests/test_queue_automation.py`

@@ -1,0 +1,13 @@
+{
+  "previous": {
+    "status": "RUNNING",
+    "active_ep": "EP-0108",
+    "next_ep": "EP-0109"
+  },
+  "current": {
+    "status": "REVIEW",
+    "active_ep": "EP-0108",
+    "next_ep": "EP-0109"
+  },
+  "transition": "RUNNING->REVIEW"
+}
