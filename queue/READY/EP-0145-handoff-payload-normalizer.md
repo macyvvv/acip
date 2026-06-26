@@ -1,6 +1,6 @@
 # EP-0145 Handoff Payload Normalizer
 
-status: READY
+status: DONE
 pack_id: PACK-0002
 ep_range: EP-0144..EP-0147
 objective: Normalize queue/READY handoff payloads into machine-readable execution intake records.

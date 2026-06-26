@@ -1,12 +1,15 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 from orchestrator.implementation_planner import ImplementationPlan
 from orchestrator.execution_request import ExecutionRequest
 from orchestrator.review_release_planner import ReviewReleasePlanner
 
 
-def test_review_release_planner_generates_plan() -> None:
-    planner = ReviewReleasePlanner(".")
+def test_review_release_planner_generates_plan(tmp_path: Path) -> None:
+    base_path = tmp_path
+    (base_path / "solution" / "review_release").mkdir(parents=True)
     implementation_plan = ImplementationPlan(
         plan_id="PLAN-SPEC-0001",
         specification_id="SPEC-0001",
@@ -24,6 +27,7 @@ def test_review_release_planner_generates_plan() -> None:
         risk_level="low",
         dependencies=("specs/EP-0139",),
     )
+    planner = ReviewReleasePlanner(base_path)
     plan = planner.plan(implementation_plan)
     assert plan.release_readiness == "ready"
     assert "python scripts/validate_all.py" in plan.validation_plan

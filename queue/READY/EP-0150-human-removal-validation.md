@@ -1,6 +1,6 @@
 # EP-0150 Human Removal Validation
 
-status: READY
+status: DONE
 pack_id: PACK-0002
 ep_range: EP-0144..EP-0147
 objective: Validate that ChatGPT can hand off to Codex through the repository queue without Human copying the specification text.

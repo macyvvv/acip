@@ -1,6 +1,6 @@
 # EP-0144 Agent Handoff Automation Pack
 
-status: READY
+status: DONE
 pack_id: PACK-0002
 ep_range: EP-0144..EP-0147
 objective: Remove Human from ChatGPT-to-Codex handoff by making the repository queue item the durable source of truth.

@@ -1,6 +1,6 @@
 # EP-0146 Queue State Automation
 
-status: READY
+status: DONE
 pack_id: PACK-0002
 ep_range: EP-0144..EP-0147
 objective: Automate queue state transitions across READY, RUNNING, REVIEW, and DONE without Human intervention.

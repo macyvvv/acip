@@ -1,0 +1,14 @@
+{
+  "parent_issue": 3,
+  "pack_id": "PACK-0003",
+  "pack_name": "Generated Artifact SSOT Pack",
+  "status": "complete",
+  "child_ep_mapping": [
+    {"issue": 4, "ep": "EP-0151", "commit_sha": "3b97372"},
+    {"issue": 5, "ep": "EP-0152", "commit_sha": "6624ee4"},
+    {"issue": 6, "ep": "EP-0153", "commit_sha": "03b7108"},
+    {"issue": 7, "ep": "EP-0154", "commit_sha": "33d06d4"},
+    {"issue": 8, "ep": "EP-0155", "commit_sha": "655ce87"}
+  ],
+  "validation_leaves_worktree_clean_by_default": true
+}

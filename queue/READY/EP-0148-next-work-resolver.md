@@ -1,6 +1,6 @@
 # EP-0148 Next Work Resolver
 
-status: READY
+status: DONE
 pack_id: PACK-0002
 ep_range: EP-0144..EP-0147
 objective: Resolve the next work item deterministically using priority, dependency, and approval requirements.
