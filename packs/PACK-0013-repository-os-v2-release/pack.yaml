@@ -1,0 +1,16 @@
+pack_id: PACK-0013
+name: Repository OS v2 Release
+objective: Freeze Repository OS v2 as the operational baseline before product development begins.
+scope: Release baseline through acceptance criteria.
+ep_range:
+  - EP-0201
+  - EP-0206
+dependencies:
+  - PACK-0012
+done_conditions:
+  - Architecture overview is frozen
+  - Planning State summary is frozen
+  - Repository State summary is frozen
+  - Supervisor summary is frozen
+  - Work Planner summary is frozen
+  - Release acceptance criteria are frozen
