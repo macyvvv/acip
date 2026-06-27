@@ -1,0 +1,2 @@
+"""Repository operational summary product."""
+
