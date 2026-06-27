@@ -9,7 +9,7 @@
     "runtime/work_planner/latest.json"
   ],
   "worker_assignment": "Codex",
-  "next_action": "ACCEPTANCE-0001 completed; select next eligible work item.",
+  "next_action": null,
   "objective": "Constitution v3 Freeze",
   "candidate_source": [
     {

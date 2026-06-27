@@ -1,13 +1,15 @@
 {
+  "supervisor_state": "idle",
   "planning_status": "loaded",
   "repository_status": "healthy",
-  "next_eligible_work_item": "ACCEPTANCE-0001 completed; select next eligible work item.",
+  "next_eligible_work_item": null,
+  "selection_reason": "acceptance_completed",
   "codex_intake_payload": {
     "mission": "Build an AI Native Company.",
     "current_objective": "Constitution v3 Freeze",
     "current_pack": "PACK-0004",
     "current_ep": "PACK-0004",
-    "next_action": "ACCEPTANCE-0001 completed; select next eligible work item.",
+    "next_action": null,
     "execution_request": {
       "request_id": "REQ-PLANNED-0001",
       "request_status": "ready",
@@ -19,7 +21,7 @@
         "runtime/work_planner/latest.json"
       ],
       "worker_assignment": "Codex",
-      "next_action": "ACCEPTANCE-0001 completed; select next eligible work item.",
+      "next_action": null,
       "objective": "Constitution v3 Freeze",
       "candidate_source": [
         {

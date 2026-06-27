@@ -1,9 +1,9 @@
 # Codex Execution Prompt
 
-Request ID: REQ-ACCEPTANCE-0001
+Request ID: REQ-PLANNED-0001
 Request Status: ready
 Objective: Constitution v3 Freeze
-Selected Work Item: Issue #28: ACCEPTANCE-0001: Single Product Vertical Slice
+Selected Work Item: None
 
 Implement Issue #28 / ACCEPTANCE-0001 using repository artifacts only.
 Read runtime/planning/latest.json, runtime/repository_state/latest.json, runtime/work_planner/latest.json, and runtime/request/execution_request.json.
