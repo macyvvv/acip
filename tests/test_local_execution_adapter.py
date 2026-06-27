@@ -34,5 +34,6 @@ def test_local_execution_adapter_dry_run(tmp_path: Path) -> None:
     assert result.adapter_mode == "dry_run"
     assert result.execution_gate == "closed"
     assert result.request_id == "REQ-ACCEPTANCE-0001"
-    assert result.codex_cli_command.startswith("codex --dry-run")
+    assert result.codex_cli_command == 'codex exec "$(cat runtime/local_execution/codex_prompt.md)"'
+    assert (tmp_path / "runtime" / "local_execution" / "codex_prompt.md").exists()
     assert (tmp_path / "runtime" / "local_execution" / "latest.json").exists()

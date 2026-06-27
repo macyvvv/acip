@@ -3,7 +3,6 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass
 from pathlib import Path
 import json
-import os
 import subprocess
 
 
@@ -56,28 +55,46 @@ class LocalExecutionAdapter:
         if request is None:
             request = self._derive_request(supervisor)
         self._validate_alignment(planning, request)
-        command = self._build_command(request, dry_run=dry_run)
-        stdout = "dry-run only" if dry_run else self._run_command(command)
-        result = LocalExecutionResult(
-            adapter_mode="dry_run" if dry_run else "execute",
-            approval_required=bool(repository.get("approval_required", False)),
-            execution_gate="closed" if dry_run else "open",
-            codex_cli_command=command,
-            request_id=request["request_id"],
-            request_status=request["request_status"],
-            repository_health=repository.get("repository_health", "unknown"),
-            validation_status=repository.get("validation_status", "unknown"),
-            worktree_state=repository.get("worktree_state", "unknown"),
+        prompt = self._render_prompt(request, planning, repository)
+        prompt_path = self._write_prompt(prompt)
+        command = self._build_command(prompt_path)
+        adapter_mode = "dry_run" if dry_run else "execute"
+        execution_gate = "closed" if dry_run else "open"
+        stdout = "dry-run only"
+        stderr = ""
+        exit_code = 0
+        try:
+            if not dry_run:
+                completed = self._run_command(command)
+                stdout = completed.stdout
+                stderr = completed.stderr
+                exit_code = completed.returncode
+                if exit_code != 0:
+                    raise LocalExecutionError(f"Codex command failed: {exit_code}")
+        except Exception as exc:
+            result = self._result(
+                repository=repository,
+                request=request,
+                adapter_mode=adapter_mode,
+                execution_gate=execution_gate,
+                command=command,
+                stdout=stdout,
+                stderr=str(exc) if not stderr else stderr,
+                exit_code=exit_code or 1,
+                prompt_path=prompt_path,
+            )
+            self._write_runtime(result)
+            raise
+        result = self._result(
+            repository=repository,
+            request=request,
+            adapter_mode=adapter_mode,
+            execution_gate=execution_gate,
+            command=command,
             stdout=stdout,
-            stderr="",
-            exit_code=0,
-            captured_at="deterministic",
-            source_artifacts=[
-                "runtime/supervisor/latest.json",
-                "runtime/repository_state/latest.json",
-                "runtime/planning/latest.json",
-                "runtime/request/execution_request.json",
-            ],
+            stderr=stderr,
+            exit_code=exit_code,
+            prompt_path=prompt_path,
         )
         self._write_runtime(result)
         return result
@@ -100,15 +117,75 @@ class LocalExecutionAdapter:
         if request.get("request_status") not in {"ready", "pending_approval"}:
             raise LocalExecutionError("Invalid request status")
 
-    def _build_command(self, request: dict, *, dry_run: bool) -> str:
-        suffix = "--dry-run" if dry_run else "--run"
-        return f"codex {suffix} --request {request['request_id']}"
+    def _render_prompt(self, request: dict, planning: dict, repository: dict) -> str:
+        lines = [
+            "# Codex Execution Prompt",
+            "",
+            f"Request ID: {request['request_id']}",
+            f"Request Status: {request['request_status']}",
+            f"Objective: {planning.get('current_objective', 'unknown')}",
+            f"Selected Work Item: {request.get('next_action', 'unknown')}",
+            "",
+            "Implement Issue #28 / ACCEPTANCE-0001 using repository artifacts only.",
+            "Read runtime/planning/latest.json, runtime/repository_state/latest.json, runtime/work_planner/latest.json, and runtime/request/execution_request.json.",
+            "Run:",
+            "- python3 scripts/validate_all.py",
+            "- python3 -m pytest -q",
+            "- git status",
+            "",
+            "Do not auto-push.",
+            "Do not modify Repository OS architecture.",
+        ]
+        return "\n".join(lines) + "\n"
 
-    def _run_command(self, command: str) -> str:
-        completed = subprocess.run(command, shell=True, capture_output=True, text=True)
-        if completed.returncode != 0:
-            raise LocalExecutionError(f"Codex command failed: {completed.returncode}")
-        return completed.stdout
+    def _write_prompt(self, prompt: str) -> Path:
+        runtime_dir = self.base_path / "runtime" / "local_execution"
+        runtime_dir.mkdir(parents=True, exist_ok=True)
+        prompt_path = runtime_dir / "codex_prompt.md"
+        prompt_path.write_text(prompt, encoding="utf-8")
+        return prompt_path
+
+    def _build_command(self, prompt_path: Path) -> list[str]:
+        return ["codex", "exec", prompt_path.read_text(encoding="utf-8")]
+
+    def _run_command(self, command: list[str]) -> subprocess.CompletedProcess[str]:
+        return subprocess.run(command, capture_output=True, text=True)
+
+    def _result(
+        self,
+        *,
+        repository: dict,
+        request: dict,
+        adapter_mode: str,
+        execution_gate: str,
+        command: list[str],
+        stdout: str,
+        stderr: str,
+        exit_code: int,
+        prompt_path: Path,
+    ) -> LocalExecutionResult:
+        return LocalExecutionResult(
+            adapter_mode=adapter_mode,
+            approval_required=bool(repository.get("approval_required", False)),
+            execution_gate=execution_gate,
+            codex_cli_command='codex exec "$(cat runtime/local_execution/codex_prompt.md)"',
+            request_id=request["request_id"],
+            request_status=request["request_status"],
+            repository_health=repository.get("repository_health", "unknown"),
+            validation_status=repository.get("validation_status", "unknown"),
+            worktree_state=repository.get("worktree_state", "unknown"),
+            stdout=stdout,
+            stderr=stderr,
+            exit_code=exit_code,
+            captured_at="deterministic",
+            source_artifacts=[
+                "runtime/supervisor/latest.json",
+                "runtime/repository_state/latest.json",
+                "runtime/planning/latest.json",
+                "runtime/request/execution_request.json",
+                str(prompt_path.relative_to(self.base_path)),
+            ],
+        )
 
     def _write_runtime(self, result: LocalExecutionResult) -> None:
         runtime_dir = self.base_path / "runtime" / "local_execution"
