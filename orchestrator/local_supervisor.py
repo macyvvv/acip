@@ -9,9 +9,11 @@ from urllib.error import URLError
 
 @dataclass(frozen=True)
 class LocalSupervisorResult:
+    supervisor_state: str
     planning_status: str
     repository_status: str
-    next_eligible_work_item: str
+    next_eligible_work_item: str | None
+    selection_reason: str
     codex_intake_payload: dict
     execution_mode: str
     approval_required: bool
@@ -38,7 +40,7 @@ class LocalSupervisor:
             raise LocalSupervisorError("Missing repository state")
         if repository.get("approval_required"):
             raise LocalSupervisorError("Repository state requires approval")
-        next_item = self._select_next_work_item(planning, repository, work_planner, acceptance)
+        next_item, selection_reason = self._select_next_work_item(planning, repository, work_planner, acceptance)
         execution_mode = "execute" if execution_flag else "dry_run"
         if execution_mode == "execute" and not execution_flag:
             raise LocalSupervisorError("Execution requires explicit local approval flag")
@@ -52,9 +54,11 @@ class LocalSupervisor:
             "execution_request": execution_request,
         }
         result = LocalSupervisorResult(
+            supervisor_state="ready" if next_item else "idle",
             planning_status="loaded",
             repository_status=repository.get("repository_health", "unknown"),
             next_eligible_work_item=next_item,
+            selection_reason=selection_reason,
             codex_intake_payload=codex_intake_payload,
             execution_mode=execution_mode,
             approval_required=bool(repository.get("approval_required", False)),
@@ -72,11 +76,11 @@ class LocalSupervisor:
         self._write_execution_request(execution_request)
         return result
 
-    def _select_next_work_item(self, planning: dict, repository: dict, work_planner: dict, acceptance: dict) -> str:
+    def _select_next_work_item(self, planning: dict, repository: dict, work_planner: dict, acceptance: dict) -> tuple[str | None, str]:
         if acceptance and acceptance.get("issue_number") == 28:
             if acceptance.get("state") == "open":
-                return f"Issue #28: {acceptance.get('title', 'ACCEPTANCE-0001')}"
-            return acceptance.get("next_action") or "ACCEPTANCE-0001 completed; select next eligible work item."
+                return f"Issue #28: {acceptance.get('title', 'ACCEPTANCE-0001')}", "acceptance_issue_open"
+            return None, "acceptance_completed"
         candidates = work_planner.get("candidate_items") or []
         for candidate in candidates:
             if not isinstance(candidate, dict):
@@ -84,10 +88,10 @@ class LocalSupervisor:
             if candidate.get("status") in {"completed", "done", "closed"}:
                 continue
             if candidate.get("title"):
-                return str(candidate["title"])
-        return planning.get("approved_next_action") or repository.get("next_action") or "unknown"
+                return str(candidate["title"]), "work_planner_candidate"
+        return None, "idle_no_eligible_candidate"
 
-    def _build_execution_request(self, next_item: str, work_planner: dict, planning: dict, acceptance: dict) -> dict:
+    def _build_execution_request(self, next_item: str | None, work_planner: dict, planning: dict, acceptance: dict) -> dict:
         issue = acceptance if acceptance and acceptance.get("issue_number") == 28 else self._fetch_issue_28()
         request_id = "REQ-ACCEPTANCE-0001" if issue and issue.get("state") == "open" else "REQ-PLANNED-0001"
         return {
@@ -146,9 +150,11 @@ class LocalSupervisor:
         return "\n".join([
             "# LOCAL_AGENT_SUPERVISOR",
             "",
+            f"supervisor_state: {result.supervisor_state}",
             f"planning_status: {result.planning_status}",
             f"repository_status: {result.repository_status}",
-            f"next_eligible_work_item: {result.next_eligible_work_item}",
+            f"next_eligible_work_item: {result.next_eligible_work_item if result.next_eligible_work_item is not None else 'null'}",
+            f"selection_reason: {result.selection_reason}",
             f"execution_mode: {result.execution_mode}",
             f"approval_required: {str(result.approval_required).lower()}",
             f"safety_gate: {result.safety_gate}",
