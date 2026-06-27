@@ -1,15 +1,15 @@
 {
   "planning_status": "loaded",
   "repository_status": "healthy",
-  "next_eligible_work_item": "Issue #28: ACCEPTANCE-0001: Single Product Vertical Slice",
+  "next_eligible_work_item": "ACCEPTANCE-0001 completed; select next eligible work item.",
   "codex_intake_payload": {
     "mission": "Build an AI Native Company.",
     "current_objective": "Constitution v3 Freeze",
     "current_pack": "PACK-0004",
     "current_ep": "PACK-0004",
-    "next_action": "Issue #28: ACCEPTANCE-0001: Single Product Vertical Slice",
+    "next_action": "ACCEPTANCE-0001 completed; select next eligible work item.",
     "execution_request": {
-      "request_id": "REQ-ACCEPTANCE-0001",
+      "request_id": "REQ-PLANNED-0001",
       "request_status": "ready",
       "request_priority": 100,
       "approval_required": false,
@@ -19,7 +19,7 @@
         "runtime/work_planner/latest.json"
       ],
       "worker_assignment": "Codex",
-      "next_action": "Issue #28: ACCEPTANCE-0001: Single Product Vertical Slice",
+      "next_action": "ACCEPTANCE-0001 completed; select next eligible work item.",
       "objective": "Constitution v3 Freeze",
       "candidate_source": [
         {
@@ -164,7 +164,7 @@
           "issue_body_draft": "Implement EP-0200 Work Planner Validation for deterministic output checks."
         }
       ],
-      "issue_number": 28
+      "issue_number": null
     }
   },
   "execution_mode": "dry_run",

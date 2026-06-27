@@ -73,16 +73,18 @@ class LocalSupervisor:
         return result
 
     def _select_next_work_item(self, planning: dict, repository: dict, work_planner: dict, acceptance: dict) -> str:
-        if acceptance and acceptance.get("issue_number") == 28 and acceptance.get("state") == "open":
-            return f"Issue #28: {acceptance.get('title', 'ACCEPTANCE-0001')}"
-        issue = self._fetch_issue_28()
-        if issue and issue.get("state") == "open":
-            return f"Issue #28: {issue.get('title', 'ACCEPTANCE-0001')}"
+        if acceptance and acceptance.get("issue_number") == 28:
+            if acceptance.get("state") == "open":
+                return f"Issue #28: {acceptance.get('title', 'ACCEPTANCE-0001')}"
+            return acceptance.get("next_action") or "ACCEPTANCE-0001 completed; select next eligible work item."
         candidates = work_planner.get("candidate_items") or []
-        if candidates:
-            top = candidates[0]
-            if isinstance(top, dict) and top.get("title"):
-                return str(top["title"])
+        for candidate in candidates:
+            if not isinstance(candidate, dict):
+                continue
+            if candidate.get("status") in {"completed", "done", "closed"}:
+                continue
+            if candidate.get("title"):
+                return str(candidate["title"])
         return planning.get("approved_next_action") or repository.get("next_action") or "unknown"
 
     def _build_execution_request(self, next_item: str, work_planner: dict, planning: dict, acceptance: dict) -> dict:
