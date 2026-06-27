@@ -1,17 +1,19 @@
 {
-  "supervisor_state": "idle",
+  "supervisor_state": "ready",
   "planning_status": "loaded",
   "repository_status": "healthy",
-  "next_eligible_work_item": null,
-  "selection_reason": "acceptance_completed",
+  "next_eligible_work_item": "Issue #30: PRODUCT-0001: Product Launch Checklist",
+  "selected_issue_number": 30,
+  "selected_issue_title": "PRODUCT-0001: Product Launch Checklist",
+  "selection_reason": "issue_intake",
   "codex_intake_payload": {
     "mission": "Build an AI Native Company.",
     "current_objective": "Constitution v3 Freeze",
     "current_pack": "PACK-0004",
     "current_ep": "PACK-0004",
-    "next_action": null,
+    "next_action": "Issue #30: PRODUCT-0001: Product Launch Checklist",
     "execution_request": {
-      "request_id": "REQ-PLANNED-0001",
+      "request_id": "REQ-ISSUE-0030",
       "request_status": "ready",
       "request_priority": 100,
       "approval_required": false,
@@ -21,7 +23,7 @@
         "runtime/work_planner/latest.json"
       ],
       "worker_assignment": "Codex",
-      "next_action": null,
+      "next_action": "Issue #30: PRODUCT-0001: Product Launch Checklist",
       "objective": "Constitution v3 Freeze",
       "candidate_source": [
         {
@@ -166,7 +168,8 @@
           "issue_body_draft": "Implement EP-0200 Work Planner Validation for deterministic output checks."
         }
       ],
-      "issue_number": null
+      "issue_number": 30,
+      "issue_title": "PRODUCT-0001: Product Launch Checklist"
     }
   },
   "execution_mode": "dry_run",
@@ -178,6 +181,8 @@
     "runtime/handoff/latest.json",
     "runtime/handoff/completion/latest.json",
     "runtime/event_runtime/",
-    "queue/"
+    "queue/",
+    "runtime/github/",
+    "runtime/issues/"
   ]
 }

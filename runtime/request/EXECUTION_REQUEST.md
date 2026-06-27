@@ -1,8 +1,8 @@
 # EXECUTION_REQUEST
 
-request_id: REQ-PLANNED-0001
+request_id: REQ-ISSUE-0030
 request_status: ready
 request_priority: 100
 approval_required: false
 worker_assignment: Codex
-next_action: None
+next_action: Issue #30: PRODUCT-0001: Product Launch Checklist

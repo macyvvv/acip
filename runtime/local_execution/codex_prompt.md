@@ -1,9 +1,9 @@
 # Codex Execution Prompt
 
-Request ID: REQ-PLANNED-0001
+Request ID: REQ-ISSUE-0030
 Request Status: ready
 Objective: Constitution v3 Freeze
-Selected Work Item: None
+Selected Work Item: Issue #30: PRODUCT-0001: Product Launch Checklist
 
 Implement Issue #28 / ACCEPTANCE-0001 using repository artifacts only.
 Read runtime/planning/latest.json, runtime/repository_state/latest.json, runtime/work_planner/latest.json, and runtime/request/execution_request.json.
