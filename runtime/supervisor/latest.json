@@ -1,13 +1,171 @@
 {
   "planning_status": "loaded",
   "repository_status": "healthy",
-  "next_eligible_work_item": "ChatGPT can read runtime/handoff/latest.json for review intake.",
+  "next_eligible_work_item": "Issue #28: ACCEPTANCE-0001: Single Product Vertical Slice",
   "codex_intake_payload": {
     "mission": "Build an AI Native Company.",
     "current_objective": "Constitution v3 Freeze",
     "current_pack": "PACK-0004",
     "current_ep": "PACK-0004",
-    "next_action": "ChatGPT can read runtime/handoff/latest.json for review intake."
+    "next_action": "Issue #28: ACCEPTANCE-0001: Single Product Vertical Slice",
+    "execution_request": {
+      "request_id": "REQ-ACCEPTANCE-0001",
+      "request_status": "ready",
+      "request_priority": 100,
+      "approval_required": false,
+      "dependency": [
+        "runtime/planning/latest.json",
+        "runtime/repository_state/latest.json",
+        "runtime/work_planner/latest.json"
+      ],
+      "worker_assignment": "Codex",
+      "next_action": "Issue #28: ACCEPTANCE-0001: Single Product Vertical Slice",
+      "objective": "Constitution v3 Freeze",
+      "candidate_source": [
+        {
+          "candidate_id": "WP-0194",
+          "title": "EP-0194 Work Planner Contract",
+          "proposed_pack_or_ep": "EP-0194",
+          "objective": "Define the work planner contract.",
+          "rationale": "Establish the projection boundary before scoring and rendering.",
+          "mission_contribution": 5,
+          "management_cost_reduction": 5,
+          "risk_reduction": 4,
+          "strategic_value": 5,
+          "operational_value": 5,
+          "learning_value": 3,
+          "dependencies": [
+            "PACK-0012"
+          ],
+          "blocked_by": [],
+          "approval_required": false,
+          "recommended_action": "create_issue",
+          "issue_body_draft": "Implement EP-0194 Work Planner Contract as a deterministic projection layer."
+        },
+        {
+          "candidate_id": "WP-0195",
+          "title": "EP-0195 Candidate Source Aggregator",
+          "proposed_pack_or_ep": "EP-0195",
+          "objective": "Aggregate candidate sources.",
+          "rationale": "Collect deterministic inputs before ranking.",
+          "mission_contribution": 5,
+          "management_cost_reduction": 5,
+          "risk_reduction": 4,
+          "strategic_value": 4,
+          "operational_value": 5,
+          "learning_value": 3,
+          "dependencies": [
+            "EP-0194"
+          ],
+          "blocked_by": [],
+          "approval_required": false,
+          "recommended_action": "create_issue",
+          "issue_body_draft": "Implement EP-0195 Candidate Source Aggregator with deterministic source collection."
+        },
+        {
+          "candidate_id": "WP-0196",
+          "title": "EP-0196 Work Candidate Scoring Model",
+          "proposed_pack_or_ep": "EP-0196",
+          "objective": "Score work candidates deterministically.",
+          "rationale": "Prioritize work using stable criteria.",
+          "mission_contribution": 5,
+          "management_cost_reduction": 4,
+          "risk_reduction": 4,
+          "strategic_value": 5,
+          "operational_value": 5,
+          "learning_value": 4,
+          "dependencies": [
+            "EP-0195"
+          ],
+          "blocked_by": [],
+          "approval_required": false,
+          "recommended_action": "create_issue",
+          "issue_body_draft": "Implement EP-0196 Work Candidate Scoring Model with deterministic ranking."
+        },
+        {
+          "candidate_id": "WP-0197",
+          "title": "EP-0197 Issue Candidate Renderer",
+          "proposed_pack_or_ep": "EP-0197",
+          "objective": "Render issue bodies for candidates.",
+          "rationale": "Convert recommendations into reviewable issue drafts.",
+          "mission_contribution": 4,
+          "management_cost_reduction": 4,
+          "risk_reduction": 3,
+          "strategic_value": 4,
+          "operational_value": 5,
+          "learning_value": 4,
+          "dependencies": [
+            "EP-0196"
+          ],
+          "blocked_by": [],
+          "approval_required": false,
+          "recommended_action": "create_issue",
+          "issue_body_draft": "Implement EP-0197 Issue Candidate Renderer for repository-native issue drafts."
+        },
+        {
+          "candidate_id": "WP-0198",
+          "title": "EP-0198 Parking Lot and Blocked Candidate Handling",
+          "proposed_pack_or_ep": "EP-0198",
+          "objective": "Separate blocked and deferred candidates.",
+          "rationale": "Prevent high-risk or out-of-scope work from entering active planning.",
+          "mission_contribution": 4,
+          "management_cost_reduction": 5,
+          "risk_reduction": 5,
+          "strategic_value": 4,
+          "operational_value": 4,
+          "learning_value": 3,
+          "dependencies": [
+            "EP-0196"
+          ],
+          "blocked_by": [],
+          "approval_required": false,
+          "recommended_action": "create_issue",
+          "issue_body_draft": "Implement EP-0198 Parking Lot and Blocked Candidate Handling."
+        },
+        {
+          "candidate_id": "WP-0199",
+          "title": "EP-0199 Work Planner Review Gate",
+          "proposed_pack_or_ep": "EP-0199",
+          "objective": "Add review gate for planner output.",
+          "rationale": "Ensure recommendations are reviewable before action.",
+          "mission_contribution": 4,
+          "management_cost_reduction": 4,
+          "risk_reduction": 5,
+          "strategic_value": 4,
+          "operational_value": 4,
+          "learning_value": 3,
+          "dependencies": [
+            "EP-0197",
+            "EP-0198"
+          ],
+          "blocked_by": [],
+          "approval_required": true,
+          "recommended_action": "review",
+          "issue_body_draft": "Implement EP-0199 Work Planner Review Gate with approval requirements."
+        },
+        {
+          "candidate_id": "WP-0200",
+          "title": "EP-0200 Work Planner Validation",
+          "proposed_pack_or_ep": "EP-0200",
+          "objective": "Validate the work planner outputs.",
+          "rationale": "Close the loop with deterministic validation.",
+          "mission_contribution": 5,
+          "management_cost_reduction": 5,
+          "risk_reduction": 5,
+          "strategic_value": 5,
+          "operational_value": 5,
+          "learning_value": 4,
+          "dependencies": [
+            "EP-0199"
+          ],
+          "blocked_by": [],
+          "approval_required": false,
+          "recommended_action": "create_issue",
+          "issue_body_draft": "Implement EP-0200 Work Planner Validation for deterministic output checks."
+        }
+      ],
+      "issue_number": 28
+    }
   },
   "execution_mode": "dry_run",
   "approval_required": false,
