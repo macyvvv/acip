@@ -1,0 +1,16 @@
+{
+  "model_policy": "cost_optimized",
+  "resolved_model": "gpt-5.4-mini",
+  "model_resolution_reason": "policy=cost_optimized",
+  "supported_models": [
+    "gpt-5.4-mini",
+    "gpt-5.4",
+    "gpt-5.2-mini"
+  ],
+  "source_artifacts": [
+    "runtime/supervisor/latest.json",
+    "runtime/repository_state/latest.json",
+    "runtime/planning/latest.json",
+    "runtime/request/execution_request.json"
+  ]
+}

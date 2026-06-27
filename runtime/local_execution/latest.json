@@ -2,12 +2,15 @@
   "adapter_mode": "dry_run",
   "approval_required": false,
   "execution_gate": "closed",
-  "codex_cli_command": "codex --dry-run --request REQ-ACCEPTANCE-0001",
+  "codex_cli_command": "codex exec -m gpt-5.4-mini \"$(cat runtime/local_execution/codex_prompt.md)\"",
   "request_id": "REQ-ACCEPTANCE-0001",
   "request_status": "ready",
   "repository_health": "healthy",
   "validation_status": "success",
   "worktree_state": "clean",
+  "resolved_model": "gpt-5.4-mini",
+  "model_policy": "cost_optimized",
+  "model_resolution_reason": "policy=cost_optimized",
   "stdout": "dry-run only",
   "stderr": "",
   "exit_code": 0,
@@ -16,6 +19,8 @@
     "runtime/supervisor/latest.json",
     "runtime/repository_state/latest.json",
     "runtime/planning/latest.json",
-    "runtime/request/execution_request.json"
+    "runtime/request/execution_request.json",
+    "runtime/local_execution/model_resolution.json",
+    "runtime/local_execution/codex_prompt.md"
   ]
 }

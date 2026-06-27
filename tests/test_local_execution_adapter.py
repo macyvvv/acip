@@ -34,6 +34,26 @@ def test_local_execution_adapter_dry_run(tmp_path: Path) -> None:
     assert result.adapter_mode == "dry_run"
     assert result.execution_gate == "closed"
     assert result.request_id == "REQ-ACCEPTANCE-0001"
-    assert result.codex_cli_command == 'codex exec "$(cat runtime/local_execution/codex_prompt.md)"'
+    assert result.codex_cli_command == 'codex exec -m gpt-5.4-mini "$(cat runtime/local_execution/codex_prompt.md)"'
     assert (tmp_path / "runtime" / "local_execution" / "codex_prompt.md").exists()
     assert (tmp_path / "runtime" / "local_execution" / "latest.json").exists()
+
+
+def test_local_execution_model_resolution_default(tmp_path: Path) -> None:
+    (tmp_path / "runtime" / "request").mkdir(parents=True)
+    (tmp_path / "runtime" / "request" / "execution_request.json").write_text(
+        json.dumps({"request_id": "REQ-1", "request_status": "ready", "next_action": "Issue #28: ACCEPTANCE-0001: Single Product Vertical Slice"}),
+        encoding="utf-8",
+    )
+    (tmp_path / "runtime" / "supervisor").mkdir(parents=True)
+    (tmp_path / "runtime" / "supervisor" / "latest.json").write_text(json.dumps({"codex_intake_payload": {"current_ep": "EP-0201"}}), encoding="utf-8")
+    (tmp_path / "runtime" / "planning").mkdir(parents=True)
+    (tmp_path / "runtime" / "planning" / "latest.json").write_text(json.dumps({"current_objective": "Constitution v3 Freeze"}), encoding="utf-8")
+    (tmp_path / "runtime" / "repository_state").mkdir(parents=True)
+    (tmp_path / "runtime" / "repository_state" / "latest.json").write_text(json.dumps({"repository_health": "healthy", "validation_status": "success", "worktree_state": "clean", "approval_required": False}), encoding="utf-8")
+    adapter = LocalExecutionAdapter(tmp_path)
+    result = adapter.run(dry_run=True)
+    assert result.resolved_model == "gpt-5.4-mini"
+    model_resolution = json.loads((tmp_path / "runtime" / "local_execution" / "model_resolution.json").read_text(encoding="utf-8"))
+    assert model_resolution["resolved_model"] == "gpt-5.4-mini"
+    assert model_resolution["model_policy"] == "cost_optimized"

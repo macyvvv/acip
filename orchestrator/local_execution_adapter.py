@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass
 from pathlib import Path
 import json
+import os
 import subprocess
 
 
@@ -17,6 +18,9 @@ class LocalExecutionResult:
     repository_health: str
     validation_status: str
     worktree_state: str
+    resolved_model: str
+    model_policy: str
+    model_resolution_reason: str
     stdout: str
     stderr: str
     exit_code: int
@@ -57,7 +61,9 @@ class LocalExecutionAdapter:
         self._validate_alignment(planning, request)
         prompt = self._render_prompt(request, planning, repository)
         prompt_path = self._write_prompt(prompt)
-        command = self._build_command(prompt_path)
+        model_resolution = self._resolve_model(request, planning, repository)
+        command = self._build_command(prompt_path, model_resolution["resolved_model"])
+        self._write_model_resolution(model_resolution)
         adapter_mode = "dry_run" if dry_run else "execute"
         execution_gate = "closed" if dry_run else "open"
         stdout = "dry-run only"
@@ -82,6 +88,7 @@ class LocalExecutionAdapter:
                 stderr=str(exc) if not stderr else stderr,
                 exit_code=exit_code or 1,
                 prompt_path=prompt_path,
+                model_resolution=model_resolution,
             )
             self._write_runtime(result)
             raise
@@ -95,6 +102,7 @@ class LocalExecutionAdapter:
             stderr=stderr,
             exit_code=exit_code,
             prompt_path=prompt_path,
+            model_resolution=model_resolution,
         )
         self._write_runtime(result)
         return result
@@ -145,11 +153,62 @@ class LocalExecutionAdapter:
         prompt_path.write_text(prompt, encoding="utf-8")
         return prompt_path
 
-    def _build_command(self, prompt_path: Path) -> list[str]:
-        return ["codex", "exec", prompt_path.read_text(encoding="utf-8")]
+    def _resolve_model(self, request: dict, planning: dict, repository: dict) -> dict:
+        policy = os.environ.get("CODEX_MODEL_POLICY", "cost_optimized")
+        override = os.environ.get("CODEX_MODEL_OVERRIDE", "").strip()
+        supported = self._supported_models()
+        if override:
+            if override not in supported:
+                raise LocalExecutionError(f"Unsupported model override: {override}")
+            return {
+                "model_policy": policy,
+                "resolved_model": override,
+                "model_resolution_reason": "local override",
+            }
+        request_text = " ".join(str(request.get(key, "")) for key in ("request_id", "request_status", "next_action"))
+        if any(keyword in request_text.lower() for keyword in ("architecture", "high-risk", "high risk")):
+            candidate_order = ["gpt-5.4", "gpt-5.4-mini", "gpt-5.2", "gpt-5.2-mini"]
+        elif policy == "balanced":
+            candidate_order = ["gpt-5.4-mini", "gpt-5.4", "gpt-5.2-mini", "gpt-5.2"]
+        elif policy == "high_reasoning":
+            candidate_order = ["gpt-5.4", "gpt-5.4-mini", "gpt-5.2", "gpt-5.2-mini"]
+        else:
+            candidate_order = ["gpt-5.4-mini", "gpt-5.4", "gpt-5.2-mini", "gpt-5.2"]
+        for model in candidate_order:
+            if model in supported:
+                return {
+                    "model_policy": policy,
+                    "resolved_model": model,
+                    "model_resolution_reason": f"policy={policy}",
+                }
+        raise LocalExecutionError("No compatible Codex model could be resolved")
+
+    def _supported_models(self) -> list[str]:
+        configured = os.environ.get("CODEX_SUPPORTED_MODELS", "").strip()
+        if configured:
+            return [model.strip() for model in configured.split(",") if model.strip()]
+        return ["gpt-5.4-mini", "gpt-5.4", "gpt-5.2-mini"]
+
+    def _build_command(self, prompt_path: Path, model: str) -> list[str]:
+        return ["codex", "exec", "-m", model, prompt_path.read_text(encoding="utf-8")]
 
     def _run_command(self, command: list[str]) -> subprocess.CompletedProcess[str]:
         return subprocess.run(command, capture_output=True, text=True)
+
+    def _write_model_resolution(self, model_resolution: dict) -> None:
+        runtime_dir = self.base_path / "runtime" / "local_execution"
+        runtime_dir.mkdir(parents=True, exist_ok=True)
+        payload = {
+            **model_resolution,
+            "supported_models": self._supported_models(),
+            "source_artifacts": [
+                "runtime/supervisor/latest.json",
+                "runtime/repository_state/latest.json",
+                "runtime/planning/latest.json",
+                "runtime/request/execution_request.json",
+            ],
+        }
+        (runtime_dir / "model_resolution.json").write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
     def _result(
         self,
@@ -163,17 +222,21 @@ class LocalExecutionAdapter:
         stderr: str,
         exit_code: int,
         prompt_path: Path,
+        model_resolution: dict,
     ) -> LocalExecutionResult:
         return LocalExecutionResult(
             adapter_mode=adapter_mode,
             approval_required=bool(repository.get("approval_required", False)),
             execution_gate=execution_gate,
-            codex_cli_command='codex exec "$(cat runtime/local_execution/codex_prompt.md)"',
+            codex_cli_command=f"codex exec -m {model_resolution['resolved_model']} \"$(cat runtime/local_execution/codex_prompt.md)\"",
             request_id=request["request_id"],
             request_status=request["request_status"],
             repository_health=repository.get("repository_health", "unknown"),
             validation_status=repository.get("validation_status", "unknown"),
             worktree_state=repository.get("worktree_state", "unknown"),
+            resolved_model=model_resolution["resolved_model"],
+            model_policy=model_resolution["model_policy"],
+            model_resolution_reason=model_resolution["model_resolution_reason"],
             stdout=stdout,
             stderr=stderr,
             exit_code=exit_code,
@@ -183,6 +246,7 @@ class LocalExecutionAdapter:
                 "runtime/repository_state/latest.json",
                 "runtime/planning/latest.json",
                 "runtime/request/execution_request.json",
+                "runtime/local_execution/model_resolution.json",
                 str(prompt_path.relative_to(self.base_path)),
             ],
         )
