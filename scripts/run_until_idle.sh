@@ -29,6 +29,17 @@ do
     python3 scripts/validate_all.py
     python3 -m pytest -q
 
+    echo
+    echo "===== Public Site ====="
+    python3 scripts/build_public_site.py
+
+    if ! git diff --quiet -- public || ! git diff --cached --quiet -- public; then
+        git add public
+        if ! git diff --cached --quiet -- public; then
+            git commit -m "feat: automated github pages publishing pipeline"
+        fi
+    fi
+
     if python3 - <<'PY'
 import json
 from pathlib import Path
