@@ -36,6 +36,7 @@ class LocalSupervisor:
         repository = self._read_json(self.base_path / "runtime" / "repository_state" / "latest.json")
         work_planner = self._read_json(self.base_path / "runtime" / "work_planner" / "latest.json")
         acceptance = self._read_json(self.base_path / "runtime" / "product_acceptance" / "acceptance_0001.json")
+        completed_issue_numbers = self._completed_issue_numbers()
         if not planning:
             raise LocalSupervisorError("Missing planning state")
         if not repository:
@@ -43,6 +44,8 @@ class LocalSupervisor:
         if repository.get("approval_required"):
             raise LocalSupervisorError("Repository state requires approval")
         open_issues = self._load_open_issues()
+        open_issues = [issue for issue in open_issues if issue.get("number") not in completed_issue_numbers]
+        self._write_open_issues(open_issues)
         next_item, selected_issue_number, selected_issue_title, selection_reason = self._select_next_work_item(
             planning,
             repository,
@@ -211,6 +214,25 @@ class LocalSupervisor:
         if candidates:
             return candidates
         return self._fetch_open_issues_from_github()
+
+    def _write_open_issues(self, issues: list[dict]) -> None:
+        runtime_dir = self.base_path / "runtime" / "github"
+        runtime_dir.mkdir(parents=True, exist_ok=True)
+        (runtime_dir / "open_issues.json").write_text(json.dumps(issues, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+    def _completed_issue_numbers(self) -> set[int]:
+        completed_numbers: set[int] = set()
+        completed_dir = self.base_path / "runtime" / "issues" / "completed"
+        if not completed_dir.exists():
+            return completed_numbers
+        for path in completed_dir.glob("issue_*.json"):
+            try:
+                data = json.loads(path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError:
+                continue
+            if isinstance(data.get("issue_number"), int):
+                completed_numbers.add(int(data["issue_number"]))
+        return completed_numbers
 
     def _fetch_open_issues_from_github(self) -> list[dict]:
         url = "https://api.github.com/repos/macyvvv/acip/issues?state=open&per_page=100"

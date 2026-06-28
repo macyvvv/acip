@@ -1,10 +1,5 @@
 [
   {
-    "number": 30,
-    "title": "PRODUCT-0001: Product Launch Checklist",
-    "state": "open"
-  },
-  {
     "number": 31,
     "title": "CONTENT-0001: Content Draft Review",
     "state": "open"

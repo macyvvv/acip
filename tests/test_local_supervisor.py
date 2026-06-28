@@ -142,3 +142,33 @@ def test_local_supervisor_idles_when_no_eligible_issues_exist(tmp_path: Path) ->
     assert result.supervisor_state == "idle"
     assert result.next_eligible_work_item is None
     assert result.selection_reason == "idle_no_eligible_candidate"
+
+
+def test_local_supervisor_skips_completed_issue_marker_and_selects_next_issue(tmp_path: Path) -> None:
+    (tmp_path / "runtime" / "planning").mkdir(parents=True)
+    (tmp_path / "runtime" / "planning" / "latest.json").write_text(json.dumps({"mission":"Build","current_objective":"Publish","current_pack":"PACK-0011","current_ep":"EP-0187","approved_next_action":"draft","parking_lot":[],"refactoring_priorities":[],"blocked_items":[],"approval_required":False}), encoding="utf-8")
+    (tmp_path / "runtime" / "repository_state").mkdir(parents=True)
+    (tmp_path / "runtime" / "repository_state" / "latest.json").write_text(json.dumps({"repository_health":"healthy","approval_required":False,"next_action":"draft"}), encoding="utf-8")
+    (tmp_path / "runtime" / "work_planner").mkdir(parents=True)
+    (tmp_path / "runtime" / "work_planner" / "latest.json").write_text(json.dumps({"candidate_items":[]}), encoding="utf-8")
+    (tmp_path / "runtime" / "github").mkdir(parents=True)
+    (tmp_path / "runtime" / "github" / "open_issues.json").write_text(json.dumps([
+        {"number": 30, "title": "PRODUCT-0001: Product Launch Checklist", "state": "open"},
+        {"number": 31, "title": "CONTENT-0001: Content Draft Review", "state": "open"},
+        {"number": 32, "title": "PRODUCT-0002: Product Launch Follow-up", "state": "open"},
+    ]), encoding="utf-8")
+    (tmp_path / "runtime" / "issues" / "completed").mkdir(parents=True)
+    (tmp_path / "runtime" / "issues" / "completed" / "issue_0030.json").write_text(json.dumps({
+        "issue_number": 30,
+        "issue_title": "PRODUCT-0001: Product Launch Checklist",
+        "commit_sha": "2006a35",
+        "completed_at": "deterministic",
+        "deliverables": []
+    }), encoding="utf-8")
+    (tmp_path / "runtime" / "product_acceptance").mkdir(parents=True)
+    supervisor = LocalSupervisor(tmp_path)
+    result = supervisor.run(execution_flag=False)
+    assert result.selected_issue_number == 32
+    assert result.selected_issue_title == "PRODUCT-0002: Product Launch Follow-up"
+    updated_open_issues = json.loads((tmp_path / "runtime" / "github" / "open_issues.json").read_text(encoding="utf-8"))
+    assert all(issue["number"] != 30 for issue in updated_open_issues)
