@@ -40,9 +40,9 @@ class LocalExecutionAdapter:
         self.base_path = Path(base_path)
 
     def run(self, *, approval_flag: bool = False, dry_run: bool = True) -> LocalExecutionResult:
-        supervisor = self._read_json(self.base_path / "runtime" / "supervisor" / "latest.json")
-        planning = self._read_json(self.base_path / "runtime" / "planning" / "latest.json")
-        repository = self._read_json(self.base_path / "runtime" / "repository_state" / "latest.json")
+        supervisor = self._read_json(self._runtime_path("supervisor", "latest.json"))
+        planning = self._read_json(self._runtime_path("planning", "latest.json"))
+        repository = self._read_json(self._runtime_path("repository_state", "latest.json"))
         request = self._read_request()
 
         if not supervisor:
@@ -151,7 +151,7 @@ class LocalExecutionAdapter:
             "request_status": "ready",
             "request_priority": 0,
             "approval_required": False,
-            "dependency": ["runtime/supervisor/latest.json"],
+            "dependency": ["system/runtime/supervisor/latest.json"],
             "worker_assignment": "Codex",
         }
 
@@ -176,9 +176,9 @@ class LocalExecutionAdapter:
             f"Selected Issue Title: {request.get('issue_title', 'unknown')}",
             "",
             issue_instruction,
-            "Read runtime/planning/latest.json, runtime/repository_state/latest.json, runtime/work_planner/latest.json, and runtime/request/execution_request.json.",
+            "Read system/runtime/planning/latest.json, system/runtime/repository_state/latest.json, system/runtime/work_planner/latest.json, and system/runtime/request/execution_request.json.",
             "Run:",
-            "- python3 scripts/validate_all.py",
+            "- python3 system/scripts/validate_all.py",
             "- python3 -m pytest -q",
             "- git status",
             "",
@@ -396,15 +396,15 @@ class LocalExecutionAdapter:
         return subprocess.run(command, capture_output=True, text=True)
 
     def _write_model_resolution(self, model_resolution: dict) -> None:
-        runtime_dir = self.base_path / "runtime" / "local_execution"
+        runtime_dir = self._runtime_path("local_execution")
         runtime_dir.mkdir(parents=True, exist_ok=True)
         payload = {
             **model_resolution,
             "source_artifacts": [
-                "runtime/supervisor/latest.json",
-                "runtime/repository_state/latest.json",
-                "runtime/planning/latest.json",
-                "runtime/request/execution_request.json",
+                "system/runtime/supervisor/latest.json",
+                "system/runtime/repository_state/latest.json",
+                "system/runtime/planning/latest.json",
+                "system/runtime/request/execution_request.json",
             ],
         }
         (runtime_dir / "model_resolution.json").write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -428,7 +428,7 @@ class LocalExecutionAdapter:
         resolved_model = model_resolution.get("resolved_model")
         codex_cli_command = ""
         if resolved_model:
-            codex_cli_command = f'codex exec -m {resolved_model} "$(cat runtime/local_execution/codex_prompt.md)"'
+            codex_cli_command = f'codex exec -m {resolved_model} "$(cat system/runtime/local_execution/codex_prompt.md)"'
         return LocalExecutionResult(
             adapter_mode=adapter_mode,
             approval_required=bool(repository.get("approval_required", False)),
@@ -447,11 +447,11 @@ class LocalExecutionAdapter:
             exit_code=exit_code,
             captured_at=model_resolution["resolved_at"],
             source_artifacts=[
-                "runtime/supervisor/latest.json",
-                "runtime/repository_state/latest.json",
-                "runtime/planning/latest.json",
-                "runtime/request/execution_request.json",
-                "runtime/local_execution/model_resolution.json",
+                "system/runtime/supervisor/latest.json",
+                "system/runtime/repository_state/latest.json",
+                "system/runtime/planning/latest.json",
+                "system/runtime/request/execution_request.json",
+                "system/runtime/local_execution/model_resolution.json",
                 str(prompt_path.relative_to(self.base_path)),
             ],
             blocked_by_usage_limit=blocked_by_usage_limit,
@@ -459,11 +459,11 @@ class LocalExecutionAdapter:
         )
 
     def _write_runtime(self, result: LocalExecutionResult) -> None:
-        runtime_dir = self.base_path / "runtime" / "local_execution"
-        runtime_dir.mkdir(parents=True, exist_ok=True)
         payload = asdict(result)
-        (runtime_dir / "latest.json").write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-        (runtime_dir / "latest.md").write_text(self._to_markdown(result), encoding="utf-8")
+        for runtime_dir in self._runtime_dirs("local_execution"):
+            runtime_dir.mkdir(parents=True, exist_ok=True)
+            (runtime_dir / "latest.json").write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+            (runtime_dir / "latest.md").write_text(self._to_markdown(result), encoding="utf-8")
 
     def _to_markdown(self, result: LocalExecutionResult) -> str:
         return "\n".join(
@@ -488,7 +488,19 @@ class LocalExecutionAdapter:
         return json.loads(path.read_text(encoding="utf-8"))
 
     def _read_request(self) -> dict | None:
-        path = self.base_path / "runtime" / "request" / "execution_request.json"
-        if not path.exists():
-            return None
-        return json.loads(path.read_text(encoding="utf-8"))
+        for path in self._runtime_paths("request", "execution_request.json"):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8"))
+        return None
+
+    def _runtime_dirs(self, *parts: str) -> list[Path]:
+        return [self.base_path / "system" / "runtime" / Path(*parts), self.base_path / "runtime" / Path(*parts)]
+
+    def _runtime_path(self, *parts: str) -> Path:
+        for path in self._runtime_dirs(*parts):
+            if path.exists():
+                return path
+        return self.base_path / "system" / "runtime" / Path(*parts)
+
+    def _runtime_paths(self, *parts: str) -> list[Path]:
+        return self._runtime_dirs(*parts)

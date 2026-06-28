@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from orchestrator.local_execution_adapter import LocalExecutionAdapter
+from system.orchestrator.local_execution_adapter import LocalExecutionAdapter
 
 
 def test_local_execution_adapter_dry_run(tmp_path: Path) -> None:
@@ -14,7 +14,7 @@ def test_local_execution_adapter_dry_run(tmp_path: Path) -> None:
             "request_status": "ready",
             "request_priority": 100,
             "approval_required": False,
-            "dependency": ["runtime/supervisor/latest.json"],
+            "dependency": ["system/runtime/supervisor/latest.json"],
             "worker_assignment": "Codex",
             "next_action": "Issue #28: ACCEPTANCE-0001: Single Product Vertical Slice",
             "objective": "Constitution v3 Freeze",
@@ -34,7 +34,7 @@ def test_local_execution_adapter_dry_run(tmp_path: Path) -> None:
     assert result.adapter_mode == "dry_run"
     assert result.execution_gate == "closed"
     assert result.request_id == "REQ-ACCEPTANCE-0001"
-    assert result.codex_cli_command == 'codex exec -m gpt-5.4-mini "$(cat runtime/local_execution/codex_prompt.md)"'
+    assert result.codex_cli_command == 'codex exec -m gpt-5.4-mini "$(cat system/runtime/local_execution/codex_prompt.md)"'
     assert (tmp_path / "runtime" / "local_execution" / "codex_prompt.md").exists()
     assert (tmp_path / "runtime" / "local_execution" / "latest.json").exists()
 
@@ -66,7 +66,7 @@ def test_local_execution_model_resolution_default(tmp_path: Path) -> None:
     assert "resolved_at" in model_resolution
     prompt = (tmp_path / "runtime" / "local_execution" / "codex_prompt.md").read_text(encoding="utf-8")
     assert "Implement the selected work item using repository artifacts only." in prompt
-    assert result.codex_cli_command == 'codex exec -m gpt-5.4-mini "$(cat runtime/local_execution/codex_prompt.md)"'
+    assert result.codex_cli_command == 'codex exec -m gpt-5.4-mini "$(cat system/runtime/local_execution/codex_prompt.md)"'
 
 
 def test_local_execution_model_resolution_unsupported_model_never_emitted(tmp_path: Path) -> None:
@@ -129,7 +129,7 @@ def test_local_execution_prompt_uses_selected_issue(tmp_path: Path) -> None:
             "request_status": "ready",
             "request_priority": 100,
             "approval_required": False,
-            "dependency": ["runtime/planning/latest.json"],
+            "dependency": ["system/runtime/planning/latest.json"],
             "worker_assignment": "Codex",
             "next_action": "Issue #30: PRODUCT-0001: Product Launch Checklist",
             "objective": "Product Launch Checklist",
@@ -162,7 +162,7 @@ def test_local_execution_usage_limit_is_recorded_as_blocked(tmp_path: Path) -> N
             "request_id": "REQ-ISSUE-0030",
             "request_status": "ready",
             "approval_required": False,
-            "dependency": ["runtime/planning/latest.json"],
+            "dependency": ["system/runtime/planning/latest.json"],
             "worker_assignment": "Codex",
             "next_action": "Issue #30: PRODUCT-0001: Product Launch Checklist",
             "objective": "Product Launch Checklist",
