@@ -5,6 +5,7 @@ from pathlib import Path
 import json
 import os
 import subprocess
+from datetime import datetime, timezone
 
 
 @dataclass(frozen=True)
@@ -157,37 +158,80 @@ class LocalExecutionAdapter:
         policy = os.environ.get("CODEX_MODEL_POLICY", "cost_optimized")
         override = os.environ.get("CODEX_MODEL_OVERRIDE", "").strip()
         supported = self._supported_models()
+        required_capability = self._required_capability(request, planning, repository)
+        candidate_models = self._rank_models(supported, required_capability, policy)
         if override:
             if override not in supported:
                 raise LocalExecutionError(f"Unsupported model override: {override}")
             return {
                 "model_policy": policy,
                 "resolved_model": override,
-                "model_resolution_reason": "local override",
+                "candidate_models": candidate_models or [override],
+                "selection_reason": "local override",
+                "fallback_used": bool(candidate_models and override != candidate_models[0]),
+                "estimated_cost_tier": self._cost_tier(override),
+                "resolved_at": self._resolved_at(),
             }
-        request_text = " ".join(str(request.get(key, "")) for key in ("request_id", "request_status", "next_action"))
-        if any(keyword in request_text.lower() for keyword in ("architecture", "high-risk", "high risk")):
-            candidate_order = ["gpt-5.4", "gpt-5.4-mini", "gpt-5.2", "gpt-5.2-mini"]
-        elif policy == "balanced":
-            candidate_order = ["gpt-5.4-mini", "gpt-5.4", "gpt-5.2-mini", "gpt-5.2"]
-        elif policy == "high_reasoning":
-            candidate_order = ["gpt-5.4", "gpt-5.4-mini", "gpt-5.2", "gpt-5.2-mini"]
-        else:
-            candidate_order = ["gpt-5.4-mini", "gpt-5.4", "gpt-5.2-mini", "gpt-5.2"]
-        for model in candidate_order:
-            if model in supported:
-                return {
-                    "model_policy": policy,
-                    "resolved_model": model,
-                    "model_resolution_reason": f"policy={policy}",
-                }
-        raise LocalExecutionError("No compatible Codex model could be resolved")
+        if not candidate_models:
+            raise LocalExecutionError(
+                f"Model resolution failed: no compatible models for capability={required_capability} under policy={policy}"
+            )
+        resolved_model = candidate_models[0]
+        return {
+            "model_policy": policy,
+            "resolved_model": resolved_model,
+            "candidate_models": candidate_models,
+            "selection_reason": f"capability={required_capability}; policy={policy}",
+            "fallback_used": False,
+            "estimated_cost_tier": self._cost_tier(resolved_model),
+            "resolved_at": self._resolved_at(),
+        }
 
     def _supported_models(self) -> list[str]:
         configured = os.environ.get("CODEX_SUPPORTED_MODELS", "").strip()
         if configured:
             return [model.strip() for model in configured.split(",") if model.strip()]
         return ["gpt-5.4-mini", "gpt-5.4", "gpt-5.2-mini"]
+
+    def _required_capability(self, request: dict, planning: dict, repository: dict) -> str:
+        request_text = " ".join(str(request.get(key, "")) for key in ("request_id", "request_status", "next_action"))
+        planning_text = " ".join(str(planning.get(key, "")) for key in ("current_objective", "current_pack", "current_ep"))
+        if any(keyword in request_text.lower() or keyword in planning_text.lower() for keyword in ("architecture", "high-risk", "high risk", "approval")):
+            return "high_reasoning"
+        if repository.get("approval_required"):
+            return "reasoning"
+        return "cost_optimized"
+
+    def _rank_models(self, supported: list[str], required_capability: str, policy: str) -> list[str]:
+        cost_order = {
+            "gpt-5.2-mini": 0,
+            "gpt-5.4-mini": 1,
+            "gpt-5.2": 2,
+            "gpt-5.4": 3,
+        }
+        capability_floor = {
+            "cost_optimized": {"gpt-5.2-mini", "gpt-5.4-mini", "gpt-5.2", "gpt-5.4"},
+            "reasoning": {"gpt-5.4-mini", "gpt-5.2", "gpt-5.4"},
+            "high_reasoning": {"gpt-5.4", "gpt-5.2", "gpt-5.4-mini"},
+        }
+        allowed = capability_floor.get(required_capability, set(supported))
+        candidates = [model for model in supported if model in allowed]
+        if policy == "high_reasoning":
+            candidates = [model for model in candidates if model in {"gpt-5.4", "gpt-5.2", "gpt-5.4-mini"}]
+        candidates.sort(key=lambda model: (cost_order.get(model, 99), model))
+        return candidates
+
+    def _cost_tier(self, model: str) -> str:
+        if model == "gpt-5.2-mini":
+            return "lowest"
+        if model == "gpt-5.4-mini":
+            return "low"
+        if model == "gpt-5.2":
+            return "medium"
+        return "high"
+
+    def _resolved_at(self) -> str:
+        return datetime.now(timezone.utc).isoformat()
 
     def _build_command(self, prompt_path: Path, model: str) -> list[str]:
         return ["codex", "exec", "-m", model, prompt_path.read_text(encoding="utf-8")]
@@ -236,11 +280,11 @@ class LocalExecutionAdapter:
             worktree_state=repository.get("worktree_state", "unknown"),
             resolved_model=model_resolution["resolved_model"],
             model_policy=model_resolution["model_policy"],
-            model_resolution_reason=model_resolution["model_resolution_reason"],
+            model_resolution_reason=model_resolution["selection_reason"],
             stdout=stdout,
             stderr=stderr,
             exit_code=exit_code,
-            captured_at="deterministic",
+            captured_at=model_resolution["resolved_at"],
             source_artifacts=[
                 "runtime/supervisor/latest.json",
                 "runtime/repository_state/latest.json",

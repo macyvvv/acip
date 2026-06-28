@@ -1,7 +1,7 @@
 {
-  "adapter_mode": "dry_run",
+  "adapter_mode": "execute",
   "approval_required": false,
-  "execution_gate": "closed",
+  "execution_gate": "open",
   "codex_cli_command": "codex exec -m gpt-5.4-mini \"$(cat runtime/local_execution/codex_prompt.md)\"",
   "request_id": "REQ-ISSUE-0030",
   "request_status": "ready",
@@ -11,9 +11,9 @@
   "resolved_model": "gpt-5.4-mini",
   "model_policy": "cost_optimized",
   "model_resolution_reason": "policy=cost_optimized",
-  "stdout": "dry-run only",
-  "stderr": "",
-  "exit_code": 0,
+  "stdout": "",
+  "stderr": "OpenAI Codex v0.134.0\n--------\nworkdir: /Users/ariel/Documents/tools/AI Native Company\nmodel: gpt-5.4-mini\nprovider: openai\napproval: never\nsandbox: workspace-write [workdir, /tmp, $TMPDIR]\nreasoning effort: low\nreasoning summaries: none\nsession id: 019f0b52-e9eb-7793-8c38-2bff09990b4a\n--------\nuser\n# Codex Execution Prompt\n\nRequest ID: REQ-ISSUE-0030\nRequest Status: ready\nObjective: Constitution v3 Freeze\nSelected Work Item: Issue #30: PRODUCT-0001: Product Launch Checklist\n\nImplement Issue #28 / ACCEPTANCE-0001 using repository artifacts only.\nRead runtime/planning/latest.json, runtime/repository_state/latest.json, runtime/work_planner/latest.json, and runtime/request/execution_request.json.\nRun:\n- python3 scripts/validate_all.py\n- python3 -m pytest -q\n- git status\n\nDo not auto-push.\nDo not modify Repository OS architecture.\n\nERROR: You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at 8:26 AM.\nERROR: You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at 8:26 AM.\n",
+  "exit_code": 1,
   "captured_at": "deterministic",
   "source_artifacts": [
     "runtime/supervisor/latest.json",
