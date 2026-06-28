@@ -1,0 +1,11 @@
+{
+  "spec_id": "SPEC-arch-sample",
+  "title": "Specification placeholder",
+  "architecture_option_id": "ARCH-SAMPLE",
+  "implementation_spec": "placeholder",
+  "file_changeset": [],
+  "validation": [],
+  "rollback": [],
+  "worker_instructions": [],
+  "specs_reference": []
+}

@@ -1,0 +1,16 @@
+{
+  "summary_id": "ARMVP-REVIEW-0001",
+  "decision": "approval_ready_for_dry_run_only",
+  "evidence": [
+    "graph/repository_graph.json",
+    "graph/agent_context_pack.json",
+    "ARMVP-PLAN-0001",
+    "ARMVP-TASK-0001"
+  ],
+  "risks": [
+    "Runtime execution remains unapproved.",
+    "External action boundary must remain enforced.",
+    "Secret use is prohibited."
+  ],
+  "human_decision_required": true
+}

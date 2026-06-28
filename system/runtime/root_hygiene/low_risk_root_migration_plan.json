@@ -1,0 +1,227 @@
+{
+  "status": "defined",
+  "approval_gate": "required before any file move",
+  "low_risk_candidates": [
+    "baseline",
+    "control",
+    "loader",
+    "prompts",
+    "releases",
+    "rules",
+    "templates"
+  ],
+  "final_migration_table": [
+    {
+      "from": "baseline",
+      "to": "archive/baseline/"
+    },
+    {
+      "from": "control",
+      "to": "archive/control/"
+    },
+    {
+      "from": "loader",
+      "to": "archive/loader/"
+    },
+    {
+      "from": "prompts",
+      "to": "archive/prompts/"
+    },
+    {
+      "from": "releases",
+      "to": "archive/releases/"
+    },
+    {
+      "from": "rules",
+      "to": "archive/rules/"
+    },
+    {
+      "from": "templates",
+      "to": "archive/templates/"
+    }
+  ],
+  "reference_update_plan": [
+    {
+      "path": "baseline",
+      "reference_files": [
+        ".github/workflows/repository-os-v1-baseline.yml",
+        ".pytest_cache/v/cache/nodeids",
+        "adr/ADR-0024-repository-os-v1-baseline.md",
+        "baseline/BASELINE_CHANGE_POLICY.md",
+        "basis/077_baseline_policy.md",
+        "basis/078_incremental_graph_policy.md",
+        "basis/079_context_diff_policy.md",
+        "basis/080_execution_queue_automation_policy.md",
+        "basis/081_review_gate_summary_policy.md",
+        "contracts/CODE_QUALITY_CONTRACT.md",
+        "docs/ep/README_EP0116_REPOSITORY_HYGIENE_CODE_QUALITY.md",
+        "docs/packs/README_REPOSITORY_OS_V1_BASELINE_PACK.md",
+        "graph/agent_context_pack.json",
+        "graph/context_diff.json",
+        "graph/repository_graph.json",
+        "graph/repository_graph.md",
+        "graph/repository_graph_delta.json",
+        "orchestrator/context_bundle.json",
+        "releases/RELEASE_v1.0.0-repository-os.md",
+        "review/REVIEW_GATE_SUMMARY.md"
+      ],
+      "reference_count": 117
+    },
+    {
+      "path": "control",
+      "reference_files": [
+        ".pytest_cache/README.md",
+        "basis/046_runtime_readiness_boundary.md",
+        "basis/065_repository_knowledge_graph_policy.md",
+        "control/control_1.md",
+        "control/control_2.md",
+        "control/control_3.md",
+        "control/control_4.md",
+        "control/control_5.md",
+        "docs/packs/README_ASSET_LIFECYCLE_PACK.md",
+        "docs/packs/README_ASSET_QUALITY_ROI_CLOSURE_PACK.md",
+        "docs/packs/README_ASSET_REGISTRY_PACK.md",
+        "docs/packs/README_AUTONOMOUS_WORKFLOW_CONTROL_PACK.md",
+        "graph/repository_graph.json",
+        "graph/repository_graph.md",
+        "graph/repository_graph_delta.json",
+        "knowledge/README.md",
+        "scripts/selftest/check_orphans.py",
+        "scripts/selftest/check_repository_health.py",
+        "scripts/selftest_v2/semantic_checks.py",
+        "scripts/selftest_v2/semantic_common.py"
+      ],
+      "reference_count": 101
+    },
+    {
+      "path": "loader",
+      "reference_files": [
+        ".pytest_cache/v/cache/nodeids",
+        ".system/BOOT.md",
+        "agent_runtime/cycle.py",
+        "agent_runtime/task_cycle.py",
+        "graph/agent_context_pack.json",
+        "graph/repository_graph.json",
+        "graph/repository_graph.md",
+        "graph/repository_graph_delta.json",
+        "orchestrator/agent_executor.py",
+        "orchestrator/autonomous_loop.py",
+        "orchestrator/context_bundle.json",
+        "orchestrator/execution_kernel.py",
+        "orchestrator/repository_governor.py",
+        "scripts/runtime/validate_runtime_foundation.py",
+        "specs/EP-0104/IMPLEMENTATION_SPEC.md",
+        "specs/EP-0104/VALIDATION.md",
+        "specs/EP-0104/WORKER_INSTRUCTIONS.md",
+        "tests/test_context_loader.py",
+        "wbs/WBS-0100-agent-runtime-mvp.md"
+      ],
+      "reference_count": 53
+    },
+    {
+      "path": "prompts",
+      "reference_files": [
+        "graph/repository_graph.json",
+        "graph/repository_graph.md",
+        "graph/repository_graph_delta.json",
+        "knowledge/prompt/README.md",
+        "orchestrator/ADR-0001.md",
+        "orchestrator/constants.py",
+        "selftest.yml",
+        "specs/EP-0102/FILE_CHANGESET.md",
+        "specs/EP-0102/IMPLEMENTATION_SPEC.md",
+        "specs/EP-0102/MANIFEST.md"
+      ],
+      "reference_count": 43
+    },
+    {
+      "path": "releases",
+      "reference_files": [
+        "graph/repository_graph.json",
+        "graph/repository_graph.md",
+        "graph/repository_graph_delta.json",
+        "scripts/baseline/validate_baseline.py"
+      ],
+      "reference_count": 6
+    },
+    {
+      "path": "rules",
+      "reference_files": [
+        ".system/GLOSSARY.md",
+        "adr/ADR-0023-task-routing.md",
+        "graph/repository_graph.json",
+        "graph/repository_graph.md",
+        "knowledge/market/README.md",
+        "knowledge/policy/README.md",
+        "selftest.yml",
+        "specs/EP-0102/FILE_CHANGESET.md",
+        "specs/EP-0102/IMPLEMENTATION_SPEC.md",
+        "specs/EP-0102/MANIFEST.md",
+        "specs/EP-0103/ACCEPTANCE.md",
+        "specs/EP-0103/IMPLEMENTATION_SPEC.md",
+        "specs/EP-0121/IMPLEMENTATION_SPEC.md",
+        "specs/EP-0121/README.md"
+      ],
+      "reference_count": 29
+    },
+    {
+      "path": "templates",
+      "reference_files": [
+        "adr/ADR-0018-repository-semantic-selftest-v2.md",
+        "docs/CHANGELOG.md",
+        "docs/SEMANTIC_SELFTEST_V2_CHECKLIST.md",
+        "docs/current/ROADMAP.md",
+        "docs/packs/README_CANONICAL_ASSET_PACK.md",
+        "docs/packs/README_SEMANTIC_SELFTEST_V2_PACK.md",
+        "graph/repository_graph.json",
+        "graph/repository_graph.md",
+        "graph/repository_graph_delta.json",
+        "prompts/codex/CODEX_PHASE0_GITHUB_PROMPT.md",
+        "scripts/selftest/README_SELFTEST_REMEDIATION.md",
+        "scripts/validate_ep_0135.py",
+        "selftest.yml",
+        "specs/EP-0102/FILE_CHANGESET.md",
+        "specs/EP-0102/IMPLEMENTATION_SPEC.md",
+        "specs/EP-0102/MANIFEST.md",
+        "specs/EP-0104/FILE_CHANGESET.md",
+        "specs/EP-0104/MANIFEST.md",
+        "specs/EP-0104/ep_contract.yaml",
+        "specs/EP-0135/FILE_CHANGESET.md"
+      ],
+      "reference_count": 53
+    }
+  ],
+  "rollback_table": {
+    "archive/baseline/": "baseline",
+    "archive/control/": "control",
+    "archive/loader/": "loader",
+    "archive/prompts/": "prompts",
+    "archive/releases/": "releases",
+    "archive/rules/": "rules",
+    "archive/templates/": "templates"
+  },
+  "execution_order": [
+    "baseline",
+    "control",
+    "loader",
+    "prompts",
+    "releases",
+    "rules",
+    "templates"
+  ],
+  "untouched_medium_risk_candidates": [
+    "agent_runtime",
+    "catalog",
+    "runbooks",
+    "solution",
+    "wbs"
+  ],
+  "untouched_high_risk_candidates": [
+    "context",
+    "graph",
+    "knowledge",
+    "registry",
+    "review"
+  ],
+  "actual_migration_executed": false
+}

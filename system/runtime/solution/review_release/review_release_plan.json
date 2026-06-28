@@ -1,0 +1,9 @@
+{
+  "plan_id": "REVIEW-plan-sample",
+  "implementation_plan_id": "PLAN-SAMPLE",
+  "review_checklist": [],
+  "validation_plan": [],
+  "release_readiness": "ready",
+  "rollback_requirement": [],
+  "journal_entry": []
+}

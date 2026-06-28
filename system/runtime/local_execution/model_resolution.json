@@ -1,0 +1,31 @@
+{
+  "auth_mode": "chatgpt",
+  "model_policy": "cost_optimized",
+  "candidate_models": [
+    "gpt-5.2-mini",
+    "gpt-5.4-mini",
+    "gpt-5.4"
+  ],
+  "rejected_models": [
+    {
+      "model": "gpt-5.2-mini",
+      "reason": "unsupported_for_auth_mode:chatgpt"
+    }
+  ],
+  "supported_models": [
+    "gpt-5.4-mini",
+    "gpt-5.4"
+  ],
+  "resolved_model": "gpt-5.4-mini",
+  "fallback_used": true,
+  "estimated_cost_tier": "low",
+  "selection_reason": "capability=cost_optimized; policy=cost_optimized",
+  "resolved_at": "2026-06-28T02:31:53.501872+00:00",
+  "failure_reason": null,
+  "source_artifacts": [
+    "runtime/supervisor/latest.json",
+    "runtime/repository_state/latest.json",
+    "runtime/planning/latest.json",
+    "runtime/request/execution_request.json"
+  ]
+}
