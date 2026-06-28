@@ -18,10 +18,10 @@ sys.path.insert(0, str(ROOT))
 def main() -> int:
     required_paths = [
         ROOT / "queue" / "READY" / "EP-0146-queue-state-automation.md",
-        ROOT / "orchestrator" / "queue_automation.py",
+        ROOT / "system" / "orchestrator" / "queue_automation.py",
         ROOT / "docs" / "current" / "QUEUE_STATE_AUTOMATION.md",
-        ROOT / "runtime" / "queue" / "queue_state.json",
-        ROOT / "tests" / "test_queue_automation.py",
+        ROOT / "system" / "runtime" / "queue" / "queue_state.json",
+        ROOT / "system" / "tests" / "test_queue_automation.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

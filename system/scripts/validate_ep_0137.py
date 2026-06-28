@@ -18,12 +18,12 @@ sys.path.insert(0, str(ROOT))
 def main() -> int:
     required_paths = [
         ROOT / "solution" / "requirements" / "schema" / "requirement.schema.json",
-        ROOT / "orchestrator" / "requirement_intake.py",
+        ROOT / "system" / "orchestrator" / "requirement_intake.py",
         ROOT / "docs" / "current" / "REQUIREMENT_INTAKE.md",
-        ROOT / "runtime" / "solution" / "requirements",
+        ROOT / "system" / "runtime" / "solution" / "requirements",
         ROOT / "specs" / "EP-0137",
-        ROOT / "scripts" / "validate_ep_0137.py",
-        ROOT / "tests" / "test_requirement_intake.py",
+        ROOT / "system" / "scripts" / "validate_ep_0137.py",
+        ROOT / "system" / "tests" / "test_requirement_intake.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

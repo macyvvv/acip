@@ -18,12 +18,12 @@ sys.path.insert(0, str(ROOT))
 
 def main() -> int:
     required_paths = [
-        ROOT / "orchestrator" / "autonomous_planning_cycle.py",
+        ROOT / "system" / "orchestrator" / "autonomous_planning_cycle.py",
         ROOT / "docs" / "current" / "AUTONOMOUS_PLANNING_CYCLE.md",
-        ROOT / "runtime" / "planning" / "autonomous_plan.json",
+        ROOT / "system" / "runtime" / "planning" / "autonomous_plan.json",
         ROOT / "specs" / "EP-0127",
-        ROOT / "scripts" / "validate_ep_0127.py",
-        ROOT / "tests" / "test_autonomous_planning_cycle.py",
+        ROOT / "system" / "scripts" / "validate_ep_0127.py",
+        ROOT / "system" / "tests" / "test_autonomous_planning_cycle.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

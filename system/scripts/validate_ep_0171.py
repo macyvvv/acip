@@ -18,10 +18,10 @@ sys.path.insert(0, str(ROOT))
 def main() -> int:
     required_paths = [
         ROOT / "queue" / "READY" / "EP-0171-approval-hold-workflow.md",
-        ROOT / "orchestrator" / "approval_hold_workflow.py",
+        ROOT / "system" / "orchestrator" / "approval_hold_workflow.py",
         ROOT / "docs" / "current" / "APPROVAL_HOLD_WORKFLOW.md",
         ROOT / "specs" / "EP-0171",
-        ROOT / "tests" / "test_approval_hold_workflow.py",
+        ROOT / "system" / "tests" / "test_approval_hold_workflow.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

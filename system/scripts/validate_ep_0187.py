@@ -12,7 +12,7 @@ def _resolve_repo_root() -> Path:
 ROOT = _resolve_repo_root()
 sys.path.insert(0,str(ROOT))
 def main()->int:
- required=[ROOT/"queue"/"READY"/"EP-0187-local-supervisor-contract.md",ROOT/"orchestrator"/"local_supervisor.py",ROOT/"docs"/"current"/"LOCAL_SUPERVISOR_CONTRACT.md",ROOT/"specs"/"EP-0187",ROOT/"tests"/"test_local_supervisor.py"]
+ required=[ROOT/"queue"/"READY"/"EP-0187-local-supervisor-contract.md",ROOT/"system"/"orchestrator"/"local_supervisor.py",ROOT/"docs"/"current"/"LOCAL_SUPERVISOR_CONTRACT.md",ROOT/"specs"/"EP-0187",ROOT/"system"/"tests"/"test_local_supervisor.py"]
  missing=[str(p.relative_to(ROOT)) for p in required if not p.exists()]
  if missing:
   print("FAIL: missing EP-0187 files:", ", ".join(missing)); return 1

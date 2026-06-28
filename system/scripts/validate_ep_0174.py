@@ -18,10 +18,10 @@ sys.path.insert(0, str(ROOT))
 def main() -> int:
     required_paths = [
         ROOT / "queue" / "READY" / "EP-0174-target-layout-contract.md",
-        ROOT / "orchestrator" / "target_layout_contract.py",
+        ROOT / "system" / "orchestrator" / "target_layout_contract.py",
         ROOT / "docs" / "current" / "TARGET_LAYOUT_CONTRACT.md",
         ROOT / "specs" / "EP-0174",
-        ROOT / "tests" / "test_target_layout_contract.py",
+        ROOT / "system" / "tests" / "test_target_layout_contract.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

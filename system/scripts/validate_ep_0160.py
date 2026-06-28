@@ -17,10 +17,10 @@ sys.path.insert(0, str(ROOT))
 
 def main() -> int:
     required_paths = [
-        ROOT / "orchestrator" / "handshake_validation.py",
+        ROOT / "system" / "orchestrator" / "handshake_validation.py",
         ROOT / "docs" / "current" / "HANDSHAKE_VALIDATION.md",
         ROOT / "specs" / "EP-0160",
-        ROOT / "tests" / "test_handshake_validation.py",
+        ROOT / "system" / "tests" / "test_handshake_validation.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

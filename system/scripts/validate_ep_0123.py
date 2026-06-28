@@ -18,12 +18,12 @@ sys.path.insert(0, str(ROOT))
 
 def main() -> int:
     required_paths = [
-        ROOT / "orchestrator" / "generated_artifact_manager.py",
+        ROOT / "system" / "orchestrator" / "generated_artifact_manager.py",
         ROOT / "docs" / "current" / "GENERATED_ARTIFACTS.md",
-        ROOT / "runtime" / "generated_artifacts",
+        ROOT / "system" / "runtime" / "generated_artifacts",
         ROOT / "specs" / "EP-0123",
-        ROOT / "scripts" / "validate_ep_0123.py",
-        ROOT / "tests" / "test_generated_artifact_manager.py",
+        ROOT / "system" / "scripts" / "validate_ep_0123.py",
+        ROOT / "system" / "tests" / "test_generated_artifact_manager.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

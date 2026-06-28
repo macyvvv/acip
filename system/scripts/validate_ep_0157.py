@@ -17,12 +17,12 @@ sys.path.insert(0, str(ROOT))
 
 def main() -> int:
     required_paths = [
-        ROOT / "orchestrator" / "repository_completion_marker.py",
+        ROOT / "system" / "orchestrator" / "repository_completion_marker.py",
         ROOT / "docs" / "current" / "REPOSITORY_COMPLETION_MARKER.md",
-        ROOT / "runtime" / "handoff" / "latest.json",
-        ROOT / "runtime" / "handoff" / "completion",
+        ROOT / "system" / "runtime" / "handoff" / "latest.json",
+        ROOT / "system" / "runtime" / "handoff" / "completion",
         ROOT / "specs" / "EP-0157",
-        ROOT / "tests" / "test_repository_completion_marker.py",
+        ROOT / "system" / "tests" / "test_repository_completion_marker.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

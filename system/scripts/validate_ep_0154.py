@@ -18,8 +18,8 @@ sys.path.insert(0, str(ROOT))
 def main() -> int:
     required_paths = [
         ROOT / "docs" / "current" / "WORKTREE_CLEANLINESS_GATE.md",
-        ROOT / "orchestrator" / "worktree_cleanliness_gate.py",
-        ROOT / "tests" / "test_worktree_cleanliness_gate.py",
+        ROOT / "system" / "orchestrator" / "worktree_cleanliness_gate.py",
+        ROOT / "system" / "tests" / "test_worktree_cleanliness_gate.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

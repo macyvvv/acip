@@ -21,11 +21,11 @@ def main() -> int:
         ROOT / "packs" / "schema" / "pack.schema.json",
         ROOT / "packs" / "templates" / "pack.template.yaml",
         ROOT / "packs" / "registry.yaml",
-        ROOT / "orchestrator" / "pack_manager.py",
+        ROOT / "system" / "orchestrator" / "pack_manager.py",
         ROOT / "docs" / "current" / "PACK_MANAGEMENT.md",
         ROOT / "specs" / "EP-0135",
-        ROOT / "scripts" / "validate_ep_0135.py",
-        ROOT / "tests" / "test_pack_manager.py",
+        ROOT / "system" / "scripts" / "validate_ep_0135.py",
+        ROOT / "system" / "tests" / "test_pack_manager.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

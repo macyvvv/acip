@@ -18,14 +18,14 @@ sys.path.insert(0, str(ROOT))
 
 def main() -> int:
     required_paths = [
-        ROOT / "orchestrator" / "repository_governor.py",
+        ROOT / "system" / "orchestrator" / "repository_governor.py",
         ROOT / "docs" / "current" / "REPOSITORY_GOVERNOR.md",
         ROOT / "docs" / "current" / "GOVERNOR_STATE.md",
-        ROOT / "runtime" / "governor" / "governor_recommendations.json",
-        ROOT / "runtime" / "governor" / "GOVERNOR_RECOMMENDATIONS.md",
+        ROOT / "system" / "runtime" / "governor" / "governor_recommendations.json",
+        ROOT / "system" / "runtime" / "governor" / "GOVERNOR_RECOMMENDATIONS.md",
         ROOT / "specs" / "EP-0122",
-        ROOT / "scripts" / "validate_ep_0122.py",
-        ROOT / "tests" / "test_repository_governor.py",
+        ROOT / "system" / "scripts" / "validate_ep_0122.py",
+        ROOT / "system" / "tests" / "test_repository_governor.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

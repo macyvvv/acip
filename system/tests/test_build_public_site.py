@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from scripts.build_public_site import build_public_site
+from system.scripts.build_public_site import build_public_site
 
 
 def test_completed_issue_generates_public_site(tmp_path: Path) -> None:

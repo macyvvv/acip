@@ -1,4 +1,4 @@
-from scripts.hygiene.validate_refactoring_governance import validate_refactoring_governance
+from system.scripts.hygiene.validate_refactoring_governance import validate_refactoring_governance
 
 
 def test_refactoring_governance_contract() -> None:

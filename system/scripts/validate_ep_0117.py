@@ -21,18 +21,18 @@ def main() -> int:
         ROOT / "contracts" / "REFACTORING_GOVERNANCE_CONTRACT.md",
         ROOT / "docs" / "current" / "REFACTORING_GOVERNANCE_GATE.md",
         ROOT / "docs" / "current" / "REFACTORING_DECISION_RECORD.md",
-        ROOT / "scripts" / "hygiene" / "validate_refactoring_governance.py",
+        ROOT / "system" / "scripts" / "hygiene" / "validate_refactoring_governance.py",
         ROOT / "docs" / "ep" / "README_EP0117_REFACTORING_GOVERNANCE.md",
         ROOT / "specs" / "EP-0117",
         ROOT / ".github" / "workflows" / "ep0117-refactoring-governance.yml",
-        ROOT / "tests" / "test_refactoring_governance.py",
+        ROOT / "system" / "tests" / "test_refactoring_governance.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:
         print("FAIL: missing refactoring governance files:", ", ".join(missing))
         return 1
 
-    from scripts.hygiene.validate_refactoring_governance import validate_refactoring_governance
+    from system.scripts.hygiene.validate_refactoring_governance import validate_refactoring_governance
 
     validate_refactoring_governance()
     print("EP-0117 Validation passed.")

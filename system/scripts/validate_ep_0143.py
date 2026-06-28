@@ -21,9 +21,9 @@ def main() -> int:
         ROOT / "docs" / "current" / "REPOSITORY_OS_V1_CAPABILITY_MAP.md",
         ROOT / "docs" / "current" / "REPOSITORY_OS_V1_RISK_REGISTER.md",
         ROOT / "docs" / "current" / "REPOSITORY_OS_V1_NEXT_PHASE_CRITERIA.md",
-        ROOT / "runtime" / "reviews" / "repository_os_v1_completion_review.json",
-        ROOT / "scripts" / "validate_ep_0143.py",
-        ROOT / "tests" / "test_repository_os_v1_completion_review.py",
+        ROOT / "system" / "runtime" / "reviews" / "repository_os_v1_completion_review.json",
+        ROOT / "system" / "scripts" / "validate_ep_0143.py",
+        ROOT / "system" / "tests" / "test_repository_os_v1_completion_review.py",
         ROOT / "specs" / "EP-0143",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]

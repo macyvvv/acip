@@ -20,10 +20,10 @@ def main() -> int:
     required_paths = [
         ROOT / "docs" / "current" / "WORKER_OUTPUT_CONTRACT.md",
         ROOT / "docs" / "current" / "WORKER_OUTPUT_SEMANTICS.md",
-        ROOT / "orchestrator" / "output_semantics.py",
+        ROOT / "system" / "orchestrator" / "output_semantics.py",
         ROOT / "specs" / "EP-0120",
-        ROOT / "scripts" / "validate_ep_0120.py",
-        ROOT / "tests" / "test_output_semantics.py",
+        ROOT / "system" / "scripts" / "validate_ep_0120.py",
+        ROOT / "system" / "tests" / "test_output_semantics.py",
         ROOT / "docs" / "ep" / "README_EP0120_WORKER_OUTPUT_SEMANTICS.md",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]

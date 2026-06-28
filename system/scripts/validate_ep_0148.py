@@ -18,10 +18,10 @@ sys.path.insert(0, str(ROOT))
 def main() -> int:
     required_paths = [
         ROOT / "queue" / "READY" / "EP-0148-next-work-resolver.md",
-        ROOT / "orchestrator" / "next_work_resolver.py",
+        ROOT / "system" / "orchestrator" / "next_work_resolver.py",
         ROOT / "docs" / "current" / "NEXT_WORK_RESOLVER.md",
-        ROOT / "runtime" / "queue" / "next_work.json",
-        ROOT / "tests" / "test_next_work_resolver.py",
+        ROOT / "system" / "runtime" / "queue" / "next_work.json",
+        ROOT / "system" / "tests" / "test_next_work_resolver.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

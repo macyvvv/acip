@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from scripts.hygiene.validate_repository_layout import ROOT_ALLOWLIST, validate_repository_layout
+from system.scripts.hygiene.validate_repository_layout import ROOT_ALLOWLIST, validate_repository_layout
 
 
 def test_repository_layout_allowlist_contains_expected_entries() -> None:

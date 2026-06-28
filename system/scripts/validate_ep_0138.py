@@ -17,12 +17,12 @@ sys.path.insert(0, str(ROOT))
 
 def main() -> int:
     required_paths = [
-        ROOT / "orchestrator" / "architecture_planner.py",
+        ROOT / "system" / "orchestrator" / "architecture_planner.py",
         ROOT / "docs" / "current" / "ARCHITECTURE_PLANNER.md",
-        ROOT / "runtime" / "solution" / "architecture" / "architecture_options.json",
+        ROOT / "system" / "runtime" / "solution" / "architecture" / "architecture_options.json",
         ROOT / "specs" / "EP-0138",
-        ROOT / "scripts" / "validate_ep_0138.py",
-        ROOT / "tests" / "test_architecture_planner.py",
+        ROOT / "system" / "scripts" / "validate_ep_0138.py",
+        ROOT / "system" / "tests" / "test_architecture_planner.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

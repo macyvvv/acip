@@ -21,8 +21,8 @@ def main() -> int:
         ROOT / "docs" / "current" / "ROOT_HYGIENE_MIGRATION_PLAN.md",
         ROOT / "docs" / "ep" / "README_EP0118_ROOT_HYGIENE_MIGRATION_1.md",
         ROOT / "specs" / "EP-0118",
-        ROOT / "scripts" / "validate_ep_0118.py",
-        ROOT / "tests" / "test_root_hygiene_migration.py",
+        ROOT / "system" / "scripts" / "validate_ep_0118.py",
+        ROOT / "system" / "tests" / "test_root_hygiene_migration.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

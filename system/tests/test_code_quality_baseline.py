@@ -1,4 +1,4 @@
-from scripts.hygiene.audit_code_quality import audit_code_quality
+from system.scripts.hygiene.audit_code_quality import audit_code_quality
 
 
 def test_code_quality_audit_runs() -> None:

@@ -12,7 +12,7 @@ def _resolve_repo_root() -> Path:
 ROOT = _resolve_repo_root()
 sys.path.insert(0,str(ROOT))
 def main()->int:
- required=[ROOT/"queue"/"READY"/"EP-0189-codex-intake-adapter.md",ROOT/"orchestrator"/"local_supervisor.py",ROOT/"docs"/"current"/"CODEX_INTAKE_ADAPTER.md",ROOT/"specs"/"EP-0189",ROOT/"tests"/"test_local_supervisor.py"]
+ required=[ROOT/"queue"/"READY"/"EP-0189-codex-intake-adapter.md",ROOT/"system"/"orchestrator"/"local_supervisor.py",ROOT/"docs"/"current"/"CODEX_INTAKE_ADAPTER.md",ROOT/"specs"/"EP-0189",ROOT/"system"/"tests"/"test_local_supervisor.py"]
  missing=[str(p.relative_to(ROOT)) for p in required if not p.exists()]
  if missing:
   print("FAIL: missing EP-0189 files:", ", ".join(missing)); return 1

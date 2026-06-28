@@ -18,8 +18,8 @@ sys.path.insert(0, str(ROOT))
 def main() -> int:
     required_paths = [
         ROOT / "docs" / "current" / "VALIDATION_READ_ONLY_MODE.md",
-        ROOT / "scripts" / "validate_all.py",
-        ROOT / "tests" / "test_validate_all_read_only.py",
+        ROOT / "system" / "scripts" / "validate_all.py",
+        ROOT / "system" / "tests" / "test_validate_all_read_only.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

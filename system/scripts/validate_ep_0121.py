@@ -22,17 +22,17 @@ def main() -> int:
         ROOT / "docs" / "current" / "CANONICAL_REPOSITORY_LAYOUT.md",
         ROOT / "docs" / "current" / "ROOT_ALLOWLIST.md",
         ROOT / "docs" / "current" / "LAYOUT_MIGRATION_RULES.md",
-        ROOT / "scripts" / "hygiene" / "validate_repository_layout.py",
+        ROOT / "system" / "scripts" / "hygiene" / "validate_repository_layout.py",
         ROOT / "docs" / "ep" / "README_EP0121_REPOSITORY_LAYOUT_CANONICALIZATION.md",
         ROOT / "specs" / "EP-0121",
-        ROOT / "tests" / "test_repository_layout.py",
+        ROOT / "system" / "tests" / "test_repository_layout.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:
         print("FAIL: missing EP-0121 files:", ", ".join(missing))
         return 1
 
-    from scripts.hygiene.validate_repository_layout import validate_repository_layout
+    from system.scripts.hygiene.validate_repository_layout import validate_repository_layout
 
     violations = validate_repository_layout(report_only=True)
     if violations:

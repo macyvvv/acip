@@ -23,13 +23,13 @@ def main() -> int:
         ROOT / "docs" / "current" / "REFACTORING_QUEUE.md",
         ROOT / "contracts" / "ROOT_HYGIENE_CONTRACT.md",
         ROOT / "contracts" / "CODE_QUALITY_CONTRACT.md",
-        ROOT / "scripts" / "hygiene" / "audit_repository_root.py",
-        ROOT / "scripts" / "hygiene" / "audit_code_quality.py",
+        ROOT / "system" / "scripts" / "hygiene" / "audit_repository_root.py",
+        ROOT / "system" / "scripts" / "hygiene" / "audit_code_quality.py",
         ROOT / "docs" / "ep" / "README_EP0116_REPOSITORY_HYGIENE_CODE_QUALITY.md",
         ROOT / "specs" / "EP-0116",
         ROOT / ".github" / "workflows" / "ep0116-repository-hygiene-code-quality.yml",
-        ROOT / "tests" / "test_repository_hygiene.py",
-        ROOT / "tests" / "test_code_quality_baseline.py",
+        ROOT / "system" / "tests" / "test_repository_hygiene.py",
+        ROOT / "system" / "tests" / "test_code_quality_baseline.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

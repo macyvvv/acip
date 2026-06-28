@@ -18,10 +18,10 @@ sys.path.insert(0, str(ROOT))
 def main() -> int:
     required_paths = [
         ROOT / "queue" / "READY" / "EP-0169-event-runtime-cli-entrance.md",
-        ROOT / "orchestrator" / "event_runtime_cli.py",
+        ROOT / "system" / "orchestrator" / "event_runtime_cli.py",
         ROOT / "docs" / "current" / "EVENT_RUNTIME_CLI_ENTRANCE.md",
         ROOT / "specs" / "EP-0169",
-        ROOT / "tests" / "test_event_runtime_cli.py",
+        ROOT / "system" / "tests" / "test_event_runtime_cli.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

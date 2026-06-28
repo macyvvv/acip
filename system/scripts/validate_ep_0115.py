@@ -18,12 +18,12 @@ sys.path.insert(0, str(ROOT))
 
 def main() -> int:
     required_paths = [
-        ROOT / "orchestrator" / "task_decomposer.py",
+        ROOT / "system" / "orchestrator" / "task_decomposer.py",
         ROOT / "docs" / "current" / "TASK_DECOMPOSITION.md",
         ROOT / "docs" / "ep" / "README_EP0115_TASK_DECOMPOSER.md",
         ROOT / "specs" / "EP-0115",
         ROOT / ".github" / "workflows" / "ep0115-task-decomposer.yml",
-        ROOT / "tests" / "test_task_decomposer.py",
+        ROOT / "system" / "tests" / "test_task_decomposer.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

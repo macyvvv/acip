@@ -18,10 +18,10 @@ sys.path.insert(0, str(ROOT))
 def main() -> int:
     required_paths = [
         ROOT / "queue" / "READY" / "EP-0150-human-removal-validation.md",
-        ROOT / "orchestrator" / "human_removal_validation.py",
+        ROOT / "system" / "orchestrator" / "human_removal_validation.py",
         ROOT / "docs" / "current" / "HUMAN_REMOVAL_VALIDATION.md",
-        ROOT / "runtime" / "validation" / "human_removal_validation.json",
-        ROOT / "tests" / "test_human_removal_validation.py",
+        ROOT / "system" / "runtime" / "validation" / "human_removal_validation.json",
+        ROOT / "system" / "tests" / "test_human_removal_validation.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

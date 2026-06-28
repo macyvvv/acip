@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from product.repository_operational_summary.src.repository_operational_summary import load_summary, render_summary
+from app.products.repository_operational_summary.src.repository_operational_summary import load_summary, render_summary
 
 
 def test_render_summary(tmp_path: Path) -> None:

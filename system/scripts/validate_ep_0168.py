@@ -18,10 +18,10 @@ sys.path.insert(0, str(ROOT))
 def main() -> int:
     required_paths = [
         ROOT / "queue" / "READY" / "EP-0168-workflow-dispatch-runtime.md",
-        ROOT / "orchestrator" / "workflow_dispatch_runtime.py",
+        ROOT / "system" / "orchestrator" / "workflow_dispatch_runtime.py",
         ROOT / "docs" / "current" / "WORKFLOW_DISPATCH_RUNTIME.md",
         ROOT / "specs" / "EP-0168",
-        ROOT / "tests" / "test_workflow_dispatch_runtime.py",
+        ROOT / "system" / "tests" / "test_workflow_dispatch_runtime.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

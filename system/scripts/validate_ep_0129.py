@@ -20,12 +20,12 @@ def main() -> int:
     required_paths = [
         ROOT / "docs" / "current" / "GOVERNOR_STATE.md",
         ROOT / "docs" / "current" / "GOVERNOR_RECOMMENDATION_SSOT.md",
-        ROOT / "runtime" / "governor" / "governor_recommendations.json",
-        ROOT / "runtime" / "governor" / "GOVERNOR_RECOMMENDATIONS.md",
-        ROOT / "orchestrator" / "repository_governor.py",
+        ROOT / "system" / "runtime" / "governor" / "governor_recommendations.json",
+        ROOT / "system" / "runtime" / "governor" / "GOVERNOR_RECOMMENDATIONS.md",
+        ROOT / "system" / "orchestrator" / "repository_governor.py",
         ROOT / "specs" / "EP-0129",
-        ROOT / "scripts" / "validate_ep_0129.py",
-        ROOT / "tests" / "test_repository_governor.py",
+        ROOT / "system" / "scripts" / "validate_ep_0129.py",
+        ROOT / "system" / "tests" / "test_repository_governor.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

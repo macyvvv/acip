@@ -18,10 +18,10 @@ sys.path.insert(0, str(ROOT))
 def main() -> int:
     required_paths = [
         ROOT / "queue" / "READY" / "EP-0149-autonomous-queue-runtime.md",
-        ROOT / "orchestrator" / "autonomous_queue_runtime.py",
+        ROOT / "system" / "orchestrator" / "autonomous_queue_runtime.py",
         ROOT / "docs" / "current" / "AUTONOMOUS_QUEUE_RUNTIME.md",
-        ROOT / "runtime" / "queue" / "autonomous_queue_runtime.json",
-        ROOT / "tests" / "test_autonomous_queue_runtime.py",
+        ROOT / "system" / "runtime" / "queue" / "autonomous_queue_runtime.json",
+        ROOT / "system" / "tests" / "test_autonomous_queue_runtime.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

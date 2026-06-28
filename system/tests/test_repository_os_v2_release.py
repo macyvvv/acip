@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from scripts.validate_repository_os_v2_release import main as validate_release
+from system.scripts.validate_repository_os_v2_release import main as validate_release
 
 
 def test_repository_os_v2_release_projection(tmp_path: Path) -> None:

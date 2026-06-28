@@ -1,4 +1,4 @@
-from scripts.hygiene.audit_repository_root import audit_repository_root
+from system.scripts.hygiene.audit_repository_root import audit_repository_root
 
 
 def test_root_hygiene_reports_allowlist() -> None:

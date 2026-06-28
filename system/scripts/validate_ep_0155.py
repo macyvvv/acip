@@ -18,9 +18,9 @@ sys.path.insert(0, str(ROOT))
 def main() -> int:
     required_paths = [
         ROOT / "docs" / "current" / "GENERATED_ARTIFACT_REFRESH_COMMAND.md",
-        ROOT / "orchestrator" / "generated_artifact_refresh.py",
-        ROOT / "scripts" / "refresh_generated_artifacts.py",
-        ROOT / "tests" / "test_generated_artifact_refresh.py",
+        ROOT / "system" / "orchestrator" / "generated_artifact_refresh.py",
+        ROOT / "system" / "scripts" / "refresh_generated_artifacts.py",
+        ROOT / "system" / "tests" / "test_generated_artifact_refresh.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

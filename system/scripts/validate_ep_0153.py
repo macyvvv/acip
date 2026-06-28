@@ -18,8 +18,8 @@ sys.path.insert(0, str(ROOT))
 def main() -> int:
     required_paths = [
         ROOT / "docs" / "current" / "RUNTIME_ARTIFACT_WRITE_POLICY.md",
-        ROOT / "orchestrator" / "runtime_artifact_policy.py",
-        ROOT / "tests" / "test_runtime_artifact_policy.py",
+        ROOT / "system" / "orchestrator" / "runtime_artifact_policy.py",
+        ROOT / "system" / "tests" / "test_runtime_artifact_policy.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

@@ -20,7 +20,7 @@ def main() -> int:
         ROOT / "queue" / "READY" / "EP-0144-agent-handoff-automation-pack.md",
         ROOT / "docs" / "current" / "AGENT_HANDOFF_AUTOMATION_PACK.md",
         ROOT / "specs" / "EP-0144",
-        ROOT / "scripts" / "validate_ep_0144.py",
+        ROOT / "system" / "scripts" / "validate_ep_0144.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

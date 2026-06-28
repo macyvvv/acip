@@ -18,11 +18,11 @@ sys.path.insert(0, str(ROOT))
 def main() -> int:
     required_paths = [
         ROOT / "queue" / "READY" / "EP-0145-handoff-payload-normalizer.md",
-        ROOT / "orchestrator" / "codex_intake.py",
-        ROOT / "scripts" / "handoff" / "read_next_handoff.py",
-        ROOT / "runtime" / "intake" / "handoff.json",
+        ROOT / "system" / "orchestrator" / "codex_intake.py",
+        ROOT / "system" / "scripts" / "handoff" / "read_next_handoff.py",
+        ROOT / "system" / "runtime" / "intake" / "handoff.json",
         ROOT / "docs" / "current" / "EXECUTION_INTAKE.md",
-        ROOT / "tests" / "test_codex_intake.py",
+        ROOT / "system" / "tests" / "test_codex_intake.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

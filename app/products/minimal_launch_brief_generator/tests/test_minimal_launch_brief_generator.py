@@ -1,4 +1,4 @@
-from product.minimal_launch_brief_generator.src import build_launch_brief
+from app.products.minimal_launch_brief_generator.src import build_launch_brief
 
 
 def test_build_launch_brief() -> None:

@@ -18,7 +18,7 @@ sys.path.insert(0, str(ROOT))
 
 def main() -> int:
     required_paths = [
-        ROOT / "orchestrator" / "capability_router.py",
+        ROOT / "system" / "orchestrator" / "capability_router.py",
         ROOT / "workers" / "capability_matcher.py",
         ROOT / "docs" / "current" / "CAPABILITY_ROUTING.md",
         ROOT / "docs" / "current" / "WORKER_ASSIGNMENT.md",

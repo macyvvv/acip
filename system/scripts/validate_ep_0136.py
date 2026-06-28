@@ -21,8 +21,8 @@ def main() -> int:
         ROOT / "packs" / "PACK-0001-solution-development" / "README.md",
         ROOT / "docs" / "current" / "SOLUTION_DEVELOPMENT_PACK.md",
         ROOT / "specs" / "EP-0136",
-        ROOT / "scripts" / "validate_ep_0136.py",
-        ROOT / "tests" / "test_solution_development_pack.py",
+        ROOT / "system" / "scripts" / "validate_ep_0136.py",
+        ROOT / "system" / "tests" / "test_solution_development_pack.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

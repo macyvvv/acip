@@ -18,10 +18,10 @@ sys.path.insert(0, str(ROOT))
 def main() -> int:
     required_paths = [
         ROOT / "queue" / "READY" / "EP-0170-codex-intake-trigger-contract.md",
-        ROOT / "orchestrator" / "codex_intake_trigger_contract.py",
+        ROOT / "system" / "orchestrator" / "codex_intake_trigger_contract.py",
         ROOT / "docs" / "current" / "CODEX_INTAKE_TRIGGER_CONTRACT.md",
         ROOT / "specs" / "EP-0170",
-        ROOT / "tests" / "test_codex_intake_trigger_contract.py",
+        ROOT / "system" / "tests" / "test_codex_intake_trigger_contract.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

@@ -14,10 +14,10 @@ def _resolve_repo_root() -> Path:
 ROOT = _resolve_repo_root()
 def main() -> int:
     required_paths = [
-        ROOT / "orchestrator" / "execution_kernel.py",
+        ROOT / "system" / "orchestrator" / "execution_kernel.py",
         ROOT / "docs" / "current" / "EXECUTION_KERNEL.md",
-        ROOT / "scripts" / "validate_ep_0112.py",
-        ROOT / "tests" / "test_execution_kernel.py",
+        ROOT / "system" / "scripts" / "validate_ep_0112.py",
+        ROOT / "system" / "tests" / "test_execution_kernel.py",
         ROOT / "docs" / "ep" / "README_EP0112_EXECUTION_KERNEL.md",
         ROOT / "specs" / "EP-0112",
         ROOT / ".github" / "workflows" / "ep0112-execution-kernel.yml",

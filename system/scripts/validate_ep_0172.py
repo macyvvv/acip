@@ -18,10 +18,10 @@ sys.path.insert(0, str(ROOT))
 def main() -> int:
     required_paths = [
         ROOT / "queue" / "READY" / "EP-0172-external-trigger-dry-run-validation.md",
-        ROOT / "orchestrator" / "external_trigger_dry_run_validation.py",
+        ROOT / "system" / "orchestrator" / "external_trigger_dry_run_validation.py",
         ROOT / "docs" / "current" / "EXTERNAL_TRIGGER_DRY_RUN_VALIDATION.md",
         ROOT / "specs" / "EP-0172",
-        ROOT / "tests" / "test_external_trigger_dry_run_validation.py",
+        ROOT / "system" / "tests" / "test_external_trigger_dry_run_validation.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

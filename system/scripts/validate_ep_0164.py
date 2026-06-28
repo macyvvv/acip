@@ -18,10 +18,10 @@ sys.path.insert(0, str(ROOT))
 def main() -> int:
     required_paths = [
         ROOT / "queue" / "READY" / "EP-0164-event-to-queue-resolver.md",
-        ROOT / "orchestrator" / "event_to_queue_resolver.py",
+        ROOT / "system" / "orchestrator" / "event_to_queue_resolver.py",
         ROOT / "docs" / "current" / "EVENT_TO_QUEUE_RESOLVER.md",
         ROOT / "specs" / "EP-0164",
-        ROOT / "tests" / "test_event_to_queue_resolver.py",
+        ROOT / "system" / "tests" / "test_event_to_queue_resolver.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

@@ -18,10 +18,10 @@ sys.path.insert(0, str(ROOT))
 def main() -> int:
     required_paths = [
         ROOT / "queue" / "READY" / "EP-0147-completion-report-automation.md",
-        ROOT / "orchestrator" / "completion_report_automation.py",
+        ROOT / "system" / "orchestrator" / "completion_report_automation.py",
         ROOT / "docs" / "current" / "COMPLETION_REPORT_AUTOMATION.md",
-        ROOT / "runtime" / "completion" / "completion_report.json",
-        ROOT / "tests" / "test_completion_report_automation.py",
+        ROOT / "system" / "runtime" / "completion" / "completion_report.json",
+        ROOT / "system" / "tests" / "test_completion_report_automation.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:
