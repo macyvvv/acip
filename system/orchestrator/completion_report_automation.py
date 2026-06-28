@@ -4,8 +4,8 @@ from dataclasses import dataclass
 from pathlib import Path
 import json
 
-from orchestrator.output_contract import CodexOutputContract, ValidationResult, WorktreeState, build_output_contract
-from orchestrator.validation_orchestrator import ValidationOrchestrationResult
+from system.orchestrator.output_contract import CodexOutputContract, ValidationResult, WorktreeState, build_output_contract
+from system.orchestrator.validation_orchestrator import ValidationOrchestrationResult
 
 
 @dataclass(frozen=True)

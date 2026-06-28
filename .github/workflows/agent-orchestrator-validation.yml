@@ -23,10 +23,10 @@ jobs:
           python-version: '3.11'
 
       - name: Build repository graph
-        run: python scripts/graph/build_repository_graph.py
+        run: python system/scripts/graph/build_repository_graph.py
 
       - name: Build agent context pack
-        run: python scripts/context/build_agent_context_pack.py
+        run: python system/scripts/context/build_agent_context_pack.py
 
       - name: Validate agent orchestrator
-        run: python scripts/orchestrator/validate_orchestration.py
+        run: python system/scripts/system/orchestrator/validate_orchestration.py

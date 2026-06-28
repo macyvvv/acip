@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from orchestrator.architecture_planner import ArchitecturePlanner
-from orchestrator.requirement_intake import Requirement
+from system.orchestrator.architecture_planner import ArchitecturePlanner
+from system.orchestrator.requirement_intake import Requirement
 
 
 def test_architecture_planner_generates_option(tmp_path: Path) -> None:

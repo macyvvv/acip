@@ -1,7 +1,7 @@
 # MANIFEST
 
-- `orchestrator/specification_generator.py`
+- `system/orchestrator/specification_generator.py`
 - `docs/current/SPECIFICATION_GENERATOR.md`
-- `runtime/solution/specifications/specification.json`
-- `scripts/validate_ep_0139.py`
-- `tests/test_specification_generator.py`
+- `system/runtime/solution/specifications/specification.json`
+- `system/scripts/validate_ep_0139.py`
+- `system/tests/test_specification_generator.py`

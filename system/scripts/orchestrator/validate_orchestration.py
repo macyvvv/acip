@@ -15,13 +15,13 @@ def _resolve_repo_root() -> Path:
 
 ROOT = _resolve_repo_root()
 REQUIRED_FILES = [
-    "orchestrator/AGENT_ROUTER.md",
-    "orchestrator/CONTEXT_RESOLVER.md",
-    "orchestrator/EXECUTION_QUEUE.md",
-    "orchestrator/REVIEW_GATE.md",
-    "orchestrator/ORCHESTRATION_SEQUENCE.md",
-    "orchestrator/CONTEXT_BUNDLE_SCHEMA.md",
-    "orchestrator/EXECUTION_PLAN_SCHEMA.md",
+    "system/orchestrator/AGENT_ROUTER.md",
+    "system/orchestrator/CONTEXT_RESOLVER.md",
+    "system/orchestrator/EXECUTION_QUEUE.md",
+    "system/orchestrator/REVIEW_GATE.md",
+    "system/orchestrator/ORCHESTRATION_SEQUENCE.md",
+    "system/orchestrator/CONTEXT_BUNDLE_SCHEMA.md",
+    "system/orchestrator/EXECUTION_PLAN_SCHEMA.md",
     "basis/072_agent_orchestrator_policy.md",
     "basis/073_task_router_policy.md",
     "basis/074_context_resolution_policy.md",
@@ -43,9 +43,9 @@ PROHIBITED = [
 
 def ensure_generated() -> None:
     if not (ROOT / "orchestrator" / "context_bundle.json").exists():
-        subprocess.check_call([sys.executable, "scripts/orchestrator/build_context_bundle.py"], cwd=ROOT)
+        subprocess.check_call([sys.executable, "system/scripts/system/orchestrator/build_context_bundle.py"], cwd=ROOT)
     if not (ROOT / "orchestrator" / "execution_plan.json").exists():
-        subprocess.check_call([sys.executable, "scripts/orchestrator/build_execution_plan.py"], cwd=ROOT)
+        subprocess.check_call([sys.executable, "system/scripts/system/orchestrator/build_execution_plan.py"], cwd=ROOT)
 
 def main() -> int:
     ensure_generated()
@@ -55,7 +55,7 @@ def main() -> int:
         if not (ROOT / rel).exists():
             failures.append(f"missing required file: {rel}")
 
-    for rel in ["orchestrator/context_bundle.json", "orchestrator/execution_plan.json"]:
+    for rel in ["system/orchestrator/context_bundle.json", "system/orchestrator/execution_plan.json"]:
         if not (ROOT / rel).exists():
             failures.append(f"missing generated file: {rel}")
 

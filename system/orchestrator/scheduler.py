@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from orchestrator.queue_state import QueueState, read_queue_state, write_queue_state
-from orchestrator.worker_state import WorkerState, read_worker_state, write_worker_state
+from system.orchestrator.queue_state import QueueState, read_queue_state, write_queue_state
+from system.orchestrator.worker_state import WorkerState, read_worker_state, write_worker_state
 
 
 @dataclass(frozen=True)

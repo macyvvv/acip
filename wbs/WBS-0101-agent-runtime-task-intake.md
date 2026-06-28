@@ -20,4 +20,4 @@ Agent Runtime Task Intake
 
 ## Acceptance Criteria
 
-`python scripts/validate_ep_0101.py` passes.
+`python system/scripts/validate_ep_0101.py` passes.

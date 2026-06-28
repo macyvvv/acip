@@ -1,5 +1,5 @@
 # MANIFEST
 
-- `orchestrator/repository_governor.py`
+- `system/orchestrator/repository_governor.py`
 - `docs/current/GOVERNOR_STATE.md`
-- `runtime/governor/governor_recommendations.json`
+- `system/runtime/governor/governor_recommendations.json`

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from orchestrator.event_contract import EventContract, EventSource
-from orchestrator.event_to_queue_resolver import EventToQueueResolver
+from system.orchestrator.event_contract import EventContract, EventSource
+from system.orchestrator.event_to_queue_resolver import EventToQueueResolver
 
 
 def test_event_to_queue_resolver_selects_next_queue_item(tmp_path) -> None:

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 
-from orchestrator.event_runtime_cli import run_cli
+from system.orchestrator.event_runtime_cli import run_cli
 
 
 def test_event_runtime_cli_returns_path(tmp_path) -> None:

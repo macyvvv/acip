@@ -2,9 +2,9 @@
 
 ## Commands
 
-python scripts/validate_ep_0102.py
-python scripts/validate_ep_0100.py
-python scripts/validate_ep_0101.py
+python system/scripts/validate_ep_0102.py
+python system/scripts/validate_ep_0100.py
+python system/scripts/validate_ep_0101.py
 
 ## Expected
 

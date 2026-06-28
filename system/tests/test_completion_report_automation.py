@@ -1,14 +1,14 @@
 from __future__ import annotations
 
-from orchestrator.completion_report_automation import CompletionReportAutomation
-from orchestrator.output_contract import WorktreeState
-from orchestrator.validation_orchestrator import ValidationOrchestrationResult, ValidationStepResult
+from system.orchestrator.completion_report_automation import CompletionReportAutomation
+from system.orchestrator.output_contract import WorktreeState
+from system.orchestrator.validation_orchestrator import ValidationOrchestrationResult, ValidationStepResult
 
 
 def test_completion_report_automation_builds_report() -> None:
     automation = CompletionReportAutomation(".")
     validation = ValidationOrchestrationResult(
-        validation_steps=[ValidationStepResult(command="python scripts/validate_all.py", exit_code=0, success=True)],
+        validation_steps=[ValidationStepResult(command="python system/scripts/validate_all.py", exit_code=0, success=True)],
         pytest_result=ValidationStepResult(command="python -m pytest -q", exit_code=0, success=True),
         overall_success=True,
     )

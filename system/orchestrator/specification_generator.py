@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 import json
 
-from orchestrator.architecture_planner import ArchitectureOption
+from system.orchestrator.architecture_planner import ArchitectureOption
 
 
 @dataclass(frozen=True)
@@ -38,13 +38,13 @@ class SpecificationGenerator:
             architecture_option_id=option.option_id,
             implementation_spec=f"Implement the architecture option {option.option_id} with deterministic repository changes.",
             file_changeset=(
-                "orchestrator/specification_generator.py",
+                "system/orchestrator/specification_generator.py",
                 "docs/current/SPECIFICATION_GENERATOR.md",
-                "runtime/solution/specifications/specification.json",
+                "system/runtime/solution/specifications/specification.json",
                 "specs/EP-0139",
             ),
             validation=(
-                "python scripts/validate_all.py",
+                "python system/scripts/validate_all.py",
                 "python -m pytest -q",
             ),
             rollback=("Revert the files listed in file_changeset.",),

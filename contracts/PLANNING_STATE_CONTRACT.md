@@ -8,11 +8,11 @@ Planning State is a deterministic projection of approved planning artifacts.
 - docs/current/STATE.md
 - docs/current/ROADMAP.md
 - wbs/
-- runtime/repository_state/latest.json
-- runtime/repository_constitution/constitution.json
-- runtime/handoff/latest.json
-- runtime/handoff/completion/latest.json
-- runtime/validation/validation_report.json
+- system/runtime/repository_state/latest.json
+- system/runtime/repository_constitution/constitution.json
+- system/runtime/handoff/latest.json
+- system/runtime/handoff/completion/latest.json
+- system/runtime/validation/validation_report.json
 - packs/
 
 ## Required Fields

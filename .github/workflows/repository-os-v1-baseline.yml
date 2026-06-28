@@ -23,4 +23,4 @@ jobs:
           python-version: '3.11'
 
       - name: Validate baseline
-        run: python scripts/validate_repository_os_v1_baseline.py
+        run: python system/scripts/validate_repository_os_v1_baseline.py

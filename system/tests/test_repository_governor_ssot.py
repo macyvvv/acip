@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from orchestrator.repository_governor import RepositoryGovernor
+from system.orchestrator.repository_governor import RepositoryGovernor
 
 
 def test_repository_governor_loads_persisted_recommendation() -> None:

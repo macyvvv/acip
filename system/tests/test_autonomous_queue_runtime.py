@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from orchestrator.autonomous_queue_runtime import AutonomousQueueRuntime
+from system.orchestrator.autonomous_queue_runtime import AutonomousQueueRuntime
 
 
 def test_autonomous_queue_runtime_runs(tmp_path: Path) -> None:

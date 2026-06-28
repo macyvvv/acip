@@ -33,7 +33,7 @@ Status: Doing
 ## Task 001
 
 Artifact:
-orchestrator/ARCHITECTURE.md
+system/orchestrator/ARCHITECTURE.md
 
 Owner:
 ChatGPT
@@ -44,7 +44,7 @@ Done:
 ## Task 002
 
 Artifact:
-orchestrator/ADR-0001.md
+system/orchestrator/ADR-0001.md
 
 Owner:
 ChatGPT
@@ -55,7 +55,7 @@ Stateless Orchestrator / Repository SSOTの意思決定が記録されている�
 ## Task 003
 
 Artifact:
-orchestrator/WBS.md
+system/orchestrator/WBS.md
 
 Owner:
 ChatGPT
@@ -72,7 +72,7 @@ Status: Backlog
 ## Task 001
 
 Artifact:
-orchestrator/state.py
+system/orchestrator/state.py
 
 Owner:
 Codex
@@ -94,7 +94,7 @@ repository / branch / current_phase / current_objective / current_task / next_ac
 ## Task 003
 
 Artifact:
-tests/test_state.py
+system/tests/test_state.py
 
 Owner:
 Codex
@@ -111,7 +111,7 @@ Status: Backlog
 ## Task 001
 
 Artifact:
-orchestrator/queue.py
+system/orchestrator/queue.py
 
 Owner:
 Codex
@@ -150,7 +150,7 @@ Status: Backlog
 ## Task 001
 
 Artifact:
-orchestrator/worker.py
+system/orchestrator/worker.py
 
 Owner:
 Codex
@@ -161,7 +161,7 @@ Worker base classが定義されている。
 ## Task 002
 
 Artifact:
-orchestrator/result.py
+system/orchestrator/result.py
 
 Owner:
 Codex
@@ -178,7 +178,7 @@ Status: Backlog
 ## Task 001
 
 Artifact:
-orchestrator/dispatcher.py
+system/orchestrator/dispatcher.py
 
 Owner:
 Codex
@@ -206,7 +206,7 @@ Status: Backlog
 ## Task 001
 
 Artifact:
-orchestrator/workers/codex_worker.py
+system/orchestrator/workers/codex_worker.py
 
 Owner:
 Codex
@@ -234,7 +234,7 @@ Status: Backlog
 ## Task 001
 
 Artifact:
-orchestrator/workers/github_worker.py
+system/orchestrator/workers/github_worker.py
 
 Owner:
 Codex
@@ -262,7 +262,7 @@ Status: Backlog
 ## Task 001
 
 Artifact:
-orchestrator/main.py
+system/orchestrator/main.py
 
 Owner:
 Codex
@@ -273,4 +273,4 @@ CLIでCurrent Taskを表示できる。
 Command:
 
 ```bash
-python orchestrator/main.py status
+python system/orchestrator/main.py status

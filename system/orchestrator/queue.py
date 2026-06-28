@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from orchestrator.state import State
-from orchestrator.task import Task, TaskValidationError
+from system.orchestrator.state import State
+from system.orchestrator.task import Task, TaskValidationError
 
 
 def state_to_task(state: State) -> Task:

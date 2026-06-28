@@ -42,7 +42,7 @@ This WBS implements repository self-test and continuous governance.
 
 ## Acceptance Criteria
 
-- `python scripts/selftest/validate_repository_selftest_complete.py` passes.
+- `python system/scripts/selftest/validate_repository_selftest_complete.py` passes.
 - `Repository Self Test Complete` workflow exists.
 - Runtime implementation remains out of scope.
 - Human Boundary is preserved.

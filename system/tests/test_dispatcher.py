@@ -1,9 +1,9 @@
 import pytest
 
-from orchestrator.dispatcher import Dispatcher, DispatcherError
-from orchestrator.result import Result
-from orchestrator.task import Task
-from orchestrator.worker import Worker
+from system.orchestrator.dispatcher import Dispatcher, DispatcherError
+from system.orchestrator.result import Result
+from system.orchestrator.task import Task
+from system.orchestrator.worker import Worker
 
 
 class ResultWorker(Worker):

@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from orchestrator.completion_protocol import CompletionStatus, build_completion_protocol
-from orchestrator.repository_completion_marker import RepositoryCompletionMarkerWriter
-from orchestrator.completion_marker_event_intake import CompletionMarkerEventIntake
+from system.orchestrator.completion_protocol import CompletionStatus, build_completion_protocol
+from system.orchestrator.repository_completion_marker import RepositoryCompletionMarkerWriter
+from system.orchestrator.completion_marker_event_intake import CompletionMarkerEventIntake
 
 
 def test_completion_marker_event_intake_reads_latest(tmp_path) -> None:

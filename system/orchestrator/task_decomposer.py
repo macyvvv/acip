@@ -5,8 +5,8 @@ from pathlib import Path
 import hashlib
 from typing import Any
 
-from orchestrator.capability_router import CapabilityRoute, CapabilityRouter
-from orchestrator.task import Task
+from system.orchestrator.capability_router import CapabilityRoute, CapabilityRouter
+from system.orchestrator.task import Task
 
 
 @dataclass(frozen=True)

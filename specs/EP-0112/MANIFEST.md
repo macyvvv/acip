@@ -1,3 +1,3 @@
 # MANIFEST
 
-- `orchestrator/execution_kernel.py`
+- `system/orchestrator/execution_kernel.py`

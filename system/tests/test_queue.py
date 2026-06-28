@@ -2,9 +2,9 @@ from pathlib import Path
 
 import pytest
 
-from orchestrator.queue import state_to_task
-from orchestrator.state import read_state
-from orchestrator.task import TaskValidationError
+from system.orchestrator.queue import state_to_task
+from system.orchestrator.state import read_state
+from system.orchestrator.task import TaskValidationError
 
 
 def _write_state(path: Path, next_action: str) -> Path:

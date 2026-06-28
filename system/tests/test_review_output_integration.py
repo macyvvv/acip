@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from orchestrator.capability_router import CapabilityRoute
-from orchestrator.review_output_integration import build_review_output_integration
-from orchestrator.task_decomposer import DecomposedSubtask, TaskDecompositionResult
+from system.orchestrator.capability_router import CapabilityRoute
+from system.orchestrator.review_output_integration import build_review_output_integration
+from system.orchestrator.task_decomposer import DecomposedSubtask, TaskDecompositionResult
 
 
 def test_review_output_integration_builds_worker_output() -> None:

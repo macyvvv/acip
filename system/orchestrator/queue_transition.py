@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from orchestrator.queue_state import QueueState
+from system.orchestrator.queue_state import QueueState
 
 
 ALLOWED_STATUSES = ("READY", "RUNNING", "REVIEW", "DONE")

@@ -1,7 +1,0 @@
-{
-  "worker_name": null,
-  "previous_state": "Idle",
-  "current_state": "Idle",
-  "current_ep": null,
-  "queue_status": "READY"
-}

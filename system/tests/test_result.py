@@ -1,5 +1,5 @@
-from orchestrator.result import Result
-from orchestrator.task import Task
+from system.orchestrator.result import Result
+from system.orchestrator.task import Task
 
 
 def test_result_dataclass_fields() -> None:

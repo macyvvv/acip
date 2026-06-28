@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
-from orchestrator.planner import PlannerDecision
+from system.orchestrator.planner import PlannerDecision
 from workers.capability_matcher import CapabilityMatch, score_worker
 from workers.registry import WorkerRegistry, WorkerRegistryError, load_worker_registry
 

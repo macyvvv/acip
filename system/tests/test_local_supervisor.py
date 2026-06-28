@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from orchestrator.local_supervisor import LocalSupervisor
+from system.orchestrator.local_supervisor import LocalSupervisor
 
 
 def test_local_supervisor_writes_runtime(tmp_path: Path) -> None:

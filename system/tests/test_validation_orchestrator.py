@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from orchestrator.validation_orchestrator import ValidationOrchestrator, ValidationOrchestrationResult, ValidationStepResult
+from system.orchestrator.validation_orchestrator import ValidationOrchestrator, ValidationOrchestrationResult, ValidationStepResult
 
 
 def _write_validation_scripts(root: Path) -> None:
@@ -23,7 +23,7 @@ def test_build_and_write_reports(tmp_path: Path) -> None:
     orchestrator = ValidationOrchestrator(tmp_path)
     result = ValidationOrchestrationResult(
         validation_steps=[
-            ValidationStepResult(command="python scripts/validate_ep_0100.py", exit_code=0, success=True),
+            ValidationStepResult(command="python system/scripts/validate_ep_0100.py", exit_code=0, success=True),
         ],
         pytest_result=ValidationStepResult(command="python -m pytest -q", exit_code=0, success=True),
         overall_success=True,

@@ -5,13 +5,13 @@ from pathlib import Path
 import json
 from typing import TYPE_CHECKING
 
-from orchestrator.continuous_improvement_engine import ContinuousImprovementEngine
-from orchestrator.human_approval_gate import HumanApprovalGate
-from orchestrator.repository_governor import RepositoryGovernor
-from orchestrator.repository_state_manager import RepositoryStateManager
+from system.orchestrator.continuous_improvement_engine import ContinuousImprovementEngine
+from system.orchestrator.human_approval_gate import HumanApprovalGate
+from system.orchestrator.repository_governor import RepositoryGovernor
+from system.orchestrator.repository_state_manager import RepositoryStateManager
 
 if TYPE_CHECKING:
-    from orchestrator.execution_kernel import ExecutionKernel
+    from system.orchestrator.execution_kernel import ExecutionKernel
 
 
 @dataclass(frozen=True)
@@ -45,7 +45,7 @@ class AutonomousPlanningCycle:
         next_action = (
             "await human approval"
             if approvals_required
-            else self.kernel.run_validation_pipeline().next_action or "python scripts/validate_all.py"
+            else self.kernel.run_validation_pipeline().next_action or "python system/scripts/validate_all.py"
         )
         return AutonomousPlanningCycleResult(
             repository_state=repository_state,

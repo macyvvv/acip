@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 import json
 
-from orchestrator.requirement_intake import Requirement
+from system.orchestrator.requirement_intake import Requirement
 
 
 @dataclass(frozen=True)
@@ -33,8 +33,8 @@ class ArchitecturePlanner:
             risk=requirement.risk,
             dependency=tuple(requirement.constraints),
             affected_area=("orchestrator", "docs/current", "runtime"),
-            adr_candidates=("orchestrator/ADR-0001.md",),
-            wbs_candidates=("orchestrator/WBS.md",),
+            adr_candidates=("system/orchestrator/ADR-0001.md",),
+            wbs_candidates=("system/orchestrator/WBS.md",),
             basis_references=("basis/PROJECT.md", "basis/REPOSITORY_CONVENTIONS.md"),
         )
         return (option,)

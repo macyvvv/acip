@@ -514,128 +514,128 @@
       "sha256": "33ac6a144970101bd07743bae1320a3368ffa760e77f0a87de34e38c2ae0940f"
     },
     {
-      "id": "runtime/RUNTIME_INTEGRATION_SPEC.md",
-      "path": "runtime/RUNTIME_INTEGRATION_SPEC.md",
+      "id": "system/runtime/RUNTIME_INTEGRATION_SPEC.md",
+      "path": "system/runtime/RUNTIME_INTEGRATION_SPEC.md",
       "type": "document",
       "sha256": "f6b9dd1912b562d9ef26fffafc24b1b36156ae816b20957671fa5f0c50371292"
     },
     {
-      "id": "runtime/REPLAY_ENGINE.md",
-      "path": "runtime/REPLAY_ENGINE.md",
+      "id": "system/runtime/REPLAY_ENGINE.md",
+      "path": "system/runtime/REPLAY_ENGINE.md",
       "type": "document",
       "sha256": "38d88316d589ccf7739fb9fba2641d9178ec8c1c179e740964bfb806330390bf"
     },
     {
-      "id": "runtime/RUNTIME_DRY_RUN_PLAN.md",
-      "path": "runtime/RUNTIME_DRY_RUN_PLAN.md",
+      "id": "system/runtime/RUNTIME_DRY_RUN_PLAN.md",
+      "path": "system/runtime/RUNTIME_DRY_RUN_PLAN.md",
       "type": "document",
       "sha256": "cc3ab53840e95e603bb867949c634f67ceaf0679b0c894d6509ae7b2f877e332"
     },
     {
-      "id": "runtime/RUNTIME_APPROVAL_TEMPLATE.md",
-      "path": "runtime/RUNTIME_APPROVAL_TEMPLATE.md",
+      "id": "system/runtime/RUNTIME_APPROVAL_TEMPLATE.md",
+      "path": "system/runtime/RUNTIME_APPROVAL_TEMPLATE.md",
       "type": "document",
       "sha256": "0f57f8724c9854d1317491625dcb695e83466cbb20b41c524480c57bcaddbf6e"
     },
     {
-      "id": "runtime/dry_run_adapter_report.md",
-      "path": "runtime/dry_run_adapter_report.md",
+      "id": "system/runtime/dry_run_adapter_report.md",
+      "path": "system/runtime/dry_run_adapter_report.md",
       "type": "document",
       "sha256": "50cb0e7f7cbb8e943ec4e20121e76dc00e1ca20a1f84d03fba50c75f958ba788"
     },
     {
-      "id": "runtime/RUNTIME_RISK_REGISTER.md",
-      "path": "runtime/RUNTIME_RISK_REGISTER.md",
+      "id": "system/runtime/RUNTIME_RISK_REGISTER.md",
+      "path": "system/runtime/RUNTIME_RISK_REGISTER.md",
       "type": "document",
       "sha256": "da819f2e8a8bb81551bc39470039f04eb7cadff8c75b3b3200920a472e324ed8"
     },
     {
-      "id": "runtime/DRY_RUN_ADAPTER_SPEC.md",
-      "path": "runtime/DRY_RUN_ADAPTER_SPEC.md",
+      "id": "system/runtime/DRY_RUN_ADAPTER_SPEC.md",
+      "path": "system/runtime/DRY_RUN_ADAPTER_SPEC.md",
       "type": "document",
       "sha256": "6468a8b358460366f667d2b87f0098d06ec3d87dd866c8f64eda2847c8418545"
     },
     {
-      "id": "runtime/runtime_dry_run_report.md",
-      "path": "runtime/runtime_dry_run_report.md",
+      "id": "system/runtime/runtime_dry_run_report.md",
+      "path": "system/runtime/runtime_dry_run_report.md",
       "type": "document",
       "sha256": "4e695f442192f35ac44a1d7c8b157b25b35b6a29873e04eac18b2c43d1e8f460"
     },
     {
-      "id": "runtime/RUNTIME_READINESS_CHECKLIST.md",
-      "path": "runtime/RUNTIME_READINESS_CHECKLIST.md",
+      "id": "system/runtime/RUNTIME_READINESS_CHECKLIST.md",
+      "path": "system/runtime/RUNTIME_READINESS_CHECKLIST.md",
       "type": "document",
       "sha256": "70df06d277bd18827e85df2df540caef26d2663c5c6ffacf985b37257f9666db"
     },
     {
-      "id": "runtime/AUDIT_ENGINE.md",
-      "path": "runtime/AUDIT_ENGINE.md",
+      "id": "system/runtime/AUDIT_ENGINE.md",
+      "path": "system/runtime/AUDIT_ENGINE.md",
       "type": "document",
       "sha256": "ea9eb8fed3c424d6b8648ad697806829e9f79e0cf82396313d644cd8b55ec1b4"
     },
     {
-      "id": "tests/test_result.py",
-      "path": "tests/test_result.py",
+      "id": "system/tests/test_result.py",
+      "path": "system/tests/test_result.py",
       "type": "document",
       "sha256": "91f254b3d6d196bf3f0f2a8023d6398501d12ab27334869d5a811f7d0fb08d25"
     },
     {
-      "id": "tests/test_task.py",
-      "path": "tests/test_task.py",
+      "id": "system/tests/test_task.py",
+      "path": "system/tests/test_task.py",
       "type": "document",
       "sha256": "8b34b5d3f89277a75c612ed5c6b491994d4ef8f3f8ce2a6f3dfe23467c530a03"
     },
     {
-      "id": "tests/test_local_agent_runner.py",
-      "path": "tests/test_local_agent_runner.py",
+      "id": "system/tests/test_local_agent_runner.py",
+      "path": "system/tests/test_local_agent_runner.py",
       "type": "document",
       "sha256": "f4e054e275adbb4aeb276542e9a752144476e34e618695553074ed7acefc40e7"
     },
     {
-      "id": "tests/test_context_loader.py",
-      "path": "tests/test_context_loader.py",
+      "id": "system/tests/test_context_loader.py",
+      "path": "system/tests/test_context_loader.py",
       "type": "document",
       "sha256": "0c6629bd83afa8f1ba6aa9419acd63145fad1b8caff03b75d938b4b9859c1c33"
     },
     {
-      "id": "tests/test_state.py",
-      "path": "tests/test_state.py",
+      "id": "system/tests/test_state.py",
+      "path": "system/tests/test_state.py",
       "type": "document",
       "sha256": "e8e318ae09c55a9d3ac888801847763e756f00fdd82ddf66a8ac1cd8cd540622"
     },
     {
-      "id": "tests/test_agent_executor.py",
-      "path": "tests/test_agent_executor.py",
+      "id": "system/tests/test_agent_executor.py",
+      "path": "system/tests/test_agent_executor.py",
       "type": "document",
       "sha256": "16d6f387ffef5ebb94645268f2505e973528beacac7aacae67f92a2de874f39d"
     },
     {
-      "id": "tests/test_queue.py",
-      "path": "tests/test_queue.py",
+      "id": "system/tests/test_queue.py",
+      "path": "system/tests/test_queue.py",
       "type": "document",
       "sha256": "e5af64084f1cbe189a621e8fdbe7d52e73d300fa4bb691691ed0392c576f21d6"
     },
     {
-      "id": "tests/test_worker.py",
-      "path": "tests/test_worker.py",
+      "id": "system/tests/test_worker.py",
+      "path": "system/tests/test_worker.py",
       "type": "document",
       "sha256": "8cb29867b20fa5ccc472e837d30b82bf4c4ba23a7528ff470857e446931dcbc4"
     },
     {
-      "id": "tests/test_dispatcher.py",
-      "path": "tests/test_dispatcher.py",
+      "id": "system/tests/test_dispatcher.py",
+      "path": "system/tests/test_dispatcher.py",
       "type": "document",
       "sha256": "86dfbbf49d074a92c757665e29113c977a314419a073f8a8736ba458debb09b6"
     },
     {
-      "id": "tests/test_review_package.py",
-      "path": "tests/test_review_package.py",
+      "id": "system/tests/test_review_package.py",
+      "path": "system/tests/test_review_package.py",
       "type": "document",
       "sha256": "697682482bde8b767cd0f1b145f2d9d0093506d7ce9b9a553277a7ca55cf75c4"
     },
     {
-      "id": "tests/test_codex_worker.py",
-      "path": "tests/test_codex_worker.py",
+      "id": "system/tests/test_codex_worker.py",
+      "path": "system/tests/test_codex_worker.py",
       "type": "document",
       "sha256": "73e9b26941988568595fa877be6140b53ff061ffc09b413e29adbd7f83f7af8b"
     },
@@ -904,56 +904,56 @@
       "sha256": "052c966de32574f6c589801607c5ee72a68cc91aa666693e8d61cf98b70e8168"
     },
     {
-      "id": "scripts/validate_boundaries.py",
-      "path": "scripts/validate_boundaries.py",
+      "id": "system/scripts/validate_boundaries.py",
+      "path": "system/scripts/validate_boundaries.py",
       "type": "script",
       "sha256": "4b8d68085427481e5b402c32fe40a6ce2895935df33bab178db130bb26b11c0b"
     },
     {
-      "id": "scripts/validate_ep_0003.py",
-      "path": "scripts/validate_ep_0003.py",
+      "id": "system/scripts/validate_ep_0003.py",
+      "path": "system/scripts/validate_ep_0003.py",
       "type": "script",
       "sha256": "f9422958afb2817ba109e4a27df86847bd2ff5a15fb5bd88ead969731c63de22"
     },
     {
-      "id": "scripts/validate_links.py",
-      "path": "scripts/validate_links.py",
+      "id": "system/scripts/validate_links.py",
+      "path": "system/scripts/validate_links.py",
       "type": "script",
       "sha256": "4b8d68085427481e5b402c32fe40a6ce2895935df33bab178db130bb26b11c0b"
     },
     {
-      "id": "scripts/validate_drift.py",
-      "path": "scripts/validate_drift.py",
+      "id": "system/scripts/validate_drift.py",
+      "path": "system/scripts/validate_drift.py",
       "type": "script",
       "sha256": "4b8d68085427481e5b402c32fe40a6ce2895935df33bab178db130bb26b11c0b"
     },
     {
-      "id": "scripts/validate_continuous_governance.py",
-      "path": "scripts/validate_continuous_governance.py",
+      "id": "system/scripts/validate_continuous_governance.py",
+      "path": "system/scripts/validate_continuous_governance.py",
       "type": "script",
       "sha256": "2990a3b1d1f9930fb65fea8c39318e0d9ef6559631dab5e7a437ac05f43c0090"
     },
     {
-      "id": "scripts/validate_repository_knowledge_graph_runtime_integration.py",
-      "path": "scripts/validate_repository_knowledge_graph_runtime_integration.py",
+      "id": "system/scripts/validate_repository_knowledge_graph_runtime_integration.py",
+      "path": "system/scripts/validate_repository_knowledge_graph_runtime_integration.py",
       "type": "script",
       "sha256": "cb4b91b80579976788aeeba58551885202e9689b21012ea3d0b758471196d62d"
     },
     {
-      "id": "scripts/validate_dead_assets.py",
-      "path": "scripts/validate_dead_assets.py",
+      "id": "system/scripts/validate_dead_assets.py",
+      "path": "system/scripts/validate_dead_assets.py",
       "type": "script",
       "sha256": "4b8d68085427481e5b402c32fe40a6ce2895935df33bab178db130bb26b11c0b"
     },
     {
-      "id": "scripts/validate_repository_selftest.py",
-      "path": "scripts/validate_repository_selftest.py",
+      "id": "system/scripts/validate_repository_selftest.py",
+      "path": "system/scripts/validate_repository_selftest.py",
       "type": "script",
       "sha256": "cef437bc504b8ebbe62a42a3a4f25845c968f5fae57459e3b449b346ef817eff"
     },
     {
-      "id": "scripts/validate_repository_os_v1_baseline.py",
-      "path": "scripts/validate_repository_os_v1_baseline.py",
+      "id": "system/scripts/validate_repository_os_v1_baseline.py",
+      "path": "system/scripts/validate_repository_os_v1_baseline.py",
       "type": "script",
       "sha256": "8cd4baa93a43d86841ded9ccb519cdfa2492539ee226605428a757e86c381ba5"
     },
@@ -1438,152 +1438,152 @@
       "sha256": "cc285afb54fbc0e3224e007e7ca529b5c60dbae1ef5ba773a233c64d46512d6a"
     },
     {
-      "id": "orchestrator/dispatcher.py",
-      "path": "orchestrator/dispatcher.py",
+      "id": "system/orchestrator/dispatcher.py",
+      "path": "system/orchestrator/dispatcher.py",
       "type": "document",
       "sha256": "75b4f1f0282f15ca6bcb089b6ab975911428890ea155b014438ebe8fddfef9ed"
     },
     {
-      "id": "orchestrator/queue.py",
-      "path": "orchestrator/queue.py",
+      "id": "system/orchestrator/queue.py",
+      "path": "system/orchestrator/queue.py",
       "type": "document",
       "sha256": "99081c655e073cbbe832eca81a7e6ad22b7dc71866faff10807c49c4babddc27"
     },
     {
-      "id": "orchestrator/worker.py",
-      "path": "orchestrator/worker.py",
+      "id": "system/orchestrator/worker.py",
+      "path": "system/orchestrator/worker.py",
       "type": "document",
       "sha256": "fe1fc892127333a8d04252923c393fd1e3f794eb592bc013ee055c998b394a7d"
     },
     {
-      "id": "orchestrator/task.py",
-      "path": "orchestrator/task.py",
+      "id": "system/orchestrator/task.py",
+      "path": "system/orchestrator/task.py",
       "type": "document",
       "sha256": "2d5c5db305b74504fe2be64a8bc9d2401f3e155b28fec313a5cc33e28c38f694"
     },
     {
-      "id": "orchestrator/INBOX.md",
-      "path": "orchestrator/INBOX.md",
+      "id": "system/orchestrator/INBOX.md",
+      "path": "system/orchestrator/INBOX.md",
       "type": "document",
       "sha256": "ec6096e32692647816987bd94157c2e390086f62f5925e2f6e24790c6d6b09f4"
     },
     {
-      "id": "orchestrator/ARCHITECTURE.md",
-      "path": "orchestrator/ARCHITECTURE.md",
+      "id": "system/orchestrator/ARCHITECTURE.md",
+      "path": "system/orchestrator/ARCHITECTURE.md",
       "type": "document",
       "sha256": "201475baf44f21fbe24093288c9ca171767a8db21b3d10ccd8db83be8364e3a6"
     },
     {
-      "id": "orchestrator/AGENT_ROUTER.md",
-      "path": "orchestrator/AGENT_ROUTER.md",
+      "id": "system/orchestrator/AGENT_ROUTER.md",
+      "path": "system/orchestrator/AGENT_ROUTER.md",
       "type": "document",
       "sha256": "1fbdb4c57ab156b97d2ee22e29061005cb14443cb1cb9ff84c247d40a231135e"
     },
     {
-      "id": "orchestrator/ADR-0001.md",
-      "path": "orchestrator/ADR-0001.md",
+      "id": "system/orchestrator/ADR-0001.md",
+      "path": "system/orchestrator/ADR-0001.md",
       "type": "document",
       "sha256": "24c9f2e642539d458fd626130e1ded291ff72b115edaa9b046703146a86299b4"
     },
     {
-      "id": "orchestrator/review_package.py",
-      "path": "orchestrator/review_package.py",
+      "id": "system/orchestrator/review_package.py",
+      "path": "system/orchestrator/review_package.py",
       "type": "document",
       "sha256": "e2e54e34527edefae3ecc0e7bd6864773c39c4518c5112f920ef7fcf31080244"
     },
     {
-      "id": "orchestrator/WBS.md",
-      "path": "orchestrator/WBS.md",
+      "id": "system/orchestrator/WBS.md",
+      "path": "system/orchestrator/WBS.md",
       "type": "document",
       "sha256": "d2875cb2e4d59826887ad467dbb30f13648bdab930a95818a97c611ee2a7fd2d"
     },
     {
-      "id": "orchestrator/LOCAL_AGENT_RUNNER.md",
-      "path": "orchestrator/LOCAL_AGENT_RUNNER.md",
+      "id": "system/orchestrator/LOCAL_AGENT_RUNNER.md",
+      "path": "system/orchestrator/LOCAL_AGENT_RUNNER.md",
       "type": "document",
       "sha256": "be878e9e3eb0445e392c6e05378aa12554d4275667f766e7aca020ad1702b90d"
     },
     {
-      "id": "orchestrator/OUTBOX.md",
-      "path": "orchestrator/OUTBOX.md",
+      "id": "system/orchestrator/OUTBOX.md",
+      "path": "system/orchestrator/OUTBOX.md",
       "type": "document",
       "sha256": "a7cd3a307dab2cf7a1b64be13f4869b2d4a868b1272971432cff50e27a74e714"
     },
     {
-      "id": "orchestrator/constants.py",
-      "path": "orchestrator/constants.py",
+      "id": "system/orchestrator/constants.py",
+      "path": "system/orchestrator/constants.py",
       "type": "document",
       "sha256": "765340eaa76ee6c029b94a0517e6faafd56d840ce84f4c3d2a75f1548c7665f3"
     },
     {
-      "id": "orchestrator/RUNBOOK.md",
-      "path": "orchestrator/RUNBOOK.md",
+      "id": "system/orchestrator/RUNBOOK.md",
+      "path": "system/orchestrator/RUNBOOK.md",
       "type": "document",
       "sha256": "25ed9531b8676cd101c3b9a7e358da7546a631332948f1f7dd2770771184981e"
     },
     {
-      "id": "orchestrator/CONTEXT_RESOLVER.md",
-      "path": "orchestrator/CONTEXT_RESOLVER.md",
+      "id": "system/orchestrator/CONTEXT_RESOLVER.md",
+      "path": "system/orchestrator/CONTEXT_RESOLVER.md",
       "type": "document",
       "sha256": "80765d384c61d340c5b0189a7dcbdc4f6f9ffffdb0618bb47866aa292d77f900"
     },
     {
-      "id": "orchestrator/CONTEXT_BUNDLE_SCHEMA.md",
-      "path": "orchestrator/CONTEXT_BUNDLE_SCHEMA.md",
+      "id": "system/orchestrator/CONTEXT_BUNDLE_SCHEMA.md",
+      "path": "system/orchestrator/CONTEXT_BUNDLE_SCHEMA.md",
       "type": "document",
       "sha256": "5896ba62d5e43a2258fae424680e33497e621d703a4f65a3e23231d4625fcaf7"
     },
     {
-      "id": "orchestrator/result.py",
-      "path": "orchestrator/result.py",
+      "id": "system/orchestrator/result.py",
+      "path": "system/orchestrator/result.py",
       "type": "document",
       "sha256": "ac93b15f725521ef266291472038b58db12d682b228ac8a825c86991572f36c7"
     },
     {
-      "id": "orchestrator/REVIEW_GATE.md",
-      "path": "orchestrator/REVIEW_GATE.md",
+      "id": "system/orchestrator/REVIEW_GATE.md",
+      "path": "system/orchestrator/REVIEW_GATE.md",
       "type": "document",
       "sha256": "c55e66a872ad650178064547cc640942804b8952627a80753304e34cf9e5ce89"
     },
     {
-      "id": "orchestrator/context_loader.py",
-      "path": "orchestrator/context_loader.py",
+      "id": "system/orchestrator/context_loader.py",
+      "path": "system/orchestrator/context_loader.py",
       "type": "document",
       "sha256": "e2d253f03010c1cd6c6b9540ae69cd061190907dc2ca0d6f6006f40e47095e13"
     },
     {
-      "id": "orchestrator/ORCHESTRATION_SEQUENCE.md",
-      "path": "orchestrator/ORCHESTRATION_SEQUENCE.md",
+      "id": "system/orchestrator/ORCHESTRATION_SEQUENCE.md",
+      "path": "system/orchestrator/ORCHESTRATION_SEQUENCE.md",
       "type": "document",
       "sha256": "5496a976142a594be2abe22c57c11b11b4c02eef5bb333fa11848ab208184c72"
     },
     {
-      "id": "orchestrator/agent_executor.py",
-      "path": "orchestrator/agent_executor.py",
+      "id": "system/orchestrator/agent_executor.py",
+      "path": "system/orchestrator/agent_executor.py",
       "type": "document",
       "sha256": "e4b09011f76aa8cc21efa2b3855a4103e40e795d41b830fb9b108ecdbea5748f"
     },
     {
-      "id": "orchestrator/EXECUTION_PLAN_SCHEMA.md",
-      "path": "orchestrator/EXECUTION_PLAN_SCHEMA.md",
+      "id": "system/orchestrator/EXECUTION_PLAN_SCHEMA.md",
+      "path": "system/orchestrator/EXECUTION_PLAN_SCHEMA.md",
       "type": "document",
       "sha256": "8f22d2bdbe02f9f9c5765a2cace92348499fbf96edca14171ff2ea4f95a2a750"
     },
     {
-      "id": "orchestrator/EXECUTION_QUEUE.md",
-      "path": "orchestrator/EXECUTION_QUEUE.md",
+      "id": "system/orchestrator/EXECUTION_QUEUE.md",
+      "path": "system/orchestrator/EXECUTION_QUEUE.md",
       "type": "document",
       "sha256": "8e8601c93f779d289aba75e171e6dbfc3d0de6aaa9afd35224878076fb7f7570"
     },
     {
-      "id": "orchestrator/local_agent_runner.py",
-      "path": "orchestrator/local_agent_runner.py",
+      "id": "system/orchestrator/local_agent_runner.py",
+      "path": "system/orchestrator/local_agent_runner.py",
       "type": "document",
       "sha256": "b600d1530e68b42d233301fe8658da32e69ea7d96388683ba2478a6dcdf498d8"
     },
     {
-      "id": "orchestrator/state.py",
-      "path": "orchestrator/state.py",
+      "id": "system/orchestrator/state.py",
+      "path": "system/orchestrator/state.py",
       "type": "document",
       "sha256": "863c4292f8923d638d3bb8956adea6d1cc29d94f5b0f758613ee6da22833b274"
     },
@@ -1726,194 +1726,194 @@
       "sha256": "47d2cee1a2d4f2eb1e475b99b7eee0e630749504ab72b3f7ec2d114f115a5c3c"
     },
     {
-      "id": "scripts/context/build_context_diff.py",
-      "path": "scripts/context/build_context_diff.py",
+      "id": "system/scripts/context/build_context_diff.py",
+      "path": "system/scripts/context/build_context_diff.py",
       "type": "script",
       "sha256": "50c23b7fd022d91fc329e89e7f79f43253a6549e9817221ba8a78723f2654b1c"
     },
     {
-      "id": "scripts/context/build_agent_context_pack.py",
-      "path": "scripts/context/build_agent_context_pack.py",
+      "id": "system/scripts/context/build_agent_context_pack.py",
+      "path": "system/scripts/context/build_agent_context_pack.py",
       "type": "script",
       "sha256": "20189fb94c4e5314b94bf893b06b7d82862af21b8ce23ac621b52ad52193ad2c"
     },
     {
-      "id": "scripts/graph/build_incremental_graph.py",
-      "path": "scripts/graph/build_incremental_graph.py",
+      "id": "system/scripts/graph/build_incremental_graph.py",
+      "path": "system/scripts/graph/build_incremental_graph.py",
       "type": "script",
       "sha256": "637c1219a4ed2c9f6e6af08446157fcea04f8308ec9c8d9e562b979cb67cf216"
     },
     {
-      "id": "scripts/graph/validate_repository_graph.py",
-      "path": "scripts/graph/validate_repository_graph.py",
+      "id": "system/scripts/graph/validate_repository_graph.py",
+      "path": "system/scripts/graph/validate_repository_graph.py",
       "type": "script",
       "sha256": "60fa1a33289f47589951f127a7767f55a74abdb99af6e3a404ec92e55f5a284b"
     },
     {
-      "id": "scripts/graph/build_repository_graph.py",
-      "path": "scripts/graph/build_repository_graph.py",
+      "id": "system/scripts/graph/build_repository_graph.py",
+      "path": "system/scripts/graph/build_repository_graph.py",
       "type": "script",
       "sha256": "2c2fb3bb2d8da165de9a8a00ca83b624d9eb7536c286239d83406ae11985ad90"
     },
     {
-      "id": "scripts/runtime/dry_run_adapter.py",
-      "path": "scripts/runtime/dry_run_adapter.py",
+      "id": "system/scripts/system/runtime/dry_run_adapter.py",
+      "path": "system/scripts/system/runtime/dry_run_adapter.py",
       "type": "script",
       "sha256": "ea43a615fa7d578eed88b25c6a459c4d963ba71fa554d3ac9f6d8e298e349233"
     },
     {
-      "id": "scripts/runtime/validate_runtime_capability.py",
-      "path": "scripts/runtime/validate_runtime_capability.py",
+      "id": "system/scripts/system/runtime/validate_runtime_capability.py",
+      "path": "system/scripts/system/runtime/validate_runtime_capability.py",
       "type": "script",
       "sha256": "7cd95b6978dd391dda641ea485f1c450edfbc93d9579dd42bdc25ec6f5097480"
     },
     {
-      "id": "scripts/runtime/context_loader.py",
-      "path": "scripts/runtime/context_loader.py",
+      "id": "system/scripts/system/runtime/context_loader.py",
+      "path": "system/scripts/system/runtime/context_loader.py",
       "type": "script",
       "sha256": "301714a87deef51ccdb8cc6d7f8c6e6ac0d7fad91fba46f05da9ce58a08603da"
     },
     {
-      "id": "scripts/runtime/validate_runtime_foundation.py",
-      "path": "scripts/runtime/validate_runtime_foundation.py",
+      "id": "system/scripts/system/runtime/validate_runtime_foundation.py",
+      "path": "system/scripts/system/runtime/validate_runtime_foundation.py",
       "type": "script",
       "sha256": "4bdaf031bcc40e70090fc7a89f52b43f68986ef0b776ef4523493a5f8dde5d94"
     },
     {
-      "id": "scripts/runtime/dry_run_runtime_plan.py",
-      "path": "scripts/runtime/dry_run_runtime_plan.py",
+      "id": "system/scripts/system/runtime/dry_run_runtime_plan.py",
+      "path": "system/scripts/system/runtime/dry_run_runtime_plan.py",
       "type": "script",
       "sha256": "e48e71943bb8bd72de056c47fb6691a6360141120b58e07d4b93638e68e07c9c"
     },
     {
-      "id": "scripts/runtime/validate_runtime_coordination.py",
-      "path": "scripts/runtime/validate_runtime_coordination.py",
+      "id": "system/scripts/system/runtime/validate_runtime_coordination.py",
+      "path": "system/scripts/system/runtime/validate_runtime_coordination.py",
       "type": "script",
       "sha256": "fb17c092b17ef303897c460d0b2dc0c6854f7d76cfbc2d79e6d9259572cf9f5a"
     },
     {
-      "id": "scripts/selftest/check_orphans.py",
-      "path": "scripts/selftest/check_orphans.py",
+      "id": "system/scripts/selftest/check_orphans.py",
+      "path": "system/scripts/selftest/check_orphans.py",
       "type": "script",
       "sha256": "172b5acf84258591d14cb7b8b20883aa43789467b0ba39b6b1dad8cae22999f4"
     },
     {
-      "id": "scripts/selftest/check_current_objective.py",
-      "path": "scripts/selftest/check_current_objective.py",
+      "id": "system/scripts/selftest/check_current_objective.py",
+      "path": "system/scripts/selftest/check_current_objective.py",
       "type": "script",
       "sha256": "590d2efdbb665395d8888d9559d559b328370ff09a3ec6d80ad3f56c4100fb9b"
     },
     {
-      "id": "scripts/selftest/check_repository_health.py",
-      "path": "scripts/selftest/check_repository_health.py",
+      "id": "system/scripts/selftest/check_repository_health.py",
+      "path": "system/scripts/selftest/check_repository_health.py",
       "type": "script",
       "sha256": "aaa0dba0e202a73c8575e05666b25a09a25e0ef1f612c9cfabc9423f70c4e603"
     },
     {
-      "id": "scripts/selftest/check_boundaries.py",
-      "path": "scripts/selftest/check_boundaries.py",
+      "id": "system/scripts/selftest/check_boundaries.py",
+      "path": "system/scripts/selftest/check_boundaries.py",
       "type": "script",
       "sha256": "8cf07ab238e420acf949690d7c46aebdb04e26323ca0f62261ee50078ce2d654"
     },
     {
-      "id": "scripts/selftest/README_SELFTEST_REMEDIATION.md",
-      "path": "scripts/selftest/README_SELFTEST_REMEDIATION.md",
+      "id": "system/scripts/selftest/README_SELFTEST_REMEDIATION.md",
+      "path": "system/scripts/selftest/README_SELFTEST_REMEDIATION.md",
       "type": "script",
       "sha256": "d45acc5081571cd40d0d9f0c432b7f7bd20051dac796867330af6f260f09b48f"
     },
     {
-      "id": "scripts/selftest/validate_repository_selftest_complete.py",
-      "path": "scripts/selftest/validate_repository_selftest_complete.py",
+      "id": "system/scripts/selftest/validate_repository_selftest_complete.py",
+      "path": "system/scripts/selftest/validate_repository_selftest_complete.py",
       "type": "script",
       "sha256": "7057268a7a8bc8731778e2d9b113104a7b29cc7d906e42244bd9a185246ea3e3"
     },
     {
-      "id": "scripts/selftest/check_duplicates.py",
-      "path": "scripts/selftest/check_duplicates.py",
+      "id": "system/scripts/selftest/check_duplicates.py",
+      "path": "system/scripts/selftest/check_duplicates.py",
       "type": "script",
       "sha256": "cc1e36ee82537604b37e2500411ff05f51741e089b39f951db9182170572a932"
     },
     {
-      "id": "scripts/selftest/check_link_integrity.py",
-      "path": "scripts/selftest/check_link_integrity.py",
+      "id": "system/scripts/selftest/check_link_integrity.py",
+      "path": "system/scripts/selftest/check_link_integrity.py",
       "type": "script",
       "sha256": "751507a9b7f56b544c685021db373edc1c3c946ab42ce0ac197b9cea08e56a0a"
     },
     {
-      "id": "scripts/selftest/check_secret_boundary.py",
-      "path": "scripts/selftest/check_secret_boundary.py",
+      "id": "system/scripts/selftest/check_secret_boundary.py",
+      "path": "system/scripts/selftest/check_secret_boundary.py",
       "type": "script",
       "sha256": "9af09e6e37ae69ebf2c454120a53a70775b3d210272f3e085e23865250d198a1"
     },
     {
-      "id": "scripts/selftest/check_workflows.py",
-      "path": "scripts/selftest/check_workflows.py",
+      "id": "system/scripts/selftest/check_workflows.py",
+      "path": "system/scripts/selftest/check_workflows.py",
       "type": "script",
       "sha256": "ed39613f5c7103448e8045b3c18940e891b91e21ff56c7a4a6cfaa656a76934b"
     },
     {
-      "id": "scripts/selftest/cleanup_selftest_skeleton.py",
-      "path": "scripts/selftest/cleanup_selftest_skeleton.py",
+      "id": "system/scripts/selftest/cleanup_selftest_skeleton.py",
+      "path": "system/scripts/selftest/cleanup_selftest_skeleton.py",
       "type": "script",
       "sha256": "69e25a844c165689836f48314b839219dce01c2067e6c147c4eda5da2f1b5389"
     },
     {
-      "id": "scripts/selftest/selftest_common.py",
-      "path": "scripts/selftest/selftest_common.py",
+      "id": "system/scripts/selftest/selftest_common.py",
+      "path": "system/scripts/selftest/selftest_common.py",
       "type": "script",
       "sha256": "9e00ce498e43e0cbc12aa1f81e38eb612631e292fe322ac2f5c05ed8c924090e"
     },
     {
-      "id": "scripts/baseline/validate_baseline.py",
-      "path": "scripts/baseline/validate_baseline.py",
+      "id": "system/scripts/baseline/validate_baseline.py",
+      "path": "system/scripts/baseline/validate_baseline.py",
       "type": "script",
       "sha256": "6951fc5bce00c816f2d25535226151addb766fef38027a4255cf57622db433bf"
     },
     {
-      "id": "scripts/selftest_v2/semantic_checks.py",
-      "path": "scripts/selftest_v2/semantic_checks.py",
+      "id": "system/scripts/selftest_v2/semantic_checks.py",
+      "path": "system/scripts/selftest_v2/semantic_checks.py",
       "type": "script",
       "sha256": "34903890513677ff758120d9d073621f9515afaf83205abbc3c78ba75e96eba9"
     },
     {
-      "id": "scripts/selftest_v2/validate_semantic_selftest.py",
-      "path": "scripts/selftest_v2/validate_semantic_selftest.py",
+      "id": "system/scripts/selftest_v2/validate_semantic_selftest.py",
+      "path": "system/scripts/selftest_v2/validate_semantic_selftest.py",
       "type": "script",
       "sha256": "8c0b7e05072f4da0677a8cbba12ff4c30a4b33cffaa81e090e94bf91c6364894"
     },
     {
-      "id": "scripts/selftest_v2/semantic_common.py",
-      "path": "scripts/selftest_v2/semantic_common.py",
+      "id": "system/scripts/selftest_v2/semantic_common.py",
+      "path": "system/scripts/selftest_v2/semantic_common.py",
       "type": "script",
       "sha256": "4a47f928c28171b3ba375a974ffcba31b103fdcd52dadc130d83f347420b20b9"
     },
     {
-      "id": "scripts/review/build_review_gate_summary.py",
-      "path": "scripts/review/build_review_gate_summary.py",
+      "id": "system/scripts/review/build_review_gate_summary.py",
+      "path": "system/scripts/review/build_review_gate_summary.py",
       "type": "script",
       "sha256": "4d845016a75ddcb9bf582cbf87d4dadf29ad30c8986d6b6f714d09673e9172ee"
     },
     {
-      "id": "scripts/orchestrator/build_context_bundle.py",
-      "path": "scripts/orchestrator/build_context_bundle.py",
+      "id": "system/scripts/system/orchestrator/build_context_bundle.py",
+      "path": "system/scripts/system/orchestrator/build_context_bundle.py",
       "type": "script",
       "sha256": "4622e7afffe137f1cd4f9e9df1f9f1bfe61feed1ece7618893f23a6850752d38"
     },
     {
-      "id": "scripts/orchestrator/build_execution_plan.py",
-      "path": "scripts/orchestrator/build_execution_plan.py",
+      "id": "system/scripts/system/orchestrator/build_execution_plan.py",
+      "path": "system/scripts/system/orchestrator/build_execution_plan.py",
       "type": "script",
       "sha256": "5a68fc5f0d7fe7606e78b43d95165a458ae9be4f1da84a3e086f2fd0c79c60c9"
     },
     {
-      "id": "scripts/orchestrator/update_execution_queue.py",
-      "path": "scripts/orchestrator/update_execution_queue.py",
+      "id": "system/scripts/system/orchestrator/update_execution_queue.py",
+      "path": "system/scripts/system/orchestrator/update_execution_queue.py",
       "type": "script",
       "sha256": "37b19cdabded865db9fc3334b4f7470c20bc584a90242229a1f3b7cf32317d1b"
     },
     {
-      "id": "scripts/orchestrator/validate_orchestration.py",
-      "path": "scripts/orchestrator/validate_orchestration.py",
+      "id": "system/scripts/system/orchestrator/validate_orchestration.py",
+      "path": "system/scripts/system/orchestrator/validate_orchestration.py",
       "type": "script",
       "sha256": "f6703479c4b1cf672a7fe662d6079dfea05b154eebf87edc5c44800e905acf18"
     },
@@ -2032,8 +2032,8 @@
       "sha256": "495d6bac3453c00dbb920842f966eed5858d3807f484549c931d37d928d1289b"
     },
     {
-      "id": "orchestrator/workers/codex_worker.py",
-      "path": "orchestrator/workers/codex_worker.py",
+      "id": "system/orchestrator/workers/codex_worker.py",
+      "path": "system/orchestrator/workers/codex_worker.py",
       "type": "document",
       "sha256": "f23802c9645b97af541014213f135cb2c59a0dcde43ccdb7ef1034a46da4f720"
     }

@@ -190,50 +190,50 @@
 - `graph/repository_graph.md` (document) Repository Graph
 - `graph/GRAPH_SCHEMA.md` (document) Repository Knowledge Graph Schema
 - `graph/README_GRAPH.md` (readme) Repository Knowledge Graph
-- `runtime/RUNTIME_INTEGRATION_SPEC.md` (document) Runtime Integration Specification
-- `runtime/REPLAY_ENGINE.md` (document) Replay Engine
-- `runtime/RUNTIME_DRY_RUN_PLAN.md` (document) Runtime Dry Run Plan
-- `runtime/RUNTIME_APPROVAL_TEMPLATE.md` (document) Runtime Approval
-- `runtime/dry_run_adapter_report.md` (document) Dry Run Adapter
-- `runtime/RUNTIME_RISK_REGISTER.md` (document) Runtime Risk Register
-- `runtime/DRY_RUN_ADAPTER_SPEC.md` (document) Dry Run Adapter
-- `runtime/runtime_dry_run_report.md` (document) Runtime Dry Run Report
-- `runtime/RUNTIME_READINESS_CHECKLIST.md` (document) Runtime Readiness Checklist
-- `runtime/AUDIT_ENGINE.md` (document) Audit Engine
-- `runtime/AGENT_RUNTIME_MVP_SPEC.md` (document) Agent Runtime MVP Specification
-- `runtime/governor/GOVERNOR_RECOMMENDATIONS.md` (document) GOVERNOR_RECOMMENDATIONS
-- `runtime/task_intake/ART-SAMPLE-0001/TASK_INTAKE_REPORT.md` (document) Agent Runtime Task Intake Dry Run Report
-- `runtime/agent_runtime_mvp/DRY_RUN_REPORT.md` (document) Agent Runtime MVP Dry Run Report\n\n## Conclusion\n\nDry-run agent cycle completed without runtime external execution.\n\n## Generated Artifacts\n\n- `runtime/agent_runtime_mvp/runtime_context.json`\n- `runtime/agent_runtime_mvp/runtime_plan.json`\n- `runtime/agent_runtime_mvp/queue_item.json`\n- `runtime/agent_runtime_mvp/review_summary.json`\n- `runtime/agent_runtime_mvp/approval_gate.json`\n\n## Boundary\n\n- Runtime external execution: not performed\n- Platform API mutation: not performed\n- Auto posting: not performed\n- Secret use: not performed\n- Human approval: required for runtime transition\n
-- `runtime/validation/VALIDATION_REPORT.md` (document) VALIDATION REPORT
-- `tests/test_root_hygiene_migration.py` (document) test_root_hygiene_migration
-- `tests/test_result.py` (document) test_result
-- `tests/test_task.py` (document) test_task
-- `tests/test_local_agent_runner.py` (document) test_local_agent_runner
-- `tests/test_planner.py` (document) test_planner
-- `tests/test_review_output_integration.py` (document) test_review_output_integration
-- `tests/test_repository_governor.py` (document) test_repository_governor
-- `tests/test_task_decomposer.py` (document) test_task_decomposer
-- `tests/test_execution_kernel.py` (document) Repository
-- `tests/test_context_loader.py` (document) test_context_loader
-- `tests/test_worker_registry.py` (document) test_worker_registry
-- `tests/test_repository_layout.py` (document) test_repository_layout
-- `tests/test_repository_hygiene.py` (document) test_repository_hygiene
-- `tests/test_autonomous_loop.py` (document) Repository
-- `tests/test_code_quality_baseline.py` (document) test_code_quality_baseline
-- `tests/test_state.py` (document) Repository
-- `tests/test_queue_transition.py` (document) test_queue_transition
-- `tests/test_agent_executor.py` (document) Repository
-- `tests/test_queue.py` (document) Repository
-- `tests/test_worker.py` (document) test_worker
-- `tests/test_output_contract.py` (document) test_output_contract
-- `tests/test_validation_orchestrator.py` (document) test_validation_orchestrator
-- `tests/test_output_semantics.py` (document) test_output_semantics
-- `tests/test_execution_record.py` (document) test_execution_record
-- `tests/test_dispatcher.py` (document) test_dispatcher
-- `tests/test_review_package.py` (document) test_review_package
-- `tests/test_codex_worker.py` (document) test_codex_worker
-- `tests/test_capability_router.py` (document) test_capability_router
-- `tests/test_refactoring_governance.py` (document) test_refactoring_governance
+- `system/runtime/RUNTIME_INTEGRATION_SPEC.md` (document) Runtime Integration Specification
+- `system/runtime/REPLAY_ENGINE.md` (document) Replay Engine
+- `system/runtime/RUNTIME_DRY_RUN_PLAN.md` (document) Runtime Dry Run Plan
+- `system/runtime/RUNTIME_APPROVAL_TEMPLATE.md` (document) Runtime Approval
+- `system/runtime/dry_run_adapter_report.md` (document) Dry Run Adapter
+- `system/runtime/RUNTIME_RISK_REGISTER.md` (document) Runtime Risk Register
+- `system/runtime/DRY_RUN_ADAPTER_SPEC.md` (document) Dry Run Adapter
+- `system/runtime/runtime_dry_run_report.md` (document) Runtime Dry Run Report
+- `system/runtime/RUNTIME_READINESS_CHECKLIST.md` (document) Runtime Readiness Checklist
+- `system/runtime/AUDIT_ENGINE.md` (document) Audit Engine
+- `system/runtime/AGENT_RUNTIME_MVP_SPEC.md` (document) Agent Runtime MVP Specification
+- `system/runtime/governor/GOVERNOR_RECOMMENDATIONS.md` (document) GOVERNOR_RECOMMENDATIONS
+- `system/runtime/task_intake/ART-SAMPLE-0001/TASK_INTAKE_REPORT.md` (document) Agent Runtime Task Intake Dry Run Report
+- `system/runtime/agent_runtime_mvp/DRY_RUN_REPORT.md` (document) Agent Runtime MVP Dry Run Report\n\n## Conclusion\n\nDry-run agent cycle completed without runtime external execution.\n\n## Generated Artifacts\n\n- `system/runtime/agent_runtime_mvp/runtime_context.json`\n- `system/runtime/agent_runtime_mvp/runtime_plan.json`\n- `system/runtime/agent_runtime_mvp/queue_item.json`\n- `system/runtime/agent_runtime_mvp/review_summary.json`\n- `system/runtime/agent_runtime_mvp/approval_gate.json`\n\n## Boundary\n\n- Runtime external execution: not performed\n- Platform API mutation: not performed\n- Auto posting: not performed\n- Secret use: not performed\n- Human approval: required for runtime transition\n
+- `system/runtime/validation/VALIDATION_REPORT.md` (document) VALIDATION REPORT
+- `system/tests/test_root_hygiene_migration.py` (document) test_root_hygiene_migration
+- `system/tests/test_result.py` (document) test_result
+- `system/tests/test_task.py` (document) test_task
+- `system/tests/test_local_agent_runner.py` (document) test_local_agent_runner
+- `system/tests/test_planner.py` (document) test_planner
+- `system/tests/test_review_output_integration.py` (document) test_review_output_integration
+- `system/tests/test_repository_governor.py` (document) test_repository_governor
+- `system/tests/test_task_decomposer.py` (document) test_task_decomposer
+- `system/tests/test_execution_kernel.py` (document) Repository
+- `system/tests/test_context_loader.py` (document) test_context_loader
+- `system/tests/test_worker_registry.py` (document) test_worker_registry
+- `system/tests/test_repository_layout.py` (document) test_repository_layout
+- `system/tests/test_repository_hygiene.py` (document) test_repository_hygiene
+- `system/tests/test_autonomous_loop.py` (document) Repository
+- `system/tests/test_code_quality_baseline.py` (document) test_code_quality_baseline
+- `system/tests/test_state.py` (document) Repository
+- `system/tests/test_queue_transition.py` (document) test_queue_transition
+- `system/tests/test_agent_executor.py` (document) Repository
+- `system/tests/test_queue.py` (document) Repository
+- `system/tests/test_worker.py` (document) test_worker
+- `system/tests/test_output_contract.py` (document) test_output_contract
+- `system/tests/test_validation_orchestrator.py` (document) test_validation_orchestrator
+- `system/tests/test_output_semantics.py` (document) test_output_semantics
+- `system/tests/test_execution_record.py` (document) test_execution_record
+- `system/tests/test_dispatcher.py` (document) test_dispatcher
+- `system/tests/test_review_package.py` (document) test_review_package
+- `system/tests/test_codex_worker.py` (document) test_codex_worker
+- `system/tests/test_capability_router.py` (document) test_capability_router
+- `system/tests/test_refactoring_governance.py` (document) test_refactoring_governance
 - `runbooks/link-scan.md` (runbook) Runbook
 - `runbooks/full-selftest.md` (runbook) Runbook
 - `runbooks/runbooks_5.md` (runbook) runbooks 5
@@ -388,85 +388,85 @@
 - `wbs/WBS-0011-repository-operating-system-self-test.md` (wbs) WBS-0011: Repository Operating System Self Test
 - `wbs/WBS-0015-agent-orchestrator.md` (wbs) WBS-0015: Agent Orchestrator
 - `wbs/WBS-0012-repository-semantic-selftest-v2.md` (wbs) WBS-0012: Repository Semantic SelfTest v2
-- `scripts/validate_ep_0102.py` (script) validate_ep_0102
-- `scripts/validate_ep_0112.py` (script) validate_ep_0112
-- `scripts/validate_boundaries.py` (script) validate_boundaries
-- `scripts/validate_ep_0003.py` (script) validate_ep_0003
-- `scripts/validate_ep_0106.py` (script) validate_ep_0106
-- `scripts/validate_ep_0122.py` (script) validate_ep_0122
-- `scripts/validate_ep_0116.py` (script) validate_ep_0116
-- `scripts/validate_ep_0107.py` (script) validate_ep_0107
-- `scripts/validate_ep_0117.py` (script) validate_ep_0117
-- `scripts/validate_ep_0103.py` (script) validate_ep_0103
-- `scripts/validate_ep_0113.py` (script) validate_ep_0113
-- `scripts/validate_ep_0108.py` (script) validate_ep_0108
-- `scripts/validate_ep_0118.py` (script) validate_ep_0118
-- `scripts/validate_links.py` (script) validate_links
-- `scripts/validate_drift.py` (script) validate_drift
-- `scripts/validate_continuous_governance.py` (script) validate_continuous_governance
-- `scripts/validate_ep_0109.py` (script) validate_ep_0109
-- `scripts/validate_repository_knowledge_graph_runtime_integration.py` (script) validate_repository_knowledge_graph_runtime_integration
-- `scripts/validate_ep_0119.py` (script) validate_ep_0119
-- `scripts/validate_all.py` (script) validate_all
-- `scripts/validate_dead_assets.py` (script) validate_dead_assets
-- `scripts/validate_ep_0104.py` (script) validate_ep_0104
-- `scripts/validate_ep_0120.py` (script) validate_ep_0120
-- `scripts/validate_ep_0114.py` (script) validate_ep_0114
-- `scripts/validate_ep_0100.py` (script) validate_ep_0100
-- `scripts/validate_ep_0110.py` (script) validate_ep_0110
-- `scripts/validate_repository_selftest.py` (script) validate_repository_selftest
-- `scripts/validate_ep_0101.py` (script) validate_ep_0101
-- `scripts/validate_ep_0111.py` (script) validate_ep_0111
-- `scripts/validate_ep_0105.py` (script) validate_ep_0105
-- `scripts/validate_repository_os_v1_baseline.py` (script) validate_repository_os_v1_baseline
-- `scripts/validate_ep_0121.py` (script) validate_ep_0121
-- `scripts/validate_ep_0115.py` (script) validate_ep_0115
-- `scripts/context/build_context_diff.py` (script) build_context_diff
-- `scripts/context/build_agent_context_pack.py` (script) build_agent_context_pack
-- `scripts/specs/validate_ep_contract.py` (script) validate_ep_contract
-- `scripts/specs/scaffold_ep_spec.py` (script) scaffold_ep_spec
-- `scripts/specs/validate_ep_spec.py` (script) validate_ep_spec
-- `scripts/specs/validate_spec_lifecycle.py` (script) validate_spec_lifecycle
-- `scripts/specs/load_active_ep_contract.py` (script) load_active_ep_contract
-- `scripts/graph/build_incremental_graph.py` (script) build_incremental_graph
-- `scripts/graph/validate_repository_graph.py` (script) validate_repository_graph
-- `scripts/graph/build_repository_graph.py` (script) build_repository_graph
-- `scripts/runtime/dry_run_adapter.py` (script) dry_run_adapter
-- `scripts/runtime/validate_runtime_capability.py` (script) validate_runtime_capability
-- `scripts/runtime/context_loader.py` (script) context_loader
-- `scripts/runtime/validate_runtime_foundation.py` (script) validate_runtime_foundation
-- `scripts/runtime/dry_run_runtime_plan.py` (script) dry_run_runtime_plan
-- `scripts/runtime/validate_runtime_coordination.py` (script) validate_runtime_coordination
-- `scripts/selftest/check_orphans.py` (script) check_orphans
-- `scripts/selftest/check_current_objective.py` (script) check_current_objective
-- `scripts/selftest/check_repository_health.py` (script) check_repository_health
-- `scripts/selftest/check_boundaries.py` (script) Use separated fragments so this checker does not match itself.
-- `scripts/selftest/README_SELFTEST_REMEDIATION.md` (script) SelfTest Remediation
-- `scripts/selftest/validate_repository_selftest_complete.py` (script) validate_repository_selftest_complete
-- `scripts/selftest/check_duplicates.py` (script) Deprecated skeleton files are handled by cleanup_selftest_skeleton.py and reported as warnings here.
-- `scripts/selftest/check_link_integrity.py` (script) check_link_integrity
-- `scripts/selftest/check_secret_boundary.py` (script) check_secret_boundary
-- `scripts/selftest/check_workflows.py` (script) check_workflows
-- `scripts/selftest/cleanup_selftest_skeleton.py` (script) cleanup_selftest_skeleton
-- `scripts/selftest/selftest_common.py` (script) Backward-compatible alias for older selftest modules.
-- `scripts/baseline/validate_baseline.py` (script) validate_baseline
-- `scripts/hygiene/audit_code_quality.py` (script) audit_code_quality
-- `scripts/hygiene/validate_repository_layout.py` (script) validate_repository_layout
-- `scripts/hygiene/validate_refactoring_governance.py` (script) validate_refactoring_governance
-- `scripts/hygiene/audit_repository_root.py` (script) audit_repository_root
-- `scripts/selftest_v2/semantic_checks.py` (script) semantic_checks
-- `scripts/selftest_v2/validate_semantic_selftest.py` (script) validate_semantic_selftest
-- `scripts/selftest_v2/semantic_common.py` (script) semantic_common
-- `scripts/review/build_review_gate_summary.py` (script) build_review_gate_summary
-- `scripts/agent_runtime/run_task_intake_cycle.py` (script) run_task_intake_cycle
-- `scripts/agent_runtime/run_dry_run_cycle.py` (script) run_dry_run_cycle
-- `scripts/agent_runtime/validate_task_intake.py` (script) validate_task_intake
-- `scripts/agent_runtime/validate_agent_runtime_mvp.py` (script) validate_agent_runtime_mvp
-- `scripts/workers/validate_worker_contracts.py` (script) validate_worker_contracts
-- `scripts/orchestrator/build_context_bundle.py` (script) build_context_bundle
-- `scripts/orchestrator/build_execution_plan.py` (script) build_execution_plan
-- `scripts/orchestrator/update_execution_queue.py` (script) update_execution_queue
-- `scripts/orchestrator/validate_orchestration.py` (script) validate_orchestration
+- `system/scripts/validate_ep_0102.py` (script) validate_ep_0102
+- `system/scripts/validate_ep_0112.py` (script) validate_ep_0112
+- `system/scripts/validate_boundaries.py` (script) validate_boundaries
+- `system/scripts/validate_ep_0003.py` (script) validate_ep_0003
+- `system/scripts/validate_ep_0106.py` (script) validate_ep_0106
+- `system/scripts/validate_ep_0122.py` (script) validate_ep_0122
+- `system/scripts/validate_ep_0116.py` (script) validate_ep_0116
+- `system/scripts/validate_ep_0107.py` (script) validate_ep_0107
+- `system/scripts/validate_ep_0117.py` (script) validate_ep_0117
+- `system/scripts/validate_ep_0103.py` (script) validate_ep_0103
+- `system/scripts/validate_ep_0113.py` (script) validate_ep_0113
+- `system/scripts/validate_ep_0108.py` (script) validate_ep_0108
+- `system/scripts/validate_ep_0118.py` (script) validate_ep_0118
+- `system/scripts/validate_links.py` (script) validate_links
+- `system/scripts/validate_drift.py` (script) validate_drift
+- `system/scripts/validate_continuous_governance.py` (script) validate_continuous_governance
+- `system/scripts/validate_ep_0109.py` (script) validate_ep_0109
+- `system/scripts/validate_repository_knowledge_graph_runtime_integration.py` (script) validate_repository_knowledge_graph_runtime_integration
+- `system/scripts/validate_ep_0119.py` (script) validate_ep_0119
+- `system/scripts/validate_all.py` (script) validate_all
+- `system/scripts/validate_dead_assets.py` (script) validate_dead_assets
+- `system/scripts/validate_ep_0104.py` (script) validate_ep_0104
+- `system/scripts/validate_ep_0120.py` (script) validate_ep_0120
+- `system/scripts/validate_ep_0114.py` (script) validate_ep_0114
+- `system/scripts/validate_ep_0100.py` (script) validate_ep_0100
+- `system/scripts/validate_ep_0110.py` (script) validate_ep_0110
+- `system/scripts/validate_repository_selftest.py` (script) validate_repository_selftest
+- `system/scripts/validate_ep_0101.py` (script) validate_ep_0101
+- `system/scripts/validate_ep_0111.py` (script) validate_ep_0111
+- `system/scripts/validate_ep_0105.py` (script) validate_ep_0105
+- `system/scripts/validate_repository_os_v1_baseline.py` (script) validate_repository_os_v1_baseline
+- `system/scripts/validate_ep_0121.py` (script) validate_ep_0121
+- `system/scripts/validate_ep_0115.py` (script) validate_ep_0115
+- `system/scripts/context/build_context_diff.py` (script) build_context_diff
+- `system/scripts/context/build_agent_context_pack.py` (script) build_agent_context_pack
+- `system/scripts/specs/validate_ep_contract.py` (script) validate_ep_contract
+- `system/scripts/specs/scaffold_ep_spec.py` (script) scaffold_ep_spec
+- `system/scripts/specs/validate_ep_spec.py` (script) validate_ep_spec
+- `system/scripts/specs/validate_spec_lifecycle.py` (script) validate_spec_lifecycle
+- `system/scripts/specs/load_active_ep_contract.py` (script) load_active_ep_contract
+- `system/scripts/graph/build_incremental_graph.py` (script) build_incremental_graph
+- `system/scripts/graph/validate_repository_graph.py` (script) validate_repository_graph
+- `system/scripts/graph/build_repository_graph.py` (script) build_repository_graph
+- `system/scripts/system/runtime/dry_run_adapter.py` (script) dry_run_adapter
+- `system/scripts/system/runtime/validate_runtime_capability.py` (script) validate_runtime_capability
+- `system/scripts/system/runtime/context_loader.py` (script) context_loader
+- `system/scripts/system/runtime/validate_runtime_foundation.py` (script) validate_runtime_foundation
+- `system/scripts/system/runtime/dry_run_runtime_plan.py` (script) dry_run_runtime_plan
+- `system/scripts/system/runtime/validate_runtime_coordination.py` (script) validate_runtime_coordination
+- `system/scripts/selftest/check_orphans.py` (script) check_orphans
+- `system/scripts/selftest/check_current_objective.py` (script) check_current_objective
+- `system/scripts/selftest/check_repository_health.py` (script) check_repository_health
+- `system/scripts/selftest/check_boundaries.py` (script) Use separated fragments so this checker does not match itself.
+- `system/scripts/selftest/README_SELFTEST_REMEDIATION.md` (script) SelfTest Remediation
+- `system/scripts/selftest/validate_repository_selftest_complete.py` (script) validate_repository_selftest_complete
+- `system/scripts/selftest/check_duplicates.py` (script) Deprecated skeleton files are handled by cleanup_selftest_skeleton.py and reported as warnings here.
+- `system/scripts/selftest/check_link_integrity.py` (script) check_link_integrity
+- `system/scripts/selftest/check_secret_boundary.py` (script) check_secret_boundary
+- `system/scripts/selftest/check_workflows.py` (script) check_workflows
+- `system/scripts/selftest/cleanup_selftest_skeleton.py` (script) cleanup_selftest_skeleton
+- `system/scripts/selftest/selftest_common.py` (script) Backward-compatible alias for older selftest modules.
+- `system/scripts/baseline/validate_baseline.py` (script) validate_baseline
+- `system/scripts/hygiene/audit_code_quality.py` (script) audit_code_quality
+- `system/scripts/hygiene/validate_repository_layout.py` (script) validate_repository_layout
+- `system/scripts/hygiene/validate_refactoring_governance.py` (script) validate_refactoring_governance
+- `system/scripts/hygiene/audit_repository_root.py` (script) audit_repository_root
+- `system/scripts/selftest_v2/semantic_checks.py` (script) semantic_checks
+- `system/scripts/selftest_v2/validate_semantic_selftest.py` (script) validate_semantic_selftest
+- `system/scripts/selftest_v2/semantic_common.py` (script) semantic_common
+- `system/scripts/review/build_review_gate_summary.py` (script) build_review_gate_summary
+- `system/scripts/agent_system/runtime/run_task_intake_cycle.py` (script) run_task_intake_cycle
+- `system/scripts/agent_system/runtime/run_dry_run_cycle.py` (script) run_dry_run_cycle
+- `system/scripts/agent_system/runtime/validate_task_intake.py` (script) validate_task_intake
+- `system/scripts/agent_system/runtime/validate_agent_runtime_mvp.py` (script) validate_agent_runtime_mvp
+- `system/scripts/workers/validate_worker_contracts.py` (script) validate_worker_contracts
+- `system/scripts/system/orchestrator/build_context_bundle.py` (script) build_context_bundle
+- `system/scripts/system/orchestrator/build_execution_plan.py` (script) build_execution_plan
+- `system/scripts/system/orchestrator/update_execution_queue.py` (script) update_execution_queue
+- `system/scripts/system/orchestrator/validate_orchestration.py` (script) validate_orchestration
 - `.github/workflows/ep0106-queue-state-transition-engine.yml` (workflow) ep0106-queue-state-transition-engine
 - `.github/workflows/repository-os-v1-baseline.yml` (workflow) repository-os-v1-baseline
 - `.github/workflows/ep0105-scheduler-dispatcher.yml` (workflow) ep0105-scheduler-dispatcher
@@ -525,17 +525,17 @@
 - `prompts/CODEX_RELEASE.md` (document) CODEX_RELEASE
 - `prompts/CODEX_IMPLEMENTER.md` (document) CODEX_IMPLEMENTER
 - `prompts/codex/CODEX_PHASE0_GITHUB_PROMPT.md` (document) CODEX_PHASE0_GITHUB_PROMPT
-- `agent_runtime/cycle.py` (document) cycle
-- `agent_runtime/planner.py` (document) planner
-- `agent_runtime/task_cycle.py` (document) task_cycle
-- `agent_runtime/models.py` (document) models
-- `agent_runtime/approval_gate.py` (document) approval_gate
-- `agent_runtime/__init__.py` (document) __init__
-- `agent_runtime/task_intake.py` (document) task_intake
-- `agent_runtime/loader.py` (document) loader
-- `agent_runtime/queue_engine.py` (document) queue_engine
-- `agent_runtime/repository.py` (document) repository
-- `agent_runtime/review_engine.py` (document) review_engine
+- `agent_system/runtime/cycle.py` (document) cycle
+- `agent_system/runtime/planner.py` (document) planner
+- `agent_system/runtime/task_cycle.py` (document) task_cycle
+- `agent_system/runtime/models.py` (document) models
+- `agent_system/runtime/approval_gate.py` (document) approval_gate
+- `agent_system/runtime/__init__.py` (document) __init__
+- `agent_system/runtime/task_intake.py` (document) task_intake
+- `agent_system/runtime/loader.py` (document) loader
+- `agent_system/runtime/queue_engine.py` (document) queue_engine
+- `agent_system/runtime/repository.py` (document) repository
+- `agent_system/runtime/review_engine.py` (document) review_engine
 - `.system/GLOSSARY.md` (document) GLOSSARY
 - `.system/STYLE.md` (document) STYLE
 - `.system/REVIEW.md` (document) REVIEW
@@ -612,45 +612,45 @@
 - `basis/057_boundary_validation_policy.md` (policy) 057 Boundary Validation Policy
 - `basis/060_selftest_policy.md` (policy) selftest
 - `basis/082_context_loader_policy.md` (policy) 082 Context Loader Policy
-- `orchestrator/dispatcher.py` (document) dispatcher
-- `orchestrator/queue.py` (document) queue
-- `orchestrator/worker.py` (document) worker
-- `orchestrator/output_semantics.py` (document) output_semantics
-- `orchestrator/output_contract.py` (document) output_contract
-- `orchestrator/planner.py` (document) planner
-- `orchestrator/task.py` (document) task
-- `orchestrator/execution_record.py` (document) execution_record
-- `orchestrator/repository_governor.py` (document) repository_governor
-- `orchestrator/INBOX.md` (document) INBOX
-- `orchestrator/ARCHITECTURE.md` (document) ORCHESTRATOR ARCHITECTURE
-- `orchestrator/AGENT_ROUTER.md` (document) Agent Router
-- `orchestrator/ADR-0001.md` (document) ADR-0001: Stateless Orchestrator with Repository as Single Source of Truth
-- `orchestrator/review_package.py` (document) review_package
-- `orchestrator/WBS.md` (document) ORCHESTRATOR WBS
-- `orchestrator/LOCAL_AGENT_RUNNER.md` (document) LOCAL_AGENT_RUNNER
-- `orchestrator/OUTBOX.md` (document) OUTBOX
-- `orchestrator/constants.py` (document) constants
-- `orchestrator/queue_state.py` (document) queue_state
-- `orchestrator/RUNBOOK.md` (document) RUNBOOK
-- `orchestrator/worker_state.py` (document) worker_state
-- `orchestrator/CONTEXT_RESOLVER.md` (document) Context Resolver
-- `orchestrator/WORKER_ROUTING.md` (document) WORKER_ROUTING
-- `orchestrator/capability_router.py` (document) capability_router
-- `orchestrator/execution_kernel.py` (document) execution_kernel
-- `orchestrator/CONTEXT_BUNDLE_SCHEMA.md` (document) Context Bundle Schema
-- `orchestrator/review_output_integration.py` (document) review_output_integration
-- `orchestrator/result.py` (document) result
-- `orchestrator/REVIEW_GATE.md` (document) Review Gate
-- `orchestrator/context_loader.py` (document) context_loader
-- `orchestrator/ORCHESTRATION_SEQUENCE.md` (document) Orchestration Sequence
-- `orchestrator/agent_executor.py` (document) agent_executor
-- `orchestrator/queue_transition.py` (document) queue_transition
-- `orchestrator/scheduler.py` (document) scheduler
-- `orchestrator/autonomous_loop.py` (document) autonomous_loop
-- `orchestrator/EXECUTION_PLAN_SCHEMA.md` (document) Execution Plan Schema
-- `orchestrator/validation_orchestrator.py` (document) validation_orchestrator
-- `orchestrator/EXECUTION_QUEUE.md` (document) Execution Queue
-- `orchestrator/task_decomposer.py` (document) task_decomposer
-- `orchestrator/local_agent_runner.py` (document) local_agent_runner
-- `orchestrator/state.py` (document) state
-- `orchestrator/workers/codex_worker.py` (document) codex_worker
+- `system/orchestrator/dispatcher.py` (document) dispatcher
+- `system/orchestrator/queue.py` (document) queue
+- `system/orchestrator/worker.py` (document) worker
+- `system/orchestrator/output_semantics.py` (document) output_semantics
+- `system/orchestrator/output_contract.py` (document) output_contract
+- `system/orchestrator/planner.py` (document) planner
+- `system/orchestrator/task.py` (document) task
+- `system/orchestrator/execution_record.py` (document) execution_record
+- `system/orchestrator/repository_governor.py` (document) repository_governor
+- `system/orchestrator/INBOX.md` (document) INBOX
+- `system/orchestrator/ARCHITECTURE.md` (document) ORCHESTRATOR ARCHITECTURE
+- `system/orchestrator/AGENT_ROUTER.md` (document) Agent Router
+- `system/orchestrator/ADR-0001.md` (document) ADR-0001: Stateless Orchestrator with Repository as Single Source of Truth
+- `system/orchestrator/review_package.py` (document) review_package
+- `system/orchestrator/WBS.md` (document) ORCHESTRATOR WBS
+- `system/orchestrator/LOCAL_AGENT_RUNNER.md` (document) LOCAL_AGENT_RUNNER
+- `system/orchestrator/OUTBOX.md` (document) OUTBOX
+- `system/orchestrator/constants.py` (document) constants
+- `system/orchestrator/queue_state.py` (document) queue_state
+- `system/orchestrator/RUNBOOK.md` (document) RUNBOOK
+- `system/orchestrator/worker_state.py` (document) worker_state
+- `system/orchestrator/CONTEXT_RESOLVER.md` (document) Context Resolver
+- `system/orchestrator/WORKER_ROUTING.md` (document) WORKER_ROUTING
+- `system/orchestrator/capability_router.py` (document) capability_router
+- `system/orchestrator/execution_kernel.py` (document) execution_kernel
+- `system/orchestrator/CONTEXT_BUNDLE_SCHEMA.md` (document) Context Bundle Schema
+- `system/orchestrator/review_output_integration.py` (document) review_output_integration
+- `system/orchestrator/result.py` (document) result
+- `system/orchestrator/REVIEW_GATE.md` (document) Review Gate
+- `system/orchestrator/context_loader.py` (document) context_loader
+- `system/orchestrator/ORCHESTRATION_SEQUENCE.md` (document) Orchestration Sequence
+- `system/orchestrator/agent_executor.py` (document) agent_executor
+- `system/orchestrator/queue_transition.py` (document) queue_transition
+- `system/orchestrator/scheduler.py` (document) scheduler
+- `system/orchestrator/autonomous_loop.py` (document) autonomous_loop
+- `system/orchestrator/EXECUTION_PLAN_SCHEMA.md` (document) Execution Plan Schema
+- `system/orchestrator/validation_orchestrator.py` (document) validation_orchestrator
+- `system/orchestrator/EXECUTION_QUEUE.md` (document) Execution Queue
+- `system/orchestrator/task_decomposer.py` (document) task_decomposer
+- `system/orchestrator/local_agent_runner.py` (document) local_agent_runner
+- `system/orchestrator/state.py` (document) state
+- `system/orchestrator/workers/codex_worker.py` (document) codex_worker

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from orchestrator.completion_protocol import CompletionStatus, build_completion_protocol
+from system.orchestrator.completion_protocol import CompletionStatus, build_completion_protocol
 
 
 def test_completion_protocol_builds_payload() -> None:

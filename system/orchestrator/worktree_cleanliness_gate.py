@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 import subprocess
 
-from orchestrator.runtime_artifact_policy import RuntimeArtifactPolicyLoader
+from system.orchestrator.runtime_artifact_policy import RuntimeArtifactPolicyLoader
 
 
 @dataclass(frozen=True)

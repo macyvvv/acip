@@ -17,4 +17,4 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Run boundary validation
-        run: python scripts/selftest/check_boundaries.py
+        run: python system/scripts/selftest/check_boundaries.py

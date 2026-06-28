@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from orchestrator.planning_state_builder import PlanningStateBuilder
+from system.orchestrator.planning_state_builder import PlanningStateBuilder
 
 
 def test_planning_state_builder_writes_projection(tmp_path: Path) -> None:

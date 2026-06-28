@@ -14,7 +14,7 @@ def _resolve_repo_root() -> Path:
 ROOT = _resolve_repo_root()
 sys.path.insert(0, str(ROOT))
 
-from orchestrator.planning_state_builder import PlanningStateBuilder
+from system.orchestrator.planning_state_builder import PlanningStateBuilder
 
 
 def main() -> int:

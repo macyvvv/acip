@@ -9,4 +9,4 @@ worktree_state: clean
 approval_required: false
 repository_health: healthy
 runtime_health: healthy
-next_action: ChatGPT can read runtime/handoff/latest.json for review intake.
+next_action: ChatGPT can read system/runtime/handoff/latest.json for review intake.

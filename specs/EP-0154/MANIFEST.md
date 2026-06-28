@@ -1,6 +1,6 @@
 # MANIFEST
 
 - `docs/current/WORKTREE_CLEANLINESS_GATE.md`
-- `orchestrator/worktree_cleanliness_gate.py`
-- `scripts/validate_ep_0154.py`
-- `tests/test_worktree_cleanliness_gate.py`
+- `system/orchestrator/worktree_cleanliness_gate.py`
+- `system/scripts/validate_ep_0154.py`
+- `system/tests/test_worktree_cleanliness_gate.py`

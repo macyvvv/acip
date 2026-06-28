@@ -23,4 +23,4 @@ jobs:
           python-version: '3.11'
 
       - name: Run complete repository self-test
-        run: python scripts/selftest/validate_repository_selftest_complete.py
+        run: python system/scripts/selftest/validate_repository_selftest_complete.py

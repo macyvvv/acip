@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from orchestrator.approval_hold_workflow import ApprovalHoldWorkflow
+from system.orchestrator.approval_hold_workflow import ApprovalHoldWorkflow
 
 
 def test_approval_hold_workflow_blocks_high_risk(tmp_path) -> None:

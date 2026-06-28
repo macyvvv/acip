@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from orchestrator.next_work_resolver import NextWorkResolver
+from system.orchestrator.next_work_resolver import NextWorkResolver
 
 
 def test_next_work_resolver_selects_highest_priority(tmp_path: Path) -> None:

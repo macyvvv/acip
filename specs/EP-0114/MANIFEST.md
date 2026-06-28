@@ -1,3 +1,3 @@
 # MANIFEST
 
-- `orchestrator/capability_router.py`
+- `system/orchestrator/capability_router.py`

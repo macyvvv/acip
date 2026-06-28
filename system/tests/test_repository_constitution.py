@@ -5,6 +5,6 @@ from pathlib import Path
 
 
 def test_repository_constitution_is_stable() -> None:
-    payload = json.loads(Path("runtime/repository_constitution/constitution.json").read_text(encoding="utf-8"))
+    payload = json.loads(Path("system/runtime/repository_constitution/constitution.json").read_text(encoding="utf-8"))
     assert payload["status"] == "stable"
     assert len(payload["principles"]) == 10

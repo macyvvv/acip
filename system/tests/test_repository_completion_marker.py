@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from orchestrator.completion_protocol import CompletionStatus, build_completion_protocol
-from orchestrator.repository_completion_marker import RepositoryCompletionMarkerWriter
+from system.orchestrator.completion_protocol import CompletionStatus, build_completion_protocol
+from system.orchestrator.repository_completion_marker import RepositoryCompletionMarkerWriter
 
 
 def test_repository_completion_marker_writes_latest(tmp_path) -> None:

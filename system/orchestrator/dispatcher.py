@@ -3,9 +3,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any
 
-from orchestrator.result import Result
-from orchestrator.task import Task
-from orchestrator.worker import Worker
+from system.orchestrator.result import Result
+from system.orchestrator.task import Task
+from system.orchestrator.worker import Worker
 
 
 class DispatcherError(ValueError):

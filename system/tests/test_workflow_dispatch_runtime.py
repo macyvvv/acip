@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 
-from orchestrator.workflow_dispatch_runtime import WorkflowDispatchRuntime
+from system.orchestrator.workflow_dispatch_runtime import WorkflowDispatchRuntime
 
 
 def test_workflow_dispatch_runtime_runs(tmp_path) -> None:

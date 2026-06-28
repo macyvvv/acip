@@ -20,9 +20,9 @@ OUT = ROOT / "graph" / "context_diff.json"
 
 def main() -> int:
     if not PACK.exists():
-        subprocess.check_call([sys.executable, "scripts/context/build_agent_context_pack.py"], cwd=ROOT)
+        subprocess.check_call([sys.executable, "system/scripts/context/build_agent_context_pack.py"], cwd=ROOT)
     if not DELTA.exists():
-        subprocess.check_call([sys.executable, "scripts/graph/build_incremental_graph.py"], cwd=ROOT)
+        subprocess.check_call([sys.executable, "system/scripts/graph/build_incremental_graph.py"], cwd=ROOT)
 
     pack = json.loads(PACK.read_text(encoding="utf-8"))
     delta = json.loads(DELTA.read_text(encoding="utf-8"))

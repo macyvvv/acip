@@ -14,7 +14,7 @@ def _resolve_repo_root() -> Path:
 ROOT = _resolve_repo_root()
 sys.path.insert(0, str(ROOT))
 
-from orchestrator.local_supervisor import LocalSupervisor
+from system.orchestrator.local_supervisor import LocalSupervisor
 
 
 def main() -> int:

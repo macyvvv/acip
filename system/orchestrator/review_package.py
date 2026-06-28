@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from orchestrator.state import State
-from orchestrator.task import Task
+from system.orchestrator.state import State
+from system.orchestrator.task import Task
 
 
 @dataclass(frozen=True)

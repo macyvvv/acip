@@ -14,7 +14,7 @@ def _resolve_repo_root() -> Path:
 ROOT = _resolve_repo_root()
 sys.path.insert(0, str(ROOT))
 
-from orchestrator.codex_intake import CodexIntake
+from system.orchestrator.codex_intake import CodexIntake
 
 
 def main() -> int:

@@ -10,6 +10,6 @@
     "product/minimal_launch_brief_generator/release_notes.md",
     "product/minimal_launch_brief_generator/src/__init__.py",
     "product/minimal_launch_brief_generator/src/minimal_launch_brief_generator.py",
-    "product/minimal_launch_brief_generator/tests/test_minimal_launch_brief_generator.py"
+    "product/minimal_launch_brief_generator/system/tests/test_minimal_launch_brief_generator.py"
   ]
 }

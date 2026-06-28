@@ -1,5 +1,5 @@
 # MANIFEST
 
-- `orchestrator/continuous_improvement_engine.py`
+- `system/orchestrator/continuous_improvement_engine.py`
 - `docs/current/CONTINUOUS_IMPROVEMENT.md`
-- `runtime/improvement/improvement_candidates.json`
+- `system/runtime/improvement/improvement_candidates.json`

@@ -4,13 +4,13 @@ from dataclasses import dataclass
 
 from pathlib import Path
 
-from orchestrator.context_loader import load_context
-from orchestrator.dispatcher import Dispatcher
-from orchestrator.planner import PlannerDecision, plan_and_persist_queue_state
-from orchestrator.queue import state_to_task
-from orchestrator.review_package import ReviewPackage, build_review_package
-from orchestrator.state import State, read_state
-from orchestrator.task import Task
+from system.orchestrator.context_loader import load_context
+from system.orchestrator.dispatcher import Dispatcher
+from system.orchestrator.planner import PlannerDecision, plan_and_persist_queue_state
+from system.orchestrator.queue import state_to_task
+from system.orchestrator.review_package import ReviewPackage, build_review_package
+from system.orchestrator.state import State, read_state
+from system.orchestrator.task import Task
 
 
 @dataclass(frozen=True)

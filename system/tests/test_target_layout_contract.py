@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from orchestrator.target_layout_contract import TargetLayoutContract
+from system.orchestrator.target_layout_contract import TargetLayoutContract
 
 
 def test_target_layout_contract_exists() -> None:

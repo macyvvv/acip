@@ -1,6 +1,6 @@
 - `queue/READY/EP-0149-autonomous-queue-runtime.md`
-- `orchestrator/autonomous_queue_runtime.py`
+- `system/orchestrator/autonomous_queue_runtime.py`
 - `docs/current/AUTONOMOUS_QUEUE_RUNTIME.md`
-- `runtime/queue/autonomous_queue_runtime.json`
-- `scripts/validate_ep_0149.py`
-- `tests/test_autonomous_queue_runtime.py`
+- `system/runtime/queue/autonomous_queue_runtime.json`
+- `system/scripts/validate_ep_0149.py`
+- `system/tests/test_autonomous_queue_runtime.py`

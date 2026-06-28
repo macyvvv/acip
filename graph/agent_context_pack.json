@@ -175,8 +175,8 @@
     "basis/082_context_loader_policy.md"
   ],
   "validation_commands": [
-    "python scripts/graph/build_repository_graph.py",
-    "python scripts/graph/validate_repository_graph.py",
-    "python scripts/context/build_agent_context_pack.py"
+    "python system/scripts/graph/build_repository_graph.py",
+    "python system/scripts/graph/validate_repository_graph.py",
+    "python system/scripts/context/build_agent_context_pack.py"
   ]
 }

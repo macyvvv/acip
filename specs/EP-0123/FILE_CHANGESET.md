@@ -1,6 +1,6 @@
-- `orchestrator/generated_artifact_manager.py`
+- `system/orchestrator/generated_artifact_manager.py`
 - `docs/current/GENERATED_ARTIFACTS.md`
-- `runtime/generated_artifacts/`
-- `scripts/validate_ep_0123.py`
-- `tests/test_generated_artifact_manager.py`
+- `system/runtime/generated_artifacts/`
+- `system/scripts/validate_ep_0123.py`
+- `system/tests/test_generated_artifact_manager.py`
 - `docs/ep/README_EP0123_GENERATED_ARTIFACT_MANAGER.md`

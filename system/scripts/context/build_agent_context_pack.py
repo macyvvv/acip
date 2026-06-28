@@ -19,7 +19,7 @@ def main() -> int:
     if not GRAPH.exists():
         print("graph missing; building first")
         import subprocess, sys
-        subprocess.check_call([sys.executable, "scripts/graph/build_repository_graph.py"], cwd=ROOT)
+        subprocess.check_call([sys.executable, "system/scripts/graph/build_repository_graph.py"], cwd=ROOT)
 
     graph = json.loads(GRAPH.read_text(encoding="utf-8"))
     nodes = graph.get("nodes", [])
@@ -42,9 +42,9 @@ def main() -> int:
         ],
         "source_files": [n["path"] for n in nodes if n.get("type") in {"policy", "adr", "wbs", "runbook", "contract", "workflow"}],
         "validation_commands": [
-            "python scripts/graph/build_repository_graph.py",
-            "python scripts/graph/validate_repository_graph.py",
-            "python scripts/context/build_agent_context_pack.py",
+            "python system/scripts/graph/build_repository_graph.py",
+            "python system/scripts/graph/validate_repository_graph.py",
+            "python system/scripts/context/build_agent_context_pack.py",
         ],
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)

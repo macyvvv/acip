@@ -4,9 +4,9 @@ from dataclasses import dataclass
 from pathlib import Path
 import json
 
-from orchestrator.reference_impact_analyzer import ReferenceImpactAnalyzer
-from orchestrator.root_inventory import RootInventory
-from orchestrator.target_layout_contract import TargetLayoutContract
+from system.orchestrator.reference_impact_analyzer import ReferenceImpactAnalyzer
+from system.orchestrator.root_inventory import RootInventory
+from system.orchestrator.target_layout_contract import TargetLayoutContract
 
 
 @dataclass(frozen=True)
@@ -23,7 +23,7 @@ class RootMigrationDryRun:
     def run(self) -> RootMigrationDryRunResult:
         inventory = RootInventory(self.base_path).classify()
         impacts = ReferenceImpactAnalyzer(self.base_path).analyze()
-        contract = TargetLayoutContract(root_allowlist=("README.md", "AGENTS.md", "docs/", "packs/", "queue/", "runtime/", "scripts/", "specs/", "orchestrator/", "tests/", "contracts/"), migration_policy='dry-run only until approved')
+        contract = TargetLayoutContract(root_allowlist=("README.md", "AGENTS.md", "docs/", "packs/", "queue/", "system/runtime/", "system/scripts/", "specs/", "system/orchestrator/", "system/tests/", "contracts/"), migration_policy='dry-run only until approved')
         runtime_dir = self.base_path / 'runtime' / 'root_hygiene'
         runtime_dir.mkdir(parents=True, exist_ok=True)
         payload = {

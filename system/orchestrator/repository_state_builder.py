@@ -4,7 +4,7 @@ from dataclasses import dataclass, asdict
 from pathlib import Path
 import json
 
-from orchestrator.queue_state import read_queue_state
+from system.orchestrator.queue_state import read_queue_state
 
 
 @dataclass(frozen=True)
@@ -28,22 +28,27 @@ class RepositoryStateBuilder:
     def __init__(self, base_path: str | Path = ".") -> None:
         self.base_path = Path(base_path)
 
+    def _path(self, *parts: str) -> Path:
+        system_path = self.base_path / "system" / Path(*parts)
+        legacy_path = self.base_path / Path(*parts)
+        return system_path if system_path.exists() or not legacy_path.exists() else legacy_path
+
     def build(self) -> RepositoryStateProjection:
         queue_state = read_queue_state(self.base_path / "docs" / "current" / "QUEUE_STATE.md")
-        latest_completion = self._read_json(self.base_path / "runtime" / "handoff" / "latest.json")
-        latest_completion_fallback = self._read_json(self.base_path / "runtime" / "handoff" / "completion" / "latest.json")
+        latest_completion = self._read_json(self._path("runtime", "handoff", "latest.json"))
+        latest_completion_fallback = self._read_json(self._path("runtime", "handoff", "completion", "latest.json"))
         completion = latest_completion or latest_completion_fallback or {}
         validation_state = self._read_validation_state()
-        repo_constitution = self._read_json(self.base_path / "runtime" / "repository_constitution" / "constitution.json")
+        repo_constitution = self._read_json(self._path("runtime", "repository_constitution", "constitution.json"))
         packs = self._read_pack_ids()
         pending_review_items = self._pending_review_items(queue_state.status, completion)
         source_artifacts = [
-            "runtime/handoff/latest.json",
-            "runtime/handoff/completion/latest.json",
-            "runtime/event_runtime/",
+            "system/runtime/handoff/latest.json",
+            "system/runtime/handoff/completion/latest.json",
+            "system/runtime/event_runtime/",
             "queue/",
-            "runtime/validation/",
-            "runtime/repository_constitution/constitution.json",
+            "system/runtime/validation/",
+            "system/runtime/repository_constitution/constitution.json",
             "packs/",
         ]
         if (self.base_path / "docs" / "current" / "PACK_0005_EXECUTION_RECORD.md").exists():
@@ -67,14 +72,13 @@ class RepositoryStateBuilder:
         )
 
     def write(self, state: RepositoryStateProjection) -> None:
-        runtime_dir = self.base_path / "runtime" / "repository_state"
-        runtime_dir.mkdir(parents=True, exist_ok=True)
         payload = asdict(state)
-        (runtime_dir / "latest.json").write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-        (runtime_dir / "latest.md").write_text(self._to_markdown(state), encoding="utf-8")
-        # keep legacy outputs synchronized for compatibility
-        (runtime_dir / "repository_state.json").write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-        (runtime_dir / "REPOSITORY_STATE.md").write_text(self._to_markdown(state), encoding="utf-8")
+        for runtime_dir in (self.base_path / "system" / "runtime" / "repository_state", self.base_path / "runtime" / "repository_state"):
+            runtime_dir.mkdir(parents=True, exist_ok=True)
+            (runtime_dir / "latest.json").write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+            (runtime_dir / "latest.md").write_text(self._to_markdown(state), encoding="utf-8")
+            (runtime_dir / "repository_state.json").write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+            (runtime_dir / "REPOSITORY_STATE.md").write_text(self._to_markdown(state), encoding="utf-8")
 
     def _to_markdown(self, state: RepositoryStateProjection) -> str:
         return "\n".join([
@@ -137,6 +141,6 @@ class RepositoryStateBuilder:
         return "healthy"
 
     def _runtime_health(self) -> str:
-        if (self.base_path / "runtime" / "event_runtime" / "dry_run.json").exists():
+        if self._path("runtime", "event_runtime", "dry_run.json").exists():
             return "healthy"
         return "unknown"

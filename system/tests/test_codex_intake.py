@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from orchestrator.codex_intake import CodexIntake
+from system.orchestrator.codex_intake import CodexIntake
 
 
 def test_codex_intake_reads_queue_payload(tmp_path: Path) -> None:

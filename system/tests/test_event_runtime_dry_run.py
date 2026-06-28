@@ -2,9 +2,9 @@ from __future__ import annotations
 
 import json
 
-from orchestrator.event_runtime_dry_run import EventRuntimeDryRun
-from orchestrator.completion_protocol import CompletionStatus, build_completion_protocol
-from orchestrator.repository_completion_marker import RepositoryCompletionMarkerWriter
+from system.orchestrator.event_runtime_dry_run import EventRuntimeDryRun
+from system.orchestrator.completion_protocol import CompletionStatus, build_completion_protocol
+from system.orchestrator.repository_completion_marker import RepositoryCompletionMarkerWriter
 
 
 def test_event_runtime_dry_run_produces_output(tmp_path) -> None:

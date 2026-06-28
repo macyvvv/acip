@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from orchestrator.external_trigger_dry_run_validation import ExternalTriggerDryRunValidationResult
+from system.orchestrator.external_trigger_dry_run_validation import ExternalTriggerDryRunValidationResult
 
 
 def test_external_trigger_dry_run_validation_result() -> None:

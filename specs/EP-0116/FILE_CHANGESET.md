@@ -3,8 +3,8 @@
 - `docs/current/REFACTORING_QUEUE.md`
 - `contracts/ROOT_HYGIENE_CONTRACT.md`
 - `contracts/CODE_QUALITY_CONTRACT.md`
-- `scripts/hygiene/audit_repository_root.py`
-- `scripts/hygiene/audit_code_quality.py`
-- `scripts/validate_ep_0116.py`
-- `tests/test_repository_hygiene.py`
-- `tests/test_code_quality_baseline.py`
+- `system/scripts/hygiene/audit_repository_root.py`
+- `system/scripts/hygiene/audit_code_quality.py`
+- `system/scripts/validate_ep_0116.py`
+- `system/tests/test_repository_hygiene.py`
+- `system/tests/test_code_quality_baseline.py`

@@ -97,9 +97,9 @@
     "basis/082_context_loader_policy.md"
   ],
   "validation_commands": [
-    "python scripts/orchestrator/build_context_bundle.py",
-    "python scripts/orchestrator/build_execution_plan.py",
-    "python scripts/orchestrator/validate_orchestration.py"
+    "python system/scripts/system/orchestrator/build_context_bundle.py",
+    "python system/scripts/system/orchestrator/build_execution_plan.py",
+    "python system/scripts/system/orchestrator/validate_orchestration.py"
   ],
   "prohibited_actions": [
     "runtime agent execution",

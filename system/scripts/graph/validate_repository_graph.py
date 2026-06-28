@@ -17,7 +17,7 @@ GRAPH = ROOT / "graph" / "repository_graph.json"
 
 def main() -> int:
     if not GRAPH.exists():
-        print("FAIL: graph/repository_graph.json missing. Run scripts/graph/build_repository_graph.py")
+        print("FAIL: graph/repository_graph.json missing. Run system/scripts/graph/build_repository_graph.py")
         return 1
     data = json.loads(GRAPH.read_text(encoding="utf-8"))
     nodes = data.get("nodes", [])

@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 import json
 
-from orchestrator.event_contract import EventContract, EventSource
+from system.orchestrator.event_contract import EventContract, EventSource
 
 
 @dataclass(frozen=True)
@@ -25,7 +25,7 @@ class CompletionMarkerEventIntake:
             issue_id=int(payload["parent_issue"]),
             pack_id=str(payload["pack_id"]),
             ep_id=str(payload["ep_id"]),
-            marker_path="runtime/handoff/latest.json",
+            marker_path="system/runtime/handoff/latest.json",
             actor="Codex",
             timestamp="2026-06-26T00:00:00Z",
             action="completion_marker_update",

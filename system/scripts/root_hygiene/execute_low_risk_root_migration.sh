@@ -37,5 +37,5 @@ echo "Reference updates are intentionally not performed by this script." \
   "Run the documented reference update plan separately after approval."
 
 echo "Post-move validation commands:"
-echo "python3 scripts/validate_all.py"
+echo "python3 system/scripts/validate_all.py"
 echo "python3 -m pytest -q"

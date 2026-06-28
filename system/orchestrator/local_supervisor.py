@@ -31,11 +31,16 @@ class LocalSupervisor:
     def __init__(self, base_path: str | Path = ".") -> None:
         self.base_path = Path(base_path)
 
+    def _path(self, *parts: str) -> Path:
+        system_path = self.base_path / "system" / Path(*parts)
+        legacy_path = self.base_path / Path(*parts)
+        return system_path if system_path.exists() or not legacy_path.exists() else legacy_path
+
     def run(self, *, execution_flag: bool = False) -> LocalSupervisorResult:
-        planning = self._read_json(self.base_path / "runtime" / "planning" / "latest.json")
-        repository = self._read_json(self.base_path / "runtime" / "repository_state" / "latest.json")
-        work_planner = self._read_json(self.base_path / "runtime" / "work_planner" / "latest.json")
-        acceptance = self._read_json(self.base_path / "runtime" / "product_acceptance" / "acceptance_0001.json")
+        planning = self._read_json(self._path("runtime", "planning", "latest.json"))
+        repository = self._read_json(self._path("runtime", "repository_state", "latest.json"))
+        work_planner = self._read_json(self._path("runtime", "work_planner", "latest.json"))
+        acceptance = self._read_json(self._path("runtime", "product_acceptance", "acceptance_0001.json"))
         completed_issue_numbers = self._completed_issue_numbers()
         if not planning:
             raise LocalSupervisorError("Missing planning state")
@@ -85,14 +90,14 @@ class LocalSupervisor:
             approval_required=bool(repository.get("approval_required", False)),
             safety_gate="dry_run" if not execution_flag else "approved",
             source_artifacts=[
-                "runtime/planning/latest.json",
-                "runtime/repository_state/latest.json",
-                "runtime/handoff/latest.json",
-                "runtime/handoff/completion/latest.json",
-                "runtime/event_runtime/",
+                "system/runtime/planning/latest.json",
+                "system/runtime/repository_state/latest.json",
+                "system/runtime/handoff/latest.json",
+                "system/runtime/handoff/completion/latest.json",
+                "system/runtime/event_runtime/",
                 "queue/",
-                "runtime/github/",
-                "runtime/issues/",
+                "system/runtime/github/",
+                "system/runtime/issues/",
             ],
         )
         self._write_runtime(result)
@@ -158,9 +163,9 @@ class LocalSupervisor:
             "request_priority": 100,
             "approval_required": False,
             "dependency": [
-                "runtime/planning/latest.json",
-                "runtime/repository_state/latest.json",
-                "runtime/work_planner/latest.json",
+                "system/runtime/planning/latest.json",
+                "system/runtime/repository_state/latest.json",
+                "system/runtime/work_planner/latest.json",
             ],
             "worker_assignment": "Codex",
             "next_action": next_item,
@@ -171,23 +176,23 @@ class LocalSupervisor:
         }
 
     def _write_execution_request(self, request: dict) -> None:
-        runtime_dir = self.base_path / "runtime" / "request"
-        runtime_dir.mkdir(parents=True, exist_ok=True)
-        (runtime_dir / "execution_request.json").write_text(json.dumps(request, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-        (runtime_dir / "EXECUTION_REQUEST.md").write_text(
-            "\n".join([
-                "# EXECUTION_REQUEST",
-                "",
-                f"request_id: {request['request_id']}",
-                f"request_status: {request['request_status']}",
-                f"request_priority: {request['request_priority']}",
-                f"approval_required: {str(request['approval_required']).lower()}",
-                f"worker_assignment: {request['worker_assignment']}",
-                f"next_action: {request['next_action']}",
-                "",
-            ]),
-            encoding="utf-8",
-        )
+        for runtime_dir in (self.base_path / "system" / "runtime" / "request", self.base_path / "runtime" / "request"):
+            runtime_dir.mkdir(parents=True, exist_ok=True)
+            (runtime_dir / "execution_request.json").write_text(json.dumps(request, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+            (runtime_dir / "EXECUTION_REQUEST.md").write_text(
+                "\n".join([
+                    "# EXECUTION_REQUEST",
+                    "",
+                    f"request_id: {request['request_id']}",
+                    f"request_status: {request['request_status']}",
+                    f"request_priority: {request['request_priority']}",
+                    f"approval_required: {str(request['approval_required']).lower()}",
+                    f"worker_assignment: {request['worker_assignment']}",
+                    f"next_action: {request['next_action']}",
+                    "",
+                ]),
+                encoding="utf-8",
+            )
 
     def _fetch_issue_28(self) -> dict:
         url = "https://api.github.com/repos/macyvvv/acip/issues/28"
@@ -201,8 +206,8 @@ class LocalSupervisor:
     def _load_open_issues(self) -> list[dict]:
         candidates: list[dict] = []
         for path in [
-            self.base_path / "runtime" / "github" / "open_issues.json",
-            self.base_path / "runtime" / "issues" / "open_issues.json",
+            self._path("runtime", "github", "open_issues.json"),
+            self._path("runtime", "issues", "open_issues.json"),
         ]:
             if path.exists():
                 try:
@@ -216,9 +221,9 @@ class LocalSupervisor:
         return self._fetch_open_issues_from_github()
 
     def _write_open_issues(self, issues: list[dict]) -> None:
-        runtime_dir = self.base_path / "runtime" / "github"
-        runtime_dir.mkdir(parents=True, exist_ok=True)
-        (runtime_dir / "open_issues.json").write_text(json.dumps(issues, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        for runtime_dir in (self.base_path / "system" / "runtime" / "github", self.base_path / "runtime" / "github"):
+            runtime_dir.mkdir(parents=True, exist_ok=True)
+            (runtime_dir / "open_issues.json").write_text(json.dumps(issues, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
     def _completed_issue_numbers(self) -> set[int]:
         completed_numbers: set[int] = set()
@@ -275,11 +280,11 @@ class LocalSupervisor:
         return sorted(issues, key=category)[0]
 
     def _write_runtime(self, result: LocalSupervisorResult) -> None:
-        runtime_dir = self.base_path / "runtime" / "supervisor"
-        runtime_dir.mkdir(parents=True, exist_ok=True)
         payload = asdict(result)
-        (runtime_dir / "latest.json").write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-        (runtime_dir / "latest.md").write_text(self._to_markdown(result), encoding="utf-8")
+        for runtime_dir in (self.base_path / "system" / "runtime" / "supervisor", self.base_path / "runtime" / "supervisor"):
+            runtime_dir.mkdir(parents=True, exist_ok=True)
+            (runtime_dir / "latest.json").write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+            (runtime_dir / "latest.md").write_text(self._to_markdown(result), encoding="utf-8")
 
     def _to_markdown(self, result: LocalSupervisorResult) -> str:
         return "\n".join([

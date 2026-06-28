@@ -1,6 +1,6 @@
-- `orchestrator/review_output_integration.py`
+- `system/orchestrator/review_output_integration.py`
 - `docs/current/REVIEW_OUTPUT_INTEGRATION.md`
 - `docs/current/WORKER_OUTPUT_CONTRACT.md`
 - `docs/ep/README_EP0119_REVIEW_OUTPUT_INTEGRATION.md`
-- `scripts/validate_ep_0119.py`
-- `tests/test_review_output_integration.py`
+- `system/scripts/validate_ep_0119.py`
+- `system/tests/test_review_output_integration.py`

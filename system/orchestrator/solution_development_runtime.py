@@ -4,12 +4,12 @@ from dataclasses import dataclass
 from pathlib import Path
 import json
 
-from orchestrator.architecture_planner import ArchitecturePlanner
-from orchestrator.implementation_planner import ImplementationPlanner
-from orchestrator.pack_manager import PackManager
-from orchestrator.requirement_intake import RequirementIntake
-from orchestrator.review_release_planner import ReviewReleasePlanner
-from orchestrator.specification_generator import SpecificationGenerator
+from system.orchestrator.architecture_planner import ArchitecturePlanner
+from system.orchestrator.implementation_planner import ImplementationPlanner
+from system.orchestrator.pack_manager import PackManager
+from system.orchestrator.requirement_intake import RequirementIntake
+from system.orchestrator.review_release_planner import ReviewReleasePlanner
+from system.orchestrator.specification_generator import SpecificationGenerator
 
 
 @dataclass(frozen=True)

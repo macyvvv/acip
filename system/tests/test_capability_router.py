@@ -1,7 +1,7 @@
 from pathlib import Path
 
-from orchestrator.capability_router import CapabilityRouter
-from orchestrator.planner import PlannerDecision
+from system.orchestrator.capability_router import CapabilityRouter
+from system.orchestrator.planner import PlannerDecision
 
 
 def _write_registry(root: Path) -> None:
@@ -13,25 +13,25 @@ def _write_registry(root: Path) -> None:
     allowed_actions: [implement, validate]
     prohibited_actions: [approve, deploy]
     validation_responsibility: [run_repository_validation]
-    output_contract: orchestrator/output_contract.py
+    output_contract: system/orchestrator/output_contract.py
   ChatGPT:
     capability: [architecture_review]
     allowed_actions: [design, review]
     prohibited_actions: [execute_code]
     validation_responsibility: [define_validation_scope]
-    output_contract: orchestrator/output_contract.py
+    output_contract: system/orchestrator/output_contract.py
   Human:
     capability: [approval]
     allowed_actions: [approve]
     prohibited_actions: [implement]
     validation_responsibility: [accept_risk]
-    output_contract: orchestrator/output_contract.py
+    output_contract: system/orchestrator/output_contract.py
   GitHub Actions:
     capability: [ci_execution, repository_validation]
     allowed_actions: [run_workflow]
     prohibited_actions: [edit_code]
     validation_responsibility: [execute_validate_all]
-    output_contract: orchestrator/output_contract.py
+    output_contract: system/orchestrator/output_contract.py
 """,
         encoding="utf-8",
     )

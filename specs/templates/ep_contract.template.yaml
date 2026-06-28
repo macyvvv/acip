@@ -7,4 +7,4 @@ inputs:
 outputs:
   - Required repository files
 validation:
-  - python scripts/validate_ep_0000.py
+  - python system/scripts/validate_ep_0000.py

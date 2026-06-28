@@ -4,9 +4,9 @@
   "request_priority": 100,
   "approval_required": false,
   "dependency": [
-    "runtime/planning/latest.json",
-    "runtime/repository_state/latest.json",
-    "runtime/work_planner/latest.json"
+    "system/runtime/planning/latest.json",
+    "system/runtime/repository_state/latest.json",
+    "system/runtime/work_planner/latest.json"
   ],
   "worker_assignment": "Codex",
   "next_action": "Issue #30: PRODUCT-0001: Product Launch Checklist",

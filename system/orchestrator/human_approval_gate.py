@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 import json
 
-from orchestrator.continuous_improvement_engine import ImprovementCandidate
+from system.orchestrator.continuous_improvement_engine import ImprovementCandidate
 
 
 @dataclass(frozen=True)

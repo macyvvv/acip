@@ -1,9 +1,9 @@
 # MANIFEST
 
 - `queue/READY/EP-0145-handoff-payload-normalizer.md`
-- `orchestrator/codex_intake.py`
-- `scripts/handoff/read_next_handoff.py`
-- `runtime/intake/handoff.json`
+- `system/orchestrator/codex_intake.py`
+- `system/scripts/handoff/read_next_handoff.py`
+- `system/runtime/intake/handoff.json`
 - `docs/current/EXECUTION_INTAKE.md`
-- `scripts/validate_ep_0145.py`
-- `tests/test_codex_intake.py`
+- `system/scripts/validate_ep_0145.py`
+- `system/tests/test_codex_intake.py`

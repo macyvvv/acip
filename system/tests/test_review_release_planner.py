@@ -2,9 +2,9 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from orchestrator.implementation_planner import ImplementationPlan
-from orchestrator.execution_request import ExecutionRequest
-from orchestrator.review_release_planner import ReviewReleasePlanner
+from system.orchestrator.implementation_planner import ImplementationPlan
+from system.orchestrator.execution_request import ExecutionRequest
+from system.orchestrator.review_release_planner import ReviewReleasePlanner
 
 
 def test_review_release_planner_generates_plan(tmp_path: Path) -> None:
@@ -30,4 +30,4 @@ def test_review_release_planner_generates_plan(tmp_path: Path) -> None:
     planner = ReviewReleasePlanner(base_path)
     plan = planner.plan(implementation_plan)
     assert plan.release_readiness == "ready"
-    assert "python scripts/validate_all.py" in plan.validation_plan
+    assert "python system/scripts/validate_all.py" in plan.validation_plan

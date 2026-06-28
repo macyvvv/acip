@@ -1303,310 +1303,310 @@
       "source": "repository"
     },
     {
-      "id": "runtime/RUNTIME_INTEGRATION_SPEC.md",
+      "id": "system/runtime/RUNTIME_INTEGRATION_SPEC.md",
       "type": "document",
-      "path": "runtime/RUNTIME_INTEGRATION_SPEC.md",
+      "path": "system/runtime/RUNTIME_INTEGRATION_SPEC.md",
       "title": "Runtime Integration Specification",
       "source": "repository"
     },
     {
-      "id": "runtime/REPLAY_ENGINE.md",
+      "id": "system/runtime/REPLAY_ENGINE.md",
       "type": "document",
-      "path": "runtime/REPLAY_ENGINE.md",
+      "path": "system/runtime/REPLAY_ENGINE.md",
       "title": "Replay Engine",
       "source": "repository"
     },
     {
-      "id": "runtime/RUNTIME_DRY_RUN_PLAN.md",
+      "id": "system/runtime/RUNTIME_DRY_RUN_PLAN.md",
       "type": "document",
-      "path": "runtime/RUNTIME_DRY_RUN_PLAN.md",
+      "path": "system/runtime/RUNTIME_DRY_RUN_PLAN.md",
       "title": "Runtime Dry Run Plan",
       "source": "repository"
     },
     {
-      "id": "runtime/RUNTIME_APPROVAL_TEMPLATE.md",
+      "id": "system/runtime/RUNTIME_APPROVAL_TEMPLATE.md",
       "type": "document",
-      "path": "runtime/RUNTIME_APPROVAL_TEMPLATE.md",
+      "path": "system/runtime/RUNTIME_APPROVAL_TEMPLATE.md",
       "title": "Runtime Approval",
       "source": "repository"
     },
     {
-      "id": "runtime/dry_run_adapter_report.md",
+      "id": "system/runtime/dry_run_adapter_report.md",
       "type": "document",
-      "path": "runtime/dry_run_adapter_report.md",
+      "path": "system/runtime/dry_run_adapter_report.md",
       "title": "Dry Run Adapter",
       "source": "repository"
     },
     {
-      "id": "runtime/RUNTIME_RISK_REGISTER.md",
+      "id": "system/runtime/RUNTIME_RISK_REGISTER.md",
       "type": "document",
-      "path": "runtime/RUNTIME_RISK_REGISTER.md",
+      "path": "system/runtime/RUNTIME_RISK_REGISTER.md",
       "title": "Runtime Risk Register",
       "source": "repository"
     },
     {
-      "id": "runtime/DRY_RUN_ADAPTER_SPEC.md",
+      "id": "system/runtime/DRY_RUN_ADAPTER_SPEC.md",
       "type": "document",
-      "path": "runtime/DRY_RUN_ADAPTER_SPEC.md",
+      "path": "system/runtime/DRY_RUN_ADAPTER_SPEC.md",
       "title": "Dry Run Adapter",
       "source": "repository"
     },
     {
-      "id": "runtime/runtime_dry_run_report.md",
+      "id": "system/runtime/runtime_dry_run_report.md",
       "type": "document",
-      "path": "runtime/runtime_dry_run_report.md",
+      "path": "system/runtime/runtime_dry_run_report.md",
       "title": "Runtime Dry Run Report",
       "source": "repository"
     },
     {
-      "id": "runtime/RUNTIME_READINESS_CHECKLIST.md",
+      "id": "system/runtime/RUNTIME_READINESS_CHECKLIST.md",
       "type": "document",
-      "path": "runtime/RUNTIME_READINESS_CHECKLIST.md",
+      "path": "system/runtime/RUNTIME_READINESS_CHECKLIST.md",
       "title": "Runtime Readiness Checklist",
       "source": "repository"
     },
     {
-      "id": "runtime/AUDIT_ENGINE.md",
+      "id": "system/runtime/AUDIT_ENGINE.md",
       "type": "document",
-      "path": "runtime/AUDIT_ENGINE.md",
+      "path": "system/runtime/AUDIT_ENGINE.md",
       "title": "Audit Engine",
       "source": "repository"
     },
     {
-      "id": "runtime/AGENT_RUNTIME_MVP_SPEC.md",
+      "id": "system/runtime/AGENT_RUNTIME_MVP_SPEC.md",
       "type": "document",
-      "path": "runtime/AGENT_RUNTIME_MVP_SPEC.md",
+      "path": "system/runtime/AGENT_RUNTIME_MVP_SPEC.md",
       "title": "Agent Runtime MVP Specification",
       "source": "repository"
     },
     {
-      "id": "runtime/governor/GOVERNOR_RECOMMENDATIONS.md",
+      "id": "system/runtime/governor/GOVERNOR_RECOMMENDATIONS.md",
       "type": "document",
-      "path": "runtime/governor/GOVERNOR_RECOMMENDATIONS.md",
+      "path": "system/runtime/governor/GOVERNOR_RECOMMENDATIONS.md",
       "title": "GOVERNOR_RECOMMENDATIONS",
       "source": "repository"
     },
     {
-      "id": "runtime/task_intake/ART-SAMPLE-0001/TASK_INTAKE_REPORT.md",
+      "id": "system/runtime/task_intake/ART-SAMPLE-0001/TASK_INTAKE_REPORT.md",
       "type": "document",
-      "path": "runtime/task_intake/ART-SAMPLE-0001/TASK_INTAKE_REPORT.md",
+      "path": "system/runtime/task_intake/ART-SAMPLE-0001/TASK_INTAKE_REPORT.md",
       "title": "Agent Runtime Task Intake Dry Run Report",
       "source": "repository"
     },
     {
-      "id": "runtime/agent_runtime_mvp/DRY_RUN_REPORT.md",
+      "id": "system/runtime/agent_runtime_mvp/DRY_RUN_REPORT.md",
       "type": "document",
-      "path": "runtime/agent_runtime_mvp/DRY_RUN_REPORT.md",
-      "title": "Agent Runtime MVP Dry Run Report\\n\\n## Conclusion\\n\\nDry-run agent cycle completed without runtime external execution.\\n\\n## Generated Artifacts\\n\\n- `runtime/agent_runtime_mvp/runtime_context.json`\\n- `runtime/agent_runtime_mvp/runtime_plan.json`\\n- `runtime/agent_runtime_mvp/queue_item.json`\\n- `runtime/agent_runtime_mvp/review_summary.json`\\n- `runtime/agent_runtime_mvp/approval_gate.json`\\n\\n## Boundary\\n\\n- Runtime external execution: not performed\\n- Platform API mutation: not performed\\n- Auto posting: not performed\\n- Secret use: not performed\\n- Human approval: required for runtime transition\\n",
+      "path": "system/runtime/agent_runtime_mvp/DRY_RUN_REPORT.md",
+      "title": "Agent Runtime MVP Dry Run Report\\n\\n## Conclusion\\n\\nDry-run agent cycle completed without runtime external execution.\\n\\n## Generated Artifacts\\n\\n- `system/runtime/agent_runtime_mvp/runtime_context.json`\\n- `system/runtime/agent_runtime_mvp/runtime_plan.json`\\n- `system/runtime/agent_runtime_mvp/queue_item.json`\\n- `system/runtime/agent_runtime_mvp/review_summary.json`\\n- `system/runtime/agent_runtime_mvp/approval_gate.json`\\n\\n## Boundary\\n\\n- Runtime external execution: not performed\\n- Platform API mutation: not performed\\n- Auto posting: not performed\\n- Secret use: not performed\\n- Human approval: required for runtime transition\\n",
       "source": "repository"
     },
     {
-      "id": "runtime/validation/VALIDATION_REPORT.md",
+      "id": "system/runtime/validation/VALIDATION_REPORT.md",
       "type": "document",
-      "path": "runtime/validation/VALIDATION_REPORT.md",
+      "path": "system/runtime/validation/VALIDATION_REPORT.md",
       "title": "VALIDATION REPORT",
       "source": "repository"
     },
     {
-      "id": "tests/test_root_hygiene_migration.py",
+      "id": "system/tests/test_root_hygiene_migration.py",
       "type": "document",
-      "path": "tests/test_root_hygiene_migration.py",
+      "path": "system/tests/test_root_hygiene_migration.py",
       "title": "test_root_hygiene_migration",
       "source": "repository"
     },
     {
-      "id": "tests/test_result.py",
+      "id": "system/tests/test_result.py",
       "type": "document",
-      "path": "tests/test_result.py",
+      "path": "system/tests/test_result.py",
       "title": "test_result",
       "source": "repository"
     },
     {
-      "id": "tests/test_task.py",
+      "id": "system/tests/test_task.py",
       "type": "document",
-      "path": "tests/test_task.py",
+      "path": "system/tests/test_task.py",
       "title": "test_task",
       "source": "repository"
     },
     {
-      "id": "tests/test_local_agent_runner.py",
+      "id": "system/tests/test_local_agent_runner.py",
       "type": "document",
-      "path": "tests/test_local_agent_runner.py",
+      "path": "system/tests/test_local_agent_runner.py",
       "title": "test_local_agent_runner",
       "source": "repository"
     },
     {
-      "id": "tests/test_planner.py",
+      "id": "system/tests/test_planner.py",
       "type": "document",
-      "path": "tests/test_planner.py",
+      "path": "system/tests/test_planner.py",
       "title": "test_planner",
       "source": "repository"
     },
     {
-      "id": "tests/test_review_output_integration.py",
+      "id": "system/tests/test_review_output_integration.py",
       "type": "document",
-      "path": "tests/test_review_output_integration.py",
+      "path": "system/tests/test_review_output_integration.py",
       "title": "test_review_output_integration",
       "source": "repository"
     },
     {
-      "id": "tests/test_repository_governor.py",
+      "id": "system/tests/test_repository_governor.py",
       "type": "document",
-      "path": "tests/test_repository_governor.py",
+      "path": "system/tests/test_repository_governor.py",
       "title": "test_repository_governor",
       "source": "repository"
     },
     {
-      "id": "tests/test_task_decomposer.py",
+      "id": "system/tests/test_task_decomposer.py",
       "type": "document",
-      "path": "tests/test_task_decomposer.py",
+      "path": "system/tests/test_task_decomposer.py",
       "title": "test_task_decomposer",
       "source": "repository"
     },
     {
-      "id": "tests/test_execution_kernel.py",
+      "id": "system/tests/test_execution_kernel.py",
       "type": "document",
-      "path": "tests/test_execution_kernel.py",
+      "path": "system/tests/test_execution_kernel.py",
       "title": "Repository",
       "source": "repository"
     },
     {
-      "id": "tests/test_context_loader.py",
+      "id": "system/tests/test_context_loader.py",
       "type": "document",
-      "path": "tests/test_context_loader.py",
+      "path": "system/tests/test_context_loader.py",
       "title": "test_context_loader",
       "source": "repository"
     },
     {
-      "id": "tests/test_worker_registry.py",
+      "id": "system/tests/test_worker_registry.py",
       "type": "document",
-      "path": "tests/test_worker_registry.py",
+      "path": "system/tests/test_worker_registry.py",
       "title": "test_worker_registry",
       "source": "repository"
     },
     {
-      "id": "tests/test_repository_layout.py",
+      "id": "system/tests/test_repository_layout.py",
       "type": "document",
-      "path": "tests/test_repository_layout.py",
+      "path": "system/tests/test_repository_layout.py",
       "title": "test_repository_layout",
       "source": "repository"
     },
     {
-      "id": "tests/test_repository_hygiene.py",
+      "id": "system/tests/test_repository_hygiene.py",
       "type": "document",
-      "path": "tests/test_repository_hygiene.py",
+      "path": "system/tests/test_repository_hygiene.py",
       "title": "test_repository_hygiene",
       "source": "repository"
     },
     {
-      "id": "tests/test_autonomous_loop.py",
+      "id": "system/tests/test_autonomous_loop.py",
       "type": "document",
-      "path": "tests/test_autonomous_loop.py",
+      "path": "system/tests/test_autonomous_loop.py",
       "title": "Repository",
       "source": "repository"
     },
     {
-      "id": "tests/test_code_quality_baseline.py",
+      "id": "system/tests/test_code_quality_baseline.py",
       "type": "document",
-      "path": "tests/test_code_quality_baseline.py",
+      "path": "system/tests/test_code_quality_baseline.py",
       "title": "test_code_quality_baseline",
       "source": "repository"
     },
     {
-      "id": "tests/test_state.py",
+      "id": "system/tests/test_state.py",
       "type": "document",
-      "path": "tests/test_state.py",
+      "path": "system/tests/test_state.py",
       "title": "Repository",
       "source": "repository"
     },
     {
-      "id": "tests/test_queue_transition.py",
+      "id": "system/tests/test_queue_transition.py",
       "type": "document",
-      "path": "tests/test_queue_transition.py",
+      "path": "system/tests/test_queue_transition.py",
       "title": "test_queue_transition",
       "source": "repository"
     },
     {
-      "id": "tests/test_agent_executor.py",
+      "id": "system/tests/test_agent_executor.py",
       "type": "document",
-      "path": "tests/test_agent_executor.py",
+      "path": "system/tests/test_agent_executor.py",
       "title": "Repository",
       "source": "repository"
     },
     {
-      "id": "tests/test_queue.py",
+      "id": "system/tests/test_queue.py",
       "type": "document",
-      "path": "tests/test_queue.py",
+      "path": "system/tests/test_queue.py",
       "title": "Repository",
       "source": "repository"
     },
     {
-      "id": "tests/test_worker.py",
+      "id": "system/tests/test_worker.py",
       "type": "document",
-      "path": "tests/test_worker.py",
+      "path": "system/tests/test_worker.py",
       "title": "test_worker",
       "source": "repository"
     },
     {
-      "id": "tests/test_output_contract.py",
+      "id": "system/tests/test_output_contract.py",
       "type": "document",
-      "path": "tests/test_output_contract.py",
+      "path": "system/tests/test_output_contract.py",
       "title": "test_output_contract",
       "source": "repository"
     },
     {
-      "id": "tests/test_validation_orchestrator.py",
+      "id": "system/tests/test_validation_orchestrator.py",
       "type": "document",
-      "path": "tests/test_validation_orchestrator.py",
+      "path": "system/tests/test_validation_orchestrator.py",
       "title": "test_validation_orchestrator",
       "source": "repository"
     },
     {
-      "id": "tests/test_output_semantics.py",
+      "id": "system/tests/test_output_semantics.py",
       "type": "document",
-      "path": "tests/test_output_semantics.py",
+      "path": "system/tests/test_output_semantics.py",
       "title": "test_output_semantics",
       "source": "repository"
     },
     {
-      "id": "tests/test_execution_record.py",
+      "id": "system/tests/test_execution_record.py",
       "type": "document",
-      "path": "tests/test_execution_record.py",
+      "path": "system/tests/test_execution_record.py",
       "title": "test_execution_record",
       "source": "repository"
     },
     {
-      "id": "tests/test_dispatcher.py",
+      "id": "system/tests/test_dispatcher.py",
       "type": "document",
-      "path": "tests/test_dispatcher.py",
+      "path": "system/tests/test_dispatcher.py",
       "title": "test_dispatcher",
       "source": "repository"
     },
     {
-      "id": "tests/test_review_package.py",
+      "id": "system/tests/test_review_package.py",
       "type": "document",
-      "path": "tests/test_review_package.py",
+      "path": "system/tests/test_review_package.py",
       "title": "test_review_package",
       "source": "repository"
     },
     {
-      "id": "tests/test_codex_worker.py",
+      "id": "system/tests/test_codex_worker.py",
       "type": "document",
-      "path": "tests/test_codex_worker.py",
+      "path": "system/tests/test_codex_worker.py",
       "title": "test_codex_worker",
       "source": "repository"
     },
     {
-      "id": "tests/test_capability_router.py",
+      "id": "system/tests/test_capability_router.py",
       "type": "document",
-      "path": "tests/test_capability_router.py",
+      "path": "system/tests/test_capability_router.py",
       "title": "test_capability_router",
       "source": "repository"
     },
     {
-      "id": "tests/test_refactoring_governance.py",
+      "id": "system/tests/test_refactoring_governance.py",
       "type": "document",
-      "path": "tests/test_refactoring_governance.py",
+      "path": "system/tests/test_refactoring_governance.py",
       "title": "test_refactoring_governance",
       "source": "repository"
     },
@@ -2689,555 +2689,555 @@
       "source": "repository"
     },
     {
-      "id": "scripts/validate_ep_0102.py",
+      "id": "system/scripts/validate_ep_0102.py",
       "type": "script",
-      "path": "scripts/validate_ep_0102.py",
+      "path": "system/scripts/validate_ep_0102.py",
       "title": "validate_ep_0102",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_ep_0112.py",
+      "id": "system/scripts/validate_ep_0112.py",
       "type": "script",
-      "path": "scripts/validate_ep_0112.py",
+      "path": "system/scripts/validate_ep_0112.py",
       "title": "validate_ep_0112",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_boundaries.py",
+      "id": "system/scripts/validate_boundaries.py",
       "type": "script",
-      "path": "scripts/validate_boundaries.py",
+      "path": "system/scripts/validate_boundaries.py",
       "title": "validate_boundaries",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_ep_0003.py",
+      "id": "system/scripts/validate_ep_0003.py",
       "type": "script",
-      "path": "scripts/validate_ep_0003.py",
+      "path": "system/scripts/validate_ep_0003.py",
       "title": "validate_ep_0003",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_ep_0106.py",
+      "id": "system/scripts/validate_ep_0106.py",
       "type": "script",
-      "path": "scripts/validate_ep_0106.py",
+      "path": "system/scripts/validate_ep_0106.py",
       "title": "validate_ep_0106",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_ep_0122.py",
+      "id": "system/scripts/validate_ep_0122.py",
       "type": "script",
-      "path": "scripts/validate_ep_0122.py",
+      "path": "system/scripts/validate_ep_0122.py",
       "title": "validate_ep_0122",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_ep_0116.py",
+      "id": "system/scripts/validate_ep_0116.py",
       "type": "script",
-      "path": "scripts/validate_ep_0116.py",
+      "path": "system/scripts/validate_ep_0116.py",
       "title": "validate_ep_0116",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_ep_0107.py",
+      "id": "system/scripts/validate_ep_0107.py",
       "type": "script",
-      "path": "scripts/validate_ep_0107.py",
+      "path": "system/scripts/validate_ep_0107.py",
       "title": "validate_ep_0107",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_ep_0117.py",
+      "id": "system/scripts/validate_ep_0117.py",
       "type": "script",
-      "path": "scripts/validate_ep_0117.py",
+      "path": "system/scripts/validate_ep_0117.py",
       "title": "validate_ep_0117",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_ep_0103.py",
+      "id": "system/scripts/validate_ep_0103.py",
       "type": "script",
-      "path": "scripts/validate_ep_0103.py",
+      "path": "system/scripts/validate_ep_0103.py",
       "title": "validate_ep_0103",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_ep_0113.py",
+      "id": "system/scripts/validate_ep_0113.py",
       "type": "script",
-      "path": "scripts/validate_ep_0113.py",
+      "path": "system/scripts/validate_ep_0113.py",
       "title": "validate_ep_0113",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_ep_0108.py",
+      "id": "system/scripts/validate_ep_0108.py",
       "type": "script",
-      "path": "scripts/validate_ep_0108.py",
+      "path": "system/scripts/validate_ep_0108.py",
       "title": "validate_ep_0108",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_ep_0118.py",
+      "id": "system/scripts/validate_ep_0118.py",
       "type": "script",
-      "path": "scripts/validate_ep_0118.py",
+      "path": "system/scripts/validate_ep_0118.py",
       "title": "validate_ep_0118",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_links.py",
+      "id": "system/scripts/validate_links.py",
       "type": "script",
-      "path": "scripts/validate_links.py",
+      "path": "system/scripts/validate_links.py",
       "title": "validate_links",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_drift.py",
+      "id": "system/scripts/validate_drift.py",
       "type": "script",
-      "path": "scripts/validate_drift.py",
+      "path": "system/scripts/validate_drift.py",
       "title": "validate_drift",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_continuous_governance.py",
+      "id": "system/scripts/validate_continuous_governance.py",
       "type": "script",
-      "path": "scripts/validate_continuous_governance.py",
+      "path": "system/scripts/validate_continuous_governance.py",
       "title": "validate_continuous_governance",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_ep_0109.py",
+      "id": "system/scripts/validate_ep_0109.py",
       "type": "script",
-      "path": "scripts/validate_ep_0109.py",
+      "path": "system/scripts/validate_ep_0109.py",
       "title": "validate_ep_0109",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_repository_knowledge_graph_runtime_integration.py",
+      "id": "system/scripts/validate_repository_knowledge_graph_runtime_integration.py",
       "type": "script",
-      "path": "scripts/validate_repository_knowledge_graph_runtime_integration.py",
+      "path": "system/scripts/validate_repository_knowledge_graph_runtime_integration.py",
       "title": "validate_repository_knowledge_graph_runtime_integration",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_ep_0119.py",
+      "id": "system/scripts/validate_ep_0119.py",
       "type": "script",
-      "path": "scripts/validate_ep_0119.py",
+      "path": "system/scripts/validate_ep_0119.py",
       "title": "validate_ep_0119",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_all.py",
+      "id": "system/scripts/validate_all.py",
       "type": "script",
-      "path": "scripts/validate_all.py",
+      "path": "system/scripts/validate_all.py",
       "title": "validate_all",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_dead_assets.py",
+      "id": "system/scripts/validate_dead_assets.py",
       "type": "script",
-      "path": "scripts/validate_dead_assets.py",
+      "path": "system/scripts/validate_dead_assets.py",
       "title": "validate_dead_assets",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_ep_0104.py",
+      "id": "system/scripts/validate_ep_0104.py",
       "type": "script",
-      "path": "scripts/validate_ep_0104.py",
+      "path": "system/scripts/validate_ep_0104.py",
       "title": "validate_ep_0104",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_ep_0120.py",
+      "id": "system/scripts/validate_ep_0120.py",
       "type": "script",
-      "path": "scripts/validate_ep_0120.py",
+      "path": "system/scripts/validate_ep_0120.py",
       "title": "validate_ep_0120",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_ep_0114.py",
+      "id": "system/scripts/validate_ep_0114.py",
       "type": "script",
-      "path": "scripts/validate_ep_0114.py",
+      "path": "system/scripts/validate_ep_0114.py",
       "title": "validate_ep_0114",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_ep_0100.py",
+      "id": "system/scripts/validate_ep_0100.py",
       "type": "script",
-      "path": "scripts/validate_ep_0100.py",
+      "path": "system/scripts/validate_ep_0100.py",
       "title": "validate_ep_0100",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_ep_0110.py",
+      "id": "system/scripts/validate_ep_0110.py",
       "type": "script",
-      "path": "scripts/validate_ep_0110.py",
+      "path": "system/scripts/validate_ep_0110.py",
       "title": "validate_ep_0110",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_repository_selftest.py",
+      "id": "system/scripts/validate_repository_selftest.py",
       "type": "script",
-      "path": "scripts/validate_repository_selftest.py",
+      "path": "system/scripts/validate_repository_selftest.py",
       "title": "validate_repository_selftest",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_ep_0101.py",
+      "id": "system/scripts/validate_ep_0101.py",
       "type": "script",
-      "path": "scripts/validate_ep_0101.py",
+      "path": "system/scripts/validate_ep_0101.py",
       "title": "validate_ep_0101",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_ep_0111.py",
+      "id": "system/scripts/validate_ep_0111.py",
       "type": "script",
-      "path": "scripts/validate_ep_0111.py",
+      "path": "system/scripts/validate_ep_0111.py",
       "title": "validate_ep_0111",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_ep_0105.py",
+      "id": "system/scripts/validate_ep_0105.py",
       "type": "script",
-      "path": "scripts/validate_ep_0105.py",
+      "path": "system/scripts/validate_ep_0105.py",
       "title": "validate_ep_0105",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_repository_os_v1_baseline.py",
+      "id": "system/scripts/validate_repository_os_v1_baseline.py",
       "type": "script",
-      "path": "scripts/validate_repository_os_v1_baseline.py",
+      "path": "system/scripts/validate_repository_os_v1_baseline.py",
       "title": "validate_repository_os_v1_baseline",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_ep_0121.py",
+      "id": "system/scripts/validate_ep_0121.py",
       "type": "script",
-      "path": "scripts/validate_ep_0121.py",
+      "path": "system/scripts/validate_ep_0121.py",
       "title": "validate_ep_0121",
       "source": "repository"
     },
     {
-      "id": "scripts/validate_ep_0115.py",
+      "id": "system/scripts/validate_ep_0115.py",
       "type": "script",
-      "path": "scripts/validate_ep_0115.py",
+      "path": "system/scripts/validate_ep_0115.py",
       "title": "validate_ep_0115",
       "source": "repository"
     },
     {
-      "id": "scripts/context/build_context_diff.py",
+      "id": "system/scripts/context/build_context_diff.py",
       "type": "script",
-      "path": "scripts/context/build_context_diff.py",
+      "path": "system/scripts/context/build_context_diff.py",
       "title": "build_context_diff",
       "source": "repository"
     },
     {
-      "id": "scripts/context/build_agent_context_pack.py",
+      "id": "system/scripts/context/build_agent_context_pack.py",
       "type": "script",
-      "path": "scripts/context/build_agent_context_pack.py",
+      "path": "system/scripts/context/build_agent_context_pack.py",
       "title": "build_agent_context_pack",
       "source": "repository"
     },
     {
-      "id": "scripts/specs/validate_ep_contract.py",
+      "id": "system/scripts/specs/validate_ep_contract.py",
       "type": "script",
-      "path": "scripts/specs/validate_ep_contract.py",
+      "path": "system/scripts/specs/validate_ep_contract.py",
       "title": "validate_ep_contract",
       "source": "repository"
     },
     {
-      "id": "scripts/specs/scaffold_ep_spec.py",
+      "id": "system/scripts/specs/scaffold_ep_spec.py",
       "type": "script",
-      "path": "scripts/specs/scaffold_ep_spec.py",
+      "path": "system/scripts/specs/scaffold_ep_spec.py",
       "title": "scaffold_ep_spec",
       "source": "repository"
     },
     {
-      "id": "scripts/specs/validate_ep_spec.py",
+      "id": "system/scripts/specs/validate_ep_spec.py",
       "type": "script",
-      "path": "scripts/specs/validate_ep_spec.py",
+      "path": "system/scripts/specs/validate_ep_spec.py",
       "title": "validate_ep_spec",
       "source": "repository"
     },
     {
-      "id": "scripts/specs/validate_spec_lifecycle.py",
+      "id": "system/scripts/specs/validate_spec_lifecycle.py",
       "type": "script",
-      "path": "scripts/specs/validate_spec_lifecycle.py",
+      "path": "system/scripts/specs/validate_spec_lifecycle.py",
       "title": "validate_spec_lifecycle",
       "source": "repository"
     },
     {
-      "id": "scripts/specs/load_active_ep_contract.py",
+      "id": "system/scripts/specs/load_active_ep_contract.py",
       "type": "script",
-      "path": "scripts/specs/load_active_ep_contract.py",
+      "path": "system/scripts/specs/load_active_ep_contract.py",
       "title": "load_active_ep_contract",
       "source": "repository"
     },
     {
-      "id": "scripts/graph/build_incremental_graph.py",
+      "id": "system/scripts/graph/build_incremental_graph.py",
       "type": "script",
-      "path": "scripts/graph/build_incremental_graph.py",
+      "path": "system/scripts/graph/build_incremental_graph.py",
       "title": "build_incremental_graph",
       "source": "repository"
     },
     {
-      "id": "scripts/graph/validate_repository_graph.py",
+      "id": "system/scripts/graph/validate_repository_graph.py",
       "type": "script",
-      "path": "scripts/graph/validate_repository_graph.py",
+      "path": "system/scripts/graph/validate_repository_graph.py",
       "title": "validate_repository_graph",
       "source": "repository"
     },
     {
-      "id": "scripts/graph/build_repository_graph.py",
+      "id": "system/scripts/graph/build_repository_graph.py",
       "type": "script",
-      "path": "scripts/graph/build_repository_graph.py",
+      "path": "system/scripts/graph/build_repository_graph.py",
       "title": "build_repository_graph",
       "source": "repository"
     },
     {
-      "id": "scripts/runtime/dry_run_adapter.py",
+      "id": "system/scripts/system/runtime/dry_run_adapter.py",
       "type": "script",
-      "path": "scripts/runtime/dry_run_adapter.py",
+      "path": "system/scripts/system/runtime/dry_run_adapter.py",
       "title": "dry_run_adapter",
       "source": "repository"
     },
     {
-      "id": "scripts/runtime/validate_runtime_capability.py",
+      "id": "system/scripts/system/runtime/validate_runtime_capability.py",
       "type": "script",
-      "path": "scripts/runtime/validate_runtime_capability.py",
+      "path": "system/scripts/system/runtime/validate_runtime_capability.py",
       "title": "validate_runtime_capability",
       "source": "repository"
     },
     {
-      "id": "scripts/runtime/context_loader.py",
+      "id": "system/scripts/system/runtime/context_loader.py",
       "type": "script",
-      "path": "scripts/runtime/context_loader.py",
+      "path": "system/scripts/system/runtime/context_loader.py",
       "title": "context_loader",
       "source": "repository"
     },
     {
-      "id": "scripts/runtime/validate_runtime_foundation.py",
+      "id": "system/scripts/system/runtime/validate_runtime_foundation.py",
       "type": "script",
-      "path": "scripts/runtime/validate_runtime_foundation.py",
+      "path": "system/scripts/system/runtime/validate_runtime_foundation.py",
       "title": "validate_runtime_foundation",
       "source": "repository"
     },
     {
-      "id": "scripts/runtime/dry_run_runtime_plan.py",
+      "id": "system/scripts/system/runtime/dry_run_runtime_plan.py",
       "type": "script",
-      "path": "scripts/runtime/dry_run_runtime_plan.py",
+      "path": "system/scripts/system/runtime/dry_run_runtime_plan.py",
       "title": "dry_run_runtime_plan",
       "source": "repository"
     },
     {
-      "id": "scripts/runtime/validate_runtime_coordination.py",
+      "id": "system/scripts/system/runtime/validate_runtime_coordination.py",
       "type": "script",
-      "path": "scripts/runtime/validate_runtime_coordination.py",
+      "path": "system/scripts/system/runtime/validate_runtime_coordination.py",
       "title": "validate_runtime_coordination",
       "source": "repository"
     },
     {
-      "id": "scripts/selftest/check_orphans.py",
+      "id": "system/scripts/selftest/check_orphans.py",
       "type": "script",
-      "path": "scripts/selftest/check_orphans.py",
+      "path": "system/scripts/selftest/check_orphans.py",
       "title": "check_orphans",
       "source": "repository"
     },
     {
-      "id": "scripts/selftest/check_current_objective.py",
+      "id": "system/scripts/selftest/check_current_objective.py",
       "type": "script",
-      "path": "scripts/selftest/check_current_objective.py",
+      "path": "system/scripts/selftest/check_current_objective.py",
       "title": "check_current_objective",
       "source": "repository"
     },
     {
-      "id": "scripts/selftest/check_repository_health.py",
+      "id": "system/scripts/selftest/check_repository_health.py",
       "type": "script",
-      "path": "scripts/selftest/check_repository_health.py",
+      "path": "system/scripts/selftest/check_repository_health.py",
       "title": "check_repository_health",
       "source": "repository"
     },
     {
-      "id": "scripts/selftest/check_boundaries.py",
+      "id": "system/scripts/selftest/check_boundaries.py",
       "type": "script",
-      "path": "scripts/selftest/check_boundaries.py",
+      "path": "system/scripts/selftest/check_boundaries.py",
       "title": "Use separated fragments so this checker does not match itself.",
       "source": "repository"
     },
     {
-      "id": "scripts/selftest/README_SELFTEST_REMEDIATION.md",
+      "id": "system/scripts/selftest/README_SELFTEST_REMEDIATION.md",
       "type": "script",
-      "path": "scripts/selftest/README_SELFTEST_REMEDIATION.md",
+      "path": "system/scripts/selftest/README_SELFTEST_REMEDIATION.md",
       "title": "SelfTest Remediation",
       "source": "repository"
     },
     {
-      "id": "scripts/selftest/validate_repository_selftest_complete.py",
+      "id": "system/scripts/selftest/validate_repository_selftest_complete.py",
       "type": "script",
-      "path": "scripts/selftest/validate_repository_selftest_complete.py",
+      "path": "system/scripts/selftest/validate_repository_selftest_complete.py",
       "title": "validate_repository_selftest_complete",
       "source": "repository"
     },
     {
-      "id": "scripts/selftest/check_duplicates.py",
+      "id": "system/scripts/selftest/check_duplicates.py",
       "type": "script",
-      "path": "scripts/selftest/check_duplicates.py",
+      "path": "system/scripts/selftest/check_duplicates.py",
       "title": "Deprecated skeleton files are handled by cleanup_selftest_skeleton.py and reported as warnings here.",
       "source": "repository"
     },
     {
-      "id": "scripts/selftest/check_link_integrity.py",
+      "id": "system/scripts/selftest/check_link_integrity.py",
       "type": "script",
-      "path": "scripts/selftest/check_link_integrity.py",
+      "path": "system/scripts/selftest/check_link_integrity.py",
       "title": "check_link_integrity",
       "source": "repository"
     },
     {
-      "id": "scripts/selftest/check_secret_boundary.py",
+      "id": "system/scripts/selftest/check_secret_boundary.py",
       "type": "script",
-      "path": "scripts/selftest/check_secret_boundary.py",
+      "path": "system/scripts/selftest/check_secret_boundary.py",
       "title": "check_secret_boundary",
       "source": "repository"
     },
     {
-      "id": "scripts/selftest/check_workflows.py",
+      "id": "system/scripts/selftest/check_workflows.py",
       "type": "script",
-      "path": "scripts/selftest/check_workflows.py",
+      "path": "system/scripts/selftest/check_workflows.py",
       "title": "check_workflows",
       "source": "repository"
     },
     {
-      "id": "scripts/selftest/cleanup_selftest_skeleton.py",
+      "id": "system/scripts/selftest/cleanup_selftest_skeleton.py",
       "type": "script",
-      "path": "scripts/selftest/cleanup_selftest_skeleton.py",
+      "path": "system/scripts/selftest/cleanup_selftest_skeleton.py",
       "title": "cleanup_selftest_skeleton",
       "source": "repository"
     },
     {
-      "id": "scripts/selftest/selftest_common.py",
+      "id": "system/scripts/selftest/selftest_common.py",
       "type": "script",
-      "path": "scripts/selftest/selftest_common.py",
+      "path": "system/scripts/selftest/selftest_common.py",
       "title": "Backward-compatible alias for older selftest modules.",
       "source": "repository"
     },
     {
-      "id": "scripts/baseline/validate_baseline.py",
+      "id": "system/scripts/baseline/validate_baseline.py",
       "type": "script",
-      "path": "scripts/baseline/validate_baseline.py",
+      "path": "system/scripts/baseline/validate_baseline.py",
       "title": "validate_baseline",
       "source": "repository"
     },
     {
-      "id": "scripts/hygiene/audit_code_quality.py",
+      "id": "system/scripts/hygiene/audit_code_quality.py",
       "type": "script",
-      "path": "scripts/hygiene/audit_code_quality.py",
+      "path": "system/scripts/hygiene/audit_code_quality.py",
       "title": "audit_code_quality",
       "source": "repository"
     },
     {
-      "id": "scripts/hygiene/validate_repository_layout.py",
+      "id": "system/scripts/hygiene/validate_repository_layout.py",
       "type": "script",
-      "path": "scripts/hygiene/validate_repository_layout.py",
+      "path": "system/scripts/hygiene/validate_repository_layout.py",
       "title": "validate_repository_layout",
       "source": "repository"
     },
     {
-      "id": "scripts/hygiene/validate_refactoring_governance.py",
+      "id": "system/scripts/hygiene/validate_refactoring_governance.py",
       "type": "script",
-      "path": "scripts/hygiene/validate_refactoring_governance.py",
+      "path": "system/scripts/hygiene/validate_refactoring_governance.py",
       "title": "validate_refactoring_governance",
       "source": "repository"
     },
     {
-      "id": "scripts/hygiene/audit_repository_root.py",
+      "id": "system/scripts/hygiene/audit_repository_root.py",
       "type": "script",
-      "path": "scripts/hygiene/audit_repository_root.py",
+      "path": "system/scripts/hygiene/audit_repository_root.py",
       "title": "audit_repository_root",
       "source": "repository"
     },
     {
-      "id": "scripts/selftest_v2/semantic_checks.py",
+      "id": "system/scripts/selftest_v2/semantic_checks.py",
       "type": "script",
-      "path": "scripts/selftest_v2/semantic_checks.py",
+      "path": "system/scripts/selftest_v2/semantic_checks.py",
       "title": "semantic_checks",
       "source": "repository"
     },
     {
-      "id": "scripts/selftest_v2/validate_semantic_selftest.py",
+      "id": "system/scripts/selftest_v2/validate_semantic_selftest.py",
       "type": "script",
-      "path": "scripts/selftest_v2/validate_semantic_selftest.py",
+      "path": "system/scripts/selftest_v2/validate_semantic_selftest.py",
       "title": "validate_semantic_selftest",
       "source": "repository"
     },
     {
-      "id": "scripts/selftest_v2/semantic_common.py",
+      "id": "system/scripts/selftest_v2/semantic_common.py",
       "type": "script",
-      "path": "scripts/selftest_v2/semantic_common.py",
+      "path": "system/scripts/selftest_v2/semantic_common.py",
       "title": "semantic_common",
       "source": "repository"
     },
     {
-      "id": "scripts/review/build_review_gate_summary.py",
+      "id": "system/scripts/review/build_review_gate_summary.py",
       "type": "script",
-      "path": "scripts/review/build_review_gate_summary.py",
+      "path": "system/scripts/review/build_review_gate_summary.py",
       "title": "build_review_gate_summary",
       "source": "repository"
     },
     {
-      "id": "scripts/agent_runtime/run_task_intake_cycle.py",
+      "id": "system/scripts/agent_runtime/run_task_intake_cycle.py",
       "type": "script",
-      "path": "scripts/agent_runtime/run_task_intake_cycle.py",
+      "path": "system/scripts/agent_runtime/run_task_intake_cycle.py",
       "title": "run_task_intake_cycle",
       "source": "repository"
     },
     {
-      "id": "scripts/agent_runtime/run_dry_run_cycle.py",
+      "id": "system/scripts/agent_runtime/run_dry_run_cycle.py",
       "type": "script",
-      "path": "scripts/agent_runtime/run_dry_run_cycle.py",
+      "path": "system/scripts/agent_runtime/run_dry_run_cycle.py",
       "title": "run_dry_run_cycle",
       "source": "repository"
     },
     {
-      "id": "scripts/agent_runtime/validate_task_intake.py",
+      "id": "system/scripts/agent_runtime/validate_task_intake.py",
       "type": "script",
-      "path": "scripts/agent_runtime/validate_task_intake.py",
+      "path": "system/scripts/agent_runtime/validate_task_intake.py",
       "title": "validate_task_intake",
       "source": "repository"
     },
     {
-      "id": "scripts/agent_runtime/validate_agent_runtime_mvp.py",
+      "id": "system/scripts/agent_runtime/validate_agent_runtime_mvp.py",
       "type": "script",
-      "path": "scripts/agent_runtime/validate_agent_runtime_mvp.py",
+      "path": "system/scripts/agent_runtime/validate_agent_runtime_mvp.py",
       "title": "validate_agent_runtime_mvp",
       "source": "repository"
     },
     {
-      "id": "scripts/workers/validate_worker_contracts.py",
+      "id": "system/scripts/workers/validate_worker_contracts.py",
       "type": "script",
-      "path": "scripts/workers/validate_worker_contracts.py",
+      "path": "system/scripts/workers/validate_worker_contracts.py",
       "title": "validate_worker_contracts",
       "source": "repository"
     },
     {
-      "id": "scripts/orchestrator/build_context_bundle.py",
+      "id": "system/scripts/system/orchestrator/build_context_bundle.py",
       "type": "script",
-      "path": "scripts/orchestrator/build_context_bundle.py",
+      "path": "system/scripts/system/orchestrator/build_context_bundle.py",
       "title": "build_context_bundle",
       "source": "repository"
     },
     {
-      "id": "scripts/orchestrator/build_execution_plan.py",
+      "id": "system/scripts/system/orchestrator/build_execution_plan.py",
       "type": "script",
-      "path": "scripts/orchestrator/build_execution_plan.py",
+      "path": "system/scripts/system/orchestrator/build_execution_plan.py",
       "title": "build_execution_plan",
       "source": "repository"
     },
     {
-      "id": "scripts/orchestrator/update_execution_queue.py",
+      "id": "system/scripts/system/orchestrator/update_execution_queue.py",
       "type": "script",
-      "path": "scripts/orchestrator/update_execution_queue.py",
+      "path": "system/scripts/system/orchestrator/update_execution_queue.py",
       "title": "update_execution_queue",
       "source": "repository"
     },
     {
-      "id": "scripts/orchestrator/validate_orchestration.py",
+      "id": "system/scripts/system/orchestrator/validate_orchestration.py",
       "type": "script",
-      "path": "scripts/orchestrator/validate_orchestration.py",
+      "path": "system/scripts/system/orchestrator/validate_orchestration.py",
       "title": "validate_orchestration",
       "source": "repository"
     },
@@ -4257,296 +4257,296 @@
       "source": "repository"
     },
     {
-      "id": "orchestrator/dispatcher.py",
+      "id": "system/orchestrator/dispatcher.py",
       "type": "document",
-      "path": "orchestrator/dispatcher.py",
+      "path": "system/orchestrator/dispatcher.py",
       "title": "dispatcher",
       "source": "repository"
     },
     {
-      "id": "orchestrator/queue.py",
+      "id": "system/orchestrator/queue.py",
       "type": "document",
-      "path": "orchestrator/queue.py",
+      "path": "system/orchestrator/queue.py",
       "title": "queue",
       "source": "repository"
     },
     {
-      "id": "orchestrator/worker.py",
+      "id": "system/orchestrator/worker.py",
       "type": "document",
-      "path": "orchestrator/worker.py",
+      "path": "system/orchestrator/worker.py",
       "title": "worker",
       "source": "repository"
     },
     {
-      "id": "orchestrator/output_semantics.py",
+      "id": "system/orchestrator/output_semantics.py",
       "type": "document",
-      "path": "orchestrator/output_semantics.py",
+      "path": "system/orchestrator/output_semantics.py",
       "title": "output_semantics",
       "source": "repository"
     },
     {
-      "id": "orchestrator/output_contract.py",
+      "id": "system/orchestrator/output_contract.py",
       "type": "document",
-      "path": "orchestrator/output_contract.py",
+      "path": "system/orchestrator/output_contract.py",
       "title": "output_contract",
       "source": "repository"
     },
     {
-      "id": "orchestrator/planner.py",
+      "id": "system/orchestrator/planner.py",
       "type": "document",
-      "path": "orchestrator/planner.py",
+      "path": "system/orchestrator/planner.py",
       "title": "planner",
       "source": "repository"
     },
     {
-      "id": "orchestrator/task.py",
+      "id": "system/orchestrator/task.py",
       "type": "document",
-      "path": "orchestrator/task.py",
+      "path": "system/orchestrator/task.py",
       "title": "task",
       "source": "repository"
     },
     {
-      "id": "orchestrator/execution_record.py",
+      "id": "system/orchestrator/execution_record.py",
       "type": "document",
-      "path": "orchestrator/execution_record.py",
+      "path": "system/orchestrator/execution_record.py",
       "title": "execution_record",
       "source": "repository"
     },
     {
-      "id": "orchestrator/repository_governor.py",
+      "id": "system/orchestrator/repository_governor.py",
       "type": "document",
-      "path": "orchestrator/repository_governor.py",
+      "path": "system/orchestrator/repository_governor.py",
       "title": "repository_governor",
       "source": "repository"
     },
     {
-      "id": "orchestrator/INBOX.md",
+      "id": "system/orchestrator/INBOX.md",
       "type": "document",
-      "path": "orchestrator/INBOX.md",
+      "path": "system/orchestrator/INBOX.md",
       "title": "INBOX",
       "source": "repository"
     },
     {
-      "id": "orchestrator/ARCHITECTURE.md",
+      "id": "system/orchestrator/ARCHITECTURE.md",
       "type": "document",
-      "path": "orchestrator/ARCHITECTURE.md",
+      "path": "system/orchestrator/ARCHITECTURE.md",
       "title": "ORCHESTRATOR ARCHITECTURE",
       "source": "repository"
     },
     {
-      "id": "orchestrator/AGENT_ROUTER.md",
+      "id": "system/orchestrator/AGENT_ROUTER.md",
       "type": "document",
-      "path": "orchestrator/AGENT_ROUTER.md",
+      "path": "system/orchestrator/AGENT_ROUTER.md",
       "title": "Agent Router",
       "source": "repository"
     },
     {
-      "id": "orchestrator/ADR-0001.md",
+      "id": "system/orchestrator/ADR-0001.md",
       "type": "document",
-      "path": "orchestrator/ADR-0001.md",
+      "path": "system/orchestrator/ADR-0001.md",
       "title": "ADR-0001: Stateless Orchestrator with Repository as Single Source of Truth",
       "source": "repository"
     },
     {
-      "id": "orchestrator/review_package.py",
+      "id": "system/orchestrator/review_package.py",
       "type": "document",
-      "path": "orchestrator/review_package.py",
+      "path": "system/orchestrator/review_package.py",
       "title": "review_package",
       "source": "repository"
     },
     {
-      "id": "orchestrator/WBS.md",
+      "id": "system/orchestrator/WBS.md",
       "type": "document",
-      "path": "orchestrator/WBS.md",
+      "path": "system/orchestrator/WBS.md",
       "title": "ORCHESTRATOR WBS",
       "source": "repository"
     },
     {
-      "id": "orchestrator/LOCAL_AGENT_RUNNER.md",
+      "id": "system/orchestrator/LOCAL_AGENT_RUNNER.md",
       "type": "document",
-      "path": "orchestrator/LOCAL_AGENT_RUNNER.md",
+      "path": "system/orchestrator/LOCAL_AGENT_RUNNER.md",
       "title": "LOCAL_AGENT_RUNNER",
       "source": "repository"
     },
     {
-      "id": "orchestrator/OUTBOX.md",
+      "id": "system/orchestrator/OUTBOX.md",
       "type": "document",
-      "path": "orchestrator/OUTBOX.md",
+      "path": "system/orchestrator/OUTBOX.md",
       "title": "OUTBOX",
       "source": "repository"
     },
     {
-      "id": "orchestrator/constants.py",
+      "id": "system/orchestrator/constants.py",
       "type": "document",
-      "path": "orchestrator/constants.py",
+      "path": "system/orchestrator/constants.py",
       "title": "constants",
       "source": "repository"
     },
     {
-      "id": "orchestrator/queue_state.py",
+      "id": "system/orchestrator/queue_state.py",
       "type": "document",
-      "path": "orchestrator/queue_state.py",
+      "path": "system/orchestrator/queue_state.py",
       "title": "queue_state",
       "source": "repository"
     },
     {
-      "id": "orchestrator/RUNBOOK.md",
+      "id": "system/orchestrator/RUNBOOK.md",
       "type": "document",
-      "path": "orchestrator/RUNBOOK.md",
+      "path": "system/orchestrator/RUNBOOK.md",
       "title": "RUNBOOK",
       "source": "repository"
     },
     {
-      "id": "orchestrator/worker_state.py",
+      "id": "system/orchestrator/worker_state.py",
       "type": "document",
-      "path": "orchestrator/worker_state.py",
+      "path": "system/orchestrator/worker_state.py",
       "title": "worker_state",
       "source": "repository"
     },
     {
-      "id": "orchestrator/CONTEXT_RESOLVER.md",
+      "id": "system/orchestrator/CONTEXT_RESOLVER.md",
       "type": "document",
-      "path": "orchestrator/CONTEXT_RESOLVER.md",
+      "path": "system/orchestrator/CONTEXT_RESOLVER.md",
       "title": "Context Resolver",
       "source": "repository"
     },
     {
-      "id": "orchestrator/WORKER_ROUTING.md",
+      "id": "system/orchestrator/WORKER_ROUTING.md",
       "type": "document",
-      "path": "orchestrator/WORKER_ROUTING.md",
+      "path": "system/orchestrator/WORKER_ROUTING.md",
       "title": "WORKER_ROUTING",
       "source": "repository"
     },
     {
-      "id": "orchestrator/capability_router.py",
+      "id": "system/orchestrator/capability_router.py",
       "type": "document",
-      "path": "orchestrator/capability_router.py",
+      "path": "system/orchestrator/capability_router.py",
       "title": "capability_router",
       "source": "repository"
     },
     {
-      "id": "orchestrator/execution_kernel.py",
+      "id": "system/orchestrator/execution_kernel.py",
       "type": "document",
-      "path": "orchestrator/execution_kernel.py",
+      "path": "system/orchestrator/execution_kernel.py",
       "title": "execution_kernel",
       "source": "repository"
     },
     {
-      "id": "orchestrator/CONTEXT_BUNDLE_SCHEMA.md",
+      "id": "system/orchestrator/CONTEXT_BUNDLE_SCHEMA.md",
       "type": "document",
-      "path": "orchestrator/CONTEXT_BUNDLE_SCHEMA.md",
+      "path": "system/orchestrator/CONTEXT_BUNDLE_SCHEMA.md",
       "title": "Context Bundle Schema",
       "source": "repository"
     },
     {
-      "id": "orchestrator/review_output_integration.py",
+      "id": "system/orchestrator/review_output_integration.py",
       "type": "document",
-      "path": "orchestrator/review_output_integration.py",
+      "path": "system/orchestrator/review_output_integration.py",
       "title": "review_output_integration",
       "source": "repository"
     },
     {
-      "id": "orchestrator/result.py",
+      "id": "system/orchestrator/result.py",
       "type": "document",
-      "path": "orchestrator/result.py",
+      "path": "system/orchestrator/result.py",
       "title": "result",
       "source": "repository"
     },
     {
-      "id": "orchestrator/REVIEW_GATE.md",
+      "id": "system/orchestrator/REVIEW_GATE.md",
       "type": "document",
-      "path": "orchestrator/REVIEW_GATE.md",
+      "path": "system/orchestrator/REVIEW_GATE.md",
       "title": "Review Gate",
       "source": "repository"
     },
     {
-      "id": "orchestrator/context_loader.py",
+      "id": "system/orchestrator/context_loader.py",
       "type": "document",
-      "path": "orchestrator/context_loader.py",
+      "path": "system/orchestrator/context_loader.py",
       "title": "context_loader",
       "source": "repository"
     },
     {
-      "id": "orchestrator/ORCHESTRATION_SEQUENCE.md",
+      "id": "system/orchestrator/ORCHESTRATION_SEQUENCE.md",
       "type": "document",
-      "path": "orchestrator/ORCHESTRATION_SEQUENCE.md",
+      "path": "system/orchestrator/ORCHESTRATION_SEQUENCE.md",
       "title": "Orchestration Sequence",
       "source": "repository"
     },
     {
-      "id": "orchestrator/agent_executor.py",
+      "id": "system/orchestrator/agent_executor.py",
       "type": "document",
-      "path": "orchestrator/agent_executor.py",
+      "path": "system/orchestrator/agent_executor.py",
       "title": "agent_executor",
       "source": "repository"
     },
     {
-      "id": "orchestrator/queue_transition.py",
+      "id": "system/orchestrator/queue_transition.py",
       "type": "document",
-      "path": "orchestrator/queue_transition.py",
+      "path": "system/orchestrator/queue_transition.py",
       "title": "queue_transition",
       "source": "repository"
     },
     {
-      "id": "orchestrator/scheduler.py",
+      "id": "system/orchestrator/scheduler.py",
       "type": "document",
-      "path": "orchestrator/scheduler.py",
+      "path": "system/orchestrator/scheduler.py",
       "title": "scheduler",
       "source": "repository"
     },
     {
-      "id": "orchestrator/autonomous_loop.py",
+      "id": "system/orchestrator/autonomous_loop.py",
       "type": "document",
-      "path": "orchestrator/autonomous_loop.py",
+      "path": "system/orchestrator/autonomous_loop.py",
       "title": "autonomous_loop",
       "source": "repository"
     },
     {
-      "id": "orchestrator/EXECUTION_PLAN_SCHEMA.md",
+      "id": "system/orchestrator/EXECUTION_PLAN_SCHEMA.md",
       "type": "document",
-      "path": "orchestrator/EXECUTION_PLAN_SCHEMA.md",
+      "path": "system/orchestrator/EXECUTION_PLAN_SCHEMA.md",
       "title": "Execution Plan Schema",
       "source": "repository"
     },
     {
-      "id": "orchestrator/validation_orchestrator.py",
+      "id": "system/orchestrator/validation_orchestrator.py",
       "type": "document",
-      "path": "orchestrator/validation_orchestrator.py",
+      "path": "system/orchestrator/validation_orchestrator.py",
       "title": "validation_orchestrator",
       "source": "repository"
     },
     {
-      "id": "orchestrator/EXECUTION_QUEUE.md",
+      "id": "system/orchestrator/EXECUTION_QUEUE.md",
       "type": "document",
-      "path": "orchestrator/EXECUTION_QUEUE.md",
+      "path": "system/orchestrator/EXECUTION_QUEUE.md",
       "title": "Execution Queue",
       "source": "repository"
     },
     {
-      "id": "orchestrator/task_decomposer.py",
+      "id": "system/orchestrator/task_decomposer.py",
       "type": "document",
-      "path": "orchestrator/task_decomposer.py",
+      "path": "system/orchestrator/task_decomposer.py",
       "title": "task_decomposer",
       "source": "repository"
     },
     {
-      "id": "orchestrator/local_agent_runner.py",
+      "id": "system/orchestrator/local_agent_runner.py",
       "type": "document",
-      "path": "orchestrator/local_agent_runner.py",
+      "path": "system/orchestrator/local_agent_runner.py",
       "title": "local_agent_runner",
       "source": "repository"
     },
     {
-      "id": "orchestrator/state.py",
+      "id": "system/orchestrator/state.py",
       "type": "document",
-      "path": "orchestrator/state.py",
+      "path": "system/orchestrator/state.py",
       "title": "state",
       "source": "repository"
     },
     {
-      "id": "orchestrator/workers/codex_worker.py",
+      "id": "system/orchestrator/workers/codex_worker.py",
       "type": "document",
-      "path": "orchestrator/workers/codex_worker.py",
+      "path": "system/orchestrator/workers/codex_worker.py",
       "title": "codex_worker",
       "source": "repository"
     }
@@ -4554,1239 +4554,1239 @@
   "edges": [
     {
       "source": "specs/EP-0117/VALIDATION.md",
-      "target": "scripts/validate_all.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
       "source": "specs/EP-0119/VALIDATION.md",
-      "target": "scripts/validate_all.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
       "source": "specs/EP-0121/VALIDATION.md",
-      "target": "scripts/validate_all.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
       "source": "specs/EP-0120/VALIDATION.md",
-      "target": "scripts/validate_all.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
       "source": "specs/EP-0118/VALIDATION.md",
-      "target": "scripts/validate_all.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
       "source": "specs/EP-0111/VALIDATION.md",
-      "target": "scripts/validate_all.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
       "source": "specs/EP-0111/VALIDATION.md",
-      "target": "scripts/validate_ep_0111.py",
+      "target": "system/scripts/validate_ep_0111.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0111.py"
+      "evidence": "system/scripts/validate_ep_0111.py"
     },
     {
       "source": "specs/EP-0116/VALIDATION.md",
-      "target": "scripts/validate_all.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
       "source": "specs/EP-0105/VALIDATION.md",
-      "target": "scripts/validate_ep_0105.py",
+      "target": "system/scripts/validate_ep_0105.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0105.py"
+      "evidence": "system/scripts/validate_ep_0105.py"
     },
     {
       "source": "specs/EP-0105/VALIDATION.md",
-      "target": "scripts/validate_ep_0104.py",
+      "target": "system/scripts/validate_ep_0104.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0104.py"
+      "evidence": "system/scripts/validate_ep_0104.py"
     },
     {
       "source": "specs/EP-0105/VALIDATION.md",
-      "target": "scripts/validate_ep_0103.py",
+      "target": "system/scripts/validate_ep_0103.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0103.py"
+      "evidence": "system/scripts/validate_ep_0103.py"
     },
     {
       "source": "specs/EP-0105/VALIDATION.md",
-      "target": "scripts/validate_ep_0102.py",
+      "target": "system/scripts/validate_ep_0102.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0102.py"
+      "evidence": "system/scripts/validate_ep_0102.py"
     },
     {
       "source": "specs/EP-0105/VALIDATION.md",
-      "target": "scripts/validate_ep_0101.py",
+      "target": "system/scripts/validate_ep_0101.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
+      "evidence": "system/scripts/validate_ep_0101.py"
     },
     {
       "source": "specs/EP-0105/VALIDATION.md",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": "specs/EP-0105/ep_contract.yaml",
-      "target": "scripts/validate_ep_0105.py",
+      "target": "system/scripts/validate_ep_0105.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0105.py"
+      "evidence": "system/scripts/validate_ep_0105.py"
     },
     {
       "source": "specs/EP-0105/ep_contract.yaml",
-      "target": "scripts/validate_ep_0104.py",
+      "target": "system/scripts/validate_ep_0104.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0104.py"
+      "evidence": "system/scripts/validate_ep_0104.py"
     },
     {
       "source": "specs/EP-0105/ep_contract.yaml",
-      "target": "scripts/validate_ep_0103.py",
+      "target": "system/scripts/validate_ep_0103.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0103.py"
+      "evidence": "system/scripts/validate_ep_0103.py"
     },
     {
       "source": "specs/EP-0105/ep_contract.yaml",
-      "target": "scripts/validate_ep_0102.py",
+      "target": "system/scripts/validate_ep_0102.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0102.py"
+      "evidence": "system/scripts/validate_ep_0102.py"
     },
     {
       "source": "specs/EP-0105/ep_contract.yaml",
-      "target": "scripts/validate_ep_0101.py",
+      "target": "system/scripts/validate_ep_0101.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
+      "evidence": "system/scripts/validate_ep_0101.py"
     },
     {
       "source": "specs/EP-0105/ep_contract.yaml",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": "specs/EP-0102/ACCEPTANCE_TEST.md",
-      "target": "scripts/validate_ep_0102.py",
+      "target": "system/scripts/validate_ep_0102.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0102.py"
+      "evidence": "system/scripts/validate_ep_0102.py"
     },
     {
       "source": "specs/EP-0102/ACCEPTANCE_TEST.md",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": "specs/EP-0102/ACCEPTANCE_TEST.md",
-      "target": "scripts/validate_ep_0101.py",
+      "target": "system/scripts/validate_ep_0101.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
+      "evidence": "system/scripts/validate_ep_0101.py"
     },
     {
       "source": "specs/EP-0102/CODEX_PROMPT.md",
-      "target": "scripts/validate_ep_0102.py",
+      "target": "system/scripts/validate_ep_0102.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0102.py"
+      "evidence": "system/scripts/validate_ep_0102.py"
     },
     {
       "source": "specs/EP-0102/CODEX_PROMPT.md",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": "specs/EP-0102/CODEX_PROMPT.md",
-      "target": "scripts/validate_ep_0101.py",
+      "target": "system/scripts/validate_ep_0101.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
+      "evidence": "system/scripts/validate_ep_0101.py"
     },
     {
       "source": "specs/EP-0102/VALIDATION.md",
-      "target": "scripts/validate_ep_0102.py",
+      "target": "system/scripts/validate_ep_0102.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0102.py"
+      "evidence": "system/scripts/validate_ep_0102.py"
     },
     {
       "source": "specs/EP-0102/VALIDATION.md",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": "specs/EP-0102/VALIDATION.md",
-      "target": "scripts/validate_ep_0101.py",
+      "target": "system/scripts/validate_ep_0101.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
+      "evidence": "system/scripts/validate_ep_0101.py"
     },
     {
       "source": "specs/EP-0103/WORKER_INSTRUCTIONS.md",
-      "target": "scripts/validate_ep_0103.py",
+      "target": "system/scripts/validate_ep_0103.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0103.py"
+      "evidence": "system/scripts/validate_ep_0103.py"
     },
     {
       "source": "specs/EP-0103/WORKER_INSTRUCTIONS.md",
-      "target": "scripts/validate_ep_0102.py",
+      "target": "system/scripts/validate_ep_0102.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0102.py"
+      "evidence": "system/scripts/validate_ep_0102.py"
     },
     {
       "source": "specs/EP-0103/WORKER_INSTRUCTIONS.md",
-      "target": "scripts/validate_ep_0101.py",
+      "target": "system/scripts/validate_ep_0101.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
+      "evidence": "system/scripts/validate_ep_0101.py"
     },
     {
       "source": "specs/EP-0103/WORKER_INSTRUCTIONS.md",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": "specs/EP-0103/VALIDATION.md",
-      "target": "scripts/validate_ep_0103.py",
+      "target": "system/scripts/validate_ep_0103.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0103.py"
+      "evidence": "system/scripts/validate_ep_0103.py"
     },
     {
       "source": "specs/EP-0103/VALIDATION.md",
-      "target": "scripts/validate_ep_0102.py",
+      "target": "system/scripts/validate_ep_0102.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0102.py"
+      "evidence": "system/scripts/validate_ep_0102.py"
     },
     {
       "source": "specs/EP-0103/VALIDATION.md",
-      "target": "scripts/validate_ep_0101.py",
+      "target": "system/scripts/validate_ep_0101.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
+      "evidence": "system/scripts/validate_ep_0101.py"
     },
     {
       "source": "specs/EP-0103/VALIDATION.md",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": "specs/EP-0103/ACCEPTANCE.md",
-      "target": "scripts/validate_ep_0103.py",
+      "target": "system/scripts/validate_ep_0103.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0103.py"
+      "evidence": "system/scripts/validate_ep_0103.py"
     },
     {
       "source": "specs/EP-0103/ACCEPTANCE.md",
-      "target": "scripts/validate_ep_0102.py",
+      "target": "system/scripts/validate_ep_0102.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0102.py"
+      "evidence": "system/scripts/validate_ep_0102.py"
     },
     {
       "source": "specs/EP-0103/ACCEPTANCE.md",
-      "target": "scripts/validate_ep_0101.py",
+      "target": "system/scripts/validate_ep_0101.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
+      "evidence": "system/scripts/validate_ep_0101.py"
     },
     {
       "source": "specs/EP-0103/ACCEPTANCE.md",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": "specs/EP-0104/WORKER_INSTRUCTIONS.md",
-      "target": "scripts/validate_ep_0104.py",
+      "target": "system/scripts/validate_ep_0104.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0104.py"
+      "evidence": "system/scripts/validate_ep_0104.py"
     },
     {
       "source": "specs/EP-0104/WORKER_INSTRUCTIONS.md",
-      "target": "scripts/validate_ep_0103.py",
+      "target": "system/scripts/validate_ep_0103.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0103.py"
+      "evidence": "system/scripts/validate_ep_0103.py"
     },
     {
       "source": "specs/EP-0104/WORKER_INSTRUCTIONS.md",
-      "target": "scripts/validate_ep_0102.py",
+      "target": "system/scripts/validate_ep_0102.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0102.py"
+      "evidence": "system/scripts/validate_ep_0102.py"
     },
     {
       "source": "specs/EP-0104/WORKER_INSTRUCTIONS.md",
-      "target": "scripts/validate_ep_0101.py",
+      "target": "system/scripts/validate_ep_0101.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
+      "evidence": "system/scripts/validate_ep_0101.py"
     },
     {
       "source": "specs/EP-0104/WORKER_INSTRUCTIONS.md",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": "specs/EP-0104/VALIDATION.md",
-      "target": "scripts/validate_ep_0104.py",
+      "target": "system/scripts/validate_ep_0104.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0104.py"
+      "evidence": "system/scripts/validate_ep_0104.py"
     },
     {
       "source": "specs/EP-0104/VALIDATION.md",
-      "target": "scripts/validate_ep_0103.py",
+      "target": "system/scripts/validate_ep_0103.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0103.py"
+      "evidence": "system/scripts/validate_ep_0103.py"
     },
     {
       "source": "specs/EP-0104/VALIDATION.md",
-      "target": "scripts/validate_ep_0102.py",
+      "target": "system/scripts/validate_ep_0102.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0102.py"
+      "evidence": "system/scripts/validate_ep_0102.py"
     },
     {
       "source": "specs/EP-0104/VALIDATION.md",
-      "target": "scripts/validate_ep_0101.py",
+      "target": "system/scripts/validate_ep_0101.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
+      "evidence": "system/scripts/validate_ep_0101.py"
     },
     {
       "source": "specs/EP-0104/VALIDATION.md",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": "specs/EP-0104/IMPLEMENTATION_SPEC.md",
-      "target": "scripts/validate_ep_0104.py",
+      "target": "system/scripts/validate_ep_0104.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0104.py"
+      "evidence": "system/scripts/validate_ep_0104.py"
     },
     {
       "source": "specs/EP-0104/IMPLEMENTATION_SPEC.md",
-      "target": "scripts/validate_ep_0103.py",
+      "target": "system/scripts/validate_ep_0103.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0103.py"
+      "evidence": "system/scripts/validate_ep_0103.py"
     },
     {
       "source": "specs/EP-0104/IMPLEMENTATION_SPEC.md",
-      "target": "scripts/validate_ep_0102.py",
+      "target": "system/scripts/validate_ep_0102.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0102.py"
+      "evidence": "system/scripts/validate_ep_0102.py"
     },
     {
       "source": "specs/EP-0104/IMPLEMENTATION_SPEC.md",
-      "target": "scripts/validate_ep_0101.py",
+      "target": "system/scripts/validate_ep_0101.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
+      "evidence": "system/scripts/validate_ep_0101.py"
     },
     {
       "source": "specs/EP-0104/IMPLEMENTATION_SPEC.md",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": "specs/EP-0104/MANIFEST.md",
-      "target": "scripts/validate_ep_0104.py",
+      "target": "system/scripts/validate_ep_0104.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0104.py"
+      "evidence": "system/scripts/validate_ep_0104.py"
     },
     {
       "source": "specs/EP-0104/ep_contract.yaml",
-      "target": "scripts/validate_ep_0104.py",
+      "target": "system/scripts/validate_ep_0104.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0104.py"
+      "evidence": "system/scripts/validate_ep_0104.py"
     },
     {
       "source": "specs/EP-0104/ep_contract.yaml",
-      "target": "scripts/validate_ep_0103.py",
+      "target": "system/scripts/validate_ep_0103.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0103.py"
+      "evidence": "system/scripts/validate_ep_0103.py"
     },
     {
       "source": "specs/EP-0104/ep_contract.yaml",
-      "target": "scripts/validate_ep_0102.py",
+      "target": "system/scripts/validate_ep_0102.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0102.py"
+      "evidence": "system/scripts/validate_ep_0102.py"
     },
     {
       "source": "specs/EP-0104/ep_contract.yaml",
-      "target": "scripts/validate_ep_0101.py",
+      "target": "system/scripts/validate_ep_0101.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
+      "evidence": "system/scripts/validate_ep_0101.py"
     },
     {
       "source": "specs/EP-0104/ep_contract.yaml",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": "specs/EP-0113/VALIDATION.md",
-      "target": "scripts/validate_all.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
       "source": "specs/EP-0114/VALIDATION.md",
-      "target": "scripts/validate_all.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
       "source": "specs/EP-0122/VALIDATION.md",
-      "target": "scripts/validate_all.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
       "source": "specs/EP-0115/VALIDATION.md",
-      "target": "scripts/validate_all.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
       "source": "specs/EP-0112/VALIDATION.md",
-      "target": "scripts/validate_all.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
       "source": "specs/EP-0106/VALIDATION.md",
-      "target": "scripts/validate_ep_0106.py",
+      "target": "system/scripts/validate_ep_0106.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0106.py"
+      "evidence": "system/scripts/validate_ep_0106.py"
     },
     {
       "source": "specs/EP-0106/VALIDATION.md",
-      "target": "scripts/validate_ep_0105.py",
+      "target": "system/scripts/validate_ep_0105.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0105.py"
+      "evidence": "system/scripts/validate_ep_0105.py"
     },
     {
       "source": "specs/EP-0106/VALIDATION.md",
-      "target": "scripts/validate_ep_0104.py",
+      "target": "system/scripts/validate_ep_0104.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0104.py"
+      "evidence": "system/scripts/validate_ep_0104.py"
     },
     {
       "source": "specs/EP-0106/VALIDATION.md",
-      "target": "scripts/validate_ep_0103.py",
+      "target": "system/scripts/validate_ep_0103.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0103.py"
+      "evidence": "system/scripts/validate_ep_0103.py"
     },
     {
       "source": "specs/EP-0106/VALIDATION.md",
-      "target": "scripts/validate_ep_0102.py",
+      "target": "system/scripts/validate_ep_0102.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0102.py"
+      "evidence": "system/scripts/validate_ep_0102.py"
     },
     {
       "source": "specs/EP-0106/VALIDATION.md",
-      "target": "scripts/validate_ep_0101.py",
+      "target": "system/scripts/validate_ep_0101.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
+      "evidence": "system/scripts/validate_ep_0101.py"
     },
     {
       "source": "specs/EP-0106/VALIDATION.md",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": "specs/EP-0106/ep_contract.yaml",
-      "target": "scripts/validate_ep_0106.py",
+      "target": "system/scripts/validate_ep_0106.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0106.py"
+      "evidence": "system/scripts/validate_ep_0106.py"
     },
     {
       "source": "specs/EP-0106/ep_contract.yaml",
-      "target": "scripts/validate_ep_0105.py",
+      "target": "system/scripts/validate_ep_0105.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0105.py"
+      "evidence": "system/scripts/validate_ep_0105.py"
     },
     {
       "source": "specs/EP-0106/ep_contract.yaml",
-      "target": "scripts/validate_ep_0104.py",
+      "target": "system/scripts/validate_ep_0104.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0104.py"
+      "evidence": "system/scripts/validate_ep_0104.py"
     },
     {
       "source": "specs/EP-0106/ep_contract.yaml",
-      "target": "scripts/validate_ep_0103.py",
+      "target": "system/scripts/validate_ep_0103.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0103.py"
+      "evidence": "system/scripts/validate_ep_0103.py"
     },
     {
       "source": "specs/EP-0106/ep_contract.yaml",
-      "target": "scripts/validate_ep_0102.py",
+      "target": "system/scripts/validate_ep_0102.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0102.py"
+      "evidence": "system/scripts/validate_ep_0102.py"
     },
     {
       "source": "specs/EP-0106/ep_contract.yaml",
-      "target": "scripts/validate_ep_0101.py",
+      "target": "system/scripts/validate_ep_0101.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
+      "evidence": "system/scripts/validate_ep_0101.py"
     },
     {
       "source": "specs/EP-0106/ep_contract.yaml",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": "specs/EP-0107/VALIDATION.md",
-      "target": "scripts/validate_ep_0107.py",
+      "target": "system/scripts/validate_ep_0107.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0107.py"
+      "evidence": "system/scripts/validate_ep_0107.py"
     },
     {
       "source": "specs/EP-0107/VALIDATION.md",
-      "target": "scripts/validate_ep_0106.py",
+      "target": "system/scripts/validate_ep_0106.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0106.py"
+      "evidence": "system/scripts/validate_ep_0106.py"
     },
     {
       "source": "specs/EP-0107/VALIDATION.md",
-      "target": "scripts/validate_ep_0105.py",
+      "target": "system/scripts/validate_ep_0105.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0105.py"
+      "evidence": "system/scripts/validate_ep_0105.py"
     },
     {
       "source": "specs/EP-0107/VALIDATION.md",
-      "target": "scripts/validate_ep_0104.py",
+      "target": "system/scripts/validate_ep_0104.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0104.py"
+      "evidence": "system/scripts/validate_ep_0104.py"
     },
     {
       "source": "specs/EP-0107/VALIDATION.md",
-      "target": "scripts/validate_ep_0103.py",
+      "target": "system/scripts/validate_ep_0103.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0103.py"
+      "evidence": "system/scripts/validate_ep_0103.py"
     },
     {
       "source": "specs/EP-0107/VALIDATION.md",
-      "target": "scripts/validate_ep_0102.py",
+      "target": "system/scripts/validate_ep_0102.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0102.py"
+      "evidence": "system/scripts/validate_ep_0102.py"
     },
     {
       "source": "specs/EP-0107/VALIDATION.md",
-      "target": "scripts/validate_ep_0101.py",
+      "target": "system/scripts/validate_ep_0101.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
+      "evidence": "system/scripts/validate_ep_0101.py"
     },
     {
       "source": "specs/EP-0107/VALIDATION.md",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": "specs/EP-0107/ep_contract.yaml",
-      "target": "scripts/validate_ep_0107.py",
+      "target": "system/scripts/validate_ep_0107.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0107.py"
+      "evidence": "system/scripts/validate_ep_0107.py"
     },
     {
       "source": "specs/EP-0107/ep_contract.yaml",
-      "target": "scripts/validate_ep_0106.py",
+      "target": "system/scripts/validate_ep_0106.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0106.py"
+      "evidence": "system/scripts/validate_ep_0106.py"
     },
     {
       "source": "specs/EP-0107/ep_contract.yaml",
-      "target": "scripts/validate_ep_0105.py",
+      "target": "system/scripts/validate_ep_0105.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0105.py"
+      "evidence": "system/scripts/validate_ep_0105.py"
     },
     {
       "source": "specs/EP-0107/ep_contract.yaml",
-      "target": "scripts/validate_ep_0104.py",
+      "target": "system/scripts/validate_ep_0104.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0104.py"
+      "evidence": "system/scripts/validate_ep_0104.py"
     },
     {
       "source": "specs/EP-0107/ep_contract.yaml",
-      "target": "scripts/validate_ep_0103.py",
+      "target": "system/scripts/validate_ep_0103.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0103.py"
+      "evidence": "system/scripts/validate_ep_0103.py"
     },
     {
       "source": "specs/EP-0107/ep_contract.yaml",
-      "target": "scripts/validate_ep_0102.py",
+      "target": "system/scripts/validate_ep_0102.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0102.py"
+      "evidence": "system/scripts/validate_ep_0102.py"
     },
     {
       "source": "specs/EP-0107/ep_contract.yaml",
-      "target": "scripts/validate_ep_0101.py",
+      "target": "system/scripts/validate_ep_0101.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
+      "evidence": "system/scripts/validate_ep_0101.py"
     },
     {
       "source": "specs/EP-0107/ep_contract.yaml",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
-      "source": "tests/test_validation_orchestrator.py",
-      "target": "scripts/validate_ep_0100.py",
+      "source": "system/tests/test_validation_orchestrator.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": "docs/ep/README_EP0100_1_AGENT_RUNTIME_IMPORT_FIX.md",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": "docs/ep/README_EP0100_AGENT_RUNTIME_MVP.md",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": "docs/ep/README_EP0102_CODEX_DEVELOPMENT_PIPELINE.md",
-      "target": "scripts/validate_ep_0102.py",
+      "target": "system/scripts/validate_ep_0102.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0102.py"
+      "evidence": "system/scripts/validate_ep_0102.py"
     },
     {
       "source": "docs/ep/README_EP0102_CODEX_DEVELOPMENT_PIPELINE.md",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": "docs/ep/README_EP0102_CODEX_DEVELOPMENT_PIPELINE.md",
-      "target": "scripts/validate_ep_0101.py",
+      "target": "system/scripts/validate_ep_0101.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
+      "evidence": "system/scripts/validate_ep_0101.py"
     },
     {
       "source": "docs/ep/README_EP0103_WORKER_CONTRACT_LAYER.md",
-      "target": "scripts/validate_ep_0103.py",
+      "target": "system/scripts/validate_ep_0103.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0103.py"
+      "evidence": "system/scripts/validate_ep_0103.py"
     },
     {
       "source": "docs/ep/README_EP0103_WORKER_CONTRACT_LAYER.md",
-      "target": "scripts/validate_ep_0102.py",
+      "target": "system/scripts/validate_ep_0102.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0102.py"
+      "evidence": "system/scripts/validate_ep_0102.py"
     },
     {
       "source": "docs/ep/README_EP0103_WORKER_CONTRACT_LAYER.md",
-      "target": "scripts/validate_ep_0101.py",
+      "target": "system/scripts/validate_ep_0101.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
+      "evidence": "system/scripts/validate_ep_0101.py"
     },
     {
       "source": "docs/ep/README_EP0103_WORKER_CONTRACT_LAYER.md",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": "docs/ep/README_EP0102_SPEC_PACK.md",
-      "target": "scripts/validate_ep_0102.py",
+      "target": "system/scripts/validate_ep_0102.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0102.py"
+      "evidence": "system/scripts/validate_ep_0102.py"
     },
     {
       "source": "docs/ep/README_EP0102_SPEC_PACK.md",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": "docs/ep/README_EP0102_SPEC_PACK.md",
-      "target": "scripts/validate_ep_0101.py",
+      "target": "system/scripts/validate_ep_0101.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
+      "evidence": "system/scripts/validate_ep_0101.py"
     },
     {
       "source": "docs/ep/README_EP0104_EXECUTABLE_SPECIFICATION.md",
-      "target": "scripts/validate_ep_0104.py",
+      "target": "system/scripts/validate_ep_0104.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0104.py"
+      "evidence": "system/scripts/validate_ep_0104.py"
     },
     {
       "source": "docs/ep/README_EP0104_EXECUTABLE_SPECIFICATION.md",
-      "target": "scripts/validate_ep_0103.py",
+      "target": "system/scripts/validate_ep_0103.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0103.py"
+      "evidence": "system/scripts/validate_ep_0103.py"
     },
     {
       "source": "docs/ep/README_EP0104_EXECUTABLE_SPECIFICATION.md",
-      "target": "scripts/validate_ep_0102.py",
+      "target": "system/scripts/validate_ep_0102.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0102.py"
+      "evidence": "system/scripts/validate_ep_0102.py"
     },
     {
       "source": "docs/ep/README_EP0104_EXECUTABLE_SPECIFICATION.md",
-      "target": "scripts/validate_ep_0101.py",
+      "target": "system/scripts/validate_ep_0101.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
+      "evidence": "system/scripts/validate_ep_0101.py"
     },
     {
       "source": "docs/ep/README_EP0104_EXECUTABLE_SPECIFICATION.md",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": "docs/ep/README_EP0100_2_AGENT_RUNTIME_RESTORE_IMPORT_FIX.md",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": "docs/ep/README_EP0101_AGENT_RUNTIME_TASK_INTAKE.md",
-      "target": "scripts/validate_ep_0101.py",
+      "target": "system/scripts/validate_ep_0101.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
+      "evidence": "system/scripts/validate_ep_0101.py"
     },
     {
       "source": "docs/packs/README_REPOSITORY_SELFTEST_COMPLETE_PACK.md",
-      "target": "scripts/selftest/validate_repository_selftest_complete.py",
+      "target": "system/scripts/selftest/validate_repository_selftest_complete.py",
       "type": "validates",
-      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
+      "evidence": "system/scripts/selftest/validate_repository_selftest_complete.py"
     },
     {
       "source": "docs/packs/README_REPOSITORY_SELFTEST_COMPLETE_PACK.md",
-      "target": "scripts/validate_repository_selftest.py",
+      "target": "system/scripts/validate_repository_selftest.py",
       "type": "validates",
-      "evidence": "scripts/validate_repository_selftest.py"
+      "evidence": "system/scripts/validate_repository_selftest.py"
     },
     {
       "source": "docs/packs/README_REPOSITORY_SELFTEST_COMPLETE_PACK.md",
-      "target": "scripts/validate_continuous_governance.py",
+      "target": "system/scripts/validate_continuous_governance.py",
       "type": "validates",
-      "evidence": "scripts/validate_continuous_governance.py"
+      "evidence": "system/scripts/validate_continuous_governance.py"
     },
     {
       "source": "docs/packs/README_AGENT_RUNTIME_FOUNDATION_PACK.md",
-      "target": "scripts/runtime/validate_runtime_foundation.py",
+      "target": "system/scripts/system/runtime/validate_runtime_foundation.py",
       "type": "validates",
-      "evidence": "scripts/runtime/validate_runtime_foundation.py"
+      "evidence": "system/scripts/system/runtime/validate_runtime_foundation.py"
     },
     {
       "source": "docs/packs/README_REPOSITORY_KNOWLEDGE_GRAPH_RUNTIME_INTEGRATION_PACK.md",
-      "target": "scripts/validate_repository_knowledge_graph_runtime_integration.py",
+      "target": "system/scripts/validate_repository_knowledge_graph_runtime_integration.py",
       "type": "validates",
-      "evidence": "scripts/validate_repository_knowledge_graph_runtime_integration.py"
+      "evidence": "system/scripts/validate_repository_knowledge_graph_runtime_integration.py"
     },
     {
       "source": "docs/packs/README_REPOSITORY_OS_V1_BASELINE_PACK.md",
-      "target": "scripts/validate_repository_os_v1_baseline.py",
+      "target": "system/scripts/validate_repository_os_v1_baseline.py",
       "type": "validates",
-      "evidence": "scripts/validate_repository_os_v1_baseline.py"
+      "evidence": "system/scripts/validate_repository_os_v1_baseline.py"
     },
     {
       "source": "docs/packs/README_RUNTIME_TRANSITION_READINESS_PACK.md",
-      "target": "scripts/validate_repository_knowledge_graph_runtime_integration.py",
+      "target": "system/scripts/validate_repository_knowledge_graph_runtime_integration.py",
       "type": "validates",
-      "evidence": "scripts/validate_repository_knowledge_graph_runtime_integration.py"
+      "evidence": "system/scripts/validate_repository_knowledge_graph_runtime_integration.py"
     },
     {
       "source": "docs/packs/README_REPOSITORY_COMPLETE_PACK.md",
-      "target": "scripts/validate_all.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
       "source": "docs/packs/README_SELFTEST_IMPORT_FIX_PACK.md",
-      "target": "scripts/selftest/validate_repository_selftest_complete.py",
+      "target": "system/scripts/selftest/validate_repository_selftest_complete.py",
       "type": "validates",
-      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
+      "evidence": "system/scripts/selftest/validate_repository_selftest_complete.py"
     },
     {
       "source": "docs/packs/README_SEMANTIC_SELFTEST_V2_PACK.md",
-      "target": "scripts/selftest_v2/validate_semantic_selftest.py",
+      "target": "system/scripts/selftest_v2/validate_semantic_selftest.py",
       "type": "validates",
-      "evidence": "scripts/selftest_v2/validate_semantic_selftest.py"
+      "evidence": "system/scripts/selftest_v2/validate_semantic_selftest.py"
     },
     {
       "source": "docs/packs/README_SEMANTIC_SELFTEST_V2_PACK.md",
-      "target": "scripts/selftest/validate_repository_selftest_complete.py",
+      "target": "system/scripts/selftest/validate_repository_selftest_complete.py",
       "type": "validates",
-      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
+      "evidence": "system/scripts/selftest/validate_repository_selftest_complete.py"
     },
     {
       "source": "docs/packs/README_SEMANTIC_SELFTEST_V2_PACK.md",
-      "target": "scripts/validate_repository_selftest.py",
+      "target": "system/scripts/validate_repository_selftest.py",
       "type": "validates",
-      "evidence": "scripts/validate_repository_selftest.py"
+      "evidence": "system/scripts/validate_repository_selftest.py"
     },
     {
       "source": "docs/packs/README_SELFTEST_REMEDIATION_PACK.md",
-      "target": "scripts/selftest/validate_repository_selftest_complete.py",
+      "target": "system/scripts/selftest/validate_repository_selftest_complete.py",
       "type": "validates",
-      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
+      "evidence": "system/scripts/selftest/validate_repository_selftest_complete.py"
     },
     {
       "source": "docs/packs/README_SELFTEST_REMEDIATION_PACK.md",
-      "target": "scripts/selftest/cleanup_selftest_skeleton.py",
+      "target": "system/scripts/selftest/cleanup_selftest_skeleton.py",
       "type": "validates",
-      "evidence": "scripts/selftest/cleanup_selftest_skeleton.py"
+      "evidence": "system/scripts/selftest/cleanup_selftest_skeleton.py"
     },
     {
       "source": "docs/packs/README_AGENT_ORCHESTRATOR_PACK.md",
-      "target": "scripts/graph/build_repository_graph.py",
+      "target": "system/scripts/graph/build_repository_graph.py",
       "type": "validates",
-      "evidence": "scripts/graph/build_repository_graph.py"
+      "evidence": "system/scripts/graph/build_repository_graph.py"
     },
     {
       "source": "docs/packs/README_AGENT_ORCHESTRATOR_PACK.md",
-      "target": "scripts/context/build_agent_context_pack.py",
+      "target": "system/scripts/context/build_agent_context_pack.py",
       "type": "validates",
-      "evidence": "scripts/context/build_agent_context_pack.py"
+      "evidence": "system/scripts/context/build_agent_context_pack.py"
     },
     {
       "source": "docs/packs/README_AGENT_ORCHESTRATOR_PACK.md",
-      "target": "scripts/orchestrator/build_context_bundle.py",
+      "target": "system/scripts/system/orchestrator/build_context_bundle.py",
       "type": "validates",
-      "evidence": "scripts/orchestrator/build_context_bundle.py"
+      "evidence": "system/scripts/system/orchestrator/build_context_bundle.py"
     },
     {
       "source": "docs/packs/README_AGENT_ORCHESTRATOR_PACK.md",
-      "target": "scripts/orchestrator/build_execution_plan.py",
+      "target": "system/scripts/system/orchestrator/build_execution_plan.py",
       "type": "validates",
-      "evidence": "scripts/orchestrator/build_execution_plan.py"
+      "evidence": "system/scripts/system/orchestrator/build_execution_plan.py"
     },
     {
       "source": "docs/packs/README_AGENT_ORCHESTRATOR_PACK.md",
-      "target": "scripts/orchestrator/validate_orchestration.py",
+      "target": "system/scripts/system/orchestrator/validate_orchestration.py",
       "type": "validates",
-      "evidence": "scripts/orchestrator/validate_orchestration.py"
+      "evidence": "system/scripts/system/orchestrator/validate_orchestration.py"
     },
     {
       "source": "docs/current/CODEX_OUTPUT_CONTRACT.md",
-      "target": "scripts/validate_ep_0107.py",
+      "target": "system/scripts/validate_ep_0107.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0107.py"
+      "evidence": "system/scripts/validate_ep_0107.py"
     },
     {
       "source": "docs/current/VALIDATION_STATE.md",
-      "target": "scripts/validate_all.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
       "source": "docs/manifests/MANIFEST_EP0100.md",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": "docs/manifests/MANIFEST_EP0100_2.md",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": "docs/manifests/MANIFEST_EP0101.md",
-      "target": "scripts/validate_ep_0101.py",
+      "target": "system/scripts/validate_ep_0101.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
+      "evidence": "system/scripts/validate_ep_0101.py"
     },
     {
       "source": "docs/manifests/MANIFEST_EP0100_1.md",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": "review/REVIEW_GATE_SUMMARY.md",
-      "target": "scripts/orchestrator/validate_orchestration.py",
+      "target": "system/scripts/system/orchestrator/validate_orchestration.py",
       "type": "validates",
-      "evidence": "scripts/orchestrator/validate_orchestration.py"
+      "evidence": "system/scripts/system/orchestrator/validate_orchestration.py"
     },
     {
       "source": "wbs/WBS-0100-agent-runtime-mvp.md",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": "wbs/WBS-0016-repository-os-v1-baseline.md",
-      "target": "scripts/baseline/validate_baseline.py",
+      "target": "system/scripts/baseline/validate_baseline.py",
       "type": "validates",
-      "evidence": "scripts/baseline/validate_baseline.py"
+      "evidence": "system/scripts/baseline/validate_baseline.py"
     },
     {
       "source": "wbs/WBS-0016-repository-os-v1-baseline.md",
-      "target": "scripts/graph/build_incremental_graph.py",
+      "target": "system/scripts/graph/build_incremental_graph.py",
       "type": "validates",
-      "evidence": "scripts/graph/build_incremental_graph.py"
+      "evidence": "system/scripts/graph/build_incremental_graph.py"
     },
     {
       "source": "wbs/WBS-0016-repository-os-v1-baseline.md",
-      "target": "scripts/context/build_context_diff.py",
+      "target": "system/scripts/context/build_context_diff.py",
       "type": "validates",
-      "evidence": "scripts/context/build_context_diff.py"
+      "evidence": "system/scripts/context/build_context_diff.py"
     },
     {
       "source": "wbs/WBS-0016-repository-os-v1-baseline.md",
-      "target": "scripts/orchestrator/update_execution_queue.py",
+      "target": "system/scripts/system/orchestrator/update_execution_queue.py",
       "type": "validates",
-      "evidence": "scripts/orchestrator/update_execution_queue.py"
+      "evidence": "system/scripts/system/orchestrator/update_execution_queue.py"
     },
     {
       "source": "wbs/WBS-0016-repository-os-v1-baseline.md",
-      "target": "scripts/review/build_review_gate_summary.py",
+      "target": "system/scripts/review/build_review_gate_summary.py",
       "type": "validates",
-      "evidence": "scripts/review/build_review_gate_summary.py"
+      "evidence": "system/scripts/review/build_review_gate_summary.py"
     },
     {
       "source": "wbs/WBS-0101-agent-runtime-task-intake.md",
-      "target": "scripts/validate_ep_0101.py",
+      "target": "system/scripts/validate_ep_0101.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
+      "evidence": "system/scripts/validate_ep_0101.py"
     },
     {
       "source": "wbs/WBS-0013-repository-knowledge-graph-runtime-integration.md",
-      "target": "scripts/graph/build_repository_graph.py",
+      "target": "system/scripts/graph/build_repository_graph.py",
       "type": "validates",
-      "evidence": "scripts/graph/build_repository_graph.py"
+      "evidence": "system/scripts/graph/build_repository_graph.py"
     },
     {
       "source": "wbs/WBS-0013-repository-knowledge-graph-runtime-integration.md",
-      "target": "scripts/graph/validate_repository_graph.py",
+      "target": "system/scripts/graph/validate_repository_graph.py",
       "type": "validates",
-      "evidence": "scripts/graph/validate_repository_graph.py"
+      "evidence": "system/scripts/graph/validate_repository_graph.py"
     },
     {
       "source": "wbs/WBS-0013-repository-knowledge-graph-runtime-integration.md",
-      "target": "scripts/context/build_agent_context_pack.py",
+      "target": "system/scripts/context/build_agent_context_pack.py",
       "type": "validates",
-      "evidence": "scripts/context/build_agent_context_pack.py"
+      "evidence": "system/scripts/context/build_agent_context_pack.py"
     },
     {
       "source": "wbs/WBS-0011-repository-operating-system-self-test.md",
-      "target": "scripts/selftest/validate_repository_selftest_complete.py",
+      "target": "system/scripts/selftest/validate_repository_selftest_complete.py",
       "type": "validates",
-      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
+      "evidence": "system/scripts/selftest/validate_repository_selftest_complete.py"
     },
     {
       "source": "wbs/WBS-0015-agent-orchestrator.md",
-      "target": "scripts/orchestrator/build_context_bundle.py",
+      "target": "system/scripts/system/orchestrator/build_context_bundle.py",
       "type": "validates",
-      "evidence": "scripts/orchestrator/build_context_bundle.py"
+      "evidence": "system/scripts/system/orchestrator/build_context_bundle.py"
     },
     {
       "source": "wbs/WBS-0015-agent-orchestrator.md",
-      "target": "scripts/orchestrator/build_execution_plan.py",
+      "target": "system/scripts/system/orchestrator/build_execution_plan.py",
       "type": "validates",
-      "evidence": "scripts/orchestrator/build_execution_plan.py"
+      "evidence": "system/scripts/system/orchestrator/build_execution_plan.py"
     },
     {
       "source": "wbs/WBS-0015-agent-orchestrator.md",
-      "target": "scripts/orchestrator/validate_orchestration.py",
+      "target": "system/scripts/system/orchestrator/validate_orchestration.py",
       "type": "validates",
-      "evidence": "scripts/orchestrator/validate_orchestration.py"
+      "evidence": "system/scripts/system/orchestrator/validate_orchestration.py"
     },
     {
       "source": "wbs/WBS-0012-repository-semantic-selftest-v2.md",
-      "target": "scripts/selftest_v2/validate_semantic_selftest.py",
+      "target": "system/scripts/selftest_v2/validate_semantic_selftest.py",
       "type": "validates",
-      "evidence": "scripts/selftest_v2/validate_semantic_selftest.py"
+      "evidence": "system/scripts/selftest_v2/validate_semantic_selftest.py"
     },
     {
-      "source": "scripts/context/build_agent_context_pack.py",
-      "target": "scripts/graph/build_repository_graph.py",
+      "source": "system/scripts/context/build_agent_context_pack.py",
+      "target": "system/scripts/graph/build_repository_graph.py",
       "type": "validates",
-      "evidence": "scripts/graph/build_repository_graph.py"
+      "evidence": "system/scripts/graph/build_repository_graph.py"
     },
     {
-      "source": "scripts/context/build_agent_context_pack.py",
-      "target": "scripts/graph/validate_repository_graph.py",
+      "source": "system/scripts/context/build_agent_context_pack.py",
+      "target": "system/scripts/graph/validate_repository_graph.py",
       "type": "validates",
-      "evidence": "scripts/graph/validate_repository_graph.py"
+      "evidence": "system/scripts/graph/validate_repository_graph.py"
     },
     {
-      "source": "scripts/context/build_agent_context_pack.py",
-      "target": "scripts/context/build_agent_context_pack.py",
+      "source": "system/scripts/context/build_agent_context_pack.py",
+      "target": "system/scripts/context/build_agent_context_pack.py",
       "type": "validates",
-      "evidence": "scripts/context/build_agent_context_pack.py"
+      "evidence": "system/scripts/context/build_agent_context_pack.py"
     },
     {
-      "source": "scripts/selftest/README_SELFTEST_REMEDIATION.md",
-      "target": "scripts/selftest/cleanup_selftest_skeleton.py",
+      "source": "system/scripts/selftest/README_SELFTEST_REMEDIATION.md",
+      "target": "system/scripts/selftest/cleanup_selftest_skeleton.py",
       "type": "validates",
-      "evidence": "scripts/selftest/cleanup_selftest_skeleton.py"
+      "evidence": "system/scripts/selftest/cleanup_selftest_skeleton.py"
     },
     {
-      "source": "scripts/selftest/README_SELFTEST_REMEDIATION.md",
-      "target": "scripts/selftest/validate_repository_selftest_complete.py",
+      "source": "system/scripts/selftest/README_SELFTEST_REMEDIATION.md",
+      "target": "system/scripts/selftest/validate_repository_selftest_complete.py",
       "type": "validates",
-      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
+      "evidence": "system/scripts/selftest/validate_repository_selftest_complete.py"
     },
     {
-      "source": "scripts/orchestrator/build_context_bundle.py",
-      "target": "scripts/orchestrator/build_context_bundle.py",
+      "source": "system/scripts/system/orchestrator/build_context_bundle.py",
+      "target": "system/scripts/system/orchestrator/build_context_bundle.py",
       "type": "validates",
-      "evidence": "scripts/orchestrator/build_context_bundle.py"
+      "evidence": "system/scripts/system/orchestrator/build_context_bundle.py"
     },
     {
-      "source": "scripts/orchestrator/build_context_bundle.py",
-      "target": "scripts/orchestrator/build_execution_plan.py",
+      "source": "system/scripts/system/orchestrator/build_context_bundle.py",
+      "target": "system/scripts/system/orchestrator/build_execution_plan.py",
       "type": "validates",
-      "evidence": "scripts/orchestrator/build_execution_plan.py"
+      "evidence": "system/scripts/system/orchestrator/build_execution_plan.py"
     },
     {
-      "source": "scripts/orchestrator/build_context_bundle.py",
-      "target": "scripts/orchestrator/validate_orchestration.py",
+      "source": "system/scripts/system/orchestrator/build_context_bundle.py",
+      "target": "system/scripts/system/orchestrator/validate_orchestration.py",
       "type": "validates",
-      "evidence": "scripts/orchestrator/validate_orchestration.py"
+      "evidence": "system/scripts/system/orchestrator/validate_orchestration.py"
     },
     {
-      "source": "scripts/orchestrator/build_execution_plan.py",
-      "target": "scripts/orchestrator/validate_orchestration.py",
+      "source": "system/scripts/system/orchestrator/build_execution_plan.py",
+      "target": "system/scripts/system/orchestrator/validate_orchestration.py",
       "type": "validates",
-      "evidence": "scripts/orchestrator/validate_orchestration.py"
+      "evidence": "system/scripts/system/orchestrator/validate_orchestration.py"
     },
     {
       "source": ".github/workflows/ep0106-queue-state-transition-engine.yml",
-      "target": "scripts/validate_ep_0106.py",
+      "target": "system/scripts/validate_ep_0106.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0106.py"
+      "evidence": "system/scripts/validate_ep_0106.py"
     },
     {
       "source": ".github/workflows/repository-os-v1-baseline.yml",
-      "target": "scripts/validate_repository_os_v1_baseline.py",
+      "target": "system/scripts/validate_repository_os_v1_baseline.py",
       "type": "validates",
-      "evidence": "scripts/validate_repository_os_v1_baseline.py"
+      "evidence": "system/scripts/validate_repository_os_v1_baseline.py"
     },
     {
       "source": ".github/workflows/ep0105-scheduler-dispatcher.yml",
-      "target": "scripts/validate_ep_0105.py",
+      "target": "system/scripts/validate_ep_0105.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0105.py"
+      "evidence": "system/scripts/validate_ep_0105.py"
     },
     {
       "source": ".github/workflows/boundary-validation.yml",
-      "target": "scripts/selftest/check_boundaries.py",
+      "target": "system/scripts/selftest/check_boundaries.py",
       "type": "validates",
-      "evidence": "scripts/selftest/check_boundaries.py"
+      "evidence": "system/scripts/selftest/check_boundaries.py"
     },
     {
       "source": ".github/workflows/ep0103-worker-contract-layer.yml",
-      "target": "scripts/validate_ep_0103.py",
+      "target": "system/scripts/validate_ep_0103.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0103.py"
+      "evidence": "system/scripts/validate_ep_0103.py"
     },
     {
       "source": ".github/workflows/ep0107-worker-output-contract.yml",
-      "target": "scripts/validate_ep_0107.py",
+      "target": "system/scripts/validate_ep_0107.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0107.py"
+      "evidence": "system/scripts/validate_ep_0107.py"
     },
     {
       "source": ".github/workflows/ep0114-capability-router.yml",
-      "target": "scripts/validate_all.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
       "source": ".github/workflows/ep0102-codex-development-pipeline.yml",
-      "target": "scripts/validate_ep_0102.py",
+      "target": "system/scripts/validate_ep_0102.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0102.py"
+      "evidence": "system/scripts/validate_ep_0102.py"
     },
     {
       "source": ".github/workflows/agent-orchestrator-validation.yml",
-      "target": "scripts/graph/build_repository_graph.py",
+      "target": "system/scripts/graph/build_repository_graph.py",
       "type": "validates",
-      "evidence": "scripts/graph/build_repository_graph.py"
+      "evidence": "system/scripts/graph/build_repository_graph.py"
     },
     {
       "source": ".github/workflows/agent-orchestrator-validation.yml",
-      "target": "scripts/context/build_agent_context_pack.py",
+      "target": "system/scripts/context/build_agent_context_pack.py",
       "type": "validates",
-      "evidence": "scripts/context/build_agent_context_pack.py"
+      "evidence": "system/scripts/context/build_agent_context_pack.py"
     },
     {
       "source": ".github/workflows/agent-orchestrator-validation.yml",
-      "target": "scripts/orchestrator/validate_orchestration.py",
+      "target": "system/scripts/system/orchestrator/validate_orchestration.py",
       "type": "validates",
-      "evidence": "scripts/orchestrator/validate_orchestration.py"
+      "evidence": "system/scripts/system/orchestrator/validate_orchestration.py"
     },
     {
       "source": ".github/workflows/repository-knowledge-graph-runtime-integration.yml",
-      "target": "scripts/validate_repository_knowledge_graph_runtime_integration.py",
+      "target": "system/scripts/validate_repository_knowledge_graph_runtime_integration.py",
       "type": "validates",
-      "evidence": "scripts/validate_repository_knowledge_graph_runtime_integration.py"
+      "evidence": "system/scripts/validate_repository_knowledge_graph_runtime_integration.py"
     },
     {
       "source": ".github/workflows/ep0122-repository-governor.yml",
-      "target": "scripts/validate_all.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
       "source": ".github/workflows/repository-semantic-selftest-v2.yml",
-      "target": "scripts/selftest_v2/validate_semantic_selftest.py",
+      "target": "system/scripts/selftest_v2/validate_semantic_selftest.py",
       "type": "validates",
-      "evidence": "scripts/selftest_v2/validate_semantic_selftest.py"
+      "evidence": "system/scripts/selftest_v2/validate_semantic_selftest.py"
     },
     {
       "source": ".github/workflows/ep0100-agent-runtime-mvp.yml",
-      "target": "scripts/validate_ep_0100.py",
+      "target": "system/scripts/validate_ep_0100.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0100.py"
+      "evidence": "system/scripts/validate_ep_0100.py"
     },
     {
       "source": ".github/workflows/ep0115-task-decomposer.yml",
-      "target": "scripts/validate_all.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
       "source": ".github/workflows/ep0119-review-output-integration.yml",
-      "target": "scripts/validate_all.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
       "source": ".github/workflows/runtime-foundation.yml",
-      "target": "scripts/runtime/validate_runtime_foundation.py",
+      "target": "system/scripts/system/runtime/validate_runtime_foundation.py",
       "type": "validates",
-      "evidence": "scripts/runtime/validate_runtime_foundation.py"
+      "evidence": "system/scripts/system/runtime/validate_runtime_foundation.py"
     },
     {
       "source": ".github/workflows/repository-selftest-complete.yml",
-      "target": "scripts/selftest/validate_repository_selftest_complete.py",
+      "target": "system/scripts/selftest/validate_repository_selftest_complete.py",
       "type": "validates",
-      "evidence": "scripts/selftest/validate_repository_selftest_complete.py"
+      "evidence": "system/scripts/selftest/validate_repository_selftest_complete.py"
     },
     {
       "source": ".github/workflows/runtime-capability.yml",
-      "target": "scripts/runtime/validate_runtime_capability.py",
+      "target": "system/scripts/system/runtime/validate_runtime_capability.py",
       "type": "validates",
-      "evidence": "scripts/runtime/validate_runtime_capability.py"
+      "evidence": "system/scripts/system/runtime/validate_runtime_capability.py"
     },
     {
       "source": ".github/workflows/runtime-coordination.yml",
-      "target": "scripts/runtime/validate_runtime_coordination.py",
+      "target": "system/scripts/system/runtime/validate_runtime_coordination.py",
       "type": "validates",
-      "evidence": "scripts/runtime/validate_runtime_coordination.py"
+      "evidence": "system/scripts/system/runtime/validate_runtime_coordination.py"
     },
     {
       "source": ".github/workflows/ep0118-root-hygiene-migration-1.yml",
-      "target": "scripts/validate_all.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
       "source": ".github/workflows/ep0101-agent-runtime-task-intake.yml",
-      "target": "scripts/validate_ep_0101.py",
+      "target": "system/scripts/validate_ep_0101.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0101.py"
+      "evidence": "system/scripts/validate_ep_0101.py"
     },
     {
       "source": ".github/workflows/ep0120-worker-output-semantics.yml",
-      "target": "scripts/validate_all.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
       "source": ".github/workflows/ep0003.yml",
-      "target": "scripts/validate_ep_0003.py",
+      "target": "system/scripts/validate_ep_0003.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0003.py"
+      "evidence": "system/scripts/validate_ep_0003.py"
     },
     {
       "source": ".github/workflows/ep0117-refactoring-governance.yml",
-      "target": "scripts/validate_all.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
       "source": ".github/workflows/ep0116-repository-hygiene-code-quality.yml",
-      "target": "scripts/validate_all.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
       "source": ".github/workflows/ep0112-execution-kernel.yml",
-      "target": "scripts/validate_all.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
       "source": ".github/workflows/ep0104-executable-specification.yml",
-      "target": "scripts/validate_ep_0104.py",
+      "target": "system/scripts/validate_ep_0104.py",
       "type": "validates",
-      "evidence": "scripts/validate_ep_0104.py"
+      "evidence": "system/scripts/validate_ep_0104.py"
     },
     {
       "source": ".github/workflows/ep0113-worker-registry.yml",
-      "target": "scripts/validate_all.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
       "source": ".github/workflows/ep0121-repository-layout-canonicalization.yml",
-      "target": "scripts/validate_all.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
       "source": ".github/workflows/validate-all.yml",
-      "target": "scripts/validate_all.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
       "source": "agent_runtime/planner.py",
-      "target": "scripts/agent_runtime/run_dry_run_cycle.py",
+      "target": "system/scripts/agent_runtime/run_dry_run_cycle.py",
       "type": "validates",
-      "evidence": "scripts/agent_runtime/run_dry_run_cycle.py"
+      "evidence": "system/scripts/agent_runtime/run_dry_run_cycle.py"
     },
     {
       "source": "agent_runtime/planner.py",
-      "target": "scripts/agent_runtime/validate_agent_runtime_mvp.py",
+      "target": "system/scripts/agent_runtime/validate_agent_runtime_mvp.py",
       "type": "validates",
-      "evidence": "scripts/agent_runtime/validate_agent_runtime_mvp.py"
+      "evidence": "system/scripts/agent_runtime/validate_agent_runtime_mvp.py"
     },
     {
       "source": "agent_runtime/queue_engine.py",
-      "target": "scripts/agent_runtime/validate_agent_runtime_mvp.py",
+      "target": "system/scripts/agent_runtime/validate_agent_runtime_mvp.py",
       "type": "validates",
-      "evidence": "scripts/agent_runtime/validate_agent_runtime_mvp.py"
+      "evidence": "system/scripts/agent_runtime/validate_agent_runtime_mvp.py"
     },
     {
-      "source": "orchestrator/RUNBOOK.md",
-      "target": "orchestrator/local_agent_runner.py",
+      "source": "system/orchestrator/RUNBOOK.md",
+      "target": "system/orchestrator/local_agent_runner.py",
       "type": "validates",
-      "evidence": "orchestrator/local_agent_runner.py"
+      "evidence": "system/orchestrator/local_agent_runner.py"
     },
     {
-      "source": "orchestrator/execution_kernel.py",
-      "target": "scripts/validate_all.py",
+      "source": "system/orchestrator/execution_kernel.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
-      "source": "orchestrator/validation_orchestrator.py",
-      "target": "scripts/validate_all.py",
+      "source": "system/orchestrator/validation_orchestrator.py",
+      "target": "system/scripts/validate_all.py",
       "type": "validates",
-      "evidence": "scripts/validate_all.py"
+      "evidence": "system/scripts/validate_all.py"
     },
     {
-      "source": "orchestrator/EXECUTION_QUEUE.md",
-      "target": "scripts/orchestrator/validate_orchestration.py",
+      "source": "system/orchestrator/EXECUTION_QUEUE.md",
+      "target": "system/scripts/system/orchestrator/validate_orchestration.py",
       "type": "validates",
-      "evidence": "scripts/orchestrator/validate_orchestration.py"
+      "evidence": "system/scripts/system/orchestrator/validate_orchestration.py"
     }
   ]
 }

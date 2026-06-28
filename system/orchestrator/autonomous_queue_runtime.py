@@ -4,12 +4,12 @@ from dataclasses import dataclass
 from pathlib import Path
 import json
 
-from orchestrator.codex_intake import CodexIntake
-from orchestrator.completion_report_automation import CompletionReportAutomation
-from orchestrator.next_work_resolver import NextWorkResolver
-from orchestrator.queue_automation import QueueAutomation
-from orchestrator.output_contract import WorktreeState
-from orchestrator.validation_orchestrator import ValidationOrchestrationResult, ValidationStepResult
+from system.orchestrator.codex_intake import CodexIntake
+from system.orchestrator.completion_report_automation import CompletionReportAutomation
+from system.orchestrator.next_work_resolver import NextWorkResolver
+from system.orchestrator.queue_automation import QueueAutomation
+from system.orchestrator.output_contract import WorktreeState
+from system.orchestrator.validation_orchestrator import ValidationOrchestrationResult, ValidationStepResult
 
 
 @dataclass(frozen=True)
@@ -33,7 +33,7 @@ class AutonomousQueueRuntime:
         queue_result = QueueAutomation(self.base_path).advance()
         validation = ValidationOrchestrationResult(
             validation_steps=[
-                ValidationStepResult(command="python3 scripts/validate_all.py", exit_code=0, success=True),
+                ValidationStepResult(command="python3 system/scripts/validate_all.py", exit_code=0, success=True),
             ],
             pytest_result=ValidationStepResult(command="python3 -m pytest -q", exit_code=0, success=True),
             overall_success=True,

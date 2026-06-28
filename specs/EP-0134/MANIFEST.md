@@ -1,5 +1,5 @@
 # MANIFEST
 
-- `orchestrator/autonomous_runtime.py`
+- `system/orchestrator/autonomous_runtime.py`
 - `docs/current/AUTONOMOUS_RUNTIME.md`
-- `runtime/runtime_state/runtime_state.json`
+- `system/runtime/runtime_state/runtime_state.json`

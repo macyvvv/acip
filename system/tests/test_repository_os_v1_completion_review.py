@@ -12,7 +12,7 @@ def test_repository_os_v1_completion_review_contains_core_sections() -> None:
 
 
 def test_repository_os_v1_review_json_is_machine_readable() -> None:
-    payload = json.loads(Path("runtime/reviews/repository_os_v1_completion_review.json").read_text(encoding="utf-8"))
+    payload = json.loads(Path("system/runtime/reviews/repository_os_v1_completion_review.json").read_text(encoding="utf-8"))
     assert payload["repository_os_v1"] is True
-    assert "orchestrator/execution_kernel.py" in payload["entry_points"]
+    assert "system/orchestrator/execution_kernel.py" in payload["entry_points"]
     assert "Root layout remains warn-only." in payload["risks"]

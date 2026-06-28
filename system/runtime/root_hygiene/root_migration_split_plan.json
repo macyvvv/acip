@@ -81,7 +81,7 @@
         "graph/repository_graph.json",
         "graph/repository_graph.md",
         "graph/repository_graph_delta.json",
-        "orchestrator/context_bundle.json",
+        "system/orchestrator/context_bundle.json",
         "releases/RELEASE_v1.0.0-repository-os.md",
         "review/REVIEW_GATE_SUMMARY.md"
       ],
@@ -106,10 +106,10 @@
         "graph/repository_graph.md",
         "graph/repository_graph_delta.json",
         "knowledge/README.md",
-        "scripts/selftest/check_orphans.py",
-        "scripts/selftest/check_repository_health.py",
-        "scripts/selftest_v2/semantic_checks.py",
-        "scripts/selftest_v2/semantic_common.py"
+        "system/scripts/selftest/check_orphans.py",
+        "system/scripts/selftest/check_repository_health.py",
+        "system/scripts/selftest_v2/semantic_checks.py",
+        "system/scripts/selftest_v2/semantic_common.py"
       ],
       "reference_count": 101
     },
@@ -124,16 +124,16 @@
         "graph/repository_graph.json",
         "graph/repository_graph.md",
         "graph/repository_graph_delta.json",
-        "orchestrator/agent_executor.py",
-        "orchestrator/autonomous_loop.py",
-        "orchestrator/context_bundle.json",
-        "orchestrator/execution_kernel.py",
-        "orchestrator/repository_governor.py",
-        "scripts/runtime/validate_runtime_foundation.py",
+        "system/orchestrator/agent_executor.py",
+        "system/orchestrator/autonomous_loop.py",
+        "system/orchestrator/context_bundle.json",
+        "system/orchestrator/execution_kernel.py",
+        "system/orchestrator/repository_governor.py",
+        "system/scripts/system/runtime/validate_runtime_foundation.py",
         "specs/EP-0104/IMPLEMENTATION_SPEC.md",
         "specs/EP-0104/VALIDATION.md",
         "specs/EP-0104/WORKER_INSTRUCTIONS.md",
-        "tests/test_context_loader.py",
+        "system/tests/test_context_loader.py",
         "wbs/WBS-0100-agent-runtime-mvp.md"
       ],
       "reference_count": 53
@@ -145,8 +145,8 @@
         "graph/repository_graph.md",
         "graph/repository_graph_delta.json",
         "knowledge/prompt/README.md",
-        "orchestrator/ADR-0001.md",
-        "orchestrator/constants.py",
+        "system/orchestrator/ADR-0001.md",
+        "system/orchestrator/constants.py",
         "selftest.yml",
         "specs/EP-0102/FILE_CHANGESET.md",
         "specs/EP-0102/IMPLEMENTATION_SPEC.md",
@@ -160,7 +160,7 @@
         "graph/repository_graph.json",
         "graph/repository_graph.md",
         "graph/repository_graph_delta.json",
-        "scripts/baseline/validate_baseline.py"
+        "system/scripts/baseline/validate_baseline.py"
       ],
       "reference_count": 6
     },
@@ -197,8 +197,8 @@
         "graph/repository_graph.md",
         "graph/repository_graph_delta.json",
         "prompts/codex/CODEX_PHASE0_GITHUB_PROMPT.md",
-        "scripts/selftest/README_SELFTEST_REMEDIATION.md",
-        "scripts/validate_ep_0135.py",
+        "system/scripts/selftest/README_SELFTEST_REMEDIATION.md",
+        "system/scripts/validate_ep_0135.py",
         "selftest.yml",
         "specs/EP-0102/FILE_CHANGESET.md",
         "specs/EP-0102/IMPLEMENTATION_SPEC.md",

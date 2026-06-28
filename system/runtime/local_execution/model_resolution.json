@@ -23,9 +23,9 @@
   "resolved_at": "2026-06-28T02:31:53.501872+00:00",
   "failure_reason": null,
   "source_artifacts": [
-    "runtime/supervisor/latest.json",
-    "runtime/repository_state/latest.json",
-    "runtime/planning/latest.json",
-    "runtime/request/execution_request.json"
+    "system/runtime/supervisor/latest.json",
+    "system/runtime/repository_state/latest.json",
+    "system/runtime/planning/latest.json",
+    "system/runtime/request/execution_request.json"
   ]
 }

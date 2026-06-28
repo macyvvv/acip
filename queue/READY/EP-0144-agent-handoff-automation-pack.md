@@ -20,7 +20,7 @@ objective: Remove Human from ChatGPT-to-Codex handoff by making the repository q
 
 ## Validation
 
-- `python3 scripts/validate_all.py`
+- `python3 system/scripts/validate_all.py`
 - `python3 -m pytest -q`
 
 ## Human Boundary

@@ -6,5 +6,5 @@
 - `specs/EP-0118/VALIDATION.md`
 - `specs/EP-0118/WORKER_INSTRUCTIONS.md`
 - `specs/EP-0118/FILE_CHANGESET.md`
-- `scripts/validate_ep_0118.py`
-- `tests/test_root_hygiene_migration.py`
+- `system/scripts/validate_ep_0118.py`
+- `system/tests/test_root_hygiene_migration.py`

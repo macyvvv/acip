@@ -14,7 +14,7 @@ def _resolve_repo_root() -> Path:
 ROOT = _resolve_repo_root()
 sys.path.insert(0, str(ROOT))
 
-from orchestrator.repository_state_builder import RepositoryStateBuilder
+from system.orchestrator.repository_state_builder import RepositoryStateBuilder
 
 
 def main() -> int:

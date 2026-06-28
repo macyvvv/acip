@@ -23,4 +23,4 @@ jobs:
           python-version: '3.11'
 
       - name: Validate graph and runtime dry-run
-        run: python scripts/validate_repository_knowledge_graph_runtime_integration.py
+        run: python system/scripts/validate_repository_knowledge_graph_runtime_integration.py

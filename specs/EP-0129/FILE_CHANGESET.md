@@ -1,7 +1,7 @@
-- `orchestrator/repository_governor.py`
+- `system/orchestrator/repository_governor.py`
 - `docs/current/GOVERNOR_STATE.md`
 - `docs/current/GOVERNOR_RECOMMENDATION_SSOT.md`
-- `runtime/governor/governor_recommendations.json`
-- `scripts/validate_ep_0129.py`
-- `tests/test_repository_governor_ssot.py`
+- `system/runtime/governor/governor_recommendations.json`
+- `system/scripts/validate_ep_0129.py`
+- `system/tests/test_repository_governor_ssot.py`
 - `docs/ep/README_EP0129_GOVERNOR_RECOMMENDATION_SSOT.md`

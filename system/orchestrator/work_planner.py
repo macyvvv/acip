@@ -41,24 +41,29 @@ class WorkPlanner:
     def __init__(self, base_path: str | Path = ".") -> None:
         self.base_path = Path(base_path)
 
+    def _path(self, *parts: str) -> Path:
+        system_path = self.base_path / "system" / Path(*parts)
+        legacy_path = self.base_path / Path(*parts)
+        return system_path if system_path.exists() or not legacy_path.exists() else legacy_path
+
     def build(self) -> WorkPlan:
-        planning = self._read_json(self.base_path / "runtime" / "planning" / "latest.json")
-        repository = self._read_json(self.base_path / "runtime" / "repository_state" / "latest.json")
-        constitution = self._read_json(self.base_path / "runtime" / "repository_constitution" / "constitution.json")
+        planning = self._read_json(self._path("runtime", "planning", "latest.json"))
+        repository = self._read_json(self._path("runtime", "repository_state", "latest.json"))
+        constitution = self._read_json(self._path("runtime", "repository_constitution", "constitution.json"))
         current_phase = planning.get("current_phase", "unknown")
         current_objective = planning.get("current_objective", "unknown")
         candidates = [self._candidate(payload) for payload in self._candidate_payloads()]
         parking_lot = ["current queue items beyond the active planning horizon"]
         blocked_candidates = ["EP-0199 requires approval gate review"] if repository.get("approval_required") else []
         source_artifacts = [
-            "runtime/planning/latest.json",
-            "runtime/repository_state/latest.json",
-            "runtime/repository_constitution/constitution.json",
+            "system/runtime/planning/latest.json",
+            "system/runtime/repository_state/latest.json",
+            "system/runtime/repository_constitution/constitution.json",
             "queue/",
             "packs/",
-            "runtime/handoff/latest.json",
-            "runtime/event_runtime/",
-            "runtime/root_hygiene/",
+            "system/runtime/handoff/latest.json",
+            "system/runtime/event_runtime/",
+            "system/runtime/root_hygiene/",
         ]
         if constitution.get("status"):
             current_phase = planning.get("current_phase", current_phase)
@@ -74,11 +79,11 @@ class WorkPlanner:
         )
 
     def write(self, plan: WorkPlan) -> None:
-        runtime_dir = self.base_path / "runtime" / "work_planner"
-        runtime_dir.mkdir(parents=True, exist_ok=True)
         payload = asdict(plan)
-        (runtime_dir / "latest.json").write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-        (runtime_dir / "latest.md").write_text(self._to_markdown(plan), encoding="utf-8")
+        for runtime_dir in (self.base_path / "system" / "runtime" / "work_planner", self.base_path / "runtime" / "work_planner"):
+            runtime_dir.mkdir(parents=True, exist_ok=True)
+            (runtime_dir / "latest.json").write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+            (runtime_dir / "latest.md").write_text(self._to_markdown(plan), encoding="utf-8")
 
     def _to_markdown(self, plan: WorkPlan) -> str:
         return "\n".join([

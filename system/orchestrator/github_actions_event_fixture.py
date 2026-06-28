@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 import json
 
-from orchestrator.event_contract import EventContract, EventSource
+from system.orchestrator.event_contract import EventContract, EventSource
 
 
 @dataclass(frozen=True)

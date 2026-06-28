@@ -40,9 +40,9 @@ def main() -> int:
         "graph_edges": len(graph.get("edges", [])),
         "required_policies": [n["path"] for n in policy_nodes if "orchestrator" in n["path"] or "context" in n["path"]],
         "validation_commands": [
-            "python scripts/orchestrator/build_context_bundle.py",
-            "python scripts/orchestrator/build_execution_plan.py",
-            "python scripts/orchestrator/validate_orchestration.py",
+            "python system/scripts/system/orchestrator/build_context_bundle.py",
+            "python system/scripts/system/orchestrator/build_execution_plan.py",
+            "python system/scripts/system/orchestrator/validate_orchestration.py",
         ],
         "prohibited_actions": [
             "runtime agent execution",

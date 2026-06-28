@@ -1,7 +1,7 @@
 import pytest
 
-from orchestrator.queue_state import QueueState
-from orchestrator.queue_transition import (
+from system.orchestrator.queue_state import QueueState
+from system.orchestrator.queue_transition import (
     QueueTransitionError,
     advance_queue_state,
     validate_queue_transition,

@@ -13,9 +13,9 @@ Read specs/EP-0102/ and implement EP-0102.
 3. Implement only requested files and minimal supporting updates.
 4. Do not delete existing implementation files unless explicitly required.
 5. Run:
-   - python scripts/validate_ep_0102.py
-   - python scripts/validate_ep_0100.py
-   - python scripts/validate_ep_0101.py
+   - python system/scripts/validate_ep_0102.py
+   - python system/scripts/validate_ep_0100.py
+   - python system/scripts/validate_ep_0101.py
 6. Commit:
    - feat: EP-0102 Codex Development Pipeline
 
@@ -26,4 +26,4 @@ Read specs/EP-0102/ and implement EP-0102.
 - Auto posting
 - Secret use
 - Approval bypass
-- Deleting agent_runtime/**
+- Deleting agent_system/runtime/**

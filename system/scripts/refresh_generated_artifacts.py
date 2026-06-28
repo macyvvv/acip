@@ -14,7 +14,7 @@ def _resolve_repo_root() -> Path:
 ROOT = _resolve_repo_root()
 sys.path.insert(0, str(ROOT))
 
-from orchestrator.generated_artifact_refresh import GeneratedArtifactRefresh
+from system.orchestrator.generated_artifact_refresh import GeneratedArtifactRefresh
 
 
 def main() -> int:

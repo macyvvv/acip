@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from orchestrator.generated_artifact_manager import GeneratedArtifactManager
+from system.orchestrator.generated_artifact_manager import GeneratedArtifactManager
 
 
 def test_generated_artifact_manager_classifies_dirty_paths() -> None:

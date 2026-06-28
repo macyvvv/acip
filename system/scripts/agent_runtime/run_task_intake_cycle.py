@@ -21,7 +21,7 @@ from agent_runtime.task_cycle import run_task_intake_cycle
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--task", default="runtime/task_inputs/sample_task.json")
+    parser.add_argument("--task", default="system/runtime/task_inputs/sample_task.json")
     args = parser.parse_args()
     result = run_task_intake_cycle(Path(args.task), ROOT)
     print("# Agent Runtime Task Intake Dry Run")

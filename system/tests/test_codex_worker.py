@@ -1,21 +1,21 @@
-from orchestrator.task import Task
-from orchestrator.workers.codex_worker import CodexWorker
+from system.orchestrator.task import Task
+from system.orchestrator.workers.codex_worker import CodexWorker
 
 
 def test_codex_worker_returns_result() -> None:
     worker = CodexWorker()
     task = Task(
         id="ep-006:test",
-        artifact="orchestrator/workers/codex_worker.py",
+        artifact="system/orchestrator/workers/codex_worker.py",
         owner="Codex",
         instruction="Generate prompt",
         done_conditions="Prompt contains required fields",
-        target_paths=("orchestrator/workers/codex_worker.py",),
+        target_paths=("system/orchestrator/workers/codex_worker.py",),
     )
 
     result = worker.execute(task, context={})
 
-    assert result.artifacts == ["orchestrator/workers/codex_worker.py"]
+    assert result.artifacts == ["system/orchestrator/workers/codex_worker.py"]
     assert result.files_changed == []
     assert result.errors == []
     assert len(result.review_notes) == 1
@@ -25,28 +25,28 @@ def test_codex_worker_prompt_contains_required_fields() -> None:
     worker = CodexWorker()
     task = Task(
         id="ep-006:test",
-        artifact="orchestrator/workers/codex_worker.py",
+        artifact="system/orchestrator/workers/codex_worker.py",
         owner="Codex",
         instruction="Generate prompt",
         done_conditions="Prompt contains required fields",
-        target_paths=("orchestrator/workers/codex_worker.py", "tests/test_codex_worker.py"),
+        target_paths=("system/orchestrator/workers/codex_worker.py", "system/tests/test_codex_worker.py"),
     )
 
     result = worker.execute(task, context={})
     prompt = result.review_notes[0]
 
-    assert "Artifact: orchestrator/workers/codex_worker.py" in prompt
+    assert "Artifact: system/orchestrator/workers/codex_worker.py" in prompt
     assert "Owner: Codex" in prompt
     assert "Done Conditions: Prompt contains required fields" in prompt
-    assert "- orchestrator/workers/codex_worker.py" in prompt
-    assert "- tests/test_codex_worker.py" in prompt
+    assert "- system/orchestrator/workers/codex_worker.py" in prompt
+    assert "- system/tests/test_codex_worker.py" in prompt
 
 
 def test_codex_worker_prompt_contains_validation_commands() -> None:
     worker = CodexWorker()
     task = Task(
         id="ep-006:test",
-        artifact="orchestrator/workers/codex_worker.py",
+        artifact="system/orchestrator/workers/codex_worker.py",
         owner="Codex",
         instruction="Generate prompt",
         done_conditions="Prompt contains required fields",

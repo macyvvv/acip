@@ -7,7 +7,7 @@ REQUIRED_REPOSITORY_FILES = [
     "VERSION",
     "graph/repository_graph.json",
     "graph/agent_context_pack.json",
-    "orchestrator/execution_plan.json",
+    "system/orchestrator/execution_plan.json",
 ]
 
 

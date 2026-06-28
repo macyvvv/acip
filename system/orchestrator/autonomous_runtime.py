@@ -4,13 +4,13 @@ from dataclasses import dataclass
 from pathlib import Path
 import json
 
-from orchestrator.execution_journal import ExecutionJournal
-from orchestrator.execution_request import ExecutionRequestBuilder
-from orchestrator.execution_session import ExecutionSessionManager
-from orchestrator.execution_kernel import ExecutionKernel, ExecutionKernelResult
-from orchestrator.repository_governor import RepositoryGovernor
-from orchestrator.repository_state_manager import RepositoryStateManager
-from orchestrator.worker_lifecycle import WorkerLifecycleManager
+from system.orchestrator.execution_journal import ExecutionJournal
+from system.orchestrator.execution_request import ExecutionRequestBuilder
+from system.orchestrator.execution_session import ExecutionSessionManager
+from system.orchestrator.execution_kernel import ExecutionKernel, ExecutionKernelResult
+from system.orchestrator.repository_governor import RepositoryGovernor
+from system.orchestrator.repository_state_manager import RepositoryStateManager
+from system.orchestrator.worker_lifecycle import WorkerLifecycleManager
 
 
 @dataclass(frozen=True)

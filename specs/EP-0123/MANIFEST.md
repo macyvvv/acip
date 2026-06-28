@@ -1,5 +1,5 @@
 # MANIFEST
 
-- `orchestrator/generated_artifact_manager.py`
+- `system/orchestrator/generated_artifact_manager.py`
 - `docs/current/GENERATED_ARTIFACTS.md`
-- `runtime/generated_artifacts/`
+- `system/runtime/generated_artifacts/`

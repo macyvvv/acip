@@ -1,4 +1,4 @@
-from orchestrator.task import Task
+from system.orchestrator.task import Task
 
 
 def test_task_is_immutable() -> None:

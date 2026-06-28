@@ -30,8 +30,8 @@ Repository Operating System v1.0 Baseline
 
 ## Acceptance Criteria
 
-- `python scripts/baseline/validate_baseline.py` passes.
-- `python scripts/graph/build_incremental_graph.py` runs.
-- `python scripts/context/build_context_diff.py` runs.
-- `python scripts/orchestrator/update_execution_queue.py` runs.
-- `python scripts/review/build_review_gate_summary.py` runs.
+- `python system/scripts/baseline/validate_baseline.py` passes.
+- `python system/scripts/graph/build_incremental_graph.py` runs.
+- `python system/scripts/context/build_context_diff.py` runs.
+- `python system/scripts/system/orchestrator/update_execution_queue.py` runs.
+- `python system/scripts/review/build_review_gate_summary.py` runs.

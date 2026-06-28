@@ -4,11 +4,11 @@ from dataclasses import dataclass
 from pathlib import Path
 import json
 
-from orchestrator.completion_marker_event_intake import CompletionMarkerEventIntake
-from orchestrator.event_contract import EventContract
-from orchestrator.event_to_queue_resolver import EventResolution, EventToQueueResolver
-from orchestrator.issue_event_intake import IssueEventIntake
-from orchestrator.event_runtime_safety_gate import EventRuntimeSafetyGate
+from system.orchestrator.completion_marker_event_intake import CompletionMarkerEventIntake
+from system.orchestrator.event_contract import EventContract
+from system.orchestrator.event_to_queue_resolver import EventResolution, EventToQueueResolver
+from system.orchestrator.issue_event_intake import IssueEventIntake
+from system.orchestrator.event_runtime_safety_gate import EventRuntimeSafetyGate
 
 
 @dataclass(frozen=True)

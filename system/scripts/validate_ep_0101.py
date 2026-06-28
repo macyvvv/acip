@@ -17,9 +17,9 @@ def main() -> int:
         ROOT / "graph" / "repository_graph.json",
         ROOT / "graph" / "repository_graph.md",
         ROOT / "graph" / "agent_context_pack.json",
-        ROOT / "orchestrator" / "context_bundle.json",
-        ROOT / "orchestrator" / "execution_plan.json",
-        ROOT / "runtime" / "task_intake" / "ART-SAMPLE-0001" / "runtime_context.json",
+        ROOT / "system" / "orchestrator" / "context_bundle.json",
+        ROOT / "system" / "orchestrator" / "execution_plan.json",
+        ROOT / "system" / "runtime" / "task_intake" / "ART-SAMPLE-0001" / "runtime_context.json",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:
@@ -27,8 +27,8 @@ def main() -> int:
         return 1
     import subprocess
     commands = [
-        [sys.executable, "scripts/agent_runtime/validate_agent_runtime_mvp.py"],
-        [sys.executable, "scripts/agent_runtime/validate_task_intake.py"],
+        [sys.executable, "system/scripts/agent_runtime/validate_agent_runtime_mvp.py"],
+        [sys.executable, "system/scripts/agent_runtime/validate_task_intake.py"],
     ]
     for cmd in commands:
         print("$ " + " ".join(cmd))

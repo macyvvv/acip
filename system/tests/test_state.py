@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from orchestrator.state import StateParseError, read_state
+from system.orchestrator.state import StateParseError, read_state
 
 
 def test_read_state_parses_current_state(tmp_path: Path) -> None:

@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from orchestrator.architecture_planner import ArchitectureOption
-from orchestrator.specification_generator import SpecificationGenerator
+from system.orchestrator.architecture_planner import ArchitectureOption
+from system.orchestrator.specification_generator import SpecificationGenerator
 
 
 def test_specification_generator_generates_specification(tmp_path: Path) -> None:
@@ -24,4 +24,4 @@ def test_specification_generator_generates_specification(tmp_path: Path) -> None
     specification = generator.generate(option)
     assert specification.spec_id == "SPEC-arch-req-0001"
     assert "ARCH-REQ-0001" in specification.implementation_spec
-    assert "python scripts/validate_all.py" in specification.validation
+    assert "python system/scripts/validate_all.py" in specification.validation

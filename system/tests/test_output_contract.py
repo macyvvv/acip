@@ -1,4 +1,4 @@
-from orchestrator.output_contract import (
+from system.orchestrator.output_contract import (
     ValidationResult,
     WorktreeState,
     build_output_contract,

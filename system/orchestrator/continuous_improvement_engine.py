@@ -4,8 +4,8 @@ from dataclasses import dataclass
 from pathlib import Path
 import json
 
-from orchestrator.repository_governor import GovernorCandidate, RepositoryGovernor
-from orchestrator.repository_state_manager import RepositoryStateManager
+from system.orchestrator.repository_governor import GovernorCandidate, RepositoryGovernor
+from system.orchestrator.repository_state_manager import RepositoryStateManager
 
 
 @dataclass(frozen=True)

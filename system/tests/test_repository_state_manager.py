@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from orchestrator.repository_state_manager import RepositoryStateManager
+from system.orchestrator.repository_state_manager import RepositoryStateManager
 
 
 def test_repository_state_manager_builds_state() -> None:

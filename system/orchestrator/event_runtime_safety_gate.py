@@ -4,8 +4,8 @@ from dataclasses import dataclass
 from pathlib import Path
 import json
 
-from orchestrator.event_contract import EventContract
-from orchestrator.event_to_queue_resolver import EventResolution
+from system.orchestrator.event_contract import EventContract
+from system.orchestrator.event_to_queue_resolver import EventResolution
 
 
 @dataclass(frozen=True)

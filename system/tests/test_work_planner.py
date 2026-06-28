@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from orchestrator.work_planner import WorkPlanner
+from system.orchestrator.work_planner import WorkPlanner
 
 
 def test_work_planner_builds_candidates(tmp_path: Path) -> None:

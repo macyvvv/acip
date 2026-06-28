@@ -16,7 +16,7 @@ def _resolve_repo_root() -> Path:
 ROOT = _resolve_repo_root()
 def main() -> int:
     commands = [
-        [sys.executable, "scripts/validate_ep_0109.py"],
+        [sys.executable, "system/scripts/validate_ep_0109.py"],
     ]
     for command in commands:
         print("$ " + " ".join(command))

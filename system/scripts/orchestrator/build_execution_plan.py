@@ -19,7 +19,7 @@ OUT = ROOT / "orchestrator" / "execution_plan.json"
 
 def main() -> int:
     if not BUNDLE.exists():
-        subprocess.check_call([sys.executable, "scripts/orchestrator/build_context_bundle.py"], cwd=ROOT)
+        subprocess.check_call([sys.executable, "system/scripts/system/orchestrator/build_context_bundle.py"], cwd=ROOT)
 
     bundle = json.loads(BUNDLE.read_text(encoding="utf-8"))
 
@@ -28,7 +28,7 @@ def main() -> int:
         "task_id": bundle["task_id"],
         "owner": "Codex/scripts",
         "objective": "Validate Agent Orchestrator preparation without runtime execution",
-        "context_bundle": "orchestrator/context_bundle.json",
+        "context_bundle": "system/orchestrator/context_bundle.json",
         "steps": [
             "Read context bundle",
             "Verify repository graph exists",
@@ -37,7 +37,7 @@ def main() -> int:
             "Validate Runtime Boundary",
             "Run orchestrator validation",
         ],
-        "validation": "python scripts/orchestrator/validate_orchestration.py",
+        "validation": "python system/scripts/system/orchestrator/validate_orchestration.py",
         "done_condition": "Validation passes and no runtime execution occurs",
         "escalation_condition": "Human approval required only for runtime transition, risk acceptance, capital allocation, or emergency stop",
         "prohibited_actions": bundle["prohibited_actions"],

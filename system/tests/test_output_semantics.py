@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pytest
 
-from orchestrator.output_semantics import determine_worker_output_status, worker_output_semantic
+from system.orchestrator.output_semantics import determine_worker_output_status, worker_output_semantic
 
 
 def test_output_semantics_next_action() -> None:

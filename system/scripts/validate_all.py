@@ -14,7 +14,7 @@ def _resolve_repo_root() -> Path:
 ROOT = _resolve_repo_root()
 sys.path.insert(0, str(ROOT))
 
-from orchestrator.validation_orchestrator import ValidationOrchestrator
+from system.orchestrator.validation_orchestrator import ValidationOrchestrator
 
 
 def main() -> int:

@@ -5,9 +5,9 @@ from dataclasses import dataclass
 CURRENT_STATE_PATH = "docs/current/CURRENT_STATE.md"
 QUEUE_STATE_PATH = "docs/current/QUEUE_STATE.md"
 WORKER_STATE_PATH = "docs/current/WORKER_STATE.md"
-ARCHITECTURE_PATH = "orchestrator/ARCHITECTURE.md"
-ADR_PATH = "orchestrator/ADR-0001.md"
-WBS_PATH = "orchestrator/WBS.md"
+ARCHITECTURE_PATH = "system/orchestrator/ARCHITECTURE.md"
+ADR_PATH = "system/orchestrator/ADR-0001.md"
+WBS_PATH = "system/orchestrator/WBS.md"
 REPOSITORY_CONVENTIONS_PATH = "basis/REPOSITORY_CONVENTIONS.md"
 
 CHECKPOINT_WORKER = ".system/prompts/codex/CHECKPOINT_WORKER.md"

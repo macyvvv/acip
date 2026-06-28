@@ -4,20 +4,20 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from orchestrator.autonomous_loop import AutonomousExecutionSummary, run_autonomous_execution_loop
-from orchestrator.autonomous_planning_cycle import AutonomousPlanningCycle, AutonomousPlanningCycleResult
-from orchestrator.capability_router import CapabilityRoute, CapabilityRouter
-from orchestrator.context_loader import Context, load_context
-from orchestrator.dispatcher import Dispatcher
-from orchestrator.output_contract import CodexOutputContract
-from orchestrator.review_output_integration import ReviewOutputIntegrationResult, build_review_output_integration
-from orchestrator.planner import PlannerDecision, load_planner_decision
-from orchestrator.queue_state import QueueState, read_queue_state
-from orchestrator.state import State, read_state
-from orchestrator.task import Task
-from orchestrator.task_decomposer import TaskDecompositionResult, TaskDecomposer
-from orchestrator.validation_orchestrator import ValidationOrchestrationResult, ValidationOrchestrator
-from orchestrator.worker_state import WorkerState, read_worker_state
+from system.orchestrator.autonomous_loop import AutonomousExecutionSummary, run_autonomous_execution_loop
+from system.orchestrator.autonomous_planning_cycle import AutonomousPlanningCycle, AutonomousPlanningCycleResult
+from system.orchestrator.capability_router import CapabilityRoute, CapabilityRouter
+from system.orchestrator.context_loader import Context, load_context
+from system.orchestrator.dispatcher import Dispatcher
+from system.orchestrator.output_contract import CodexOutputContract
+from system.orchestrator.review_output_integration import ReviewOutputIntegrationResult, build_review_output_integration
+from system.orchestrator.planner import PlannerDecision, load_planner_decision
+from system.orchestrator.queue_state import QueueState, read_queue_state
+from system.orchestrator.state import State, read_state
+from system.orchestrator.task import Task
+from system.orchestrator.task_decomposer import TaskDecompositionResult, TaskDecomposer
+from system.orchestrator.validation_orchestrator import ValidationOrchestrationResult, ValidationOrchestrator
+from system.orchestrator.worker_state import WorkerState, read_worker_state
 from workers.registry import WorkerRegistry, load_worker_registry
 
 
@@ -125,7 +125,7 @@ class ExecutionKernel:
             result = self.run_validation()
             return ExecutionKernelResult(
                 success=result.overall_success,
-                next_action="python scripts/validate_all.py",
+                next_action="python system/scripts/validate_all.py",
                 validation_result=result,
                 worker_registry=self.load_worker_registry(),
                 capability_route=self.route_worker(),
@@ -148,6 +148,6 @@ class ExecutionKernel:
             return ExecutionKernelResult(success=False, next_action=None, error=str(exc))
 
     def _task_from_state(self) -> Task:
-        from orchestrator.queue import state_to_task
+        from system.orchestrator.queue import state_to_task
 
         return state_to_task(self.load_state())

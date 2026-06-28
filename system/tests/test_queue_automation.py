@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from orchestrator.queue_automation import QueueAutomation
+from system.orchestrator.queue_automation import QueueAutomation
 
 
 def test_queue_automation_advances_state(tmp_path: Path) -> None:

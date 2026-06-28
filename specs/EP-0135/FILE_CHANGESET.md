@@ -1,7 +1,7 @@
 - `packs/schema/pack.schema.json`
 - `packs/templates/pack.template.yaml`
 - `packs/registry.yaml`
-- `orchestrator/pack_manager.py`
+- `system/orchestrator/pack_manager.py`
 - `docs/current/PACK_MANAGEMENT.md`
-- `scripts/validate_ep_0135.py`
-- `tests/test_pack_manager.py`
+- `system/scripts/validate_ep_0135.py`
+- `system/tests/test_pack_manager.py`

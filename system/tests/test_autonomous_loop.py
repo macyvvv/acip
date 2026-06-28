@@ -1,10 +1,10 @@
 from pathlib import Path
 
-from orchestrator.autonomous_loop import run_autonomous_execution_loop
-from orchestrator.dispatcher import Dispatcher
-from orchestrator.result import Result
-from orchestrator.task import Task
-from orchestrator.worker import Worker
+from system.orchestrator.autonomous_loop import run_autonomous_execution_loop
+from system.orchestrator.dispatcher import Dispatcher
+from system.orchestrator.result import Result
+from system.orchestrator.task import Task
+from system.orchestrator.worker import Worker
 
 
 class EchoWorker(Worker):

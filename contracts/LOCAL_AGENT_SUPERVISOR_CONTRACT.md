@@ -4,11 +4,11 @@ The local supervisor is a deterministic bridge between Planning State, Repositor
 
 ## Authoritative Inputs
 
-- runtime/planning/latest.json
-- runtime/repository_state/latest.json
-- runtime/handoff/latest.json
-- runtime/handoff/completion/latest.json
-- runtime/event_runtime/
+- system/runtime/planning/latest.json
+- system/runtime/repository_state/latest.json
+- system/runtime/handoff/latest.json
+- system/runtime/handoff/completion/latest.json
+- system/runtime/event_system/runtime/
 - queue/
 
 ## Required Fields

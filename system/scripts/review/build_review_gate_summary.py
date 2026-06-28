@@ -17,7 +17,7 @@ OUT = ROOT / "review" / "REVIEW_GATE_SUMMARY.md"
 
 def main() -> int:
     if not PLAN.exists():
-        print("missing orchestrator/execution_plan.json")
+        print("missing system/orchestrator/execution_plan.json")
         return 1
     plan = json.loads(PLAN.read_text(encoding="utf-8"))
     lines = [

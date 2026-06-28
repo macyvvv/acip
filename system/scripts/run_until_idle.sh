@@ -14,7 +14,6 @@ for candidate in (current, *current.parents):
         raise SystemExit(0)
 raise SystemExit(1)
 PY
-PY
 )"
 
 cd "$ROOT"
@@ -32,9 +31,9 @@ do
     echo "===== Supervisor ====="
     python3 system/scripts/supervisor/run_local_supervisor.py
 
-    cat runtime/supervisor/latest.md
+    cat system/runtime/supervisor/latest.md
 
-    if grep -q "supervisor_state: idle" runtime/supervisor/latest.md; then
+    if grep -q "supervisor_state: idle" system/runtime/supervisor/latest.md; then
         echo
         echo "Repository OS is idle."
         break
@@ -64,7 +63,7 @@ do
     if python3 - <<'PY'
 import json
 from pathlib import Path
-path = Path("runtime/local_execution/latest.json")
+path = Path("system/runtime/local_execution/latest.json")
 if path.exists():
     data = json.loads(path.read_text(encoding="utf-8"))
     raise SystemExit(0 if data.get("failure_reason") == "missing_deliverables" else 1)

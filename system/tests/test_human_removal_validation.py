@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from orchestrator.human_removal_validation import HumanRemovalValidation
+from system.orchestrator.human_removal_validation import HumanRemovalValidation
 
 
 def test_human_removal_validation_runs(tmp_path: Path) -> None:

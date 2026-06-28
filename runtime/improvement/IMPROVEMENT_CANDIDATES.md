@@ -1,3 +1,0 @@
-# IMPROVEMENT_CANDIDATES
-
-- none

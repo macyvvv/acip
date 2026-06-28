@@ -1,8 +1,0 @@
-{
-  "validation": "passed",
-  "pytest": "passed",
-  "repository_state": "healthy",
-  "local_execution": "dry_run_default",
-  "supervisor_launch": "manual_macOS_start_required",
-  "review_block": "status: healthy | action: review latest repository artifacts | next: run supervisor start command if execution is needed"
-}

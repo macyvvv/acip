@@ -3,9 +3,9 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Iterable
 
-from orchestrator.capability_router import CapabilityRoute
-from orchestrator.output_semantics import determine_worker_output_status, worker_output_semantic
-from orchestrator.task_decomposer import TaskDecompositionResult, DecomposedSubtask
+from system.orchestrator.capability_router import CapabilityRoute
+from system.orchestrator.output_semantics import determine_worker_output_status, worker_output_semantic
+from system.orchestrator.task_decomposer import TaskDecompositionResult, DecomposedSubtask
 
 
 @dataclass(frozen=True)

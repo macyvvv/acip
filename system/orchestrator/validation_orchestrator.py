@@ -8,6 +8,8 @@ import subprocess
 import sys
 from typing import Iterable
 
+from system.core.path_resolver import get_repo_root
+
 
 EP_PATTERN = re.compile(r"^validate_ep_(\d{4})\.py$")
 
@@ -48,10 +50,12 @@ class ValidationOrchestratorError(RuntimeError):
 
 class ValidationOrchestrator:
     def __init__(self, root: str | Path = ".") -> None:
-        self.root = Path(root)
+        self.root = Path(root) if root != "." else get_repo_root()
 
     def discover_validation_scripts(self) -> list[Path]:
-        scripts_dir = self.root / "scripts"
+        scripts_dir = self.root / "system" / "scripts"
+        if not scripts_dir.exists():
+            scripts_dir = self.root / "scripts"
         discovered = []
         for path in scripts_dir.glob("validate_ep_*.py"):
             if EP_PATTERN.match(path.name):
@@ -110,7 +114,9 @@ class ValidationOrchestrator:
         return json_report, markdown_report
 
     def write_reports(self, result: ValidationOrchestrationResult) -> None:
-        runtime_dir = self.root / "runtime" / "validation"
+        runtime_dir = self.root / "system" / "runtime" / "validation"
+        if not runtime_dir.parent.parent.exists():
+            runtime_dir = self.root / "runtime" / "validation"
         runtime_dir.mkdir(parents=True, exist_ok=True)
         json_report, markdown_report = self.build_report(result)
         (runtime_dir / "validation_report.json").write_text(json_report, encoding="utf-8")
@@ -124,9 +130,9 @@ class ValidationOrchestrator:
                     "# VALIDATION_STATE",
                     "",
                     f"last_validation_status: {'success' if result.overall_success else 'failure'}",
-                    f"last_validation_command: python scripts/validate_all.py",
-                    f"last_validation_report_json: runtime/validation/validation_report.json",
-                    f"last_validation_report_md: runtime/validation/VALIDATION_REPORT.md",
+                    f"last_validation_command: python system/scripts/validate_all.py",
+                    f"last_validation_report_json: system/runtime/validation/validation_report.json",
+                    f"last_validation_report_md: system/runtime/validation/VALIDATION_REPORT.md",
                     f"validation_owner: {result.validation_owner}",
                     "rerun_required_when:",
                     *[f"  - {item}" for item in result.rerun_required_when],

@@ -15,14 +15,14 @@
 - rules/REVIEW_RULES.md
 - rules/QUALITY_GATE.md
 - runbooks/CODEX_EXECUTION_RUNBOOK.md
-- scripts/specs/validate_ep_spec.py
-- scripts/specs/scaffold_ep_spec.py
-- scripts/validate_ep_0102.py
+- system/scripts/specs/validate_ep_spec.py
+- system/scripts/specs/scaffold_ep_spec.py
+- system/scripts/validate_ep_0102.py
 - .github/workflows/ep0102-codex-development-pipeline.yml
 - README_EP0102_CODEX_DEVELOPMENT_PIPELINE.md
 
 ## Prohibited Deletions
 
-- agent_runtime/**
-- scripts/agent_runtime/**
-- runtime/agent_runtime_mvp/**
+- agent_system/runtime/**
+- system/scripts/agent_system/runtime/**
+- system/runtime/agent_runtime_mvp/**

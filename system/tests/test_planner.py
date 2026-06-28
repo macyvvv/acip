@@ -2,9 +2,9 @@ from pathlib import Path
 
 import pytest
 
-from orchestrator.planner import PlannerError, plan_and_persist_queue_state, plan_next_ep
-from orchestrator.queue_state import QueueState
-from orchestrator.worker_state import WorkerState
+from system.orchestrator.planner import PlannerError, plan_and_persist_queue_state, plan_next_ep
+from system.orchestrator.queue_state import QueueState
+from system.orchestrator.worker_state import WorkerState
 
 
 def test_plan_next_ep_advances_from_repository_state() -> None:

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from orchestrator.execution_journal import ExecutionJournal
+from system.orchestrator.execution_journal import ExecutionJournal
 
 
 def test_execution_journal_builds_entry() -> None:

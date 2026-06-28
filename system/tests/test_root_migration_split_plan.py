@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 def test_root_migration_split_plan_exists() -> None:
-    payload = json.loads(Path('runtime/root_hygiene/root_migration_split_plan.json').read_text(encoding='utf-8'))
+    payload = json.loads(Path('system/runtime/root_hygiene/root_migration_split_plan.json').read_text(encoding='utf-8'))
     assert payload['ep_0178_state'] == 'split_required'
     assert 'low_risk' in payload
     assert 'medium_risk' in payload

@@ -72,12 +72,12 @@
     "Keep new work inside Packs"
   ],
   "source_artifacts": [
-    "runtime/planning/latest.json",
-    "runtime/repository_state/latest.json",
-    "runtime/repository_constitution/constitution.json",
-    "runtime/supervisor/latest.json",
-    "runtime/work_planner/latest.json",
-    "runtime/validation/validation_report.json",
+    "system/runtime/planning/latest.json",
+    "system/runtime/repository_state/latest.json",
+    "system/runtime/repository_constitution/constitution.json",
+    "system/runtime/supervisor/latest.json",
+    "system/runtime/work_planner/latest.json",
+    "system/runtime/validation/validation_report.json",
     "docs/current/REPOSITORY_CONSTITUTION.md",
     "docs/current/PLANNING_OS.md",
     "docs/current/LOCAL_AGENT_SUPERVISOR_BRIDGE.md",

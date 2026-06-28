@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from orchestrator.context_loader import load_context
+from system.orchestrator.context_loader import load_context
 
 
 def test_load_context_reads_canonical_documents(tmp_path: Path) -> None:

@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 import json
 
-from orchestrator.implementation_planner import ImplementationPlan
+from system.orchestrator.implementation_planner import ImplementationPlan
 
 
 @dataclass(frozen=True)
@@ -39,7 +39,7 @@ class ReviewReleasePlanner:
                 "Confirm rollback requirement is explicit.",
             ),
             validation_plan=(
-                "python scripts/validate_all.py",
+                "python system/scripts/validate_all.py",
                 "python -m pytest -q",
                 *implementation_plan.execution_request.dependency,
             ),

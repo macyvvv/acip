@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from orchestrator.chatgpt_review_intake import ChatGPTReviewIntake
-from orchestrator.issue_synchronizer import IssueSynchronizer
+from system.orchestrator.chatgpt_review_intake import ChatGPTReviewIntake
+from system.orchestrator.issue_synchronizer import IssueSynchronizer
 
 
 def test_issue_synchronizer_builds_comment(tmp_path) -> None:

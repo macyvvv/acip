@@ -1,6 +1,6 @@
-- `orchestrator/human_approval_gate.py`
+- `system/orchestrator/human_approval_gate.py`
 - `docs/current/HUMAN_APPROVAL_GATE.md`
-- `runtime/approval/approval_state.json`
-- `scripts/validate_ep_0126.py`
-- `tests/test_human_approval_gate.py`
+- `system/runtime/approval/approval_state.json`
+- `system/scripts/validate_ep_0126.py`
+- `system/tests/test_human_approval_gate.py`
 - `docs/ep/README_EP0126_HUMAN_APPROVAL_GATE.md`

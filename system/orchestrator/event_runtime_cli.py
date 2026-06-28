@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from orchestrator.event_runtime_dry_run import EventRuntimeDryRun
+from system.orchestrator.event_runtime_dry_run import EventRuntimeDryRun
 
 
 def run_cli(fixture_path: str | Path, base_path: str | Path = ".") -> str:

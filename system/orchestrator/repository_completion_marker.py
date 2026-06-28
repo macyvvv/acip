@@ -4,7 +4,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 import json
 
-from orchestrator.completion_protocol import CompletionProtocol
+from system.orchestrator.completion_protocol import CompletionProtocol
 
 
 @dataclass(frozen=True)

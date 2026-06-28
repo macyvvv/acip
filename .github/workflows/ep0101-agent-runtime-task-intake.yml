@@ -23,4 +23,4 @@ jobs:
           python-version: '3.11'
 
       - name: Validate EP0101
-        run: python scripts/validate_ep_0101.py
+        run: python system/scripts/validate_ep_0101.py

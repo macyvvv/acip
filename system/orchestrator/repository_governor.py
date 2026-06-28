@@ -4,9 +4,9 @@ from dataclasses import dataclass, field
 from pathlib import Path
 import json
 
-from orchestrator.capability_router import CapabilityRouter
-from orchestrator.context_loader import load_context
-from orchestrator.queue_state import read_queue_state
+from system.orchestrator.capability_router import CapabilityRouter
+from system.orchestrator.context_loader import load_context
+from system.orchestrator.queue_state import read_queue_state
 from workers.registry import load_worker_registry
 
 

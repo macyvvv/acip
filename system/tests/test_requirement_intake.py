@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from orchestrator.requirement_intake import RequirementIntake
+from system.orchestrator.requirement_intake import RequirementIntake
 
 
 def test_requirement_intake_normalizes_text(tmp_path) -> None:

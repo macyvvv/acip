@@ -13,6 +13,6 @@ objective: Automate queue state transitions across READY, RUNNING, REVIEW, and D
 
 ## Validation
 
-- `python3 scripts/validate_all.py`
+- `python3 system/scripts/validate_all.py`
 - `python3 -m pytest -q`
 

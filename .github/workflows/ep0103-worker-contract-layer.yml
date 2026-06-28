@@ -22,4 +22,4 @@ jobs:
           python-version: '3.11'
 
       - name: Run EP-0103 validation
-        run: python scripts/validate_ep_0103.py
+        run: python system/scripts/validate_ep_0103.py

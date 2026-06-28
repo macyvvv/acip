@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from orchestrator.event_contract import EventContract, EventSource
-from orchestrator.event_runtime_safety_gate import EventRuntimeSafetyGate
-from orchestrator.event_to_queue_resolver import EventResolution
+from system.orchestrator.event_contract import EventContract, EventSource
+from system.orchestrator.event_runtime_safety_gate import EventRuntimeSafetyGate
+from system.orchestrator.event_to_queue_resolver import EventResolution
 
 
 def test_event_runtime_safety_gate_blocks_high_risk(tmp_path) -> None:
@@ -13,7 +13,7 @@ def test_event_runtime_safety_gate_blocks_high_risk(tmp_path) -> None:
         issue_id=9,
         pack_id="PACK-0005",
         ep_id="EP-0166",
-        marker_path="runtime/handoff/latest.json",
+        marker_path="system/runtime/handoff/latest.json",
         actor="Codex",
         timestamp="2026-06-26T00:00:00Z",
         action="completion_marker_update",

@@ -45,9 +45,9 @@ class PlanningStateBuilder:
             "docs/current/STATE.md",
             "docs/current/ROADMAP.md",
             "docs/current/REPOSITORY_CONSTITUTION.md",
-            "runtime/repository_state/latest.json",
-            "runtime/repository_constitution/constitution.json",
-            "runtime/validation/validation_report.json",
+            "system/runtime/repository_state/latest.json",
+            "system/runtime/repository_constitution/constitution.json",
+            "system/runtime/validation/validation_report.json",
             "packs/",
             "wbs/",
         ]

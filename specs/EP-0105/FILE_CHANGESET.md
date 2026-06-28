@@ -4,17 +4,17 @@
 
 - `docs/current/QUEUE_STATE.md`
 - `docs/current/WORKER_STATE.md`
-- `orchestrator/queue_state.py`
-- `orchestrator/worker_state.py`
-- `orchestrator/scheduler.py`
-- `scripts/validate_ep_0105.py`
+- `system/orchestrator/queue_state.py`
+- `system/orchestrator/worker_state.py`
+- `system/orchestrator/scheduler.py`
+- `system/scripts/validate_ep_0105.py`
 - `.github/workflows/ep0105-scheduler-dispatcher.yml`
 - `README_EP0105_REPOSITORY_SCHEDULER_DISPATCHER.md`
 
 ## Modify if needed
 
-- `orchestrator/dispatcher.py`
-- `orchestrator/WORKER_ROUTING.md`
+- `system/orchestrator/dispatcher.py`
+- `system/orchestrator/WORKER_ROUTING.md`
 - `workers/CODEX_WORKER_PROFILE.md`
 
 ## Do not remove

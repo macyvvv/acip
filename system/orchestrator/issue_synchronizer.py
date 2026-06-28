@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 import json
 
-from orchestrator.chatgpt_review_intake import ChatGPTReviewIntake
+from system.orchestrator.chatgpt_review_intake import ChatGPTReviewIntake
 
 
 @dataclass(frozen=True)

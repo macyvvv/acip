@@ -3,8 +3,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
-from orchestrator.generated_artifact_manager import GeneratedArtifactManager
-from orchestrator.validation_orchestrator import ValidationOrchestrator
+from system.orchestrator.generated_artifact_manager import GeneratedArtifactManager
+from system.orchestrator.validation_orchestrator import ValidationOrchestrator
 
 
 @dataclass(frozen=True)

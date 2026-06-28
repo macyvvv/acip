@@ -4,9 +4,9 @@ from dataclasses import dataclass
 from pathlib import Path
 import json
 
-from orchestrator.capability_router import CapabilityRouter
-from orchestrator.execution_request import ExecutionRequest, ExecutionRequestBuilder
-from orchestrator.specification_generator import ImplementationSpecification
+from system.orchestrator.capability_router import CapabilityRouter
+from system.orchestrator.execution_request import ExecutionRequest, ExecutionRequestBuilder
+from system.orchestrator.specification_generator import ImplementationSpecification
 
 
 @dataclass(frozen=True)

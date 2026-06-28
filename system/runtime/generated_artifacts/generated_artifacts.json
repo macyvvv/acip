@@ -4,11 +4,11 @@
     "graph/agent_context_pack.json",
     "graph/repository_graph.json",
     "graph/repository_graph.md",
-    "orchestrator/context_bundle.json",
-    "orchestrator/execution_plan.json",
-    "runtime/validation/validation_report.json",
-    "runtime/validation/VALIDATION_REPORT.md",
-    "runtime/generated_artifacts/generated_artifacts.json",
-    "runtime/generated_artifacts/GENERATED_ARTIFACTS.md"
+    "system/orchestrator/context_bundle.json",
+    "system/orchestrator/execution_plan.json",
+    "system/runtime/validation/validation_report.json",
+    "system/runtime/validation/VALIDATION_REPORT.md",
+    "system/runtime/generated_artifacts/generated_artifacts.json",
+    "system/runtime/generated_artifacts/GENERATED_ARTIFACTS.md"
   ]
 }

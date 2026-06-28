@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from orchestrator.worker_lifecycle import WorkerLifecycleManager
-from orchestrator.worker_state import WorkerState
+from system.orchestrator.worker_lifecycle import WorkerLifecycleManager
+from system.orchestrator.worker_state import WorkerState
 
 
 def test_worker_lifecycle_manager_transitions_running() -> None:

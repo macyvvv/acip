@@ -1,5 +1,5 @@
 # MANIFEST
 
-- `orchestrator/worker_lifecycle.py`
+- `system/orchestrator/worker_lifecycle.py`
 - `docs/current/WORKER_LIFECYCLE.md`
-- `runtime/workers/worker_lifecycle.json`
+- `system/runtime/workers/worker_lifecycle.json`

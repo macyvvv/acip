@@ -1,3 +1,3 @@
 # MANIFEST
 
-- `orchestrator/task_decomposer.py`
+- `system/orchestrator/task_decomposer.py`

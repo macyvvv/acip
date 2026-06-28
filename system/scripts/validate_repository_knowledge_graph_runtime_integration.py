@@ -14,10 +14,10 @@ def _resolve_repo_root() -> Path:
 
 ROOT = _resolve_repo_root()
 COMMANDS = [
-    [sys.executable, "scripts/graph/build_repository_graph.py"],
-    [sys.executable, "scripts/graph/validate_repository_graph.py"],
-    [sys.executable, "scripts/context/build_agent_context_pack.py"],
-    [sys.executable, "scripts/runtime/dry_run_runtime_plan.py"],
+    [sys.executable, "system/scripts/graph/build_repository_graph.py"],
+    [sys.executable, "system/scripts/graph/validate_repository_graph.py"],
+    [sys.executable, "system/scripts/context/build_agent_context_pack.py"],
+    [sys.executable, "system/scripts/system/runtime/dry_run_runtime_plan.py"],
 ]
 
 def main() -> int:

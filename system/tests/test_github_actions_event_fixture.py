@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from orchestrator.github_actions_event_fixture import GitHubActionsEventFixtureReader
+from system.orchestrator.github_actions_event_fixture import GitHubActionsEventFixtureReader
 
 
 def test_github_actions_event_fixture_reader(tmp_path) -> None:

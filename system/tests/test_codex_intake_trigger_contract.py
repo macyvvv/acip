@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from orchestrator.codex_intake_trigger_contract import CodexIntakeTriggerContract
+from system.orchestrator.codex_intake_trigger_contract import CodexIntakeTriggerContract
 
 
 def test_codex_intake_trigger_contract_dataclass() -> None:

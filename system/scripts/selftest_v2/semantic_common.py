@@ -93,7 +93,7 @@ def classify(path: Path, text: str, config: dict[str, Any]) -> str:
             return "index"
     if path.name in set(config.get("entrypoints", [])):
         return "entrypoint"
-    if "scripts/selftest" in r or "scripts/selftest_v2" in r:
+    if "system/scripts/selftest" in r or "system/scripts/selftest_v2" in r:
         return "selftest"
     return "canonical"
 

@@ -17,7 +17,7 @@ OUT = ROOT / "runtime" / "runtime_dry_run_report.md"
 
 def main() -> int:
     if not PACK.exists():
-        print("agent context pack missing. Run scripts/context/build_agent_context_pack.py")
+        print("agent context pack missing. Run system/scripts/context/build_agent_context_pack.py")
         return 1
     pack = json.loads(PACK.read_text(encoding="utf-8"))
     lines = [

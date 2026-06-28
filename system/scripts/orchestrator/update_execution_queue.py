@@ -19,7 +19,7 @@ OUT = ROOT / "orchestrator" / "EXECUTION_QUEUE.md"
 
 def main() -> int:
     if not PLAN.exists():
-        subprocess.check_call([sys.executable, "scripts/orchestrator/build_execution_plan.py"], cwd=ROOT)
+        subprocess.check_call([sys.executable, "system/scripts/system/orchestrator/build_execution_plan.py"], cwd=ROOT)
 
     plan = json.loads(PLAN.read_text(encoding="utf-8"))
     content = f"""# Execution Queue

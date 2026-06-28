@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from orchestrator.completion_protocol import CompletionStatus, build_completion_protocol
-from orchestrator.handshake_validation import HandshakeValidator
-from orchestrator.repository_completion_marker import RepositoryCompletionMarkerWriter
+from system.orchestrator.completion_protocol import CompletionStatus, build_completion_protocol
+from system.orchestrator.handshake_validation import HandshakeValidator
+from system.orchestrator.repository_completion_marker import RepositoryCompletionMarkerWriter
 
 
 def test_handshake_validation_passes(tmp_path) -> None:

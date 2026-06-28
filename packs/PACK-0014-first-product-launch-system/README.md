@@ -4,8 +4,8 @@
 
 - `docs/current/FIRST_POST_LAUNCH_WBS.md`
 - `docs/current/BACKGROUND_SYSTEM_IMAGE.md`
-- `runtime/planning/first_post_launch_wbs.json`
-- `runtime/planning/background_system_image.json`
+- `system/runtime/planning/first_post_launch_wbs.json`
+- `system/runtime/planning/background_system_image.json`
 
 ## Purpose
 

@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 import json
 
-from orchestrator.queue_state import QueueState, read_queue_state, write_queue_state
+from system.orchestrator.queue_state import QueueState, read_queue_state, write_queue_state
 
 
 QUEUE_STATES = ("READY", "RUNNING", "REVIEW", "DONE")

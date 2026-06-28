@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from orchestrator.event_contract import EventContract, EventSource
+from system.orchestrator.event_contract import EventContract, EventSource
 
 
 def test_event_contract_validates_issue_event() -> None:

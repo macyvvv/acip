@@ -5,9 +5,9 @@
 - `specs/schema/ep_contract.schema.json`
 - `specs/templates/ep_contract.template.yaml`
 - `specs/EP-0104/ep_contract.yaml`
-- `scripts/specs/validate_ep_contract.py`
-- `scripts/specs/load_active_ep_contract.py`
-- `scripts/validate_ep_0104.py`
+- `system/scripts/specs/validate_ep_contract.py`
+- `system/scripts/specs/load_active_ep_contract.py`
+- `system/scripts/validate_ep_0104.py`
 - `.github/workflows/ep0104-executable-specification.yml`
 - `README_EP0104_EXECUTABLE_SPECIFICATION.md`
 
@@ -15,7 +15,7 @@
 
 - `specs/WORKFLOW.md`
 - `workers/CODEX_WORKER_PROFILE.md`
-- `orchestrator/WORKER_ROUTING.md`
+- `system/orchestrator/WORKER_ROUTING.md`
 
 ## Do not remove
 

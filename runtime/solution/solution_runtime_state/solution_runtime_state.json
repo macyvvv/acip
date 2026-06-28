@@ -1,9 +1,0 @@
-{
-  "pack_id": "PACK-0001",
-  "requirement_id": "REQ-0B4ADF9E",
-  "architecture_option_id": "ARCH-req-0b4adf9e",
-  "specification_id": "SPEC-arch-req-0b4adf9e",
-  "implementation_plan_id": "PLAN-spec-arch-req-0b4adf9e",
-  "review_release_plan_id": "REVIEW-plan-spec-arch-req-0b4adf9e",
-  "next_action": "ready"
-}

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from orchestrator.repository_governor import RepositoryGovernor
+from system.orchestrator.repository_governor import RepositoryGovernor
 
 
 def _write_minimal_repo(root: Path) -> None:
@@ -22,12 +22,12 @@ def _write_minimal_repo(root: Path) -> None:
         encoding="utf-8",
     )
     (root / "docs" / "current" / "VALIDATION_STATE.md").write_text(
-        "# VALIDATION_STATE\n\nlast_validation_status: success\nlast_validation_command: python scripts/validate_all.py\nlast_validation_report_json: runtime/validation/validation_report.json\nlast_validation_report_md: runtime/validation/VALIDATION_REPORT.md\nvalidation_owner: Codex\nrerun_required_when:\n  - any validation step fails\nhuman_rerun_policy: Human reruns validation only when repository outputs changed.\nrelation_to_worker_output_contract: Validation state is a repository-level summary.\n",
+        "# VALIDATION_STATE\n\nlast_validation_status: success\nlast_validation_command: python system/scripts/validate_all.py\nlast_validation_report_json: system/runtime/validation/validation_report.json\nlast_validation_report_md: system/runtime/validation/VALIDATION_REPORT.md\nvalidation_owner: Codex\nrerun_required_when:\n  - any validation step fails\nhuman_rerun_policy: Human reruns validation only when repository outputs changed.\nrelation_to_worker_output_contract: Validation state is a repository-level summary.\n",
         encoding="utf-8",
     )
     (root / "workers").mkdir(exist_ok=True)
     (root / "workers" / "registry.yaml").write_text(
-        "workers:\n  Codex:\n    capability: [repository_implementation, validation_execution]\n    allowed_actions: [implement, validate]\n    prohibited_actions: [approve]\n    validation_responsibility: [run_repository_validation]\n    output_contract: orchestrator/output_contract.py\n  ChatGPT:\n    capability: [review_package_authoring]\n    allowed_actions: [review]\n    prohibited_actions: [execute_code]\n    validation_responsibility: [define_validation_scope]\n    output_contract: orchestrator/output_contract.py\n  Human:\n    capability: [approval]\n    allowed_actions: [approve]\n    prohibited_actions: [implement]\n    validation_responsibility: [approve_validation_scope]\n    output_contract: orchestrator/output_contract.py\n  GitHub Actions:\n    capability: [repository_validation]\n    allowed_actions: [run_workflow]\n    prohibited_actions: [edit_code]\n    validation_responsibility: [execute_validate_all]\n    output_contract: orchestrator/output_contract.py\n",
+        "workers:\n  Codex:\n    capability: [repository_implementation, validation_execution]\n    allowed_actions: [implement, validate]\n    prohibited_actions: [approve]\n    validation_responsibility: [run_repository_validation]\n    output_contract: system/orchestrator/output_contract.py\n  ChatGPT:\n    capability: [review_package_authoring]\n    allowed_actions: [review]\n    prohibited_actions: [execute_code]\n    validation_responsibility: [define_validation_scope]\n    output_contract: system/orchestrator/output_contract.py\n  Human:\n    capability: [approval]\n    allowed_actions: [approve]\n    prohibited_actions: [implement]\n    validation_responsibility: [approve_validation_scope]\n    output_contract: system/orchestrator/output_contract.py\n  GitHub Actions:\n    capability: [repository_validation]\n    allowed_actions: [run_workflow]\n    prohibited_actions: [edit_code]\n    validation_responsibility: [execute_validate_all]\n    output_contract: system/orchestrator/output_contract.py\n",
         encoding="utf-8",
     )
 

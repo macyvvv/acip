@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 import hashlib
 
-from orchestrator.execution_request import ExecutionRequest
+from system.orchestrator.execution_request import ExecutionRequest
 
 
 @dataclass(frozen=True)

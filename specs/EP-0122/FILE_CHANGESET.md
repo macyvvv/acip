@@ -1,8 +1,8 @@
-- `orchestrator/repository_governor.py`
+- `system/orchestrator/repository_governor.py`
 - `docs/current/REPOSITORY_GOVERNOR.md`
 - `docs/current/GOVERNOR_STATE.md`
-- `runtime/governor/governor_recommendations.json`
-- `runtime/governor/GOVERNOR_RECOMMENDATIONS.md`
-- `scripts/validate_ep_0122.py`
-- `tests/test_repository_governor.py`
+- `system/runtime/governor/governor_recommendations.json`
+- `system/runtime/governor/GOVERNOR_RECOMMENDATIONS.md`
+- `system/scripts/validate_ep_0122.py`
+- `system/tests/test_repository_governor.py`
 - `docs/ep/README_EP0122_REPOSITORY_GOVERNOR.md`

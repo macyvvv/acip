@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 import json
 
-from orchestrator.event_runtime_dry_run import EventRuntimeDryRun
+from system.orchestrator.event_runtime_dry_run import EventRuntimeDryRun
 
 
 @dataclass(frozen=True)

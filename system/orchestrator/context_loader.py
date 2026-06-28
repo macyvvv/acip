@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
-from orchestrator.constants import (
+from system.orchestrator.constants import (
     ADR_PATH,
     ARCHITECTURE_PATH,
     CURRENT_STATE_PATH,
@@ -24,12 +24,19 @@ class Context:
 def load_context(base_path: str | Path = ".") -> Context:
     root = Path(base_path)
     return Context(
-        repository_conventions=_read(root / REPOSITORY_CONVENTIONS_PATH),
-        current_state=_read(root / CURRENT_STATE_PATH),
-        architecture=_read(root / ARCHITECTURE_PATH),
-        adr=_read(root / ADR_PATH),
-        wbs=_read(root / WBS_PATH),
+        repository_conventions=_read(_first_existing(root, REPOSITORY_CONVENTIONS_PATH, Path("basis") / "REPOSITORY_CONVENTIONS.md")),
+        current_state=_read(_first_existing(root, CURRENT_STATE_PATH, Path("docs") / "current" / "CURRENT_STATE.md")),
+        architecture=_read(_first_existing(root, ARCHITECTURE_PATH, Path("orchestrator") / "ARCHITECTURE.md")),
+        adr=_read(_first_existing(root, ADR_PATH, Path("orchestrator") / "ADR-0001.md")),
+        wbs=_read(_first_existing(root, WBS_PATH, Path("orchestrator") / "WBS.md")),
     )
+
+
+def _first_existing(root: Path, primary: Path, fallback: Path) -> Path:
+    for candidate in (root / primary, root / fallback):
+        if candidate.exists():
+            return candidate
+    return root / primary
 
 
 def _read(path: Path) -> str:

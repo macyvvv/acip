@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from orchestrator.result import Result
-from orchestrator.task import Task
-from orchestrator.worker import Worker
+from system.orchestrator.result import Result
+from system.orchestrator.task import Task
+from system.orchestrator.worker import Worker
 
 
 class CodexWorker(Worker):

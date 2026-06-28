@@ -2,10 +2,10 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from orchestrator.queue_state import QueueState
-from orchestrator.result import Result
-from orchestrator.task import Task
-from orchestrator.worker_state import WorkerState
+from system.orchestrator.queue_state import QueueState
+from system.orchestrator.result import Result
+from system.orchestrator.task import Task
+from system.orchestrator.worker_state import WorkerState
 
 
 @dataclass(frozen=True)

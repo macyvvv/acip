@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 
-from orchestrator.issue_event_intake import IssueEventIntake
+from system.orchestrator.issue_event_intake import IssueEventIntake
 
 
 def test_issue_event_intake_reads_fixture(tmp_path) -> None:

@@ -4,8 +4,8 @@ from dataclasses import dataclass
 from pathlib import Path
 import json
 
-from orchestrator.generated_artifact_manager import GeneratedArtifactManager
-from orchestrator.queue_state import read_queue_state
+from system.orchestrator.generated_artifact_manager import GeneratedArtifactManager
+from system.orchestrator.queue_state import read_queue_state
 
 
 @dataclass(frozen=True)

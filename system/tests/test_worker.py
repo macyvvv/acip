@@ -1,7 +1,7 @@
 import pytest
 
-from orchestrator.task import Task
-from orchestrator.worker import Worker
+from system.orchestrator.task import Task
+from system.orchestrator.worker import Worker
 
 
 def test_worker_execute_raises_not_implemented() -> None:

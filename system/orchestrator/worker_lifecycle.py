@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 import json
 
-from orchestrator.worker_state import WorkerState, read_worker_state
+from system.orchestrator.worker_state import WorkerState, read_worker_state
 
 
 WORKER_LIFECYCLE_STATES = ("Idle", "Reserved", "Running", "Review", "Completed", "Failed")

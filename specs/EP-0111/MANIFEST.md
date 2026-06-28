@@ -1,5 +1,5 @@
 # MANIFEST
 
-- `orchestrator/validation_orchestrator.py`
-- `scripts/validate_all.py`
-- `scripts/validate_ep_0111.py`
+- `system/orchestrator/validation_orchestrator.py`
+- `system/scripts/validate_all.py`
+- `system/scripts/validate_ep_0111.py`

@@ -14,7 +14,7 @@ def _resolve_repo_root() -> Path:
 ROOT = _resolve_repo_root()
 sys.path.insert(0, str(ROOT))
 
-from orchestrator.work_planner import WorkPlanner
+from system.orchestrator.work_planner import WorkPlanner
 
 
 def main() -> int:

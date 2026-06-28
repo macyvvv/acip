@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from orchestrator.solution_development_runtime import SolutionDevelopmentRuntime
+from system.orchestrator.solution_development_runtime import SolutionDevelopmentRuntime
 
 
 def _write_minimal_repo(root: Path) -> None:
@@ -19,7 +19,7 @@ def _write_minimal_repo(root: Path) -> None:
     (root / "orchestrator" / "WBS.md").write_text("wbs", encoding="utf-8")
     (root / "workers").mkdir(exist_ok=True)
     (root / "workers" / "registry.yaml").write_text(
-        "workers:\n  Codex:\n    capability: [repository_implementation, validation_execution]\n    allowed_actions: [implement, validate]\n    prohibited_actions: [approve, deploy, push_directly_to_main]\n    validation_responsibility: [run_repository_validation, report_validation_results]\n    output_contract: orchestrator/output_contract.py\n  ChatGPT:\n    capability: [architecture_review, prompt_generation, review_package_authoring]\n    allowed_actions: [design, review, specify]\n    prohibited_actions: [execute_code, mutate_repository]\n    validation_responsibility: [define_validation_scope, review_validation_results]\n    output_contract: orchestrator/output_contract.py\n  Human:\n    capability: [approval, strategy, capital_allocation]\n    allowed_actions: [approve, reject, reprioritize]\n    prohibited_actions: [implementation, automated_execution]\n    validation_responsibility: [approve_validation_scope, accept_risk]\n    output_contract: orchestrator/output_contract.py\n  GitHub Actions:\n    capability: [ci_execution, repository_validation]\n    allowed_actions: [run_workflow, collect_logs, publish_artifacts]\n    prohibited_actions: [edit_code, bypass_review]\n    validation_responsibility: [execute_validate_all, persist_validation_artifacts]\n    output_contract: orchestrator/output_contract.py\n",
+        "workers:\n  Codex:\n    capability: [repository_implementation, validation_execution]\n    allowed_actions: [implement, validate]\n    prohibited_actions: [approve, deploy, push_directly_to_main]\n    validation_responsibility: [run_repository_validation, report_validation_results]\n    output_contract: system/orchestrator/output_contract.py\n  ChatGPT:\n    capability: [architecture_review, prompt_generation, review_package_authoring]\n    allowed_actions: [design, review, specify]\n    prohibited_actions: [execute_code, mutate_repository]\n    validation_responsibility: [define_validation_scope, review_validation_results]\n    output_contract: system/orchestrator/output_contract.py\n  Human:\n    capability: [approval, strategy, capital_allocation]\n    allowed_actions: [approve, reject, reprioritize]\n    prohibited_actions: [implementation, automated_execution]\n    validation_responsibility: [approve_validation_scope, accept_risk]\n    output_contract: system/orchestrator/output_contract.py\n  GitHub Actions:\n    capability: [ci_execution, repository_validation]\n    allowed_actions: [run_workflow, collect_logs, publish_artifacts]\n    prohibited_actions: [edit_code, bypass_review]\n    validation_responsibility: [execute_validate_all, persist_validation_artifacts]\n    output_contract: system/orchestrator/output_contract.py\n",
         encoding="utf-8",
     )
     (root / "packs" / "PACK-0001-solution-development").mkdir(parents=True, exist_ok=True)

@@ -1,2 +1,2 @@
 # RUNBOOK
-python orchestrator/local_agent_runner.py
+python system/orchestrator/local_agent_runner.py

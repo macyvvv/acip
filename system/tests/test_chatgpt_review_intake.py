@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from orchestrator.chatgpt_review_intake import ChatGPTReviewIntakeReader
-from orchestrator.completion_protocol import CompletionStatus, build_completion_protocol
-from orchestrator.repository_completion_marker import RepositoryCompletionMarkerWriter
+from system.orchestrator.chatgpt_review_intake import ChatGPTReviewIntakeReader
+from system.orchestrator.completion_protocol import CompletionStatus, build_completion_protocol
+from system.orchestrator.repository_completion_marker import RepositoryCompletionMarkerWriter
 
 
 def test_chatgpt_review_intake_reads_latest_marker(tmp_path) -> None:

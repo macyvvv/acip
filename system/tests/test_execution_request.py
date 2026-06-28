@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from orchestrator.execution_request import ExecutionRequestBuilder
+from system.orchestrator.execution_request import ExecutionRequestBuilder
 
 
 def test_execution_request_builder_creates_ready_request() -> None:

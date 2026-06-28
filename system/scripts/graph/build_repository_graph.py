@@ -37,7 +37,7 @@ def node_type(path: Path) -> str:
     if r.startswith("runbooks/"): return "runbook"
     if r.startswith("contracts/"): return "contract"
     if r.startswith(".github/workflows/"): return "workflow"
-    if r.startswith("scripts/"): return "script"
+    if r.startswith("system/scripts/"): return "script"
     if r.startswith("registry/"): return "registry"
     if r.startswith("catalog/"): return "catalog"
     if r.startswith("knowledge/"): return "knowledge_asset"

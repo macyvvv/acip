@@ -16,7 +16,7 @@ workers:
     validation_responsibility:
       - run_repository_validation
       - report_validation_results
-    output_contract: orchestrator/output_contract.py
+    output_contract: system/orchestrator/output_contract.py
   ChatGPT:
     capability:
       - architecture_review
@@ -32,7 +32,7 @@ workers:
     validation_responsibility:
       - define_validation_scope
       - review_validation_results
-    output_contract: orchestrator/output_contract.py
+    output_contract: system/orchestrator/output_contract.py
   Human:
     capability:
       - approval
@@ -48,7 +48,7 @@ workers:
     validation_responsibility:
       - approve_validation_scope
       - accept_risk
-    output_contract: orchestrator/output_contract.py
+    output_contract: system/orchestrator/output_contract.py
   GitHub Actions:
     capability:
       - ci_execution
@@ -63,4 +63,4 @@ workers:
     validation_responsibility:
       - execute_validate_all
       - persist_validation_artifacts
-    output_contract: orchestrator/output_contract.py
+    output_contract: system/orchestrator/output_contract.py

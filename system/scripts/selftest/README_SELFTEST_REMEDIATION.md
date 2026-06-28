@@ -22,11 +22,11 @@ This remediation corrects false positives and missing canonical files from the f
 Run:
 
 ```bash
-python scripts/selftest/cleanup_selftest_skeleton.py
+python system/scripts/selftest/cleanup_selftest_skeleton.py
 ```
 
 Then rerun:
 
 ```bash
-python scripts/selftest/validate_repository_selftest_complete.py
+python system/scripts/selftest/validate_repository_selftest_complete.py
 ```

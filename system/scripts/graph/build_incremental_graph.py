@@ -23,7 +23,7 @@ def sha(path: Path) -> str:
 
 def main() -> int:
     if not GRAPH.exists():
-        subprocess.check_call([sys.executable, "scripts/graph/build_repository_graph.py"], cwd=ROOT)
+        subprocess.check_call([sys.executable, "system/scripts/graph/build_repository_graph.py"], cwd=ROOT)
 
     graph = json.loads(GRAPH.read_text(encoding="utf-8"))
     nodes = graph.get("nodes", [])
