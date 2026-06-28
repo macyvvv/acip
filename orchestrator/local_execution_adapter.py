@@ -27,6 +27,7 @@ class LocalExecutionResult:
     exit_code: int
     captured_at: str
     source_artifacts: list[str]
+    blocked_by_usage_limit: bool
 
 
 class LocalExecutionError(ValueError):
@@ -79,6 +80,7 @@ class LocalExecutionAdapter:
                 if exit_code != 0:
                     raise LocalExecutionError(f"Codex command failed: {exit_code}")
         except Exception as exc:
+            blocked_by_usage_limit = self._is_usage_limit_error(exc) or self._is_usage_limit_error(stderr)
             result = self._result(
                 repository=repository,
                 request=request,
@@ -90,6 +92,7 @@ class LocalExecutionAdapter:
                 exit_code=exit_code or 1,
                 prompt_path=prompt_path,
                 model_resolution=model_resolution,
+                blocked_by_usage_limit=blocked_by_usage_limit,
             )
             self._write_runtime(result)
             raise
@@ -104,6 +107,7 @@ class LocalExecutionAdapter:
             exit_code=exit_code,
             prompt_path=prompt_path,
             model_resolution=model_resolution,
+            blocked_by_usage_limit=False,
         )
         self._write_runtime(result)
         return result
@@ -127,15 +131,18 @@ class LocalExecutionAdapter:
             raise LocalExecutionError("Invalid request status")
 
     def _render_prompt(self, request: dict, planning: dict, repository: dict) -> str:
+        issue_instruction = self._issue_instruction(request)
         lines = [
             "# Codex Execution Prompt",
             "",
             f"Request ID: {request['request_id']}",
             f"Request Status: {request['request_status']}",
-            f"Objective: {planning.get('current_objective', 'unknown')}",
+            f"Objective: {request.get('objective') or planning.get('current_objective', 'unknown')}",
             f"Selected Work Item: {request.get('next_action', 'unknown')}",
+            f"Selected Issue Number: {request.get('issue_number', 'unknown')}",
+            f"Selected Issue Title: {request.get('issue_title', 'unknown')}",
             "",
-            "Implement Issue #28 / ACCEPTANCE-0001 using repository artifacts only.",
+            issue_instruction,
             "Read runtime/planning/latest.json, runtime/repository_state/latest.json, runtime/work_planner/latest.json, and runtime/request/execution_request.json.",
             "Run:",
             "- python3 scripts/validate_all.py",
@@ -146,6 +153,15 @@ class LocalExecutionAdapter:
             "Do not modify Repository OS architecture.",
         ]
         return "\n".join(lines) + "\n"
+
+    def _issue_instruction(self, request: dict) -> str:
+        issue_number = request.get("issue_number")
+        issue_title = request.get("issue_title")
+        if issue_number is not None and issue_title:
+            return f"Implement Issue #{issue_number} / {issue_title} using repository artifacts only."
+        if issue_number is not None:
+            return f"Implement Issue #{issue_number} using repository artifacts only."
+        return "Implement the selected work item using repository artifacts only."
 
     def _write_prompt(self, prompt: str) -> Path:
         runtime_dir = self.base_path / "runtime" / "local_execution"
@@ -236,6 +252,10 @@ class LocalExecutionAdapter:
     def _build_command(self, prompt_path: Path, model: str) -> list[str]:
         return ["codex", "exec", "-m", model, prompt_path.read_text(encoding="utf-8")]
 
+    def _is_usage_limit_error(self, value: object) -> bool:
+        text = str(value).lower()
+        return "usage limit" in text or "out of credits" in text
+
     def _run_command(self, command: list[str]) -> subprocess.CompletedProcess[str]:
         return subprocess.run(command, capture_output=True, text=True)
 
@@ -267,6 +287,7 @@ class LocalExecutionAdapter:
         exit_code: int,
         prompt_path: Path,
         model_resolution: dict,
+        blocked_by_usage_limit: bool,
     ) -> LocalExecutionResult:
         return LocalExecutionResult(
             adapter_mode=adapter_mode,
@@ -293,6 +314,7 @@ class LocalExecutionAdapter:
                 "runtime/local_execution/model_resolution.json",
                 str(prompt_path.relative_to(self.base_path)),
             ],
+            blocked_by_usage_limit=blocked_by_usage_limit,
         )
 
     def _write_runtime(self, result: LocalExecutionResult) -> None:

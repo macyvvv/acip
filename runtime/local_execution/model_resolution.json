@@ -1,7 +1,15 @@
 {
   "model_policy": "cost_optimized",
-  "resolved_model": "gpt-5.4-mini",
-  "model_resolution_reason": "policy=cost_optimized",
+  "resolved_model": "gpt-5.2-mini",
+  "candidate_models": [
+    "gpt-5.2-mini",
+    "gpt-5.4-mini",
+    "gpt-5.4"
+  ],
+  "selection_reason": "capability=cost_optimized; policy=cost_optimized",
+  "fallback_used": false,
+  "estimated_cost_tier": "lowest",
+  "resolved_at": "2026-06-28T00:09:26.499215+00:00",
   "supported_models": [
     "gpt-5.4-mini",
     "gpt-5.4",
