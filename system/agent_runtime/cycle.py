@@ -19,7 +19,7 @@ def run_dry_run_cycle(start: Path | None = None) -> dict:
     review = build_review_summary(context, plan, queue_item)
     approval_gate = build_approval_gate(review)
 
-    out_dir = root / "runtime" / "agent_runtime_mvp"
+    out_dir = root / "system" / "runtime" / "agent_runtime_mvp"
     write_json(out_dir / "runtime_context.json", context.to_dict())
     write_json(out_dir / "runtime_plan.json", plan.to_dict())
     write_json(out_dir / "queue_item.json", queue_item.to_dict())

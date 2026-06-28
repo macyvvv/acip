@@ -18,7 +18,7 @@ def main() -> int:
         ROOT / "workers" / "CODEX_WORKER_PROFILE.md",
         ROOT / "workers" / "CHATGPT_WORKER_PROFILE.md",
         ROOT / "workers" / "README_WORKERS.md",
-        ROOT / "orchestrator" / "WORKER_ROUTING.md",
+        ROOT / "system" / "orchestrator" / "WORKER_ROUTING.md",
         ROOT / "specs" / "WORKFLOW.md",
     ]
     failures = [path.relative_to(ROOT).as_posix() for path in required if not path.exists()]

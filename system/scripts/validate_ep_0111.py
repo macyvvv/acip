@@ -14,11 +14,11 @@ def _resolve_repo_root() -> Path:
 ROOT = _resolve_repo_root()
 def main() -> int:
     required_paths = [
-        ROOT / "orchestrator" / "validation_orchestrator.py",
-        ROOT / "scripts" / "validate_all.py",
+        ROOT / "system" / "orchestrator" / "validation_orchestrator.py",
+        ROOT / "system" / "scripts" / "validate_all.py",
         ROOT / "docs" / "current" / "VALIDATION_STATE.md",
-        ROOT / "runtime" / "validation" / "validation_report.json",
-        ROOT / "runtime" / "validation" / "VALIDATION_REPORT.md",
+        ROOT / "system" / "runtime" / "validation" / "validation_report.json",
+        ROOT / "system" / "runtime" / "validation" / "VALIDATION_REPORT.md",
         ROOT / ".github" / "workflows" / "validate-all.yml",
         ROOT / "docs" / "ep" / "README_EP0111_VALIDATION_ORCHESTRATOR.md",
     ]

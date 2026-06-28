@@ -16,7 +16,7 @@ ROOT = _resolve_repo_root()
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from agent_runtime.task_cycle import run_task_intake_cycle
+from system.agent_runtime.task_cycle import run_task_intake_cycle
 
 
 def main() -> int:

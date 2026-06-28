@@ -37,7 +37,7 @@ def run_task_intake_cycle(task_path: Path, start: Path | None = None) -> dict:
     approval_gate = build_approval_gate(review)
     approval_gate["source_task"] = task.task_id
 
-    out_dir = root / "runtime" / "task_intake" / task.task_id
+    out_dir = root / "system" / "runtime" / "task_intake" / task.task_id
     write_task(out_dir / "normalized_task.json", task)
     write_json(out_dir / "runtime_context.json", context.to_dict())
     write_json(out_dir / "runtime_plan.json", plan_payload)

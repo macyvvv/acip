@@ -15,7 +15,7 @@ ROOT = _resolve_repo_root()
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from agent_runtime.cycle import run_dry_run_cycle
+from system.agent_runtime.cycle import run_dry_run_cycle
 
 
 if __name__ == "__main__":

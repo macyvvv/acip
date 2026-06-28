@@ -23,8 +23,8 @@ def main() -> int:
         subprocess.check_call(command, cwd=ROOT)
 
     required_paths = [
-        ROOT / "orchestrator" / "autonomous_loop.py",
-        ROOT / "tests" / "test_autonomous_loop.py",
+        ROOT / "system" / "orchestrator" / "autonomous_loop.py",
+        ROOT / "system" / "tests" / "test_autonomous_loop.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

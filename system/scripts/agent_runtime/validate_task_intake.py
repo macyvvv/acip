@@ -12,7 +12,7 @@ def _resolve_repo_root() -> Path:
     raise RuntimeError(f"Unable to locate repository root from {__file__}")
 
 ROOT = _resolve_repo_root()
-OUT = ROOT / "runtime" / "task_intake" / "ART-SAMPLE-0001"
+OUT = ROOT / "system" / "runtime" / "task_intake" / "ART-SAMPLE-0001"
 
 REQUIRED = [
     OUT / "normalized_task.json",

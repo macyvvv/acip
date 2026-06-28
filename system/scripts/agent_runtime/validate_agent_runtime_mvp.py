@@ -15,7 +15,7 @@ ROOT = _resolve_repo_root()
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-OUT = ROOT / "runtime" / "agent_runtime_mvp"
+OUT = ROOT / "system" / "runtime" / "agent_runtime_mvp"
 
 REQUIRED = [
     OUT / "runtime_context.json",
