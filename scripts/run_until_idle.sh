@@ -29,6 +29,21 @@ do
     python3 scripts/validate_all.py
     python3 -m pytest -q
 
+    if python3 - <<'PY'
+import json
+from pathlib import Path
+path = Path("runtime/local_execution/latest.json")
+if path.exists():
+    data = json.loads(path.read_text(encoding="utf-8"))
+    raise SystemExit(0 if data.get("failure_reason") == "missing_deliverables" else 1)
+raise SystemExit(1)
+PY
+    then
+        echo
+        echo "Local execution reported missing deliverables; stopping without commit."
+        break
+    fi
+
     echo
     echo "===== Git ====="
 

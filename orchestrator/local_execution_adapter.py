@@ -102,8 +102,14 @@ class LocalExecutionAdapter:
                 exit_code = completed.returncode
                 if exit_code != 0:
                     raise LocalExecutionError(f"Codex command failed: {exit_code}")
+                deliverable_check = self._verify_deliverables(request)
+                if not deliverable_check["ok"]:
+                    raise LocalExecutionError("missing_deliverables")
         except Exception as exc:
             blocked_by_usage_limit = self._is_usage_limit_error(exc) or self._is_usage_limit_error(stderr)
+            failure_reason = "blocked_by_usage_limit" if blocked_by_usage_limit else str(exc)
+            if failure_reason == "missing_deliverables":
+                blocked_by_usage_limit = False
             result = self._result(
                 repository=repository,
                 request=request,
@@ -116,7 +122,7 @@ class LocalExecutionAdapter:
                 prompt_path=prompt_path,
                 model_resolution=model_resolution,
                 blocked_by_usage_limit=blocked_by_usage_limit,
-                failure_reason="blocked_by_usage_limit" if blocked_by_usage_limit else str(exc),
+                failure_reason=failure_reason,
             )
             self._write_runtime(result)
             raise
@@ -361,6 +367,30 @@ class LocalExecutionAdapter:
     def _is_usage_limit_error(self, value: object) -> bool:
         text = str(value).lower()
         return "usage limit" in text or "out of credits" in text
+
+    def _verify_deliverables(self, request: dict) -> dict:
+        issue_number = request.get("issue_number")
+        issue_title = str(request.get("issue_title", "")).upper()
+        required_paths_by_issue = {
+            30: [
+                "product/minimal_launch_brief_generator/README.md",
+                "product/minimal_launch_brief_generator/requirements.md",
+                "product/minimal_launch_brief_generator/architecture.md",
+                "product/minimal_launch_brief_generator/release_notes.md",
+                "product/minimal_launch_brief_generator/src/__init__.py",
+                "product/minimal_launch_brief_generator/src/minimal_launch_brief_generator.py",
+                "product/minimal_launch_brief_generator/tests/test_minimal_launch_brief_generator.py",
+            ]
+        }
+        required_paths = required_paths_by_issue.get(issue_number, [])
+        missing_paths = [path for path in required_paths if not (self.base_path / path).exists()]
+        return {
+            "ok": not missing_paths,
+            "issue_number": issue_number,
+            "issue_title": issue_title,
+            "required_paths": required_paths,
+            "missing_paths": missing_paths,
+        }
 
     def _run_command(self, command: list[str]) -> subprocess.CompletedProcess[str]:
         return subprocess.run(command, capture_output=True, text=True)

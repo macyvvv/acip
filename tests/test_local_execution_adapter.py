@@ -210,3 +210,73 @@ def test_local_execution_model_resolution_fail_closed_when_no_supported_model(tm
         assert "unsupported_model_for_auth_mode" in str(exc)
     else:
         raise AssertionError("expected model resolution failure")
+
+
+def test_local_execution_missing_deliverables_sets_failure_reason(tmp_path: Path) -> None:
+    (tmp_path / "runtime" / "request").mkdir(parents=True)
+    (tmp_path / "runtime" / "request" / "execution_request.json").write_text(
+        json.dumps({
+            "request_id": "REQ-ISSUE-0030",
+            "request_status": "ready",
+            "next_action": "Issue #30: PRODUCT-0001: Product Launch Checklist",
+            "issue_number": 30,
+            "issue_title": "PRODUCT-0001: Product Launch Checklist",
+            "objective": "Product Launch Checklist",
+        }),
+        encoding="utf-8",
+    )
+    (tmp_path / "runtime" / "supervisor").mkdir(parents=True)
+    (tmp_path / "runtime" / "supervisor" / "latest.json").write_text(json.dumps({"codex_intake_payload": {"current_ep": "EP-0201"}}), encoding="utf-8")
+    (tmp_path / "runtime" / "planning").mkdir(parents=True)
+    (tmp_path / "runtime" / "planning" / "latest.json").write_text(json.dumps({"current_objective": "Product Launch Checklist"}), encoding="utf-8")
+    (tmp_path / "runtime" / "repository_state").mkdir(parents=True)
+    (tmp_path / "runtime" / "repository_state" / "latest.json").write_text(json.dumps({"repository_health": "healthy", "validation_status": "success", "worktree_state": "clean", "approval_required": False}), encoding="utf-8")
+    adapter = LocalExecutionAdapter(tmp_path)
+    adapter._run_command = lambda command: type("Result", (), {"stdout": "", "stderr": "", "returncode": 0})()  # type: ignore[method-assign]
+    try:
+        adapter.run(dry_run=False, approval_flag=True)
+    except Exception:
+        latest = json.loads((tmp_path / "runtime" / "local_execution" / "latest.json").read_text(encoding="utf-8"))
+        assert latest["failure_reason"] == "missing_deliverables"
+        assert latest["blocked_by_usage_limit"] is False
+        assert latest["exit_code"] == 1
+    else:
+        raise AssertionError("expected missing deliverables failure")
+
+
+def test_local_execution_verifies_required_product_deliverables(tmp_path: Path) -> None:
+    base = tmp_path / "product" / "minimal_launch_brief_generator"
+    (base / "src").mkdir(parents=True)
+    (base / "tests").mkdir(parents=True)
+    for relative_path in [
+        "README.md",
+        "requirements.md",
+        "architecture.md",
+        "release_notes.md",
+        "src/__init__.py",
+        "src/minimal_launch_brief_generator.py",
+        "tests/test_minimal_launch_brief_generator.py",
+    ]:
+        (base / relative_path).write_text("ok", encoding="utf-8")
+    (tmp_path / "runtime" / "request").mkdir(parents=True)
+    (tmp_path / "runtime" / "request" / "execution_request.json").write_text(
+        json.dumps({
+            "request_id": "REQ-ISSUE-0030",
+            "request_status": "ready",
+            "next_action": "Issue #30: PRODUCT-0001: Product Launch Checklist",
+            "issue_number": 30,
+            "issue_title": "PRODUCT-0001: Product Launch Checklist",
+            "objective": "Product Launch Checklist",
+        }),
+        encoding="utf-8",
+    )
+    (tmp_path / "runtime" / "supervisor").mkdir(parents=True)
+    (tmp_path / "runtime" / "supervisor" / "latest.json").write_text(json.dumps({"codex_intake_payload": {"current_ep": "EP-0201"}}), encoding="utf-8")
+    (tmp_path / "runtime" / "planning").mkdir(parents=True)
+    (tmp_path / "runtime" / "planning" / "latest.json").write_text(json.dumps({"current_objective": "Product Launch Checklist"}), encoding="utf-8")
+    (tmp_path / "runtime" / "repository_state").mkdir(parents=True)
+    (tmp_path / "runtime" / "repository_state" / "latest.json").write_text(json.dumps({"repository_health": "healthy", "validation_status": "success", "worktree_state": "clean", "approval_required": False}), encoding="utf-8")
+    adapter = LocalExecutionAdapter(tmp_path)
+    adapter._run_command = lambda command: type("Result", (), {"stdout": "", "stderr": "", "returncode": 0})()  # type: ignore[method-assign]
+    result = adapter.run(dry_run=False, approval_flag=True)
+    assert result.failure_reason is None
