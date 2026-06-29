@@ -6,6 +6,8 @@ import json
 from urllib.request import Request, urlopen
 from urllib.error import URLError
 
+from system.core.failure_store import load_failures
+
 
 @dataclass(frozen=True)
 class LocalSupervisorResult:
@@ -50,6 +52,9 @@ class LocalSupervisor:
             raise LocalSupervisorError("Repository state requires approval")
         open_issues = self._load_open_issues()
         open_issues = [issue for issue in open_issues if issue.get("number") not in completed_issue_numbers]
+        failures = load_failures(self.base_path)
+        skipped_issue_numbers = self._skipped_issue_numbers(open_issues, failures)
+        open_issues = [issue for issue in open_issues if issue.get("number") not in skipped_issue_numbers]
         self._write_open_issues(open_issues)
         next_item, selected_issue_number, selected_issue_title, selection_reason = self._select_next_work_item(
             planning,
@@ -58,6 +63,8 @@ class LocalSupervisor:
             acceptance,
             open_issues,
         )
+        if skipped_issue_numbers and next_item is not None:
+            selection_reason = "skipped_due_to_failure_history"
         execution_mode = "execute" if execution_flag else "dry_run"
         if execution_mode == "execute" and not execution_flag:
             raise LocalSupervisorError("Execution requires explicit local approval flag")
@@ -103,6 +110,21 @@ class LocalSupervisor:
         self._write_runtime(result)
         self._write_execution_request(execution_request)
         return result
+
+    def _skipped_issue_numbers(self, issues: list[dict], failures: list[dict]) -> set[int]:
+        issue_numbers = {int(issue.get("number", 0)) for issue in issues if isinstance(issue.get("number"), int)}
+        skipped: set[int] = set()
+        for issue_number in issue_numbers:
+            entry = self._last_failure_for_issue(failures, issue_number)
+            if entry and entry.get("error_type") == "external_capacity" and int(entry.get("retry_count", 0)) >= 3:
+                skipped.add(issue_number)
+        return skipped
+
+    def _last_failure_for_issue(self, failures: list[dict], issue_number: int) -> dict | None:
+        for entry in reversed(failures):
+            if entry.get("issue_number") == issue_number:
+                return entry
+        return None
 
     def _select_next_work_item(
         self,
