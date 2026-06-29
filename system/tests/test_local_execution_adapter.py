@@ -240,6 +240,9 @@ def test_local_execution_missing_deliverables_sets_failure_reason(tmp_path: Path
         assert latest["failure_reason"] == "missing_deliverables"
         assert latest["blocked_by_usage_limit"] is False
         assert latest["exit_code"] == 1
+        failures = json.loads((tmp_path / "system" / "runtime" / "knowledge" / "failures.json").read_text(encoding="utf-8"))
+        assert failures[-1]["issue_number"] == 30
+        assert failures[-1]["error_type"] == "unknown"
     else:
         raise AssertionError("expected missing deliverables failure")
 

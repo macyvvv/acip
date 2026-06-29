@@ -7,6 +7,7 @@ import json
 import os
 import subprocess
 
+from system.core.failure_store import append_failure
 
 @dataclass(frozen=True)
 class LocalExecutionResult:
@@ -110,6 +111,7 @@ class LocalExecutionAdapter:
             failure_reason = "blocked_by_usage_limit" if blocked_by_usage_limit else str(exc)
             if failure_reason == "missing_deliverables":
                 blocked_by_usage_limit = False
+            self._record_failure(request, model_resolution, stderr, failure_reason)
             result = self._result(
                 repository=repository,
                 request=request,
@@ -143,6 +145,30 @@ class LocalExecutionAdapter:
         )
         self._write_runtime(result)
         return result
+
+    def _record_failure(self, request: dict, model_resolution: dict, stderr: str, failure_reason: str) -> None:
+        issue_number = int(request.get("issue_number") or 0)
+        if issue_number <= 0:
+            return
+        append_failure(
+            {
+                "request_id": request.get("request_id", ""),
+                "issue_number": issue_number,
+                "error_type": self._classify_error(stderr, failure_reason),
+                "model": model_resolution.get("resolved_model") or "",
+            },
+            base_path=self.base_path,
+        )
+
+    def _classify_error(self, stderr: str, failure_reason: str) -> str:
+        text = f"{stderr}\n{failure_reason}".lower()
+        if "capacity" in text:
+            return "external_capacity"
+        if "usage limit" in text:
+            return "usage_limit"
+        if "not supported" in text:
+            return "model_unsupported"
+        return "unknown"
 
     def _derive_request(self, supervisor: dict) -> dict:
         payload = supervisor.get("codex_intake_payload", {})
