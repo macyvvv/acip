@@ -1,0 +1,17 @@
+# Requirements
+
+## Functional Requirements
+
+- Kabukicho Survival Map MVP の brief を生成できること
+- audience を含めること
+- value proposition を含めること
+- UGC の扱いを明示すること
+- 拡張された map data を deterministic に列挙できること
+- 追加データは repo 内 artifact からのみ読み込むこと
+
+## Non-Functional Requirements
+
+- Deterministic output
+- No external API calls
+- No mutation of repository OS artifacts
+- Data expansion is reviewable and bounded

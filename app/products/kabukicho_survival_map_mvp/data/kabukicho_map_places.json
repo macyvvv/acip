@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Kabukicho Information Point",
+    "category": "navigation",
+    "description": "A stable meetup and orientation point for first-time visitors."
+  },
+  {
+    "name": "24h Convenience Cluster",
+    "category": "essentials",
+    "description": "Late-night supplies, water, and quick restock options."
+  },
+  {
+    "name": "Well-Lit Main Route",
+    "category": "safety",
+    "description": "Primary walking corridor with lower navigation friction after dark."
+  },
+  {
+    "name": "Quiet Exit Lane",
+    "category": "escape",
+    "description": "A lower-noise path for leaving crowded blocks quickly."
+  },
+  {
+    "name": "Community Note Anchor",
+    "category": "ugc",
+    "description": "A reviewable point for verified user updates and local tips."
+  }
+]

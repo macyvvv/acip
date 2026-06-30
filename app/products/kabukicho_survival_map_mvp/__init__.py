@@ -1,0 +1,2 @@
+from .src.kabukicho_survival_map_mvp import build_product_brief
+
