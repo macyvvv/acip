@@ -1,0 +1,18 @@
+[
+  {
+    "type": "model_selection",
+    "message": "Consider switching to lower-load model",
+    "confidence": "medium"
+  },
+  {
+    "type": "issue_prioritization",
+    "issue_number": 31,
+    "message": "Deprioritize this issue",
+    "confidence": "medium"
+  },
+  {
+    "type": "learning_visibility",
+    "message": "2 failure-derived rule(s) active",
+    "confidence": "low"
+  }
+]

@@ -1,0 +1,59 @@
+[
+  {
+    "request_id": "REQ-ISSUE-0032",
+    "issue_number": 32,
+    "error_type": "external_capacity",
+    "model": "gpt-5.4-mini",
+    "timestamp": "2026-06-29T03:12:28.877587+00:00",
+    "retry_count": 1
+  },
+  {
+    "request_id": "REQ-ISSUE-0032",
+    "issue_number": 32,
+    "error_type": "external_capacity",
+    "model": "gpt-5.4-mini",
+    "timestamp": "2026-06-29T06:04:00.229080+00:00",
+    "retry_count": 2
+  },
+  {
+    "request_id": "REQ-ISSUE-0032",
+    "issue_number": 32,
+    "error_type": "external_capacity",
+    "model": "gpt-5.4-mini",
+    "timestamp": "2026-06-29T09:03:32.771720+00:00",
+    "retry_count": 3
+  },
+  {
+    "request_id": "REQ-ISSUE-0031",
+    "issue_number": 31,
+    "error_type": "external_capacity",
+    "model": "gpt-5.4-mini",
+    "timestamp": "2026-06-29T09:24:06.358741+00:00",
+    "retry_count": 1
+  },
+  {
+    "request_id": "REQ-ISSUE-0031",
+    "issue_number": 31,
+    "error_type": "external_capacity",
+    "model": "gpt-5.4-mini",
+    "timestamp": "2026-06-29T09:28:53.776803+00:00",
+    "retry_count": 2
+  },
+  {
+    "request_id": "REQ-ISSUE-0031",
+    "issue_number": 31,
+    "error_type": "external_capacity",
+    "model": "gpt-5.4-mini",
+    "timestamp": "2026-06-29T09:39:52.616280+00:00",
+    "retry_count": 3
+  },
+  {
+    "request_id": "REQ-ISSUE-0030",
+    "issue_number": 30,
+    "error_type": "model_unsupported",
+    "model": "gpt-5.4-mini",
+    "timestamp": "2026-06-30T08:16:02.907608+00:00",
+    "retry_count": 1,
+    "last_failed_at": "2026-06-30T08:16:02.907679+00:00"
+  }
+]

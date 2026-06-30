@@ -1,0 +1,18 @@
+[
+  {
+    "issue_number": 32,
+    "error_type": "external_capacity",
+    "action": "temporary_skip",
+    "threshold": 3,
+    "cooldown_seconds": 300,
+    "last_failed_at": "2026-06-29T09:03:32.771720+00:00"
+  },
+  {
+    "issue_number": 31,
+    "error_type": "external_capacity",
+    "action": "temporary_skip",
+    "threshold": 3,
+    "cooldown_seconds": 300,
+    "last_failed_at": "2026-06-29T09:39:52.616280+00:00"
+  }
+]

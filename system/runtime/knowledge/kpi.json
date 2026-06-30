@@ -1,0 +1,30 @@
+{
+  "total_runs": 36,
+  "success_count": 29,
+  "failure_count": 7,
+  "success_rate": 0.8056,
+  "failure_breakdown": {
+    "external_capacity": 6,
+    "usage_limit": 0,
+    "model_unsupported": 1,
+    "unknown": 0
+  },
+  "per_issue_stats": {
+    "32": {
+      "runs": 31,
+      "success": 28,
+      "failure": 3
+    },
+    "31": {
+      "runs": 3,
+      "success": 0,
+      "failure": 3
+    },
+    "30": {
+      "runs": 2,
+      "success": 1,
+      "failure": 1
+    }
+  },
+  "last_updated": "2026-06-30T13:01:32.572566+00:00"
+}
