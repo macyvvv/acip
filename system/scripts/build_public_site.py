@@ -15,7 +15,7 @@ def _resolve_repo_root() -> Path:
 
 ROOT = _resolve_repo_root()
 PUBLIC_DIR = ROOT / "public"
-PRODUCT_DIR = ROOT / "product"
+PRODUCT_DIR = ROOT / "app" / "products"
 COMPLETED_DIR = ROOT / "runtime" / "issues" / "completed"
 
 
@@ -62,20 +62,30 @@ def _detect_product_directory(base_path: Path, issue: dict) -> Path | None:
     for deliverable in deliverables:
         if not isinstance(deliverable, str):
             continue
-        match = re.match(r"product/([^/]+)/", deliverable)
+        match = re.match(r"(?:app/products|product)/([^/]+)/", deliverable)
         if match:
-            candidate = base_path / "product" / match.group(1)
-            if candidate.exists():
-                return candidate
+            candidate_name = match.group(1)
+            for candidate in (
+                base_path / "app" / "products" / candidate_name,
+                base_path / "product" / candidate_name,
+            ):
+                if candidate.exists():
+                    return candidate
     issue_title = str(issue.get("issue_title", "")).lower()
     if "product-0001" in issue_title:
-        candidate = base_path / "product" / "minimal_launch_brief_generator"
-        if candidate.exists():
-            return candidate
+        for candidate in (
+            base_path / "app" / "products" / "minimal_launch_brief_generator",
+            base_path / "product" / "minimal_launch_brief_generator",
+        ):
+            if candidate.exists():
+                return candidate
     if "product-0002" in issue_title:
-        candidate = base_path / "product" / "repository_operational_summary"
-        if candidate.exists():
-            return candidate
+        for candidate in (
+            base_path / "app" / "products" / "repository_operational_summary",
+            base_path / "product" / "repository_operational_summary",
+        ):
+            if candidate.exists():
+                return candidate
     return None
 
 

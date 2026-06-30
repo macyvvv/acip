@@ -1,0 +1,11 @@
+{
+  "issue_number": 31,
+  "issue_title": "CONTENT-0001: Repository-native Content Operation Pipeline Foundation",
+  "commit_sha": "deterministic",
+  "completed_at": "deterministic",
+  "deliverables": [
+    "system/scripts/build_public_site.py",
+    "system/tests/test_build_public_site.py",
+    "system/runtime/issues/completed/issue_0031.json"
+  ]
+}
