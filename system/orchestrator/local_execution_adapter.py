@@ -492,13 +492,13 @@ class LocalExecutionAdapter:
         issue_title = str(request.get("issue_title", "")).upper()
         required_paths_by_issue = {
             30: [
-                "product/minimal_launch_brief_generator/README.md",
-                "product/minimal_launch_brief_generator/requirements.md",
-                "product/minimal_launch_brief_generator/architecture.md",
-                "product/minimal_launch_brief_generator/release_notes.md",
-                "product/minimal_launch_brief_generator/src/__init__.py",
-                "product/minimal_launch_brief_generator/src/minimal_launch_brief_generator.py",
-                "product/minimal_launch_brief_generator/tests/test_minimal_launch_brief_generator.py",
+                "app/products/minimal_launch_brief_generator/README.md",
+                "app/products/minimal_launch_brief_generator/requirements.md",
+                "app/products/minimal_launch_brief_generator/architecture.md",
+                "app/products/minimal_launch_brief_generator/release_notes.md",
+                "app/products/minimal_launch_brief_generator/src/__init__.py",
+                "app/products/minimal_launch_brief_generator/src/minimal_launch_brief_generator.py",
+                "app/products/minimal_launch_brief_generator/tests/test_minimal_launch_brief_generator.py",
             ]
         }
         required_paths = required_paths_by_issue.get(issue_number, [])

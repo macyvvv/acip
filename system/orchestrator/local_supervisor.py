@@ -424,16 +424,19 @@ class LocalSupervisor:
 
     def _completed_issue_numbers(self) -> set[int]:
         completed_numbers: set[int] = set()
-        completed_dir = self.base_path / "runtime" / "issues" / "completed"
-        if not completed_dir.exists():
-            return completed_numbers
-        for path in completed_dir.glob("issue_*.json"):
-            try:
-                data = json.loads(path.read_text(encoding="utf-8"))
-            except json.JSONDecodeError:
+        for completed_dir in (
+            self.base_path / "system" / "runtime" / "issues" / "completed",
+            self.base_path / "runtime" / "issues" / "completed",
+        ):
+            if not completed_dir.exists():
                 continue
-            if isinstance(data.get("issue_number"), int):
-                completed_numbers.add(int(data["issue_number"]))
+            for path in completed_dir.glob("issue_*.json"):
+                try:
+                    data = json.loads(path.read_text(encoding="utf-8"))
+                except json.JSONDecodeError:
+                    continue
+                if isinstance(data.get("issue_number"), int):
+                    completed_numbers.add(int(data["issue_number"]))
         return completed_numbers
 
     def _fetch_open_issues_from_github(self) -> list[dict]:

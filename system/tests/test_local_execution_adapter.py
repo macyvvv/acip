@@ -248,7 +248,7 @@ def test_local_execution_missing_deliverables_sets_failure_reason(tmp_path: Path
 
 
 def test_local_execution_verifies_required_product_deliverables(tmp_path: Path) -> None:
-    base = tmp_path / "product" / "minimal_launch_brief_generator"
+    base = tmp_path / "app" / "products" / "minimal_launch_brief_generator"
     (base / "src").mkdir(parents=True)
     (base / "tests").mkdir(parents=True)
     for relative_path in [

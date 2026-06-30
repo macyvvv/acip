@@ -35,7 +35,7 @@ def _prepare_base(tmp_path: Path) -> None:
         json.dumps({"repository_health": "healthy", "validation_status": "success", "worktree_state": "clean", "approval_required": False}),
         encoding="utf-8",
     )
-    base = tmp_path / "product" / "minimal_launch_brief_generator"
+    base = tmp_path / "app" / "products" / "minimal_launch_brief_generator"
     (base / "src").mkdir(parents=True)
     (base / "tests").mkdir(parents=True)
     for relative_path in [
