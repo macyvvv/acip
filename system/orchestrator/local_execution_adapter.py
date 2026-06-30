@@ -8,6 +8,12 @@ import os
 import subprocess
 
 from system.core.failure_store import append_failure
+from system.core.failure_learning import write_failure_rules
+from system.core.kpi_store import update_kpi
+from system.core.optimization_advisor import write_optimization_suggestions
+
+
+MODEL_FALLBACK_CHAIN = ["gpt-5.4-mini", "gpt-5.3-mini", "gpt-5.2-mini"]
 
 @dataclass(frozen=True)
 class LocalExecutionResult:
@@ -30,6 +36,7 @@ class LocalExecutionResult:
     source_artifacts: list[str]
     blocked_by_usage_limit: bool
     failure_reason: str | None
+    model_attempts: list[dict]
 
 
 class LocalExecutionError(ValueError):
@@ -84,6 +91,7 @@ class LocalExecutionAdapter:
                 model_resolution=model_resolution,
                 blocked_by_usage_limit=False,
                 failure_reason=failure_reason,
+                model_attempts=[],
             )
             self._write_runtime(result)
             raise LocalExecutionError(failure_reason)
@@ -95,12 +103,11 @@ class LocalExecutionAdapter:
         stdout = "dry-run only"
         stderr = ""
         exit_code = 0
+        failure_reason = ""
+        model_attempts: list[dict] = []
         try:
             if not dry_run:
-                completed = self._run_command(command)
-                stdout = completed.stdout
-                stderr = completed.stderr
-                exit_code = completed.returncode
+                stdout, stderr, exit_code, model_attempts = self._run_with_model_fallback(prompt_path, model_resolution["resolved_model"], request, planning, repository)
                 if exit_code != 0:
                     raise LocalExecutionError(f"Codex command failed: {exit_code}")
                 deliverable_check = self._verify_deliverables(request)
@@ -112,6 +119,7 @@ class LocalExecutionAdapter:
             if failure_reason == "missing_deliverables":
                 blocked_by_usage_limit = False
             self._record_failure(request, model_resolution, stderr, failure_reason)
+            write_failure_rules(self.base_path)
             result = self._result(
                 repository=repository,
                 request=request,
@@ -125,8 +133,10 @@ class LocalExecutionAdapter:
                 model_resolution=model_resolution,
                 blocked_by_usage_limit=blocked_by_usage_limit,
                 failure_reason=failure_reason,
+                model_attempts=model_attempts,
             )
             self._write_runtime(result)
+            update_kpi(False, self.base_path, issue_number=int(request.get("issue_number") or 0) or None, error_type=self._classify_error(stderr, failure_reason))
             raise
 
         result = self._result(
@@ -142,8 +152,16 @@ class LocalExecutionAdapter:
             model_resolution=model_resolution,
             blocked_by_usage_limit=False,
             failure_reason=None,
+            model_attempts=model_attempts,
         )
         self._write_runtime(result)
+        update_kpi(
+            exit_code == 0 and result.failure_reason is None,
+            self.base_path,
+            issue_number=int(request.get("issue_number") or 0) or None,
+            error_type=self._classify_error(stderr, failure_reason),
+        )
+        write_optimization_suggestions(self.base_path)
         return result
 
     def _record_failure(self, request: dict, model_resolution: dict, stderr: str, failure_reason: str) -> None:
@@ -231,7 +249,7 @@ class LocalExecutionAdapter:
 
     def _resolve_model(self, request: dict, planning: dict, repository: dict) -> dict:
         policy = os.environ.get("CODEX_MODEL_POLICY", "cost_optimized")
-        override = os.environ.get("CODEX_MODEL_OVERRIDE", "").strip()
+        override = str(request.get("model_override") or os.environ.get("CODEX_MODEL_OVERRIDE", "")).strip()
         auth_mode = self._auth_mode()
         configured_models = self._supported_models()
         candidate_models = self._rank_models(configured_models, request, planning, repository, policy)
@@ -239,8 +257,11 @@ class LocalExecutionAdapter:
 
         if override:
             if override not in configured_models:
-                raise LocalExecutionError(f"Unsupported model override: {override}")
-            if override not in supported_models:
+                if not self._override_supported_for_auth_mode(override, auth_mode):
+                    raise LocalExecutionError(f"Unsupported model override: {override}")
+                candidate_models = [override] + candidate_models
+                supported_models = [override] + supported_models
+            elif override not in supported_models:
                 return self._failed_model_resolution(
                     auth_mode=auth_mode,
                     policy=policy,
@@ -380,9 +401,16 @@ class LocalExecutionAdapter:
             return "lowest"
         if model == "gpt-5.4-mini":
             return "low"
+        if model == "gpt-5.3-mini":
+            return "lower"
         if model == "gpt-5.2":
             return "medium"
         return "high"
+
+    def _override_supported_for_auth_mode(self, model: str, auth_mode: str) -> bool:
+        if model != "gpt-5.3-mini":
+            return False
+        return auth_mode == "chatgpt"
 
     def _resolved_at(self) -> str:
         return datetime.now(timezone.utc).isoformat()
@@ -390,9 +418,74 @@ class LocalExecutionAdapter:
     def _build_command(self, prompt_path: Path, model: str) -> list[str]:
         return ["codex", "exec", "-m", model, prompt_path.read_text(encoding="utf-8")]
 
+    def _run_with_model_fallback(
+        self,
+        prompt_path: Path,
+        initial_model: str,
+        request: dict,
+        planning: dict,
+        repository: dict,
+    ) -> tuple[str, str, int, list[dict]]:
+        model_attempts: list[dict] = []
+        fallback_chain = self._model_fallback_chain(initial_model)
+        last_stdout = ""
+        last_stderr = ""
+        last_exit_code = 1
+        for model in fallback_chain:
+            command = self._build_command(prompt_path, model)
+            completed = self._run_command(command)
+            last_stdout = completed.stdout
+            last_stderr = completed.stderr
+            last_exit_code = completed.returncode
+            if completed.returncode == 0 and self._verify_deliverables(request)["ok"]:
+                model_attempts.append({"model": model, "result": "success"})
+                self._write_model_attempts(model_attempts)
+                return last_stdout, last_stderr, last_exit_code, model_attempts
+            if self._is_capacity_error(last_stderr) or self._is_capacity_error(last_stdout) or self._is_capacity_error(last_exit_code):
+                model_attempts.append({"model": model, "result": "capacity_fail"})
+                if len(model_attempts) >= len(fallback_chain):
+                    break
+                continue
+            model_attempts.append({"model": model, "result": "failure"})
+            self._write_model_attempts(model_attempts)
+            return last_stdout, last_stderr, last_exit_code, model_attempts
+        self._write_model_attempts(model_attempts)
+        return last_stdout, last_stderr, last_exit_code, model_attempts
+
+    def _model_fallback_chain(self, initial_model: str) -> list[str]:
+        auth_mode = self._auth_mode()
+        supported_models = self._supported_models()
+        auth_supported = self._supported_for_auth_mode(auth_mode)
+        chain = [model for model in supported_models if model in auth_supported]
+        chain.sort(key=lambda model: (self._model_cost_rank(model), model))
+        if initial_model in chain:
+            index = chain.index(initial_model)
+            return chain[index:]
+        return chain
+
+    def _supported_for_auth_mode(self, auth_mode: str) -> set[str]:
+        auth_allowlist = {
+            "chatgpt": {"gpt-5.4-mini", "gpt-5.4"},
+            "api": {"gpt-5.2-mini", "gpt-5.4-mini", "gpt-5.2", "gpt-5.4"},
+        }
+        return auth_allowlist.get(auth_mode, auth_allowlist["chatgpt"])
+
+    def _is_capacity_error(self, value: object) -> bool:
+        return "capacity" in str(value).lower()
+
     def _is_usage_limit_error(self, value: object) -> bool:
         text = str(value).lower()
         return "usage limit" in text or "out of credits" in text
+
+    def _model_cost_rank(self, model: str) -> int:
+        order = {
+            "gpt-5.2-mini": 0,
+            "gpt-5.3-mini": 1,
+            "gpt-5.4-mini": 2,
+            "gpt-5.2": 3,
+            "gpt-5.4": 4,
+        }
+        return order.get(model, 99)
 
     def _verify_deliverables(self, request: dict) -> dict:
         issue_number = request.get("issue_number")
@@ -435,6 +528,18 @@ class LocalExecutionAdapter:
         }
         (runtime_dir / "model_resolution.json").write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
+    def _write_model_attempts(self, model_attempts: list[dict]) -> None:
+        runtime_dir = self._runtime_path("local_execution")
+        runtime_dir.mkdir(parents=True, exist_ok=True)
+        latest_path = runtime_dir / "latest.json"
+        if latest_path.exists():
+            payload = json.loads(latest_path.read_text(encoding="utf-8"))
+            payload["model_attempts"] = model_attempts
+            latest_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+            latest_md_path = runtime_dir / "latest.md"
+            if latest_md_path.exists():
+                latest_md_path.write_text(latest_md_path.read_text(encoding="utf-8") + "\n", encoding="utf-8")
+
     def _result(
         self,
         *,
@@ -450,6 +555,7 @@ class LocalExecutionAdapter:
         model_resolution: dict,
         blocked_by_usage_limit: bool,
         failure_reason: str | None,
+        model_attempts: list[dict],
     ) -> LocalExecutionResult:
         resolved_model = model_resolution.get("resolved_model")
         codex_cli_command = ""
@@ -482,6 +588,7 @@ class LocalExecutionAdapter:
             ],
             blocked_by_usage_limit=blocked_by_usage_limit,
             failure_reason=failure_reason,
+            model_attempts=model_attempts,
         )
 
     def _write_runtime(self, result: LocalExecutionResult) -> None:
@@ -504,6 +611,7 @@ class LocalExecutionAdapter:
                 f"resolved_model: {result.resolved_model or 'null'}",
                 f"failure_reason: {result.failure_reason or 'null'}",
                 f"exit_code: {result.exit_code}",
+                f"model_attempts: {json.dumps(result.model_attempts, ensure_ascii=False)}",
                 "",
             ]
         )

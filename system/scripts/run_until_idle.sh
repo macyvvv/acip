@@ -28,6 +28,10 @@ echo "Starting Repository OS work loop..."
 while true
 do
     echo
+    echo "===== GitHub Sync ====="
+    python3 system/scripts/sync_github_issues.py
+
+    echo
     echo "===== Supervisor ====="
     python3 system/scripts/supervisor/run_local_supervisor.py
 

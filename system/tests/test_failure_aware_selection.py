@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from system.orchestrator.local_supervisor import LocalSupervisor
+from system.core.failure_learning import write_failure_rules
 
 
 def _write_base_state(tmp_path: Path) -> None:
@@ -72,6 +73,19 @@ def test_failure_history_at_threshold_skips_issue_and_falls_back(tmp_path: Path)
         ]),
         encoding="utf-8",
     )
+    write_failure_rules(
+        tmp_path,
+        [
+            {
+                "issue_number": 32,
+                "error_type": "external_capacity",
+                "action": "temporary_skip",
+                "threshold": 3,
+                "cooldown_seconds": 300,
+                "last_failed_at": "2026-01-01T00:00:00Z",
+            }
+        ],
+    )
     supervisor = LocalSupervisor(tmp_path)
     result = supervisor.run(execution_flag=False)
     assert result.selected_issue_number == 31
@@ -94,6 +108,19 @@ def test_failure_history_at_threshold_idles_when_no_fallback_exists(tmp_path: Pa
             {"request_id": "REQ-1", "issue_number": 32, "error_type": "external_capacity", "model": "gpt-5.4-mini", "timestamp": "2026-01-01T00:00:00Z", "retry_count": 3},
         ]),
         encoding="utf-8",
+    )
+    write_failure_rules(
+        tmp_path,
+        [
+            {
+                "issue_number": 32,
+                "error_type": "external_capacity",
+                "action": "temporary_skip",
+                "threshold": 3,
+                "cooldown_seconds": 300,
+                "last_failed_at": "2026-01-01T00:00:00Z",
+            }
+        ],
     )
     supervisor = LocalSupervisor(tmp_path)
     result = supervisor.run(execution_flag=False)

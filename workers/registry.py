@@ -4,7 +4,10 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
-import yaml
+try:
+    import yaml  # type: ignore[import-not-found]
+except ModuleNotFoundError:  # pragma: no cover - exercised in minimal envs
+    yaml = None
 
 
 @dataclass(frozen=True)
@@ -38,7 +41,11 @@ def load_worker_registry(path: str | Path = "workers/registry.yaml") -> WorkerRe
     registry_path = Path(path)
     if not registry_path.exists():
         raise FileNotFoundError(f"Worker registry file not found: {registry_path}")
-    data = yaml.safe_load(registry_path.read_text(encoding="utf-8")) or {}
+    raw_text = registry_path.read_text(encoding="utf-8")
+    if yaml is not None:
+        data = yaml.safe_load(raw_text) or {}
+    else:
+        data = _parse_registry_yaml(raw_text)
     workers = data.get("workers", {})
     entries: dict[str, WorkerRegistryEntry] = {}
     for name, entry in workers.items():
@@ -52,6 +59,47 @@ def load_worker_registry(path: str | Path = "workers/registry.yaml") -> WorkerRe
         )
     _validate_registry(entries)
     return WorkerRegistry(workers=entries)
+
+
+def _parse_registry_yaml(raw_text: str) -> dict[str, Any]:
+    """Parse the narrow registry YAML shape without external dependencies."""
+    workers: dict[str, dict[str, list[str] | str]] = {}
+    current_worker: str | None = None
+    current_key: str | None = None
+
+    for line in raw_text.splitlines():
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#"):
+            continue
+        if stripped == "workers:":
+            continue
+        indent = len(line) - len(line.lstrip(" "))
+        if indent == 2 and stripped.endswith(":"):
+            current_worker = stripped[:-1]
+            workers[current_worker] = {}
+            current_key = None
+            continue
+        if indent == 4 and stripped.endswith(":"):
+            if current_worker is None:
+                raise WorkerRegistryError("Invalid registry structure")
+            current_key = stripped[:-1]
+            workers[current_worker][current_key] = []
+            continue
+        if indent == 6 and stripped.startswith("- "):
+            if current_worker is None or current_key is None:
+                raise WorkerRegistryError("Invalid registry list entry")
+            workers[current_worker][current_key].append(stripped[2:])  # type: ignore[union-attr]
+            continue
+        if indent == 4 and ":" in stripped:
+            if current_worker is None:
+                raise WorkerRegistryError("Invalid registry scalar entry")
+            key, value = stripped.split(":", 1)
+            workers[current_worker][key.strip()] = value.strip()
+            current_key = None
+            continue
+        raise WorkerRegistryError(f"Unsupported registry line: {line!r}")
+
+    return {"workers": workers}
 
 
 def _validate_registry(entries: dict[str, WorkerRegistryEntry]) -> None:

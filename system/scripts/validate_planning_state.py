@@ -17,16 +17,16 @@ def main() -> int:
     required = [
         ROOT / "contracts" / "PLANNING_STATE_CONTRACT.md",
         ROOT / "docs" / "current" / "PLANNING_OS.md",
-        ROOT / "runtime" / "planning" / "latest.json",
-        ROOT / "runtime" / "planning" / "latest.md",
-        ROOT / "orchestrator" / "planning_state_builder.py",
-        ROOT / "tests" / "test_planning_state_builder.py",
+        ROOT / "system" / "runtime" / "planning" / "latest.json",
+        ROOT / "system" / "runtime" / "planning" / "latest.md",
+        ROOT / "system" / "orchestrator" / "planning_state_builder.py",
+        ROOT / "system" / "tests" / "test_planning_state_builder.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required if not path.exists()]
     if missing:
         print("FAIL: missing planning state files:", ", ".join(missing))
         return 1
-    payload = json.loads((ROOT / "runtime" / "planning" / "latest.json").read_text(encoding="utf-8"))
+    payload = json.loads((ROOT / "system" / "runtime" / "planning" / "latest.json").read_text(encoding="utf-8"))
     for key in ["mission", "long_term_goal", "current_phase", "current_objective", "current_scope", "current_pack", "current_ep", "wbs", "approved_next_action", "parking_lot", "refactoring_priorities", "blocked_items", "approval_required", "source_artifacts"]:
         if key not in payload:
             print(f"FAIL: missing field {key}")

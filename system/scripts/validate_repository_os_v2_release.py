@@ -20,15 +20,15 @@ def main() -> int:
     required = [
         ROOT / "docs" / "current" / "REPOSITORY_OS_V2_RELEASE.md",
         ROOT / "docs" / "current" / "REPOSITORY_OS_V2_ARCHITECTURE.md",
-        ROOT / "runtime" / "releases" / "repository_os_v2.json",
-        ROOT / "runtime" / "releases" / "repository_os_v2.md",
-        ROOT / "tests" / "test_repository_os_v2_release.py",
+        ROOT / "system" / "runtime" / "releases" / "repository_os_v2.json",
+        ROOT / "system" / "runtime" / "releases" / "repository_os_v2.md",
+        ROOT / "system" / "tests" / "test_repository_os_v2_release.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required if not path.exists()]
     if missing:
         print("FAIL: missing repository os v2 release files:", ", ".join(missing))
         return 1
-    payload = json.loads((ROOT / "runtime" / "releases" / "repository_os_v2.json").read_text(encoding="utf-8"))
+    payload = json.loads((ROOT / "system" / "runtime" / "releases" / "repository_os_v2.json").read_text(encoding="utf-8"))
     if payload.get("status") != "frozen":
         print("FAIL: release is not frozen")
         return 1

@@ -24,7 +24,8 @@ def load_failures(base_path: Path | str | None = None) -> list[dict]:
 
 
 def update_retry_count(issue_number: int, failures: list[dict] | None = None) -> int:
-    failures = failures or load_failures()
+    if failures is None:
+        failures = load_failures()
     consecutive = 0
     for entry in reversed(failures):
         if entry.get("issue_number") == issue_number:
@@ -46,6 +47,7 @@ def append_failure(entry: dict, base_path: Path | str | None = None) -> dict:
         "model": entry.get("model", ""),
         "timestamp": entry.get("timestamp") or datetime.now(timezone.utc).isoformat(),
         "retry_count": retry_count,
+        "last_failed_at": entry.get("last_failed_at") or datetime.now(timezone.utc).isoformat(),
     }
     failures.append(payload)
     path.write_text(json.dumps(failures, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")

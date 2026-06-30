@@ -105,6 +105,36 @@ def test_local_supervisor_selects_open_product_issue(tmp_path: Path) -> None:
     assert result.next_eligible_work_item == "Issue #30: PRODUCT-0001 Launch Checklist"
 
 
+def test_local_supervisor_accepts_uppercase_open_state(tmp_path: Path) -> None:
+    (tmp_path / "runtime" / "planning").mkdir(parents=True)
+    (tmp_path / "runtime" / "planning" / "latest.json").write_text(json.dumps({"mission":"Build","current_objective":"Publish","current_pack":"PACK-0011","current_ep":"EP-0187","approved_next_action":"draft","parking_lot":[],"refactoring_priorities":[],"blocked_items":[],"approval_required":False}), encoding="utf-8")
+    (tmp_path / "runtime" / "repository_state").mkdir(parents=True)
+    (tmp_path / "runtime" / "repository_state" / "latest.json").write_text(json.dumps({"repository_health":"healthy","approval_required":False,"next_action":"draft"}), encoding="utf-8")
+    (tmp_path / "runtime" / "work_planner").mkdir(parents=True)
+    (tmp_path / "runtime" / "work_planner" / "latest.json").write_text(json.dumps({"candidate_items":[]}), encoding="utf-8")
+    (tmp_path / "runtime" / "product_acceptance").mkdir(parents=True)
+    supervisor = LocalSupervisor(tmp_path)
+    supervisor._load_open_issues = lambda: [{"number": 30, "title": "PRODUCT-0001 Launch Checklist", "state": "OPEN"}]
+    result = supervisor.run(execution_flag=False)
+    assert result.selected_issue_number == 30
+    assert result.supervisor_state == "ready"
+
+
+def test_local_supervisor_rejects_closed_states(tmp_path: Path) -> None:
+    (tmp_path / "runtime" / "planning").mkdir(parents=True)
+    (tmp_path / "runtime" / "planning" / "latest.json").write_text(json.dumps({"mission":"Build","current_objective":"Publish","current_pack":"PACK-0011","current_ep":"EP-0187","approved_next_action":"draft","parking_lot":[],"refactoring_priorities":[],"blocked_items":[],"approval_required":False}), encoding="utf-8")
+    (tmp_path / "runtime" / "repository_state").mkdir(parents=True)
+    (tmp_path / "runtime" / "repository_state" / "latest.json").write_text(json.dumps({"repository_health":"healthy","approval_required":False,"next_action":"draft"}), encoding="utf-8")
+    (tmp_path / "runtime" / "work_planner").mkdir(parents=True)
+    (tmp_path / "runtime" / "work_planner" / "latest.json").write_text(json.dumps({"candidate_items":[]}), encoding="utf-8")
+    (tmp_path / "runtime" / "product_acceptance").mkdir(parents=True)
+    supervisor = LocalSupervisor(tmp_path)
+    supervisor._load_open_issues = lambda: [{"number": 30, "title": "PRODUCT-0001 Launch Checklist", "state": "CLOSED"}]
+    result = supervisor.run(execution_flag=False)
+    assert result.supervisor_state == "idle"
+    assert result.selected_issue_number is None
+
+
 def test_local_supervisor_selects_open_content_issue_when_no_product(tmp_path: Path) -> None:
     (tmp_path / "runtime" / "planning").mkdir(parents=True)
     (tmp_path / "runtime" / "planning" / "latest.json").write_text(json.dumps({"mission":"Build","current_objective":"Publish","current_pack":"PACK-0011","current_ep":"EP-0187","approved_next_action":"draft","parking_lot":[],"refactoring_priorities":[],"blocked_items":[],"approval_required":False}), encoding="utf-8")

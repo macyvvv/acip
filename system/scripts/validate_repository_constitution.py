@@ -17,15 +17,15 @@ def main() -> int:
     required = [
         ROOT / "docs" / "current" / "REPOSITORY_CONSTITUTION.md",
         ROOT / "contracts" / "REPOSITORY_CONSTITUTION_CONTRACT.md",
-        ROOT / "runtime" / "repository_constitution" / "constitution.json",
-        ROOT / "tests" / "test_repository_constitution.py",
+        ROOT / "system" / "runtime" / "repository_constitution" / "constitution.json",
+        ROOT / "system" / "tests" / "test_repository_constitution.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required if not path.exists()]
     if missing:
         print("FAIL: missing repository constitution files:", ", ".join(missing))
         return 1
 
-    payload = json.loads((ROOT / "runtime" / "repository_constitution" / "constitution.json").read_text(encoding="utf-8"))
+    payload = json.loads((ROOT / "system" / "runtime" / "repository_constitution" / "constitution.json").read_text(encoding="utf-8"))
     if payload.get("status") != "stable":
         print("FAIL: invalid constitution status")
         return 1

@@ -21,14 +21,14 @@ def main() -> int:
         ROOT / "docs" / "current" / "FIRST_PRODUCT_ROADMAP.md",
         ROOT / "docs" / "current" / "FIRST_PRODUCT_WBS.md",
         ROOT / "docs" / "current" / "BACKGROUND_SYSTEM_ARCHITECTURE.md",
-        ROOT / "runtime" / "planning" / "first_product.json",
-        ROOT / "tests" / "test_first_product.py",
+        ROOT / "system" / "runtime" / "planning" / "first_product.json",
+        ROOT / "system" / "tests" / "test_first_product.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required if not path.exists()]
     if missing:
         print("FAIL: missing first product files:", ", ".join(missing))
         return 1
-    payload = json.loads((ROOT / "runtime" / "planning" / "first_product.json").read_text(encoding="utf-8"))
+    payload = json.loads((ROOT / "system" / "runtime" / "planning" / "first_product.json").read_text(encoding="utf-8"))
     if payload.get("objective") != "Use Repository OS v2 as the operating system for the first production outcome.":
         print("FAIL: unexpected objective")
         return 1

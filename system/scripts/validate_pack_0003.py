@@ -19,7 +19,7 @@ def main() -> int:
     required_paths = [
         ROOT / "docs" / "current" / "ISSUE_PARENT_CHILD_EXECUTION.md",
         ROOT / "docs" / "current" / "PACK_0003_EXECUTION_RECORD.md",
-        ROOT / "runtime" / "handoff" / "completion" / "latest.json",
+        ROOT / "system" / "runtime" / "handoff" / "completion" / "latest.json",
         ROOT / "packs" / "PACK-0003-generated-artifact-ssot" / "README.md",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
