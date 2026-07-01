@@ -41,16 +41,15 @@ def build_issue_creation_drafts(base_path: Path | str | None = None) -> list[dic
                 "ready_for_manual_github_issue_creation": True,
             }
         )
+    runtime_dir = _runtime_path(base_path, "research")
+    runtime_dir.mkdir(parents=True, exist_ok=True)
+    (runtime_dir / "issue_creation_drafts.json").write_text(json.dumps(issue_creation_drafts, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    (runtime_dir / "issue_creation_drafts.md").write_text(_to_markdown(issue_creation_drafts), encoding="utf-8")
     return issue_creation_drafts
 
 
 def persist_issue_creation_drafts(base_path: Path | str | None = None) -> list[dict[str, Any]]:
-    drafts = build_issue_creation_drafts(base_path)
-    runtime_dir = _runtime_path(base_path, "research")
-    runtime_dir.mkdir(parents=True, exist_ok=True)
-    (runtime_dir / "issue_creation_drafts.json").write_text(json.dumps(drafts, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    (runtime_dir / "issue_creation_drafts.md").write_text(_to_markdown(drafts), encoding="utf-8")
-    return drafts
+    return build_issue_creation_drafts(base_path)
 
 
 def _to_markdown(drafts: list[dict[str, Any]]) -> str:

@@ -1,0 +1,14 @@
+{
+  "issue_number": 34,
+  "issue_title": "PRODUCT-0003: Kabukicho Map Data Expansion",
+  "commit_sha": "deterministic",
+  "completed_at": "deterministic",
+  "deliverables": [
+    "app/products/kabukicho_survival_map_mvp/README.md",
+    "app/products/kabukicho_survival_map_mvp/requirements.md",
+    "app/products/kabukicho_survival_map_mvp/architecture.md",
+    "app/products/kabukicho_survival_map_mvp/release_notes.md",
+    "app/products/kabukicho_survival_map_mvp/src/kabukicho_survival_map_mvp.py",
+    "app/products/kabukicho_survival_map_mvp/data/kabukicho_map_places.json"
+  ]
+}

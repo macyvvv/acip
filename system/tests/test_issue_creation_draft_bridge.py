@@ -48,6 +48,8 @@ def test_approved_entry_appears_in_issue_creation_drafts(tmp_path: Path) -> None
     assert len(drafts) == 1
     assert drafts[0]["draft_id"] == "DRAFT-OPP-KABUKICHO-001"
     assert drafts[0]["ready_for_manual_github_issue_creation"] is True
+    assert (tmp_path / "system" / "runtime" / "research" / "issue_creation_drafts.json").exists()
+    assert (tmp_path / "system" / "runtime" / "research" / "issue_creation_drafts.md").exists()
 
 
 def test_non_approved_entries_do_not_appear(tmp_path: Path) -> None:
@@ -61,8 +63,12 @@ def test_issue_creation_output_is_deterministic(tmp_path: Path) -> None:
     first = persist_issue_creation_drafts(tmp_path)
     second = persist_issue_creation_drafts(tmp_path)
     assert first == second
-    assert (tmp_path / "system" / "runtime" / "research" / "issue_creation_drafts.json").exists()
-    assert (tmp_path / "system" / "runtime" / "research" / "issue_creation_drafts.md").exists()
+    json_path = tmp_path / "system" / "runtime" / "research" / "issue_creation_drafts.json"
+    md_path = tmp_path / "system" / "runtime" / "research" / "issue_creation_drafts.md"
+    assert json_path.exists()
+    assert md_path.exists()
+    assert json_path.read_text(encoding="utf-8") == json_path.read_text(encoding="utf-8")
+    assert md_path.read_text(encoding="utf-8") == md_path.read_text(encoding="utf-8")
 
 
 def test_source_attribution_is_preserved(tmp_path: Path) -> None:
