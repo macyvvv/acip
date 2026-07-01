@@ -1,0 +1,15 @@
+{
+  "request_id": "REQ-RESEARCH-0001",
+  "topic": "Kabukicho Survival Map expansion research",
+  "target_user": "night-time visitors in Kabukicho who need smoking areas, toilets, and short-stay navigation support",
+  "region": "Kabukicho, Shinjuku, Tokyo",
+  "product_scope": "app/products/kabukicho_survival_map_mvp",
+  "research_goal": "identify the highest-value next expansion opportunities for usefulness, discoverability, and distribution",
+  "constraints": [
+    "no backend",
+    "no automatic publishing",
+    "no external mutation",
+    "repository-native artifacts only"
+  ],
+  "output_format": "canonical_json_and_markdown"
+}

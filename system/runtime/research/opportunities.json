@@ -1,0 +1,15 @@
+[
+  {
+    "opportunity_id": "OPP-KABUKICHO-001",
+    "title": "Kabukicho Survival Map MVP expansion research",
+    "problem": "Users need faster decisions about local navigation and safety-relevant context.",
+    "target_user": "night-time visitors in Kabukicho who need smoking areas, toilets, and short-stay navigation support",
+    "expected_value": "Higher utility and better content targeting for local search intent.",
+    "evidence": [
+      "Kabukicho is a location-specific product scope.",
+      "Higher intent, lower-friction content will outperform generic listings."
+    ],
+    "confidence": "medium",
+    "recommended_next_action": "Draft a research-backed issue for search intent and user segment validation."
+  }
+]

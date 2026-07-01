@@ -1,0 +1,41 @@
+{
+  "request_id": "REQ-RESEARCH-0001",
+  "topic": "Kabukicho Survival Map expansion research",
+  "facts": [
+    "Repository-native research artifacts are deterministic.",
+    "Kabukicho is a location-specific product scope.",
+    "Map usefulness depends on user intent, local context, and actionable navigation data.",
+    "Repository health: healthy."
+  ],
+  "assumptions": [
+    "Research questions will be handed off before implementation.",
+    "Users likely need local decision support rather than a generic map.",
+    "Current objective context: Constitution v3 Freeze."
+  ],
+  "hypotheses": [
+    "Higher intent, lower-friction content will outperform generic listings.",
+    "Visitors and workers need concise route and safety cues.",
+    "SEO opportunities likely cluster around intent-based local search queries."
+  ],
+  "recommendations": [
+    "Prioritize validated user pain points over feature expansion.",
+    "Interview local visitors and repeat workers.",
+    "Test search intent clusters before expanding map data.",
+    "Compare nearby alternatives to isolate differentiation."
+  ],
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-KABUKICHO-001",
+      "title": "Kabukicho Survival Map MVP expansion research",
+      "problem": "Users need faster decisions about local navigation and safety-relevant context.",
+      "target_user": "night-time visitors in Kabukicho who need smoking areas, toilets, and short-stay navigation support",
+      "expected_value": "Higher utility and better content targeting for local search intent.",
+      "evidence": [
+        "Kabukicho is a location-specific product scope.",
+        "Higher intent, lower-friction content will outperform generic listings."
+      ],
+      "confidence": "medium",
+      "recommended_next_action": "Draft a research-backed issue for search intent and user segment validation."
+    }
+  ]
+}

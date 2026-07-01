@@ -1,0 +1,14 @@
+{
+  "request_id": "REQ-RESEARCH-0001",
+  "topic": "Kabukicho Survival Map MVP / expansion research",
+  "target_user": "Visitors, repeat workers, and nearby decision-makers",
+  "region": "Kabukicho",
+  "product_scope": "Kabukicho Survival Map MVP",
+  "research_goal": "Identify validated opportunities for content, SEO, and map data expansion",
+  "constraints": [
+    "Deterministic output",
+    "No external platform mutation",
+    "No automatic issue creation"
+  ],
+  "output_format": "facts_assumptions_hypotheses_recommendations_opportunities"
+}

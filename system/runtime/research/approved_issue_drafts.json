@@ -1,0 +1,19 @@
+[
+  {
+    "draft_id": "DRAFT-OPP-KABUKICHO-001",
+    "source_opportunity_id": "OPP-KABUKICHO-001",
+    "title": "Kabukicho Survival Map MVP expansion: validate next-value POI and distribution opportunities",
+    "issue_body_draft": "# Kabukicho Survival Map MVP expansion: validate next-value POI and distribution opportunities\n\nObjective: Convert research findings into an incremental implementation issue for the Kabukicho Survival Map MVP.\n\n## Facts\n- Repository-native research artifacts are deterministic.\n- Kabukicho is a location-specific product scope.\n- Map usefulness depends on user intent, local context, and actionable navigation data.\n\n## Assumptions\n- Night-time visitors need fast, local decision support.\n- The current product should remain incremental relative to app/products/kabukicho_survival_map_mvp.\n- No backend or external mutation is allowed in this phase.\n\n## Recommendations\n- Incremental only.\n- Repository-native artifacts only.\n- No automatic issue creation.\n- No architecture rewrite.\n- No external mutation.\n",
+    "target_product_scope": "app/products/kabukicho_survival_map_mvp",
+    "dependencies": [
+      "system/runtime/research/request_kabukicho_expansion.json",
+      "system/runtime/research/latest.json",
+      "system/runtime/research/opportunities.json",
+      "system/runtime/research/insights.json",
+      "app/products/kabukicho_survival_map_mvp"
+    ],
+    "validation_readiness": "ready",
+    "source": "research_issue_draft_registry",
+    "approved_from_review_gate": true
+  }
+]
