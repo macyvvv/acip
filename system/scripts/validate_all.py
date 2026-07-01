@@ -18,6 +18,7 @@ from system.orchestrator.validation_orchestrator import ValidationOrchestrator
 
 
 def main() -> int:
+    print("Validation policy: docs/current/VALIDATION_COMMAND_POLICY.md")
     orchestrator = ValidationOrchestrator(ROOT)
     result = orchestrator.run()
     for step in result.validation_steps:
