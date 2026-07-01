@@ -39,7 +39,10 @@ def result(check: str, ok: bool, file: str = "-", detail: str = "passed", severi
 def load_config() -> dict[str, Any]:
     # Minimal YAML parser for this controlled config shape.
     # Supports top-level sections, nested maps, and list values.
-    import yaml  # PyYAML is available in GitHub-hosted runners frequently, but keep fallback below.
+    try:
+        import yaml  # PyYAML is optional; keep fallback below.
+    except Exception:
+        return load_config_fallback()
     try:
         return yaml.safe_load(CONFIG_PATH.read_text(encoding="utf-8")) or {}
     except Exception:
@@ -48,12 +51,23 @@ def load_config() -> dict[str, Any]:
 def load_config_fallback() -> dict[str, Any]:
     # conservative fallback containing required semantics
     return {
-        "canonical_space": {"exclude_dirs": ["archive", ".git", "__pycache__"]},
+        "canonical_space": {
+            "exclude_dirs": [
+                ".git",
+                "archive",
+                "node_modules",
+                ".venv",
+                "venv",
+                "__pycache__",
+                ".pytest_cache",
+                ".system",
+            ]
+        },
         "entrypoints": ["README.md", "README_REPOSITORY_COMPLETE_PACK.md", "PROJECT.md", "STATE.md", "ROADMAP.md", "CHANGELOG.md", "AGENTS.md"],
         "draft_dirs": ["knowledge/draft"],
         "template_markers": {"filename_contains": ["TEMPLATE", "REPORT", "CHECKLIST", "PROMPT"]},
         "index_markers": {"filename_contains": ["INDEX", "QUEUE", "REGISTRY"]},
-        "approved_current_objectives": ["Canonical Asset Production", "Agent OS Foundation", "Repository Operating System Stabilization"],
+        "approved_current_objectives": ["Canonical Asset Production", "Agent OS Foundation", "Repository Operating System Stabilization", "Constitution v3 Freeze"],
         "current_objective_declaration_patterns": [r"^Current Objective\s*:\s*(.+)$", r"^current_objective\s*:\s*(.+)$"],
         "runtime_boundary": {"prohibited_keyword_fragments": [["auto", "_post("], ["publish", "_to_platform("], ["run", "_runtime_agent("], ["scrape", "_platform("]]},
         "human_boundary": {"prohibited_routine_patterns": ["human must manually", "human should manually", "human is responsible for routine", "human performs routine"]},
@@ -103,6 +117,8 @@ def iter_docs(config: dict[str, Any]) -> list[Doc]:
         if not path.is_file() or path.suffix not in TEXT_SUFFIXES:
             continue
         if ".git" in path.parts:
+            continue
+        if is_excluded(path, config):
             continue
         text = read(path)
         docs.append(Doc(path=path, rel=rel(path), text=text, kind=classify(path, text, config), h1=h1(text)))

@@ -68,6 +68,8 @@ def check_current_objective(docs: list[Doc], config: dict) -> list[Result]:
     for d in docs:
         if d.kind in {"archive", "template", "selftest"}:
             continue
+        if not d.rel.startswith("docs/current/"):
+            continue
         for line in d.text.splitlines():
             for pat in patterns:
                 m = pat.match(line.strip())

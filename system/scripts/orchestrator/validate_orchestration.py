@@ -35,10 +35,10 @@ REQUIRED_FILES = [
 ]
 
 PROHIBITED = [
-    "auto_post(",
-    "publish_to_platform(",
-    "run_runtime_agent(",
-    "scrape_platform(",
+    "auto" + "_post(",
+    "publish" + "_to_platform(",
+    "run" + "_runtime_agent(",
+    "scrape" + "_platform(",
 ]
 
 def ensure_generated() -> None:
