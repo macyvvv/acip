@@ -2,19 +2,31 @@
 from __future__ import annotations
 
 import sys
+import importlib.util
 from pathlib import Path
 
 def _resolve_repo_root() -> Path:
     current = Path(__file__).resolve()
+    matches: list[Path] = []
     for candidate in current.parents:
         if (candidate / ".git").exists() or (candidate / "pyproject.toml").exists() or (candidate / "README.md").exists():
-            return candidate
+            matches.append(candidate)
+    if matches:
+        return matches[-1]
     raise RuntimeError(f"Unable to locate repository root from {__file__}")
 
 ROOT = _resolve_repo_root()
 sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "system"))
 
-from system.orchestrator.validation_orchestrator import ValidationOrchestrator
+_VALIDATION_ORCHESTRATOR_PATH = ROOT / "system" / "orchestrator" / "validation_orchestrator.py"
+_spec = importlib.util.spec_from_file_location("validation_orchestrator", _VALIDATION_ORCHESTRATOR_PATH)
+if _spec is None or _spec.loader is None:
+    raise RuntimeError(f"Unable to load validation orchestrator from {_VALIDATION_ORCHESTRATOR_PATH}")
+_module = importlib.util.module_from_spec(_spec)
+sys.modules[_spec.name] = _module
+_spec.loader.exec_module(_module)
+ValidationOrchestrator = _module.ValidationOrchestrator
 
 
 def main() -> int:
