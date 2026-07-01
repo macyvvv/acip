@@ -1,0 +1,14 @@
+{
+  "issue_number": 36,
+  "issue_title": "PRODUCT-0004: Kabukicho Survival Map MVP expansion: validate next-value POI and distribution opportunities",
+  "commit_sha": "deterministic",
+  "completed_at": "deterministic",
+  "deliverables": [
+    "system/runtime/research/issue_draft_opp_kabukicho_001.json",
+    "system/runtime/research/issue_draft_opp_kabukicho_001.md",
+    "system/runtime/research/issue_draft_registry.json",
+    "system/runtime/research/issue_draft_registry.md",
+    "system/runtime/research/approved_issue_drafts.json",
+    "system/runtime/research/approved_issue_drafts.md"
+  ]
+}
