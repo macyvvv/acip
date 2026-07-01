@@ -2,26 +2,61 @@
   {
     "name": "Kabukicho Information Point",
     "category": "navigation",
+    "availability_type": "public-facing",
+    "hours_note": "Use during active business hours for orientation.",
+    "cost_note": "Free to use as a reference point.",
+    "gray_zone_note": "Unofficial meetup guidance may vary by venue.",
+    "caution_note": "Do not assume staff will provide navigation help.",
+    "source_note": "Repository-local product curation.",
+    "last_verified_note": "Needs periodic human review.",
     "description": "A stable meetup and orientation point for first-time visitors."
   },
   {
     "name": "24h Convenience Cluster",
     "category": "essentials",
+    "availability_type": "time-sensitive",
+    "hours_note": "Many locations operate late or 24h, but individual hours may differ.",
+    "cost_note": "Purchase-based access for goods.",
+    "gray_zone_note": "Availability can change with store policy or local conditions.",
+    "caution_note": "Verify store hours before relying on it overnight.",
+    "source_note": "Repository-local product curation.",
+    "last_verified_note": "Needs periodic human review.",
     "description": "Late-night supplies, water, and quick restock options."
   },
   {
     "name": "Well-Lit Main Route",
     "category": "safety",
+    "availability_type": "always-available",
+    "hours_note": "Preferred route after dark when the area is active.",
+    "cost_note": "Free to use.",
+    "gray_zone_note": "Lighting and crowd conditions can change by time of night.",
+    "caution_note": "Stay aware of local crowd density and closures.",
+    "source_note": "Repository-local product curation.",
+    "last_verified_note": "Needs periodic human review.",
     "description": "Primary walking corridor with lower navigation friction after dark."
   },
   {
     "name": "Quiet Exit Lane",
     "category": "escape",
+    "availability_type": "conditional",
+    "hours_note": "Best used when nearby streets are open and passable.",
+    "cost_note": "Free to use.",
+    "gray_zone_note": "May be less practical during peak nightlife congestion.",
+    "caution_note": "Confirm that the route remains open and safe to use.",
+    "source_note": "Repository-local product curation.",
+    "last_verified_note": "Needs periodic human review.",
     "description": "A lower-noise path for leaving crowded blocks quickly."
   },
   {
     "name": "Community Note Anchor",
     "category": "ugc",
+    "availability_type": "community-contributed",
+    "hours_note": "Depends on moderation and contribution availability.",
+    "cost_note": "Free to read; community updates are optional.",
+    "gray_zone_note": "User tips are informative but not authoritative.",
+    "caution_note": "Treat community notes as unconfirmed until reviewed.",
+    "source_note": "Repository-local product curation.",
+    "last_verified_note": "Needs periodic human review.",
     "description": "A reviewable point for verified user updates and local tips."
   }
 ]

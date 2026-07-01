@@ -6,6 +6,12 @@
 - `data/kabukicho_map_places.json`: 拡張された map data を保持する
 - `tests/test_kabukicho_survival_map_mvp.py`: 挙動を検証する
 
+## Presentation Rules
+
+- Confirmed information, caution, and gray-zone notes are rendered as separate blocks.
+- The primary action is category selection followed by POI detail inspection.
+- Uncertain information is labeled explicitly and not mixed with confirmed facts.
+
 ## Data Flow
 
 Repository data artifact -> product brief generator -> markdown output

@@ -8,6 +8,8 @@
 - UGC の扱いを明示すること
 - 拡張された map data を deterministic に列挙できること
 - 追加データは repo 内 artifact からのみ読み込むこと
+- POI detail は confirmed / caution / gray-zone を分離すること
+- smartphone first の読みやすさを維持すること
 
 ## Non-Functional Requirements
 

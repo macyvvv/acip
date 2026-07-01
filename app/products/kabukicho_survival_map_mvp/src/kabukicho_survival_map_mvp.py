@@ -12,10 +12,41 @@ def load_map_places() -> list[dict[str, str]]:
 
 
 def render_places_section(places: list[dict[str, str]]) -> list[str]:
-    lines = ["## Expanded Map Data", ""]
+    lines = [
+        "## Expanded Map Data",
+        "",
+        "### Primary action",
+        "Use the category filters first, then open a POI detail block for quick confirmation.",
+        "",
+        "### Mobile guidance",
+        "- One-hand use: start with the first visible filter or the top result.",
+        "- Keep scanning short: confirm the summary, then decide whether to move.",
+        "- Reduce noise: details are split into confirmed, caution, and gray-zone sections.",
+        "",
+    ]
     for place in places:
         lines.append(
-            f"- {place['name']} ({place['category']}): {place['description']}"
+            "\n".join(
+                [
+                    f"### {place['name']}",
+                    f"- Category: {place.get('category', 'unknown')}",
+                    f"- Availability: {place.get('availability_type', 'unknown')}",
+                    f"- Hours note: {place.get('hours_note', 'n/a')}",
+                    f"- Cost note: {place.get('cost_note', 'n/a')}",
+                    "",
+                    "#### Confirmed information",
+                    f"- {place.get('description', '')}",
+                    f"- Source note: {place.get('source_note', 'n/a')}",
+                    f"- Last verified: {place.get('last_verified_note', 'n/a')}",
+                    "",
+                    "#### Caution / uncertainty",
+                    f"- {place.get('caution_note', 'n/a')}",
+                    "",
+                    "#### Gray-zone notes",
+                    f"- {place.get('gray_zone_note', 'n/a')}",
+                    "",
+                ]
+            )
         )
     lines.append("")
     return lines
@@ -35,6 +66,11 @@ def build_product_brief() -> str:
             "",
             "## Value Proposition",
             "A concise map MVP that helps users identify useful places, avoid friction, and contribute verified updates.",
+            "",
+            "## Safety and Disclaimer",
+            "- Confirm details before relying on any uncertain or unofficial information.",
+            "- Gray-zone notes are advisory, not authoritative.",
+            "- Community or venue-provided updates should be treated as reviewable input.",
             "",
             "## MVP Scope",
             "- Searchable place list",
