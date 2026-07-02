@@ -12,7 +12,7 @@ def _resolve_repo_root() -> Path:
     raise RuntimeError(f"Unable to locate repository root from {__file__}")
 
 ROOT = _resolve_repo_root()
-PLAN = ROOT / "orchestrator" / "execution_plan.json"
+PLAN = ROOT / "system" / "orchestrator" / "execution_plan.json"
 OUT = ROOT / "review" / "REVIEW_GATE_SUMMARY.md"
 
 def main() -> int:
