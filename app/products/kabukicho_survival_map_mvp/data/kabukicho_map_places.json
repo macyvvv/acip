@@ -58,5 +58,41 @@
     "source_note": "Repository-local product curation.",
     "last_verified_note": "Needs periodic human review.",
     "description": "A reviewable point for verified user updates and local tips."
+  },
+  {
+    "name": "Late-Night Toilet Checkpoint",
+    "category": "essentials",
+    "availability_type": "conditional",
+    "hours_note": "Use only when the venue or facility is confirmed open.",
+    "cost_note": "May require a purchase or facility access.",
+    "gray_zone_note": "Access can vary by building policy and time of night.",
+    "caution_note": "Confirm access rules before relying on this as a route decision.",
+    "source_note": "Repository-local product curation.",
+    "last_verified_note": "Needs periodic human review.",
+    "description": "A practical reminder point for nearby toilet access decisions."
+  },
+  {
+    "name": "Smoking Area Checkpoint",
+    "category": "essentials",
+    "availability_type": "conditional",
+    "hours_note": "Availability depends on venue policy and time of day.",
+    "cost_note": "Usually free if publicly accessible; venue rules apply.",
+    "gray_zone_note": "Smoking rules may change with building policy or local regulation.",
+    "caution_note": "Do not assume indoor smoking is allowed without confirmation.",
+    "source_note": "Repository-local product curation.",
+    "last_verified_note": "Needs periodic human review.",
+    "description": "A decision point for checking where smoking is actually permitted."
+  },
+  {
+    "name": "Short-Stay Rest Spot",
+    "category": "navigation",
+    "availability_type": "time-sensitive",
+    "hours_note": "Most useful during low-congestion windows.",
+    "cost_note": "Potentially free if it is a public resting point; otherwise follow venue rules.",
+    "gray_zone_note": "Rest practicality depends on crowding and nearby access conditions.",
+    "caution_note": "Use as a short pause point, not a guaranteed rest area.",
+    "source_note": "Repository-local product curation.",
+    "last_verified_note": "Needs periodic human review.",
+    "description": "A low-friction checkpoint for short breaks and regrouping."
   }
 ]

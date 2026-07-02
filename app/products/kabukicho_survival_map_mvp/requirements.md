@@ -10,6 +10,8 @@
 - 追加データは repo 内 artifact からのみ読み込むこと
 - POI detail は confirmed / caution / gray-zone を分離すること
 - smartphone first の読みやすさを維持すること
+- POI data expansion は incremental であり、実用情報を優先すること
+- category summary が mobile-first な初動判断を助けること
 
 ## Non-Functional Requirements
 

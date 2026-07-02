@@ -10,6 +10,7 @@
 
 - Confirmed information, caution, and gray-zone notes are rendered as separate blocks.
 - The primary action is category selection followed by POI detail inspection.
+- Category summary is rendered before individual POI blocks to reduce first-screen cognitive load.
 - Uncertain information is labeled explicitly and not mixed with confirmed facts.
 
 ## Data Flow
