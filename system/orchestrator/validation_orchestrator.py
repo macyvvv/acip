@@ -71,7 +71,7 @@ class ValidationOrchestrator:
             if not result.success:
                 return ValidationOrchestrationResult(validation_steps=steps, pytest_result=None, overall_success=False)
 
-        pytest_result = self._run_command([sys.executable, "-m", "pytest", "-q"])
+        pytest_result = self._run_command(self._resolve_pytest_command())
         steps.append(pytest_result)
         overall_success = pytest_result.success and all(step.success for step in steps)
         return ValidationOrchestrationResult(validation_steps=steps[:-1], pytest_result=pytest_result, overall_success=overall_success)
@@ -130,7 +130,7 @@ class ValidationOrchestrator:
                     "# VALIDATION_STATE",
                     "",
                     f"last_validation_status: {'success' if result.overall_success else 'failure'}",
-                    f"last_validation_command: python system/scripts/validate_all.py",
+                    f"last_validation_command: python3 system/scripts/validate_all.py",
                     f"last_validation_report_json: system/runtime/validation/validation_report.json",
                     f"last_validation_report_md: system/runtime/validation/VALIDATION_REPORT.md",
                     f"validation_owner: {result.validation_owner}",
@@ -158,3 +158,26 @@ class ValidationOrchestrator:
             success=completed.returncode == 0,
             output=output,
         )
+
+    def _resolve_pytest_command(self) -> list[str]:
+        if self._interpreter_has_pytest(sys.executable):
+            return [sys.executable, "-m", "pytest", "-q"]
+
+        known_good = Path("/Library/Developer/CommandLineTools/usr/bin/python3")
+        if known_good.exists():
+            return [str(known_good), "-m", "pytest", "-q"]
+
+        return [sys.executable, "-m", "pytest", "-q"]
+
+    def _interpreter_has_pytest(self, interpreter: str) -> bool:
+        probe = subprocess.run(
+            [
+                interpreter,
+                "-c",
+                "import importlib.util, sys; sys.exit(0 if importlib.util.find_spec('pytest') else 1)",
+            ],
+            cwd=self.root,
+            capture_output=True,
+            text=True,
+        )
+        return probe.returncode == 0

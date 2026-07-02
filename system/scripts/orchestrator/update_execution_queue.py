@@ -14,12 +14,12 @@ def _resolve_repo_root() -> Path:
     raise RuntimeError(f"Unable to locate repository root from {__file__}")
 
 ROOT = _resolve_repo_root()
-PLAN = ROOT / "orchestrator" / "execution_plan.json"
-OUT = ROOT / "orchestrator" / "EXECUTION_QUEUE.md"
+PLAN = ROOT / "system" / "orchestrator" / "execution_plan.json"
+OUT = ROOT / "system" / "orchestrator" / "EXECUTION_QUEUE.md"
 
 def main() -> int:
     if not PLAN.exists():
-        subprocess.check_call([sys.executable, "system/scripts/system/orchestrator/build_execution_plan.py"], cwd=ROOT)
+        subprocess.check_call([sys.executable, "system/scripts/orchestrator/build_execution_plan.py"], cwd=ROOT)
 
     plan = json.loads(PLAN.read_text(encoding="utf-8"))
     content = f"""# Execution Queue

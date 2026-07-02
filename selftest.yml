@@ -99,9 +99,9 @@ runtime_boundary:
     - ["run", "_runtime_agent("]
     - ["scrape", "_platform("]
   prohibited_unapproved_phrases:
-    - "runtime agent execution is approved"
-    - "auto posting is approved"
-    - "platform api integration is approved"
+    - "runtime automation requires explicit human approval"
+    - "automatic posting requires explicit human approval"
+    - "platform api integration requires explicit human approval"
 
 secret_boundary:
   allowlist_files:
