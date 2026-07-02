@@ -1,0 +1,9 @@
+{
+  "base_layer": "soft ambient bed",
+  "noise_type": "sharp high-frequency detail",
+  "frequency_range": "8kHz+",
+  "trigger_timing": [
+    "before line / gaze shift"
+  ],
+  "silence_duration": 0.6
+}

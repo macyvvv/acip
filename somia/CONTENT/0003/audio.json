@@ -1,0 +1,9 @@
+{
+  "base_layer": "soft ambient bed",
+  "noise_type": "low-to-mid presence with soft decay",
+  "frequency_range": "200–800Hz",
+  "trigger_timing": [
+    "gaze shift / silence entry"
+  ],
+  "silence_duration": 0.8
+}

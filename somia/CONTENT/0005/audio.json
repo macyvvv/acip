@@ -1,0 +1,9 @@
+{
+  "base_layer": "soft ambient bed",
+  "noise_type": "pulsed mid-band presence",
+  "frequency_range": "~1kHz pulses",
+  "trigger_timing": [
+    "gaze shift / after line"
+  ],
+  "silence_duration": 0.8
+}

@@ -2,7 +2,7 @@
 
 ## Concept
 
-Somnira is built around relational fetishism as a media concept:
+Somia is built around relational fetishism as a media concept:
 
 - non-sexual emotional dependency
 - ambiguous relationships
@@ -10,7 +10,7 @@ Somnira is built around relational fetishism as a media concept:
 
 The brand is about presence that feels close but never fully resolved.
 
-## What Somnira Is Not
+## What Somia Is Not
 
 - Not explicit sexuality
 - Not interaction dependency
