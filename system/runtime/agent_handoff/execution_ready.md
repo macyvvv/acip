@@ -1,0 +1,12 @@
+# AUTONOMOUS_EXECUTION_READY
+
+execution_ready_operational: true
+verified_scope_type: approved_draft
+verified_scope_id: DRAFT-OPP-KABUKICHO-001
+approval_id: APP-AGENT-HANDOFF-0001
+allow: true
+execution_request_generated: true
+live_execution_enabled: false
+supervisor_auto_wiring_enabled: false
+release_gate_status: level3_operational_but_live_execution_disabled
+

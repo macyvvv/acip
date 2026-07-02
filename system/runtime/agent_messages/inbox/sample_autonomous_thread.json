@@ -1,0 +1,25 @@
+{
+  "message_id": "MSG-SAMPLE-THREAD-0001",
+  "thread_id": "THR-SAMPLE-THREAD-0001",
+  "sender": "ChatGPT",
+  "receiver": "Codex",
+  "message_type": "request_execution",
+  "related_issue": "ISSUE-0003",
+  "related_artifacts": [
+    "docs/current/CHATGPT_CODEX_MESSAGE_CONTRACT.md",
+    "docs/current/AUTONOMOUS_AGENT_STATE_MODEL.md",
+    "docs/current/AUTONOMOUS_CONVERSATION_VERTICAL_SLICE.md"
+  ],
+  "objective": "Demonstrate a bounded autonomous conversation thread",
+  "requested_action": "advance_thread",
+  "constraints": [
+    "bounded",
+    "deterministic",
+    "no external mutation"
+  ],
+  "status": "received",
+  "created_at": "2026-07-02T00:00:02Z",
+  "responded_at": null,
+  "supersedes": null,
+  "body": "Start the bounded autonomous conversation slice."
+}

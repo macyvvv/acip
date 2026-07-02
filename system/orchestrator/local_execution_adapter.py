@@ -14,6 +14,7 @@ from system.core.optimization_advisor import write_optimization_suggestions
 
 
 MODEL_FALLBACK_CHAIN = ["gpt-5.4-mini", "gpt-5.3-mini", "gpt-5.2-mini"]
+DEFAULT_CLI_TIMEOUT_SECONDS = 60
 
 @dataclass(frozen=True)
 class LocalExecutionResult:
@@ -512,7 +513,18 @@ class LocalExecutionAdapter:
         }
 
     def _run_command(self, command: list[str]) -> subprocess.CompletedProcess[str]:
-        return subprocess.run(command, capture_output=True, text=True)
+        timeout_seconds = int(os.environ.get("CODEX_EXECUTION_TIMEOUT_SECONDS", str(DEFAULT_CLI_TIMEOUT_SECONDS)))
+        try:
+            return subprocess.run(command, capture_output=True, text=True, timeout=timeout_seconds)
+        except subprocess.TimeoutExpired as exc:
+            stdout = exc.stdout.decode("utf-8", errors="replace") if isinstance(exc.stdout, bytes) else (exc.stdout or "")
+            stderr = exc.stderr.decode("utf-8", errors="replace") if isinstance(exc.stderr, bytes) else (exc.stderr or "")
+            return subprocess.CompletedProcess(
+                args=exc.cmd,
+                returncode=124,
+                stdout=stdout,
+                stderr=stderr + f"\ncommand timed out after {timeout_seconds}s",
+            )
 
     def _write_model_resolution(self, model_resolution: dict) -> None:
         runtime_dir = self._runtime_path("local_execution")

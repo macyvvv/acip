@@ -1,0 +1,23 @@
+{
+  "message_id": "reply-MSG-DRAFT-DRAFT-OPP-KABUKICHO-001-20260702052929",
+  "thread_id": "THREAD-DRAFT-DRAFT-OPP-KABUKICHO-001",
+  "sender": "Codex",
+  "receiver": "ChatGPT",
+  "message_type": "report_result",
+  "related_issue": "DRAFT-OPP-KABUKICHO-001",
+  "related_artifacts": [
+    "docs/current/AUTONOMOUS_ISSUE_SCOPED_HANDOFF.md"
+  ],
+  "objective": "Kabukicho Survival Map MVP expansion: validate next-value POI and distribution opportunities",
+  "requested_action": "issue_scoped_execution_handoff",
+  "constraints": [
+    "bounded",
+    "deterministic",
+    "no external mutation"
+  ],
+  "status": "sent",
+  "created_at": "2026-07-02T05:29:29.636445+00:00",
+  "responded_at": null,
+  "supersedes": "MSG-DRAFT-DRAFT-OPP-KABUKICHO-001",
+  "body": "Placeholder report_result for MSG-DRAFT-DRAFT-OPP-KABUKICHO-001: execution not wired yet."
+}

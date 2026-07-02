@@ -1,0 +1,22 @@
+{
+  "message_id": "MSG-SAMPLE-REQUEST-REVIEW",
+  "thread_id": "THR-SAMPLE-0002",
+  "sender": "Codex",
+  "receiver": "ChatGPT",
+  "message_type": "request_review",
+  "related_issue": "ISSUE-0002",
+  "related_artifacts": [
+    "system/core/agent_turn_runner.py"
+  ],
+  "objective": "Validate the one-turn review path",
+  "requested_action": "review_one_turn",
+  "constraints": [
+    "no external mutation",
+    "deterministic output"
+  ],
+  "status": "received",
+  "created_at": "2026-07-02T00:00:01Z",
+  "responded_at": null,
+  "supersedes": null,
+  "body": "Please run one deterministic review turn."
+}
