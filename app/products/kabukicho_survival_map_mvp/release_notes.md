@@ -17,3 +17,9 @@
 - POI detail blocks を confirmed / caution / gray-zone に分離
 - Mobile first の操作意図を明示
 - 不確実な情報に disclaimer を追加
+
+## v4
+
+- POI dataset を拡張し、toilet / smoking / short-stay decisions を補強
+- カテゴリ件数の要約を追加し、初動判断を簡略化
+- 詳細ブロックをカテゴリ別に整理して mobile-first 可読性を改善
