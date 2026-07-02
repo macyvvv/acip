@@ -1,0 +1,24 @@
+{
+  "message_id": "MSG-SAMPLE-REQUEST-EXECUTION",
+  "thread_id": "THR-SAMPLE-0001",
+  "sender": "ChatGPT",
+  "receiver": "Codex",
+  "message_type": "request_execution",
+  "related_issue": "ISSUE-0001",
+  "related_artifacts": [
+    "docs/current/CHATGPT_CODEX_MESSAGE_CONTRACT.md",
+    "docs/current/AUTONOMOUS_AGENT_STATE_MODEL.md"
+  ],
+  "objective": "Validate the one-turn execution path",
+  "requested_action": "execute_one_turn",
+  "constraints": [
+    "no external mutation",
+    "no infinite loop",
+    "deterministic output"
+  ],
+  "status": "received",
+  "created_at": "2026-07-02T00:00:00Z",
+  "responded_at": null,
+  "supersedes": null,
+  "body": "Please run one deterministic execution turn."
+}

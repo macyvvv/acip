@@ -1,0 +1,15 @@
+{
+  "allow": true,
+  "handoff_id": "REQ-DRAFT-DRAFT-OPP-KABUKICHO-001",
+  "approval_id": "APP-AGENT-HANDOFF-0001",
+  "scope_type": "approved_draft",
+  "scope_id": "DRAFT-OPP-KABUKICHO-001",
+  "execution_triggered": true,
+  "execution_mode": "one_shot",
+  "execution_result_status": "failure",
+  "completion_marker_path": "/Users/ariel/Documents/tools/AI Native Company/system/runtime/handoff/completion/latest.json",
+  "request_path": "/Users/ariel/Documents/tools/AI Native Company/system/runtime/request/execution_request.json",
+  "stopped_reason": "Codex command failed: 124",
+  "started_at": "2026-07-02T08:38:44.602118+00:00",
+  "finished_at": "2026-07-02T08:38:46.652581+00:00"
+}

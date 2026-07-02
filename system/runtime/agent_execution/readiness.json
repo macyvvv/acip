@@ -1,0 +1,15 @@
+{
+  "one_shot_autonomous_execution_operational": true,
+  "verified_scope_type": "approved_draft",
+  "verified_scope_id": "DRAFT-OPP-KABUKICHO-001",
+  "timeout_policy_default_seconds": 60,
+  "timeout_policy_verified_seconds": 300,
+  "execution_result_status": "success",
+  "stopped_reason": "completion_marker_written",
+  "completion_marker_written": true,
+  "repeated_autonomy_enabled": false,
+  "queue_autonomy_enabled": false,
+  "open_ended_autonomy_enabled": false,
+  "release_gate_status": "one_shot_operational_repeated_and_open_ended_disabled"
+}
+

@@ -1,0 +1,11 @@
+{
+  "handoff_id": "REQ-DRAFT-DRAFT-OPP-KABUKICHO-001",
+  "approval_id": "APP-AGENT-HANDOFF-0001",
+  "allow": true,
+  "scope_type": "approved_draft",
+  "scope_id": "DRAFT-OPP-KABUKICHO-001",
+  "bridge_status": "allowed",
+  "execution_request_path": "/Users/ariel/Documents/tools/AI Native Company/system/runtime/request/execution_request.json",
+  "denied_reason": null,
+  "evaluated_at": "2026-07-02T07:31:25.312930+00:00"
+}

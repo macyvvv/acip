@@ -1,0 +1,14 @@
+{
+  "issue_scope": "draft:DRAFT-OPP-KABUKICHO-001",
+  "issue_number": null,
+  "approved_draft_id": "DRAFT-OPP-KABUKICHO-001",
+  "thread_id": "THREAD-DRAFT-DRAFT-OPP-KABUKICHO-001",
+  "turns_run": 2,
+  "final_state": "waiting_for_review",
+  "stop_reason": "idle",
+  "turn_results": [
+    "MSG-DRAFT-DRAFT-OPP-KABUKICHO-001",
+    null
+  ],
+  "created_at": "2026-07-02T05:29:29.645660+00:00"
+}
