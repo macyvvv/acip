@@ -17,11 +17,11 @@ COMMANDS = [
     [sys.executable, "system/scripts/baseline/validate_baseline.py"],
     [sys.executable, "system/scripts/graph/build_repository_graph.py"],
     [sys.executable, "system/scripts/context/build_agent_context_pack.py"],
-    [sys.executable, "system/scripts/system/orchestrator/build_context_bundle.py"],
-    [sys.executable, "system/scripts/system/orchestrator/build_execution_plan.py"],
+    [sys.executable, "system/scripts/orchestrator/build_context_bundle.py"],
+    [sys.executable, "system/scripts/orchestrator/build_execution_plan.py"],
     [sys.executable, "system/scripts/graph/build_incremental_graph.py"],
     [sys.executable, "system/scripts/context/build_context_diff.py"],
-    [sys.executable, "system/scripts/system/orchestrator/update_execution_queue.py"],
+    [sys.executable, "system/scripts/orchestrator/update_execution_queue.py"],
     [sys.executable, "system/scripts/review/build_review_gate_summary.py"],
 ]
 

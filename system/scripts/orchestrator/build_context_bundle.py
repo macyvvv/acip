@@ -14,7 +14,7 @@ def _resolve_repo_root() -> Path:
 ROOT = _resolve_repo_root()
 GRAPH = ROOT / "graph" / "repository_graph.json"
 PACK = ROOT / "graph" / "agent_context_pack.json"
-OUT = ROOT / "orchestrator" / "context_bundle.json"
+OUT = ROOT / "system" / "orchestrator" / "context_bundle.json"
 
 def load_json(path: Path) -> dict:
     if not path.exists():
@@ -40,9 +40,9 @@ def main() -> int:
         "graph_edges": len(graph.get("edges", [])),
         "required_policies": [n["path"] for n in policy_nodes if "orchestrator" in n["path"] or "context" in n["path"]],
         "validation_commands": [
-            "python system/scripts/system/orchestrator/build_context_bundle.py",
-            "python system/scripts/system/orchestrator/build_execution_plan.py",
-            "python system/scripts/system/orchestrator/validate_orchestration.py",
+            "python system/scripts/orchestrator/build_context_bundle.py",
+            "python system/scripts/orchestrator/build_execution_plan.py",
+            "python system/scripts/orchestrator/validate_orchestration.py",
         ],
         "prohibited_actions": [
             "runtime agent execution",

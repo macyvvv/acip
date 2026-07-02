@@ -14,12 +14,12 @@ def _resolve_repo_root() -> Path:
     raise RuntimeError(f"Unable to locate repository root from {__file__}")
 
 ROOT = _resolve_repo_root()
-BUNDLE = ROOT / "orchestrator" / "context_bundle.json"
-OUT = ROOT / "orchestrator" / "execution_plan.json"
+BUNDLE = ROOT / "system" / "orchestrator" / "context_bundle.json"
+OUT = ROOT / "system" / "orchestrator" / "execution_plan.json"
 
 def main() -> int:
     if not BUNDLE.exists():
-        subprocess.check_call([sys.executable, "system/scripts/system/orchestrator/build_context_bundle.py"], cwd=ROOT)
+        subprocess.check_call([sys.executable, "system/scripts/orchestrator/build_context_bundle.py"], cwd=ROOT)
 
     bundle = json.loads(BUNDLE.read_text(encoding="utf-8"))
 
@@ -37,7 +37,7 @@ def main() -> int:
             "Validate Runtime Boundary",
             "Run orchestrator validation",
         ],
-        "validation": "python system/scripts/system/orchestrator/validate_orchestration.py",
+        "validation": "python system/scripts/orchestrator/validate_orchestration.py",
         "done_condition": "Validation passes and no runtime execution occurs",
         "escalation_condition": "Human approval required only for runtime transition, risk acceptance, capital allocation, or emergency stop",
         "prohibited_actions": bundle["prohibited_actions"],

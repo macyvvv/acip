@@ -42,10 +42,10 @@ PROHIBITED = [
 ]
 
 def ensure_generated() -> None:
-    if not (ROOT / "orchestrator" / "context_bundle.json").exists():
-        subprocess.check_call([sys.executable, "system/scripts/system/orchestrator/build_context_bundle.py"], cwd=ROOT)
-    if not (ROOT / "orchestrator" / "execution_plan.json").exists():
-        subprocess.check_call([sys.executable, "system/scripts/system/orchestrator/build_execution_plan.py"], cwd=ROOT)
+    if not (ROOT / "system" / "orchestrator" / "context_bundle.json").exists():
+        subprocess.check_call([sys.executable, "system/scripts/orchestrator/build_context_bundle.py"], cwd=ROOT)
+    if not (ROOT / "system" / "orchestrator" / "execution_plan.json").exists():
+        subprocess.check_call([sys.executable, "system/scripts/orchestrator/build_execution_plan.py"], cwd=ROOT)
 
 def main() -> int:
     ensure_generated()
@@ -59,15 +59,15 @@ def main() -> int:
         if not (ROOT / rel).exists():
             failures.append(f"missing generated file: {rel}")
 
-    if (ROOT / "orchestrator" / "execution_plan.json").exists():
-        plan = json.loads((ROOT / "orchestrator" / "execution_plan.json").read_text(encoding="utf-8"))
+    if (ROOT / "system" / "orchestrator" / "execution_plan.json").exists():
+        plan = json.loads((ROOT / "system" / "orchestrator" / "execution_plan.json").read_text(encoding="utf-8"))
         prohibited = set(plan.get("prohibited_actions", []))
         required = {"runtime agent execution", "auto posting", "platform API mutation", "secret use", "approval bypass"}
         missing = required - prohibited
         if missing:
             failures.append(f"execution plan missing prohibited actions: {sorted(missing)}")
 
-    for path in (ROOT / "orchestrator").rglob("*"):
+    for path in (ROOT / "system" / "orchestrator").rglob("*"):
         if path.is_file() and path.suffix in {".md", ".json", ".py"}:
             text = path.read_text(encoding="utf-8", errors="ignore")
             for keyword in PROHIBITED:
