@@ -1,0 +1,9 @@
+{
+  "base_layer": "soft ambient bed",
+  "noise_type": "high-frequency detail with sparse events",
+  "frequency_range": "8kHz+",
+  "trigger_timing": [
+    "silence entry"
+  ],
+  "silence_duration": 1.4
+}

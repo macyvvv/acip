@@ -1,0 +1,9 @@
+{
+  "base_layer": "soft ambient bed",
+  "noise_type": "clean upper-band detail with longer tail",
+  "frequency_range": "2k–6kHz",
+  "trigger_timing": [
+    "before line / silence entry"
+  ],
+  "silence_duration": 1.2
+}

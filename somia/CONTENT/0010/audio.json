@@ -1,0 +1,9 @@
+{
+  "base_layer": "soft ambient bed",
+  "noise_type": "stable breath texture",
+  "frequency_range": "200–800Hz",
+  "trigger_timing": [
+    "before line"
+  ],
+  "silence_duration": 0.8
+}

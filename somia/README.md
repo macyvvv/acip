@@ -1,6 +1,6 @@
-# Somnira
+# Somia
 
-Somnira is ACIP’s AI Character Media business unit.
+Somia is ACIP’s AI Character Media business unit.
 
 ## Purpose
 
