@@ -22,9 +22,32 @@ CODEX_EXECUTION_TIMEOUT_SECONDS=300 python3 system/scripts/agent/run_approved_au
 - Result: `success`
 - Stop reason: `completion_marker_written`
 
+## Operator Entry Point
+Canonical Approval Console command:
+```bash
+python3 system/scripts/agent/run_approval_console.py
+```
+
+Flow:
+1. Candidate discovery runs first
+2. Select exactly one candidate
+3. Approve
+4. Run one-shot execution
+5. Review success / blocked / failure
+6. Stop
+
 ## Operator Rule
 Default operating mode for autonomy is one-shot approved execution only.
 
 ## Prohibition
 No new autonomy layer may be enabled unless a new readiness artifact and release gate are added first.
 
+## Approval Lifecycle
+
+Active approval candidates are limited to scopes in `candidate`, `approved`, `blocked`, or `failed` review states when operator action is still required.
+
+Terminal `completed` and `archived` scopes are removed from the approval candidate view and must not be re-approved.
+
+## Portfolio Rule
+
+The issue portfolio roadmap is the governing superset. `NOW`, `NEXT`, `LATER`, and `FROZEN` are portfolio buckets; the one-shot approval console only surfaces the one-shot-ready subset.

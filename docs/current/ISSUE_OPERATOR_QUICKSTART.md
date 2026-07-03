@@ -1,5 +1,27 @@
 # ISSUE_OPERATOR_QUICKSTART
 
+## Approval Console MVP
+Canonical entrypoint for one-shot approved execution:
+```bash
+python3 system/scripts/agent/run_approval_console.py
+```
+
+Workflow:
+1. Candidate discovery runs first
+2. Select exactly one candidate
+3. Approve
+4. Run one-shot execution
+5. Review success / blocked / failure
+6. Stop
+
+Boundaries:
+- One-shot only
+- Repeated autonomy disabled
+- Queue autonomy disabled
+- Open-ended autonomy disabled
+- Human selection still required
+- The approval candidates shown here are the one-shot-ready subset of the broader issue portfolio roadmap.
+
 ## Create an Issue
 1. Open GitHub and create a new issue.
 2. Use the repository’s existing issue naming convention.
@@ -20,6 +42,7 @@ python3 system/scripts/sync_github_issues.py
 - `system/runtime/local_execution/latest.json`
 - `system/runtime/handoff/latest.json`
 - `system/runtime/handoff/completion/latest.json`
+- `system/runtime/roadmap/issue_portfolio.json`
 - `system/runtime/issues/completed/issue_*.json`
 
 ## Confirm Completion
