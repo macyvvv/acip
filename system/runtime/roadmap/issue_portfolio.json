@@ -1,0 +1,538 @@
+{
+  "summary": {
+    "generated_at": "deterministic",
+    "scope": "tracked issue portfolio",
+    "issue_count": 37,
+    "bucket_counts": {
+      "NOW": 1,
+      "NEXT": 0,
+      "LATER": 5,
+      "FROZEN": 31
+    },
+    "execution_fit_counts": {
+      "one_shot_ready": 1,
+      "not_one_shot_ready": 5,
+      "completed": 13,
+      "blocked": 0,
+      "archived": 18
+    },
+    "roadmap_rule": "one_shot_approval_candidate_flow is a subset of the broader issue portfolio roadmap",
+    "source_artifacts": [
+      "system/runtime/github/open_issues.json",
+      "system/runtime/issues/completed/",
+      "system/runtime/work_planner/latest.json",
+      "system/runtime/supervisor/latest.json",
+      "system/runtime/repository_state/latest.json",
+      "docs/current/AUTONOMOUS_OPERATIONAL_BASELINE.md",
+      "docs/current/ISSUE_OPERATOR_QUICKSTART.md",
+      "docs/current/ISSUE_CENTRIC_OPERATION.md",
+      "docs/current/RESEARCH_TO_ISSUE_OPERATING_PROCEDURE.md"
+    ]
+  },
+  "issues": [
+    {
+      "issue_number": 3,
+      "title": "PACK-0003 Generated Artifact SSOT Pack",
+      "title_source": "pack_record",
+      "category": "infra_foundation",
+      "current_status": "completed",
+      "execution_fit": "completed",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Historical foundation pack already completed and recorded in pack execution docs.",
+      "blocking_reason": "",
+      "depends_on": []
+    },
+    {
+      "issue_number": 4,
+      "title": "EP-0151 Generated Artifact SSOT Registry",
+      "title_source": "pack_record",
+      "category": "infra_foundation",
+      "current_status": "completed",
+      "execution_fit": "completed",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Child of PACK-0003; foundational artifact registry work is already complete.",
+      "blocking_reason": "",
+      "depends_on": [
+        3
+      ]
+    },
+    {
+      "issue_number": 5,
+      "title": "EP-0152 Repository Artifact Refresh",
+      "title_source": "pack_record",
+      "category": "infra_foundation",
+      "current_status": "completed",
+      "execution_fit": "completed",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Deterministic artifact refresh is historical foundation work.",
+      "blocking_reason": "",
+      "depends_on": [
+        4
+      ]
+    },
+    {
+      "issue_number": 6,
+      "title": "EP-0153 Validation Leaves Repository Clean",
+      "title_source": "pack_record",
+      "category": "governance/operator",
+      "current_status": "completed",
+      "execution_fit": "completed",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Validation hygiene is already encoded in the repository governance layer.",
+      "blocking_reason": "",
+      "depends_on": [
+        5
+      ]
+    },
+    {
+      "issue_number": 7,
+      "title": "EP-0154 Explicit Refresh Workflow",
+      "title_source": "pack_record",
+      "category": "governance/operator",
+      "current_status": "completed",
+      "execution_fit": "completed",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Refresh workflow is part of the existing deterministic artifact pipeline.",
+      "blocking_reason": "",
+      "depends_on": [
+        6
+      ]
+    },
+    {
+      "issue_number": 8,
+      "title": "EP-0155 Generated Artifact Refresh Validation",
+      "title_source": "pack_record",
+      "category": "infra_foundation",
+      "current_status": "completed",
+      "execution_fit": "completed",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Refresh validation is a completed support layer.",
+      "blocking_reason": "",
+      "depends_on": [
+        7
+      ]
+    },
+    {
+      "issue_number": 9,
+      "title": "PACK-0004 Agent Handshake Protocol",
+      "title_source": "pack_record",
+      "category": "governance/operator",
+      "current_status": "archived",
+      "execution_fit": "archived",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Handshake protocol is a historical governance layer and not active one-shot work.",
+      "blocking_reason": "",
+      "depends_on": []
+    },
+    {
+      "issue_number": 10,
+      "title": "EP-0156 Completion Protocol",
+      "title_source": "pack_record",
+      "category": "governance/operator",
+      "current_status": "archived",
+      "execution_fit": "archived",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Completion protocol is already embedded in runtime artifacts.",
+      "blocking_reason": "",
+      "depends_on": [
+        9
+      ]
+    },
+    {
+      "issue_number": 11,
+      "title": "EP-0157 Repository Completion Marker",
+      "title_source": "pack_record",
+      "category": "governance/operator",
+      "current_status": "archived",
+      "execution_fit": "archived",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Completion marker is canonical historical infrastructure.",
+      "blocking_reason": "",
+      "depends_on": [
+        10
+      ]
+    },
+    {
+      "issue_number": 12,
+      "title": "EP-0158 ChatGPT Review Intake",
+      "title_source": "pack_record",
+      "category": "governance/operator",
+      "current_status": "archived",
+      "execution_fit": "archived",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Review intake already exists as a completed repository-native control plane layer.",
+      "blocking_reason": "",
+      "depends_on": [
+        11
+      ]
+    },
+    {
+      "issue_number": 13,
+      "title": "EP-0159 Issue Synchronizer",
+      "title_source": "pack_record",
+      "category": "infra_foundation",
+      "current_status": "archived",
+      "execution_fit": "archived",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Issue sync is historical foundation work and no longer active portfolio work.",
+      "blocking_reason": "",
+      "depends_on": [
+        12
+      ]
+    },
+    {
+      "issue_number": 14,
+      "title": "EP-0160 Handshake Validation",
+      "title_source": "pack_record",
+      "category": "governance/operator",
+      "current_status": "archived",
+      "execution_fit": "archived",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Handshake validation is a sealed governance layer.",
+      "blocking_reason": "",
+      "depends_on": [
+        13
+      ]
+    },
+    {
+      "issue_number": 15,
+      "title": "PACK-0005 Event Runtime",
+      "title_source": "pack_record",
+      "category": "infra_foundation",
+      "current_status": "archived",
+      "execution_fit": "archived",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Event runtime is historical infrastructure, not active one-shot work.",
+      "blocking_reason": "",
+      "depends_on": [
+        14
+      ]
+    },
+    {
+      "issue_number": 16,
+      "title": "EP-0161 Event Contract Validation",
+      "title_source": "pack_record",
+      "category": "infra_foundation",
+      "current_status": "archived",
+      "execution_fit": "archived",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Event contract validation is already part of the runtime baseline.",
+      "blocking_reason": "",
+      "depends_on": [
+        15
+      ]
+    },
+    {
+      "issue_number": 17,
+      "title": "EP-0162 Issue Event Intake",
+      "title_source": "pack_record",
+      "category": "infra_foundation",
+      "current_status": "archived",
+      "execution_fit": "archived",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Issue event intake is completed plumbing.",
+      "blocking_reason": "",
+      "depends_on": [
+        16
+      ]
+    },
+    {
+      "issue_number": 18,
+      "title": "EP-0163 Completion Marker Event Intake",
+      "title_source": "pack_record",
+      "category": "governance/operator",
+      "current_status": "archived",
+      "execution_fit": "archived",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Completion marker intake is already embedded in the repository workflow.",
+      "blocking_reason": "",
+      "depends_on": [
+        17
+      ]
+    },
+    {
+      "issue_number": 19,
+      "title": "EP-0166 Event Runtime Safety Gate",
+      "title_source": "pack_record",
+      "category": "governance/operator",
+      "current_status": "archived",
+      "execution_fit": "archived",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Safety gating for the event runtime is historical, not current portfolio work.",
+      "blocking_reason": "",
+      "depends_on": [
+        18
+      ]
+    },
+    {
+      "issue_number": 22,
+      "title": "PACK-0010 Planning OS",
+      "title_source": "user_instruction",
+      "category": "governance/operator",
+      "current_status": "archived",
+      "execution_fit": "archived",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Planning OS is already the repository-native planning baseline.",
+      "blocking_reason": "",
+      "depends_on": []
+    },
+    {
+      "issue_number": 23,
+      "title": "PACK-0011 Local Agent Supervisor Bridge",
+      "title_source": "user_instruction",
+      "category": "governance/operator",
+      "current_status": "archived",
+      "execution_fit": "archived",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Supervisor bridge is an established operator/control-plane capability.",
+      "blocking_reason": "",
+      "depends_on": [
+        22
+      ]
+    },
+    {
+      "issue_number": 24,
+      "title": "PACK-0012 Work Planner",
+      "title_source": "user_instruction",
+      "category": "governance/operator",
+      "current_status": "archived",
+      "execution_fit": "archived",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Work planner is already present and used by current runtime artifacts.",
+      "blocking_reason": "",
+      "depends_on": [
+        23
+      ]
+    },
+    {
+      "issue_number": 25,
+      "title": "PACK-0013 Repository OS v2 Release",
+      "title_source": "user_instruction",
+      "category": "broad_architecture",
+      "current_status": "archived",
+      "execution_fit": "archived",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Release packaging for Repository OS v2 is historical and not active execution work.",
+      "blocking_reason": "",
+      "depends_on": [
+        24
+      ]
+    },
+    {
+      "issue_number": 26,
+      "title": "PACK-0014 First Product Launch System",
+      "title_source": "user_instruction",
+      "category": "product_incremental",
+      "current_status": "archived",
+      "execution_fit": "archived",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "First product launch system work is superseded by later product execution artifacts.",
+      "blocking_reason": "",
+      "depends_on": [
+        25
+      ]
+    },
+    {
+      "issue_number": 27,
+      "title": "PACK-0015 Local Execution Adapter",
+      "title_source": "user_instruction",
+      "category": "infra_foundation",
+      "current_status": "archived",
+      "execution_fit": "archived",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Execution adapter work is completed infrastructure, not a current portfolio candidate.",
+      "blocking_reason": "",
+      "depends_on": [
+        26
+      ]
+    },
+    {
+      "issue_number": 28,
+      "title": "ACCEPTANCE-0001 Single Product Vertical Slice",
+      "title_source": "runtime_doc",
+      "category": "product_incremental",
+      "current_status": "completed",
+      "execution_fit": "completed",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Acceptance slice is complete and recorded by a standalone product execution record.",
+      "blocking_reason": "",
+      "depends_on": [
+        27
+      ]
+    },
+    {
+      "issue_number": 29,
+      "title": "Dynamic Codex Model Resolver",
+      "title_source": "user_instruction",
+      "category": "infra_foundation",
+      "current_status": "archived",
+      "execution_fit": "archived",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Model resolution work is already present in runtime artifacts and tests.",
+      "blocking_reason": "",
+      "depends_on": [
+        27
+      ]
+    },
+    {
+      "issue_number": 30,
+      "title": "PRODUCT-0001 Product Launch Checklist",
+      "title_source": "completed_marker",
+      "category": "product_incremental",
+      "current_status": "completed",
+      "execution_fit": "completed",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Product launch checklist is completed and has a canonical completion marker.",
+      "blocking_reason": "",
+      "depends_on": []
+    },
+    {
+      "issue_number": 31,
+      "title": "CONTENT-0001 Content Draft Review",
+      "title_source": "runtime_open_issue",
+      "category": "content_incremental",
+      "current_status": "completed",
+      "execution_fit": "completed",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Content draft review already has a completion marker and should stay out of active approval flow.",
+      "blocking_reason": "",
+      "depends_on": []
+    },
+    {
+      "issue_number": 32,
+      "title": "PRODUCT-0002 Product Launch Follow-up",
+      "title_source": "runtime_open_issue",
+      "category": "product_incremental",
+      "current_status": "completed",
+      "execution_fit": "completed",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Product launch follow-up is already completed and frozen.",
+      "blocking_reason": "",
+      "depends_on": []
+    },
+    {
+      "issue_number": 33,
+      "title": "PRODUCT-0003 Kabukicho Survival Map MVP (UGC-ready)",
+      "title_source": "completed_marker",
+      "category": "product_incremental",
+      "current_status": "completed",
+      "execution_fit": "completed",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Kabukicho MVP UGC-ready scope is already completed.",
+      "blocking_reason": "",
+      "depends_on": []
+    },
+    {
+      "issue_number": 34,
+      "title": "PRODUCT-0003 Kabukicho Map Data Expansion",
+      "title_source": "user_instruction",
+      "category": "product_incremental",
+      "current_status": "completed",
+      "execution_fit": "completed",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Kabukicho map data expansion is the current completed product-facing increment.",
+      "blocking_reason": "",
+      "depends_on": [
+        33
+      ]
+    },
+    {
+      "issue_number": 35,
+      "title": "Approval Console MVP",
+      "title_source": "current_operator_workstream",
+      "category": "governance/operator",
+      "current_status": "open",
+      "execution_fit": "not_one_shot_ready",
+      "priority_bucket": "LATER",
+      "recommended_reason": "Operator tooling improves workflow visibility but is not itself a one-shot execution target.",
+      "blocking_reason": "Approval console is operator-facing control-plane work, not a narrow product/content increment.",
+      "depends_on": [
+        41
+      ]
+    },
+    {
+      "issue_number": 36,
+      "title": "PRODUCT-0004 Kabukicho Survival Map MVP expansion: validate next-value POI and distribution opportunities",
+      "title_source": "completed_marker",
+      "category": "research_to_product",
+      "current_status": "completed",
+      "execution_fit": "completed",
+      "priority_bucket": "FROZEN",
+      "recommended_reason": "Research-to-product handoff has already been validated end-to-end.",
+      "blocking_reason": "",
+      "depends_on": [
+        34
+      ]
+    },
+    {
+      "issue_number": 37,
+      "title": "Issue-Centric Operation Validation",
+      "title_source": "current_operator_workstream",
+      "category": "governance/operator",
+      "current_status": "open",
+      "execution_fit": "not_one_shot_ready",
+      "priority_bucket": "LATER",
+      "recommended_reason": "Operational validation is important but belongs after the product-facing one-shot workstream.",
+      "blocking_reason": "Validation and operator guidance are control-plane work, not one-shot-ready issue execution.",
+      "depends_on": [
+        35
+      ]
+    },
+    {
+      "issue_number": 38,
+      "title": "Main Protection and Branch/PR Workflow",
+      "title_source": "current_operator_workstream",
+      "category": "governance/operator",
+      "current_status": "open",
+      "execution_fit": "not_one_shot_ready",
+      "priority_bucket": "LATER",
+      "recommended_reason": "Main protection is governance work and should not flood the approval console.",
+      "blocking_reason": "Branch protection is a repository governance concern, not a one-shot product increment.",
+      "depends_on": [
+        37
+      ]
+    },
+    {
+      "issue_number": 39,
+      "title": "Main Push Protection Activation and Verification",
+      "title_source": "current_operator_workstream",
+      "category": "governance/operator",
+      "current_status": "open",
+      "execution_fit": "not_one_shot_ready",
+      "priority_bucket": "LATER",
+      "recommended_reason": "Hook activation and verification are still operator-process work rather than issue execution candidates.",
+      "blocking_reason": "Local hook activation is a control-plane task and not a one-shot-ready issue candidate.",
+      "depends_on": [
+        38
+      ]
+    },
+    {
+      "issue_number": 40,
+      "title": "Repository Validation Path Repair",
+      "title_source": "current_operator_workstream",
+      "category": "infra_foundation",
+      "current_status": "open",
+      "execution_fit": "not_one_shot_ready",
+      "priority_bucket": "LATER",
+      "recommended_reason": "Validation path repair is infrastructure hygiene, useful but not a current one-shot execution target.",
+      "blocking_reason": "This is infrastructure maintenance, not a narrow product/content increment.",
+      "depends_on": [
+        39
+      ]
+    },
+    {
+      "issue_number": 41,
+      "title": "PRODUCT-0004 Product Launch Follow-up",
+      "title_source": "runtime_open_issue",
+      "category": "product_incremental",
+      "current_status": "open",
+      "execution_fit": "one_shot_ready",
+      "priority_bucket": "NOW",
+      "recommended_reason": "Safe narrow product follow-up is the only current open issue that fits the one-shot baseline cleanly.",
+      "blocking_reason": "",
+      "depends_on": [
+        32
+      ]
+    }
+  ]
+}
