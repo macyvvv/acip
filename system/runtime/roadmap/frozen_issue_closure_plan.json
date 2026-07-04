@@ -1,0 +1,360 @@
+{
+  "generated_at": "deterministic",
+  "source_artifacts": [
+    "docs/current/ISSUE_PORTFOLIO_ROADMAP.md",
+    "docs/current/AUTONOMOUS_OPERATIONAL_BASELINE.md",
+    "docs/current/ISSUE_OPERATOR_QUICKSTART.md",
+    "system/runtime/roadmap/issue_portfolio.json",
+    "system/runtime/issues/completed/",
+    "system/runtime/github/open_issues.json"
+  ],
+  "summary": {
+    "frozen_issue_count": 31,
+    "close_now_count": 13,
+    "keep_open_count": 18,
+    "safe_to_apply_count": 2
+  },
+  "issues": [
+    {
+      "issue_number": 3,
+      "title": "PACK-0003 Generated Artifact SSOT Pack",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "close_completed",
+      "github_action_recommended": "close",
+      "state_reason_if_closed": "completed",
+      "classification_reason": "completed repository evidence exists",
+      "evidence_source": "pack_record",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 4,
+      "title": "EP-0151 Generated Artifact SSOT Registry",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "close_completed",
+      "github_action_recommended": "close",
+      "state_reason_if_closed": "completed",
+      "classification_reason": "completed repository evidence exists",
+      "evidence_source": "pack_record",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 5,
+      "title": "EP-0152 Repository Artifact Refresh",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "close_completed",
+      "github_action_recommended": "close",
+      "state_reason_if_closed": "completed",
+      "classification_reason": "completed repository evidence exists",
+      "evidence_source": "pack_record",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 6,
+      "title": "EP-0153 Validation Leaves Repository Clean",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "close_completed",
+      "github_action_recommended": "close",
+      "state_reason_if_closed": "completed",
+      "classification_reason": "completed repository evidence exists",
+      "evidence_source": "pack_record",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 7,
+      "title": "EP-0154 Explicit Refresh Workflow",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "close_completed",
+      "github_action_recommended": "close",
+      "state_reason_if_closed": "completed",
+      "classification_reason": "completed repository evidence exists",
+      "evidence_source": "pack_record",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 8,
+      "title": "EP-0155 Generated Artifact Refresh Validation",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "close_completed",
+      "github_action_recommended": "close",
+      "state_reason_if_closed": "completed",
+      "classification_reason": "completed repository evidence exists",
+      "evidence_source": "pack_record",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 9,
+      "title": "PACK-0004 Agent Handshake Protocol",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "keep_open_governance_backlog",
+      "github_action_recommended": "keep_open",
+      "state_reason_if_closed": "",
+      "classification_reason": "governance and operator backlog remains visible but open",
+      "evidence_source": "pack_record",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 10,
+      "title": "EP-0156 Completion Protocol",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "keep_open_governance_backlog",
+      "github_action_recommended": "keep_open",
+      "state_reason_if_closed": "",
+      "classification_reason": "governance and operator backlog remains visible but open",
+      "evidence_source": "pack_record",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 11,
+      "title": "EP-0157 Repository Completion Marker",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "keep_open_governance_backlog",
+      "github_action_recommended": "keep_open",
+      "state_reason_if_closed": "",
+      "classification_reason": "governance and operator backlog remains visible but open",
+      "evidence_source": "pack_record",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 12,
+      "title": "EP-0158 ChatGPT Review Intake",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "keep_open_governance_backlog",
+      "github_action_recommended": "keep_open",
+      "state_reason_if_closed": "",
+      "classification_reason": "governance and operator backlog remains visible but open",
+      "evidence_source": "pack_record",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 13,
+      "title": "EP-0159 Issue Synchronizer",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "keep_open_dependency_waiting",
+      "github_action_recommended": "keep_open",
+      "state_reason_if_closed": "",
+      "classification_reason": "infrastructure item remains open as a dependency or support layer",
+      "evidence_source": "pack_record",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 14,
+      "title": "EP-0160 Handshake Validation",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "keep_open_governance_backlog",
+      "github_action_recommended": "keep_open",
+      "state_reason_if_closed": "",
+      "classification_reason": "governance and operator backlog remains visible but open",
+      "evidence_source": "pack_record",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 15,
+      "title": "PACK-0005 Event Runtime",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "keep_open_dependency_waiting",
+      "github_action_recommended": "keep_open",
+      "state_reason_if_closed": "",
+      "classification_reason": "infrastructure item remains open as a dependency or support layer",
+      "evidence_source": "pack_record",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 16,
+      "title": "EP-0161 Event Contract Validation",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "keep_open_dependency_waiting",
+      "github_action_recommended": "keep_open",
+      "state_reason_if_closed": "",
+      "classification_reason": "infrastructure item remains open as a dependency or support layer",
+      "evidence_source": "pack_record",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 17,
+      "title": "EP-0162 Issue Event Intake",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "keep_open_dependency_waiting",
+      "github_action_recommended": "keep_open",
+      "state_reason_if_closed": "",
+      "classification_reason": "infrastructure item remains open as a dependency or support layer",
+      "evidence_source": "pack_record",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 18,
+      "title": "EP-0163 Completion Marker Event Intake",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "keep_open_governance_backlog",
+      "github_action_recommended": "keep_open",
+      "state_reason_if_closed": "",
+      "classification_reason": "governance and operator backlog remains visible but open",
+      "evidence_source": "pack_record",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 19,
+      "title": "EP-0166 Event Runtime Safety Gate",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "keep_open_governance_backlog",
+      "github_action_recommended": "keep_open",
+      "state_reason_if_closed": "",
+      "classification_reason": "governance and operator backlog remains visible but open",
+      "evidence_source": "pack_record",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 22,
+      "title": "PACK-0010 Planning OS",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "keep_open_governance_backlog",
+      "github_action_recommended": "keep_open",
+      "state_reason_if_closed": "",
+      "classification_reason": "governance and operator backlog remains visible but open",
+      "evidence_source": "user_instruction",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 23,
+      "title": "PACK-0011 Local Agent Supervisor Bridge",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "keep_open_governance_backlog",
+      "github_action_recommended": "keep_open",
+      "state_reason_if_closed": "",
+      "classification_reason": "governance and operator backlog remains visible but open",
+      "evidence_source": "user_instruction",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 24,
+      "title": "PACK-0012 Work Planner",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "keep_open_governance_backlog",
+      "github_action_recommended": "keep_open",
+      "state_reason_if_closed": "",
+      "classification_reason": "governance and operator backlog remains visible but open",
+      "evidence_source": "user_instruction",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 25,
+      "title": "PACK-0013 Repository OS v2 Release",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "keep_open_broad_architecture",
+      "github_action_recommended": "keep_open",
+      "state_reason_if_closed": "",
+      "classification_reason": "broad architecture work remains open unless explicitly marked not planned",
+      "evidence_source": "user_instruction",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 26,
+      "title": "PACK-0014 First Product Launch System",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "keep_open_parked",
+      "github_action_recommended": "keep_open",
+      "state_reason_if_closed": "",
+      "classification_reason": "product work is parked from the active baseline",
+      "evidence_source": "user_instruction",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 27,
+      "title": "PACK-0015 Local Execution Adapter",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "keep_open_dependency_waiting",
+      "github_action_recommended": "keep_open",
+      "state_reason_if_closed": "",
+      "classification_reason": "infrastructure item remains open as a dependency or support layer",
+      "evidence_source": "user_instruction",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 28,
+      "title": "ACCEPTANCE-0001 Single Product Vertical Slice",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "close_completed",
+      "github_action_recommended": "close",
+      "state_reason_if_closed": "completed",
+      "classification_reason": "completed repository evidence exists",
+      "evidence_source": "runtime_doc",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 29,
+      "title": "Dynamic Codex Model Resolver",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "keep_open_dependency_waiting",
+      "github_action_recommended": "keep_open",
+      "state_reason_if_closed": "",
+      "classification_reason": "infrastructure item remains open as a dependency or support layer",
+      "evidence_source": "user_instruction",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 30,
+      "title": "PRODUCT-0001 Product Launch Checklist",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "close_completed",
+      "github_action_recommended": "close",
+      "state_reason_if_closed": "completed",
+      "classification_reason": "completed repository evidence exists",
+      "evidence_source": "system/runtime/issues/completed/",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 31,
+      "title": "CONTENT-0001 Content Draft Review",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "close_completed",
+      "github_action_recommended": "close",
+      "state_reason_if_closed": "completed",
+      "classification_reason": "completed repository evidence exists",
+      "evidence_source": "system/runtime/issues/completed/",
+      "safe_to_apply": true
+    },
+    {
+      "issue_number": 32,
+      "title": "PRODUCT-0002 Product Launch Follow-up",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "close_completed",
+      "github_action_recommended": "close",
+      "state_reason_if_closed": "completed",
+      "classification_reason": "completed repository evidence exists",
+      "evidence_source": "system/runtime/issues/completed/",
+      "safe_to_apply": true
+    },
+    {
+      "issue_number": 33,
+      "title": "PRODUCT-0003 Kabukicho Survival Map MVP (UGC-ready)",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "close_completed",
+      "github_action_recommended": "close",
+      "state_reason_if_closed": "completed",
+      "classification_reason": "completed repository evidence exists",
+      "evidence_source": "system/runtime/issues/completed/",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 34,
+      "title": "PRODUCT-0003 Kabukicho Map Data Expansion",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "close_completed",
+      "github_action_recommended": "close",
+      "state_reason_if_closed": "completed",
+      "classification_reason": "completed repository evidence exists",
+      "evidence_source": "system/runtime/issues/completed/",
+      "safe_to_apply": false
+    },
+    {
+      "issue_number": 36,
+      "title": "PRODUCT-0004 Kabukicho Survival Map MVP expansion: validate next-value POI and distribution opportunities",
+      "current_bucket": "FROZEN",
+      "closure_disposition": "close_completed",
+      "github_action_recommended": "close",
+      "state_reason_if_closed": "completed",
+      "classification_reason": "completed repository evidence exists",
+      "evidence_source": "system/runtime/issues/completed/",
+      "safe_to_apply": false
+    }
+  ]
+}
