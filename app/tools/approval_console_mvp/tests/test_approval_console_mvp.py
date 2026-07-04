@@ -1,7 +1,8 @@
 from __future__ import annotations
 
-import subprocess
+import json
 import shutil
+import subprocess
 from pathlib import Path
 
 from app.tools.approval_console_mvp.service import ApprovalConsoleService
@@ -45,17 +46,176 @@ def _restore_approval_artifacts(backups: tuple[Path, Path]) -> None:
         approval_md_backup.unlink()
 
 
-def test_candidate_loading(tmp_path: Path) -> None:
-    service = ApprovalConsoleService(REPO_ROOT)
+def _write_runtime_state(root: Path, *, current_handoff: dict, roadmap: dict, open_issues: list[dict], frozen_plan: dict | None = None, completed: list[dict] | None = None) -> None:
+    (root / "system" / "runtime" / "agent_handoff").mkdir(parents=True, exist_ok=True)
+    (root / "system" / "runtime" / "roadmap").mkdir(parents=True, exist_ok=True)
+    (root / "system" / "runtime" / "github").mkdir(parents=True, exist_ok=True)
+    (root / "system" / "runtime" / "issues" / "completed").mkdir(parents=True, exist_ok=True)
+    (root / "system" / "runtime" / "agent_execution").mkdir(parents=True, exist_ok=True)
+    (root / "system" / "runtime" / "agent_handoff" / "latest.json").write_text(json.dumps(current_handoff), encoding="utf-8")
+    (root / "system" / "runtime" / "roadmap" / "issue_portfolio.json").write_text(json.dumps(roadmap), encoding="utf-8")
+    (root / "system" / "runtime" / "github" / "open_issues.json").write_text(json.dumps(open_issues), encoding="utf-8")
+    (root / "system" / "runtime" / "agent_execution" / "latest.json").write_text(json.dumps({"execution_result_status": "success"}), encoding="utf-8")
+    if frozen_plan is not None:
+        (root / "system" / "runtime" / "roadmap" / "frozen_issue_closure_plan.json").write_text(json.dumps(frozen_plan), encoding="utf-8")
+    if completed:
+        for entry in completed:
+            issue_number = entry["issue_number"]
+            (root / "system" / "runtime" / "issues" / "completed" / f"issue_{issue_number:04d}.json").write_text(json.dumps(entry), encoding="utf-8")
+
+
+def test_candidate_loading_from_roadmap_and_open_issues(tmp_path: Path) -> None:
+    _write_runtime_state(
+        tmp_path,
+        current_handoff={"request_id": "REQ-OPEN-001", "issue_number": None},
+        roadmap={
+            "issues": [
+                {
+                    "issue_number": 41,
+                    "title": "PRODUCT-0004 Product Launch Follow-up",
+                    "category": "product_incremental",
+                    "current_status": "open",
+                    "execution_fit": "one_shot_ready",
+                    "priority_bucket": "NOW",
+                    "recommended_reason": "safe open product issue #41 is a narrow candidate for the current one-shot baseline",
+                    "blocking_reason": "",
+                    "depends_on": [32],
+                    "source_of_truth": "roadmap",
+                },
+                {
+                    "issue_number": 25,
+                    "title": "PACK-0013 Repository OS v2 Release",
+                    "category": "broad_architecture",
+                    "current_status": "archived",
+                    "execution_fit": "archived",
+                    "priority_bucket": "FROZEN",
+                    "recommended_reason": "historic",
+                    "blocking_reason": "",
+                    "depends_on": [],
+                    "source_of_truth": "roadmap",
+                },
+            ]
+        },
+        open_issues=[{"number": 41, "title": "PRODUCT-0004 Product Launch Follow-up", "state": "open"}],
+        frozen_plan={"issues": [{"issue_number": 25, "closure_disposition": "keep_open_broad_architecture"}]},
+    )
+    service = ApprovalConsoleService(tmp_path)
     scopes = service.load_scopes()
     assert len(scopes) == 1
-    assert scopes[0].scope_type in {"approved_draft", "issue"}
-    assert scopes[0].scope_id
+    scope = scopes[0]
+    assert scope.issue_number == 41
+    assert scope.scope_type == "issue"
+    assert scope.scope_id == "41"
+    assert scope.title == "PRODUCT-0004 Product Launch Follow-up"
+    assert scope.current_bucket == "NOW"
+    assert scope.execution_fit == "one_shot_ready"
+    assert scope.recommendation_reason.startswith("safe open product issue #41")
+    assert scope.approval_ready is False
 
 
-def test_single_scope_selection() -> None:
-    scope = ApprovalConsoleService(REPO_ROOT).load_scopes()[0]
-    assert scope is not None
+def test_completed_and_frozen_items_are_excluded(tmp_path: Path) -> None:
+    _write_runtime_state(
+        tmp_path,
+        current_handoff={"request_id": "REQ-OPEN-001", "issue_number": None},
+        roadmap={
+            "issues": [
+                {
+                    "issue_number": 30,
+                    "title": "PRODUCT-0001 Product Launch Checklist",
+                    "category": "product_incremental",
+                    "current_status": "completed",
+                    "execution_fit": "completed",
+                    "priority_bucket": "FROZEN",
+                    "recommended_reason": "done",
+                    "blocking_reason": "",
+                    "depends_on": [],
+                    "source_of_truth": "completed_marker",
+                },
+                {
+                    "issue_number": 25,
+                    "title": "PACK-0013 Repository OS v2 Release",
+                    "category": "broad_architecture",
+                    "current_status": "archived",
+                    "execution_fit": "archived",
+                    "priority_bucket": "FROZEN",
+                    "recommended_reason": "historic",
+                    "blocking_reason": "",
+                    "depends_on": [],
+                    "source_of_truth": "roadmap",
+                },
+            ]
+        },
+        open_issues=[],
+        frozen_plan={
+            "issues": [
+                {"issue_number": 30, "closure_disposition": "close_completed"},
+                {"issue_number": 25, "closure_disposition": "keep_open_broad_architecture"},
+            ]
+        },
+        completed=[{"issue_number": 30, "issue_title": "PRODUCT-0001 Product Launch Checklist"}],
+    )
+    service = ApprovalConsoleService(tmp_path)
+    assert service.load_scopes() == []
+    assert service.render_status(None, None).count("no NOW items") == 0 or "Zero-candidate reason" in service.render_status(None, None)
+
+
+def test_zero_candidate_explanation(tmp_path: Path) -> None:
+    _write_runtime_state(
+        tmp_path,
+        current_handoff={"request_id": "REQ-OPEN-001", "issue_number": None},
+        roadmap={
+            "issues": [
+                {
+                    "issue_number": 41,
+                    "title": "PRODUCT-0004 Product Launch Follow-up",
+                    "category": "product_incremental",
+                    "current_status": "open",
+                    "execution_fit": "not_one_shot_ready",
+                    "priority_bucket": "NOW",
+                    "recommended_reason": "not ready",
+                    "blocking_reason": "needs more work",
+                    "depends_on": [],
+                    "source_of_truth": "roadmap",
+                }
+            ]
+        },
+        open_issues=[{"number": 41, "title": "PRODUCT-0004 Product Launch Follow-up", "state": "open"}],
+        frozen_plan={"issues": []},
+    )
+    service = ApprovalConsoleService(tmp_path)
+    assert service.load_scopes() == []
+    text = service.render_status(None, None)
+    assert "Zero-candidate reason: NOW exists but not one_shot_ready" in text
+
+
+def test_latest_handoff_is_not_sole_candidate_source(tmp_path: Path) -> None:
+    _write_runtime_state(
+        tmp_path,
+        current_handoff={"request_id": "REQ-DRAFT-DRAFT-OPP-KABUKICHO-001", "approved_draft_id": "DRAFT-OPP-KABUKICHO-001"},
+        roadmap={
+            "issues": [
+                {
+                    "issue_number": 41,
+                    "title": "PRODUCT-0004 Product Launch Follow-up",
+                    "category": "product_incremental",
+                    "current_status": "open",
+                    "execution_fit": "one_shot_ready",
+                    "priority_bucket": "NOW",
+                    "recommended_reason": "safe open product issue #41 is a narrow candidate for the current one-shot baseline",
+                    "blocking_reason": "",
+                    "depends_on": [32],
+                    "source_of_truth": "roadmap",
+                }
+            ]
+        },
+        open_issues=[{"number": 41, "title": "PRODUCT-0004 Product Launch Follow-up", "state": "open"}],
+        frozen_plan={"issues": []},
+    )
+    service = ApprovalConsoleService(tmp_path)
+    scopes = service.load_scopes()
+    assert len(scopes) == 1
+    assert scopes[0].issue_number == 41
+    assert scopes[0].approval_ready is False
 
 
 def test_approval_update_call(tmp_path: Path) -> None:
@@ -63,7 +223,15 @@ def test_approval_update_call(tmp_path: Path) -> None:
     calls, executor = _executor_factory([subprocess.CompletedProcess(args=[], returncode=0, stdout="ok", stderr="")])
     try:
         service = ApprovalConsoleService(tmp_path, executor=executor)
-        scope = type("Scope", (), {"scope_type": "approved_draft", "scope_id": "DRAFT-OPP-KABUKICHO-001", "handoff_id": "REQ-DRAFT-DRAFT-OPP-KABUKICHO-001"})()
+        scope = type(
+            "Scope",
+            (),
+            {
+                "scope_type": "issue",
+                "scope_id": "41",
+                "handoff_id": "REQ-ISSUE-0041",
+            },
+        )()
         result = service.approve_scope(scope, approved_by="human", reason="ok")
         assert calls[0][1].endswith("set_execution_approval.py")
         assert result.status == "approved"
