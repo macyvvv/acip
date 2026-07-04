@@ -1,0 +1,71 @@
+# FROZEN_ISSUE_CLOSURE_PLAN
+
+## Summary
+- Frozen issue count: 31
+- Close-now count: 13
+- Keep-open count: 18
+- Safe-to-apply count: 2
+
+## Issues
+- Issue #3: PACK-0003 Generated Artifact SSOT Pack (`close_completed`, `close`, safe_to_apply=false)
+  - Reason: completed repository evidence exists
+- Issue #4: EP-0151 Generated Artifact SSOT Registry (`close_completed`, `close`, safe_to_apply=false)
+  - Reason: completed repository evidence exists
+- Issue #5: EP-0152 Repository Artifact Refresh (`close_completed`, `close`, safe_to_apply=false)
+  - Reason: completed repository evidence exists
+- Issue #6: EP-0153 Validation Leaves Repository Clean (`close_completed`, `close`, safe_to_apply=false)
+  - Reason: completed repository evidence exists
+- Issue #7: EP-0154 Explicit Refresh Workflow (`close_completed`, `close`, safe_to_apply=false)
+  - Reason: completed repository evidence exists
+- Issue #8: EP-0155 Generated Artifact Refresh Validation (`close_completed`, `close`, safe_to_apply=false)
+  - Reason: completed repository evidence exists
+- Issue #9: PACK-0004 Agent Handshake Protocol (`keep_open_governance_backlog`, `keep_open`, safe_to_apply=false)
+  - Reason: governance and operator backlog remains visible but open
+- Issue #10: EP-0156 Completion Protocol (`keep_open_governance_backlog`, `keep_open`, safe_to_apply=false)
+  - Reason: governance and operator backlog remains visible but open
+- Issue #11: EP-0157 Repository Completion Marker (`keep_open_governance_backlog`, `keep_open`, safe_to_apply=false)
+  - Reason: governance and operator backlog remains visible but open
+- Issue #12: EP-0158 ChatGPT Review Intake (`keep_open_governance_backlog`, `keep_open`, safe_to_apply=false)
+  - Reason: governance and operator backlog remains visible but open
+- Issue #13: EP-0159 Issue Synchronizer (`keep_open_dependency_waiting`, `keep_open`, safe_to_apply=false)
+  - Reason: infrastructure item remains open as a dependency or support layer
+- Issue #14: EP-0160 Handshake Validation (`keep_open_governance_backlog`, `keep_open`, safe_to_apply=false)
+  - Reason: governance and operator backlog remains visible but open
+- Issue #15: PACK-0005 Event Runtime (`keep_open_dependency_waiting`, `keep_open`, safe_to_apply=false)
+  - Reason: infrastructure item remains open as a dependency or support layer
+- Issue #16: EP-0161 Event Contract Validation (`keep_open_dependency_waiting`, `keep_open`, safe_to_apply=false)
+  - Reason: infrastructure item remains open as a dependency or support layer
+- Issue #17: EP-0162 Issue Event Intake (`keep_open_dependency_waiting`, `keep_open`, safe_to_apply=false)
+  - Reason: infrastructure item remains open as a dependency or support layer
+- Issue #18: EP-0163 Completion Marker Event Intake (`keep_open_governance_backlog`, `keep_open`, safe_to_apply=false)
+  - Reason: governance and operator backlog remains visible but open
+- Issue #19: EP-0166 Event Runtime Safety Gate (`keep_open_governance_backlog`, `keep_open`, safe_to_apply=false)
+  - Reason: governance and operator backlog remains visible but open
+- Issue #22: PACK-0010 Planning OS (`keep_open_governance_backlog`, `keep_open`, safe_to_apply=false)
+  - Reason: governance and operator backlog remains visible but open
+- Issue #23: PACK-0011 Local Agent Supervisor Bridge (`keep_open_governance_backlog`, `keep_open`, safe_to_apply=false)
+  - Reason: governance and operator backlog remains visible but open
+- Issue #24: PACK-0012 Work Planner (`keep_open_governance_backlog`, `keep_open`, safe_to_apply=false)
+  - Reason: governance and operator backlog remains visible but open
+- Issue #25: PACK-0013 Repository OS v2 Release (`keep_open_broad_architecture`, `keep_open`, safe_to_apply=false)
+  - Reason: broad architecture work remains open unless explicitly marked not planned
+- Issue #26: PACK-0014 First Product Launch System (`keep_open_parked`, `keep_open`, safe_to_apply=false)
+  - Reason: product work is parked from the active baseline
+- Issue #27: PACK-0015 Local Execution Adapter (`keep_open_dependency_waiting`, `keep_open`, safe_to_apply=false)
+  - Reason: infrastructure item remains open as a dependency or support layer
+- Issue #28: ACCEPTANCE-0001 Single Product Vertical Slice (`close_completed`, `close`, safe_to_apply=false)
+  - Reason: completed repository evidence exists
+- Issue #29: Dynamic Codex Model Resolver (`keep_open_dependency_waiting`, `keep_open`, safe_to_apply=false)
+  - Reason: infrastructure item remains open as a dependency or support layer
+- Issue #30: PRODUCT-0001 Product Launch Checklist (`close_completed`, `close`, safe_to_apply=false)
+  - Reason: completed repository evidence exists
+- Issue #31: CONTENT-0001 Content Draft Review (`close_completed`, `close`, safe_to_apply=true)
+  - Reason: completed repository evidence exists
+- Issue #32: PRODUCT-0002 Product Launch Follow-up (`close_completed`, `close`, safe_to_apply=true)
+  - Reason: completed repository evidence exists
+- Issue #33: PRODUCT-0003 Kabukicho Survival Map MVP (UGC-ready) (`close_completed`, `close`, safe_to_apply=false)
+  - Reason: completed repository evidence exists
+- Issue #34: PRODUCT-0003 Kabukicho Map Data Expansion (`close_completed`, `close`, safe_to_apply=false)
+  - Reason: completed repository evidence exists
+- Issue #36: PRODUCT-0004 Kabukicho Survival Map MVP expansion: validate next-value POI and distribution opportunities (`close_completed`, `close`, safe_to_apply=false)
+  - Reason: completed repository evidence exists
