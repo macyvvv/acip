@@ -58,16 +58,14 @@ class ApprovalConsoleGUI:
                 tk.END,
                 f"{scope.scope_type}:{scope.scope_id} | bucket={scope.current_bucket} | fit={scope.execution_fit} | approval={scope.approval_status}",
             )
-        self.summary.config(
-            text=(
-                f"Candidates: {len(self.scopes)}"
-                + (
-                    " | Recommended next candidate available"
-                    if any(scope.approval_ready for scope in self.scopes)
-                    else " | Candidate visible, but approval not ready"
-                )
-            )
-        )
+        summary_parts = [f"Candidates: {len(self.scopes)}"]
+        if not self.scopes:
+            summary_parts.append("No approval-eligible candidate")
+        else:
+            summary_parts.append(f"Current Execution Target: {self.service._current_execution_target_summary()}")
+            if not any(scope.approval_ready for scope in self.scopes):
+                summary_parts.append("Candidate visible, but approval not ready")
+        self.summary.config(text=" | ".join(summary_parts))
         self._update_buttons()
         self._render()
 
