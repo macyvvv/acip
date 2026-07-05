@@ -38,6 +38,7 @@ class ConsoleResult:
     message: str
     zero_candidate_reason: str | None = None
     candidate_summary: str | None = None
+    current_execution_target: str | None = None
 
 
 class ApprovalConsoleService:
@@ -194,14 +195,19 @@ class ApprovalConsoleService:
 
     def render_status(self, scope: ApprovalScope | None, result: ConsoleResult | None) -> str:
         lines = ["Approval Console MVP", ""]
+        current_target = self._current_execution_target_summary()
         if scope is None:
             reason = self._zero_candidate_reason()
             lines.append("No approval-eligible scope selected.")
             if reason:
                 lines.append(f"Zero-candidate reason: {reason}")
+            if current_target:
+                lines.append(f"Current Execution Target: {current_target}")
         else:
             lines.extend(
                 [
+                    f"Current NOW candidates: {self._current_now_candidate_count()}",
+                    f"Current Execution Target: {current_target or 'none'}",
                     f"Scope: {scope.scope_type}:{scope.scope_id}",
                     f"Title: {scope.title}",
                     f"Issue number: {scope.issue_number if scope.issue_number is not None else ''}",
@@ -234,6 +240,8 @@ class ApprovalConsoleService:
             )
             if result.candidate_summary:
                 lines.append(f"Candidate summary: {result.candidate_summary}")
+            if result.current_execution_target:
+                lines.append(f"Current Execution Target: {result.current_execution_target}")
             if result.zero_candidate_reason:
                 lines.append(f"Zero-candidate reason: {result.zero_candidate_reason}")
         return "\n".join(lines)
@@ -286,3 +294,16 @@ class ApprovalConsoleService:
             scope = scopes[0]
             return f"{scope.scope_type}:{scope.scope_id}"
         return f"{len(scopes)} candidates"
+
+    def _current_now_candidate_count(self) -> int:
+        return len(self.load_scopes())
+
+    def _current_execution_target_summary(self) -> str | None:
+        scopes = self.load_scopes()
+        if not scopes:
+            return None
+        if len(scopes) == 1:
+            scope = scopes[0]
+            issue_number = f"#{scope.issue_number}" if scope.issue_number is not None else scope.scope_id
+            return f"Issue {issue_number}: {scope.title}"
+        return f"{len(scopes)} NOW + one_shot_ready candidates; operator selection required"
