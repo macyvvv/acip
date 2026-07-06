@@ -1,8 +1,0 @@
-# MANIFEST
-
-- `queue/READY/EP-0146-queue-state-automation.md`
-- `system/orchestrator/queue_automation.py`
-- `docs/current/QUEUE_STATE_AUTOMATION.md`
-- `system/runtime/queue/queue_state.json`
-- `system/scripts/validate_ep_0146.py`
-- `system/tests/test_queue_automation.py`

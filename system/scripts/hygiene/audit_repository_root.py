@@ -16,6 +16,7 @@ ROOT = _resolve_repo_root()
 ROOT_ALLOWLIST = {
     "README.md",
     "AGENTS.md",
+    "CLAUDE.md",
     "VERSION",
     ".gitignore",
     ".env.example",

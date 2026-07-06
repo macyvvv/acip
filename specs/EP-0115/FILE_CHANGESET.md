@@ -1,4 +1,0 @@
-- `system/orchestrator/task_decomposer.py`
-- `docs/current/TASK_DECOMPOSITION.md`
-- `system/scripts/validate_ep_0115.py`
-- `system/tests/test_task_decomposer.py`

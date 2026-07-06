@@ -1,8 +1,0 @@
-- `system/orchestrator/execution_kernel.py`
-- `system/orchestrator/autonomous_planning_cycle.py`
-- `docs/current/EXECUTION_KERNEL.md`
-- `docs/current/AUTONOMOUS_PLANNING_CYCLE.md`
-- `system/runtime/planning/autonomous_plan.json`
-- `system/scripts/validate_ep_0128.py`
-- `system/tests/test_execution_kernel_planning_cycle.py`
-- `docs/ep/README_EP0128_EXECUTION_KERNEL_DEFAULT_PLANNING_CYCLE.md`

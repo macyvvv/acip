@@ -1,6 +1,0 @@
-- `system/orchestrator/architecture_planner.py`
-- `docs/current/ARCHITECTURE_PLANNER.md`
-- `system/runtime/solution/architecture/architecture_options.json`
-- `system/scripts/validate_ep_0138.py`
-- `system/tests/test_architecture_planner.py`
-- `docs/ep/README_EP0138_ARCHITECTURE_PLANNER.md`

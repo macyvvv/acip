@@ -1,6 +1,0 @@
-- `solution/requirements/schema/requirement.schema.json`
-- `system/orchestrator/requirement_intake.py`
-- `docs/current/REQUIREMENT_INTAKE.md`
-- `system/scripts/validate_ep_0137.py`
-- `system/tests/test_requirement_intake.py`
-- `docs/ep/README_EP0137_REQUIREMENT_INTAKE.md`

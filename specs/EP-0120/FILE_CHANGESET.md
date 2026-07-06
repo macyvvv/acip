@@ -1,6 +1,0 @@
-- `docs/current/WORKER_OUTPUT_CONTRACT.md`
-- `docs/current/WORKER_OUTPUT_SEMANTICS.md`
-- `system/orchestrator/output_semantics.py`
-- `system/scripts/validate_ep_0120.py`
-- `system/tests/test_output_semantics.py`
-- `docs/ep/README_EP0120_WORKER_OUTPUT_SEMANTICS.md`

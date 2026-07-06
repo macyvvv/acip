@@ -1,7 +1,0 @@
-- `system/orchestrator/continuous_improvement_engine.py`
-- `docs/current/CONTINUOUS_IMPROVEMENT.md`
-- `system/runtime/improvement/improvement_candidates.json`
-- `system/runtime/improvement/IMPROVEMENT_CANDIDATES.md`
-- `system/scripts/validate_ep_0125.py`
-- `system/tests/test_continuous_improvement_engine.py`
-- `docs/ep/README_EP0125_CONTINUOUS_IMPROVEMENT_ENGINE.md`

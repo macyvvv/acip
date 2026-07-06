@@ -4,10 +4,10 @@ from selftest_common import iter_text_files, rel, read, markdown_h1, pass_result
 
 # Deprecated skeleton files are handled by cleanup_selftest_skeleton.py and reported as warnings here.
 KNOWN_DEPRECATED_DUPLICATE_FILES = {
-    "adr/ADR-0016-repository-self-test.md",
-    "wbs/WBS-0011-repository-selftest.md",
-    "archive/README_SELFTEST_PACK.md",
-    "archive/README_REPOSITORY_SELFTEST_PACK.md",
+    "archive/selftest_skeleton/adr/ADR-0016-repository-self-test.md",
+    "archive/selftest_skeleton/wbs/WBS-0011-repository-selftest.md",
+    "archive/selftest_skeleton/README_SELFTEST_PACK.md",
+    "archive/selftest_skeleton/README_REPOSITORY_SELFTEST_PACK.md",
 }
 
 def run():

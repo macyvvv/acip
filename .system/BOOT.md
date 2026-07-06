@@ -1,5 +1,8 @@
 # BOOT
 
+> Superseded by [CLAUDE.md](../CLAUDE.md) for how Claude should operate in
+> this repo. Kept as historical record of the ChatGPT+Codex protocol.
+
 ## Purpose
 
 Define the repository boot sequence for ChatGPT, Codex, and future AI agents.

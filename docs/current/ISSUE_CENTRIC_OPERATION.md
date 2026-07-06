@@ -19,7 +19,7 @@ Human → GitHub Issue → GitHub sync → Supervisor selection → Execution �
 
 ### Execution
 - The selected issue is turned into an execution request.
-- The local execution adapter runs the request through Codex.
+- The local execution adapter runs the request through Claude Code (`claude -p`).
 
 ### Completion
 - The processed issue is recorded in `system/runtime/issues/completed/`.

@@ -13,7 +13,7 @@ def _resolve_repo_root() -> Path:
     raise RuntimeError(f"Unable to locate repository root from {__file__}")
 
 ROOT = _resolve_repo_root()
-ALLOWED_ROOT_MARKDOWN = {"README.md", "AGENTS.md"}
+ALLOWED_ROOT_MARKDOWN = {"README.md", "AGENTS.md", "CLAUDE.md"}
 EXPECTED_PATHS = [
     ROOT / "docs" / "current" / "PROJECT.md",
     ROOT / "docs" / "current" / "STATE.md",

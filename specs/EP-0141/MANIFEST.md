@@ -1,7 +1,0 @@
-# MANIFEST
-
-- `system/orchestrator/review_release_planner.py`
-- `docs/current/REVIEW_RELEASE_PLANNER.md`
-- `system/runtime/solution/review_release/review_release_plan.json`
-- `system/scripts/validate_ep_0141.py`
-- `system/tests/test_review_release_planner.py`

@@ -9,3 +9,6 @@ dist/
 build/
 .runtime/
 secrets/
+.venv/
+.venv.*/
+.pytest_cache/

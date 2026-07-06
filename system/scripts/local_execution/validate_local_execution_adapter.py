@@ -23,7 +23,7 @@ def main() -> int:
         ROOT / "runtime" / "local_execution" / "latest.json",
         ROOT / "runtime" / "local_execution" / "latest.md",
         ROOT / "orchestrator" / "local_execution_adapter.py",
-        ROOT / "scripts" / "local_execution" / "run_codex_adapter.py",
+        ROOT / "scripts" / "local_execution" / "run_claude_adapter.py",
         ROOT / "tests" / "test_local_execution_adapter.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required if not path.exists()]
