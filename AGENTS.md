@@ -1,5 +1,8 @@
 # AGENTS.md
 
+> Superseded by [CLAUDE.md](CLAUDE.md) for how Claude should operate in this
+> repo. Kept as historical record of the ChatGPT+Codex protocol.
+
 ## Codex Role
 
 Codex is the repository preparation, review, and implementation agent.

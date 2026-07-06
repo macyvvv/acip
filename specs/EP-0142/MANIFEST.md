@@ -1,7 +1,0 @@
-# MANIFEST
-
-- `system/orchestrator/solution_development_runtime.py`
-- `docs/current/SOLUTION_DEVELOPMENT_RUNTIME.md`
-- `system/runtime/solution/solution_runtime_state/solution_runtime_state.json`
-- `system/scripts/validate_ep_0142.py`
-- `system/tests/test_solution_development_runtime.py`

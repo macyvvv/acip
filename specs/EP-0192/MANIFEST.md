@@ -1,1 +1,0 @@
-# EP-0192 MANIFEST

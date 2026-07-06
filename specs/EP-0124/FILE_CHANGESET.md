@@ -1,6 +1,0 @@
-- `system/orchestrator/repository_state_manager.py`
-- `docs/current/REPOSITORY_STATE.md`
-- `system/runtime/repository_state/repository_state.json`
-- `system/scripts/validate_ep_0124.py`
-- `system/tests/test_repository_state_manager.py`
-- `docs/ep/README_EP0124_REPOSITORY_STATE_MANAGER.md`

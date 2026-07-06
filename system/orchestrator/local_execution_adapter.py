@@ -13,15 +13,20 @@ from system.core.kpi_store import update_kpi
 from system.core.optimization_advisor import write_optimization_suggestions
 
 
-MODEL_FALLBACK_CHAIN = ["gpt-5.4-mini", "gpt-5.3-mini", "gpt-5.2-mini"]
+# Claude Code headless execution. Claude Code covers both the implementation and
+# review work that ChatGPT + Codex used to split, so the adapter drives a single
+# `claude -p` invocation instead of the old two-service `codex exec` handoff.
+DEFAULT_MODEL = "claude-opus-4-8"
+DEFAULT_SUPPORTED_MODELS = ["claude-haiku-4-5", "claude-sonnet-5", "claude-opus-4-8"]
 DEFAULT_CLI_TIMEOUT_SECONDS = 60
+
 
 @dataclass(frozen=True)
 class LocalExecutionResult:
     adapter_mode: str
     approval_required: bool
     execution_gate: str
-    codex_cli_command: str
+    agent_cli_command: str
     request_id: str
     request_status: str
     repository_health: str
@@ -54,7 +59,11 @@ class LocalExecutionAdapter:
         repository = self._read_json(self._runtime_path("repository_state", "latest.json"))
         request = self._read_request()
 
-        if not supervisor:
+        # There is no autonomous supervisor daemon anymore; requests normally come
+        # straight from the approved issue/draft handoff (agent_issue_bridge.py).
+        # supervisor/latest.json is only needed as a fallback source when no
+        # request has been written yet.
+        if request is None and not supervisor:
             raise LocalExecutionError("Missing supervisor output")
         if not planning:
             raise LocalExecutionError("Missing planning state")
@@ -77,7 +86,7 @@ class LocalExecutionAdapter:
         prompt_path = self._write_prompt(prompt)
         model_resolution = self._resolve_model(request, planning, repository)
         if model_resolution.get("resolved_model") is None:
-            failure_reason = str(model_resolution.get("failure_reason", "unsupported_model_for_auth_mode"))
+            failure_reason = str(model_resolution.get("failure_reason", "no_supported_model"))
             self._write_model_resolution(model_resolution)
             result = self._result(
                 repository=repository,
@@ -110,7 +119,7 @@ class LocalExecutionAdapter:
             if not dry_run:
                 stdout, stderr, exit_code, model_attempts = self._run_with_model_fallback(prompt_path, model_resolution["resolved_model"], request, planning, repository)
                 if exit_code != 0:
-                    raise LocalExecutionError(f"Codex command failed: {exit_code}")
+                    raise LocalExecutionError(f"Claude command failed: {exit_code}")
                 deliverable_check = self._verify_deliverables(request)
                 if not deliverable_check["ok"]:
                     raise LocalExecutionError("missing_deliverables")
@@ -190,14 +199,14 @@ class LocalExecutionAdapter:
         return "unknown"
 
     def _derive_request(self, supervisor: dict) -> dict:
-        payload = supervisor.get("codex_intake_payload", {})
+        payload = supervisor.get("intake_payload", {}) or supervisor.get("codex_intake_payload", {})
         return {
             "request_id": f"REQ-{payload.get('current_ep', 'UNKNOWN')}",
             "request_status": "ready",
             "request_priority": 0,
             "approval_required": False,
             "dependency": ["system/runtime/supervisor/latest.json"],
-            "worker_assignment": "Codex",
+            "worker_assignment": "Claude",
         }
 
     def _validate_alignment(self, planning: dict, request: dict) -> None:
@@ -211,7 +220,7 @@ class LocalExecutionAdapter:
         issue_instruction = self._issue_instruction(request)
         objective = request.get("objective") or planning.get("current_objective", "unknown")
         lines = [
-            "# Codex Execution Prompt",
+            "# Claude Execution Prompt",
             "",
             f"Request ID: {request['request_id']}",
             f"Request Status: {request['request_status']}",
@@ -244,76 +253,42 @@ class LocalExecutionAdapter:
     def _write_prompt(self, prompt: str) -> Path:
         runtime_dir = self.base_path / "runtime" / "local_execution"
         runtime_dir.mkdir(parents=True, exist_ok=True)
-        prompt_path = runtime_dir / "codex_prompt.md"
+        prompt_path = runtime_dir / "agent_prompt.md"
         prompt_path.write_text(prompt, encoding="utf-8")
         return prompt_path
 
     def _resolve_model(self, request: dict, planning: dict, repository: dict) -> dict:
-        policy = os.environ.get("CODEX_MODEL_POLICY", "cost_optimized")
-        override = str(request.get("model_override") or os.environ.get("CODEX_MODEL_OVERRIDE", "")).strip()
-        auth_mode = self._auth_mode()
+        policy = os.environ.get("CLAUDE_MODEL_POLICY", "cost_optimized")
+        override = str(request.get("model_override") or os.environ.get("CLAUDE_MODEL_OVERRIDE", "")).strip()
         configured_models = self._supported_models()
         candidate_models = self._rank_models(configured_models, request, planning, repository, policy)
-        supported_models, rejected_models = self._filter_supported_models(candidate_models, auth_mode)
 
         if override:
             if override not in configured_models:
-                if not self._override_supported_for_auth_mode(override, auth_mode):
-                    raise LocalExecutionError(f"Unsupported model override: {override}")
                 candidate_models = [override] + candidate_models
-                supported_models = [override] + supported_models
-            elif override not in supported_models:
-                return self._failed_model_resolution(
-                    auth_mode=auth_mode,
-                    policy=policy,
-                    candidate_models=candidate_models,
-                    rejected_models=rejected_models,
-                    reason="unsupported_model_for_auth_mode",
-                )
             return self._resolved_model_resolution(
-                auth_mode=auth_mode,
                 policy=policy,
                 candidate_models=candidate_models,
-                rejected_models=rejected_models,
                 resolved_model=override,
                 selection_reason="local override",
             )
 
-        if not supported_models:
-            return self._failed_model_resolution(
-                auth_mode=auth_mode,
-                policy=policy,
-                candidate_models=candidate_models,
-                rejected_models=rejected_models,
-                reason="unsupported_model_for_auth_mode",
-            )
+        if not candidate_models:
+            return self._failed_model_resolution(policy=policy, candidate_models=candidate_models, reason="no_supported_model")
 
-        resolved_model = supported_models[0]
+        resolved_model = candidate_models[0]
         selection_reason = f"capability={self._required_capability(request, planning, repository)}; policy={policy}"
         return self._resolved_model_resolution(
-            auth_mode=auth_mode,
             policy=policy,
             candidate_models=candidate_models,
-            rejected_models=rejected_models,
             resolved_model=resolved_model,
             selection_reason=selection_reason,
-            fallback_used=resolved_model != candidate_models[0] if candidate_models else False,
         )
 
-    def _failed_model_resolution(
-        self,
-        *,
-        auth_mode: str,
-        policy: str,
-        candidate_models: list[str],
-        rejected_models: list[dict],
-        reason: str,
-    ) -> dict:
+    def _failed_model_resolution(self, *, policy: str, candidate_models: list[str], reason: str) -> dict:
         return {
-            "auth_mode": auth_mode,
             "model_policy": policy,
             "candidate_models": candidate_models,
-            "rejected_models": rejected_models,
             "supported_models": [],
             "resolved_model": None,
             "fallback_used": False,
@@ -326,23 +301,17 @@ class LocalExecutionAdapter:
     def _resolved_model_resolution(
         self,
         *,
-        auth_mode: str,
         policy: str,
         candidate_models: list[str],
-        rejected_models: list[dict],
         resolved_model: str,
         selection_reason: str,
-        fallback_used: bool = False,
     ) -> dict:
-        supported_models = [model for model in candidate_models if model not in {entry["model"] for entry in rejected_models}]
         return {
-            "auth_mode": auth_mode,
             "model_policy": policy,
             "candidate_models": candidate_models,
-            "rejected_models": rejected_models,
-            "supported_models": supported_models,
+            "supported_models": candidate_models,
             "resolved_model": resolved_model,
-            "fallback_used": fallback_used,
+            "fallback_used": bool(candidate_models) and resolved_model != candidate_models[0],
             "estimated_cost_tier": self._cost_tier(resolved_model),
             "selection_reason": selection_reason,
             "resolved_at": self._resolved_at(),
@@ -350,13 +319,10 @@ class LocalExecutionAdapter:
         }
 
     def _supported_models(self) -> list[str]:
-        configured = os.environ.get("CODEX_SUPPORTED_MODELS", "").strip()
+        configured = os.environ.get("CLAUDE_SUPPORTED_MODELS", "").strip()
         if configured:
             return [model.strip() for model in configured.split(",") if model.strip()]
-        return ["gpt-5.4-mini", "gpt-5.4", "gpt-5.2-mini"]
-
-    def _auth_mode(self) -> str:
-        return os.environ.get("CODEX_AUTH_MODE", "chatgpt").strip().lower() or "chatgpt"
+        return list(DEFAULT_SUPPORTED_MODELS)
 
     def _required_capability(self, request: dict, planning: dict, repository: dict) -> str:
         request_text = " ".join(str(request.get(key, "")) for key in ("request_id", "request_status", "next_action"))
@@ -368,56 +334,32 @@ class LocalExecutionAdapter:
         return "cost_optimized"
 
     def _rank_models(self, supported: list[str], request: dict, planning: dict, repository: dict, policy: str) -> list[str]:
-        cost_order = {
-            "gpt-5.2-mini": 0,
-            "gpt-5.4-mini": 1,
-            "gpt-5.2": 2,
-            "gpt-5.4": 3,
-        }
         required_capability = self._required_capability(request, planning, repository)
+        # Minimum model tier per capability; higher-reasoning work floors out weaker models.
         capability_floor = {
-            "cost_optimized": {"gpt-5.2-mini", "gpt-5.4-mini", "gpt-5.2", "gpt-5.4"},
-            "reasoning": {"gpt-5.4-mini", "gpt-5.2", "gpt-5.4"},
-            "high_reasoning": {"gpt-5.4", "gpt-5.2", "gpt-5.4-mini"},
+            "cost_optimized": 0,
+            "reasoning": 1,
+            "high_reasoning": 2,
         }
-        allowed = capability_floor.get(required_capability, set(supported))
-        candidates = [model for model in supported if model in allowed]
-        if policy == "high_reasoning":
-            candidates = [model for model in candidates if model in {"gpt-5.4", "gpt-5.2", "gpt-5.4-mini"}]
-        candidates.sort(key=lambda model: (cost_order.get(model, 99), model))
+        floor = capability_floor.get(required_capability, 0)
+        candidates = [model for model in supported if self._model_cost_rank(model) >= floor]
+        # cost_optimized/reasoning prefer the cheapest capable model; high_reasoning prefers the strongest.
+        reverse = policy == "high_reasoning" or required_capability == "high_reasoning"
+        candidates.sort(key=lambda model: (self._model_cost_rank(model), model), reverse=reverse)
         return candidates
 
-    def _filter_supported_models(self, candidate_models: list[str], auth_mode: str) -> tuple[list[str], list[dict]]:
-        auth_allowlist = {
-            "chatgpt": {"gpt-5.4-mini", "gpt-5.4"},
-            "api": {"gpt-5.2-mini", "gpt-5.4-mini", "gpt-5.2", "gpt-5.4"},
-        }
-        allowed = auth_allowlist.get(auth_mode, auth_allowlist["chatgpt"])
-        supported_models = [model for model in candidate_models if model in allowed]
-        rejected_models = [{"model": model, "reason": f"unsupported_for_auth_mode:{auth_mode}"} for model in candidate_models if model not in allowed]
-        return supported_models, rejected_models
-
     def _cost_tier(self, model: str) -> str:
-        if model == "gpt-5.2-mini":
-            return "lowest"
-        if model == "gpt-5.4-mini":
-            return "low"
-        if model == "gpt-5.3-mini":
-            return "lower"
-        if model == "gpt-5.2":
-            return "medium"
-        return "high"
-
-    def _override_supported_for_auth_mode(self, model: str, auth_mode: str) -> bool:
-        if model != "gpt-5.3-mini":
-            return False
-        return auth_mode == "chatgpt"
+        return {
+            "claude-haiku-4-5": "low",
+            "claude-sonnet-5": "medium",
+            "claude-opus-4-8": "high",
+        }.get(model, "medium")
 
     def _resolved_at(self) -> str:
         return datetime.now(timezone.utc).isoformat()
 
     def _build_command(self, prompt_path: Path, model: str) -> list[str]:
-        return ["codex", "exec", "-m", model, prompt_path.read_text(encoding="utf-8")]
+        return ["claude", "-p", prompt_path.read_text(encoding="utf-8"), "--model", model]
 
     def _run_with_model_fallback(
         self,
@@ -454,22 +396,11 @@ class LocalExecutionAdapter:
         return last_stdout, last_stderr, last_exit_code, model_attempts
 
     def _model_fallback_chain(self, initial_model: str) -> list[str]:
-        auth_mode = self._auth_mode()
-        supported_models = self._supported_models()
-        auth_supported = self._supported_for_auth_mode(auth_mode)
-        chain = [model for model in supported_models if model in auth_supported]
-        chain.sort(key=lambda model: (self._model_cost_rank(model), model))
+        # On capacity pressure, fall back to progressively cheaper models.
+        chain = sorted(self._supported_models(), key=lambda model: (self._model_cost_rank(model), model), reverse=True)
         if initial_model in chain:
-            index = chain.index(initial_model)
-            return chain[index:]
-        return chain
-
-    def _supported_for_auth_mode(self, auth_mode: str) -> set[str]:
-        auth_allowlist = {
-            "chatgpt": {"gpt-5.4-mini", "gpt-5.4"},
-            "api": {"gpt-5.2-mini", "gpt-5.4-mini", "gpt-5.2", "gpt-5.4"},
-        }
-        return auth_allowlist.get(auth_mode, auth_allowlist["chatgpt"])
+            return chain[chain.index(initial_model):]
+        return [initial_model] + chain
 
     def _is_capacity_error(self, value: object) -> bool:
         return "capacity" in str(value).lower()
@@ -480,13 +411,11 @@ class LocalExecutionAdapter:
 
     def _model_cost_rank(self, model: str) -> int:
         order = {
-            "gpt-5.2-mini": 0,
-            "gpt-5.3-mini": 1,
-            "gpt-5.4-mini": 2,
-            "gpt-5.2": 3,
-            "gpt-5.4": 4,
+            "claude-haiku-4-5": 0,
+            "claude-sonnet-5": 1,
+            "claude-opus-4-8": 2,
         }
-        return order.get(model, 99)
+        return order.get(model, 1)
 
     def _verify_deliverables(self, request: dict) -> dict:
         issue_number = request.get("issue_number")
@@ -513,7 +442,7 @@ class LocalExecutionAdapter:
         }
 
     def _run_command(self, command: list[str]) -> subprocess.CompletedProcess[str]:
-        timeout_seconds = int(os.environ.get("CODEX_EXECUTION_TIMEOUT_SECONDS", str(DEFAULT_CLI_TIMEOUT_SECONDS)))
+        timeout_seconds = int(os.environ.get("CLAUDE_EXECUTION_TIMEOUT_SECONDS", str(DEFAULT_CLI_TIMEOUT_SECONDS)))
         try:
             return subprocess.run(command, capture_output=True, text=True, timeout=timeout_seconds)
         except subprocess.TimeoutExpired as exc:
@@ -570,14 +499,14 @@ class LocalExecutionAdapter:
         model_attempts: list[dict],
     ) -> LocalExecutionResult:
         resolved_model = model_resolution.get("resolved_model")
-        codex_cli_command = ""
+        agent_cli_command = ""
         if resolved_model:
-            codex_cli_command = f'codex exec -m {resolved_model} "$(cat system/runtime/local_execution/codex_prompt.md)"'
+            agent_cli_command = f'claude -p "$(cat system/runtime/local_execution/agent_prompt.md)" --model {resolved_model}'
         return LocalExecutionResult(
             adapter_mode=adapter_mode,
             approval_required=bool(repository.get("approval_required", False)),
             execution_gate=execution_gate,
-            codex_cli_command=codex_cli_command,
+            agent_cli_command=agent_cli_command,
             request_id=request["request_id"],
             request_status=request["request_status"],
             repository_health=repository.get("repository_health", "unknown"),

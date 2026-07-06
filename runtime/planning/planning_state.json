@@ -1,0 +1,47 @@
+{
+  "mission": "Build an AI Native Company.",
+  "long_term_goal": "GitOps",
+  "current_phase": "GitHub Foundation",
+  "current_objective": "Constitution v3 Freeze",
+  "current_scope": "## Phase 0",
+  "current_pack": "PACK-0001",
+  "current_ep": "unknown",
+  "wbs": [
+    "WBS-0011-repository-operating-system-self-test.md",
+    "WBS-0012-repository-semantic-selftest-v2.md",
+    "WBS-0013-repository-knowledge-graph-runtime-integration.md",
+    "WBS-0014-runtime-transition-readiness.md",
+    "WBS-0015-agent-orchestrator.md",
+    "WBS-0016-repository-os-v1-baseline.md",
+    "WBS-0017-agent-runtime-foundation.md",
+    "WBS-0018-runtime-capability-suite.md",
+    "WBS-0019-runtime-coordination.md",
+    "WBS-0020-agent-capability-suite.md",
+    "WBS-0100-agent-runtime-mvp.md",
+    "WBS-0101-agent-runtime-task-intake.md"
+  ],
+  "approved_next_action": "unknown",
+  "parking_lot": [
+    "queue:None"
+  ],
+  "refactoring_priorities": [
+    "mission_alignment",
+    "risk_reduction",
+    "management_cost_reduction",
+    "constitution_freeze",
+    "repository_health_repair"
+  ],
+  "blocked_items": [],
+  "approval_required": false,
+  "source_artifacts": [
+    "docs/current/PROJECT.md",
+    "docs/current/STATE.md",
+    "docs/current/ROADMAP.md",
+    "docs/current/REPOSITORY_CONSTITUTION.md",
+    "system/runtime/repository_state/latest.json",
+    "system/runtime/repository_constitution/constitution.json",
+    "system/runtime/validation/validation_report.json",
+    "packs/",
+    "wbs/"
+  ]
+}

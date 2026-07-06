@@ -1,6 +1,0 @@
-- `system/orchestrator/execution_kernel.py`
-- `docs/current/EXECUTION_KERNEL.md`
-- `system/scripts/validate_ep_0112.py`
-- `docs/ep/README_EP0112_EXECUTION_KERNEL.md`
-- `.github/workflows/ep0112-execution-kernel.yml`
-- `system/tests/test_execution_kernel.py`

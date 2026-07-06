@@ -1,6 +1,0 @@
-- `queue/READY/EP-0144-agent-handoff-automation-pack.md`
-- `docs/current/AGENT_HANDOFF_AUTOMATION_PACK.md`
-- `specs/EP-0144/README.md`
-- `specs/EP-0144/MANIFEST.md`
-- `specs/EP-0144/IMPLEMENTATION_SPEC.md`
-- `specs/EP-0144/VALIDATION.md`

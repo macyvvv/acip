@@ -4,6 +4,7 @@ Allowed root entries are:
 
 - `README.md`
 - `AGENTS.md`
+- `CLAUDE.md`
 - `VERSION`
 - `CHANGELOG.md`
 - `ROADMAP.md`

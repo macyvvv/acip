@@ -12,7 +12,7 @@
     "Validate Runtime Boundary",
     "Run orchestrator validation"
   ],
-  "validation": "python system/scripts/system/orchestrator/validate_orchestration.py",
+  "validation": "python system/scripts/orchestrator/validate_orchestration.py",
   "done_condition": "Validation passes and no runtime execution occurs",
   "escalation_condition": "Human approval required only for runtime transition, risk acceptance, capital allocation, or emergency stop",
   "prohibited_actions": [

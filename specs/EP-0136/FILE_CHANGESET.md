@@ -1,6 +1,0 @@
-- `packs/PACK-0001-solution-development/pack.yaml`
-- `packs/PACK-0001-solution-development/README.md`
-- `docs/current/SOLUTION_DEVELOPMENT_PACK.md`
-- `system/scripts/validate_ep_0136.py`
-- `system/tests/test_solution_development_pack.py`
-- `docs/ep/README_EP0136_SOLUTION_DEVELOPMENT_PACK_DEFINITION.md`

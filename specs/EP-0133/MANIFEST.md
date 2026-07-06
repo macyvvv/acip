@@ -1,5 +1,0 @@
-# MANIFEST
-
-- `system/orchestrator/execution_journal.py`
-- `docs/current/EXECUTION_JOURNAL.md`
-- `system/runtime/journal/execution_journal.jsonl`

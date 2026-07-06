@@ -1,3 +1,0 @@
-# MANIFEST
-
-- `workers/registry.py`

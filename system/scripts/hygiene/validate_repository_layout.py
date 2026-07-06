@@ -14,6 +14,7 @@ ROOT = _resolve_repo_root()
 ROOT_ALLOWLIST = {
     "README.md",
     "AGENTS.md",
+    "CLAUDE.md",
     "VERSION",
     "CHANGELOG.md",
     "ROADMAP.md",

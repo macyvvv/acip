@@ -1,6 +1,0 @@
-- `system/orchestrator/autonomous_planning_cycle.py`
-- `docs/current/AUTONOMOUS_PLANNING_CYCLE.md`
-- `system/runtime/planning/autonomous_plan.json`
-- `system/scripts/validate_ep_0127.py`
-- `system/tests/test_autonomous_planning_cycle.py`
-- `docs/ep/README_EP0127_AUTONOMOUS_PLANNING_CYCLE.md`
