@@ -4,6 +4,7 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
+import importlib
 import os
 
 from system.scripts.somia.content_spec import ContentSpec
@@ -72,17 +73,26 @@ _REGISTRY: dict[str, type[VideoGenerationProvider]] = {
     "dry_run": DryRunProvider,
 }
 
+# Vendor adapters that call network APIs live in their own module and are only
+# imported when actually selected, so choosing dry_run (the default) never
+# pulls in HTTP/vendor-specific code.
+_OPTIONAL_PROVIDER_MODULES: dict[str, str] = {
+    "pika": "system.scripts.somia.providers_pika",
+}
+
 
 def register_provider(provider_cls: type[VideoGenerationProvider]) -> None:
     """Vendor adapters call this to plug in without editing this file's registry
-    literal, e.g. from a system/scripts/somia/providers_runway.py module."""
+    literal, e.g. from a system/scripts/somia/providers_pika.py module."""
     _REGISTRY[provider_cls.name] = provider_cls
 
 
 def get_provider(name: str | None = None) -> VideoGenerationProvider:
     resolved_name = name or os.environ.get("SOMIA_VIDEO_PROVIDER", "dry_run")
+    if resolved_name not in _REGISTRY and resolved_name in _OPTIONAL_PROVIDER_MODULES:
+        importlib.import_module(_OPTIONAL_PROVIDER_MODULES[resolved_name])
     provider_cls = _REGISTRY.get(resolved_name)
     if provider_cls is None:
-        known = ", ".join(sorted(_REGISTRY))
+        known = ", ".join(sorted(set(_REGISTRY) | set(_OPTIONAL_PROVIDER_MODULES)))
         raise VideoGenerationError(f"Unknown SOMIA_VIDEO_PROVIDER '{resolved_name}'. Known providers: {known}")
     return provider_cls()
