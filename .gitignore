@@ -12,3 +12,11 @@ secrets/
 .venv/
 .venv.*/
 .pytest_cache/
+
+# somia generated render outputs — reproducible from specs, large binaries.
+# Specs (script.md/prompt.md/metadata.json) are the source of truth, not the
+# generated media. Keep these out of git; store finals in external storage.
+somia/CONTENT/**/keyframe*.png
+somia/CONTENT/**/video*.mp4
+somia/CONTENT/**/*.dry_run.txt
+somia/proto_images/
