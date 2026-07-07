@@ -75,3 +75,42 @@ def write_optimization_suggestions(base_path: Path | str | None = None, suggesti
     payload = suggestions if suggestions is not None else analyze_optimization_opportunities(base_path)
     path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return payload
+
+
+def analyze_business_agent_optimization_opportunities(base_path: Path | str | None = None) -> list[dict]:
+    """Additive, parallel to analyze_optimization_opportunities(): reads only
+    business_agent_stats, never touches the repo-dev execution KPI fields. This
+    is what the pdca role's prompt reads from for its Check/Act sections."""
+    kpi = load_kpi(base_path)
+    business_agent_stats = kpi.get("business_agent_stats", {})
+    suggestions: list[dict] = []
+    if not isinstance(business_agent_stats, dict):
+        return suggestions
+    for stats_key, stats in sorted(business_agent_stats.items()):
+        runs = int(stats.get("runs", 0))
+        failure = int(stats.get("failure", 0))
+        failure_rate = failure / runs if runs else 0.0
+        if runs > 0 and failure_rate > 0.7:
+            suggestions.append(
+                {
+                    "type": "business_role_reliability",
+                    "business_role_key": stats_key,
+                    "message": "This business/role pairing is failing more often than it succeeds",
+                    "confidence": "medium",
+                }
+            )
+        metrics = stats.get("metrics", {})
+        if isinstance(metrics, dict):
+            for metric_name, metric_entry in metrics.items():
+                history = metric_entry.get("history", []) if isinstance(metric_entry, dict) else []
+                if len(history) >= 2 and history[-1] < history[-2]:
+                    suggestions.append(
+                        {
+                            "type": "business_metric_decline",
+                            "business_role_key": stats_key,
+                            "metric": metric_name,
+                            "message": f"{metric_name} declined from {history[-2]} to {history[-1]}",
+                            "confidence": "low",
+                        }
+                    )
+    return suggestions

@@ -7,6 +7,7 @@ import json
 from typing import Any
 
 from system.core.agent_execution_approval import evaluate_execution_approval
+from system.orchestrator.business_agent_execution_adapter import BusinessAgentExecutionAdapter
 from system.orchestrator.local_execution_adapter import LocalExecutionAdapter
 
 
@@ -58,6 +59,9 @@ class ApprovedAutonomousExecution:
             return result
 
         request_path = self._request_path()
+        if handoff.get("business_id") and handoff.get("role_id"):
+            return self._run_business_agent(handoff, approval, request_path, started_at)
+
         adapter = LocalExecutionAdapter(self.base_path)
         try:
             adapter.run(approval_flag=True, dry_run=False)
@@ -90,6 +94,59 @@ class ApprovedAutonomousExecution:
             completion_marker_path=completion_marker_path,
             request_path=request_path,
             stopped_reason=stopped_reason,
+            started_at=started_at,
+            finished_at=_now(),
+        )
+        self._write_runtime(result)
+        return result
+
+    def _run_business_agent(
+        self,
+        handoff: dict[str, Any],
+        approval: dict[str, Any],
+        request_path: str | None,
+        started_at: str,
+    ) -> ApprovedAutonomousExecutionResult:
+        business_id = str(handoff["business_id"])
+        role_id = str(handoff["role_id"])
+        task_id = str(handoff.get("task_id") or "")
+        task_description = str(handoff.get("task_description") or "")
+        adapter = BusinessAgentExecutionAdapter(self.base_path)
+        try:
+            outcome = adapter.run(
+                business_id=business_id,
+                role_id=role_id,
+                task_id=task_id,
+                task_description=task_description,
+                approval_flag=True,
+                dry_run=False,
+            )
+        except Exception as exc:  # bounded one-shot wrapper; stop safely on any failure, mirrors LocalExecutionAdapter's posture
+            result = self._result(
+                allow=True,
+                handoff=handoff,
+                approval=approval,
+                execution_triggered=True,
+                execution_mode="one_shot",
+                execution_result_status="failure",
+                completion_marker_path=None,
+                request_path=request_path,
+                stopped_reason=str(exc),
+                started_at=started_at,
+                finished_at=_now(),
+            )
+            self._write_runtime(result)
+            return result
+        result = self._result(
+            allow=True,
+            handoff=handoff,
+            approval=approval,
+            execution_triggered=True,
+            execution_mode="one_shot",
+            execution_result_status="success" if outcome.success else "failure",
+            completion_marker_path=outcome.artifact_path,
+            request_path=request_path,
+            stopped_reason="completion_marker_written" if outcome.success else f"exit_code={outcome.exit_code}",
             started_at=started_at,
             finished_at=_now(),
         )

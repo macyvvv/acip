@@ -221,6 +221,105 @@ def test_latest_handoff_is_not_sole_candidate_source(tmp_path: Path) -> None:
     assert scopes[0].approval_ready is False
 
 
+def test_business_role_task_candidate_appears_alongside_issue_candidates(tmp_path: Path) -> None:
+    _write_runtime_state(
+        tmp_path,
+        current_handoff={"request_id": "REQ-OPEN-001", "issue_number": None},
+        roadmap={"issues": []},
+        open_issues=[],
+        frozen_plan={"issues": []},
+    )
+    (tmp_path / "system" / "runtime" / "business_agent_tasks").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "system" / "runtime" / "business_agent_tasks" / "queue.json").write_text(
+        json.dumps(
+            [
+                {
+                    "business_id": "text_syndicate",
+                    "role_id": "market_research",
+                    "task_id": "task-0001",
+                    "title": "Research impression-driving niches",
+                    "status": "candidate",
+                }
+            ]
+        ),
+        encoding="utf-8",
+    )
+    service = ApprovalConsoleService(tmp_path)
+    scopes = service.load_scopes()
+    assert len(scopes) == 1
+    scope = scopes[0]
+    assert scope.scope_type == "business_role_task"
+    assert scope.scope_id == "text_syndicate:market_research:task-0001"
+    assert scope.business_id == "text_syndicate"
+    assert scope.role_id == "market_research"
+
+
+def test_non_candidate_business_role_tasks_are_excluded(tmp_path: Path) -> None:
+    _write_runtime_state(
+        tmp_path,
+        current_handoff={"request_id": "REQ-OPEN-001", "issue_number": None},
+        roadmap={"issues": []},
+        open_issues=[],
+        frozen_plan={"issues": []},
+    )
+    (tmp_path / "system" / "runtime" / "business_agent_tasks").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "system" / "runtime" / "business_agent_tasks" / "queue.json").write_text(
+        json.dumps(
+            [
+                {
+                    "business_id": "text_syndicate",
+                    "role_id": "market_research",
+                    "task_id": "task-0001",
+                    "title": "Already completed",
+                    "status": "completed",
+                }
+            ]
+        ),
+        encoding="utf-8",
+    )
+    service = ApprovalConsoleService(tmp_path)
+    assert service.load_scopes() == []
+
+
+def test_approve_scope_marks_business_role_task_approved(tmp_path: Path) -> None:
+    backups = _backup_approval_artifacts()
+    (tmp_path / "system" / "runtime" / "business_agent_tasks").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "system" / "runtime" / "business_agent_tasks" / "queue.json").write_text(
+        json.dumps(
+            [
+                {
+                    "business_id": "text_syndicate",
+                    "role_id": "market_research",
+                    "task_id": "task-0001",
+                    "title": "Research niches",
+                    "status": "candidate",
+                }
+            ]
+        ),
+        encoding="utf-8",
+    )
+    calls, executor = _executor_factory([subprocess.CompletedProcess(args=[], returncode=0, stdout="ok", stderr="")])
+    try:
+        service = ApprovalConsoleService(tmp_path, executor=executor)
+        scope = type(
+            "Scope",
+            (),
+            {
+                "scope_type": "business_role_task",
+                "scope_id": "text_syndicate:market_research:task-0001",
+                "handoff_id": "REQ-TEXT-SYNDICATE-MARKET-RESEARCH-TASK-0001",
+                "business_id": "text_syndicate",
+                "role_id": "market_research",
+            },
+        )()
+        result = service.approve_scope(scope, approved_by="human", reason="ok")
+        assert result.status == "approved"
+        queue = json.loads((tmp_path / "system" / "runtime" / "business_agent_tasks" / "queue.json").read_text(encoding="utf-8"))
+        assert queue[0]["status"] == "approved"
+    finally:
+        _restore_approval_artifacts(backups)
+
+
 def test_approval_update_call(tmp_path: Path) -> None:
     backups = _backup_approval_artifacts()
     calls, executor = _executor_factory([subprocess.CompletedProcess(args=[], returncode=0, stdout="ok", stderr="")])

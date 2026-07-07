@@ -26,5 +26,13 @@
       "failure": 1
     }
   },
-  "last_updated": "2026-06-30T13:01:32.572566+00:00"
+  "business_agent_stats": {
+    "text_syndicate:market_research": {
+      "runs": 2,
+      "success": 2,
+      "failure": 0,
+      "metrics": {}
+    }
+  },
+  "last_updated": "2026-07-07T14:17:56.332363+00:00"
 }
