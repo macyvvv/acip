@@ -2,7 +2,23 @@
 
 ## Symbol
 
-- Crescent moon + star
+- Crescent moon + star (adopted design option 1: minimal, moon outline + single star)
+
+## Color
+
+- Lavender-grey: #A8A4B8
+- Black: #111111
+- Single color only (white or black depending on background), never both at once
+
+## Minimum Size
+
+- 24px width minimum (mobile legibility floor)
+
+## Asset File
+
+- No image asset is committed yet — this file is the spec, not the file.
+  Add the actual logo file (svg/png) under `somia/BRAND/` when available;
+  Claude cannot generate the image itself.
 
 ## Placement
 
