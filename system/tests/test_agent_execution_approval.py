@@ -116,6 +116,85 @@ def test_stale_superseded_approval_denied(tmp_path: Path) -> None:
     assert result.reason == "approval_superseded"
 
 
+def _write_business_role_handoff(path: Path, *, business_id: str = "text_syndicate", role_id: str = "market_research", task_id: str = "task-0001", request_id: str = "REQ-TEXT-SYNDICATE-MARKET-RESEARCH-0001") -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        json.dumps(
+            {
+                "business_id": business_id,
+                "role_id": role_id,
+                "task_id": task_id,
+                "issue_number": None,
+                "approved_draft_id": None,
+                "request_id": request_id,
+                "created_at": "2026-07-07T00:00:00+00:00",
+                "source": "business_agent_handoff",
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+
+
+def test_business_role_task_scope_approved_when_matching(tmp_path: Path) -> None:
+    _write_business_role_handoff(tmp_path / "system" / "runtime" / "agent_handoff" / "latest.json")
+    _write_approval(
+        tmp_path / "system" / "runtime" / "agent_handoff" / "approval.json",
+        handoff_id="REQ-TEXT-SYNDICATE-MARKET-RESEARCH-0001",
+        scope_type="business_role_task",
+        scope_id="text_syndicate:market_research:task-0001",
+        decision_status="approved",
+        approved_by="Human",
+        approved_at="2026-07-07T00:00:00+00:00",
+        reason="Pilot approval",
+        execution_enabled=True,
+    )
+
+    result = evaluate_execution_approval(tmp_path)
+
+    assert result.allowed is True
+    assert result.reason == "approved"
+
+
+def test_business_role_task_scope_mismatch_denied(tmp_path: Path) -> None:
+    _write_business_role_handoff(tmp_path / "system" / "runtime" / "agent_handoff" / "latest.json")
+    _write_approval(
+        tmp_path / "system" / "runtime" / "agent_handoff" / "approval.json",
+        handoff_id="REQ-TEXT-SYNDICATE-MARKET-RESEARCH-0001",
+        scope_type="business_role_task",
+        scope_id="text_syndicate:marketing:task-0001",  # wrong role_id
+        decision_status="approved",
+        approved_by="Human",
+        approved_at="2026-07-07T00:00:00+00:00",
+        reason="Pilot approval",
+        execution_enabled=True,
+    )
+
+    result = evaluate_execution_approval(tmp_path)
+
+    assert result.allowed is False
+    assert result.reason == "scope_id_mismatch"
+
+
+def test_existing_issue_scope_path_unaffected_by_business_role_discriminator(tmp_path: Path) -> None:
+    # Existing issue/draft handoffs never set business_id/role_id, so the new
+    # branch must be unreachable for them -- this is the backward-compat guarantee.
+    _write_handoff(tmp_path / "system" / "runtime" / "agent_handoff" / "latest.json")
+    _write_approval(
+        tmp_path / "system" / "runtime" / "agent_handoff" / "approval.json",
+        decision_status="approved",
+        approved_by="Human",
+        approved_at="2026-07-02T10:00:00+00:00",
+        reason="Approved for bounded execution",
+        execution_enabled=True,
+    )
+
+    result = evaluate_execution_approval(tmp_path)
+
+    assert result.allowed is True
+    assert result.approval["scope_type"] == "approved_draft"
+
+
 def test_mismatched_scope_id_denied(tmp_path: Path) -> None:
     _write_handoff(tmp_path / "system" / "runtime" / "agent_handoff" / "latest.json")
     _write_approval(

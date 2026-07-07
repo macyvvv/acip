@@ -7,6 +7,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable, Iterable
 
+from system.core.business_agent_task_queue import load_queue, mark_task_status
+
 
 @dataclass(frozen=True)
 class ApprovalScope:
@@ -25,6 +27,8 @@ class ApprovalScope:
     blocking_reason: str | None = None
     current_status: str | None = None
     approval_ready: bool = False
+    business_id: str | None = None
+    role_id: str | None = None
 
 
 @dataclass(frozen=True)
@@ -110,6 +114,39 @@ class ApprovalConsoleService:
                     approval_ready=approval_ready,
                 )
             )
+
+        for task in load_queue(self.repo_root):
+            if task.get("status") != "candidate":
+                continue
+            business_id = str(task.get("business_id") or "")
+            role_id = str(task.get("role_id") or "")
+            task_id = str(task.get("task_id") or "")
+            scope_id = f"{business_id}:{role_id}:{task_id}"
+            approval_ready = (
+                current_handoff.get("business_id") == business_id
+                and current_handoff.get("role_id") == role_id
+                and current_handoff.get("task_id") == task_id
+                and bool(current_handoff.get("request_id"))
+            )
+            scopes.append(
+                ApprovalScope(
+                    issue_number=None,
+                    scope_type="business_role_task",
+                    scope_id=scope_id,
+                    title=str(task.get("title") or ""),
+                    current_bucket="",
+                    execution_fit="one_shot_ready",
+                    handoff_id=str(current_handoff.get("request_id") or "") or None,
+                    approval_status=str(approval.get("decision_status") or "pending"),
+                    execution_allowed=bool(approval.get("execution_enabled", False)),
+                    latest_execution_status=str(latest_execution.get("execution_result_status") or "") or None,
+                    recommendation_reason="business agent task proposed via propose_task.py",
+                    source_of_truth="system/runtime/business_agent_tasks/queue.json",
+                    approval_ready=approval_ready,
+                    business_id=business_id,
+                    role_id=role_id,
+                )
+            )
         return scopes
 
     def approve_scope(self, scope: ApprovalScope, approved_by: str, reason: str) -> ConsoleResult:
@@ -142,6 +179,9 @@ class ApprovalConsoleService:
                 completion_marker_path=None,
                 message="Approval update failed.",
             )
+        if scope.scope_type == "business_role_task" and scope.business_id and scope.role_id:
+            task_id = scope.scope_id.split(":")[-1]
+            mark_task_status(scope.business_id, scope.role_id, task_id, "approved", self.repo_root)
         approval_path = self.repo_root / "system" / "runtime" / "agent_handoff" / "approval.json"
         return ConsoleResult(
             status="approved",
@@ -181,6 +221,9 @@ class ApprovalConsoleService:
         execution_path = self.repo_root / "system" / "runtime" / "agent_execution" / "latest.json"
         execution_result = self._read_json(execution_path) or {}
         completion_marker = execution_result.get("completion_marker_path")
+        handoff = self._read_json(self.repo_root / "system" / "runtime" / "agent_handoff" / "latest.json") or {}
+        if handoff.get("business_id") and handoff.get("role_id"):
+            mark_task_status(handoff["business_id"], handoff["role_id"], str(handoff.get("task_id") or ""), "completed", self.repo_root)
         return ConsoleResult(
             status=str(execution_result.get("execution_result_status") or ("success" if completed.returncode == 0 else "failure")),
             approval_path=None,

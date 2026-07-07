@@ -28,6 +28,7 @@ def _default_kpi() -> dict:
             "unknown": 0,
         },
         "per_issue_stats": {},
+        "business_agent_stats": {},
         "last_updated": "",
     }
 
@@ -56,6 +57,18 @@ def load_kpi(base_path: Path | str | None = None) -> dict:
                 "runs": int(stats.get("runs", 0)),
                 "success": int(stats.get("success", 0)),
                 "failure": int(stats.get("failure", 0)),
+            }
+    business_agent_stats = data.get("business_agent_stats", {})
+    if isinstance(business_agent_stats, dict):
+        for key, stats in business_agent_stats.items():
+            if not isinstance(stats, dict):
+                continue
+            metrics = stats.get("metrics", {})
+            payload["business_agent_stats"][str(key)] = {
+                "runs": int(stats.get("runs", 0)),
+                "success": int(stats.get("success", 0)),
+                "failure": int(stats.get("failure", 0)),
+                "metrics": metrics if isinstance(metrics, dict) else {},
             }
     return payload
 
@@ -95,6 +108,38 @@ def update_kpi(
         else:
             issue_stats["failure"] = int(issue_stats.get("failure", 0)) + 1
     kpi["success_rate"] = compute_success_rate(int(kpi["total_runs"]), int(kpi["success_count"]))
+    kpi["last_updated"] = datetime.now(timezone.utc).isoformat()
+    path.write_text(json.dumps(kpi, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return kpi
+
+
+def update_business_agent_kpi(
+    business_id: str,
+    role_id: str,
+    success: bool,
+    base_path: Path | str | None = None,
+    *,
+    metrics: dict[str, float] | None = None,
+) -> dict:
+    """Additive, parallel to update_kpi(): never touches total_runs/success_count/
+    failure_count/per_issue_stats, so the existing repo-dev KPI stream is untouched."""
+    path = _kpi_path(base_path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    kpi = load_kpi(base_path)
+    stats_key = f"{business_id}:{role_id}"
+    business_agent_stats = kpi.setdefault("business_agent_stats", {})
+    stats = business_agent_stats.setdefault(stats_key, {"runs": 0, "success": 0, "failure": 0, "metrics": {}})
+    stats["runs"] = int(stats.get("runs", 0)) + 1
+    if success:
+        stats["success"] = int(stats.get("success", 0)) + 1
+    else:
+        stats["failure"] = int(stats.get("failure", 0)) + 1
+    if metrics:
+        metric_bag = stats.setdefault("metrics", {})
+        for name, value in metrics.items():
+            entry = metric_bag.setdefault(name, {"latest": value, "history": [], "unit": ""})
+            entry["latest"] = value
+            entry.setdefault("history", []).append(value)
     kpi["last_updated"] = datetime.now(timezone.utc).isoformat()
     path.write_text(json.dumps(kpi, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return kpi

@@ -76,10 +76,14 @@ def evaluate_execution_approval(base_path: str | Path = ".") -> ExecutionApprova
 
 
 def _handoff_scope_type(handoff: dict[str, Any]) -> str:
+    if handoff.get("business_id") and handoff.get("role_id"):
+        return "business_role_task"
     return "approved_draft" if handoff.get("approved_draft_id") else "issue"
 
 
 def _handoff_scope_id(handoff: dict[str, Any]) -> str:
+    if handoff.get("business_id") and handoff.get("role_id"):
+        return f"{handoff['business_id']}:{handoff['role_id']}:{handoff.get('task_id', '')}"
     if handoff.get("approved_draft_id"):
         return str(handoff.get("approved_draft_id"))
     return str(handoff.get("issue_number") or "")

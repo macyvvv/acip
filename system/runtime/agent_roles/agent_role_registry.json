@@ -1,0 +1,142 @@
+{
+  "source_artifacts": [
+    "system/core/agent_role_registry.py"
+  ],
+  "summary": {
+    "role_count": 7,
+    "claude_invocation_count": 5,
+    "pluggable_provider_count": 2,
+    "missing_prompt_templates": [],
+    "missing_output_contracts": []
+  },
+  "roles": [
+    {
+      "role_id": "market_research",
+      "display_name": "Market Research",
+      "role_kind": "claude_invocation",
+      "prompt_template_path": "system/agent_runtime/role_prompts/market_research.md",
+      "provider_registry_module": null,
+      "default_provider": null,
+      "output_contract_path": "contracts/roles/MARKET_RESEARCH_OUTPUT_CONTRACT.md",
+      "artifact_root_template": "system/runtime/business_agents/{business_id}/{role_id}/{task_id}/",
+      "allowed_tools": [
+        "Read",
+        "Grep",
+        "Glob",
+        "WebSearch"
+      ],
+      "model_capability": "reasoning",
+      "prompt_template_path_exists": true,
+      "output_contract_path_exists": true
+    },
+    {
+      "role_id": "marketing",
+      "display_name": "Marketing",
+      "role_kind": "claude_invocation",
+      "prompt_template_path": "system/agent_runtime/role_prompts/marketing.md",
+      "provider_registry_module": null,
+      "default_provider": null,
+      "output_contract_path": "contracts/roles/MARKETING_OUTPUT_CONTRACT.md",
+      "artifact_root_template": "system/runtime/business_agents/{business_id}/{role_id}/{task_id}/",
+      "allowed_tools": [
+        "Read",
+        "Grep",
+        "Glob",
+        "WebSearch"
+      ],
+      "model_capability": "reasoning",
+      "prompt_template_path_exists": true,
+      "output_contract_path_exists": true
+    },
+    {
+      "role_id": "doc_creation",
+      "display_name": "Document Creation",
+      "role_kind": "claude_invocation",
+      "prompt_template_path": "system/agent_runtime/role_prompts/doc_creation.md",
+      "provider_registry_module": null,
+      "default_provider": null,
+      "output_contract_path": "contracts/roles/DOC_CREATION_OUTPUT_CONTRACT.md",
+      "artifact_root_template": "system/runtime/business_agents/{business_id}/{role_id}/{task_id}/",
+      "allowed_tools": [
+        "Read",
+        "Grep",
+        "Glob"
+      ],
+      "model_capability": "cost_optimized",
+      "prompt_template_path_exists": true,
+      "output_contract_path_exists": true
+    },
+    {
+      "role_id": "scenario_writing",
+      "display_name": "Scenario Writing",
+      "role_kind": "claude_invocation",
+      "prompt_template_path": "system/agent_runtime/role_prompts/scenario_writing.md",
+      "provider_registry_module": null,
+      "default_provider": null,
+      "output_contract_path": "contracts/roles/SCENARIO_WRITING_OUTPUT_CONTRACT.md",
+      "artifact_root_template": "system/runtime/business_agents/{business_id}/{role_id}/{task_id}/",
+      "allowed_tools": [
+        "Read",
+        "Grep",
+        "Glob"
+      ],
+      "model_capability": "reasoning",
+      "prompt_template_path_exists": true,
+      "output_contract_path_exists": true
+    },
+    {
+      "role_id": "image_generation",
+      "display_name": "Image Generation",
+      "role_kind": "pluggable_provider",
+      "prompt_template_path": null,
+      "provider_registry_module": null,
+      "default_provider": null,
+      "output_contract_path": "contracts/roles/IMAGE_GENERATION_OUTPUT_CONTRACT.md",
+      "artifact_root_template": "system/runtime/business_agents/{business_id}/{role_id}/{task_id}/",
+      "allowed_tools": [
+        "Read",
+        "Grep",
+        "Glob"
+      ],
+      "model_capability": "cost_optimized",
+      "prompt_template_path_exists": false,
+      "output_contract_path_exists": true
+    },
+    {
+      "role_id": "video_generation",
+      "display_name": "Video Generation",
+      "role_kind": "pluggable_provider",
+      "prompt_template_path": null,
+      "provider_registry_module": null,
+      "default_provider": null,
+      "output_contract_path": "contracts/roles/VIDEO_GENERATION_OUTPUT_CONTRACT.md",
+      "artifact_root_template": "system/runtime/business_agents/{business_id}/{role_id}/{task_id}/",
+      "allowed_tools": [
+        "Read",
+        "Grep",
+        "Glob"
+      ],
+      "model_capability": "cost_optimized",
+      "prompt_template_path_exists": false,
+      "output_contract_path_exists": true
+    },
+    {
+      "role_id": "pdca",
+      "display_name": "PDCA",
+      "role_kind": "claude_invocation",
+      "prompt_template_path": "system/agent_runtime/role_prompts/pdca.md",
+      "provider_registry_module": null,
+      "default_provider": null,
+      "output_contract_path": "contracts/roles/PDCA_OUTPUT_CONTRACT.md",
+      "artifact_root_template": "system/runtime/business_agents/{business_id}/{role_id}/{task_id}/",
+      "allowed_tools": [
+        "Read",
+        "Grep",
+        "Glob"
+      ],
+      "model_capability": "reasoning",
+      "prompt_template_path_exists": true,
+      "output_contract_path_exists": true
+    }
+  ]
+}

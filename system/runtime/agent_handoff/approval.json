@@ -1,12 +1,12 @@
 {
   "approval_id": "APP-AGENT-HANDOFF-0001",
-  "handoff_id": "REQ-DRAFT-DRAFT-OPP-KABUKICHO-001",
-  "scope_type": "approved_draft",
-  "scope_id": "DRAFT-OPP-KABUKICHO-001",
+  "handoff_id": "REQ-TEXT-SYNDICATE-MARKET-RESEARCH-TASK-0001",
+  "scope_type": "business_role_task",
+  "scope_id": "text_syndicate:market_research:task-0001",
   "decision_status": "approved",
-  "approved_by": "Human",
-  "approved_at": "2026-07-02T12:00:00+00:00",
-  "reason": "Approved for bounded execution bridge",
+  "approved_by": "macy",
+  "approved_at": "2026-07-07T10:28:37Z",
+  "reason": "Pilot verification of the multi-business agent platform foundation",
   "execution_enabled": true,
   "supersedes": null
 }
