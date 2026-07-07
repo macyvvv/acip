@@ -78,6 +78,8 @@ _REGISTRY: dict[str, type[VideoGenerationProvider]] = {
 # pulls in HTTP/vendor-specific code.
 _OPTIONAL_PROVIDER_MODULES: dict[str, str] = {
     "pika": "system.scripts.somia.providers_pika",
+    "kling": "system.scripts.somia.providers_kling",
+    "illustrious_kling": "system.scripts.somia.providers_illustrious_kling",
 }
 
 

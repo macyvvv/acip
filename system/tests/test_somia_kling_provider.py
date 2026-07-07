@@ -8,7 +8,7 @@ import pytest
 
 from system.scripts.somia.content_spec import ContentSpec
 from system.scripts.somia.providers import VideoGenerationError, get_provider
-from system.scripts.somia.providers_pika import PikaProvider
+from system.scripts.somia.providers_kling import KlingProvider
 
 
 class _FakeResponse:
@@ -33,12 +33,12 @@ def _spec() -> ContentSpec:
     return ContentSpec(
         content_id="0001",
         character="Airi",
-        image_prompt="Airi, cool blue palette, dim corridor",
+        image_prompt="Airi at a desk, screen-glow, illustrated style",
         negative_prompt="",
-        animation_instruction="Minimal motion, single gaze shift",
-        camera_instruction="Extreme close-up, slow zoom out",
-        on_screen_text="You noticed too late that she was already there.",
-        audio_notes="soft ambient bed",
+        animation_instruction="Glances toward the screen, expression softens slightly",
+        camera_instruction="Medium close-up, steady, no sudden zoom",
+        on_screen_text="Still watching, even now.",
+        audio_notes="soft room tone",
     )
 
 
@@ -63,15 +63,15 @@ def _fake_urlopen_factory():
             return _json_response({"images": [{"url": "https://cdn.example/keyframe.png"}]})
         if url == "https://cdn.example/keyframe.png":
             return _FakeResponse(b"keyframe-bytes")
-        if url == "https://queue.fal.run/fal-ai/pika/v2.2/image-to-video":
+        if url == "https://queue.fal.run/fal-ai/kling-video/v2.5-turbo/pro/image-to-video":
             return _json_response({
                 "request_id": "vid-1",
-                "status_url": "https://queue.fal.run/fal-ai/pika/v2.2/image-to-video/requests/vid-1/status",
-                "response_url": "https://queue.fal.run/fal-ai/pika/v2.2/image-to-video/requests/vid-1",
+                "status_url": "https://queue.fal.run/fal-ai/kling-video/v2.5-turbo/pro/image-to-video/requests/vid-1/status",
+                "response_url": "https://queue.fal.run/fal-ai/kling-video/v2.5-turbo/pro/image-to-video/requests/vid-1",
             })
-        if url == "https://queue.fal.run/fal-ai/pika/v2.2/image-to-video/requests/vid-1/status":
+        if url == "https://queue.fal.run/fal-ai/kling-video/v2.5-turbo/pro/image-to-video/requests/vid-1/status":
             return _json_response({"status": "COMPLETED"})
-        if url == "https://queue.fal.run/fal-ai/pika/v2.2/image-to-video/requests/vid-1":
+        if url == "https://queue.fal.run/fal-ai/kling-video/v2.5-turbo/pro/image-to-video/requests/vid-1":
             return _json_response({"video": {"url": "https://cdn.example/video.mp4"}})
         if url == "https://cdn.example/video.mp4":
             return _FakeResponse(b"video-bytes")
@@ -80,35 +80,37 @@ def _fake_urlopen_factory():
     return fake_urlopen, calls, payloads
 
 
-def test_pika_provider_requires_api_key(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+def test_kling_provider_requires_api_key(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
     monkeypatch.delenv("SOMIA_VIDEO_API_KEY", raising=False)
-    provider = PikaProvider()
+    provider = KlingProvider()
     with pytest.raises(VideoGenerationError, match="SOMIA_VIDEO_API_KEY"):
         provider.generate(_spec(), tmp_path)
 
 
-def test_pika_provider_generates_keyframe_and_video(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+def test_kling_provider_generates_keyframe_and_video(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
     monkeypatch.setenv("SOMIA_VIDEO_API_KEY", "test-key")
     fake_urlopen, calls, payloads = _fake_urlopen_factory()
     monkeypatch.setattr(urllib.request, "urlopen", fake_urlopen)
 
-    provider = PikaProvider()
+    provider = KlingProvider()
     result = provider.generate(_spec(), tmp_path)
 
     assert Path(result.keyframe_path).read_bytes() == b"keyframe-bytes"
     assert Path(result.video_path).read_bytes() == b"video-bytes"
-    assert result.provider == "pika"
+    assert result.provider == "kling"
     assert "fal-ai/flux/dev" in result.model
-    assert "fal-ai/pika/v2.2/image-to-video" in result.model
+    assert "fal-ai/kling-video/v2.5-turbo/pro/image-to-video" in result.model
     assert "12s" in result.notes and "10" in result.notes
-    # keyframe generated before the video call uses its URL as input
-    assert calls.index("https://queue.fal.run/fal-ai/flux/dev") < calls.index("https://queue.fal.run/fal-ai/pika/v2.2/image-to-video")
-    # steer away from the observed photorealism drift by default
-    video_payload = payloads["https://queue.fal.run/fal-ai/pika/v2.2/image-to-video"]
+    assert calls.index("https://queue.fal.run/fal-ai/flux/dev") < calls.index(
+        "https://queue.fal.run/fal-ai/kling-video/v2.5-turbo/pro/image-to-video"
+    )
+    video_payload = payloads["https://queue.fal.run/fal-ai/kling-video/v2.5-turbo/pro/image-to-video"]
     assert "photorealistic" in video_payload["negative_prompt"]
+    assert video_payload["duration"] == "10"
+    assert video_payload["cfg_scale"] == 0.5
 
 
-def test_pika_provider_raises_on_http_error(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+def test_kling_provider_raises_on_http_error(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
     import io
     import urllib.error
 
@@ -118,12 +120,12 @@ def test_pika_provider_raises_on_http_error(monkeypatch: pytest.MonkeyPatch, tmp
         raise urllib.error.HTTPError(request.full_url, 401, "Unauthorized", None, io.BytesIO(b"unauthorized"))
 
     monkeypatch.setattr(urllib.request, "urlopen", fake_urlopen)
-    provider = PikaProvider()
+    provider = KlingProvider()
     with pytest.raises(VideoGenerationError, match="401"):
         provider.generate(_spec(), tmp_path)
 
 
-def test_get_provider_lazily_loads_pika(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_get_provider_lazily_loads_kling(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("SOMIA_VIDEO_API_KEY", "test-key")
-    provider = get_provider("pika")
-    assert isinstance(provider, PikaProvider)
+    provider = get_provider("kling")
+    assert isinstance(provider, KlingProvider)

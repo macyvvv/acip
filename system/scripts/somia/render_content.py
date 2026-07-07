@@ -10,6 +10,7 @@ _REPO_ROOT_FOR_BOOTSTRAP = Path(__file__).resolve().parents[3]
 if str(_REPO_ROOT_FOR_BOOTSTRAP) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT_FOR_BOOTSTRAP))
 
+from system.core.dotenv import load_dotenv
 from system.core.path_resolver import get_repo_root
 from system.scripts.somia.content_spec import load_content_spec
 from system.scripts.somia.providers import VideoGenerationError, get_provider
@@ -52,6 +53,7 @@ def render(content_id: str, *, provider_name: str | None = None, root: Path | No
 
 
 def main() -> int:
+    load_dotenv(get_repo_root() / ".env")
     args = _build_parser().parse_args()
     try:
         render_record = render(args.content_id, provider_name=args.provider)

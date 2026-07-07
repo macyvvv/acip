@@ -11,6 +11,7 @@ class ContentSpec:
     content_id: str
     character: str
     image_prompt: str
+    negative_prompt: str
     animation_instruction: str
     camera_instruction: str
     on_screen_text: str
@@ -54,6 +55,7 @@ def load_content_spec(content_dir: str | Path) -> ContentSpec:
         content_id=content_dir.name,
         character=character,
         image_prompt=_section(prompt_text, "Image Prompt (KV)"),
+        negative_prompt=_section(prompt_text, "Negative Prompt"),
         animation_instruction=_section(prompt_text, "Animation Instruction"),
         camera_instruction=_section(prompt_text, "Camera Instruction"),
         on_screen_text=_first_backtick_line(_section(script_text, "Text")),
