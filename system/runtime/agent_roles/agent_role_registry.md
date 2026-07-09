@@ -1,9 +1,10 @@
 # AGENT_ROLE_REGISTRY
 
 ## Summary
-- Role count: 7
+- Role count: 8
 - claude_invocation roles: 5
 - pluggable_provider roles: 2
+- data_fetch roles: 1
 - Missing prompt templates: none
 - Missing output contracts: none
 
@@ -30,6 +31,9 @@
 - `video_generation` (pluggable_provider, model_capability=cost_optimized): Video Generation
   - output_contract_path: contracts/roles/VIDEO_GENERATION_OUTPUT_CONTRACT.md (exists=true)
   - allowed_tools: ['Read', 'Grep', 'Glob']
+- `analytics` (data_fetch, model_capability=cost_optimized): Analytics
+  - output_contract_path: contracts/roles/ANALYTICS_OUTPUT_CONTRACT.md (exists=true)
+  - allowed_tools: []
 - `pdca` (claude_invocation, model_capability=reasoning): PDCA
   - prompt_template_path: system/agent_runtime/role_prompts/pdca.md (exists=true)
   - output_contract_path: contracts/roles/PDCA_OUTPUT_CONTRACT.md (exists=true)

@@ -3,9 +3,10 @@
     "system/core/agent_role_registry.py"
   ],
   "summary": {
-    "role_count": 7,
+    "role_count": 8,
     "claude_invocation_count": 5,
     "pluggable_provider_count": 2,
+    "data_fetch_count": 1,
     "missing_prompt_templates": [],
     "missing_output_contracts": []
   },
@@ -116,6 +117,20 @@
         "Grep",
         "Glob"
       ],
+      "model_capability": "cost_optimized",
+      "prompt_template_path_exists": false,
+      "output_contract_path_exists": true
+    },
+    {
+      "role_id": "analytics",
+      "display_name": "Analytics",
+      "role_kind": "data_fetch",
+      "prompt_template_path": null,
+      "provider_registry_module": "system.scripts.analytics.providers",
+      "default_provider": "dry_run",
+      "output_contract_path": "contracts/roles/ANALYTICS_OUTPUT_CONTRACT.md",
+      "artifact_root_template": "system/runtime/business_agents/{business_id}/{role_id}/{task_id}/",
+      "allowed_tools": [],
       "model_capability": "cost_optimized",
       "prompt_template_path_exists": false,
       "output_contract_path_exists": true

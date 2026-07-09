@@ -33,6 +33,7 @@ def main() -> int:
         f"- Role count: {registry['summary']['role_count']}",
         f"- claude_invocation roles: {registry['summary']['claude_invocation_count']}",
         f"- pluggable_provider roles: {registry['summary']['pluggable_provider_count']}",
+        f"- data_fetch roles: {registry['summary']['data_fetch_count']}",
         f"- Missing prompt templates: {registry['summary']['missing_prompt_templates'] or 'none'}",
         f"- Missing output contracts: {registry['summary']['missing_output_contracts'] or 'none'}",
         "",

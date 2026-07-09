@@ -92,6 +92,31 @@ def test_pluggable_provider_role_not_yet_wired(tmp_path: Path) -> None:
         )
 
 
+def test_analytics_role_dry_run_never_calls_provider(tmp_path: Path) -> None:
+    adapter = BusinessAgentExecutionAdapter(tmp_path)
+    result = adapter.run(business_id="text_syndicate", role_id="analytics", task_id="task-0001", dry_run=True)
+    assert result.adapter_mode == "dry_run"
+    assert result.stdout == "dry-run only"
+    assert result.success is True
+
+
+def test_analytics_role_real_run_uses_default_dry_run_provider_safely(tmp_path: Path) -> None:
+    # Real execution (adapter dry_run=False) still resolves to the analytics
+    # role's own default_provider, which is itself "dry_run" until a real
+    # platform provider is registered -- so this stays network-free too.
+    adapter = BusinessAgentExecutionAdapter(tmp_path)
+    result = adapter.run(
+        business_id="text_syndicate", role_id="analytics", task_id="task-0001", approval_flag=True, dry_run=False
+    )
+    assert result.adapter_mode == "execute"
+    assert result.success is True
+    assert "dry-run" in result.stdout.lower()
+    kpi_path = tmp_path / "system" / "runtime" / "knowledge" / "kpi.json"
+    assert kpi_path.exists()
+    kpi = json.loads(kpi_path.read_text(encoding="utf-8"))
+    assert kpi["business_agent_stats"]["text_syndicate:analytics"]["runs"] == 1
+
+
 def test_artifact_written_to_business_agents_namespace(tmp_path: Path) -> None:
     _seed_prompt_template(tmp_path)
     adapter = BusinessAgentExecutionAdapter(tmp_path)

@@ -10,6 +10,7 @@ import subprocess
 from system.core.agent_role_registry import get_role
 from system.core.business_registry import get_business
 from system.core.kpi_store import update_business_agent_kpi
+from system.scripts.analytics.providers import get_provider as get_analytics_provider
 
 # Sibling to system/orchestrator/local_execution_adapter.py, not a modification of
 # it: that adapter's safety checks/deliverable verification are tied to
@@ -65,13 +66,16 @@ class BusinessAgentExecutionAdapter:
         role = get_role(role_id, self.base_path)
         if role is None:
             raise BusinessAgentExecutionError(f"Unknown role_id: {role_id}")
-        if role.role_kind != "claude_invocation":
+        if role.role_kind == "pluggable_provider":
             raise BusinessAgentExecutionError(
                 f"role_kind={role.role_kind} execution is not wired yet (Stage 4 work); "
-                f"only claude_invocation roles run today"
+                f"only claude_invocation and data_fetch roles run today"
             )
         if not dry_run and not approval_flag:
             raise BusinessAgentExecutionError("Real execution requires explicit approval flag")
+
+        if role.role_kind == "data_fetch":
+            return self._run_data_fetch(business_id, role, task_id, dry_run)
 
         prompt = self._render_prompt(business, role, task_description)
         model = self._resolve_model(role.model_capability)
@@ -105,6 +109,38 @@ class BusinessAgentExecutionAdapter:
         )
         self._write_artifact(result)
         update_business_agent_kpi(business_id, role_id, success, self.base_path)
+        return result
+
+    def _run_data_fetch(self, business_id: str, role, task_id: str, dry_run: bool) -> BusinessAgentExecutionResult:
+        adapter_mode = "dry_run" if dry_run else "execute"
+        if dry_run:
+            stdout = "dry-run only"
+            metrics: dict[str, float] = {}
+        else:
+            provider = get_analytics_provider(role.default_provider)
+            fetch_result = provider.fetch(business_id)
+            stdout = fetch_result.notes
+            metrics = fetch_result.metrics
+
+        success = True
+        result = BusinessAgentExecutionResult(
+            business_id=business_id,
+            role_id=role.role_id,
+            task_id=task_id,
+            adapter_mode=adapter_mode,
+            resolved_model=None,
+            model_capability=role.model_capability,
+            allowed_tools=list(role.allowed_tools),
+            agent_cli_command=f"analytics provider={role.default_provider}",
+            stdout=stdout,
+            stderr="",
+            exit_code=0,
+            success=success,
+            captured_at=datetime.now(timezone.utc).isoformat(),
+            artifact_path=str(self._artifact_dir(business_id, role.role_id, task_id) / "latest.json"),
+        )
+        self._write_artifact(result)
+        update_business_agent_kpi(business_id, role.role_id, success, self.base_path, metrics=metrics or None)
         return result
 
     def _render_prompt(self, business, role, task_description: str) -> str:
