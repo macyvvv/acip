@@ -3,9 +3,9 @@ from __future__ import annotations
 from system.core.agent_role_registry import build_agent_role_registry, get_role
 
 
-def test_seeds_seven_roles(tmp_path):
+def test_seeds_eight_roles(tmp_path):
     registry = build_agent_role_registry(tmp_path)
-    assert registry["summary"]["role_count"] == 7
+    assert registry["summary"]["role_count"] == 8
     role_ids = {item["role_id"] for item in registry["roles"]}
     assert role_ids == {
         "market_research",
@@ -14,6 +14,7 @@ def test_seeds_seven_roles(tmp_path):
         "scenario_writing",
         "image_generation",
         "video_generation",
+        "analytics",
         "pdca",
     }
 
@@ -26,8 +27,10 @@ def test_role_kind_split_matches_cost_model(tmp_path):
     pluggable_provider_roles = {
         item["role_id"] for item in registry["roles"] if item["role_kind"] == "pluggable_provider"
     }
+    data_fetch_roles = {item["role_id"] for item in registry["roles"] if item["role_kind"] == "data_fetch"}
     assert claude_invocation_roles == {"market_research", "marketing", "doc_creation", "scenario_writing", "pdca"}
     assert pluggable_provider_roles == {"image_generation", "video_generation"}
+    assert data_fetch_roles == {"analytics"}
 
 
 def test_missing_prompt_templates_and_contracts_detected_against_empty_tree(tmp_path):
@@ -39,7 +42,7 @@ def test_missing_prompt_templates_and_contracts_detected_against_empty_tree(tmp_
         "scenario_writing",
         "pdca",
     }
-    assert len(registry["summary"]["missing_output_contracts"]) == 7
+    assert len(registry["summary"]["missing_output_contracts"]) == 8
 
 
 def test_get_role_returns_none_for_unknown_role(tmp_path):
