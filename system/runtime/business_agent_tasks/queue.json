@@ -4,6 +4,13 @@
     "role_id": "market_research",
     "task_id": "task-0001",
     "title": "Research impression/affiliate-driving niches for Twitter/Threads/note.com",
-    "status": "candidate"
+    "status": "completed"
+  },
+  {
+    "business_id": "text_syndicate",
+    "role_id": "marketing",
+    "task_id": "task-0001",
+    "title": "Draft positioning and channel-specific copy from the market_research findings",
+    "status": "completed"
   }
 ]

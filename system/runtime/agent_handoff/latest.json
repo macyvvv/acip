@@ -1,12 +1,12 @@
 {
   "business_id": "text_syndicate",
-  "role_id": "market_research",
+  "role_id": "marketing",
   "task_id": "task-0001",
-  "task_description": "Identify which content niches and formats on Twitter/Threads/note.com are most likely to drive impressions and affiliate conversion for a brand-new text-only content business with no existing audience.",
+  "task_description": "Read system/runtime/business_agents/text_syndicate/market_research/task-0001/latest.md and produce: (1) a one-line positioning statement for the account, (2) a recommended single niche to pilot with (per the research's recommendation to pick one, not three), (3) 3-5 draft post concepts for X and Threads tailored to that niche's 2026 algorithm signals (reply-bait framing on X, niche-specific replies on Threads), and (4) one draft note.com long-form article title + outline in the recommended report/review format. State the target audience/channel for every draft.",
   "issue_number": null,
   "approved_draft_id": null,
-  "request_id": "REQ-TEXT-SYNDICATE-MARKET-RESEARCH-TASK-0001",
+  "request_id": "REQ-TEXT-SYNDICATE-MARKETING-TASK-0001",
   "next_action": "Review the handoff and, if approved, continue through the existing execution flow.",
-  "created_at": "2026-07-07T10:23:42.058724+00:00",
+  "created_at": "2026-07-09T20:16:19.063718+00:00",
   "source": "business_agent_handoff"
 }
