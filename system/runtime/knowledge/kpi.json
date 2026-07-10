@@ -50,7 +50,13 @@
       "success": 1,
       "failure": 0,
       "metrics": {}
+    },
+    "kabukicho_survival_map:doc_creation": {
+      "runs": 1,
+      "success": 1,
+      "failure": 0,
+      "metrics": {}
     }
   },
-  "last_updated": "2026-07-10T20:24:06.262747+00:00"
+  "last_updated": "2026-07-10T20:31:47.034539+00:00"
 }
