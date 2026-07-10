@@ -23,3 +23,13 @@ def test_mark_task_status_updates_matching_entry(tmp_path) -> None:
 
 def test_load_queue_empty_when_missing(tmp_path) -> None:
     assert load_queue(tmp_path) == []
+
+
+def test_add_task_defaults_source_to_manual(tmp_path) -> None:
+    queue = add_task("text_syndicate", "market_research", "task-0001", "Research niches", tmp_path)
+    assert queue[0]["source"] == "manual"
+
+
+def test_add_task_records_auto_trigger_source(tmp_path) -> None:
+    queue = add_task("text_syndicate", "marketing", "auto-0001", "Auto-triggered", tmp_path, source="auto_trigger")
+    assert queue[0]["source"] == "auto_trigger"

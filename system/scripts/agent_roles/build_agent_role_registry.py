@@ -36,6 +36,7 @@ def main() -> int:
         f"- data_fetch roles: {registry['summary']['data_fetch_count']}",
         f"- Missing prompt templates: {registry['summary']['missing_prompt_templates'] or 'none'}",
         f"- Missing output contracts: {registry['summary']['missing_output_contracts'] or 'none'}",
+        f"- Unknown next_roles references: {registry['summary']['unknown_next_role_references'] or 'none'}",
         "",
         "## Roles",
     ]
@@ -45,6 +46,7 @@ def main() -> int:
             lines.append(f"  - prompt_template_path: {item['prompt_template_path']} (exists={str(item['prompt_template_path_exists']).lower()})")
         lines.append(f"  - output_contract_path: {item['output_contract_path']} (exists={str(item['output_contract_path_exists']).lower()})")
         lines.append(f"  - allowed_tools: {list(item['allowed_tools'])}")
+        lines.append(f"  - next_roles: {list(item['next_roles']) or 'terminal'}")
     md_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print("agent role registry built")
     print(f"json_path={json_path}")

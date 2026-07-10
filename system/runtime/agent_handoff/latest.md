@@ -1,8 +1,8 @@
 # AGENT_HANDOFF
 
 business_id: text_syndicate
-role_id: marketing
-task_id: task-0001
-task_description: Read system/runtime/business_agents/text_syndicate/market_research/task-0001/latest.md and produce: (1) a one-line positioning statement for the account, (2) a recommended single niche to pilot with (per the research's recommendation to pick one, not three), (3) 3-5 draft post concepts for X and Threads tailored to that niche's 2026 algorithm signals (reply-bait framing on X, niche-specific replies on Threads), and (4) one draft note.com long-form article title + outline in the recommended report/review format. State the target audience/channel for every draft.
-request_id: REQ-TEXT-SYNDICATE-MARKETING-TASK-0001
+role_id: doc_creation
+task_id: auto-0001
+task_description: Auto-triggered following successful completion of text_syndicate/marketing/task-0001. Read its artifact at system/runtime/business_agents/text_syndicate/marketing/task-0001/latest.md and produce the doc_creation output building on it.
+request_id: REQ-TEXT-SYNDICATE-DOC-CREATION-AUTO-0001
 next_action: Review the handoff and, if approved, continue through the existing execution flow.

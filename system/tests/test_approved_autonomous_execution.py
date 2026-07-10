@@ -149,6 +149,15 @@ def test_business_role_task_dispatches_to_business_agent_adapter(tmp_path: Path,
     assert result.execution_result_status == "success"
     assert result.completion_marker_path.endswith("market_research/task-0001/latest.json")
 
+    # market_research's next_roles == ("marketing",) -- success should have
+    # auto-enqueued (and, since nothing else is pending, activated) it.
+    queue = json.loads((tmp_path / "system" / "runtime" / "business_agent_tasks" / "queue.json").read_text(encoding="utf-8"))
+    assert len(queue) == 1
+    assert queue[0]["role_id"] == "marketing"
+    assert queue[0]["source"] == "auto_trigger"
+    new_handoff = json.loads((tmp_path / "system" / "runtime" / "agent_handoff" / "latest.json").read_text(encoding="utf-8"))
+    assert new_handoff["role_id"] == "marketing"
+
 
 def test_business_role_task_failure_stops_safely(tmp_path: Path, monkeypatch) -> None:
     _write_business_role_handoff(tmp_path / "system" / "runtime" / "agent_handoff" / "latest.json")
@@ -169,6 +178,8 @@ def test_business_role_task_failure_stops_safely(tmp_path: Path, monkeypatch) ->
     assert result.execution_triggered is True
     assert result.execution_result_status == "failure"
     assert "business agent execution failed" in result.stopped_reason
+    # never chain off a failure
+    assert not (tmp_path / "system" / "runtime" / "business_agent_tasks" / "queue.json").exists()
 
 
 def test_issue_scope_path_still_uses_local_execution_adapter(tmp_path: Path, monkeypatch) -> None:

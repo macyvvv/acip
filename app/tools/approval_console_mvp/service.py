@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable, Iterable
 
+from system.core.business_agent_handoff import compute_request_id
 from system.core.business_agent_task_queue import load_queue, mark_task_status
 
 
@@ -136,7 +137,7 @@ class ApprovalConsoleService:
                     title=str(task.get("title") or ""),
                     current_bucket="",
                     execution_fit="one_shot_ready",
-                    handoff_id=str(current_handoff.get("request_id") or "") or None,
+                    handoff_id=compute_request_id(business_id, role_id, task_id),
                     approval_status=str(approval.get("decision_status") or "pending"),
                     execution_allowed=bool(approval.get("execution_enabled", False)),
                     latest_execution_status=str(latest_execution.get("execution_result_status") or "") or None,

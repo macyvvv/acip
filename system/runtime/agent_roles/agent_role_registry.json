@@ -8,7 +8,8 @@
     "pluggable_provider_count": 2,
     "data_fetch_count": 1,
     "missing_prompt_templates": [],
-    "missing_output_contracts": []
+    "missing_output_contracts": [],
+    "unknown_next_role_references": []
   },
   "roles": [
     {
@@ -27,6 +28,9 @@
         "WebSearch"
       ],
       "model_capability": "reasoning",
+      "next_roles": [
+        "marketing"
+      ],
       "prompt_template_path_exists": true,
       "output_contract_path_exists": true
     },
@@ -46,6 +50,9 @@
         "WebSearch"
       ],
       "model_capability": "reasoning",
+      "next_roles": [
+        "doc_creation"
+      ],
       "prompt_template_path_exists": true,
       "output_contract_path_exists": true
     },
@@ -64,6 +71,7 @@
         "Glob"
       ],
       "model_capability": "cost_optimized",
+      "next_roles": [],
       "prompt_template_path_exists": true,
       "output_contract_path_exists": true
     },
@@ -82,6 +90,7 @@
         "Glob"
       ],
       "model_capability": "reasoning",
+      "next_roles": [],
       "prompt_template_path_exists": true,
       "output_contract_path_exists": true
     },
@@ -100,6 +109,7 @@
         "Glob"
       ],
       "model_capability": "cost_optimized",
+      "next_roles": [],
       "prompt_template_path_exists": false,
       "output_contract_path_exists": true
     },
@@ -118,6 +128,7 @@
         "Glob"
       ],
       "model_capability": "cost_optimized",
+      "next_roles": [],
       "prompt_template_path_exists": false,
       "output_contract_path_exists": true
     },
@@ -132,6 +143,9 @@
       "artifact_root_template": "system/runtime/business_agents/{business_id}/{role_id}/{task_id}/",
       "allowed_tools": [],
       "model_capability": "cost_optimized",
+      "next_roles": [
+        "pdca"
+      ],
       "prompt_template_path_exists": false,
       "output_contract_path_exists": true
     },
@@ -150,6 +164,7 @@
         "Glob"
       ],
       "model_capability": "reasoning",
+      "next_roles": [],
       "prompt_template_path_exists": true,
       "output_contract_path_exists": true
     }

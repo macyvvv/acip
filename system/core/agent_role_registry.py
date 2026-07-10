@@ -19,6 +19,7 @@ class AgentRoleRecord:
     artifact_root_template: str
     allowed_tools: tuple[str, ...]
     model_capability: str
+    next_roles: tuple[str, ...]
     prompt_template_path_exists: bool
     output_contract_path_exists: bool
 
@@ -36,6 +37,7 @@ _SEED_ROLES: tuple[dict[str, Any], ...] = (
         "output_contract_path": "contracts/roles/MARKET_RESEARCH_OUTPUT_CONTRACT.md",
         "allowed_tools": ("Read", "Grep", "Glob", "WebSearch"),
         "model_capability": "reasoning",
+        "next_roles": ("marketing",),
     },
     {
         "role_id": "marketing",
@@ -47,6 +49,7 @@ _SEED_ROLES: tuple[dict[str, Any], ...] = (
         "output_contract_path": "contracts/roles/MARKETING_OUTPUT_CONTRACT.md",
         "allowed_tools": ("Read", "Grep", "Glob", "WebSearch"),
         "model_capability": "reasoning",
+        "next_roles": ("doc_creation",),
     },
     {
         "role_id": "doc_creation",
@@ -58,6 +61,7 @@ _SEED_ROLES: tuple[dict[str, Any], ...] = (
         "output_contract_path": "contracts/roles/DOC_CREATION_OUTPUT_CONTRACT.md",
         "allowed_tools": ("Read", "Grep", "Glob"),
         "model_capability": "cost_optimized",
+        "next_roles": (),
     },
     {
         "role_id": "scenario_writing",
@@ -69,6 +73,7 @@ _SEED_ROLES: tuple[dict[str, Any], ...] = (
         "output_contract_path": "contracts/roles/SCENARIO_WRITING_OUTPUT_CONTRACT.md",
         "allowed_tools": ("Read", "Grep", "Glob"),
         "model_capability": "reasoning",
+        "next_roles": (),
     },
     {
         "role_id": "image_generation",
@@ -80,6 +85,7 @@ _SEED_ROLES: tuple[dict[str, Any], ...] = (
         "output_contract_path": "contracts/roles/IMAGE_GENERATION_OUTPUT_CONTRACT.md",
         "allowed_tools": ("Read", "Grep", "Glob"),
         "model_capability": "cost_optimized",
+        "next_roles": (),
     },
     {
         "role_id": "video_generation",
@@ -91,6 +97,7 @@ _SEED_ROLES: tuple[dict[str, Any], ...] = (
         "output_contract_path": "contracts/roles/VIDEO_GENERATION_OUTPUT_CONTRACT.md",
         "allowed_tools": ("Read", "Grep", "Glob"),
         "model_capability": "cost_optimized",
+        "next_roles": (),
     },
     {
         "role_id": "analytics",
@@ -102,6 +109,7 @@ _SEED_ROLES: tuple[dict[str, Any], ...] = (
         "output_contract_path": "contracts/roles/ANALYTICS_OUTPUT_CONTRACT.md",
         "allowed_tools": (),
         "model_capability": "cost_optimized",
+        "next_roles": ("pdca",),
     },
     {
         "role_id": "pdca",
@@ -113,6 +121,7 @@ _SEED_ROLES: tuple[dict[str, Any], ...] = (
         "output_contract_path": "contracts/roles/PDCA_OUTPUT_CONTRACT.md",
         "allowed_tools": ("Read", "Grep", "Glob"),
         "model_capability": "reasoning",
+        "next_roles": (),  # closing the loop back to market_research is deliberately Level 2, not this stage
     },
 )
 
@@ -141,6 +150,7 @@ def build_agent_role_registry(base_path: Path | None = None) -> dict[str, Any]:
                 artifact_root_template=_ARTIFACT_ROOT_TEMPLATE,
                 allowed_tools=tuple(seed["allowed_tools"]),
                 model_capability=seed["model_capability"],
+                next_roles=tuple(seed["next_roles"]),
                 prompt_template_path_exists=prompt_template_path_exists,
                 output_contract_path_exists=output_contract_path_exists,
             )
@@ -152,6 +162,15 @@ def build_agent_role_registry(base_path: Path | None = None) -> dict[str, Any]:
         if record.role_kind == "claude_invocation" and not record.prompt_template_path_exists
     ]
     missing_output_contracts = [record.role_id for record in records if not record.output_contract_path_exists]
+    known_role_ids = {record.role_id for record in records}
+    unknown_next_role_references = sorted(
+        {
+            f"{record.role_id}->{next_role}"
+            for record in records
+            for next_role in record.next_roles
+            if next_role not in known_role_ids
+        }
+    )
 
     registry = {
         "source_artifacts": [
@@ -164,6 +183,7 @@ def build_agent_role_registry(base_path: Path | None = None) -> dict[str, Any]:
             "data_fetch_count": sum(1 for item in records if item.role_kind == "data_fetch"),
             "missing_prompt_templates": missing_prompt_templates,
             "missing_output_contracts": missing_output_contracts,
+            "unknown_next_role_references": unknown_next_role_references,
         },
         "roles": [asdict(item) for item in records],
     }
