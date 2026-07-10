@@ -34,6 +34,14 @@
     "role_id": "marketing",
     "task_id": "auto-0001",
     "title": "Auto-triggered marketing following kabukicho_survival_map/market_research/task-0001",
+    "status": "completed",
+    "source": "auto_trigger"
+  },
+  {
+    "business_id": "kabukicho_survival_map",
+    "role_id": "doc_creation",
+    "task_id": "auto-0001",
+    "title": "Auto-triggered doc_creation following kabukicho_survival_map/marketing/auto-0001",
     "status": "candidate",
     "source": "auto_trigger"
   }
