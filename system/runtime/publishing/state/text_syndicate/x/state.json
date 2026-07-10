@@ -1,0 +1,15 @@
+{
+  "published": {
+    "marketing:task-0001": {
+      "role_id": "marketing",
+      "task_id": "task-0001",
+      "provider": "dry_run",
+      "external_post_id": null,
+      "published_at": "2026-07-10T10:34:56.294408+00:00"
+    }
+  },
+  "counters": {
+    "2026-07-10": 1,
+    "2026-W28": 1
+  }
+}

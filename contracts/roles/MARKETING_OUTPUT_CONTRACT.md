@@ -19,7 +19,7 @@
 ## Prohibited IO
 
 - external API mutation: yes, prohibited
-- auto posting: yes, prohibited (drafts only; posting is a separate, future, explicitly-approved capability)
+- auto posting: yes, prohibited for the role invocation itself; a separate, policy-gated publishing pipeline (see ADR-0035) may post a human-finalized excerpt of this role's output -- the role never gains posting IO directly
 - scraping: not prohibited outright, but must respect target site terms
 - secret use: prohibited
 - runtime execution: prohibited (no code execution beyond read-only tools)
