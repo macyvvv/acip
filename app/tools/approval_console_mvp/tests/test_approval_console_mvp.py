@@ -498,3 +498,89 @@ def test_single_now_candidate_is_prominently_labeled(tmp_path: Path) -> None:
     text = service.render_status(scopes[0], None)
     assert "Current NOW candidates: 1" in text
     assert "Current Execution Target: Issue #41: PRODUCT-0004 Product Launch Follow-up" in text
+
+
+def test_render_status_shows_pre_approval_pause_banner(tmp_path: Path) -> None:
+    from system.core.execution_pre_approval_control import pause_pre_approval
+
+    pause_pre_approval("investigating a misconfigured policy", "macy", tmp_path)
+    service = ApprovalConsoleService(tmp_path)
+    text = service.render_status(None, None)
+    assert "PRE-APPROVAL PAUSED" in text
+    assert "investigating a misconfigured policy" in text
+    assert "macy" in text
+
+
+def test_render_status_has_no_pre_approval_banner_when_not_paused(tmp_path: Path) -> None:
+    service = ApprovalConsoleService(tmp_path)
+    text = service.render_status(None, None)
+    assert "PRE-APPROVAL PAUSED" not in text
+
+
+def test_policy_pre_approved_and_completed_task_absent_from_candidates(tmp_path: Path) -> None:
+    # The direct fix for the console-misrepresentation risk: a task that
+    # ApprovedAutonomousExecution already executed and marked "completed"
+    # via the policy pre-approval path must not linger as an open candidate.
+    _write_runtime_state(
+        tmp_path,
+        current_handoff={"request_id": "REQ-OPEN-001", "issue_number": None},
+        roadmap={"issues": []},
+        open_issues=[],
+        frozen_plan={"issues": []},
+    )
+    (tmp_path / "system" / "runtime" / "business_agent_tasks").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "system" / "runtime" / "business_agent_tasks" / "queue.json").write_text(
+        json.dumps(
+            [
+                {
+                    "business_id": "text_syndicate",
+                    "role_id": "market_research",
+                    "task_id": "task-0001",
+                    "title": "Policy pre-approved and already executed",
+                    "status": "completed",
+                }
+            ]
+        ),
+        encoding="utf-8",
+    )
+    service = ApprovalConsoleService(tmp_path)
+    assert service.load_scopes() == []
+
+
+def test_authorization_source_and_policy_id_surfaced_for_candidate(tmp_path: Path) -> None:
+    _write_runtime_state(
+        tmp_path,
+        current_handoff={"request_id": "REQ-OPEN-001", "issue_number": None},
+        roadmap={"issues": []},
+        open_issues=[],
+        frozen_plan={"issues": []},
+    )
+    (tmp_path / "system" / "runtime" / "business_agent_tasks").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "system" / "runtime" / "business_agent_tasks" / "queue.json").write_text(
+        json.dumps(
+            [
+                {
+                    "business_id": "text_syndicate",
+                    "role_id": "market_research",
+                    "task_id": "task-0002",
+                    "title": "A second, still-candidate task",
+                    "status": "candidate",
+                }
+            ]
+        ),
+        encoding="utf-8",
+    )
+    scope_execution_dir = tmp_path / "system" / "runtime" / "agent_execution" / "scopes" / "text_syndicate" / "market_research" / "task-0002"
+    scope_execution_dir.mkdir(parents=True, exist_ok=True)
+    (scope_execution_dir / "latest.json").write_text(
+        json.dumps({"execution_result_status": "denied", "authorization_source": "policy_pre_approval", "policy_id": "PREAPP-text_syndicate-market_research"}),
+        encoding="utf-8",
+    )
+    service = ApprovalConsoleService(tmp_path)
+    scopes = service.load_scopes()
+    assert len(scopes) == 1
+    assert scopes[0].authorization_source == "policy_pre_approval"
+    assert scopes[0].policy_id == "PREAPP-text_syndicate-market_research"
+    text = service.render_status(scopes[0], None)
+    assert "Authorization source: policy_pre_approval" in text
+    assert "Policy id: PREAPP-text_syndicate-market_research" in text
