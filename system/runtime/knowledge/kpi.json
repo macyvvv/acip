@@ -32,7 +32,19 @@
       "success": 2,
       "failure": 0,
       "metrics": {}
+    },
+    "text_syndicate:doc_creation": {
+      "runs": 2,
+      "success": 1,
+      "failure": 1,
+      "metrics": {}
+    },
+    "kabukicho_survival_map:market_research": {
+      "runs": 1,
+      "success": 1,
+      "failure": 0,
+      "metrics": {}
     }
   },
-  "last_updated": "2026-07-07T14:17:56.332363+00:00"
+  "last_updated": "2026-07-10T20:11:56.824780+00:00"
 }
