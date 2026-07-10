@@ -9,6 +9,7 @@ from typing import Callable, Iterable
 
 from system.core.agent_execution_approval import evaluate_business_agent_scope_approval
 from system.core.business_agent_automation_control import automation_pause_info
+from system.core.publishing_control import publishing_pause_info
 from system.core.business_agent_handoff import compute_request_id, load_business_agent_handoff
 from system.core.business_agent_task_queue import load_queue, mark_task_status
 
@@ -261,6 +262,22 @@ class ApprovalConsoleService:
         pause_info = automation_pause_info(self.repo_root)
         if pause_info:
             lines.append(f"AUTOMATION PAUSED: reason={pause_info.get('reason', '')} paused_by={pause_info.get('paused_by', '')} paused_at={pause_info.get('paused_at', '')}")
+            lines.append("")
+        publishing_pause = publishing_pause_info(self.repo_root)
+        if publishing_pause:
+            lines.append(
+                f"PUBLISHING PAUSED: reason={publishing_pause.get('reason', '')} "
+                f"paused_by={publishing_pause.get('paused_by', '')} paused_at={publishing_pause.get('paused_at', '')}"
+            )
+            lines.append("")
+        last_publish_run = self._read_json(self.repo_root / "system" / "runtime" / "publishing" / "audit" / "latest.json")
+        if last_publish_run:
+            lines.append(
+                f"Last publish run: {last_publish_run.get('finished_at', '')} "
+                f"published={len(last_publish_run.get('published', []))} blocked={len(last_publish_run.get('blocked', []))}"
+            )
+            for item in last_publish_run.get("published", []):
+                lines.append(f"  published: {item.get('business_id')}/{item.get('role_id')}/{item.get('task_id')} -> {item.get('platform')}")
             lines.append("")
         current_target = self._current_execution_target_summary()
         if scope is None:
