@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Callable, Iterable
 
 from system.core.agent_execution_approval import evaluate_business_agent_scope_approval
+from system.core.business_agent_automation_control import automation_pause_info
 from system.core.business_agent_handoff import compute_request_id, load_business_agent_handoff
 from system.core.business_agent_task_queue import load_queue, mark_task_status
 
@@ -257,6 +258,10 @@ class ApprovalConsoleService:
 
     def render_status(self, scope: ApprovalScope | None, result: ConsoleResult | None) -> str:
         lines = ["Approval Console MVP", ""]
+        pause_info = automation_pause_info(self.repo_root)
+        if pause_info:
+            lines.append(f"AUTOMATION PAUSED: reason={pause_info.get('reason', '')} paused_by={pause_info.get('paused_by', '')} paused_at={pause_info.get('paused_at', '')}")
+            lines.append("")
         current_target = self._current_execution_target_summary()
         if scope is None:
             reason = self._zero_candidate_reason()
