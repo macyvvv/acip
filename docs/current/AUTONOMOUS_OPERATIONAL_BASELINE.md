@@ -10,8 +10,11 @@ The operational baseline for autonomy is one-shot approved execution only.
 
 ## What Remains Disabled
 - Repeated autonomy
-- Queue autonomy
+- Queue autonomy (execution) — a queue candidate never executes without a human explicitly approving that specific scope, every time
 - Open-ended autonomy
+
+## What Is Operational (business agent platform, Level 1)
+- Queue autonomy (population only) — the next candidate task can be proposed automatically on a prior task's success, per `docs/current/BUSINESS_AGENT_AUTOMATION_READINESS.md`. This never approves or executes anything; it only ever adds a candidate for a human to review. See that doc for the full readiness gate and forbidden list.
 
 ## Canonical Verified Example
 - Scope: `DRAFT-OPP-KABUKICHO-001`

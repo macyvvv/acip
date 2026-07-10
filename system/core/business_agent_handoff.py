@@ -10,7 +10,11 @@ def _now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
-def _request_id(business_id: str, role_id: str, task_id: str) -> str:
+def compute_request_id(business_id: str, role_id: str, task_id: str) -> str:
+    """Deterministic handoff/approval ID for a (business, role, task) tuple.
+    Public so the Approval Console can compute a scope-specific handoff_id
+    for a queued-but-not-yet-active candidate, instead of echoing whatever
+    happens to be the currently active handoff's request_id."""
     safe = f"{business_id}-{role_id}-{task_id}".replace("_", "-").replace(":", "-").replace("/", "-")
     return f"REQ-{safe.upper()}"
 
@@ -31,7 +35,7 @@ def write_business_agent_handoff(
     root = Path(base_path)
     handoff_dir = root / "system" / "runtime" / "agent_handoff"
     handoff_dir.mkdir(parents=True, exist_ok=True)
-    request_id = _request_id(business_id, role_id, task_id)
+    request_id = compute_request_id(business_id, role_id, task_id)
     payload: dict[str, Any] = {
         "business_id": business_id,
         "role_id": role_id,

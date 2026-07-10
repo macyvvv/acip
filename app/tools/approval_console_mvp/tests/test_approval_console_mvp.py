@@ -281,6 +281,48 @@ def test_non_candidate_business_role_tasks_are_excluded(tmp_path: Path) -> None:
     assert service.load_scopes() == []
 
 
+def test_business_role_task_handoff_id_is_scope_specific_not_global(tmp_path: Path) -> None:
+    # Regression test for a real pre-existing bug: handoff_id used to echo
+    # whatever the currently-active handoff's request_id was, regardless of
+    # which scope was being described -- meaning a queued-but-not-active
+    # candidate could never actually be approved (its approval.json would
+    # never match anything). The current_handoff below deliberately points
+    # at a DIFFERENT scope (marketing) than the one queued candidate
+    # (market_research), to prove the fix doesn't just coincidentally match.
+    _write_runtime_state(
+        tmp_path,
+        current_handoff={
+            "business_id": "text_syndicate",
+            "role_id": "marketing",
+            "task_id": "task-0001",
+            "request_id": "REQ-TEXT-SYNDICATE-MARKETING-TASK-0001",
+        },
+        roadmap={"issues": []},
+        open_issues=[],
+        frozen_plan={"issues": []},
+    )
+    (tmp_path / "system" / "runtime" / "business_agent_tasks").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "system" / "runtime" / "business_agent_tasks" / "queue.json").write_text(
+        json.dumps(
+            [
+                {
+                    "business_id": "text_syndicate",
+                    "role_id": "market_research",
+                    "task_id": "task-0002",
+                    "title": "A second, not-yet-active market_research task",
+                    "status": "candidate",
+                }
+            ]
+        ),
+        encoding="utf-8",
+    )
+    service = ApprovalConsoleService(tmp_path)
+    scopes = service.load_scopes()
+    assert len(scopes) == 1
+    assert scopes[0].handoff_id == "REQ-TEXT-SYNDICATE-MARKET-RESEARCH-TASK-0002"
+    assert scopes[0].handoff_id != "REQ-TEXT-SYNDICATE-MARKETING-TASK-0001"
+
+
 def test_approve_scope_marks_business_role_task_approved(tmp_path: Path) -> None:
     backups = _backup_approval_artifacts()
     (tmp_path / "system" / "runtime" / "business_agent_tasks").mkdir(parents=True, exist_ok=True)

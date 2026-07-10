@@ -7,6 +7,7 @@ import json
 from typing import Any
 
 from system.core.agent_execution_approval import evaluate_execution_approval
+from system.core.business_agent_trigger import evaluate_and_enqueue_next_tasks
 from system.orchestrator.business_agent_execution_adapter import BusinessAgentExecutionAdapter
 from system.orchestrator.local_execution_adapter import LocalExecutionAdapter
 
@@ -151,6 +152,11 @@ class ApprovedAutonomousExecution:
             finished_at=_now(),
         )
         self._write_runtime(result)
+        if outcome.success:
+            # Level 1 queue-population automation only -- this can enqueue and
+            # possibly activate the next candidate, it never approves or runs
+            # anything. See docs/current/BUSINESS_AGENT_AUTOMATION_READINESS.md.
+            evaluate_and_enqueue_next_tasks(business_id, role_id, task_id, outcome.artifact_path, self.base_path)
         return result
 
     def _request_path(self) -> str | None:

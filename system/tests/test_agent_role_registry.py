@@ -55,3 +55,31 @@ def test_get_role_returns_record_for_known_role(tmp_path):
     assert role.role_kind == "claude_invocation"
     assert role.model_capability == "reasoning"
     assert "WebSearch" in role.allowed_tools
+
+
+def test_next_roles_seed_chain(tmp_path):
+    registry = build_agent_role_registry(tmp_path)
+    next_roles_by_id = {item["role_id"]: item["next_roles"] for item in registry["roles"]}
+    assert next_roles_by_id["market_research"] == ("marketing",)
+    assert next_roles_by_id["marketing"] == ("doc_creation",)
+    assert next_roles_by_id["analytics"] == ("pdca",)
+    # terminal for Level 1 -- no auto-chain beyond these
+    assert next_roles_by_id["doc_creation"] == ()
+    assert next_roles_by_id["pdca"] == ()
+
+
+def test_next_roles_drift_check_detects_unknown_reference(tmp_path, monkeypatch):
+    import system.core.agent_role_registry as registry_module
+
+    bad_seeds = tuple(
+        {**seed, "next_roles": ("not_a_real_role",)} if seed["role_id"] == "market_research" else seed
+        for seed in registry_module._SEED_ROLES
+    )
+    monkeypatch.setattr(registry_module, "_SEED_ROLES", bad_seeds)
+    registry = registry_module.build_agent_role_registry(tmp_path)
+    assert "market_research->not_a_real_role" in registry["summary"]["unknown_next_role_references"]
+
+
+def test_next_roles_no_unknown_references_by_default(tmp_path):
+    registry = build_agent_role_registry(tmp_path)
+    assert registry["summary"]["unknown_next_role_references"] == []

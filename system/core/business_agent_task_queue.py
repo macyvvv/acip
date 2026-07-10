@@ -29,6 +29,8 @@ def add_task(
     task_id: str,
     title: str,
     base_path: str | Path = ".",
+    *,
+    source: str = "manual",
 ) -> list[dict[str, Any]]:
     queue = load_queue(base_path)
     existing = next(
@@ -44,6 +46,7 @@ def add_task(
             "task_id": task_id,
             "title": title,
             "status": "candidate",
+            "source": source,
         }
     )
     _write_queue(queue, base_path)

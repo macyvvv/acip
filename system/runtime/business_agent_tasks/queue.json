@@ -11,6 +11,14 @@
     "role_id": "marketing",
     "task_id": "task-0001",
     "title": "Draft positioning and channel-specific copy from the market_research findings",
-    "status": "candidate"
+    "status": "completed"
+  },
+  {
+    "business_id": "text_syndicate",
+    "role_id": "doc_creation",
+    "task_id": "auto-0001",
+    "title": "Auto-triggered doc_creation following text_syndicate/marketing/task-0001",
+    "status": "candidate",
+    "source": "auto_trigger"
   }
 ]
