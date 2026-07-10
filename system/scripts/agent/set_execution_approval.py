@@ -10,6 +10,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
 
+from system.core.business_agent_handoff import scope_dir
+
 
 def _parse_bool(value: str) -> bool:
     normalized = value.strip().lower()
@@ -78,7 +80,14 @@ def main() -> int:
         "supersedes": args.supersedes,
     }
 
-    runtime_dir = ROOT / "system" / "runtime" / "agent_handoff"
+    if args.scope_type == "business_role_task":
+        parts = args.scope_id.split(":")
+        if len(parts) != 3:
+            raise ValueError(f"business_role_task scope_id must be 'business_id:role_id:task_id', got: {args.scope_id}")
+        business_id, role_id, task_id = parts
+        runtime_dir = scope_dir(business_id, role_id, task_id, ROOT)
+    else:
+        runtime_dir = ROOT / "system" / "runtime" / "agent_handoff"
     runtime_dir.mkdir(parents=True, exist_ok=True)
     approval_path = runtime_dir / "approval.json"
     approval_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")

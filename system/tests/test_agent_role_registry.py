@@ -63,9 +63,10 @@ def test_next_roles_seed_chain(tmp_path):
     assert next_roles_by_id["market_research"] == ("marketing",)
     assert next_roles_by_id["marketing"] == ("doc_creation",)
     assert next_roles_by_id["analytics"] == ("pdca",)
-    # terminal for Level 1 -- no auto-chain beyond these
+    # closes the full content/PDCA cycle (Level 2: per-task scoping made this safe)
+    assert next_roles_by_id["pdca"] == ("market_research",)
+    # still terminal -- image/video generation and scenario_writing aren't wired to a next role
     assert next_roles_by_id["doc_creation"] == ()
-    assert next_roles_by_id["pdca"] == ()
 
 
 def test_next_roles_drift_check_detects_unknown_reference(tmp_path, monkeypatch):

@@ -150,13 +150,19 @@ def test_business_role_task_dispatches_to_business_agent_adapter(tmp_path: Path,
     assert result.completion_marker_path.endswith("market_research/task-0001/latest.json")
 
     # market_research's next_roles == ("marketing",) -- success should have
-    # auto-enqueued (and, since nothing else is pending, activated) it.
+    # auto-enqueued and activated it at its own per-task scope (Level 2: no
+    # shared slot, so this never touches the legacy top-level handoff file).
     queue = json.loads((tmp_path / "system" / "runtime" / "business_agent_tasks" / "queue.json").read_text(encoding="utf-8"))
     assert len(queue) == 1
     assert queue[0]["role_id"] == "marketing"
     assert queue[0]["source"] == "auto_trigger"
-    new_handoff = json.loads((tmp_path / "system" / "runtime" / "agent_handoff" / "latest.json").read_text(encoding="utf-8"))
+    new_handoff_path = tmp_path / "system" / "runtime" / "agent_handoff" / "scopes" / "text_syndicate" / "marketing" / queue[0]["task_id"] / "handoff.json"
+    assert new_handoff_path.exists()
+    new_handoff = json.loads(new_handoff_path.read_text(encoding="utf-8"))
     assert new_handoff["role_id"] == "marketing"
+    # per-scope execution result, not the shared top-level file
+    scope_result_path = tmp_path / "system" / "runtime" / "agent_execution" / "scopes" / "text_syndicate" / "market_research" / "task-0001" / "latest.json"
+    assert scope_result_path.exists()
 
 
 def test_business_role_task_failure_stops_safely(tmp_path: Path, monkeypatch) -> None:
@@ -221,4 +227,82 @@ def test_blocked_result_stops_safely(tmp_path: Path, monkeypatch) -> None:
     assert result.execution_triggered is True
     assert result.execution_result_status == "blocked"
     assert result.stopped_reason == "blocked"
+
+
+def test_scope_parameterized_run_uses_per_task_approval(tmp_path: Path, monkeypatch) -> None:
+    from system.core.business_agent_handoff import scope_dir, write_business_agent_handoff
+
+    write_business_agent_handoff("text_syndicate", "market_research", "task-0001", "desc", tmp_path)
+    approval_path = scope_dir("text_syndicate", "market_research", "task-0001", tmp_path) / "approval.json"
+    _write_approval(approval_path, handoff_id="REQ-TEXT-SYNDICATE-MARKET-RESEARCH-TASK-0001", scope_type="business_role_task", scope_id="text_syndicate:market_research:task-0001")
+
+    class FakeOutcome:
+        success = True
+        artifact_path = "system/runtime/business_agents/text_syndicate/market_research/task-0001/latest.json"
+        exit_code = 0
+
+    def fake_run(self, **kwargs):
+        return FakeOutcome()
+
+    monkeypatch.setattr("system.core.approved_autonomous_execution.BusinessAgentExecutionAdapter.run", fake_run)
+
+    result = ApprovedAutonomousExecution(tmp_path).run(business_id="text_syndicate", role_id="market_research", task_id="task-0001")
+
+    assert result.execution_triggered is True
+    assert result.execution_result_status == "success"
+    # per-scope result, not the shared top-level agent_execution/latest.json
+    assert (tmp_path / "system" / "runtime" / "agent_execution" / "scopes" / "text_syndicate" / "market_research" / "task-0001" / "latest.json").exists()
+
+
+def test_two_businesses_execute_independently_without_interference(tmp_path: Path, monkeypatch) -> None:
+    # Concurrency/no-interference test: business A's approved-and-pending
+    # scope executes correctly, and business B's separately approved scope
+    # also executes correctly, with neither's result or approval state
+    # touched by the other.
+    from system.core.business_agent_handoff import scope_dir, write_business_agent_handoff
+
+    write_business_agent_handoff("text_syndicate", "market_research", "task-0001", "desc A", tmp_path)
+    _write_approval(
+        scope_dir("text_syndicate", "market_research", "task-0001", tmp_path) / "approval.json",
+        handoff_id="REQ-TEXT-SYNDICATE-MARKET-RESEARCH-TASK-0001",
+        scope_type="business_role_task",
+        scope_id="text_syndicate:market_research:task-0001",
+    )
+    write_business_agent_handoff("kabukicho_survival_map", "marketing", "task-0007", "desc B", tmp_path)
+    _write_approval(
+        scope_dir("kabukicho_survival_map", "marketing", "task-0007", tmp_path) / "approval.json",
+        handoff_id="REQ-KABUKICHO-SURVIVAL-MAP-MARKETING-TASK-0007",
+        scope_type="business_role_task",
+        scope_id="kabukicho_survival_map:marketing:task-0007",
+    )
+
+    calls: list[dict] = []
+
+    class FakeOutcome:
+        success = True
+        exit_code = 0
+
+        def __init__(self, artifact_path):
+            self.artifact_path = artifact_path
+
+    def fake_run(self, *, business_id, role_id, task_id, task_description="", approval_flag=False, dry_run=True):
+        calls.append({"business_id": business_id, "role_id": role_id, "task_id": task_id})
+        return FakeOutcome(f"system/runtime/business_agents/{business_id}/{role_id}/{task_id}/latest.json")
+
+    monkeypatch.setattr("system.core.approved_autonomous_execution.BusinessAgentExecutionAdapter.run", fake_run)
+
+    result_a = ApprovedAutonomousExecution(tmp_path).run(business_id="text_syndicate", role_id="market_research", task_id="task-0001")
+    result_b = ApprovedAutonomousExecution(tmp_path).run(business_id="kabukicho_survival_map", role_id="marketing", task_id="task-0007")
+
+    assert result_a.execution_result_status == "success"
+    assert result_b.execution_result_status == "success"
+    assert {c["business_id"] for c in calls} == {"text_syndicate", "kabukicho_survival_map"}
+
+    a_result_path = tmp_path / "system" / "runtime" / "agent_execution" / "scopes" / "text_syndicate" / "market_research" / "task-0001" / "latest.json"
+    b_result_path = tmp_path / "system" / "runtime" / "agent_execution" / "scopes" / "kabukicho_survival_map" / "marketing" / "task-0007" / "latest.json"
+    assert a_result_path.exists()
+    assert b_result_path.exists()
+    import json as _json
+    assert _json.loads(a_result_path.read_text())["scope_id"] == "text_syndicate:market_research:task-0001"
+    assert _json.loads(b_result_path.read_text())["scope_id"] == "kabukicho_survival_map:marketing:task-0007"
 

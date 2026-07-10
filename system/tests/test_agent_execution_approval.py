@@ -3,7 +3,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from system.core.agent_execution_approval import evaluate_execution_approval
+from system.core.agent_execution_approval import evaluate_business_agent_scope_approval, evaluate_execution_approval
+from system.core.business_agent_handoff import write_business_agent_handoff, scope_dir
 
 
 def _write_handoff(path: Path, *, request_id: str = "REQ-DRAFT-DRAFT-OPP-KABUKICHO-001", scope_type: str = "approved_draft", scope_id: str = "DRAFT-OPP-KABUKICHO-001") -> None:
@@ -211,3 +212,74 @@ def test_mismatched_scope_id_denied(tmp_path: Path) -> None:
 
     assert result.allowed is False
     assert result.reason == "scope_id_mismatch"
+
+
+def _write_scope_approval(business_id: str, role_id: str, task_id: str, base_path: Path, **overrides) -> None:
+    handoff_id = f"REQ-{business_id}-{role_id}-{task_id}".replace("_", "-").upper()
+    payload = {
+        "approval_id": "APP-1",
+        "handoff_id": handoff_id,
+        "scope_type": "business_role_task",
+        "scope_id": f"{business_id}:{role_id}:{task_id}",
+        "decision_status": "approved",
+        "approved_by": "Human",
+        "approved_at": "2026-07-10T00:00:00+00:00",
+        "reason": "test",
+        "execution_enabled": True,
+        "supersedes": None,
+    }
+    payload.update(overrides)
+    path = scope_dir(business_id, role_id, task_id, base_path) / "approval.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def test_business_agent_scope_approval_allows_matching_scope(tmp_path: Path) -> None:
+    write_business_agent_handoff("text_syndicate", "market_research", "task-0001", "desc", tmp_path)
+    _write_scope_approval("text_syndicate", "market_research", "task-0001", tmp_path)
+
+    result = evaluate_business_agent_scope_approval("text_syndicate", "market_research", "task-0001", tmp_path)
+
+    assert result.allowed is True
+
+
+def test_business_agent_scope_approval_does_not_leak_across_scopes(tmp_path: Path) -> None:
+    # The cross-scope forgery/leak test: business A has a valid, matching,
+    # approved-and-pending approval; business B has a handoff but NO
+    # approval at all. Approving A must never authorize executing B --
+    # this is the exact failure mode the approval contract exists to
+    # prevent, and the one a careless "share the validation logic" refactor
+    # could introduce by accident (checking "is *some* approval approved"
+    # instead of "is *this scope's* approval approved").
+    write_business_agent_handoff("text_syndicate", "market_research", "task-0001", "desc A", tmp_path)
+    _write_scope_approval("text_syndicate", "market_research", "task-0001", tmp_path)
+
+    write_business_agent_handoff("kabukicho_survival_map", "marketing", "task-0007", "desc B", tmp_path)
+    # deliberately no approval written for B
+
+    result_a = evaluate_business_agent_scope_approval("text_syndicate", "market_research", "task-0001", tmp_path)
+    result_b = evaluate_business_agent_scope_approval("kabukicho_survival_map", "marketing", "task-0007", tmp_path)
+
+    assert result_a.allowed is True
+    assert result_b.allowed is False
+    assert result_b.reason == "missing_approval"
+
+
+def test_business_agent_scope_approval_mismatched_scope_denied(tmp_path: Path) -> None:
+    write_business_agent_handoff("text_syndicate", "market_research", "task-0001", "desc", tmp_path)
+    # approval for a DIFFERENT task_id under the same business/role
+    _write_scope_approval(
+        "text_syndicate", "market_research", "task-0001", tmp_path,
+        scope_id="text_syndicate:market_research:task-9999",
+    )
+
+    result = evaluate_business_agent_scope_approval("text_syndicate", "market_research", "task-0001", tmp_path)
+
+    assert result.allowed is False
+    assert result.reason == "scope_id_mismatch"
+
+
+def test_business_agent_scope_approval_missing_handoff(tmp_path: Path) -> None:
+    result = evaluate_business_agent_scope_approval("text_syndicate", "market_research", "task-0001", tmp_path)
+    assert result.allowed is False
+    assert result.reason == "missing_handoff"

@@ -7,6 +7,8 @@ import sys
 from pathlib import Path
 
 
+from system.core.business_agent_handoff import scope_dir
+
 SCRIPT = Path(__file__).resolve().parents[2] / "system" / "scripts" / "agent" / "set_execution_approval.py"
 REPO_ROOT = Path(__file__).resolve().parents[2]
 APPROVAL_JSON = REPO_ROOT / "system" / "runtime" / "agent_handoff" / "approval.json"
@@ -200,3 +202,38 @@ def test_no_unrelated_runtime_files_changed(tmp_path: Path) -> None:
         assert marker.read_text(encoding="utf-8") == "sentinel"
     finally:
         _restore_approval(backup_json, backup_md)
+
+
+def test_business_role_task_writes_to_per_scope_path_not_top_level(tmp_path: Path) -> None:
+    business_id, role_id, task_id = "test_fixture_business", "market_research", "task-0001"
+    fixture_scope_dir = scope_dir(business_id, role_id, task_id, REPO_ROOT)
+    assert not fixture_scope_dir.exists(), "test fixture dir must not pre-exist in the real repo"
+    top_level_before = APPROVAL_JSON.read_text(encoding="utf-8") if APPROVAL_JSON.exists() else None
+    try:
+        result = _run(
+            tmp_path,
+            "--scope-type",
+            "business_role_task",
+            "--scope-id",
+            f"{business_id}:{role_id}:{task_id}",
+            "--handoff-id",
+            "REQ-TEST-FIXTURE-BUSINESS-MARKET-RESEARCH-TASK-0001",
+            "--decision-status",
+            "approved",
+            "--execution-enabled",
+            "true",
+            "--approved-by",
+            "human",
+            "--reason",
+            "test",
+        )
+
+        assert result.returncode == 0, result.stderr
+        assert (fixture_scope_dir / "approval.json").exists()
+        payload = json.loads((fixture_scope_dir / "approval.json").read_text(encoding="utf-8"))
+        assert payload["scope_id"] == f"{business_id}:{role_id}:{task_id}"
+        # must not touch the top-level legacy approval file
+        top_level_after = APPROVAL_JSON.read_text(encoding="utf-8") if APPROVAL_JSON.exists() else None
+        assert top_level_after == top_level_before
+    finally:
+        shutil.rmtree(REPO_ROOT / "system" / "runtime" / "agent_handoff" / "scopes" / business_id, ignore_errors=True)

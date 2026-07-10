@@ -121,7 +121,7 @@ _SEED_ROLES: tuple[dict[str, Any], ...] = (
         "output_contract_path": "contracts/roles/PDCA_OUTPUT_CONTRACT.md",
         "allowed_tools": ("Read", "Grep", "Glob"),
         "model_capability": "reasoning",
-        "next_roles": (),  # closing the loop back to market_research is deliberately Level 2, not this stage
+        "next_roles": ("market_research",),  # closes the full content/PDCA cycle -- safe now that Level 2's per-task scoping means this and any in-flight content-chain task for the same business never share a slot
     },
 )
 

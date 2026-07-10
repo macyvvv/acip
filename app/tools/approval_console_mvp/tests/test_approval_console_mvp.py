@@ -6,6 +6,7 @@ import subprocess
 from pathlib import Path
 
 from app.tools.approval_console_mvp.service import ApprovalConsoleService
+from system.core.business_agent_handoff import scope_dir, write_business_agent_handoff
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 APPROVAL_JSON = REPO_ROOT / "system" / "runtime" / "agent_handoff" / "approval.json"
@@ -321,6 +322,58 @@ def test_business_role_task_handoff_id_is_scope_specific_not_global(tmp_path: Pa
     assert len(scopes) == 1
     assert scopes[0].handoff_id == "REQ-TEXT-SYNDICATE-MARKET-RESEARCH-TASK-0002"
     assert scopes[0].handoff_id != "REQ-TEXT-SYNDICATE-MARKETING-TASK-0001"
+
+
+def test_two_simultaneous_business_role_task_candidates_have_independent_approval_state(tmp_path: Path) -> None:
+    # Level 2 concurrency test: two different businesses' scopes pending at
+    # the same time must each report their OWN approval_status/
+    # execution_allowed -- not one shared value stamped onto both.
+    write_business_agent_handoff("text_syndicate", "market_research", "task-0001", "desc A", tmp_path)
+    approved_path = scope_dir("text_syndicate", "market_research", "task-0001", tmp_path) / "approval.json"
+    approved_path.write_text(
+        json.dumps(
+            {
+                "approval_id": "APP-1",
+                "handoff_id": "REQ-TEXT-SYNDICATE-MARKET-RESEARCH-TASK-0001",
+                "scope_type": "business_role_task",
+                "scope_id": "text_syndicate:market_research:task-0001",
+                "decision_status": "approved",
+                "approved_by": "Human",
+                "approved_at": "2026-07-10T00:00:00+00:00",
+                "reason": "approved",
+                "execution_enabled": True,
+                "supersedes": None,
+            }
+        ),
+        encoding="utf-8",
+    )
+    write_business_agent_handoff("kabukicho_survival_map", "marketing", "task-0007", "desc B", tmp_path)
+    # deliberately no approval written for B
+
+    _write_runtime_state(
+        tmp_path,
+        current_handoff={"request_id": "REQ-OPEN-001", "issue_number": None},
+        roadmap={"issues": []},
+        open_issues=[],
+        frozen_plan={"issues": []},
+    )
+    (tmp_path / "system" / "runtime" / "business_agent_tasks").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "system" / "runtime" / "business_agent_tasks" / "queue.json").write_text(
+        json.dumps(
+            [
+                {"business_id": "text_syndicate", "role_id": "market_research", "task_id": "task-0001", "title": "A", "status": "candidate"},
+                {"business_id": "kabukicho_survival_map", "role_id": "marketing", "task_id": "task-0007", "title": "B", "status": "candidate"},
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    service = ApprovalConsoleService(tmp_path)
+    scopes = {scope.business_id: scope for scope in service.load_scopes()}
+    assert scopes["text_syndicate"].approval_status == "approved"
+    assert scopes["text_syndicate"].execution_allowed is True
+    assert scopes["kabukicho_survival_map"].approval_status == "pending"
+    assert scopes["kabukicho_survival_map"].execution_allowed is False
 
 
 def test_approve_scope_marks_business_role_task_approved(tmp_path: Path) -> None:

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import argparse
 import sys
 from pathlib import Path
 
@@ -11,7 +12,15 @@ from system.core.approved_autonomous_execution import ApprovedAutonomousExecutio
 
 
 def main() -> int:
-    result = ApprovedAutonomousExecution(ROOT).run()
+    parser = argparse.ArgumentParser(description="Run one approved autonomous execution.")
+    parser.add_argument("--business-id", default=None)
+    parser.add_argument("--role-id", default=None)
+    parser.add_argument("--task-id", default=None)
+    args = parser.parse_args()
+    if bool(args.business_id) != bool(args.role_id) or bool(args.business_id) != bool(args.task_id):
+        parser.error("--business-id/--role-id/--task-id must be given together, or not at all")
+
+    result = ApprovedAutonomousExecution(ROOT).run(business_id=args.business_id, role_id=args.role_id, task_id=args.task_id)
     print(f"allow={str(result.allow).lower()}")
     print(f"handoff_id={result.handoff_id or ''}")
     print(f"approval_id={result.approval_id or ''}")

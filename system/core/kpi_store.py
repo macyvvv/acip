@@ -4,6 +4,8 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
+from system.core.file_lock import locked
+
 
 DEFAULT_KPI_STORE = Path("system/runtime/knowledge/kpi.json")
 
@@ -88,29 +90,30 @@ def update_kpi(
 ) -> dict:
     path = _kpi_path(base_path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    kpi = load_kpi(base_path)
-    kpi["total_runs"] = int(kpi.get("total_runs", 0)) + 1
-    if success:
-        kpi["success_count"] = int(kpi.get("success_count", 0)) + 1
-    else:
-        kpi["failure_count"] = int(kpi.get("failure_count", 0)) + 1
-        breakdown = kpi.setdefault("failure_breakdown", _default_kpi()["failure_breakdown"])
-        if error_type not in breakdown:
-            error_type = "unknown"
-        breakdown[error_type] = int(breakdown.get(error_type, 0)) + 1
-    if issue_number is not None:
-        issue_key = str(issue_number)
-        stats = kpi.setdefault("per_issue_stats", {})
-        issue_stats = stats.setdefault(issue_key, {"runs": 0, "success": 0, "failure": 0})
-        issue_stats["runs"] = int(issue_stats.get("runs", 0)) + 1
+    with locked(path):
+        kpi = load_kpi(base_path)
+        kpi["total_runs"] = int(kpi.get("total_runs", 0)) + 1
         if success:
-            issue_stats["success"] = int(issue_stats.get("success", 0)) + 1
+            kpi["success_count"] = int(kpi.get("success_count", 0)) + 1
         else:
-            issue_stats["failure"] = int(issue_stats.get("failure", 0)) + 1
-    kpi["success_rate"] = compute_success_rate(int(kpi["total_runs"]), int(kpi["success_count"]))
-    kpi["last_updated"] = datetime.now(timezone.utc).isoformat()
-    path.write_text(json.dumps(kpi, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    return kpi
+            kpi["failure_count"] = int(kpi.get("failure_count", 0)) + 1
+            breakdown = kpi.setdefault("failure_breakdown", _default_kpi()["failure_breakdown"])
+            if error_type not in breakdown:
+                error_type = "unknown"
+            breakdown[error_type] = int(breakdown.get(error_type, 0)) + 1
+        if issue_number is not None:
+            issue_key = str(issue_number)
+            stats = kpi.setdefault("per_issue_stats", {})
+            issue_stats = stats.setdefault(issue_key, {"runs": 0, "success": 0, "failure": 0})
+            issue_stats["runs"] = int(issue_stats.get("runs", 0)) + 1
+            if success:
+                issue_stats["success"] = int(issue_stats.get("success", 0)) + 1
+            else:
+                issue_stats["failure"] = int(issue_stats.get("failure", 0)) + 1
+        kpi["success_rate"] = compute_success_rate(int(kpi["total_runs"]), int(kpi["success_count"]))
+        kpi["last_updated"] = datetime.now(timezone.utc).isoformat()
+        path.write_text(json.dumps(kpi, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        return kpi
 
 
 def update_business_agent_kpi(
@@ -125,21 +128,22 @@ def update_business_agent_kpi(
     failure_count/per_issue_stats, so the existing repo-dev KPI stream is untouched."""
     path = _kpi_path(base_path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    kpi = load_kpi(base_path)
-    stats_key = f"{business_id}:{role_id}"
-    business_agent_stats = kpi.setdefault("business_agent_stats", {})
-    stats = business_agent_stats.setdefault(stats_key, {"runs": 0, "success": 0, "failure": 0, "metrics": {}})
-    stats["runs"] = int(stats.get("runs", 0)) + 1
-    if success:
-        stats["success"] = int(stats.get("success", 0)) + 1
-    else:
-        stats["failure"] = int(stats.get("failure", 0)) + 1
-    if metrics:
-        metric_bag = stats.setdefault("metrics", {})
-        for name, value in metrics.items():
-            entry = metric_bag.setdefault(name, {"latest": value, "history": [], "unit": ""})
-            entry["latest"] = value
-            entry.setdefault("history", []).append(value)
-    kpi["last_updated"] = datetime.now(timezone.utc).isoformat()
-    path.write_text(json.dumps(kpi, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    return kpi
+    with locked(path):
+        kpi = load_kpi(base_path)
+        stats_key = f"{business_id}:{role_id}"
+        business_agent_stats = kpi.setdefault("business_agent_stats", {})
+        stats = business_agent_stats.setdefault(stats_key, {"runs": 0, "success": 0, "failure": 0, "metrics": {}})
+        stats["runs"] = int(stats.get("runs", 0)) + 1
+        if success:
+            stats["success"] = int(stats.get("success", 0)) + 1
+        else:
+            stats["failure"] = int(stats.get("failure", 0)) + 1
+        if metrics:
+            metric_bag = stats.setdefault("metrics", {})
+            for name, value in metrics.items():
+                entry = metric_bag.setdefault(name, {"latest": value, "history": [], "unit": ""})
+                entry["latest"] = value
+                entry.setdefault("history", []).append(value)
+        kpi["last_updated"] = datetime.now(timezone.utc).isoformat()
+        path.write_text(json.dumps(kpi, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        return kpi

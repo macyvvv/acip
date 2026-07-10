@@ -20,3 +20,8 @@ somia/CONTENT/**/keyframe*.png
 somia/CONTENT/**/video*.mp4
 somia/CONTENT/**/*.dry_run.txt
 somia/proto_images/
+
+# system/core/file_lock.py's flock lock files -- empty, purely transient
+# locking artifacts, never meaningful state. Scoped to system/runtime/ only,
+# not a blanket *.lock, so this never shadows a real poetry.lock/Pipfile.lock.
+system/runtime/**/*.lock
