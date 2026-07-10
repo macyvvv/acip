@@ -15,19 +15,21 @@ Seed chain (deliberately conservative, not exhaustive fan-out):
 - `market_research` → `marketing`
 - `marketing` → `doc_creation`
 - `analytics` → `pdca`
-- everything else terminal (including `pdca` — closing the loop back to `market_research` is Level 2, not this stage)
+- `pdca` → `market_research` (Level 2 — see below; terminal at Level 1)
 
-A newly-enqueued task is also activated (made the current `agent_handoff/latest.json` scope, ready for a human to approve) *unless* doing so would clobber a different scope that is currently approved and not yet executed — in that case it stays enqueued-only, visible in `queue.json`, and can be activated later by re-proposing it. Nothing at Level 1 ever writes `approval.json` or invokes execution.
+At Level 1, a newly-enqueued task was also activated (made the current shared `agent_handoff/latest.json` scope) *unless* doing so would clobber a different scope that was currently approved and not yet executed. Level 2 (below) removes this shared slot and the guard along with it — every enqueued task is now activated unconditionally, since there is nothing left to clobber. Nothing at either level ever writes `approval.json` or invokes execution.
 
-### Level 2 (future, not built) — concurrent / parallel chains, still fully human-approved
-Goal: multiple businesses' chains can progress simultaneously without one clobbering another, and the full PDCA loop can close. Needs its own ADR (this is a real architecture change, not additive like Level 1) and its own release gate before starting.
+### Level 2 (operational) — per-task handoff scoping, concurrent chains, still fully human-approved
+Goal: multiple businesses' chains — and multiple chains *within* one business (e.g. its PDCA loop and its content chain both progressing) — can progress simultaneously without one clobbering another. See `adr/ADR-0034-business-agent-per-task-handoff-scoping-level2.md`.
 
-1. **Multi-slot handoff.** Replace the single canonical `system/runtime/agent_handoff/latest.json` with a per-scope handoff (e.g. `system/runtime/agent_handoff/scopes/{business_id}__{role_id}__{task_id}.json`), so two businesses' pending approvals can coexist without one overwriting the other. This removes the need for Level 1's anti-clobber guard entirely rather than working around it.
-2. **File locking.** `system/core/business_agent_task_queue.py` / `kpi_store.py` / `business_agent_handoff.py` currently do unlocked read-modify-write, safe only because everything runs as a single local process today. Add a lock (e.g. `fcntl.flock` with a timeout) around each read-modify-write cycle before any concurrent invocation is safe.
-3. **Approval Console update** so a human can review and approve several simultaneously-pending candidates in one sitting without them interfering with each other, now that they don't share one slot.
-4. **Execution concurrency.** Start with the simplest form: once (1)+(2) land, a human can safely run `run_approved_autonomous_execution.py` in two terminals for two different businesses at the same time — no new orchestration code needed, this "just works" once the clobbering/locking problems are gone. A batch/multi-execute runner (executing several approved scopes in parallel subprocesses from one command) is a stretch goal on top, not a prerequisite.
-5. **Close the PDCA loop**: add `pdca → market_research` to `next_roles` (deliberately left terminal at Level 1 specifically because a continuous loop without multi-slot handoffs would spam the single slot every cycle).
-6. **Release gate**: a concurrency test (two businesses' chains run through propose→approve→execute interleaved, verify no data loss or silent overwrite) and a documented pause/kill-switch (e.g. a sentinel file the trigger checks before enqueueing, so all chains can be frozen at once if something looks wrong).
+1. **Per-task handoff/approval scoping.** Each `(business_id, role_id, task_id)` gets its own handoff/approval files under `system/runtime/agent_handoff/scopes/{business_id}/{role_id}/{task_id}/`, mirroring the existing per-task artifact convention. The top-level `agent_handoff/latest.json`/`approval.json` remain exclusively for the pre-existing issue/draft repo-dev path. `system/core/business_agent_trigger.py`'s anti-clobber guard is deleted, not adjusted — two different scopes never share a path, so there's nothing left to clobber.
+2. **File locking.** New `system/core/file_lock.py` (`fcntl.flock`, short timeout, hard error on timeout), applied only to the two files still genuinely shared across all businesses: `business_agent_task_queue.py`'s `queue.json` and `kpi_store.py`'s `kpi.json`. Per-task files need no locking.
+3. **Approval Console updated** so each simultaneously-pending `business_role_task` candidate reports its own, independent `approval_status`/`execution_allowed`/`latest_execution_status` — previously all candidates shared one (stale, misleading) read.
+4. **Execution concurrency**: `ApprovedAutonomousExecution.run()` and `run_approved_autonomous_execution.py` take optional `business_id`/`role_id`/`task_id` (all-or-nothing), so a human can safely run this in two terminals for two different scopes at the same time. A batch/multi-execute runner (one command running N approved scopes as parallel subprocesses) remains a stretch goal, not built here.
+5. **PDCA loop closed**: `pdca → market_research` is now a real `next_roles` edge — safe now that a business's own PDCA-originated proposal and its in-flight content-chain proposal never share a slot.
+6. **Release gate, verified**: a cross-scope forgery/leak test (approving scope A's approval must never authorize executing scope B), an issue/draft-path regression test, a two-business execute-independently test, and a same-business PDCA-loop-and-content-chain-coexist test. All pass; see `system/tests/test_agent_execution_approval.py`, `test_approved_autonomous_execution.py`, `test_business_agent_trigger.py`.
+
+**Known limitations, deliberately not solved here**: no actual parallel/batch execution runner (two terminals, not one command); `queue.json`/`kpi.json` still serialize behind `flock` (rare in practice — human-driven CLI usage, not a hot loop); no pause/kill-switch sentinel file yet.
 
 ### Level 3 (future, explicitly **not enabled**) — reducing/removing human approval
 Forbidden without a new ADR and its own release gate per `docs/current/AUTONOMOUS_OPERATIONAL_BASELINE.md`'s prohibition: *"No new autonomy layer may be enabled unless a new readiness artifact and release gate are added first."* This is the one stage that crosses the line `docs/current/AUTONOMOUS_EXECUTION_APPROVAL_CONTRACT.md` and `CLAUDE.md` ("Human keeps: strategy, approval, capital allocation") both draw explicitly — treat each sub-stage below as its own deliberate decision requiring explicit operator sign-off before design work starts, not something to slide into incrementally.
@@ -36,11 +38,12 @@ Forbidden without a new ADR and its own release gate per `docs/current/AUTONOMOU
 - **3b. Scheduled/unattended execution.** Only after 3a exists: a scheduler (cron entry or a lightweight local daemon) periodically executes policy-eligible approved candidates without a human present. Requires: a real kill switch, an actual notification of what ran and its outcome (this doc's "runtime state is git-tracked" backstop is not a substitute for a human being told), a rollback plan, and a cost/budget guard — especially once Stage 4's paid `pluggable_provider` roles (image/video generation) are wired in, where a runaway loop costs real money, not just tokens.
 - **3c. Publishing/distribution automation.** Separate from execution automation: every content-role contract today states `auto posting: prohibited`. Whether/how drafted content ever reaches Twitter/Threads/note.com is its own decision with real reputational/compliance exposure (the `text_syndicate` market_research findings already flagged a live compliance question — note.com's affiliate-disclosure rules). Recommend this be the *last* thing automated, not the first, and that it may reasonably stay permanently human-gated (a human copy-pastes the approved draft) even after 3a/3b exist for content generation.
 
-**Recommended sequencing**: Level 2 (parallel, still human-approved) → Level 3a (policy pre-approval, narrowly scoped) → Level 3b (scheduled execution under that policy) → Level 3c (publishing, last, likely to stay partially manual regardless). Do not start Level 3 work of any kind without the operator explicitly asking for that specific sub-stage.
+**Recommended sequencing**: ~~Level 2 (parallel, still human-approved)~~ done → Level 3a (policy pre-approval, narrowly scoped) → Level 3b (scheduled execution under that policy) → Level 3c (publishing, last, likely to stay partially manual regardless). Do not start Level 3 work of any kind without the operator explicitly asking for that specific sub-stage.
 
 ## Verified Example
-- Business/role chain: `text_syndicate/market_research/task-0001` (real, evidence-grounded output) → auto-enqueued and activated `text_syndicate/marketing/auto-0001`.
-- Command sequence: unchanged from Level 0 — `propose_task.py` (or an auto-triggered enqueue) → `set_execution_approval.py` (human) → `run_approved_autonomous_execution.py`.
+- Level 1: `text_syndicate/market_research/task-0001` (real, evidence-grounded output) → auto-enqueued and activated `text_syndicate/marketing/auto-0001`, which itself ran for real and produced a genuine marketing draft.
+- Level 2: ran the trigger for real against production data — `text_syndicate/pdca` and `text_syndicate/market_research`'s content chain both had independently-pending, independently-tracked scopes for the same business at once, with no interference (see `test_business_agent_trigger.py::test_pdca_loop_and_content_chain_coexist_for_same_business`); a cross-scope forgery test confirms approving one business's scope can never authorize executing a different one.
+- Command sequence: unchanged from Level 0/1 for a single scope — `propose_task.py` (or an auto-triggered enqueue) → `set_execution_approval.py` (human) → `run_approved_autonomous_execution.py`, now with optional `--business-id`/`--role-id`/`--task-id` to target a specific scope.
 
 ## Forbidden Now
 - No schedule/cron trigger.
@@ -48,8 +51,5 @@ Forbidden without a new ADR and its own release gate per `docs/current/AUTONOMOU
 - No removing or bypassing the human approval gate (`docs/current/AUTONOMOUS_EXECUTION_APPROVAL_CONTRACT.md`).
 - No daemonization.
 - No GitHub mutation beyond the existing bounded approved flow.
-
-## Known Limitations at Level 1 (addressed by Level 2, see above)
-Single active handoff slot and no file locking — see Level 2's items 1-2.
 
 **Runtime state here is git-tracked**, and this is itself a second, independent safety backstop beyond the approval gate at every level: even a successful auto-trigger chain link that gets activated only becomes durable/visible on `main` once a human reviews and merges the PR carrying that runtime-state change. It is not "live" the moment the script runs.

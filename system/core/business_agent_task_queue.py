@@ -4,6 +4,8 @@ import json
 from pathlib import Path
 from typing import Any
 
+from system.core.file_lock import locked
+
 
 def _queue_path(base_path: str | Path = ".") -> Path:
     return Path(base_path) / "system" / "runtime" / "business_agent_tasks" / "queue.json"
@@ -32,25 +34,26 @@ def add_task(
     *,
     source: str = "manual",
 ) -> list[dict[str, Any]]:
-    queue = load_queue(base_path)
-    existing = next(
-        (item for item in queue if item.get("business_id") == business_id and item.get("role_id") == role_id and item.get("task_id") == task_id),
-        None,
-    )
-    if existing is not None:
+    with locked(_queue_path(base_path)):
+        queue = load_queue(base_path)
+        existing = next(
+            (item for item in queue if item.get("business_id") == business_id and item.get("role_id") == role_id and item.get("task_id") == task_id),
+            None,
+        )
+        if existing is not None:
+            return queue
+        queue.append(
+            {
+                "business_id": business_id,
+                "role_id": role_id,
+                "task_id": task_id,
+                "title": title,
+                "status": "candidate",
+                "source": source,
+            }
+        )
+        _write_queue(queue, base_path)
         return queue
-    queue.append(
-        {
-            "business_id": business_id,
-            "role_id": role_id,
-            "task_id": task_id,
-            "title": title,
-            "status": "candidate",
-            "source": source,
-        }
-    )
-    _write_queue(queue, base_path)
-    return queue
 
 
 def mark_task_status(
@@ -60,9 +63,10 @@ def mark_task_status(
     status: str,
     base_path: str | Path = ".",
 ) -> list[dict[str, Any]]:
-    queue = load_queue(base_path)
-    for item in queue:
-        if item.get("business_id") == business_id and item.get("role_id") == role_id and item.get("task_id") == task_id:
-            item["status"] = status
-    _write_queue(queue, base_path)
-    return queue
+    with locked(_queue_path(base_path)):
+        queue = load_queue(base_path)
+        for item in queue:
+            if item.get("business_id") == business_id and item.get("role_id") == role_id and item.get("task_id") == task_id:
+                item["status"] = status
+        _write_queue(queue, base_path)
+        return queue

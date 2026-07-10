@@ -6,7 +6,8 @@ from pathlib import Path
 import json
 from typing import Any
 
-from system.core.agent_execution_approval import evaluate_execution_approval
+from system.core.agent_execution_approval import evaluate_business_agent_scope_approval, evaluate_execution_approval
+from system.core.business_agent_handoff import scope_dir
 from system.core.business_agent_trigger import evaluate_and_enqueue_next_tasks
 from system.orchestrator.business_agent_execution_adapter import BusinessAgentExecutionAdapter
 from system.orchestrator.local_execution_adapter import LocalExecutionAdapter
@@ -37,9 +38,19 @@ class ApprovedAutonomousExecution:
     def __init__(self, base_path: str | Path = ".") -> None:
         self.base_path = Path(base_path)
 
-    def run(self) -> ApprovedAutonomousExecutionResult:
+    def run(
+        self,
+        *,
+        business_id: str | None = None,
+        role_id: str | None = None,
+        task_id: str | None = None,
+    ) -> ApprovedAutonomousExecutionResult:
         started_at = _now()
-        approval_result = evaluate_execution_approval(self.base_path)
+        scope_requested = bool(business_id and role_id and task_id)
+        if scope_requested:
+            approval_result = evaluate_business_agent_scope_approval(business_id, role_id, task_id, self.base_path)
+        else:
+            approval_result = evaluate_execution_approval(self.base_path)
         handoff = approval_result.handoff or {}
         approval = approval_result.approval or {}
         if not approval_result.allowed:
@@ -56,11 +67,11 @@ class ApprovedAutonomousExecution:
                 started_at=started_at,
                 finished_at=_now(),
             )
-            self._write_runtime(result)
+            self._write_runtime(result, handoff)
             return result
 
         request_path = self._request_path()
-        if handoff.get("business_id") and handoff.get("role_id"):
+        if scope_requested or (handoff.get("business_id") and handoff.get("role_id")):
             return self._run_business_agent(handoff, approval, request_path, started_at)
 
         adapter = LocalExecutionAdapter(self.base_path)
@@ -81,7 +92,7 @@ class ApprovedAutonomousExecution:
                 started_at=started_at,
                 finished_at=_now(),
             )
-            self._write_runtime(result)
+            self._write_runtime(result, handoff)
             return result
         completion_marker_path = self._completion_marker_path()
         stopped_reason = "completion_marker_written" if completion_marker_path else "execution_completed"
@@ -98,7 +109,7 @@ class ApprovedAutonomousExecution:
             started_at=started_at,
             finished_at=_now(),
         )
-        self._write_runtime(result)
+        self._write_runtime(result, handoff)
         return result
 
     def _run_business_agent(
@@ -136,7 +147,7 @@ class ApprovedAutonomousExecution:
                 started_at=started_at,
                 finished_at=_now(),
             )
-            self._write_runtime(result)
+            self._write_runtime(result, handoff)
             return result
         result = self._result(
             allow=True,
@@ -151,7 +162,7 @@ class ApprovedAutonomousExecution:
             started_at=started_at,
             finished_at=_now(),
         )
-        self._write_runtime(result)
+        self._write_runtime(result, handoff)
         if outcome.success:
             # Level 1 queue-population automation only -- this can enqueue and
             # possibly activate the next candidate, it never approves or runs
@@ -204,8 +215,24 @@ class ApprovedAutonomousExecution:
             finished_at=finished_at,
         )
 
-    def _write_runtime(self, result: ApprovedAutonomousExecutionResult) -> None:
-        runtime_dir = self.base_path / "system" / "runtime" / "agent_execution"
+    def _write_runtime(self, result: ApprovedAutonomousExecutionResult, handoff: dict[str, Any] | None = None) -> None:
+        handoff = handoff or {}
+        if handoff.get("business_id") and handoff.get("role_id"):
+            # Per-scope result storage (Level 2): a shared top-level
+            # agent_execution/latest.json would let two businesses executing
+            # around the same moment clobber each other's result.
+            runtime_dir = (
+                self.base_path
+                / "system"
+                / "runtime"
+                / "agent_execution"
+                / "scopes"
+                / str(handoff["business_id"])
+                / str(handoff["role_id"])
+                / str(handoff.get("task_id") or "")
+            )
+        else:
+            runtime_dir = self.base_path / "system" / "runtime" / "agent_execution"
         runtime_dir.mkdir(parents=True, exist_ok=True)
         archive_dir = runtime_dir / "archive"
         archive_dir.mkdir(parents=True, exist_ok=True)

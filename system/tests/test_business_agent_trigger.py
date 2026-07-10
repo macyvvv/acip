@@ -1,34 +1,14 @@
 from __future__ import annotations
 
-import json
 from pathlib import Path
 
-from system.core.agent_execution_approval import load_latest_handoff
-from system.core.business_agent_handoff import write_business_agent_handoff
+from system.core.business_agent_handoff import load_business_agent_handoff
 from system.core.business_agent_task_queue import load_queue
 from system.core.business_agent_trigger import evaluate_and_enqueue_next_tasks
 
 
-def _write_approval(path: Path, **overrides) -> None:
-    payload = {
-        "approval_id": "APP-1",
-        "handoff_id": "REQ-SOME-HANDOFF",
-        "scope_type": "business_role_task",
-        "scope_id": "some:scope:id",
-        "decision_status": "approved",
-        "approved_by": "Human",
-        "approved_at": "2026-07-10T00:00:00+00:00",
-        "reason": "test",
-        "execution_enabled": True,
-        "supersedes": None,
-    }
-    payload.update(overrides)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-
-
 def test_no_next_roles_returns_empty(tmp_path: Path) -> None:
-    # doc_creation has next_roles == () for Level 1
+    # doc_creation has next_roles == () -- terminal
     result = evaluate_and_enqueue_next_tasks("text_syndicate", "doc_creation", "task-0001", "artifact.md", tmp_path)
     assert result == []
 
@@ -44,47 +24,28 @@ def test_market_research_success_enqueues_marketing(tmp_path: Path) -> None:
     assert queue[0]["source"] == "auto_trigger"
 
 
-def test_activates_when_nothing_else_is_pending(tmp_path: Path) -> None:
-    # No prior handoff/approval at all -- safe to activate immediately.
+def test_always_activates_now_that_scopes_are_per_task(tmp_path: Path) -> None:
+    # Level 2: no shared slot, so there is no "someone else's pending scope"
+    # to avoid clobbering -- every enqueued task is activated.
     result = evaluate_and_enqueue_next_tasks("text_syndicate", "market_research", "task-0001", "artifact.md", tmp_path)
     assert result[0]["activated"] is True
-    handoff = load_latest_handoff(tmp_path)
+    handoff = load_business_agent_handoff("text_syndicate", "marketing", result[0]["task_id"], tmp_path)
+    assert handoff is not None
     assert handoff["business_id"] == "text_syndicate"
     assert handoff["role_id"] == "marketing"
 
 
-def test_activates_when_current_handoff_is_the_just_completed_task(tmp_path: Path) -> None:
-    # The handoff slot holds the task that JUST ran (market_research/task-0001)
-    # and its approval is still marked approved (nothing invalidates it
-    # post-run) -- this must NOT be treated as "someone else's pending scope."
-    write_business_agent_handoff("text_syndicate", "market_research", "task-0001", "desc", tmp_path)
-    _write_approval(
-        tmp_path / "system" / "runtime" / "agent_handoff" / "approval.json",
-        handoff_id="REQ-TEXT-SYNDICATE-MARKET-RESEARCH-TASK-0001",
-        scope_id="text_syndicate:market_research:task-0001",
-    )
-    result = evaluate_and_enqueue_next_tasks("text_syndicate", "market_research", "task-0001", "artifact.md", tmp_path)
-    assert result[0]["activated"] is True
+def test_does_not_touch_other_businesses_scopes(tmp_path: Path) -> None:
+    # A different business's pending scope must be completely untouched --
+    # not because of a guard, but because per-task files never share a path.
+    from system.core.business_agent_handoff import write_business_agent_handoff
 
-
-def test_skips_activation_but_still_enqueues_when_a_different_scope_is_pending(tmp_path: Path) -> None:
-    # A DIFFERENT business's task is currently approved and not yet executed --
-    # activating the new one would silently clobber it.
     write_business_agent_handoff("kabukicho_survival_map", "marketing", "task-0007", "desc", tmp_path)
-    _write_approval(
-        tmp_path / "system" / "runtime" / "agent_handoff" / "approval.json",
-        handoff_id="REQ-KABUKICHO-SURVIVAL-MAP-MARKETING-TASK-0007",
-        scope_id="kabukicho_survival_map:marketing:task-0007",
-    )
-    result = evaluate_and_enqueue_next_tasks("text_syndicate", "market_research", "task-0001", "artifact.md", tmp_path)
-    assert result[0]["activated"] is False
-    # still enqueued, just not activated
-    queue = load_queue(tmp_path)
-    assert len(queue) == 1
-    assert queue[0]["role_id"] == "marketing"
-    # the other business's handoff must not have been touched
-    handoff = load_latest_handoff(tmp_path)
-    assert handoff["business_id"] == "kabukicho_survival_map"
+    evaluate_and_enqueue_next_tasks("text_syndicate", "market_research", "task-0001", "artifact.md", tmp_path)
+
+    other = load_business_agent_handoff("kabukicho_survival_map", "marketing", "task-0007", tmp_path)
+    assert other is not None
+    assert other["business_id"] == "kabukicho_survival_map"
 
 
 def test_auto_task_ids_are_unique_and_sequential(tmp_path: Path) -> None:
@@ -100,3 +61,29 @@ def test_analytics_success_enqueues_pdca(tmp_path: Path) -> None:
     result = evaluate_and_enqueue_next_tasks("somia", "analytics", "task-0001", "artifact.json", tmp_path)
     assert len(result) == 1
     assert result[0]["role_id"] == "pdca"
+
+
+def test_pdca_loop_closes_back_to_market_research(tmp_path: Path) -> None:
+    result = evaluate_and_enqueue_next_tasks("text_syndicate", "pdca", "task-0001", "artifact.md", tmp_path)
+    assert len(result) == 1
+    assert result[0]["role_id"] == "market_research"
+    assert result[0]["activated"] is True
+
+
+def test_pdca_loop_and_content_chain_coexist_for_same_business(tmp_path: Path) -> None:
+    # The exact scenario the per-task (not per-business) design decision was
+    # made for: a business's content chain and its PDCA loop both have a
+    # task pending at the same time, and neither clobbers the other.
+    content_result = evaluate_and_enqueue_next_tasks("text_syndicate", "market_research", "task-0001", "artifact.md", tmp_path)
+    pdca_result = evaluate_and_enqueue_next_tasks("text_syndicate", "pdca", "task-0001", "pdca-artifact.md", tmp_path)
+
+    marketing_task_id = content_result[0]["task_id"]
+    new_market_research_task_id = pdca_result[0]["task_id"]
+
+    marketing_handoff = load_business_agent_handoff("text_syndicate", "marketing", marketing_task_id, tmp_path)
+    market_research_handoff = load_business_agent_handoff("text_syndicate", "market_research", new_market_research_task_id, tmp_path)
+
+    assert marketing_handoff is not None
+    assert market_research_handoff is not None
+    queue = load_queue(tmp_path)
+    assert len(queue) == 2

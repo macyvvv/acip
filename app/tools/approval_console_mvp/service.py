@@ -7,7 +7,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable, Iterable
 
-from system.core.business_agent_handoff import compute_request_id
+from system.core.agent_execution_approval import evaluate_business_agent_scope_approval
+from system.core.business_agent_handoff import compute_request_id, load_business_agent_handoff
 from system.core.business_agent_task_queue import load_queue, mark_task_status
 
 
@@ -123,12 +124,17 @@ class ApprovalConsoleService:
             role_id = str(task.get("role_id") or "")
             task_id = str(task.get("task_id") or "")
             scope_id = f"{business_id}:{role_id}:{task_id}"
-            approval_ready = (
-                current_handoff.get("business_id") == business_id
-                and current_handoff.get("role_id") == role_id
-                and current_handoff.get("task_id") == task_id
-                and bool(current_handoff.get("request_id"))
-            )
+            # Level 2: each scope has its own handoff/approval/execution-result
+            # files, so every candidate's status must be looked up per-scope --
+            # a single shared `approval`/`latest_execution` read (as used for
+            # the issue-scope loop above) would stamp every business_role_task
+            # candidate with whichever scope happened to be checked last.
+            scope_approval_result = evaluate_business_agent_scope_approval(business_id, role_id, task_id, self.repo_root)
+            scope_approval = scope_approval_result.approval or {}
+            scope_handoff_exists = load_business_agent_handoff(business_id, role_id, task_id, self.repo_root) is not None
+            scope_execution = self._read_json(
+                self.repo_root / "system" / "runtime" / "agent_execution" / "scopes" / business_id / role_id / task_id / "latest.json"
+            ) or {}
             scopes.append(
                 ApprovalScope(
                     issue_number=None,
@@ -138,12 +144,12 @@ class ApprovalConsoleService:
                     current_bucket="",
                     execution_fit="one_shot_ready",
                     handoff_id=compute_request_id(business_id, role_id, task_id),
-                    approval_status=str(approval.get("decision_status") or "pending"),
-                    execution_allowed=bool(approval.get("execution_enabled", False)),
-                    latest_execution_status=str(latest_execution.get("execution_result_status") or "") or None,
+                    approval_status=str(scope_approval.get("decision_status") or "pending"),
+                    execution_allowed=bool(scope_approval.get("execution_enabled", False)),
+                    latest_execution_status=str(scope_execution.get("execution_result_status") or "") or None,
                     recommendation_reason="business agent task proposed via propose_task.py",
                     source_of_truth="system/runtime/business_agent_tasks/queue.json",
-                    approval_ready=approval_ready,
+                    approval_ready=scope_handoff_exists,
                     business_id=business_id,
                     role_id=role_id,
                 )
@@ -213,18 +219,30 @@ class ApprovalConsoleService:
             candidate_summary=None,
         )
 
-    def run_one_shot_execution(self) -> ConsoleResult:
+    def run_one_shot_execution(self, scope: ApprovalScope | None = None) -> ConsoleResult:
         command = [
             sys.executable,
             str(self.repo_root / "system" / "scripts" / "agent" / "run_approved_autonomous_execution.py"),
         ]
+        is_business_scope = scope is not None and scope.scope_type == "business_role_task" and scope.business_id and scope.role_id
+        if is_business_scope:
+            task_id = scope.scope_id.split(":")[-1]
+            command += ["--business-id", scope.business_id, "--role-id", scope.role_id, "--task-id", task_id]
+            execution_path = (
+                self.repo_root / "system" / "runtime" / "agent_execution" / "scopes" / scope.business_id / scope.role_id / task_id / "latest.json"
+            )
+        else:
+            execution_path = self.repo_root / "system" / "runtime" / "agent_execution" / "latest.json"
         completed = self.executor(command, self.repo_root)
-        execution_path = self.repo_root / "system" / "runtime" / "agent_execution" / "latest.json"
         execution_result = self._read_json(execution_path) or {}
         completion_marker = execution_result.get("completion_marker_path")
-        handoff = self._read_json(self.repo_root / "system" / "runtime" / "agent_handoff" / "latest.json") or {}
-        if handoff.get("business_id") and handoff.get("role_id"):
-            mark_task_status(handoff["business_id"], handoff["role_id"], str(handoff.get("task_id") or ""), "completed", self.repo_root)
+        if is_business_scope:
+            task_id = scope.scope_id.split(":")[-1]
+            mark_task_status(scope.business_id, scope.role_id, task_id, "completed", self.repo_root)
+        else:
+            handoff = self._read_json(self.repo_root / "system" / "runtime" / "agent_handoff" / "latest.json") or {}
+            if handoff.get("business_id") and handoff.get("role_id"):
+                mark_task_status(handoff["business_id"], handoff["role_id"], str(handoff.get("task_id") or ""), "completed", self.repo_root)
         return ConsoleResult(
             status=str(execution_result.get("execution_result_status") or ("success" if completed.returncode == 0 else "failure")),
             approval_path=None,
