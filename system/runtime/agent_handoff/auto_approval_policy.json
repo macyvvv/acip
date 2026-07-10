@@ -20,6 +20,16 @@
       "authored_by": "macy",
       "authored_at": "2026-07-11T00:00:00+00:00",
       "reason": "Pilot Level 3a policy so kabukicho_survival_map's market_research tasks no longer need a manual set_execution_approval.py call each time."
+    },
+    {
+      "policy_id": "PREAPP-KABUKICHO_SURVIVAL_MAP-MARKETING-0001",
+      "business_id": "kabukicho_survival_map",
+      "role_id": "marketing",
+      "enabled": true,
+      "max_auto_approvals_per_day": 3,
+      "authored_by": "macy",
+      "authored_at": "2026-07-11T00:00:00+00:00",
+      "reason": "Pilot Level 3a policy so kabukicho_survival_map's marketing tasks (the next_roles hop from market_research) no longer need a manual set_execution_approval.py call each time."
     }
   ]
 }
