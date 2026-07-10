@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import Any
 
 from system.core.agent_role_registry import get_role
+from system.core.business_agent_automation_control import is_automation_paused
 from system.core.business_agent_handoff import write_business_agent_handoff
 from system.core.business_agent_task_queue import add_task, load_queue
 
@@ -28,6 +29,13 @@ def evaluate_and_enqueue_next_tasks(
     artifact_path: str,
     base_path: str | Path = ".",
 ) -> list[dict[str, Any]]:
+    # Kill switch: freezes auto-*proposal* only. A human can still manually
+    # propose_task.py / set_execution_approval.py / run_approved_autonomous_
+    # execution.py while paused -- this only stops the automatic chain from
+    # advancing itself.
+    if is_automation_paused(base_path):
+        return []
+
     role = get_role(role_id, base_path)
     if role is None or not role.next_roles:
         return []

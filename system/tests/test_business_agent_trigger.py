@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from system.core.business_agent_automation_control import pause_automation
 from system.core.business_agent_handoff import load_business_agent_handoff
 from system.core.business_agent_task_queue import load_queue
 from system.core.business_agent_trigger import evaluate_and_enqueue_next_tasks
@@ -87,3 +88,11 @@ def test_pdca_loop_and_content_chain_coexist_for_same_business(tmp_path: Path) -
     assert market_research_handoff is not None
     queue = load_queue(tmp_path)
     assert len(queue) == 2
+
+
+def test_paused_automation_returns_empty_and_touches_nothing(tmp_path: Path) -> None:
+    pause_automation("investigating", "macy", tmp_path)
+    result = evaluate_and_enqueue_next_tasks("text_syndicate", "market_research", "task-0001", "artifact.md", tmp_path)
+    assert result == []
+    assert load_queue(tmp_path) == []
+    assert load_business_agent_handoff("text_syndicate", "marketing", "auto-0001", tmp_path) is None

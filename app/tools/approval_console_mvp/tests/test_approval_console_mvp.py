@@ -6,6 +6,7 @@ import subprocess
 from pathlib import Path
 
 from app.tools.approval_console_mvp.service import ApprovalConsoleService
+from system.core.business_agent_automation_control import pause_automation
 from system.core.business_agent_handoff import scope_dir, write_business_agent_handoff
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
@@ -451,6 +452,21 @@ def test_result_rendering_state_mapping() -> None:
     service = ApprovalConsoleService()
     text = service.render_status(None, None)
     assert "idle" in text
+
+
+def test_render_status_shows_pause_banner_when_automation_paused(tmp_path: Path) -> None:
+    pause_automation("investigating an unexpected chain", "macy", tmp_path)
+    service = ApprovalConsoleService(tmp_path)
+    text = service.render_status(None, None)
+    assert "AUTOMATION PAUSED" in text
+    assert "investigating an unexpected chain" in text
+    assert "macy" in text
+
+
+def test_render_status_has_no_pause_banner_when_not_paused(tmp_path: Path) -> None:
+    service = ApprovalConsoleService(tmp_path)
+    text = service.render_status(None, None)
+    assert "AUTOMATION PAUSED" not in text
 
 
 def test_single_now_candidate_is_prominently_labeled(tmp_path: Path) -> None:
