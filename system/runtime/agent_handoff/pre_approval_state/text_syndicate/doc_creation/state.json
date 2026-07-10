@@ -1,0 +1,13 @@
+{
+  "tasks": {
+    "auto-0001": {
+      "policy_id": "PREAPP-TEXT_SYNDICATE-DOC_CREATION-0001",
+      "status": "completed",
+      "claimed_at": "2026-07-10T20:08:56.583078+00:00"
+    }
+  },
+  "counters": {
+    "2026-07-10": 1,
+    "2026-W28": 1
+  }
+}
