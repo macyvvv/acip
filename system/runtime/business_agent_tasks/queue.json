@@ -42,7 +42,7 @@
     "role_id": "doc_creation",
     "task_id": "auto-0001",
     "title": "Auto-triggered doc_creation following kabukicho_survival_map/marketing/auto-0001",
-    "status": "candidate",
+    "status": "completed",
     "source": "auto_trigger"
   }
 ]
