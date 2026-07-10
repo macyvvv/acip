@@ -8,7 +8,19 @@ from typing import Any
 
 from system.core.agent_execution_approval import evaluate_business_agent_scope_approval, evaluate_execution_approval
 from system.core.business_agent_handoff import scope_dir
+from system.core.business_agent_task_queue import mark_task_status
 from system.core.business_agent_trigger import evaluate_and_enqueue_next_tasks
+from system.core.execution_pre_approval_control import is_pre_approval_paused
+from system.core.execution_pre_approval_policy import (
+    ExecutionPreApprovalPolicyError,
+    get_execution_pre_approval_policy,
+)
+from system.core.execution_pre_approval_state import (
+    ExecutionPreApprovalAlreadyInFlightError,
+    ExecutionPreApprovalCapExceededError,
+    claim_pre_approval,
+    mark_pre_approval_outcome,
+)
 from system.orchestrator.business_agent_execution_adapter import BusinessAgentExecutionAdapter
 from system.orchestrator.local_execution_adapter import LocalExecutionAdapter
 
@@ -28,6 +40,8 @@ class ApprovedAutonomousExecutionResult:
     stopped_reason: str
     started_at: str
     finished_at: str
+    authorization_source: str = "human_approval"
+    policy_id: str | None = None
 
 
 class ApprovedAutonomousExecutionError(ValueError):
@@ -54,6 +68,12 @@ class ApprovedAutonomousExecution:
         handoff = approval_result.handoff or {}
         approval = approval_result.approval or {}
         if not approval_result.allowed:
+            if scope_requested and approval_result.reason == "missing_approval":
+                pre_approved = self._try_policy_pre_approval(
+                    business_id, role_id, task_id, handoff, self._request_path(), started_at
+                )
+                if pre_approved is not None:
+                    return pre_approved
             result = self._result(
                 allow=False,
                 handoff=handoff,
@@ -118,6 +138,9 @@ class ApprovedAutonomousExecution:
         approval: dict[str, Any],
         request_path: str | None,
         started_at: str,
+        *,
+        authorization_source: str = "human_approval",
+        policy_id: str | None = None,
     ) -> ApprovedAutonomousExecutionResult:
         business_id = str(handoff["business_id"])
         role_id = str(handoff["role_id"])
@@ -146,8 +169,12 @@ class ApprovedAutonomousExecution:
                 stopped_reason=str(exc),
                 started_at=started_at,
                 finished_at=_now(),
+                authorization_source=authorization_source,
+                policy_id=policy_id,
             )
             self._write_runtime(result, handoff)
+            if authorization_source == "policy_pre_approval":
+                mark_pre_approval_outcome(business_id, role_id, task_id, False, self.base_path)
             return result
         result = self._result(
             allow=True,
@@ -161,8 +188,20 @@ class ApprovedAutonomousExecution:
             stopped_reason="completion_marker_written" if outcome.success else f"exit_code={outcome.exit_code}",
             started_at=started_at,
             finished_at=_now(),
+            authorization_source=authorization_source,
+            policy_id=policy_id,
         )
         self._write_runtime(result, handoff)
+        if authorization_source == "policy_pre_approval":
+            mark_pre_approval_outcome(business_id, role_id, task_id, outcome.success, self.base_path)
+            if outcome.success:
+                # Level 3a's entire premise is that no one is expected to go
+                # through the Approval Console for these scopes -- unlike the
+                # human-approved path (which relies on the console calling
+                # this itself), nothing else will ever flip this queue entry
+                # out of "candidate" otherwise, silently misrepresenting an
+                # already-executed task as still awaiting operator selection.
+                mark_task_status(business_id, role_id, task_id, "completed", self.base_path)
         if outcome.success:
             # Level 1 queue-population automation only -- this can enqueue and
             # possibly activate the next candidate, it never approves or runs
@@ -198,6 +237,8 @@ class ApprovedAutonomousExecution:
         stopped_reason: str,
         started_at: str,
         finished_at: str,
+        authorization_source: str = "human_approval",
+        policy_id: str | None = None,
     ) -> ApprovedAutonomousExecutionResult:
         return ApprovedAutonomousExecutionResult(
             allow=allow,
@@ -213,6 +254,173 @@ class ApprovedAutonomousExecution:
             stopped_reason=stopped_reason,
             started_at=started_at,
             finished_at=finished_at,
+            authorization_source=authorization_source,
+            policy_id=policy_id,
+        )
+
+    def _try_policy_pre_approval(
+        self,
+        business_id: str,
+        role_id: str,
+        task_id: str,
+        handoff: dict[str, Any],
+        request_path: str | None,
+        started_at: str,
+    ) -> ApprovedAutonomousExecutionResult | None:
+        """Level 3a: policy-based pre-approval of the execution DECISION.
+        Returns None if no enabled, eligible policy applies -- caller then
+        falls through to the original missing_approval denial, unchanged.
+        Only ever invoked when approval_result.reason == "missing_approval"
+        (checked by the caller) -- an approval.json that exists but doesn't
+        match (rejected/superseded/mismatched) reaches this method exactly
+        never, enforced structurally by the caller, not by anything here.
+
+        Never synthesizes an approval.json -- decision_status: approved
+        stays exclusively human-written, for every scope, forever. This is
+        a wholly separate authorization path."""
+        if is_pre_approval_paused(self.base_path):
+            return self._result(
+                allow=False,
+                handoff=handoff,
+                approval={},
+                execution_triggered=False,
+                execution_mode="denied",
+                execution_result_status="denied",
+                completion_marker_path=None,
+                request_path=request_path,
+                stopped_reason="pre_approval_paused",
+                started_at=started_at,
+                finished_at=_now(),
+            )
+
+        try:
+            policy = get_execution_pre_approval_policy(business_id, role_id, self.base_path)
+        except ExecutionPreApprovalPolicyError as exc:
+            # Fail closed AND fail loud: a misconfigured policy (e.g. naming a
+            # now-dangerous role) must never silently "proceed anyway," and
+            # must still leave an audit trail -- never let this propagate as
+            # an uncaught exception, which would lose both.
+            result = self._result(
+                allow=False,
+                handoff=handoff,
+                approval={},
+                execution_triggered=False,
+                execution_mode="denied",
+                execution_result_status="denied",
+                completion_marker_path=None,
+                request_path=request_path,
+                stopped_reason=f"pre_approval_policy_error:{exc}",
+                started_at=started_at,
+                finished_at=_now(),
+            )
+            self._write_runtime(result, handoff)
+            return result
+
+        if policy is None:
+            return None
+
+        # Secondary, defense-in-depth check, for one specific recovery case
+        # only (the pre-approval state shard was reset/never written but a
+        # real completed execution already exists on disk) -- NOT relied on
+        # for concurrency correctness, which is entirely the state module's
+        # job. Checked before claiming, so a recovery case never consumes a
+        # cap slot for work that already happened.
+        artifact_path = self.base_path / "system" / "runtime" / "business_agents" / business_id / role_id / task_id / "latest.json"
+        if artifact_path.exists():
+            try:
+                already_succeeded = bool(json.loads(artifact_path.read_text(encoding="utf-8")).get("success"))
+            except json.JSONDecodeError:
+                already_succeeded = False
+            if already_succeeded:
+                result = self._result(
+                    allow=True,
+                    handoff=handoff,
+                    approval={},
+                    execution_triggered=False,
+                    execution_mode="skipped_duplicate",
+                    execution_result_status="already_executed",
+                    completion_marker_path=str(artifact_path),
+                    request_path=request_path,
+                    stopped_reason="duplicate_pre_approval_skipped_already_succeeded",
+                    started_at=started_at,
+                    finished_at=_now(),
+                    authorization_source="policy_pre_approval",
+                    policy_id=policy.policy_id,
+                )
+                self._write_runtime(result, handoff)
+                mark_task_status(business_id, role_id, task_id, "completed", self.base_path)
+                return result
+
+        try:
+            claim = claim_pre_approval(
+                business_id,
+                role_id,
+                task_id,
+                policy.policy_id,
+                policy.max_auto_approvals_per_day,
+                policy.max_auto_approvals_per_week,
+                self.base_path,
+            )
+        except ExecutionPreApprovalCapExceededError as exc:
+            result = self._result(
+                allow=False,
+                handoff=handoff,
+                approval={},
+                execution_triggered=False,
+                execution_mode="denied",
+                execution_result_status="denied",
+                completion_marker_path=None,
+                request_path=request_path,
+                stopped_reason=f"pre_approval_cap_exceeded:{exc}",
+                started_at=started_at,
+                finished_at=_now(),
+            )
+            self._write_runtime(result, handoff)
+            return result
+        except ExecutionPreApprovalAlreadyInFlightError as exc:
+            result = self._result(
+                allow=False,
+                handoff=handoff,
+                approval={},
+                execution_triggered=False,
+                execution_mode="denied",
+                execution_result_status="denied",
+                completion_marker_path=None,
+                request_path=request_path,
+                stopped_reason=f"pre_approval_already_in_flight:{exc}",
+                started_at=started_at,
+                finished_at=_now(),
+            )
+            self._write_runtime(result, handoff)
+            return result
+
+        if claim == "already_completed":
+            result = self._result(
+                allow=True,
+                handoff=handoff,
+                approval={},
+                execution_triggered=False,
+                execution_mode="skipped_duplicate",
+                execution_result_status="already_executed",
+                completion_marker_path=None,
+                request_path=request_path,
+                stopped_reason="duplicate_pre_approval_skipped_already_succeeded",
+                started_at=started_at,
+                finished_at=_now(),
+                authorization_source="policy_pre_approval",
+                policy_id=policy.policy_id,
+            )
+            self._write_runtime(result, handoff)
+            mark_task_status(business_id, role_id, task_id, "completed", self.base_path)
+            return result
+
+        return self._run_business_agent(
+            handoff,
+            {},
+            request_path,
+            started_at,
+            authorization_source="policy_pre_approval",
+            policy_id=policy.policy_id,
         )
 
     def _write_runtime(self, result: ApprovedAutonomousExecutionResult, handoff: dict[str, Any] | None = None) -> None:
@@ -250,6 +458,8 @@ class ApprovedAutonomousExecution:
             "stopped_reason": result.stopped_reason,
             "started_at": result.started_at,
             "finished_at": result.finished_at,
+            "authorization_source": result.authorization_source,
+            "policy_id": result.policy_id,
         }
         (runtime_dir / "latest.json").write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         (runtime_dir / "latest.md").write_text(_markdown(payload), encoding="utf-8")
@@ -275,6 +485,8 @@ def _markdown(payload: dict[str, Any]) -> str:
             f"stopped_reason: {payload.get('stopped_reason') or ''}",
             f"started_at: {payload.get('started_at') or ''}",
             f"finished_at: {payload.get('finished_at') or ''}",
+            f"authorization_source: {payload.get('authorization_source') or ''}",
+            f"policy_id: {payload.get('policy_id') or ''}",
             "",
         ]
     )

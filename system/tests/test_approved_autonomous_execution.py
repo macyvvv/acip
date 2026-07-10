@@ -3,6 +3,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import pytest
+
 from system.core.approved_autonomous_execution import ApprovedAutonomousExecution
 
 
@@ -305,4 +307,318 @@ def test_two_businesses_execute_independently_without_interference(tmp_path: Pat
     import json as _json
     assert _json.loads(a_result_path.read_text())["scope_id"] == "text_syndicate:market_research:task-0001"
     assert _json.loads(b_result_path.read_text())["scope_id"] == "kabukicho_survival_map:marketing:task-0007"
+
+
+# --- Level 3a: policy-based pre-approval of execution ---------------------
+
+
+def _write_pre_approval_policy(tmp_path: Path, business_id: str, role_id: str, **overrides) -> None:
+    entry = {
+        "policy_id": f"PREAPP-{business_id}-{role_id}",
+        "business_id": business_id,
+        "role_id": role_id,
+        "enabled": True,
+        "max_auto_approvals_per_day": 1,
+        "max_auto_approvals_per_week": 5,
+        "authored_by": "macy",
+        "authored_at": "2026-07-11T00:00:00+00:00",
+        "reason": "pilot",
+    }
+    entry.update(overrides)
+    path = tmp_path / "system" / "runtime" / "agent_handoff" / "auto_approval_policy.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps({"version": 1, "policies": [entry]}))
+
+
+def _fake_successful_run(calls: list[dict]):
+    class FakeOutcome:
+        success = True
+        artifact_path = "system/runtime/business_agents/text_syndicate/market_research/task-0001/latest.json"
+        exit_code = 0
+
+    def fake_run(self, *, business_id, role_id, task_id, task_description="", approval_flag=False, dry_run=True):
+        calls.append({"business_id": business_id, "role_id": role_id, "task_id": task_id})
+        return FakeOutcome()
+
+    return fake_run
+
+
+def test_missing_approval_with_no_policy_denies_exactly_as_before(tmp_path: Path) -> None:
+    from system.core.business_agent_handoff import write_business_agent_handoff
+
+    write_business_agent_handoff("text_syndicate", "market_research", "task-0001", "desc", tmp_path)
+    result = ApprovedAutonomousExecution(tmp_path).run(business_id="text_syndicate", role_id="market_research", task_id="task-0001")
+    assert result.execution_result_status == "denied"
+    assert result.stopped_reason == "missing_approval"
+    assert result.authorization_source == "human_approval"
+
+
+@pytest.mark.parametrize(
+    "approval_overrides",
+    [
+        {"decision_status": "rejected"},
+        {"handoff_id": "REQ-SOMETHING-ELSE"},
+        {"supersedes": "APP-PRIOR-0001"},
+    ],
+)
+def test_existing_non_matching_approval_is_never_overridden_by_a_matching_policy(
+    tmp_path: Path, monkeypatch, approval_overrides
+) -> None:
+    from system.core.business_agent_handoff import scope_dir, write_business_agent_handoff
+
+    write_business_agent_handoff("text_syndicate", "market_research", "task-0001", "desc", tmp_path)
+    base_overrides = {
+        "handoff_id": "REQ-TEXT-SYNDICATE-MARKET-RESEARCH-TASK-0001",
+        "scope_type": "business_role_task",
+        "scope_id": "text_syndicate:market_research:task-0001",
+    }
+    base_overrides.update(approval_overrides)
+    _write_approval(
+        scope_dir("text_syndicate", "market_research", "task-0001", tmp_path) / "approval.json",
+        **base_overrides,
+    )
+    _write_pre_approval_policy(tmp_path, "text_syndicate", "market_research")
+
+    calls: list[dict] = []
+    monkeypatch.setattr("system.core.approved_autonomous_execution.BusinessAgentExecutionAdapter.run", _fake_successful_run(calls))
+
+    result = ApprovedAutonomousExecution(tmp_path).run(business_id="text_syndicate", role_id="market_research", task_id="task-0001")
+
+    assert result.execution_result_status == "denied"
+    assert result.stopped_reason != "missing_approval"  # the ORIGINAL mismatch reason, not the pre-approval path
+    assert result.authorization_source == "human_approval"
+    assert calls == []  # adapter never invoked
+    state_path = tmp_path / "system" / "runtime" / "agent_handoff" / "pre_approval_state" / "text_syndicate" / "market_research" / "state.json"
+    assert not state_path.exists()  # no claim ever recorded
+
+
+def test_policy_pre_approval_end_to_end_success(tmp_path: Path, monkeypatch) -> None:
+    from system.core.business_agent_handoff import write_business_agent_handoff
+
+    write_business_agent_handoff("text_syndicate", "market_research", "task-0001", "desc", tmp_path)
+    _write_pre_approval_policy(tmp_path, "text_syndicate", "market_research")
+
+    calls: list[dict] = []
+    monkeypatch.setattr("system.core.approved_autonomous_execution.BusinessAgentExecutionAdapter.run", _fake_successful_run(calls))
+
+    result = ApprovedAutonomousExecution(tmp_path).run(business_id="text_syndicate", role_id="market_research", task_id="task-0001")
+
+    assert result.allow is True
+    assert result.execution_result_status == "success"
+    assert result.authorization_source == "policy_pre_approval"
+    assert result.policy_id == "PREAPP-text_syndicate-market_research"
+    assert calls == [{"business_id": "text_syndicate", "role_id": "market_research", "task_id": "task-0001"}]
+
+    # Chain continues on success exactly like the human-approved path
+    queue = json.loads((tmp_path / "system" / "runtime" / "business_agent_tasks" / "queue.json").read_text(encoding="utf-8"))
+    assert any(item["role_id"] == "marketing" and item["source"] == "auto_trigger" for item in queue)
+
+
+def test_policy_pre_approval_marks_task_completed_in_queue(tmp_path: Path, monkeypatch) -> None:
+    from system.core.business_agent_handoff import write_business_agent_handoff
+    from system.core.business_agent_task_queue import add_task
+
+    write_business_agent_handoff("text_syndicate", "market_research", "task-0001", "desc", tmp_path)
+    add_task("text_syndicate", "market_research", "task-0001", "title", tmp_path)
+    _write_pre_approval_policy(tmp_path, "text_syndicate", "market_research")
+
+    calls: list[dict] = []
+    monkeypatch.setattr("system.core.approved_autonomous_execution.BusinessAgentExecutionAdapter.run", _fake_successful_run(calls))
+
+    ApprovedAutonomousExecution(tmp_path).run(business_id="text_syndicate", role_id="market_research", task_id="task-0001")
+
+    queue = json.loads((tmp_path / "system" / "runtime" / "business_agent_tasks" / "queue.json").read_text(encoding="utf-8"))
+    entry = next(item for item in queue if item["task_id"] == "task-0001")
+    assert entry["status"] == "completed"  # never lingers as an open "candidate"
+
+
+def test_policy_pre_approval_skips_duplicate_on_rerun(tmp_path: Path, monkeypatch) -> None:
+    from system.core.business_agent_handoff import write_business_agent_handoff
+
+    write_business_agent_handoff("text_syndicate", "market_research", "task-0001", "desc", tmp_path)
+    _write_pre_approval_policy(tmp_path, "text_syndicate", "market_research", max_auto_approvals_per_day=1)
+
+    calls: list[dict] = []
+    monkeypatch.setattr("system.core.approved_autonomous_execution.BusinessAgentExecutionAdapter.run", _fake_successful_run(calls))
+
+    first = ApprovedAutonomousExecution(tmp_path).run(business_id="text_syndicate", role_id="market_research", task_id="task-0001")
+    second = ApprovedAutonomousExecution(tmp_path).run(business_id="text_syndicate", role_id="market_research", task_id="task-0001")
+
+    assert first.execution_triggered is True
+    assert second.execution_triggered is False
+    assert second.execution_mode == "skipped_duplicate"
+    assert len(calls) == 1  # adapter invoked exactly once
+
+
+def test_policy_pre_approval_denies_when_already_in_flight(tmp_path: Path, monkeypatch) -> None:
+    # Simulates a concurrent invocation already holding the claim -- this is
+    # the exact race the state-machine redesign closes: the adapter must
+    # never be invoked a second time for a task another process is already
+    # executing.
+    from system.core.business_agent_handoff import write_business_agent_handoff
+    from system.core.execution_pre_approval_state import claim_pre_approval
+
+    write_business_agent_handoff("text_syndicate", "market_research", "task-0001", "desc", tmp_path)
+    _write_pre_approval_policy(tmp_path, "text_syndicate", "market_research")
+    claim_pre_approval("text_syndicate", "market_research", "task-0001", "PREAPP-text_syndicate-market_research", 1, 5, tmp_path)
+
+    calls: list[dict] = []
+    monkeypatch.setattr("system.core.approved_autonomous_execution.BusinessAgentExecutionAdapter.run", _fake_successful_run(calls))
+
+    result = ApprovedAutonomousExecution(tmp_path).run(business_id="text_syndicate", role_id="market_research", task_id="task-0001")
+
+    assert result.execution_result_status == "denied"
+    assert "already_in_flight" in result.stopped_reason
+    assert calls == []
+
+
+def test_policy_pre_approval_cap_exceeded_end_to_end(tmp_path: Path, monkeypatch) -> None:
+    from system.core.business_agent_handoff import write_business_agent_handoff
+
+    write_business_agent_handoff("text_syndicate", "market_research", "task-0001", "desc 1", tmp_path)
+    write_business_agent_handoff("text_syndicate", "market_research", "task-0002", "desc 2", tmp_path)
+    _write_pre_approval_policy(tmp_path, "text_syndicate", "market_research", max_auto_approvals_per_day=1)
+
+    calls: list[dict] = []
+    monkeypatch.setattr("system.core.approved_autonomous_execution.BusinessAgentExecutionAdapter.run", _fake_successful_run(calls))
+
+    first = ApprovedAutonomousExecution(tmp_path).run(business_id="text_syndicate", role_id="market_research", task_id="task-0001")
+    second = ApprovedAutonomousExecution(tmp_path).run(business_id="text_syndicate", role_id="market_research", task_id="task-0002")
+
+    assert first.execution_result_status == "success"
+    assert second.execution_result_status == "denied"
+    assert "cap_exceeded" in second.stopped_reason
+    assert len(calls) == 1
+
+
+def test_policy_pre_approval_retry_after_failure_does_not_recharge_cap(tmp_path: Path, monkeypatch) -> None:
+    from system.core.business_agent_handoff import write_business_agent_handoff
+
+    write_business_agent_handoff("text_syndicate", "market_research", "task-0001", "desc", tmp_path)
+    _write_pre_approval_policy(tmp_path, "text_syndicate", "market_research", max_auto_approvals_per_day=1)
+
+    attempts = {"count": 0}
+
+    class FailingThenSucceedingOutcome:
+        artifact_path = "system/runtime/business_agents/text_syndicate/market_research/task-0001/latest.json"
+        exit_code = 0
+
+        def __init__(self, success):
+            self.success = success
+
+    def fake_run(self, *, business_id, role_id, task_id, task_description="", approval_flag=False, dry_run=True):
+        attempts["count"] += 1
+        return FailingThenSucceedingOutcome(success=attempts["count"] > 1)
+
+    monkeypatch.setattr("system.core.approved_autonomous_execution.BusinessAgentExecutionAdapter.run", fake_run)
+
+    first = ApprovedAutonomousExecution(tmp_path).run(business_id="text_syndicate", role_id="market_research", task_id="task-0001")
+    second = ApprovedAutonomousExecution(tmp_path).run(business_id="text_syndicate", role_id="market_research", task_id="task-0001")
+
+    assert first.execution_result_status == "failure"
+    assert first.authorization_source == "policy_pre_approval"
+    assert second.execution_result_status == "success"
+    assert attempts["count"] == 2  # retry allowed despite max_auto_approvals_per_day=1 -- no second cap charge
+
+
+def test_pluggable_provider_role_never_pre_approved_end_to_end(tmp_path: Path, monkeypatch) -> None:
+    from system.core.business_agent_handoff import write_business_agent_handoff
+
+    write_business_agent_handoff("text_syndicate", "image_generation", "task-0001", "desc", tmp_path)
+    _write_pre_approval_policy(tmp_path, "text_syndicate", "image_generation")
+
+    calls: list[dict] = []
+    monkeypatch.setattr("system.core.approved_autonomous_execution.BusinessAgentExecutionAdapter.run", _fake_successful_run(calls))
+
+    result = ApprovedAutonomousExecution(tmp_path).run(business_id="text_syndicate", role_id="image_generation", task_id="task-0001")
+
+    assert result.execution_result_status == "denied"
+    assert "pre_approval_policy_error" in result.stopped_reason
+    assert calls == []
+
+
+def test_pre_approval_kill_switch_denies_without_affecting_task_automation_switch(tmp_path: Path, monkeypatch) -> None:
+    from system.core.business_agent_handoff import write_business_agent_handoff
+    from system.core.business_agent_automation_control import is_automation_paused
+    from system.core.execution_pre_approval_control import pause_pre_approval
+
+    write_business_agent_handoff("text_syndicate", "market_research", "task-0001", "desc", tmp_path)
+    _write_pre_approval_policy(tmp_path, "text_syndicate", "market_research")
+    pause_pre_approval("investigating", "macy", tmp_path)
+
+    calls: list[dict] = []
+    monkeypatch.setattr("system.core.approved_autonomous_execution.BusinessAgentExecutionAdapter.run", _fake_successful_run(calls))
+
+    result = ApprovedAutonomousExecution(tmp_path).run(business_id="text_syndicate", role_id="market_research", task_id="task-0001")
+
+    assert result.execution_result_status == "denied"
+    assert result.stopped_reason == "pre_approval_paused"
+    assert calls == []
+    assert is_automation_paused(tmp_path) is False  # Level 1/2's switch is untouched by this
+
+
+def test_automation_pause_switch_has_no_effect_on_pre_approval_path(tmp_path: Path, monkeypatch) -> None:
+    # The critique's key finding: is_automation_paused() must NOT gate the
+    # pre-approval path -- that switch's documented contract is that an
+    # explicit human action (this CLI/function) is never blocked by it.
+    from system.core.business_agent_handoff import write_business_agent_handoff
+    from system.core.business_agent_automation_control import pause_automation
+
+    write_business_agent_handoff("text_syndicate", "market_research", "task-0001", "desc", tmp_path)
+    _write_pre_approval_policy(tmp_path, "text_syndicate", "market_research")
+    pause_automation("unrelated incident", "macy", tmp_path)
+
+    calls: list[dict] = []
+    monkeypatch.setattr("system.core.approved_autonomous_execution.BusinessAgentExecutionAdapter.run", _fake_successful_run(calls))
+
+    result = ApprovedAutonomousExecution(tmp_path).run(business_id="text_syndicate", role_id="market_research", task_id="task-0001")
+
+    assert result.execution_result_status == "success"
+    assert result.authorization_source == "policy_pre_approval"
+    assert len(calls) == 1
+
+
+def test_cross_scope_isolation_for_pre_approval(tmp_path: Path, monkeypatch) -> None:
+    from system.core.business_agent_handoff import write_business_agent_handoff
+
+    write_business_agent_handoff("text_syndicate", "market_research", "task-0001", "desc A", tmp_path)
+    write_business_agent_handoff("kabukicho_survival_map", "marketing", "task-0001", "desc B", tmp_path)
+    _write_pre_approval_policy(tmp_path, "text_syndicate", "market_research", max_auto_approvals_per_day=1)
+    path = tmp_path / "system" / "runtime" / "agent_handoff" / "auto_approval_policy.json"
+    policies = json.loads(path.read_text())
+    policies["policies"].append(
+        {
+            "policy_id": "PREAPP-kabukicho-marketing",
+            "business_id": "kabukicho_survival_map",
+            "role_id": "marketing",
+            "enabled": True,
+            "max_auto_approvals_per_day": 1,
+            "max_auto_approvals_per_week": 5,
+            "authored_by": "macy",
+            "authored_at": "2026-07-11T00:00:00+00:00",
+            "reason": "pilot",
+        }
+    )
+    path.write_text(json.dumps(policies))
+
+    calls: list[dict] = []
+
+    def fake_run(self, *, business_id, role_id, task_id, task_description="", approval_flag=False, dry_run=True):
+        calls.append({"business_id": business_id, "role_id": role_id, "task_id": task_id})
+
+        class FakeOutcome:
+            success = True
+            artifact_path = f"system/runtime/business_agents/{business_id}/{role_id}/{task_id}/latest.json"
+            exit_code = 0
+
+        return FakeOutcome()
+
+    monkeypatch.setattr("system.core.approved_autonomous_execution.BusinessAgentExecutionAdapter.run", fake_run)
+
+    result_a = ApprovedAutonomousExecution(tmp_path).run(business_id="text_syndicate", role_id="market_research", task_id="task-0001")
+    result_b = ApprovedAutonomousExecution(tmp_path).run(business_id="kabukicho_survival_map", role_id="marketing", task_id="task-0001")
+
+    assert result_a.execution_result_status == "success"
+    assert result_b.execution_result_status == "success"
+    assert {c["business_id"] for c in calls} == {"text_syndicate", "kabukicho_survival_map"}
 

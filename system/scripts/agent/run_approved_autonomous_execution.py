@@ -32,6 +32,8 @@ def main() -> int:
     print(f"completion_marker_path={result.completion_marker_path or ''}")
     print(f"request_path={result.request_path or ''}")
     print(f"stopped_reason={result.stopped_reason}")
+    print(f"authorization_source={result.authorization_source}")
+    print(f"policy_id={result.policy_id or ''}")
     return 0
 
 

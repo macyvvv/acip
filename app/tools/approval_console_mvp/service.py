@@ -9,6 +9,7 @@ from typing import Callable, Iterable
 
 from system.core.agent_execution_approval import evaluate_business_agent_scope_approval
 from system.core.business_agent_automation_control import automation_pause_info
+from system.core.execution_pre_approval_control import pre_approval_pause_info
 from system.core.publishing_control import publishing_pause_info
 from system.core.business_agent_handoff import compute_request_id, load_business_agent_handoff
 from system.core.business_agent_task_queue import load_queue, mark_task_status
@@ -33,6 +34,8 @@ class ApprovalScope:
     approval_ready: bool = False
     business_id: str | None = None
     role_id: str | None = None
+    authorization_source: str | None = None
+    policy_id: str | None = None
 
 
 @dataclass(frozen=True)
@@ -154,6 +157,8 @@ class ApprovalConsoleService:
                     approval_ready=scope_handoff_exists,
                     business_id=business_id,
                     role_id=role_id,
+                    authorization_source=str(scope_execution.get("authorization_source") or "") or None,
+                    policy_id=str(scope_execution.get("policy_id") or "") or None,
                 )
             )
         return scopes
@@ -270,6 +275,13 @@ class ApprovalConsoleService:
                 f"paused_by={publishing_pause.get('paused_by', '')} paused_at={publishing_pause.get('paused_at', '')}"
             )
             lines.append("")
+        pre_approval_pause = pre_approval_pause_info(self.repo_root)
+        if pre_approval_pause:
+            lines.append(
+                f"PRE-APPROVAL PAUSED: reason={pre_approval_pause.get('reason', '')} "
+                f"paused_by={pre_approval_pause.get('paused_by', '')} paused_at={pre_approval_pause.get('paused_at', '')}"
+            )
+            lines.append("")
         last_publish_run = self._read_json(self.repo_root / "system" / "runtime" / "publishing" / "audit" / "latest.json")
         if last_publish_run:
             lines.append(
@@ -303,6 +315,8 @@ class ApprovalConsoleService:
                     f"Approval status: {scope.approval_status}",
                     f"Execution allowed: {str(scope.execution_allowed).lower()}",
                     f"Latest execution status: {scope.latest_execution_status or ''}",
+                    f"Authorization source: {scope.authorization_source or ''}",
+                    f"Policy id: {scope.policy_id or ''}",
                     f"Recommendation: {scope.recommendation_reason}",
                 ]
             )
