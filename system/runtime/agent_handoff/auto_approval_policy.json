@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "policies": [
+    {
+      "policy_id": "PREAPP-TEXT_SYNDICATE-DOC_CREATION-0001",
+      "business_id": "text_syndicate",
+      "role_id": "doc_creation",
+      "enabled": true,
+      "max_auto_approvals_per_day": 3,
+      "authored_by": "macy",
+      "authored_at": "2026-07-11T00:00:00+00:00",
+      "reason": "Pilot Level 3a policy so the text_syndicate content chain no longer needs a manual set_execution_approval.py call for every doc_creation task."
+    },
+    {
+      "policy_id": "PREAPP-KABUKICHO_SURVIVAL_MAP-MARKET_RESEARCH-0001",
+      "business_id": "kabukicho_survival_map",
+      "role_id": "market_research",
+      "enabled": true,
+      "max_auto_approvals_per_day": 3,
+      "authored_by": "macy",
+      "authored_at": "2026-07-11T00:00:00+00:00",
+      "reason": "Pilot Level 3a policy so kabukicho_survival_map's market_research tasks no longer need a manual set_execution_approval.py call each time."
+    }
+  ]
+}
