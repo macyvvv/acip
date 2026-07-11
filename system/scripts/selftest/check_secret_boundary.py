@@ -2,8 +2,13 @@ from selftest_common import iter_text_files, rel, read, pass_result, fail, print
 import re
 
 PATTERNS = [
-    ("openai key", re.compile(r"sk-[A-Za-z0-9_-]{20,}")),
-    ("github token", re.compile(r"gh[pousr]_[A-Za-z0-9_]{20,}")),
+    # Negative lookbehind requires a non-word char (or string start)
+    # immediately before the prefix -- without it, this matched "sk-" or
+    # "gh*_" as a substring of ordinary words like "task-0005-..." or
+    # "ADR-...-handoff-scoping-...", producing false-positive failures on
+    # files that contain no secret at all.
+    ("openai key", re.compile(r"(?<![A-Za-z0-9_])sk-[A-Za-z0-9_-]{20,}")),
+    ("github token", re.compile(r"(?<![A-Za-z0-9_])gh[pousr]_[A-Za-z0-9_]{20,}")),
     ("aws access key", re.compile(r"AKIA[0-9A-Z]{16}")),
     ("private key", re.compile(r"-----BEGIN (RSA |EC |OPENSSH |)PRIVATE KEY-----")),
 ]
