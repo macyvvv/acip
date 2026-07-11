@@ -5,12 +5,242 @@
     "lng": 139.7003,
     "description": "Multilingual (JP/EN/CN/KR) ATM accepting Visa, Mastercard, Amex, UnionPay, JCB and more; approx ¥110 fee, ¥100,000 withdrawal cap per transaction.",
     "category": "atm",
-    "tags": ["24h", "international_card_ok"],
+    "tags": [
+      "24h",
+      "international_card_ok"
+    ],
     "last_updated": "2026-07-11",
     "reliability_score": 5,
     "source_type": "official",
     "type": "official",
     "verification_method": "web-search-2026-07",
     "gray_zone_note": null
+  },
+  {
+    "category": "atm",
+    "name": "Seven Bank ATM — 7-Eleven Kabukicho 1-2-13",
+    "lat": 35.6949,
+    "lng": 139.7013,
+    "description": "Seven Bank ATM inside 7-Eleven near Seibu-Shinjuku Station, Kabukicho 1-chome. International cards, multilingual menu, ~¥110 fee.",
+    "tags": [
+      "24h",
+      "international_card_ok"
+    ],
+    "reliability_score": 3,
+    "source_type": "inferred",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "atm",
+    "name": "Seven Bank ATM — 7-Eleven Shinjuku Toho Building Store",
+    "lat": 35.6952,
+    "lng": 139.7028,
+    "description": "Seven Bank ATM inside 7-Eleven beside the Shinjuku Toho Building (Godzilla Road), Kabukicho 1-19-1.",
+    "tags": [
+      "24h",
+      "international_card_ok"
+    ],
+    "reliability_score": 3,
+    "source_type": "inferred",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "atm",
+    "name": "Seven Bank ATM — 7-Eleven Yasukuni-dori Store",
+    "lat": 35.6944,
+    "lng": 139.701,
+    "description": "Seven Bank ATM inside 7-Eleven at Kabukicho 1-17-2, on Yasukuni-dori.",
+    "tags": [
+      "24h",
+      "international_card_ok"
+    ],
+    "reliability_score": 3,
+    "source_type": "inferred",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "atm",
+    "name": "Seven Bank ATM — 7-Eleven Kabukicho 1-26-6",
+    "lat": 35.6955,
+    "lng": 139.702,
+    "description": "Seven Bank ATM inside 7-Eleven store within Kabukicho 1-chome interior.",
+    "tags": [
+      "24h",
+      "international_card_ok"
+    ],
+    "reliability_score": 3,
+    "source_type": "inferred",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "atm",
+    "name": "Seven Bank ATM — 7-Eleven Kabukicho 2-chome Chuo Ten",
+    "lat": 35.6963,
+    "lng": 139.7038,
+    "description": "Seven Bank ATM inside 7-Eleven at Kabukicho 2-33-3, central 2-chome.",
+    "tags": [
+      "24h",
+      "international_card_ok"
+    ],
+    "reliability_score": 3,
+    "source_type": "inferred",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "atm",
+    "name": "Seven Bank ATM — 7-Eleven Kabukicho Nichome Higashi Ten",
+    "lat": 35.6968,
+    "lng": 139.7052,
+    "description": "Seven Bank ATM directly documented in-store at this 7-Eleven near Higashi-Shinjuku Station, east Kabukicho 2-chome.",
+    "tags": [
+      "24h",
+      "international_card_ok"
+    ],
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "atm",
+    "name": "MUFG Bank — Seibu-Shinjuku Station ATM Corner",
+    "lat": 35.6957,
+    "lng": 139.6995,
+    "description": "Mitsubishi UFJ Bank out-of-branch ATM corner at Kabukicho 1-30-1, adjacent to Seibu-Shinjuku Station.",
+    "tags": [
+      "international_card_ok"
+    ],
+    "reliability_score": 4,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "atm",
+    "name": "MUFG Bank — Shinjuku Subnade ATM Corner",
+    "lat": 35.6942,
+    "lng": 139.6998,
+    "description": "Mitsubishi UFJ Bank out-of-branch ATM corner inside the Shinjuku Subnade underground mall, Kabukicho 1-chome, B1F.",
+    "tags": [
+      "international_card_ok"
+    ],
+    "reliability_score": 4,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "atm",
+    "name": "AEON Bank ATM — Ministop Shinjuku Kabukicho (unit 2)",
+    "lat": 35.6966,
+    "lng": 139.7044,
+    "description": "AEON Bank ATM inside Ministop at Kabukicho 2-22-1; listed 24h by AEON Bank's own locator.",
+    "tags": [
+      "24h",
+      "international_card_ok"
+    ],
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "atm",
+    "name": "Mizuho Bank ATM — Ministop Shinjuku Kabukicho (unit 1)",
+    "lat": 35.6966,
+    "lng": 139.7044,
+    "description": "Mizuho Bank out-of-branch ATM (Ministop Shinjuku Kabukicho-ten 1-goki Shuchosho) at the same Kabukicho 2-22-1 address as the AEON Bank unit — two separate machines, one location.",
+    "tags": [
+      "international_card_ok"
+    ],
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "atm",
+    "name": "Yucho Bank ATM — FamilyMart Shinjuku Kabukicho",
+    "lat": 35.696,
+    "lng": 139.7033,
+    "description": "Japan Post Bank (Yucho) ATM inside FamilyMart at Kabukicho 2-25-2. Hours 00:05–23:55 daily (effectively near-24h, brief nightly maintenance window).",
+    "tags": [
+      "24h"
+    ],
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "atm",
+    "name": "Japan Post — Shinjuku Kabukicho Post Office ATM",
+    "lat": 35.697,
+    "lng": 139.7055,
+    "description": "Window-adjacent Japan Post ATM at Kabukicho 2-41-8, ~2 min walk from Seibu-Shinjuku Station north exit. ATM hours weekday 9:00–17:30, Sat 9:00–12:30 — not 24h.",
+    "tags": [],
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "atm",
+    "name": "Japan Post — Shinjuku Ward Office Post Office ATM",
+    "lat": 35.6944,
+    "lng": 139.7038,
+    "description": "Japan Post ATM inside the Shinjuku Ward Office branch post office, Kabukicho 1-4-1. ATM hours weekday 9:00–17:00 only — not 24h.",
+    "tags": [],
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "atm",
+    "name": "SMBC Trust Bank Prestia — Shinjuku Higashiguchi Branch ATM",
+    "lat": 35.6903,
+    "lng": 139.7018,
+    "description": "Foreign-resident-oriented bank (formerly Citibank Japan, transferred to SMBC Trust/Prestia in 2015), Shinjuku 3-24-1, ~700m south of Kabukicho across Yasukuni-dori — bordering, not inside, the district. ATM hours Mon–Fri 7:00–24:00, Sat 7:00–23:50, Sun 7:00–21:00. Cash-card withdrawal only; no FX cash dispensing from the ATM (currency exchange is teller-only, weekdays 9:00–15:00).",
+    "tags": [
+      "international_card_ok"
+    ],
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": "Located outside Kabukicho's chome boundaries; included as the nearest dedicated international-banking ATM option, not a within-district entry.",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
   }
 ]

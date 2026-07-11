@@ -1,11 +1,15 @@
 [
   {
     "name": "JR Shinjuku Station B1F Coin Lockers (East/Central East Gate)",
-    "lat": 35.6900,
+    "lat": 35.69,
     "lng": 139.7005,
     "description": "Nearest large locker bank to Kabukicho; approximately 3,600 lockers station-wide; large lockers are frequently full by 10 AM.",
     "category": "coin_locker",
-    "tags": ["medium", "large", "suitcase_ok"],
+    "tags": [
+      "medium",
+      "large",
+      "suitcase_ok"
+    ],
     "last_updated": "2026-07-11",
     "reliability_score": 4,
     "source_type": "official",
@@ -13,5 +17,288 @@
     "verification_method": "web-search-2026-07",
     "gray_zone_note": null,
     "availability_type": "time-sensitive"
+  },
+  {
+    "category": "coin_locker",
+    "name": "JR Shinjuku Station East Exit Underground Passage Lockers",
+    "lat": 35.6902,
+    "lng": 139.701,
+    "description": "8 lockers across 4 sub-banks near the East Exit ticket gates.",
+    "tags": [
+      "small",
+      "medium",
+      "suitcase_ok"
+    ],
+    "reliability_score": 4,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "coin_locker",
+    "name": "Lumine Est Shinjuku 1F Coin Lockers",
+    "lat": 35.69,
+    "lng": 139.7008,
+    "description": "Locker banks at the East Exit taxi-stand loop and along the Lumine Est department-store wall, plus inside near the ticket gates.",
+    "tags": [
+      "small",
+      "medium",
+      "large",
+      "suitcase_ok"
+    ],
+    "reliability_score": 4,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "coin_locker",
+    "name": "JR Shinjuku Station West Exit Underground Plaza Lockers",
+    "lat": 35.6905,
+    "lng": 139.699,
+    "description": "Largest locker bank at Shinjuku Station: 131 lockers, 17 large-size.",
+    "tags": [
+      "small",
+      "medium",
+      "large",
+      "suitcase_ok"
+    ],
+    "reliability_score": 4,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "coin_locker",
+    "name": "JR Shinjuku Station South Exit Concourse Lockers",
+    "lat": 35.6893,
+    "lng": 139.7005,
+    "description": "Multiple banks parallel to and inside the South Exit ticket gates, plus basement banks via stairs/escalators.",
+    "tags": [
+      "small",
+      "medium",
+      "large",
+      "suitcase_ok"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "coin_locker",
+    "name": "Seibu-Shinjuku Station North Exit Lockers",
+    "lat": 35.6952,
+    "lng": 139.6994,
+    "description": "Cashless-only (IC card or SPACER app) lockers near the North Exit ticket machines; S/M/L/XL at ¥100/200/300/400 per 4hr, open 7:00-23:59, 96hr storage limit.",
+    "tags": [
+      "small",
+      "medium",
+      "large",
+      "suitcase_ok"
+    ],
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "coin_locker",
+    "name": "Seibu-Shinjuku Station Underground Passage / Subnade Lockers",
+    "lat": 35.6947,
+    "lng": 139.6997,
+    "description": "Locker bank in the underground passage connecting Seibu-Shinjuku Station to the Shinjuku Subnade mall.",
+    "tags": [
+      "small",
+      "medium"
+    ],
+    "reliability_score": 3,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "coin_locker",
+    "name": "Tokyu Kabukicho Tower B1F Coin Lockers",
+    "lat": 35.695,
+    "lng": 139.7027,
+    "description": "24h large locker bank (300+ units) at B1F, ~1 min from the Kabukicho Ichibangai arch entrance. Not listed on the tower's own FAQ, which advertises only a 1F staffed baggage desk instead — independently reported by multiple visitor guides.",
+    "tags": [
+      "medium",
+      "large",
+      "suitcase_ok"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "unofficial",
+    "gray_zone_note": "Not listed on Tokyu Kabukicho Tower's own official FAQ, which advertises only a 1F staffed baggage desk -- reported independently by multiple visitor guides but not confirmed by the venue itself. Verify on-site before relying on it.",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "coin_locker",
+    "name": "Tokyu Kabukicho Tower 4F Cinema-Floor Lockers",
+    "lat": 35.695,
+    "lng": 139.7027,
+    "description": "Small electronic-payment-only lockers by the elevators on the cinema floor; ¥200 small / ¥300 medium, 180-minute limit, intended for moviegoers.",
+    "tags": [
+      "small",
+      "medium"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "coin_locker",
+    "name": "Tokyu Kabukicho Tower 10F (109 Cinemas Premium) Lockers",
+    "lat": 35.695,
+    "lng": 139.7027,
+    "description": "Cashless-only lockers (IC/tap/QR) beside the elevators on the 10F 109 Cinemas Premium Shinjuku floor.",
+    "tags": [
+      "small",
+      "medium"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "coin_locker",
+    "name": "Zepp Shinjuku Lockers (B1F/B4F)",
+    "lat": 35.695,
+    "lng": 139.7027,
+    "description": "840 lockers total (690 at B1F, 150 at B4F) inside the Tokyu Kabukicho Tower basement venue; cash-only ¥400, change machines on site. Usable only after entering past the ticket gate, not for pre-entry storage.",
+    "tags": [
+      "small",
+      "medium"
+    ],
+    "reliability_score": 4,
+    "source_type": "observed",
+    "type": "official",
+    "access_restriction": "venue_customers_only",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "coin_locker",
+    "name": "Humax Pavilion Shinjuku Kabukicho Coin Lockers",
+    "lat": 35.6952,
+    "lng": 139.703,
+    "description": "24h cash-payment lockers in the leisure building ~1 min from Tokyu Kabukicho Tower; ¥300 small / ¥400 medium.",
+    "tags": [
+      "small",
+      "medium"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "coin_locker",
+    "name": "Hotel WAKO Shinjuku Parking-Side Coin Locker",
+    "lat": 35.6958,
+    "lng": 139.6998,
+    "description": "Street-level coin locker beside the Hotel WAKO parking entrance, ~3 min from Seibu-Shinjuku Station North Exit toward the hotel-gai.",
+    "tags": [
+      "small",
+      "medium"
+    ],
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "coin_locker",
+    "name": "Adhoc Shinjuku Building Coin Lockers",
+    "lat": 35.6935,
+    "lng": 139.704,
+    "description": "Two locker clusters (2F elevator front and a stairwell-side bank), ~1 min from Tokyo Metro Fukutoshin Line Shinjuku-sanchome exits B8/B9, on Kabukicho's southern edge.",
+    "tags": [
+      "small",
+      "medium"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "coin_locker",
+    "name": "Manboo Manboo Kabukicho Net-Room Entrance Locker",
+    "lat": 35.696,
+    "lng": 139.7048,
+    "description": "Coin locker near the entrance of the Manboo Manboo internet café/net-room, ~5 min from Seibu-Shinjuku/Higashi-Shinjuku Station.",
+    "tags": [
+      "small"
+    ],
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "coin_locker",
+    "name": "Godzilla Road / Karaoke-kan Kabukicho Main Store Entrance Locker",
+    "lat": 35.6949,
+    "lng": 139.7025,
+    "description": "Coin locker at the entrance of Karaoke-kan's Kabukicho Main Store on Godzilla Road, the district's central street; operated by Fuji Service Co.",
+    "tags": [
+      "small",
+      "medium"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "coin_locker",
+    "name": "ecbo cloak — H.F. Kabukicho Building (1-2-2)",
+    "lat": 35.6944,
+    "lng": 139.7015,
+    "description": "App-reserved, coin-locker-priced staffed luggage storage inside Kabukicho itself (1-2-2). Suitcase-friendly with no rigid size cap, unlike physical lockers — best fallback when a bag is too large for any coin locker.",
+    "tags": [
+      "large",
+      "suitcase_ok",
+      "suitcase_too_big"
+    ],
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
   }
 ]

@@ -45,7 +45,7 @@
       "24h": "24時間営業",
       overnight_friendly: "深夜〜宿泊利用に対応"
     },
-    convenience: { "24h": "24時間営業" },
+    convenience: { "24h": "24時間営業", atm_instore: "ATM併設", phone_charging: "モバイルバッテリー貸出あり" },
     atm: { "24h": "24時間利用可", international_card_ok: "海外カード利用可" }
   };
 
