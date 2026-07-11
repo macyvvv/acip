@@ -52,7 +52,51 @@
   var DISCLAIMER_JA = "⚠ 非公式情報・内容は変更される場合があります・ご利用は自己責任でお願いします";
   var DISCLAIMER_EN = "⚠ Unofficial Information / Subject to change / Use at your own risk";
 
-  var state = { activeCategory: CATEGORIES[0].id, data: {} };
+  // Kabukicho's approximate centroid -- used as the map's default center
+  // before (or in place of) a real geolocation fix.
+  var KABUKICHO_CENTER = { lat: 35.6949, lng: 139.7028 };
+
+  var state = {
+    activeCategory: CATEGORIES[0].id,
+    data: {},
+    map: null,
+    markers: [],
+    infoWindow: null,
+    userLocation: null,
+    userMarker: null,
+    locationStatus: "idle" // idle | requesting | granted | denied | unsupported
+  };
+
+  function haversineDistanceMeters(lat1, lng1, lat2, lng2) {
+    var R = 6371000;
+    var toRad = function (deg) { return (deg * Math.PI) / 180; };
+    var dLat = toRad(lat2 - lat1);
+    var dLng = toRad(lng2 - lng1);
+    var a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) * Math.sin(dLng / 2);
+    return R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
+  }
+
+  function formatDistance(meters) {
+    if (meters < 1000) return Math.round(meters) + "m";
+    return (meters / 1000).toFixed(1) + "km";
+  }
+
+  function sortedByDistance(pois) {
+    if (!state.userLocation) return pois;
+    var withDistance = pois.map(function (poi) {
+      return {
+        poi: poi,
+        distance: haversineDistanceMeters(state.userLocation.lat, state.userLocation.lng, poi.lat, poi.lng)
+      };
+    });
+    withDistance.sort(function (a, b) { return a.distance - b.distance; });
+    return withDistance.map(function (entry) {
+      entry.poi._distanceMeters = entry.distance;
+      return entry.poi;
+    });
+  }
 
   function freshnessBadge(lastUpdated) {
     if (!lastUpdated) return null;
@@ -74,7 +118,7 @@
     });
   }
 
-  function renderCard(poi, categoryId) {
+  function renderCard(poi, categoryId, index) {
     var isGrayZone = poi.type === "unofficial" || !!poi.gray_zone_note;
     var tagCopy = TAG_COPY[categoryId] || {};
     var tagsHtml = (poi.tags || [])
@@ -85,14 +129,18 @@
       .join("");
     var fresh = freshnessBadge(poi.last_updated);
     var freshHtml = fresh ? '<span class="freshness-badge ' + fresh.cls + '">' + fresh.text + "</span>" : "";
+    var distanceHtml =
+      typeof poi._distanceMeters === "number"
+        ? '<span class="distance-badge">📍 現在地から ' + formatDistance(poi._distanceMeters) + "</span>"
+        : "";
     var grayZoneHtml = isGrayZone
       ? '<div class="gray-zone-banner">' + DISCLAIMER_JA + "<br>" + DISCLAIMER_EN +
         (poi.gray_zone_note ? "<br>" + escapeHtml(poi.gray_zone_note) : "") + "</div>"
       : "";
 
     return (
-      '<article class="poi-card">' +
-      freshHtml +
+      '<article class="poi-card" data-poi-index="' + index + '">' +
+      '<div class="card-meta-row">' + freshHtml + distanceHtml + "</div>" +
       "<h2>" + escapeHtml(poi.name) + "</h2>" +
       grayZoneHtml +
       '<p class="description">' + escapeHtml(poi.description) + "</p>" +
@@ -104,15 +152,37 @@
     );
   }
 
+  function locationHintHtml() {
+    if (state.locationStatus === "granted") return "";
+    if (state.locationStatus === "requesting") {
+      return '<div class="location-hint">📡 現在地を取得しています…</div>';
+    }
+    if (state.locationStatus === "denied" || state.locationStatus === "unsupported") {
+      return '<div class="location-hint">📍 現在地が取得できないため、標準の順番で表示しています。</div>';
+    }
+    return "";
+  }
+
   function renderList() {
     var container = document.getElementById("poi-list");
-    var pois = state.data[state.activeCategory] || [];
+    var pois = sortedByDistance(state.data[state.activeCategory] || []);
     if (!pois.length) {
       container.innerHTML =
+        locationHintHtml() +
         '<p class="no-results">このカテゴリに該当する場所が見つかりませんでした。<br>別のカテゴリを選択してください。</p>';
       return;
     }
-    container.innerHTML = pois.map(function (poi) { return renderCard(poi, state.activeCategory); }).join("");
+    container.innerHTML =
+      locationHintHtml() +
+      pois.map(function (poi, index) { return renderCard(poi, state.activeCategory, index); }).join("");
+
+    Array.prototype.forEach.call(container.querySelectorAll(".poi-card"), function (card) {
+      card.addEventListener("click", function (evt) {
+        if (evt.target.closest(".maps-link")) return;
+        var idx = Number(card.getAttribute("data-poi-index"));
+        focusMarker(pois[idx]);
+      });
+    });
   }
 
   function renderNav() {
@@ -131,8 +201,159 @@
         state.activeCategory = btn.getAttribute("data-category");
         renderNav();
         renderList();
+        renderMarkers();
       });
     });
+  }
+
+  // ---- Google Maps -------------------------------------------------------
+  // Loaded only when an operator has configured a real API key
+  // (window.KABUKICHO_GMAPS_API_KEY); otherwise the map pane shows a setup
+  // notice instead of silently staying blank. Uses the classic
+  // google.maps.Marker (not AdvancedMarkerElement) to avoid pulling in the
+  // extra `libraries=marker` param for what is a handful of static pins --
+  // consistent with this product's "no over-engineering" constraint.
+
+  function clearMarkers() {
+    state.markers.forEach(function (marker) { marker.setMap(null); });
+    state.markers = [];
+  }
+
+  function renderMarkers() {
+    if (!state.map) return;
+    clearMarkers();
+    var pois = state.data[state.activeCategory] || [];
+    if (!state.infoWindow) state.infoWindow = new google.maps.InfoWindow();
+
+    var bounds = new google.maps.LatLngBounds();
+    pois.forEach(function (poi) {
+      var marker = new google.maps.Marker({
+        position: { lat: poi.lat, lng: poi.lng },
+        map: state.map,
+        title: poi.name
+      });
+      marker.addListener("click", function () { openInfoWindow(poi, marker); });
+      state.markers.push(marker);
+      bounds.extend(marker.getPosition());
+    });
+
+    if (state.userLocation) bounds.extend(state.userLocation);
+
+    if (!pois.length) {
+      state.map.setCenter(state.userLocation || KABUKICHO_CENTER);
+      state.map.setZoom(16);
+    } else if (pois.length === 1 && !state.userLocation) {
+      state.map.setCenter(bounds.getCenter());
+      state.map.setZoom(17);
+    } else {
+      state.map.fitBounds(bounds, 48);
+    }
+  }
+
+  function openInfoWindow(poi, marker) {
+    var html =
+      '<div class="map-infowindow"><strong>' + escapeHtml(poi.name) + "</strong><br>" +
+      escapeHtml(poi.description) + "</div>";
+    state.infoWindow.setContent(html);
+    state.infoWindow.open({ anchor: marker, map: state.map });
+  }
+
+  function focusMarker(poi) {
+    if (!state.map) return;
+    state.map.panTo({ lat: poi.lat, lng: poi.lng });
+    state.map.setZoom(18);
+    var marker = state.markers.filter(function (m) {
+      return m.getPosition().lat() === poi.lat && m.getPosition().lng() === poi.lng;
+    })[0];
+    if (marker) openInfoWindow(poi, marker);
+    document.getElementById("map-pane").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function renderUserMarker() {
+    if (!state.map || !state.userLocation) return;
+    if (state.userMarker) state.userMarker.setMap(null);
+    state.userMarker = new google.maps.Marker({
+      position: state.userLocation,
+      map: state.map,
+      title: "現在地",
+      icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        scale: 8,
+        fillColor: "#1a73e8",
+        fillOpacity: 1,
+        strokeColor: "#ffffff",
+        strokeWeight: 2
+      },
+      zIndex: 999
+    });
+  }
+
+  function requestUserLocation() {
+    if (!("geolocation" in navigator)) {
+      state.locationStatus = "unsupported";
+      renderList();
+      return;
+    }
+    state.locationStatus = "requesting";
+    renderList();
+    navigator.geolocation.getCurrentPosition(
+      function (position) {
+        state.userLocation = { lat: position.coords.latitude, lng: position.coords.longitude };
+        state.locationStatus = "granted";
+        renderUserMarker();
+        renderMarkers();
+        renderList();
+      },
+      function () {
+        state.locationStatus = "denied";
+        renderList();
+      },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
+    );
+  }
+
+  function showMapNotice(message) {
+    var pane = document.getElementById("map-pane");
+    pane.innerHTML = '<div class="map-notice">' + message + "</div>";
+  }
+
+  window.initKabukichoMap = function () {
+    state.map = new google.maps.Map(document.getElementById("map"), {
+      center: state.userLocation || KABUKICHO_CENTER,
+      zoom: 16,
+      streetViewControl: false,
+      mapTypeControl: false,
+      fullscreenControl: false
+    });
+    renderMarkers();
+    // A location fix from before the map finished loading (distance
+    // sorting doesn't wait on the map) has no marker yet -- add it now.
+    if (state.userLocation) renderUserMarker();
+  };
+
+  window.gm_authFailure = function () {
+    showMapNotice("⚠ 地図を読み込めませんでした。APIキーの設定をご確認ください。");
+  };
+
+  function loadGoogleMaps() {
+    var apiKey = window.KABUKICHO_GMAPS_API_KEY;
+    if (!apiKey) {
+      showMapNotice(
+        "🗺️ 地図機能は準備中です。<br>" +
+        '<span class="map-notice-sub">Google Maps APIキーが設定されると、ここにカテゴリのピンが表示されます。</span>'
+      );
+      return;
+    }
+    var script = document.createElement("script");
+    script.src =
+      "https://maps.googleapis.com/maps/api/js?key=" +
+      encodeURIComponent(apiKey) +
+      "&callback=initKabukichoMap&loading=async";
+    script.async = true;
+    script.onerror = function () {
+      showMapNotice("⚠ 地図の読み込みに失敗しました。通信環境をご確認のうえ、再度お試しください。");
+    };
+    document.head.appendChild(script);
   }
 
   function loadAll() {
@@ -151,6 +372,16 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     renderNav();
-    loadAll().then(renderList);
+    loadAll().then(function () {
+      renderList();
+      // Map init (initKabukichoMap) fires asynchronously once the Google
+      // Maps script loads and calls back -- it re-renders markers itself,
+      // so it's safe to kick off in parallel with the initial list render.
+      loadGoogleMaps();
+      // Distance-based sorting for the bottom list doesn't depend on the
+      // map -- request it independently so it works even before the map
+      // finishes loading, or when no API key is configured at all.
+      requestUserLocation();
+    });
   });
 })();
