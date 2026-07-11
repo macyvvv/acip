@@ -1,0 +1,8 @@
+# AGENT_HANDOFF
+
+business_id: kabukicho_survival_map
+role_id: scenario_writing
+task_id: task-0001
+task_description: Per issue #33's MVP spec (section 3: Evaluation System, section 4: Unofficial/Gray Zone Handling), write the actual short, tag-based evaluation copy and disclaimer text the UI will display. Read market_research/task-0002 for the real POI context across all 6 categories first (smoking, toilets, convenience, ATMs, coin lockers, lodging/internet cafes). Produce: (1) a short (max 50 char) single-line comment template per tag for each category's required tag set -- smoking: indoor/outdoor/rain_ok/crowded/hidden/unsafe; toilets: clean/dirty/free/long_wait/gender_separated; coin lockers: size/capacity tags (small/medium/large) and suitcase_ok/suitcase_too_big; lodging: shower_available/no_shower, price band, 24h/overnight-friendly. (2) the exact unofficial-location disclaimer banner text per spec: '⚠ Unofficial Information / Subject to change / Use at your own risk' -- localize/adapt if needed but keep the same warning structure. This is read-only content output only -- no files should be written; the execution adapter persists this artifact.
+request_id: REQ-KABUKICHO-SURVIVAL-MAP-SCENARIO-WRITING-TASK-0001
+next_action: Review the handoff and, if approved, continue through the existing execution flow.

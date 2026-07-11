@@ -1,0 +1,20 @@
+{
+  "business_id": "kabukicho_survival_map",
+  "role_id": "scenario_writing",
+  "task_id": "task-0001",
+  "adapter_mode": "execute",
+  "resolved_model": "claude-sonnet-5",
+  "model_capability": "reasoning",
+  "allowed_tools": [
+    "Read",
+    "Grep",
+    "Glob"
+  ],
+  "agent_cli_command": "claude -p \"<rendered prompt>\" --model claude-sonnet-5 --tools Read,Grep,Glob --permission-mode bypassPermissions",
+  "stdout": "Now I have enough grounding. I'll produce the evaluation tag copy and disclaimer text.\n\n## Scenario Writing Output — Kabukicho Survival Map (scenario_writing/task-0001 or next)\n\nPer the role brief: this is read-only content, no files written. Grounded in `market_research/task-0002`'s 6-category POI data and `requirements.md`'s confirmed/caution/gray-zone split.\n\n---\n\n### 1. Tag-based evaluation copy (max 50 chars/line, one template per tag)\n\n**Smoking areas**\n| Tag | Comment template |\n|---|---|\n| `indoor` | 屋内喫煙所・雨天も利用可 |\n| `outdoor` | 屋外の喫煙所です |\n| `rain_ok` | 屋根あり・雨の日も安心 |\n| `crowded` | 混雑しやすい時間帯あり |\n| `hidden` | 見つけにくい場所・要注意 |\n| `unsafe` | 治安面で注意が必要な場所 |\n\n**Toilets**\n| Tag | Comment template |\n|---|---|\n| `clean` | 清潔と報告されています |\n| `dirty` | 汚れが気になるとの報告あり |\n| `free` | 無料で利用できます |\n| `long_wait` | 混雑時は待ち時間あり |\n| `gender_separated` | 男女別トイレです |\n\n**Coin lockers**\n| Tag | Comment template |\n|---|---|\n| `small` | 小型ロッカー(手荷物向け) |\n| `medium` | 中型ロッカー(機内持込サイズ) |\n| `large` | 大型ロッカー(預け入れサイズ) |\n| `suitcase_ok` | スーツケース収納可 |\n| `suitcase_too_big` | 大型スーツケースは入りません |\n\n**Lodging / internet cafes**\n| Tag | Comment template |\n|---|---|\n| `shower_available` | シャワーあり(別料金の場合あり) |\n| `no_shower` | シャワー設備なし |\n| `price_band_budget` | 予算重視の価格帯 |\n| `price_band_mid` | 標準的な価格帯 |\n| `24h` | 24時間営業 |\n| `overnight_friendly` | 深夜〜宿泊利用に対応 |\n\nEach template is ≤50 characters (including Japanese full-width chars, counted per the spec's char cap intent) and is meant to render as a single-line tag chip caption in the UI.\n\n---\n\n### 2. Unofficial-location disclaimer banner\n\nExact copy per spec, kept in the original structure (warning glyph / status / risk statement), with a localized line added since the product is JP-first per `requirements.md`:\n\n```\n⚠ Unofficial Information / Subject to change / Use at your own risk\n⚠ 非公式情報・内容は変更される場合があります・ご利用は自己責任でお願いします\n```\n\nUsage note for implementation: display this banner on any POI card where `type: \"unofficial\"` or a populated `gray_zone_note` field is present (per the `Maruhan Pachinko Parlor` and `Café Renoir` entries in market_research/task-0002) — consistent with the existing `##### Gray-zone notes` section and `Safety and Disclaimer` block already in `kabukicho_survival_map_mvp.py`.\n",
+  "stderr": "",
+  "exit_code": 0,
+  "success": true,
+  "captured_at": "2026-07-11T00:46:41.467900+00:00",
+  "artifact_path": "/Users/ariel/acip/system/runtime/business_agents/kabukicho_survival_map/scenario_writing/task-0001/latest.json"
+}

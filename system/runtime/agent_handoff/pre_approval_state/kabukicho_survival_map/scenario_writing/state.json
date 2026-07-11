@@ -1,0 +1,13 @@
+{
+  "tasks": {
+    "task-0001": {
+      "policy_id": "PREAPP-KABUKICHO_SURVIVAL_MAP-SCENARIO_WRITING-0001",
+      "status": "completed",
+      "claimed_at": "2026-07-11T00:46:03.821076+00:00"
+    }
+  },
+  "counters": {
+    "2026-07-11": 1,
+    "2026-W28": 1
+  }
+}
