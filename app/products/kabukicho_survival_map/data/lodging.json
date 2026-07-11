@@ -1,9 +1,9 @@
 [
   {
-    "name": "Booth Net Cafe & Capsule",
+    "name": "ブース ネットカフェ&カプセル",
     "lat": 35.6945,
     "lng": 139.702,
-    "description": "Internet cafe and capsule hotel near the Godzilla head landmark. Capsule stay approx ¥3,000/night (¥3,700 Sat); net-cafe seating from ¥600/2hr. Shower access is a paid add-on, not included by default.",
+    "description": "ゴジラヘッド近くのネットカフェ&カプセルホテル。カプセル宿泊は約3,000円/泊(土曜3,700円)、ネットカフェ席は600円/2時間〜。シャワーは有料オプションで標準では含まれません。",
     "category": "lodging",
     "tags": [
       "shower_available",
@@ -15,14 +15,14 @@
     "source_type": "observed",
     "type": "official",
     "verification_method": "web-search-2026-07",
-    "gray_zone_note": "Internet cafe overnight stays are not licensed lodging under the same category as hotels (Ryokan Business Act) -- treat as gray-zone-adjacent for legal/safety framing even though the business itself is legitimate.",
+    "gray_zone_note": "ネットカフェの宿泊利用は、旅館業法上ホテルと同じ区分の許可を得た宿泊施設ではありません。事業自体は適法ですが、法的・安全上はグレーゾーンに近いものとして扱ってください。",
     "licensed_as": "internet_cafe_no_lodging_license"
   },
   {
-    "name": "Shinjuku Kuyakusho-mae Capsule Hotel",
+    "name": "新宿区役所前カプセルホテル",
     "lat": 35.6944,
     "lng": 139.7038,
-    "description": "Named, reviewed capsule hotel in Kabukicho, adjacent to the ward office (kuyakusho).",
+    "description": "歌舞伎町にある実名・レビュー掲載済みのカプセルホテル。新宿区役所に隣接。",
     "category": "lodging",
     "tags": [
       "overnight_friendly",
@@ -37,10 +37,10 @@
     "licensed_as": "hotel_business_act"
   },
   {
-    "name": "Maruhan Pachinko Parlor (orientation landmark, not lodging)",
+    "name": "マルハン パチンコ店(目印・宿泊施設ではありません)",
     "lat": 35.6947,
     "lng": 139.7023,
-    "description": "Included only as a gray-zone orientation landmark, not an actual lodging option. Legally tolerated three-entity prize-exchange structure keeps pachinko outside gambling law, but it is not licensed lodging or a rest facility.",
+    "description": "宿泊施設ではなく、目印としてのみ掲載。三者間の景品交換方式によりパチンコは賭博法の適用外とされていますが、宿泊・休憩施設ではありません。",
     "category": "lodging",
     "tags": [],
     "last_updated": "2026-07-11",
@@ -48,14 +48,14 @@
     "source_type": "inferred",
     "type": "unofficial",
     "verification_method": "web-search-2026-07",
-    "gray_zone_note": "Landmark reference only. Not a lodging or rest facility. Gambling is regulated under Japanese law.",
+    "gray_zone_note": "目印としての参考情報のみです。宿泊・休憩施設ではありません。ギャンブルは日本の法律で規制されています。",
     "licensed_as": "not_applicable"
   },
   {
-    "name": "Capsule Hotel Shinjuku 510",
+    "name": "カプセルホテル新宿510",
     "lat": 35.6958,
     "lng": 139.7048,
-    "description": "310-capsule hotel in Kabukicho; shared bathing area with soaking tubs and bidet toilets.",
+    "description": "歌舞伎町にある310室のカプセルホテル。浴槽付き共用浴場、ウォシュレット完備。",
     "category": "lodging",
     "tags": [
       "shower_available",
@@ -71,10 +71,10 @@
     "verification_method": "web-search-2026-07"
   },
   {
-    "name": "Green Plaza Shinjuku Capsule Hotel",
+    "name": "グリーンプラザ新宿",
     "lat": 35.6945,
     "lng": 139.7002,
-    "description": "One of Japan's largest capsule hotels: 593 men-only capsules plus a separate 30-bunk women's dormitory section, on-site sauna.",
+    "description": "日本最大級のカプセルホテルの一つ。男性専用カプセル593室に加え、女性専用ドミトリー30床、サウナ完備。",
     "category": "lodging",
     "tags": [
       "shower_available",
@@ -90,10 +90,10 @@
     "verification_method": "web-search-2026-07"
   },
   {
-    "name": "ELE Cabin Shinjuku Kabukicho",
+    "name": "ELE Cabin 新宿歌舞伎町",
     "lat": 35.6963,
     "lng": 139.704,
-    "description": "Modern capsule hotel in Kabukicho.",
+    "description": "歌舞伎町にあるモダンなカプセルホテル。",
     "category": "lodging",
     "tags": [
       "shower_available",
@@ -109,10 +109,10 @@
     "verification_method": "web-search-2026-07"
   },
   {
-    "name": "APA Hotel Shinjuku Kabukicho Tower",
+    "name": "アパホテル新宿歌舞伎町タワー",
     "lat": 35.695,
     "lng": 139.7027,
-    "description": "Business hotel, 6 min walk from Shinjuku Station East Exit, in the Tokyu Kabukicho Tower area.",
+    "description": "ビジネスホテル。JR新宿駅東口から徒歩6分、東急歌舞伎町タワーエリア内。",
     "category": "lodging",
     "tags": [
       "shower_available",
@@ -128,10 +128,10 @@
     "verification_method": "web-search-2026-07"
   },
   {
-    "name": "APA Hotel Shinjuku Kabukicho Chuo",
+    "name": "アパホテル新宿歌舞伎町中央",
     "lat": 35.6965,
     "lng": 139.705,
-    "description": "166-room business hotel, 7 min walk from Shinjuku Station East Exit.",
+    "description": "166室のビジネスホテル。JR新宿駅東口から徒歩7分。",
     "category": "lodging",
     "tags": [
       "shower_available",
@@ -147,10 +147,10 @@
     "verification_method": "web-search-2026-07"
   },
   {
-    "name": "Toyoko Inn Tokyo Shinjuku Kabukicho",
+    "name": "東横イン東京新宿歌舞伎町",
     "lat": 35.6968,
     "lng": 139.7045,
-    "description": "Business hotel chain branch, 3 min walk from Higashi-Shinjuku Station.",
+    "description": "ビジネスホテルチェーン。東新宿駅から徒歩3分。",
     "category": "lodging",
     "tags": [
       "shower_available",
@@ -166,10 +166,10 @@
     "verification_method": "web-search-2026-07"
   },
   {
-    "name": "Kaikatsu Club Shinjuku Kabukicho-ten",
+    "name": "快活CLUB 新宿歌舞伎町店",
     "lat": 35.6942,
     "lng": 139.7018,
-    "description": "Internet/manga cafe chain branch; some branches offer breakfast buffet, darts, karaoke.",
+    "description": "インターネット・漫画喫茶チェーン。店舗によっては朝食バイキング、ダーツ、カラオケあり。",
     "category": "lodging",
     "tags": [
       "shower_available",
@@ -180,16 +180,16 @@
     "reliability_score": 3,
     "source_type": "observed",
     "type": "official",
-    "gray_zone_note": "Internet cafe overnight stays are not licensed lodging under the Hotel Business Act -- gray-zone-adjacent for legal/safety framing even though the business is legitimate.",
+    "gray_zone_note": "ネットカフェの宿泊利用は旅館業法上の宿泊施設としての許可を得たものではありません。事業自体は適法ですが、法的・安全面ではグレーゾーンに近いものとして扱ってください。",
     "licensed_as": "internet_cafe_no_lodging_license",
     "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
-    "name": "Gran Cyber Cafe Bagus Shinjuku (Kabukicho)",
+    "name": "グランサイバーカフェ Bagus 新宿(歌舞伎町)",
     "lat": 35.6941,
     "lng": 139.7024,
-    "description": "Internet cafe chain branch in Daini Toa Hall, Kabukicho 1-chome.",
+    "description": "歌舞伎町一丁目、第二東亜会館内のインターネットカフェチェーン。",
     "category": "lodging",
     "tags": [
       "shower_available",
@@ -200,16 +200,16 @@
     "reliability_score": 3,
     "source_type": "observed",
     "type": "official",
-    "gray_zone_note": "Internet cafe overnight stays are not licensed lodging under the Hotel Business Act.",
+    "gray_zone_note": "ネットカフェの宿泊利用は旅館業法上の宿泊施設としての許可を得たものではありません。",
     "licensed_as": "internet_cafe_no_lodging_license",
     "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
-    "name": "GeraGera Manga Cafe Shinjuku",
+    "name": "ゲラゲラ 新宿マンガ喫茶",
     "lat": 35.6951,
     "lng": 139.7027,
-    "description": "Manga cafe chain branch in the Humax Pavilion building; some current listings suggest possible closure, unconfirmed.",
+    "description": "ヒューマックスパビリオン内の漫画喫茶チェーン。一部の最新情報では閉店の可能性が示唆されており、未確認。",
     "category": "lodging",
     "tags": [
       "shower_available",
@@ -220,16 +220,16 @@
     "reliability_score": 2,
     "source_type": "observed",
     "type": "unofficial",
-    "gray_zone_note": "Internet cafe overnight stays are not licensed lodging under the Hotel Business Act. Operating status unconfirmed as of this research pass -- verify before publishing.",
+    "gray_zone_note": "ネットカフェの宿泊利用は旅館業法上の宿泊施設としての許可を得たものではありません。営業状況は今回の調査時点で未確認のため、公開前にご確認ください。",
     "licensed_as": "internet_cafe_no_lodging_license",
     "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
-    "name": "Hotel Moana Shinjuku (Adults Only)",
+    "name": "ホテル モアナ新宿(アダルト専用)",
     "lat": 35.697,
     "lng": 139.7052,
-    "description": "40-room adults-only love hotel in Kabukicho 2-chome. Note: a source-cited proximity claim (150m from Shin-Okubo Station) is geographically inconsistent with the address and could not be corroborated.",
+    "description": "歌舞伎町二丁目にある40室のアダルト専用ラブホテル。情報源には「新大久保駅から150m」との記載もあるが、住所と地理的に矛盾しており裏付けが取れていません。",
     "category": "lodging",
     "tags": [
       "shower_available",
@@ -239,16 +239,16 @@
     "reliability_score": 2,
     "source_type": "observed",
     "type": "official",
-    "gray_zone_note": "Licensed love hotel, a common and legal lodging category in this district under Japan's hotel/entertainment-business licensing framework -- not a gray-zone business, but distinct from standard hotels in room typology and guest expectations.",
+    "gray_zone_note": "許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリーです(旅館業・風営法上の許可事業)。グレーゾーンの業態ではありませんが、通常のホテルとは客室タイプや利用形態が異なります。",
     "licensed_as": "love_hotel_business_act",
     "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
-    "name": "HOTEL & SPA J-MEX Shinjuku Kabukicho (Adults Only)",
+    "name": "HOTEL & SPA J-MEX 新宿歌舞伎町(アダルト専用)",
     "lat": 35.6943,
     "lng": 139.702,
-    "description": "Adults-only love hotel with karaoke, VOD, and large-screen TV in rooms.",
+    "description": "アダルト専用ラブホテル。カラオケ・VOD・大画面テレビを完備した客室。",
     "category": "lodging",
     "tags": [
       "shower_available",
@@ -258,16 +258,16 @@
     "reliability_score": 3,
     "source_type": "observed",
     "type": "official",
-    "gray_zone_note": "Licensed love hotel, a common and legal lodging category in this district.",
+    "gray_zone_note": "許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリーです。",
     "licensed_as": "love_hotel_business_act",
     "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
-    "name": "HOTEL Perrier (Adults Only)",
+    "name": "HOTEL Perrier(アダルト専用)",
     "lat": 35.6955,
     "lng": 139.7061,
-    "description": "43-room boutique-style adults-only love hotel, reopened November 2019.",
+    "description": "2019年11月に改装再開した43室のブティック風アダルト専用ラブホテル。",
     "category": "lodging",
     "tags": [
       "shower_available",
@@ -277,7 +277,7 @@
     "reliability_score": 3,
     "source_type": "observed",
     "type": "official",
-    "gray_zone_note": "Licensed love hotel, a common and legal lodging category in this district.",
+    "gray_zone_note": "許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリーです。",
     "licensed_as": "love_hotel_business_act",
     "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
