@@ -1,0 +1,8 @@
+# AGENT_HANDOFF
+
+business_id: kabukicho_survival_map
+role_id: market_research
+task_id: task-0004-toilet-deep
+task_description: Deep-dive research on PUBLIC/ACCESSIBLE TOILETS specifically in and immediately around Kabukicho (Shinjuku), building toward 15-20 real, distinct, individually-named entries (existing dataset has only 2). Search broadly: ward-maintained public toilets, station toilets (Shinjuku Station's many exits/concourses), department store/commercial building toilets accessible to non-customers, major entertainment complex toilets (Tokyu Kabukicho Tower, cinemas, game centers), convenience store toilets (policy varies -- note customer-only restrictions), park toilets. For each: name, approximate lat/lng (cite source), description, tags from {clean, dirty, free, long_wait, gender_separated}, reliability_score (1-5), source_type, type (official/unofficial), gray_zone_note if needed. Do not fabricate -- report fewer with an explicit note if genuinely fewer distinct citable locations exist. Read-only research output only.
+request_id: REQ-KABUKICHO-SURVIVAL-MAP-MARKET-RESEARCH-TASK-0004-TOILET-DEEP
+next_action: Review the handoff and, if approved, continue through the existing execution flow.

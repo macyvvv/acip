@@ -1,0 +1,179 @@
+# BUSINESS_AGENT_EXECUTION
+
+business_id: kabukicho_survival_map
+role_id: market_research
+task_id: task-0004-toilet-deep
+adapter_mode: execute
+resolved_model: claude-sonnet-5
+success: true
+exit_code: 0
+
+## stdout
+I have sufficient distinct, citable entries now. Here is the research output.
+
+## Market Research — Kabukicho Survival Map (task-0004-toilet-deep)
+
+**Business:** kabukicho_survival_map | **Role:** market_research | **Task:** task-0004-toilet-deep
+
+Read-only research per the output contract; no repository files were modified.
+
+---
+
+### Facts (grounded in search results, cited)
+
+**Regulatory/policy context**
+- Convenience stores in Kabukicho do **not** lend out restrooms to non-customers — called out explicitly as contrary to common practice elsewhere in Japan. [hostrank.jp/kabukicho-toilet-guide](https://hostrank.jp/blog/kabukicho-toilet-guide)
+- Only three toilets in the wider area are confirmed 24-hour: Seibu-Shinjuku Station front, Shinjuku Station Southeast Exit, and Shinjuku West Exit Underground No. 1. [hostrank.jp/kabukicho-toilet-guide](https://hostrank.jp/blog/kabukicho-toilet-guide)
+- Tokyu Kabukicho Tower's 2F "genderless toilet" was abolished ~4 months after opening (2023) following public backlash over shared entry/handwash areas; it was partitioned into separate men's/women's/multipurpose areas (7 women's, 3 men's, 2 multipurpose stalls as of the 2025 follow-up report). [tokyo-np.co.jp](https://www.tokyo-np.co.jp/article/267703), [j-cast.com](https://www.j-cast.com/2025/12/11510105.html?p=all), [tokyu-kabukicho-tower.jp/information](https://www.tokyu-kabukicho-tower.jp/information/detail/?cd=000028)
+
+**Named, distinct toilet locations**
+
+1. **Seibu Shinjuku Station Front Public Toilet** (西武新宿駅前公衆便所) — under the elevated Seibu Shinjuku Line tracks on "Brick St.", beside the Seibu Shinjuku PePe & Brick St. complex (Kabukicho 1-30-1 area); the only proper 24h toilet in Kabukicho's core, includes a barrier-free "everyone" stall. [shinjuku.mypl.net](https://shinjuku.mypl.net/kosodate_barrier/00000000069/), [hostrank.jp](https://hostrank.jp/blog/kabukicho-toilet-guide)
+2. **Shinjuku Station Southeast Exit Public Toilet** (新宿駅東南口公衆便所) — directly under the stairs from the Southeast Exit down to the meetup plaza; 24h; barrier-free stall opposite general-use toilets. Tel 03-5273-3914. [shinjuku.mypl.net](https://shinjuku.mypl.net/kosodate_barrier/00000000070/), [wanderlog.com](https://wanderlog.com/place/details/5579341/shinjuku-station-south-east-exit-public-toilet)
+3. **Shinjuku West Exit Underground No. 1 Public Toilet** (新宿西口地下第一公衆便所) — near Odakyu Ace North Bldg (SHINJUKU DELISH PARK); 24h. Flagged as border-adjacent (west side of the station, not "in" Kabukicho). [shinjuku.mypl.net](https://shinjuku.mypl.net/kosodate_barrier/00000000074/), [yokoso-shinjuku.com/en](https://yokoso-shinjuku.com/en/usefull-info/shinjuku-toilet-list/)
+4. **Okubo Park Public Toilet** (大久保公園トイレ) — ward-run park toilet in Kabukicho 2-chome, beside Haijia; open only to ~19:00, not 24h; has a general men's/women's toilet plus a barrier-free "everyone" toilet with ostomate/baby-seat facilities. [yorisou.life](https://yorisou.life/toilet/detail.php?product_id=1030), [hostrank.jp](https://hostrank.jp/blog/kabukicho-toilet-guide)
+5. **Haijia (Tokyo Metropolitan Health Plaza) 1F Toilet** — Kabukicho 2-44-1, adjacent to Okubo Park; accessible 24h including late night, per hostrank's guide. [hostrank.jp](https://hostrank.jp/blog/kabukicho-toilet-guide), [hygeia.jp](https://www.hygeia.jp/)
+6. **Shinjuku Ward Office Main Building 1F Toilet** — open only during window-service hours (weekdays 8:30–17:00; Tuesdays 1F/2F/6F until 19:00). Not usable at night. [city.shinjuku.lg.jp](https://www.city.shinjuku.lg.jp/kusei/soumu01_000110.html)
+7. **Shinjuku Promenade Park "Four Seasons Path" Toilet** (四季の路公衆トイレ) — Kabukicho 1-1, directly beside Golden Gai; 24h; barrier-free multi-function toilet with an intercom call system for safety, recommended by hostrank as the fallback for the Golden Gai / Central Road / Flower Path east side area. [hostrank.jp](https://hostrank.jp/blog/kabukicho-toilet-guide), [kanko-shinjuku.jp](https://www.kanko-shinjuku.jp/spot/-/article_368.html)
+8. **Tokyu Kabukicho Tower 2F Toilet** — commercial building toilet, now gender-separated (post-2023 renovation) rather than the original "genderless" design; free, no purchase required to use, but building hours apply (not 24h). [tokyu-kabukicho-tower.jp/information](https://www.tokyu-kabukicho-tower.jp/information/detail/?cd=000032), [j-cast.com](https://www.j-cast.com/2025/12/11510105.html?p=all)
+9. **Shinjuku Subnade Underground Toilet** — East Exit underground shopping arcade; expanded with additional spacious multipurpose toilets, baby lounge, and powder lounge in its 2024 50th-anniversary full renovation. [subnade.co.jp/information/notice0825.php](https://www.subnade.co.jp/information/notice0825.php)
+10. **Shinjuku Station East Exit "Food Pocket" Toilet** — JR Shinjuku East Exit, basement level, past the Lumine Est stairs near Shinshu Soba Honjin/café Berg; open 7:00–23:00 (not 24h). [shinjuku-anaba.blog.jp](https://shinjuku-anaba.blog.jp/archives/16656793.html), [toilet.blog.shinobi.jp](http://toilet.blog.shinobi.jp/%E6%96%B0%E5%AE%BF%E5%8C%BA%E3%81%AE%E3%83%88%E3%82%A4%E3%83%AC/%E3%83%AB%E3%83%9F%E3%83%8D%E3%82%A8%E3%82%B9%E3%83%88%E6%96%B0%E5%AE%BF%E5%BA%97%E3%80%80%E3%83%95%E3%83%BC%E3%83%89%E3%83%9D%E3%82%B1%E3%83%83%E3%83%88%E3%83%88%E3%82%A4%E3%83%AC)
+11. **Shinjuku-sanchome Station Underground Passage Toilet** (Marunouchi Line ticket-gate front) — noted as kept clean via regular cleaning; connects toward the Golden Gai / Kabukicho east side. [yokoso-shinjuku.com/en](https://yokoso-shinjuku.com/en/usefull-info/shinjuku-toilet-list/)
+12. **TOHO Cinemas Shinjuku 3F Toilet** (Shinjuku TOHO Bldg, adjacent to Kabukicho, Godzilla head landmark) — lobby toilet up two escalators from 1F; wheelchair-accessible toilets also on 3F and 5F; the 3F toilet is frequently crowded, in-theater 3F/5F toilets recommended when a ticket is held. Usable during late-night screenings past midnight. [sheeptg.com](https://sheeptg.com/14995.html), [tohotheater.jp](https://www.tohotheater.jp/theater/076/institution.html)
+13. **MEGA Don Quijote Shinjuku Kabukicho Store In-Store Toilet** — Kabukicho 1-16-5, open 24h/no closed days; in-store toilet documented by a local toilet-review blog. Customer-facing discount store, no stated purchase requirement to use, but norms/staff discretion apply. [shinjuku-anaba.blog.jp](https://shinjuku-anaba.blog.jp/archives/16616773.html), [donki.com](https://www.donki.com/store/shop_detail.php?shop_id=29)
+14. **Kabukicho Convenience Stores (generic, customer-only)** — not individually named/citable per-store, but flagged as a distinct category: unlike most of Japan, Kabukicho-area convenience stores are reported to *not* lend restrooms to non-customers, so this should be a caution entry rather than a reliable POI. [hostrank.jp](https://hostrank.jp/blog/kabukicho-toilet-guide)
+
+**Count reached:** 13 distinct, individually-named, citable toilet locations, plus one flagged generic caution entry (convenience stores) that is not independently verifiable per-store. This is at the low end of the requested 15–20 range. I did not find further genuinely distinct, citable public/commercial toilets specific to Kabukicho beyond these — game centers (GiGO/SEGA-type venues) and most izakaya/host-club buildings do not publish restroom-access policy and would require on-site verification to cite responsibly, so I stopped rather than pad the list with unconfirmed venues.
+
+---
+
+### Assumptions
+
+- Hours/24h-access claims for Haijia, Ward Office, and TOHO Cinemas are as stated by secondary aggregator sources (hostrank, blog reviews), not independently re-verified by phone/on-site visit.
+- "Immediately around Kabukicho" is interpreted to include Shinjuku Station's east-side exits and Shinjuku-sanchome, since these are the realistic overflow options a Kabukicho visitor would walk to; the West Exit Underground No. 1 toilet is flagged as more marginal (west side of the station, further from Kabukicho's core).
+- Coordinates below are approximate, derived from known street-block locations, not geocoded via a mapping API — consistent with the product's no-external-API-calls constraint noted in task-0002.
+
+### Hypotheses
+
+- H1: Because Kabukicho-area convenience stores reportedly restrict restroom use (unlike the Japan-wide norm), a first-time visitor's default fallback assumption ("just use a conbini") will fail here more often than elsewhere — this is a high-value distinct caution to surface prominently, not bury in a tags field.
+- H2: The three official 24h ward toilets (Seibu-Shinjuku front, Southeast Exit, Four Seasons Path) cluster the real "late-night safety net" for this product; commercial building toilets (Tokyu Kabukicho Tower, Don Quijote, TOHO Cinemas) are useful supplements but carry building-hours risk that the ward toilets don't.
+
+---
+
+### Proposed POI entries (draft data)
+
+```json
+[
+  {
+    "category": "toilet", "name": "Seibu Shinjuku Station Front Public Toilet",
+    "lat": 35.6954, "lng": 139.7010,
+    "description": "Ward-maintained 24h public toilet under the elevated Seibu Shinjuku Line tracks on Brick St., beside Seibu Shinjuku PePe. Includes a barrier-free stall.",
+    "tags": ["free", "gender_separated"], "reliability_score": 4,
+    "source_type": "aggregator", "type": "official"
+  },
+  {
+    "category": "toilet", "name": "Shinjuku Station Southeast Exit Public Toilet",
+    "lat": 35.6902, "lng": 139.7018,
+    "description": "24h ward toilet directly under the stairs from JR Shinjuku Southeast Exit down to the meetup plaza. Barrier-free stall opposite general toilets.",
+    "tags": ["free", "gender_separated", "long_wait"], "reliability_score": 4,
+    "source_type": "aggregator", "type": "official"
+  },
+  {
+    "category": "toilet", "name": "Shinjuku West Exit Underground No. 1 Public Toilet",
+    "lat": 35.6905, "lng": 139.6987,
+    "description": "24h ward toilet near Odakyu Ace North Bldg (Shinjuku Delish Park), west side of Shinjuku Station.",
+    "tags": ["free"], "reliability_score": 3,
+    "source_type": "aggregator", "type": "official",
+    "gray_zone_note": "West side of the station; farther from Kabukicho's core than the other 24h options."
+  },
+  {
+    "category": "toilet", "name": "Okubo Park Public Toilet",
+    "lat": 35.6963, "lng": 139.7015,
+    "description": "Ward park toilet in Kabukicho 2-chome beside Haijia, with a barrier-free everyone-toilet (ostomate, baby seat).",
+    "tags": ["free", "clean", "gender_separated"], "reliability_score": 4,
+    "source_type": "aggregator", "type": "official",
+    "gray_zone_note": "Only open until approximately 19:00, not 24h."
+  },
+  {
+    "category": "toilet", "name": "Haijia (Tokyo Metropolitan Health Plaza) 1F Toilet",
+    "lat": 35.6961, "lng": 139.7017,
+    "description": "1F toilet in the Haijia health-plaza building, Kabukicho 2-44-1; reported as accessible 24h including late night.",
+    "tags": ["free", "clean"], "reliability_score": 3,
+    "source_type": "aggregator", "type": "official"
+  },
+  {
+    "category": "toilet", "name": "Shinjuku Ward Office Main Building 1F Toilet",
+    "lat": 35.6938, "lng": 139.7033,
+    "description": "Ward office toilet, open during window-service hours only (weekdays 8:30-17:00, Tue until 19:00).",
+    "tags": ["free", "gender_separated"], "reliability_score": 3,
+    "source_type": "official_site", "type": "official",
+    "gray_zone_note": "Only usable during office hours; not a night-time option."
+  },
+  {
+    "category": "toilet", "name": "Four Seasons Path (Shinjuku Promenade Park) Toilet",
+    "lat": 35.6949, "lng": 139.7042,
+    "description": "24h ward toilet in Shinjuku Promenade Park, Kabukicho 1-1, directly beside Golden Gai; barrier-free multi-function toilet with intercom call system.",
+    "tags": ["free", "clean", "gender_separated"], "reliability_score": 4,
+    "source_type": "aggregator", "type": "official"
+  },
+  {
+    "category": "toilet", "name": "Tokyu Kabukicho Tower 2F Toilet",
+    "lat": 35.6952, "lng": 139.7030,
+    "description": "Commercial building toilet, gender-separated after a 2023 renovation (originally a genderless design that drew public backlash and was abolished within ~4 months).",
+    "tags": ["free", "clean", "gender_separated"], "reliability_score": 3,
+    "source_type": "news", "type": "unofficial",
+    "gray_zone_note": "Subject to building operating hours, not 24h; access norms may vary by time of day."
+  },
+  {
+    "category": "toilet", "name": "Shinjuku Subnade Underground Toilet",
+    "lat": 35.6907, "lng": 139.7013,
+    "description": "Underground shopping-arcade toilet near Shinjuku Station East Exit, expanded with spacious multipurpose stalls in a 2024 full renovation.",
+    "tags": ["free", "clean"], "reliability_score": 4,
+    "source_type": "official_site", "type": "unofficial"
+  },
+  {
+    "category": "toilet", "name": "Shinjuku Station East Exit \"Food Pocket\" Toilet",
+    "lat": 35.6901, "lng": 139.7008,
+    "description": "Basement-level toilet past the Lumine Est stairs near Shinshu Soba Honjin/cafe Berg, JR Shinjuku East Exit.",
+    "tags": ["free"], "reliability_score": 3,
+    "source_type": "blog", "type": "unofficial",
+    "gray_zone_note": "Open 7:00-23:00 only, not 24h."
+  },
+  {
+    "category": "toilet", "name": "Shinjuku-sanchome Station Underground Passage Toilet",
+    "lat": 35.6919, "lng": 139.7042,
+    "description": "Toilet in the underground passage in front of the Marunouchi Line ticket gates at Shinjuku-sanchome, on the walking route toward Golden Gai/Kabukicho.",
+    "tags": ["free", "clean"], "reliability_score": 3,
+    "source_type": "aggregator", "type": "unofficial"
+  },
+  {
+    "category": "toilet", "name": "TOHO Cinemas Shinjuku 3F Toilet",
+    "lat": 35.6951, "lng": 139.7025,
+    "description": "Lobby toilet on 3F of Shinjuku TOHO Bldg, up two escalators from 1F; wheelchair-accessible toilets also on 3F/5F; usable during late-night screenings.",
+    "tags": ["clean", "long_wait", "gender_separated"], "reliability_score": 3,
+    "source_type": "blog", "type": "unofficial",
+    "gray_zone_note": "Building/theater operating hours apply; 3F lobby toilet often crowded."
+  },
+  {
+    "category": "toilet", "name": "MEGA Don Quijote Shinjuku Kabukicho Store Toilet",
+    "lat": 35.6946, "lng": 139.7022,
+    "description": "In-store toilet at the 24h Don Quijote discount store, Kabukicho 1-16-5.",
+    "tags": ["free"], "reliability_score": 2,
+    "source_type": "blog", "type": "unofficial",
+    "gray_zone_note": "Customer-facing retail store; access norms/staff discretion may apply, not independently confirmed as purchase-free."
+  }
+]
+```
+
+---
+
+### Recommendations
+
+1. Replace the current generic "Late-Night Toilet Checkpoint" placeholder with the three confirmed 24h official entries (Seibu Shinjuku front, Southeast Exit, Four Seasons Path) as the primary always-available set, since these are the only genuinely night-safe options.
+2. Add an explicit `requires_night_verification: true`-style flag (or a shared caution note) on the convenience-store fallback assumption — this is the single most surprising, actionable finding: Kabukicho conbinis reportedly do not lend restrooms, unlike the rest of Japan, so a naive "find a conbini" fallback will fail users here.
+3. Distinguish 24h ward toilets from daytime-only/hours-limited ones (Okubo Park, Ward Office, Food Pocket) with a clear `hours_note`, since conflating them risks sending a late-night user to a closed facility.
+4. Given only 13 distinct, citable entries were found (short of the 15–20 target), do not commission a further broad web-search pass expecting significantly more — remaining gaps (game centers, individual host/cabaret club buildings) would require on-site fieldwork or direct venue contact rather than additional search, similar to the conclusion reached in the smoking-area deep-dive (task-0003).
+5. Do a single live-verification pass on the three hours-sensitive commercial entries (Tokyu Kabukicho Tower, TOHO Cinemas, Don Quijote) before shipping, since building-toilet access policy is the fastest-to-go-stale subset of this dataset.
+
+Sources: [hostrank.jp/kabukicho-toilet-guide](https://hostrank.jp/blog/kabukicho-toilet-guide), [shinjuku.mypl.net (Seibu Shinjuku)](https://shinjuku.mypl.net/kosodate_barrier/00000000069/), [shinjuku.mypl.net (Southeast Exit)](https://shinjuku.mypl.net/kosodate_barrier/00000000070/), [shinjuku.mypl.net (West Exit Underground No.1)](https://shinjuku.mypl.net/kosodate_barrier/00000000074/), [yorisou.life (Okubo Park)](https://yorisou.life/toilet/detail.php?product_id=1030), [hygeia.jp](https://www.hygeia.jp/), [city.shinjuku.lg.jp (Ward Office floor guide)](https://www.city.shinjuku.lg.jp/kusei/soumu01_000110.html), [kanko-shinjuku.jp (Four Seasons Path)](https://www.kanko-shinjuku.jp/spot/-/article_368.html), [tokyo-np.co.jp](https://www.tokyo-np.co.jp/article/267703), [j-cast.com](https://www.j-cast.com/2025/12/11510105.html?p=all), [tokyu-kabukicho-tower.jp/information](https://www.tokyu-kabukicho-tower.jp/information/detail/?cd=000032), [subnade.co.jp](https://www.subnade.co.jp/information/notice0825.php), [shinjuku-anaba.blog.jp (Food Pocket)](https://shinjuku-anaba.blog.jp/archives/16656793.html), [yokoso-shinjuku.com/en](https://yokoso-shinjuku.com/en/usefull-info/shinjuku-toilet-list/), [sheeptg.com (TOHO Cinemas)](https://sheeptg.com/14995.html), [tohotheater.jp](https://www.tohotheater.jp/theater/076/institution.html), [shinjuku-anaba.blog.jp (Don Quijote)](https://shinjuku-anaba.blog.jp/archives/16616773.html), [donki.com](https://www.donki.com/store/shop_detail.php?shop_id=29)
+

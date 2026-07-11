@@ -1,0 +1,12 @@
+{
+  "business_id": "kabukicho_survival_map",
+  "role_id": "market_research",
+  "task_id": "task-0007-locker-deep",
+  "task_description": "Deep-dive research on COIN LOCKERS specifically serving Kabukicho visitors, building toward 15-20 real, distinct, individually-named entries (existing dataset has only 1, at Shinjuku Station). Search broadly: all major Shinjuku Station locker banks (by exit/gate: East, West, South, New South, Central East, etc.), locker banks in nearby department stores/complexes (Lumine, Isetan, Takashimaya Times Square if walkable), any coin lockers inside Kabukicho itself (game centers, entertainment complexes, Don Quijote branches often have them), luggage storage services (e.g. ecbo cloak, Radical/LuggAgent partner locations) as a supplement to physical coin lockers if relevant. For each: name/location, approximate lat/lng (cite source), description, tags from {small, medium, large, suitcase_ok, suitcase_too_big}, reliability_score (1-5), source_type, type (official/unofficial). Do not fabricate -- report fewer with an explicit note if genuinely fewer distinct citable locations exist. Read-only research output only.",
+  "issue_number": null,
+  "approved_draft_id": null,
+  "request_id": "REQ-KABUKICHO-SURVIVAL-MAP-MARKET-RESEARCH-TASK-0007-LOCKER-DEEP",
+  "next_action": "Review the handoff and, if approved, continue through the existing execution flow.",
+  "created_at": "2026-07-11T01:39:56.539161+00:00",
+  "source": "business_agent_handoff"
+}

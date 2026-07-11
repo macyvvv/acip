@@ -1,0 +1,12 @@
+{
+  "business_id": "kabukicho_survival_map",
+  "role_id": "marketing",
+  "task_id": "auto-0004",
+  "task_description": "Auto-triggered following successful completion of kabukicho_survival_map/market_research/task-0003-smoking-deep. Read its artifact at /Users/ariel/acip/system/runtime/business_agents/kabukicho_survival_map/market_research/task-0003-smoking-deep/latest.json and produce the marketing output building on it.",
+  "issue_number": null,
+  "approved_draft_id": null,
+  "request_id": "REQ-KABUKICHO-SURVIVAL-MAP-MARKETING-AUTO-0004",
+  "next_action": "Review the handoff and, if approved, continue through the existing execution flow.",
+  "created_at": "2026-07-11T05:13:11.904417+00:00",
+  "source": "business_agent_handoff"
+}
