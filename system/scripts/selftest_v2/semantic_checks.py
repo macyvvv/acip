@@ -159,8 +159,13 @@ def check_secrets(docs: list[Doc], config: dict) -> list[Result]:
     secret_cfg = config.get("secret_boundary", {})
     allowlist = set(secret_cfg.get("allowlist_files", []))
     patterns = {
-        "openai_key": r"sk-[A-Za-z0-9_-]{20,}",
-        "github_token": r"gh[pousr]_[A-Za-z0-9_]{20,}",
+        # Negative lookbehind requires a non-word char (or string start)
+        # immediately before the prefix -- without it, this matched "sk-"
+        # or "gh*_" as a substring of ordinary words like "task-0005-..."
+        # or "...-handoff-scoping-...", producing false-positive failures
+        # on files that contain no secret at all.
+        "openai_key": r"(?<![A-Za-z0-9_])sk-[A-Za-z0-9_-]{20,}",
+        "github_token": r"(?<![A-Za-z0-9_])gh[pousr]_[A-Za-z0-9_]{20,}",
         "aws_access_key": r"AKIA[0-9A-Z]{16}",
         "private_key": r"-----BEGIN (RSA |EC |OPENSSH |)PRIVATE KEY-----",
     }
