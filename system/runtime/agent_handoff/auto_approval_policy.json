@@ -12,6 +12,26 @@
       "reason": "Pilot Level 3a policy so the text_syndicate content chain no longer needs a manual set_execution_approval.py call for every doc_creation task."
     },
     {
+      "policy_id": "PREAPP-TEXT_SYNDICATE-MARKET_RESEARCH-0001",
+      "business_id": "text_syndicate",
+      "role_id": "market_research",
+      "enabled": true,
+      "max_auto_approvals_per_day": 3,
+      "authored_by": "macy",
+      "authored_at": "2026-07-11T00:00:00+00:00",
+      "reason": "Extends text_syndicate's pre-approval coverage to market_research, matching kabukicho_survival_map's full-chain policy, so the continuous content pipeline (market_research -> marketing -> doc_creation) can run without a manual set_execution_approval.py call at any hop."
+    },
+    {
+      "policy_id": "PREAPP-TEXT_SYNDICATE-MARKETING-0001",
+      "business_id": "text_syndicate",
+      "role_id": "marketing",
+      "enabled": true,
+      "max_auto_approvals_per_day": 3,
+      "authored_by": "macy",
+      "authored_at": "2026-07-11T00:00:00+00:00",
+      "reason": "Extends text_syndicate's pre-approval coverage to marketing, matching kabukicho_survival_map's full-chain policy, so the continuous content pipeline (market_research -> marketing -> doc_creation) can run without a manual set_execution_approval.py call at any hop."
+    },
+    {
       "policy_id": "PREAPP-KABUKICHO_SURVIVAL_MAP-MARKET_RESEARCH-0001",
       "business_id": "kabukicho_survival_map",
       "role_id": "market_research",
