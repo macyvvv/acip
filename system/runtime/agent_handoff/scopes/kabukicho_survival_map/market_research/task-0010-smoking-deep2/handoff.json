@@ -1,0 +1,12 @@
+{
+  "business_id": "kabukicho_survival_map",
+  "role_id": "market_research",
+  "task_id": "task-0010-smoking-deep2",
+  "task_description": "Second deep-dive round on SMOKING AREAS (designated outdoor spots and bars/cafes/restaurants with indoor smoking seating), specifically to find genuinely NEW entries not already in the dataset and to fix a known quality problem: some existing entries sit outside Kabukicho's actual chome boundaries (e.g. Ogado/Big Guard area near Nishi-Shinjuku). STRICT SCOPE: only report locations physically within Kabukicho 1-chome or 2-chome (Shinjuku-ku), roughly bounded by Yasukuni-dori (south), Shokuan-dori (north), Meiji-dori (east), and the Seibu-Shinjuku/Odakyu area (west) -- do NOT include anything at or beyond the Nishi-Shinjuku/Ogado border. Existing 17 entries already covered (do not duplicate, check by real-world identity/address, not exact string): 新宿駅西口 喫煙所, 喫茶室ルノアール(新宿東宝シネマズ前店), シネシティ広場前 公衆喫煙所, 歌舞伎町一丁目3-7 公衆喫煙所, 大ガード沿い路上喫煙所, 喫茶室ルノアール(新宿大ガード横店), ニコバー新宿店, アルバトロスG(ゴールデン街), バー ガス燈, 一軒め酒場 歌舞伎町店, 新宿駄菓子バー, 居酒屋一休 新宿歌舞伎町店, 焼肉にくの音, ゴールデン街 MISO SOUP, クラクラ PART II, 焼肉一丁目, お通 新宿歌舞伎町店. Search for: additional bars/izakaya/yakiniku with all-seats smoking within the strict boundary (especially Kabukicho 2-chome, underrepresented so far), additional ward-designated outdoor smoking spots. Each entry needs: name, precise lat/lng within the stated boundary (cite source), description, tags from {indoor, outdoor, rain_ok, crowded, hidden, unsafe}, reliability_score (1-5), source_type, type (official/unofficial), gray_zone_note if a purchase/entry is required. Do not fabricate -- if genuinely fewer than 5-8 new, distinct, in-boundary, non-duplicate locations exist, report fewer with an explicit note. Read-only research output only.",
+  "issue_number": null,
+  "approved_draft_id": null,
+  "request_id": "REQ-KABUKICHO-SURVIVAL-MAP-MARKET-RESEARCH-TASK-0010-SMOKING-DEEP2",
+  "next_action": "Review the handoff and, if approved, continue through the existing execution flow.",
+  "created_at": "2026-07-11T12:51:42.038016+00:00",
+  "source": "business_agent_handoff"
+}

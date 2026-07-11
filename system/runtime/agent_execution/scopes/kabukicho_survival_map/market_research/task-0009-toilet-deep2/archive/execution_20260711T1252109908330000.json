@@ -1,0 +1,17 @@
+{
+  "allow": true,
+  "handoff_id": "REQ-KABUKICHO-SURVIVAL-MAP-MARKET-RESEARCH-TASK-0009-TOILET-DEEP2",
+  "approval_id": null,
+  "scope_type": null,
+  "scope_id": null,
+  "execution_triggered": true,
+  "execution_mode": "one_shot",
+  "execution_result_status": "failure",
+  "completion_marker_path": "/Users/ariel/acip/system/runtime/business_agents/kabukicho_survival_map/market_research/task-0009-toilet-deep2/latest.json",
+  "request_path": "/Users/ariel/acip/system/runtime/request/execution_request.json",
+  "stopped_reason": "exit_code=124",
+  "started_at": "2026-07-11T12:52:10.990833+00:00",
+  "finished_at": "2026-07-11T12:53:11.072724+00:00",
+  "authorization_source": "policy_pre_approval",
+  "policy_id": "PREAPP-KABUKICHO_SURVIVAL_MAP-MARKET_RESEARCH-0001"
+}

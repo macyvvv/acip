@@ -40,9 +40,9 @@
       "metrics": {}
     },
     "kabukicho_survival_map:market_research": {
-      "runs": 10,
-      "success": 8,
-      "failure": 2,
+      "runs": 15,
+      "success": 11,
+      "failure": 4,
       "metrics": {}
     },
     "kabukicho_survival_map:marketing": {
@@ -70,5 +70,5 @@
       "metrics": {}
     }
   },
-  "last_updated": "2026-07-11T05:30:59.769496+00:00"
+  "last_updated": "2026-07-11T18:46:44.994185+00:00"
 }
