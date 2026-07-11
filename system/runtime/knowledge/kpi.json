@@ -34,8 +34,8 @@
       "metrics": {}
     },
     "text_syndicate:doc_creation": {
-      "runs": 2,
-      "success": 1,
+      "runs": 3,
+      "success": 2,
       "failure": 1,
       "metrics": {}
     },
@@ -56,7 +56,13 @@
       "success": 1,
       "failure": 0,
       "metrics": {}
+    },
+    "text_syndicate:marketing": {
+      "runs": 1,
+      "success": 1,
+      "failure": 0,
+      "metrics": {}
     }
   },
-  "last_updated": "2026-07-10T20:31:47.034539+00:00"
+  "last_updated": "2026-07-11T00:09:37.937719+00:00"
 }

@@ -44,5 +44,21 @@
     "title": "Auto-triggered doc_creation following kabukicho_survival_map/marketing/auto-0001",
     "status": "completed",
     "source": "auto_trigger"
+  },
+  {
+    "business_id": "text_syndicate",
+    "role_id": "marketing",
+    "task_id": "task-0002",
+    "title": "Batch 2: additional AI-tools-niche draft content (X/Threads/note.com)",
+    "status": "completed",
+    "source": "manual"
+  },
+  {
+    "business_id": "text_syndicate",
+    "role_id": "doc_creation",
+    "task_id": "auto-0002",
+    "title": "Auto-triggered doc_creation following text_syndicate/marketing/task-0002",
+    "status": "completed",
+    "source": "auto_trigger"
   }
 ]
