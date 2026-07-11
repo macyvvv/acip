@@ -60,5 +60,29 @@
     "title": "Auto-triggered doc_creation following text_syndicate/marketing/task-0002",
     "status": "completed",
     "source": "auto_trigger"
+  },
+  {
+    "business_id": "kabukicho_survival_map",
+    "role_id": "market_research",
+    "task_id": "task-0002",
+    "title": "POI research: 6 MVP categories including coin lockers and lodging/internet cafes",
+    "status": "completed",
+    "source": "manual"
+  },
+  {
+    "business_id": "kabukicho_survival_map",
+    "role_id": "marketing",
+    "task_id": "auto-0002",
+    "title": "Auto-triggered marketing following kabukicho_survival_map/market_research/task-0002",
+    "status": "completed",
+    "source": "auto_trigger"
+  },
+  {
+    "business_id": "kabukicho_survival_map",
+    "role_id": "doc_creation",
+    "task_id": "auto-0002",
+    "title": "Auto-triggered doc_creation following kabukicho_survival_map/marketing/auto-0002",
+    "status": "completed",
+    "source": "auto_trigger"
   }
 ]

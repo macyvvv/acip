@@ -1,0 +1,44 @@
+# BUSINESS_AGENT_EXECUTION
+
+business_id: kabukicho_survival_map
+role_id: marketing
+task_id: auto-0002
+adapter_mode: execute
+resolved_model: claude-sonnet-5
+success: true
+exit_code: 0
+
+## stdout
+# Marketing — Kabukicho Survival Map
+
+**Business:** kabukicho_survival_map | **Role:** marketing | **Task:** auto-0002 (built on market_research/task-0002)
+
+Per contract, this is read-only marketing output for the execution adapter to capture as the artifact — no files have been modified.
+
+## Building on prior work
+
+auto-0001 established the core positioning ("confirmed vs. caution vs. gray-zone" orientation guide). task-0002 adds the first concrete essentials dataset — smoking areas, toilets, konbini, ATMs, coin lockers, lodging — with sourced facts and two standout differentiators: the Tokyu Kabukicho Tower gender-neutral toilet reversal, and coin lockers reported full by 10 AM. This task turns that data into channel-specific copy without overstating what's verified (per task-0002's own caveats: coordinates are approximate, several fields need a human verification pass before shipping).
+
+## Target Audiences & Channels
+
+1. **Audience: Tourists arriving same-day, doing last-mile logistics planning (luggage, cash, first hours in the district).**
+   **Channel: Bilingual travel forums / subreddits (r/JapanTravel, r/tokyo) — practical Q&A style post.**
+   Copy (EN):
+   > Landing in Shinjuku and heading into Kabukicho with luggage? Two things that trip people up: (1) large coin lockers at Shinjuku Station are commonly full by 10am — have a backup plan, and (2) Seven Bank ATMs at nearby 7-Elevens are the most reliable for international cards (accepts Visa/Mastercard/Amex/UnionPay, ~¥110 fee). Our map flags which essentials are time-sensitive vs. always-available, so you're not discovering the locker problem the hard way.
+
+2. **Audience: Safety-conscious and gender-nonconforming/trans travelers researching facilities before arrival.**
+   **Channel: X/Instagram short-form post, travel-safety niche.**
+   Copy:
+   > Not every "public restroom" listing tells you what actually changed on the ground. Tokyu Kabukicho Tower's gender-neutral toilets were reversed to separated facilities after public backlash — that's exactly the kind of detail we flag, not bury. Every essentials pin on our map is tagged for what it actually is today, not what a generic listing assumed. 🇯🇵🌃
+
+3. **Audience: Budget/backpacker travelers deciding between capsule hotels, net cafes, and standard lodging.**
+   **Channel: Budget travel Facebook groups / backpacker Discord communities.**
+   Copy:
+   > Sleeping in a Kabukicho net cafe or capsule hotel? They're legal but not licensed the same way as a hotel — our map separates "reviewed and legally distinct" (like Booth Net Cafe & Capsule, ~¥3,000/night) from anything that's just a landmark, so you know exactly what you're booking and what protections it does or doesn't come with.
+
+## Notes on scope
+
+- No copy claims final/verified data. task-0002 explicitly flags coordinates as approximate and several facts (pricing, gender-separation status) as time-sensitive and unverified on-site — none of the above copy states these as certainties beyond what's sourced.
+- The pachinko "gray-zone reference point" entry from task-0002 is intentionally excluded from all copy above: it's not lodging and research flagged it as an orientation landmark only, not a promotable venue.
+- No copy has been posted or scheduled. Per contract, this role has no posting IO; use requires the separate policy-gated publishing pipeline (ADR-0035) and human finalization.
+
