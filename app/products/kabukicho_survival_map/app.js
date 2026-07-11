@@ -233,6 +233,12 @@
         title: poi.name
       });
       marker.addListener("click", function () { openInfoWindow(poi, marker); });
+      // Stored directly on the POI object (not looked up by lat/lng) --
+      // several real entries share exact coordinates (co-located POIs:
+      // Golden Gai bars, Tokyu Tower locker banks, paired ATMs), so
+      // position-based lookup in focusMarker() would silently resolve to
+      // the wrong marker whenever duplicates exist.
+      poi._marker = marker;
       state.markers.push(marker);
       bounds.extend(marker.getPosition());
     });
@@ -262,10 +268,7 @@
     if (!state.map) return;
     state.map.panTo({ lat: poi.lat, lng: poi.lng });
     state.map.setZoom(18);
-    var marker = state.markers.filter(function (m) {
-      return m.getPosition().lat() === poi.lat && m.getPosition().lng() === poi.lng;
-    })[0];
-    if (marker) openInfoWindow(poi, marker);
+    if (poi._marker) openInfoWindow(poi, poi._marker);
     document.getElementById("map-pane").scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
