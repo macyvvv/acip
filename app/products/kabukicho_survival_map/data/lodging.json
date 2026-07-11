@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Booth Net Cafe & Capsule",
+    "lat": 35.6945,
+    "lng": 139.7020,
+    "description": "Internet cafe and capsule hotel near the Godzilla head landmark. Capsule stay approx ¥3,000/night (¥3,700 Sat); net-cafe seating from ¥600/2hr. Shower access is a paid add-on, not included by default.",
+    "category": "lodging",
+    "tags": ["shower_available", "overnight_friendly", "price_band_budget"],
+    "last_updated": "2026-07-11",
+    "reliability_score": 4,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "Internet cafe overnight stays are not licensed lodging under the same category as hotels (Ryokan Business Act) -- treat as gray-zone-adjacent for legal/safety framing even though the business itself is legitimate.",
+    "licensed_as": "internet_cafe_no_lodging_license"
+  },
+  {
+    "name": "Shinjuku Kuyakusho-mae Capsule Hotel",
+    "lat": 35.6944,
+    "lng": 139.7038,
+    "description": "Named, reviewed capsule hotel in Kabukicho, adjacent to the ward office (kuyakusho).",
+    "category": "lodging",
+    "tags": ["overnight_friendly", "price_band_budget"],
+    "last_updated": "2026-07-11",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": null,
+    "licensed_as": "hotel_business_act"
+  },
+  {
+    "name": "Maruhan Pachinko Parlor (orientation landmark, not lodging)",
+    "lat": 35.6947,
+    "lng": 139.7023,
+    "description": "Included only as a gray-zone orientation landmark, not an actual lodging option. Legally tolerated three-entity prize-exchange structure keeps pachinko outside gambling law, but it is not licensed lodging or a rest facility.",
+    "category": "lodging",
+    "tags": [],
+    "last_updated": "2026-07-11",
+    "reliability_score": 2,
+    "source_type": "inferred",
+    "type": "unofficial",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "Landmark reference only. Not a lodging or rest facility. Gambling is regulated under Japanese law.",
+    "licensed_as": "not_applicable"
+  }
+]
