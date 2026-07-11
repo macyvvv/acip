@@ -9,11 +9,41 @@
       "policy_id": "PREAPP-KABUKICHO_SURVIVAL_MAP-MARKET_RESEARCH-0001",
       "status": "completed",
       "claimed_at": "2026-07-11T00:37:36.839888+00:00"
+    },
+    "task-0003-smoking-deep": {
+      "policy_id": "PREAPP-KABUKICHO_SURVIVAL_MAP-MARKET_RESEARCH-0001",
+      "status": "completed",
+      "claimed_at": "2026-07-11T05:10:04.214181+00:00"
+    },
+    "task-0004-toilet-deep": {
+      "policy_id": "PREAPP-KABUKICHO_SURVIVAL_MAP-MARKET_RESEARCH-0001",
+      "status": "completed",
+      "claimed_at": "2026-07-11T05:13:32.425629+00:00"
+    },
+    "task-0005-convenience-deep": {
+      "policy_id": "PREAPP-KABUKICHO_SURVIVAL_MAP-MARKET_RESEARCH-0001",
+      "status": "completed",
+      "claimed_at": "2026-07-11T05:17:58.283199+00:00"
+    },
+    "task-0006-atm-deep": {
+      "policy_id": "PREAPP-KABUKICHO_SURVIVAL_MAP-MARKET_RESEARCH-0001",
+      "status": "completed",
+      "claimed_at": "2026-07-11T05:20:49.151039+00:00"
+    },
+    "task-0007-locker-deep": {
+      "policy_id": "PREAPP-KABUKICHO_SURVIVAL_MAP-MARKET_RESEARCH-0001",
+      "status": "completed",
+      "claimed_at": "2026-07-11T05:24:48.580754+00:00"
+    },
+    "task-0008-lodging-deep": {
+      "policy_id": "PREAPP-KABUKICHO_SURVIVAL_MAP-MARKET_RESEARCH-0001",
+      "status": "completed",
+      "claimed_at": "2026-07-11T05:28:18.687923+00:00"
     }
   },
   "counters": {
     "2026-07-10": 1,
-    "2026-W28": 2,
-    "2026-07-11": 1
+    "2026-W28": 8,
+    "2026-07-11": 7
   }
 }

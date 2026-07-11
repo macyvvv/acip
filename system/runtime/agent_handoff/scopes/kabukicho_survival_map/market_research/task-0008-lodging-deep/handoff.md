@@ -1,0 +1,8 @@
+# AGENT_HANDOFF
+
+business_id: kabukicho_survival_map
+role_id: market_research
+task_id: task-0008-lodging-deep
+task_description: Deep-dive research on LODGING options (capsule hotels, internet/manga cafes, business hotels, love hotels as a distinct sub-category if relevant with appropriate framing) specifically within and immediately bordering Kabukicho, building toward 15-20 real, distinct, individually-named entries (existing dataset has only 3). Search broadly: named capsule hotels, internet/manga cafe chains (Gera Gera, Media Cafe Popeye, Bagus, Kaikatsu Club, Manboo, etc.) with any branch actually in/near Kabukicho, business hotels (APA, Toyoko Inn, etc. if within the district), and note love hotels as a real, common lodging category in this specific district if citable sources describe them -- with clear, non-judgmental factual framing (legal, licensed businesses) and correct licensed_as classification. For each: name, approximate lat/lng (cite source), description, tags from {shower_available, no_shower, price_band_budget, price_band_mid, 24h, overnight_friendly}, reliability_score (1-5), source_type, type (official/unofficial), gray_zone_note + licensed_as (e.g. hotel_business_act vs internet_cafe_no_lodging_license vs love_hotel_business_act) as appropriate. Do not fabricate -- report fewer with an explicit note if genuinely fewer distinct citable locations exist. Read-only research output only.
+request_id: REQ-KABUKICHO-SURVIVAL-MAP-MARKET-RESEARCH-TASK-0008-LODGING-DEEP
+next_action: Review the handoff and, if approved, continue through the existing execution flow.
