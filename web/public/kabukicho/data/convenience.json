@@ -1,9 +1,9 @@
 [
   {
-    "name": "Lawson (Shinjuku Station-adjacent)",
+    "name": "ローソン(新宿駅隣接)",
     "lat": 35.6906,
     "lng": 139.7001,
-    "description": "24/7 Lawson location a short walk from Shinjuku Station toward Kabukicho.",
+    "description": "新宿駅から歌舞伎町方面へ徒歩すぐの24時間営業ローソン。",
     "category": "convenience",
     "tags": [
       "24h"
@@ -16,10 +16,10 @@
     "gray_zone_note": null
   },
   {
-    "name": "7-Eleven with Seven Bank ATM (Shinjuku Station area)",
+    "name": "セブン-イレブン(セブン銀行ATM併設・新宿駅エリア)",
     "lat": 35.6908,
     "lng": 139.7003,
-    "description": "One of three 7-Eleven locations within ~2 minutes of Shinjuku Station; combines konbini and a Seven Bank ATM.",
+    "description": "新宿駅から徒歩2分圏内にある3店舗のセブン-イレブンの一つ。セブン銀行ATM併設。",
     "category": "convenience",
     "tags": [
       "24h"
@@ -33,26 +33,26 @@
   },
   {
     "category": "convenience",
-    "name": "7-Eleven Kabukicho 1-2-13",
+    "name": "セブン-イレブン歌舞伎町1-2-13店",
     "lat": 35.6949,
     "lng": 139.7013,
-    "description": "7-Eleven near Seibu-Shinjuku Station, within Kabukicho 1-chome. Appears under two different aggregator-listed names for the same address (\"Seibu Shinjuku Sta.-front\" / \"Kuyakusho-dori\"); treated as one store.",
+    "description": "西武新宿駅そば、歌舞伎町一丁目にあるセブン-イレブン。",
     "tags": [
       "24h"
     ],
     "reliability_score": 3,
     "source_type": "observed",
     "type": "unofficial",
-    "gray_zone_note": "Store name inconsistent across sources; address is the more reliable identifier.",
+    "gray_zone_note": "情報源によって店舗名の表記が異なりますが、住所の方が信頼できる識別情報です。",
     "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
     "category": "convenience",
-    "name": "7-Eleven Shinjuku Toho Building Store",
+    "name": "セブン-イレブン新宿東宝ビル店",
     "lat": 35.6952,
     "lng": 139.7028,
-    "description": "7-Eleven at Kabukicho 1-19-1, beside the Shinjuku Toho Building (Godzilla Road landmark).",
+    "description": "歌舞伎町1-19-1、新宿東宝ビル(ゴジラロード)そばのセブン-イレブン。",
     "tags": [
       "24h"
     ],
@@ -65,10 +65,10 @@
   },
   {
     "category": "convenience",
-    "name": "7-Eleven Shinjuku-eki Yasukuni-dori Store",
+    "name": "セブン-イレブン新宿駅靖国通り店",
     "lat": 35.6944,
     "lng": 139.701,
-    "description": "7-Eleven at Kabukicho 1-17-2, on Yasukuni-dori at the Kabukicho perimeter.",
+    "description": "歌舞伎町1-17-2、靖国通り沿い、歌舞伎町の境界付近のセブン-イレブン。",
     "tags": [
       "24h"
     ],
@@ -81,10 +81,10 @@
   },
   {
     "category": "convenience",
-    "name": "7-Eleven Kabukicho 1-26-6",
+    "name": "セブン-イレブン歌舞伎町1-26-6店",
     "lat": 35.6955,
     "lng": 139.702,
-    "description": "7-Eleven store within Kabukicho 1-chome interior.",
+    "description": "歌舞伎町一丁目内にあるセブン-イレブン。",
     "tags": [
       "24h"
     ],
@@ -97,10 +97,10 @@
   },
   {
     "category": "convenience",
-    "name": "7-Eleven Kabukicho 2-chome Chuo Ten",
+    "name": "セブン-イレブン歌舞伎町二丁目中央店",
     "lat": 35.6963,
     "lng": 139.7038,
-    "description": "7-Eleven at Kabukicho 2-33-3, central 2-chome.",
+    "description": "歌舞伎町2-33-3、二丁目中央部にあるセブン-イレブン。",
     "tags": [
       "24h"
     ],
@@ -113,10 +113,10 @@
   },
   {
     "category": "convenience",
-    "name": "7-Eleven Kabukicho Nichome Higashi Ten",
+    "name": "セブン-イレブン歌舞伎町二丁目東店",
     "lat": 35.6968,
     "lng": 139.7052,
-    "description": "7-Eleven near Higashi-Shinjuku Station, east Kabukicho 2-chome. Hosts an in-store Seven Bank ATM and a ChargeSPOT battery-rental unit.",
+    "description": "東新宿駅そば、歌舞伎町二丁目東側のセブン-イレブン。セブン銀行ATMとChargeSPOT(モバイルバッテリーレンタル)を併設。",
     "tags": [
       "24h",
       "atm_instore",
@@ -131,10 +131,10 @@
   },
   {
     "category": "convenience",
-    "name": "Lawson Kabukicho Icchome",
+    "name": "ローソン歌舞伎町一丁目店",
     "lat": 35.6951,
     "lng": 139.7025,
-    "description": "Lawson at Kabukicho 1-12-6.",
+    "description": "歌舞伎町1-12-6のローソン。",
     "tags": [
       "24h"
     ],
@@ -147,10 +147,10 @@
   },
   {
     "category": "convenience",
-    "name": "Lawson Kabukicho Nichome",
+    "name": "ローソン歌舞伎町二丁目店",
     "lat": 35.6964,
     "lng": 139.7043,
-    "description": "Lawson at Kabukicho 2-17-10.",
+    "description": "歌舞伎町2-17-10のローソン。",
     "tags": [
       "24h"
     ],
@@ -163,10 +163,10 @@
   },
   {
     "category": "convenience",
-    "name": "Lawson Toei Higashi-Shinjuku Station Front",
+    "name": "ローソン都営東新宿駅前店",
     "lat": 35.6957,
     "lng": 139.7035,
-    "description": "Lawson at Kabukicho 2-3-16, near the Toei Oedo Line Higashi-Shinjuku Station entrance.",
+    "description": "歌舞伎町2-3-16、都営大江戸線東新宿駅入口そばのローソン。",
     "tags": [
       "24h"
     ],
@@ -179,10 +179,10 @@
   },
   {
     "category": "convenience",
-    "name": "FamilyMart Kabukicho",
+    "name": "ファミリーマート歌舞伎町店",
     "lat": 35.6953,
     "lng": 139.7018,
-    "description": "FamilyMart at Kabukicho 1-27-1, listed on FamilyMart's official store locator.",
+    "description": "歌舞伎町1-27-1のファミリーマート。ファミリーマート公式店舗検索に掲載。",
     "tags": [
       "24h"
     ],
@@ -195,10 +195,10 @@
   },
   {
     "category": "convenience",
-    "name": "FamilyMart Shinjuku Kabukicho Ichibangai",
+    "name": "ファミリーマート新宿歌舞伎町一番街店",
     "lat": 35.6946,
     "lng": 139.7017,
-    "description": "FamilyMart at Kabukicho 1-18-5, on the Kabukicho Ichibangai arcade.",
+    "description": "歌舞伎町1-18-5、歌舞伎町一番街アーケード沿い。",
     "tags": [
       "24h"
     ],
@@ -211,10 +211,10 @@
   },
   {
     "category": "convenience",
-    "name": "FamilyMart Kabukicho Icchome",
+    "name": "ファミリーマート歌舞伎町一丁目店",
     "lat": 35.6949,
     "lng": 139.7015,
-    "description": "FamilyMart at Kabukicho 1-16-1.",
+    "description": "歌舞伎町1-16-1のファミリーマート。",
     "tags": [
       "24h"
     ],
@@ -227,26 +227,26 @@
   },
   {
     "category": "convenience",
-    "name": "FamilyMart Shinjuku Golden-gai",
+    "name": "ファミリーマート新宿ゴールデン街店",
     "lat": 35.6944,
     "lng": 139.704,
-    "description": "FamilyMart at Kabukicho 1-1-6, directly bordering Golden Gai on the district's eastern edge.",
+    "description": "歌舞伎町1-1-6、ゴールデン街に隣接する歌舞伎町東端のファミリーマート。",
     "tags": [
       "24h"
     ],
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "gray_zone_note": "Sits at Kabukicho's border rather than its interior.",
+    "gray_zone_note": "歌舞伎町の内部ではなく境界付近に位置しています。",
     "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
     "category": "convenience",
-    "name": "FamilyMart Kabukicho Kita (North)",
+    "name": "ファミリーマート歌舞伎町北店",
     "lat": 35.6969,
     "lng": 139.7047,
-    "description": "FamilyMart at Kabukicho 2-32-7, northern 2-chome.",
+    "description": "歌舞伎町2-32-7、二丁目北側のファミリーマート。",
     "tags": [
       "24h"
     ],
@@ -259,10 +259,10 @@
   },
   {
     "category": "convenience",
-    "name": "FamilyMart Shinjuku Kabukicho",
+    "name": "ファミリーマート新宿歌舞伎町店",
     "lat": 35.696,
     "lng": 139.7033,
-    "description": "FamilyMart at Kabukicho 2-25-2.",
+    "description": "歌舞伎町2-25-2のファミリーマート。",
     "tags": [
       "24h"
     ],
@@ -275,10 +275,10 @@
   },
   {
     "category": "convenience",
-    "name": "FamilyMart Shinjuku Kuyakusho-dori",
+    "name": "ファミリーマート新宿区役所通り店",
     "lat": 35.6958,
     "lng": 139.703,
-    "description": "FamilyMart at Kabukicho 2-10-6, on Kuyakusho-dori (Ward Office Street).",
+    "description": "歌舞伎町2-10-6、区役所通り沿いのファミリーマート。",
     "tags": [
       "24h"
     ],
@@ -291,10 +291,10 @@
   },
   {
     "category": "convenience",
-    "name": "Ministop Shinjuku Kabukicho",
+    "name": "ミニストップ新宿歌舞伎町店",
     "lat": 35.6966,
     "lng": 139.7044,
-    "description": "Ministop at Kabukicho 2-22-1.",
+    "description": "歌舞伎町2-22-1のミニストップ。",
     "tags": [
       "24h"
     ],
@@ -307,10 +307,10 @@
   },
   {
     "category": "convenience",
-    "name": "Ministop Kabukicho 2-chome",
+    "name": "ミニストップ歌舞伎町二丁目店",
     "lat": 35.6971,
     "lng": 139.705,
-    "description": "Ministop at Kabukicho 2-30-13, ~4 min walk from Seibu-Shinjuku Station north exit.",
+    "description": "歌舞伎町2-30-13、西武新宿駅北口から徒歩約4分のミニストップ。",
     "tags": [
       "24h"
     ],

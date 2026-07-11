@@ -1,9 +1,9 @@
 [
   {
-    "name": "Shinjuku Yuhodo Park (Shiki no Michi) Public Toilet",
+    "name": "新宿遊歩道公園(四季の道)公衆トイレ",
     "lat": 35.6942,
     "lng": 139.7031,
-    "description": "Ward-maintained public toilet inside Kabukicho 1-chome, part of the Yuhodo Park pedestrian strip.",
+    "description": "新宿区管理の公衆トイレ。歌舞伎町一丁目、遊歩道公園(四季の道)内にあります。",
     "category": "toilet",
     "tags": [
       "free",
@@ -17,10 +17,10 @@
     "gray_zone_note": null
   },
   {
-    "name": "Tokyu Kabukicho Tower Restrooms",
+    "name": "東急歌舞伎町タワー トイレ",
     "lat": 35.695,
     "lng": 139.7027,
-    "description": "Restrooms inside the 53-floor entertainment/hotel complex; gender-neutral design was publicly reversed to separated facilities after backlash -- layout may still be in flux.",
+    "description": "地上53階の複合施設内トイレ。ジェンダーレス設計は反発を受けて男女別に変更された経緯があり、現在も配置が変わる可能性があります。",
     "category": "toilet",
     "tags": [
       "clean",
@@ -36,10 +36,10 @@
   },
   {
     "category": "toilet",
-    "name": "Seibu Shinjuku Station Front Public Toilet",
+    "name": "西武新宿駅前公衆便所",
     "lat": 35.6954,
     "lng": 139.701,
-    "description": "Ward-maintained 24h public toilet under the elevated Seibu Shinjuku Line tracks on Brick St., beside Seibu Shinjuku PePe. Includes a barrier-free stall.",
+    "description": "西武新宿線の高架下、ブリックストリート沿い、西武新宿PePe横にある24時間利用可能な区管理トイレ。バリアフリートイレあり。",
     "tags": [
       "free",
       "gender_separated"
@@ -53,10 +53,10 @@
   },
   {
     "category": "toilet",
-    "name": "Shinjuku Station Southeast Exit Public Toilet",
+    "name": "新宿駅東南口公衆便所",
     "lat": 35.6902,
     "lng": 139.7018,
-    "description": "24h ward toilet directly under the stairs from JR Shinjuku Southeast Exit down to the meetup plaza. Barrier-free stall opposite general toilets.",
+    "description": "JR新宿駅東南口から待ち合わせ広場へ降りる階段下にある24時間利用可能な区トイレ。一般トイレの向かいにバリアフリートイレあり。",
     "tags": [
       "free",
       "gender_separated",
@@ -71,26 +71,26 @@
   },
   {
     "category": "toilet",
-    "name": "Shinjuku West Exit Underground No. 1 Public Toilet",
+    "name": "新宿西口地下第一公衆便所",
     "lat": 35.6905,
     "lng": 139.6987,
-    "description": "24h ward toilet near Odakyu Ace North Bldg (Shinjuku Delish Park), west side of Shinjuku Station.",
+    "description": "小田急エースノース館(新宿デリシャスパーク)付近、新宿駅西側の24時間利用可能な区トイレ。",
     "tags": [
       "free"
     ],
     "reliability_score": 3,
     "source_type": "observed",
     "type": "official",
-    "gray_zone_note": "West side of the station; farther from Kabukicho's core than the other 24h options.",
+    "gray_zone_note": "新宿駅の西側にあり、他の24時間利用可能なトイレより歌舞伎町中心部から離れています。",
     "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
     "category": "toilet",
-    "name": "Okubo Park Public Toilet",
+    "name": "大久保公園トイレ",
     "lat": 35.6963,
     "lng": 139.7015,
-    "description": "Ward park toilet in Kabukicho 2-chome beside Haijia, with a barrier-free everyone-toilet (ostomate, baby seat).",
+    "description": "歌舞伎町二丁目、Haijia(ハイジア)そばの区立公園トイレ。バリアフリートイレ(オストメイト・ベビーシート対応)あり。",
     "tags": [
       "free",
       "clean",
@@ -99,16 +99,16 @@
     "reliability_score": 4,
     "source_type": "observed",
     "type": "official",
-    "gray_zone_note": "Only open until approximately 19:00, not 24h.",
+    "gray_zone_note": "利用可能時間は19時頃までで、24時間ではありません。",
     "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
     "category": "toilet",
-    "name": "Haijia (Tokyo Metropolitan Health Plaza) 1F Toilet",
+    "name": "Haijia(東京都健康プラザ ハイジア)1階トイレ",
     "lat": 35.6961,
     "lng": 139.7017,
-    "description": "1F toilet in the Haijia health-plaza building, Kabukicho 2-44-1; reported as accessible 24h including late night.",
+    "description": "歌舞伎町2-44-1のハイジア内1階トイレ。深夜も利用可能と報告されています。",
     "tags": [
       "free",
       "clean"
@@ -122,10 +122,10 @@
   },
   {
     "category": "toilet",
-    "name": "Shinjuku Ward Office Main Building 1F Toilet",
+    "name": "新宿区役所本庁舎1階トイレ",
     "lat": 35.6938,
     "lng": 139.7033,
-    "description": "Ward office toilet, open during window-service hours only (weekdays 8:30-17:00, Tue until 19:00).",
+    "description": "区役所窓口業務時間のみ利用可能(平日8:30〜17:00、火曜のみ19:00まで)。",
     "tags": [
       "free",
       "gender_separated"
@@ -133,16 +133,16 @@
     "reliability_score": 3,
     "source_type": "official",
     "type": "official",
-    "gray_zone_note": "Only usable during office hours; not a night-time option.",
+    "gray_zone_note": "区役所の窓口業務時間内のみ利用可能で、夜間は利用できません。",
     "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
     "category": "toilet",
-    "name": "Four Seasons Path (Shinjuku Promenade Park) Toilet",
+    "name": "四季の路(新宿遊歩道公園)トイレ",
     "lat": 35.6949,
     "lng": 139.7042,
-    "description": "24h ward toilet in Shinjuku Promenade Park, Kabukicho 1-1, directly beside Golden Gai; barrier-free multi-function toilet with intercom call system.",
+    "description": "歌舞伎町1-1、ゴールデン街のすぐそばにある24時間利用可能な区トイレ。インターホン付きのバリアフリー多機能トイレ。",
     "tags": [
       "free",
       "clean",
@@ -157,10 +157,10 @@
   },
   {
     "category": "toilet",
-    "name": "Tokyu Kabukicho Tower 2F Toilet",
+    "name": "東急歌舞伎町タワー 2階トイレ",
     "lat": 35.6952,
     "lng": 139.703,
-    "description": "Commercial building toilet, gender-separated after a 2023 renovation (originally a genderless design that drew public backlash and was abolished within ~4 months).",
+    "description": "2023年の改装で男女別に変更された商業施設内トイレ(元はジェンダーレス設計で反発を受け約4ヶ月で廃止)。",
     "tags": [
       "free",
       "clean",
@@ -169,16 +169,16 @@
     "reliability_score": 3,
     "source_type": "observed",
     "type": "unofficial",
-    "gray_zone_note": "Subject to building operating hours, not 24h; access norms may vary by time of day.",
+    "gray_zone_note": "施設の営業時間内のみで24時間ではありません。時間帯によって利用条件が異なる場合があります。",
     "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
     "category": "toilet",
-    "name": "Shinjuku Subnade Underground Toilet",
+    "name": "新宿サブナード地下トイレ",
     "lat": 35.6907,
     "lng": 139.7013,
-    "description": "Underground shopping-arcade toilet near Shinjuku Station East Exit, expanded with spacious multipurpose stalls in a 2024 full renovation.",
+    "description": "新宿駅東口近くの地下街トイレ。2024年の全面リニューアルで広々とした多機能トイレを増設。",
     "tags": [
       "free",
       "clean"
@@ -192,26 +192,26 @@
   },
   {
     "category": "toilet",
-    "name": "Shinjuku Station East Exit \"Food Pocket\" Toilet",
+    "name": "新宿駅東口「フードポケット」トイレ",
     "lat": 35.6901,
     "lng": 139.7008,
-    "description": "Basement-level toilet past the Lumine Est stairs near Shinshu Soba Honjin/cafe Berg, JR Shinjuku East Exit.",
+    "description": "JR新宿駅東口、ルミネエストの階段を過ぎた地下階、信州そば本陣・カフェベルク付近のトイレ。",
     "tags": [
       "free"
     ],
     "reliability_score": 3,
     "source_type": "observed",
     "type": "unofficial",
-    "gray_zone_note": "Open 7:00-23:00 only, not 24h.",
+    "gray_zone_note": "利用可能時間は7:00〜23:00のみで、24時間ではありません。",
     "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
     "category": "toilet",
-    "name": "Shinjuku-sanchome Station Underground Passage Toilet",
+    "name": "新宿三丁目駅 地下通路トイレ",
     "lat": 35.6919,
     "lng": 139.7042,
-    "description": "Toilet in the underground passage in front of the Marunouchi Line ticket gates at Shinjuku-sanchome, on the walking route toward Golden Gai/Kabukicho.",
+    "description": "丸ノ内線改札前の地下通路にあるトイレ。ゴールデン街・歌舞伎町方面への通り道にあります。",
     "tags": [
       "free",
       "clean"
@@ -225,10 +225,10 @@
   },
   {
     "category": "toilet",
-    "name": "TOHO Cinemas Shinjuku 3F Toilet",
+    "name": "TOHOシネマズ新宿 3階トイレ",
     "lat": 35.6951,
     "lng": 139.7025,
-    "description": "Lobby toilet on 3F of Shinjuku TOHO Bldg, up two escalators from 1F; wheelchair-accessible toilets also on 3F/5F; usable during late-night screenings.",
+    "description": "新宿東宝ビル3階、1階からエスカレーター2つ分のロビートイレ。3F・5Fに車椅子対応トイレもあり、深夜上映時も利用可能。",
     "tags": [
       "clean",
       "long_wait",
@@ -237,23 +237,23 @@
     "reliability_score": 3,
     "source_type": "observed",
     "type": "unofficial",
-    "gray_zone_note": "Building/theater operating hours apply; 3F lobby toilet often crowded.",
+    "gray_zone_note": "施設・映画館の営業時間内のみ利用可能。3階ロビーのトイレは混雑しやすいです。",
     "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
     "category": "toilet",
-    "name": "MEGA Don Quijote Shinjuku Kabukicho Store Toilet",
+    "name": "MEGAドン・キホーテ新宿歌舞伎町店 トイレ",
     "lat": 35.6946,
     "lng": 139.7022,
-    "description": "In-store toilet at the 24h Don Quijote discount store, Kabukicho 1-16-5.",
+    "description": "歌舞伎町1-16-5、24時間営業のドン・キホーテ店内トイレ。",
     "tags": [
       "free"
     ],
     "reliability_score": 2,
     "source_type": "observed",
     "type": "unofficial",
-    "gray_zone_note": "Customer-facing retail store; access norms/staff discretion may apply, not independently confirmed as purchase-free.",
+    "gray_zone_note": "小売店内のトイレのため、利用条件は店舗の判断による場合があります。購入不要かどうかは未確認です。",
     "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   }

@@ -1,9 +1,9 @@
 [
   {
-    "name": "Seven Bank ATM (7-Eleven, Shinjuku/Kabukicho area)",
+    "name": "セブン銀行ATM(セブン-イレブン、新宿・歌舞伎町エリア)",
     "lat": 35.6908,
     "lng": 139.7003,
-    "description": "Multilingual (JP/EN/CN/KR) ATM accepting Visa, Mastercard, Amex, UnionPay, JCB and more; approx ¥110 fee, ¥100,000 withdrawal cap per transaction.",
+    "description": "多言語対応(日/英/中/韓)ATM。Visa、Mastercard、Amex、UnionPay、JCB等に対応。手数料は約110円、1回の引き出し上限10万円。",
     "category": "atm",
     "tags": [
       "24h",
@@ -18,10 +18,10 @@
   },
   {
     "category": "atm",
-    "name": "Seven Bank ATM — 7-Eleven Kabukicho 1-2-13",
+    "name": "セブン銀行ATM(セブン-イレブン歌舞伎町1-2-13店)",
     "lat": 35.6949,
     "lng": 139.7013,
-    "description": "Seven Bank ATM inside 7-Eleven near Seibu-Shinjuku Station, Kabukicho 1-chome. International cards, multilingual menu, ~¥110 fee.",
+    "description": "西武新宿駅そば、歌舞伎町一丁目のセブン-イレブン店内ATM。国際カード対応、多言語メニュー、手数料約110円。",
     "tags": [
       "24h",
       "international_card_ok"
@@ -35,10 +35,10 @@
   },
   {
     "category": "atm",
-    "name": "Seven Bank ATM — 7-Eleven Shinjuku Toho Building Store",
+    "name": "セブン銀行ATM(セブン-イレブン新宿東宝ビル店)",
     "lat": 35.6952,
     "lng": 139.7028,
-    "description": "Seven Bank ATM inside 7-Eleven beside the Shinjuku Toho Building (Godzilla Road), Kabukicho 1-19-1.",
+    "description": "歌舞伎町1-19-1、新宿東宝ビル(ゴジラロード)そばのセブン-イレブン店内ATM。",
     "tags": [
       "24h",
       "international_card_ok"
@@ -52,10 +52,10 @@
   },
   {
     "category": "atm",
-    "name": "Seven Bank ATM — 7-Eleven Yasukuni-dori Store",
+    "name": "セブン銀行ATM(セブン-イレブン新宿駅靖国通り店)",
     "lat": 35.6944,
     "lng": 139.701,
-    "description": "Seven Bank ATM inside 7-Eleven at Kabukicho 1-17-2, on Yasukuni-dori.",
+    "description": "歌舞伎町1-17-2、靖国通り沿いのセブン-イレブン店内ATM。",
     "tags": [
       "24h",
       "international_card_ok"
@@ -69,10 +69,10 @@
   },
   {
     "category": "atm",
-    "name": "Seven Bank ATM — 7-Eleven Kabukicho 1-26-6",
+    "name": "セブン銀行ATM(セブン-イレブン歌舞伎町1-26-6店)",
     "lat": 35.6955,
     "lng": 139.702,
-    "description": "Seven Bank ATM inside 7-Eleven store within Kabukicho 1-chome interior.",
+    "description": "歌舞伎町一丁目内のセブン-イレブン店内ATM。",
     "tags": [
       "24h",
       "international_card_ok"
@@ -86,10 +86,10 @@
   },
   {
     "category": "atm",
-    "name": "Seven Bank ATM — 7-Eleven Kabukicho 2-chome Chuo Ten",
+    "name": "セブン銀行ATM(セブン-イレブン歌舞伎町二丁目中央店)",
     "lat": 35.6963,
     "lng": 139.7038,
-    "description": "Seven Bank ATM inside 7-Eleven at Kabukicho 2-33-3, central 2-chome.",
+    "description": "歌舞伎町2-33-3、二丁目中央部のセブン-イレブン店内ATM。",
     "tags": [
       "24h",
       "international_card_ok"
@@ -103,10 +103,10 @@
   },
   {
     "category": "atm",
-    "name": "Seven Bank ATM — 7-Eleven Kabukicho Nichome Higashi Ten",
+    "name": "セブン銀行ATM(セブン-イレブン歌舞伎町二丁目東店)",
     "lat": 35.6968,
     "lng": 139.7052,
-    "description": "Seven Bank ATM directly documented in-store at this 7-Eleven near Higashi-Shinjuku Station, east Kabukicho 2-chome.",
+    "description": "東新宿駅そば、このセブン-イレブンには店内ATM設置が直接確認されています。",
     "tags": [
       "24h",
       "international_card_ok"
@@ -120,10 +120,10 @@
   },
   {
     "category": "atm",
-    "name": "MUFG Bank — Seibu-Shinjuku Station ATM Corner",
+    "name": "三菱UFJ銀行 西武新宿駅前ATMコーナー",
     "lat": 35.6957,
     "lng": 139.6995,
-    "description": "Mitsubishi UFJ Bank out-of-branch ATM corner at Kabukicho 1-30-1, adjacent to Seibu-Shinjuku Station.",
+    "description": "歌舞伎町1-30-1、西武新宿駅に隣接する三菱UFJ銀行の店舗外ATMコーナー。",
     "tags": [
       "international_card_ok"
     ],
@@ -136,10 +136,10 @@
   },
   {
     "category": "atm",
-    "name": "MUFG Bank — Shinjuku Subnade ATM Corner",
+    "name": "三菱UFJ銀行 新宿サブナードATMコーナー",
     "lat": 35.6942,
     "lng": 139.6998,
-    "description": "Mitsubishi UFJ Bank out-of-branch ATM corner inside the Shinjuku Subnade underground mall, Kabukicho 1-chome, B1F.",
+    "description": "歌舞伎町一丁目、地下街「新宿サブナード」B1F内の三菱UFJ銀行店舗外ATMコーナー。",
     "tags": [
       "international_card_ok"
     ],
@@ -152,10 +152,10 @@
   },
   {
     "category": "atm",
-    "name": "AEON Bank ATM — Ministop Shinjuku Kabukicho (unit 2)",
+    "name": "イオン銀行ATM(ミニストップ新宿歌舞伎町店・2号機)",
     "lat": 35.6966,
     "lng": 139.7044,
-    "description": "AEON Bank ATM inside Ministop at Kabukicho 2-22-1; listed 24h by AEON Bank's own locator.",
+    "description": "歌舞伎町2-22-1のミニストップ店内ATM。イオン銀行公式情報で24時間利用可と案内。",
     "tags": [
       "24h",
       "international_card_ok"
@@ -169,10 +169,10 @@
   },
   {
     "category": "atm",
-    "name": "Mizuho Bank ATM — Ministop Shinjuku Kabukicho (unit 1)",
+    "name": "みずほ銀行ATM(ミニストップ新宿歌舞伎町店・1号機)",
     "lat": 35.6966,
     "lng": 139.7044,
-    "description": "Mizuho Bank out-of-branch ATM (Ministop Shinjuku Kabukicho-ten 1-goki Shuchosho) at the same Kabukicho 2-22-1 address as the AEON Bank unit — two separate machines, one location.",
+    "description": "イオン銀行ATMと同じ歌舞伎町2-22-1に設置された、みずほ銀行の店舗外ATM。同一住所に2台の別機が併設されています。",
     "tags": [
       "international_card_ok"
     ],
@@ -185,10 +185,10 @@
   },
   {
     "category": "atm",
-    "name": "Yucho Bank ATM — FamilyMart Shinjuku Kabukicho",
+    "name": "ゆうちょ銀行ATM(ファミリーマート新宿歌舞伎町店)",
     "lat": 35.696,
     "lng": 139.7033,
-    "description": "Japan Post Bank (Yucho) ATM inside FamilyMart at Kabukicho 2-25-2. Hours 00:05–23:55 daily (effectively near-24h, brief nightly maintenance window).",
+    "description": "歌舞伎町2-25-2のファミリーマート店内ゆうちょ銀行ATM。営業時間0:05〜23:55(深夜の短いメンテナンス時間を除きほぼ24時間)。",
     "tags": [
       "24h"
     ],
@@ -201,10 +201,10 @@
   },
   {
     "category": "atm",
-    "name": "Japan Post — Shinjuku Kabukicho Post Office ATM",
+    "name": "新宿歌舞伎町郵便局 ATM",
     "lat": 35.697,
     "lng": 139.7055,
-    "description": "Window-adjacent Japan Post ATM at Kabukicho 2-41-8, ~2 min walk from Seibu-Shinjuku Station north exit. ATM hours weekday 9:00–17:30, Sat 9:00–12:30 — not 24h.",
+    "description": "歌舞伎町2-41-8、西武新宿駅北口から徒歩約2分の郵便局窓口併設ATM。営業時間は平日9:00〜17:30、土曜9:00〜12:30(24時間ではありません)。",
     "tags": [],
     "reliability_score": 4,
     "source_type": "official",
@@ -215,10 +215,10 @@
   },
   {
     "category": "atm",
-    "name": "Japan Post — Shinjuku Ward Office Post Office ATM",
+    "name": "新宿区役所前郵便局 ATM",
     "lat": 35.6944,
     "lng": 139.7038,
-    "description": "Japan Post ATM inside the Shinjuku Ward Office branch post office, Kabukicho 1-4-1. ATM hours weekday 9:00–17:00 only — not 24h.",
+    "description": "歌舞伎町1-4-1、新宿区役所内郵便局のATM。営業時間は平日9:00〜17:00のみ(24時間ではありません)。",
     "tags": [],
     "reliability_score": 4,
     "source_type": "official",
@@ -229,17 +229,17 @@
   },
   {
     "category": "atm",
-    "name": "SMBC Trust Bank Prestia — Shinjuku Higashiguchi Branch ATM",
+    "name": "SMBC信託銀行プレスティア 新宿東口支店ATM",
     "lat": 35.6903,
     "lng": 139.7018,
-    "description": "Foreign-resident-oriented bank (formerly Citibank Japan, transferred to SMBC Trust/Prestia in 2015), Shinjuku 3-24-1, ~700m south of Kabukicho across Yasukuni-dori — bordering, not inside, the district. ATM hours Mon–Fri 7:00–24:00, Sat 7:00–23:50, Sun 7:00–21:00. Cash-card withdrawal only; no FX cash dispensing from the ATM (currency exchange is teller-only, weekdays 9:00–15:00).",
+    "description": "外国人居住者向け銀行(旧シティバンク銀行、2015年にSMBC信託銀行プレスティアへ移管)。新宿3-24-1、歌舞伎町から靖国通りを挟んで南へ約700m、地区の境界外。ATM営業時間は月〜金7:00〜24:00、土7:00〜23:50、日7:00〜21:00。キャッシュカードでの引き出しのみ対応、外貨現金の引き出しは不可(両替は窓口のみ、平日9:00〜15:00)。",
     "tags": [
       "international_card_ok"
     ],
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "gray_zone_note": "Located outside Kabukicho's chome boundaries; included as the nearest dedicated international-banking ATM option, not a within-district entry.",
+    "gray_zone_note": "歌舞伎町の町丁境界外に位置していますが、外国人向け銀行サービスとして最寄りのATMのため参考掲載しています(地区内の施設ではありません)。",
     "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   }
