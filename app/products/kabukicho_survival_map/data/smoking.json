@@ -71,41 +71,6 @@
   },
   {
     "category": "smoking",
-    "name": "大ガード沿い路上喫煙所",
-    "lat": 35.6928,
-    "lng": 139.6989,
-    "description": "西新宿7-1-1、歌舞伎町南西の境界付近にある屋外喫煙所。新宿駅側から向かう際に最も近い。",
-    "tags": [
-      "outdoor",
-      "rain_ok",
-      "crowded"
-    ],
-    "reliability_score": 3,
-    "source_type": "observed",
-    "type": "official",
-    "gray_zone_note": "歌舞伎町の境界付近にあり、地区内ではありません。",
-    "last_updated": "2026-07-11",
-    "verification_method": "web-search-2026-07"
-  },
-  {
-    "category": "smoking",
-    "name": "喫茶室ルノアール(新宿大ガード横店)",
-    "lat": 35.6929,
-    "lng": 139.6987,
-    "description": "加熱式タバコ対応の喫煙席がある有料喫茶店チェーン。歌舞伎町・西新宿の境界付近に位置。",
-    "tags": [
-      "indoor",
-      "rain_ok"
-    ],
-    "reliability_score": 3,
-    "source_type": "observed",
-    "type": "unofficial",
-    "gray_zone_note": "有料での注文が必要です。歌舞伎町の境界付近にあります。",
-    "last_updated": "2026-07-11",
-    "verification_method": "web-search-2026-07"
-  },
-  {
-    "category": "smoking",
     "name": "ニコバー新宿店",
     "lat": 35.6939,
     "lng": 139.7038,
@@ -285,6 +250,74 @@
     "type": "unofficial",
     "gray_zone_note": "オーダーが必要です。24時間営業のため深夜の選択肢として便利です。",
     "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "smoking",
+    "name": "喫茶 マリエール",
+    "lat": 35.6944,
+    "lng": 139.7048,
+    "description": "歌舞伎町2-2-21(ライオンズマンション歌舞伎町B1F)の昭和30年創業の老舗喫茶店。全席喫煙可、8:30〜23:00営業、定休日なし。",
+    "tags": [
+      "indoor",
+      "rain_ok"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "unofficial",
+    "gray_zone_note": "喫茶店への注文が必要です。座標は住所ブロックからの概算で、独立した地図APIでの再確認を推奨します。",
+    "last_updated": "2026-07-12",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "smoking",
+    "name": "ひまわり(タイ料理)",
+    "lat": 35.6934,
+    "lng": 139.7055,
+    "description": "歌舞伎町2-9-15(歌舞伎町ダイヤパレス1F)のタイ料理店。全席喫煙可、17:00〜翌2:00営業(日祝定休)。",
+    "tags": [
+      "indoor"
+    ],
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "unofficial",
+    "gray_zone_note": "飲食のご注文が必要です。座標は概算、要再確認。",
+    "last_updated": "2026-07-12",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "smoking",
+    "name": "本格地鶏炭火焼 MORI屋 新宿店",
+    "lat": 35.6934,
+    "lng": 139.7056,
+    "description": "歌舞伎町2-9-18(ライオンズプラザ新宿2F)の宮崎地鶏炭火焼居酒屋。34席、全席喫煙可、月〜木・日18:00〜23:30、金土18:00〜翌3:00。",
+    "tags": [
+      "indoor",
+      "crowded"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "unofficial",
+    "gray_zone_note": "お食事のご注文が必要です。座標は概算、要再確認。",
+    "last_updated": "2026-07-12",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "smoking",
+    "name": "コーヒーショップ クール",
+    "lat": 35.6918,
+    "lng": 139.7065,
+    "description": "歌舞伎町2-37-3(マルトモビル2F)の1970年代創業のほぼ24時間営業喫茶店。約40席、全席喫煙可。地元の常連・水商売関係者に長年愛用されている「眠らない喫茶店」として東洋経済オンラインでも紹介されている。",
+    "tags": [
+      "indoor",
+      "rain_ok",
+      "crowded"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "unofficial",
+    "gray_zone_note": "注文が必要です。深夜・早朝でも開いている点で他の2-chome候補より信頼度が高い(複数の独立記事で確認)。座標は概算、要再確認。",
+    "last_updated": "2026-07-12",
     "verification_method": "web-search-2026-07"
   }
 ]

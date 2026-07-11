@@ -281,5 +281,120 @@
     "licensed_as": "love_hotel_business_act",
     "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "スーパーホテル新宿歌舞伎町",
+    "lat": 35.6952,
+    "lng": 139.6995,
+    "description": "ビジネスホテル。歌舞伎町2-39-9、西武新宿駅から徒歩3分。高濃度炭酸泉の共用浴場あり。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly",
+      "price_band_mid"
+    ],
+    "reliability_score": 5,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": null,
+    "licensed_as": "hotel_business_act",
+    "last_updated": "2026-07-12",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "カプセルホテル トランジット新宿",
+    "lat": 35.6966,
+    "lng": 139.7043,
+    "description": "歌舞伎町2-19-15、雑居ビル3〜5階のカプセルホテル。東新宿駅から徒歩3分。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly",
+      "price_band_budget"
+    ],
+    "reliability_score": 4,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": null,
+    "licensed_as": "hotel_business_act",
+    "last_updated": "2026-07-12",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "ホテルバリアンリゾート新宿本店",
+    "lat": 35.6935,
+    "lng": 139.7055,
+    "description": "歌舞伎町2-1-11のアダルト向けラブホテル。新宿三丁目駅E1出口から徒歩3分。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly",
+      "price_band_mid"
+    ],
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": "許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリーです。",
+    "licensed_as": "love_hotel_business_act",
+    "last_updated": "2026-07-12",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "HOTEL PASHA",
+    "lat": 35.6952,
+    "lng": 139.7063,
+    "description": "歌舞伎町2-10-12のアダルト向けラブホテル。JR新宿駅東口から徒歩8分。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly",
+      "price_band_mid"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": "許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリーです。",
+    "licensed_as": "love_hotel_business_act",
+    "last_updated": "2026-07-12",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "HOTEL ATLAS",
+    "lat": 35.696,
+    "lng": 139.707,
+    "description": "歌舞伎町2-12-9のアダルト向けラブホテル。東新宿駅から徒歩3分。全室人工温泉浴槽完備。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly",
+      "price_band_mid"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": "許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリーです。",
+    "licensed_as": "love_hotel_business_act",
+    "last_updated": "2026-07-12",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "アプレシオ 新宿ハイジア店",
+    "lat": 35.6951,
+    "lng": 139.6992,
+    "description": "歌舞伎町2-44-1 ハイジアB1のインターネットカフェ。西武新宿駅から徒歩3分、24時間営業。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly",
+      "price_band_budget",
+      "24h"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": "ネットカフェの宿泊利用は旅館業法上の宿泊施設としての許可を得たものではありません。事業自体は適法ですが、法的・安全面ではグレーゾーンに近いものとして扱ってください。",
+    "licensed_as": "internet_cafe_no_lodging_license",
+    "last_updated": "2026-07-12",
+    "verification_method": "web-search-2026-07"
   }
 ]

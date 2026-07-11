@@ -53,40 +53,6 @@
   },
   {
     "category": "toilet",
-    "name": "新宿駅東南口公衆便所",
-    "lat": 35.6902,
-    "lng": 139.7018,
-    "description": "JR新宿駅東南口から待ち合わせ広場へ降りる階段下にある24時間利用可能な区トイレ。一般トイレの向かいにバリアフリートイレあり。",
-    "tags": [
-      "free",
-      "gender_separated",
-      "long_wait"
-    ],
-    "reliability_score": 4,
-    "source_type": "observed",
-    "type": "official",
-    "gray_zone_note": null,
-    "last_updated": "2026-07-11",
-    "verification_method": "web-search-2026-07"
-  },
-  {
-    "category": "toilet",
-    "name": "新宿西口地下第一公衆便所",
-    "lat": 35.6905,
-    "lng": 139.6987,
-    "description": "小田急エースノース館(新宿デリシャスパーク)付近、新宿駅西側の24時間利用可能な区トイレ。",
-    "tags": [
-      "free"
-    ],
-    "reliability_score": 3,
-    "source_type": "observed",
-    "type": "official",
-    "gray_zone_note": "新宿駅の西側にあり、他の24時間利用可能なトイレより歌舞伎町中心部から離れています。",
-    "last_updated": "2026-07-11",
-    "verification_method": "web-search-2026-07"
-  },
-  {
-    "category": "toilet",
     "name": "大久保公園トイレ",
     "lat": 35.6963,
     "lng": 139.7015,
@@ -170,56 +136,6 @@
     "source_type": "observed",
     "type": "unofficial",
     "gray_zone_note": "施設の営業時間内のみで24時間ではありません。時間帯によって利用条件が異なる場合があります。",
-    "last_updated": "2026-07-11",
-    "verification_method": "web-search-2026-07"
-  },
-  {
-    "category": "toilet",
-    "name": "新宿サブナード地下トイレ",
-    "lat": 35.6907,
-    "lng": 139.7013,
-    "description": "新宿駅東口近くの地下街トイレ。2024年の全面リニューアルで広々とした多機能トイレを増設。",
-    "tags": [
-      "free",
-      "clean"
-    ],
-    "reliability_score": 4,
-    "source_type": "official",
-    "type": "official",
-    "gray_zone_note": null,
-    "last_updated": "2026-07-11",
-    "verification_method": "web-search-2026-07"
-  },
-  {
-    "category": "toilet",
-    "name": "新宿駅東口「フードポケット」トイレ",
-    "lat": 35.6901,
-    "lng": 139.7008,
-    "description": "JR新宿駅東口、ルミネエストの階段を過ぎた地下階、信州そば本陣・カフェベルク付近のトイレ。",
-    "tags": [
-      "free"
-    ],
-    "reliability_score": 3,
-    "source_type": "observed",
-    "type": "unofficial",
-    "gray_zone_note": "利用可能時間は7:00〜23:00のみで、24時間ではありません。",
-    "last_updated": "2026-07-11",
-    "verification_method": "web-search-2026-07"
-  },
-  {
-    "category": "toilet",
-    "name": "新宿三丁目駅 地下通路トイレ",
-    "lat": 35.6919,
-    "lng": 139.7042,
-    "description": "丸ノ内線改札前の地下通路にあるトイレ。ゴールデン街・歌舞伎町方面への通り道にあります。",
-    "tags": [
-      "free",
-      "clean"
-    ],
-    "reliability_score": 3,
-    "source_type": "observed",
-    "type": "official",
-    "gray_zone_note": null,
     "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },

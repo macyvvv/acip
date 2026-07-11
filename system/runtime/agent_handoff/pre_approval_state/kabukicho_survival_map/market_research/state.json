@@ -39,11 +39,26 @@
       "policy_id": "PREAPP-KABUKICHO_SURVIVAL_MAP-MARKET_RESEARCH-0001",
       "status": "completed",
       "claimed_at": "2026-07-11T05:28:18.687923+00:00"
+    },
+    "task-0009-toilet-deep2": {
+      "policy_id": "PREAPP-KABUKICHO_SURVIVAL_MAP-MARKET_RESEARCH-0001",
+      "status": "completed",
+      "claimed_at": "2026-07-11T12:54:11.732890+00:00"
+    },
+    "task-0010-smoking-deep2": {
+      "policy_id": "PREAPP-KABUKICHO_SURVIVAL_MAP-MARKET_RESEARCH-0001",
+      "status": "completed",
+      "claimed_at": "2026-07-11T18:39:37.249110+00:00"
+    },
+    "task-0011-lodging-deep2": {
+      "policy_id": "PREAPP-KABUKICHO_SURVIVAL_MAP-MARKET_RESEARCH-0001",
+      "status": "completed",
+      "claimed_at": "2026-07-11T18:43:48.299117+00:00"
     }
   },
   "counters": {
     "2026-07-10": 1,
-    "2026-W28": 8,
-    "2026-07-11": 7
+    "2026-W28": 11,
+    "2026-07-11": 10
   }
 }
