@@ -60,6 +60,16 @@
       "authored_by": "macy",
       "authored_at": "2026-07-11T00:00:00+00:00",
       "reason": "Pilot Level 3a policy so kabukicho_survival_map's doc_creation tasks (the next_roles hop from marketing) no longer need a manual set_execution_approval.py call each time."
+    },
+    {
+      "policy_id": "PREAPP-KABUKICHO_SURVIVAL_MAP-SCENARIO_WRITING-0001",
+      "business_id": "kabukicho_survival_map",
+      "role_id": "scenario_writing",
+      "enabled": true,
+      "max_auto_approvals_per_day": 3,
+      "authored_by": "macy",
+      "authored_at": "2026-07-11T00:00:00+00:00",
+      "reason": "Covers scenario_writing (tag-based evaluation copy and unofficial/gray-zone disclaimer text per issue #33's spec) with the same no-manual-approval treatment as the rest of kabukicho_survival_map's chain."
     }
   ]
 }
