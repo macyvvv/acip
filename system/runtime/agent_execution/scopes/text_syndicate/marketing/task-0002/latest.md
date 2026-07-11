@@ -1,0 +1,17 @@
+# APPROVED_AUTONOMOUS_EXECUTION
+
+handoff_id: REQ-TEXT-SYNDICATE-MARKETING-TASK-0002
+allow: true
+approval_id: 
+scope_type: 
+scope_id: 
+execution_triggered: true
+execution_mode: one_shot
+execution_result_status: success
+completion_marker_path: /Users/ariel/acip/system/runtime/business_agents/text_syndicate/marketing/task-0002/latest.json
+request_path: /Users/ariel/acip/system/runtime/request/execution_request.json
+stopped_reason: completion_marker_written
+started_at: 2026-07-11T00:06:47.026821+00:00
+finished_at: 2026-07-11T00:07:36.594813+00:00
+authorization_source: policy_pre_approval
+policy_id: PREAPP-TEXT_SYNDICATE-MARKETING-0001
