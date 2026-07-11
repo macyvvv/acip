@@ -36,10 +36,10 @@
       "business_id": "kabukicho_survival_map",
       "role_id": "market_research",
       "enabled": true,
-      "max_auto_approvals_per_day": 3,
+      "max_auto_approvals_per_day": 10,
       "authored_by": "macy",
       "authored_at": "2026-07-11T00:00:00+00:00",
-      "reason": "Pilot Level 3a policy so kabukicho_survival_map's market_research tasks no longer need a manual set_execution_approval.py call each time."
+      "reason": "Raised from 3 to 10/day per the operator's explicit, formal request (2026-07-11) to support several category-focused deep-dive research tasks in one pass -- the initial 12-POI dataset across 6 categories was too sparse to be useful (target: ~100+ total)."
     },
     {
       "policy_id": "PREAPP-KABUKICHO_SURVIVAL_MAP-MARKETING-0001",
