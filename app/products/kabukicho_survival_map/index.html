@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kabukicho Survival Map: Smoking Areas, Toilets, Lockers &amp; Lodging</title>
+<meta name="description" content="Find smoking areas, public toilets, ATMs, coin lockers, and affordable lodging in Kabukicho. Mobile-first map with verified POI details and real-time user updates.">
+<link rel="stylesheet" href="style.css">
+<script>
+  /* GA placeholder -- ID injected via config, never hardcoded. Empty string
+     means analytics stays fully disabled until an operator sets a real ID. */
+  window.KABUKICHO_GA_ID = window.KABUKICHO_GA_ID || "";
+</script>
+</head>
+<body>
+  <header class="app-header">
+    <h1>歌舞伎町サバイバルマップ</h1>
+  </header>
+
+  <main id="poi-list" class="poi-list" aria-live="polite">
+    <p class="empty-state">カテゴリを選択して、歌舞伎町の施設を探してください。</p>
+  </main>
+
+  <nav class="bottom-nav" id="bottom-nav" aria-label="カテゴリ">
+    <!-- populated by app.js -->
+  </nav>
+
+  <script src="app.js"></script>
+  <script>
+    if (window.KABUKICHO_GA_ID) {
+      var gaScript = document.createElement("script");
+      gaScript.async = true;
+      gaScript.src = "https://www.googletagmanager.com/gtag/js?id=" + window.KABUKICHO_GA_ID;
+      document.head.appendChild(gaScript);
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { window.dataLayer.push(arguments); }
+      gtag("js", new Date());
+      gtag("config", window.KABUKICHO_GA_ID);
+    }
+  </script>
+</body>
+</html>

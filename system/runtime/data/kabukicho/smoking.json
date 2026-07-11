@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Shinjuku Station West Exit Smoking Area",
+    "lat": 35.6905,
+    "lng": 139.6995,
+    "description": "24h designated outdoor smoking area with smoke-separation panels near the West Exit Rotary; nearest large official smoking zone to Kabukicho.",
+    "category": "smoking",
+    "tags": ["outdoor", "rain_ok", "crowded"],
+    "last_updated": "2026-07-11",
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": null
+  },
+  {
+    "name": "Cafe Renoir (Shinjuku TOHO Cinemas-mae)",
+    "lat": 35.6949,
+    "lng": 139.7028,
+    "description": "Paid cafe inside Kabukicho (Kawashin Bldg 2F) with an indoor designated smoking section; requires a purchase to use.",
+    "category": "smoking",
+    "tags": ["indoor", "rain_ok"],
+    "last_updated": "2026-07-11",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "unofficial",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "Requires a paid purchase to use; not a free public smoking area."
+  }
+]

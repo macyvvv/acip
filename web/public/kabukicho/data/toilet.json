@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Shinjuku Yuhodo Park (Shiki no Michi) Public Toilet",
+    "lat": 35.6942,
+    "lng": 139.7031,
+    "description": "Ward-maintained public toilet inside Kabukicho 1-chome, part of the Yuhodo Park pedestrian strip.",
+    "category": "toilet",
+    "tags": ["free", "gender_separated"],
+    "last_updated": "2026-07-11",
+    "reliability_score": 3,
+    "source_type": "official",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": null
+  },
+  {
+    "name": "Tokyu Kabukicho Tower Restrooms",
+    "lat": 35.6950,
+    "lng": 139.7027,
+    "description": "Restrooms inside the 53-floor entertainment/hotel complex; gender-neutral design was publicly reversed to separated facilities after backlash -- layout may still be in flux.",
+    "category": "toilet",
+    "tags": ["clean", "free", "gender_separated"],
+    "last_updated": "2026-07-11",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": null
+  }
+]

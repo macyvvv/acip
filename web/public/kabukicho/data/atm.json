@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Seven Bank ATM (7-Eleven, Shinjuku/Kabukicho area)",
+    "lat": 35.6908,
+    "lng": 139.7003,
+    "description": "Multilingual (JP/EN/CN/KR) ATM accepting Visa, Mastercard, Amex, UnionPay, JCB and more; approx ¥110 fee, ¥100,000 withdrawal cap per transaction.",
+    "category": "atm",
+    "tags": ["24h", "international_card_ok"],
+    "last_updated": "2026-07-11",
+    "reliability_score": 5,
+    "source_type": "official",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": null
+  }
+]

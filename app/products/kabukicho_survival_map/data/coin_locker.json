@@ -1,0 +1,17 @@
+[
+  {
+    "name": "JR Shinjuku Station B1F Coin Lockers (East/Central East Gate)",
+    "lat": 35.6900,
+    "lng": 139.7005,
+    "description": "Nearest large locker bank to Kabukicho; approximately 3,600 lockers station-wide; large lockers are frequently full by 10 AM.",
+    "category": "coin_locker",
+    "tags": ["medium", "large", "suitcase_ok"],
+    "last_updated": "2026-07-11",
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": null,
+    "availability_type": "time-sensitive"
+  }
+]
