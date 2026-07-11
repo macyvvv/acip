@@ -2,10 +2,14 @@
   {
     "name": "Booth Net Cafe & Capsule",
     "lat": 35.6945,
-    "lng": 139.7020,
+    "lng": 139.702,
     "description": "Internet cafe and capsule hotel near the Godzilla head landmark. Capsule stay approx ¥3,000/night (¥3,700 Sat); net-cafe seating from ¥600/2hr. Shower access is a paid add-on, not included by default.",
     "category": "lodging",
-    "tags": ["shower_available", "overnight_friendly", "price_band_budget"],
+    "tags": [
+      "shower_available",
+      "overnight_friendly",
+      "price_band_budget"
+    ],
     "last_updated": "2026-07-11",
     "reliability_score": 4,
     "source_type": "observed",
@@ -20,7 +24,10 @@
     "lng": 139.7038,
     "description": "Named, reviewed capsule hotel in Kabukicho, adjacent to the ward office (kuyakusho).",
     "category": "lodging",
-    "tags": ["overnight_friendly", "price_band_budget"],
+    "tags": [
+      "overnight_friendly",
+      "price_band_budget"
+    ],
     "last_updated": "2026-07-11",
     "reliability_score": 3,
     "source_type": "observed",
@@ -43,5 +50,236 @@
     "verification_method": "web-search-2026-07",
     "gray_zone_note": "Landmark reference only. Not a lodging or rest facility. Gambling is regulated under Japanese law.",
     "licensed_as": "not_applicable"
+  },
+  {
+    "name": "Capsule Hotel Shinjuku 510",
+    "lat": 35.6958,
+    "lng": 139.7048,
+    "description": "310-capsule hotel in Kabukicho; shared bathing area with soaking tubs and bidet toilets.",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly",
+      "price_band_budget"
+    ],
+    "reliability_score": 4,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": null,
+    "licensed_as": "hotel_business_act",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "Green Plaza Shinjuku Capsule Hotel",
+    "lat": 35.6945,
+    "lng": 139.7002,
+    "description": "One of Japan's largest capsule hotels: 593 men-only capsules plus a separate 30-bunk women's dormitory section, on-site sauna.",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly",
+      "price_band_budget"
+    ],
+    "reliability_score": 4,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": null,
+    "licensed_as": "hotel_business_act",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "ELE Cabin Shinjuku Kabukicho",
+    "lat": 35.6963,
+    "lng": 139.704,
+    "description": "Modern capsule hotel in Kabukicho.",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly",
+      "price_band_budget"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": null,
+    "licensed_as": "hotel_business_act",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "APA Hotel Shinjuku Kabukicho Tower",
+    "lat": 35.695,
+    "lng": 139.7027,
+    "description": "Business hotel, 6 min walk from Shinjuku Station East Exit, in the Tokyu Kabukicho Tower area.",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly",
+      "price_band_mid"
+    ],
+    "reliability_score": 5,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": null,
+    "licensed_as": "hotel_business_act",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "APA Hotel Shinjuku Kabukicho Chuo",
+    "lat": 35.6965,
+    "lng": 139.705,
+    "description": "166-room business hotel, 7 min walk from Shinjuku Station East Exit.",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly",
+      "price_band_mid"
+    ],
+    "reliability_score": 5,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": null,
+    "licensed_as": "hotel_business_act",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "Toyoko Inn Tokyo Shinjuku Kabukicho",
+    "lat": 35.6968,
+    "lng": 139.7045,
+    "description": "Business hotel chain branch, 3 min walk from Higashi-Shinjuku Station.",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly",
+      "price_band_mid"
+    ],
+    "reliability_score": 5,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": null,
+    "licensed_as": "hotel_business_act",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "Kaikatsu Club Shinjuku Kabukicho-ten",
+    "lat": 35.6942,
+    "lng": 139.7018,
+    "description": "Internet/manga cafe chain branch; some branches offer breakfast buffet, darts, karaoke.",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly",
+      "price_band_budget",
+      "24h"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": "Internet cafe overnight stays are not licensed lodging under the Hotel Business Act -- gray-zone-adjacent for legal/safety framing even though the business is legitimate.",
+    "licensed_as": "internet_cafe_no_lodging_license",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "Gran Cyber Cafe Bagus Shinjuku (Kabukicho)",
+    "lat": 35.6941,
+    "lng": 139.7024,
+    "description": "Internet cafe chain branch in Daini Toa Hall, Kabukicho 1-chome.",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly",
+      "price_band_budget",
+      "24h"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": "Internet cafe overnight stays are not licensed lodging under the Hotel Business Act.",
+    "licensed_as": "internet_cafe_no_lodging_license",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "GeraGera Manga Cafe Shinjuku",
+    "lat": 35.6951,
+    "lng": 139.7027,
+    "description": "Manga cafe chain branch in the Humax Pavilion building; some current listings suggest possible closure, unconfirmed.",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly",
+      "price_band_budget",
+      "24h"
+    ],
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "unofficial",
+    "gray_zone_note": "Internet cafe overnight stays are not licensed lodging under the Hotel Business Act. Operating status unconfirmed as of this research pass -- verify before publishing.",
+    "licensed_as": "internet_cafe_no_lodging_license",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "Hotel Moana Shinjuku (Adults Only)",
+    "lat": 35.697,
+    "lng": 139.7052,
+    "description": "40-room adults-only love hotel in Kabukicho 2-chome. Note: a source-cited proximity claim (150m from Shin-Okubo Station) is geographically inconsistent with the address and could not be corroborated.",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly",
+      "price_band_mid"
+    ],
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": "Licensed love hotel, a common and legal lodging category in this district under Japan's hotel/entertainment-business licensing framework -- not a gray-zone business, but distinct from standard hotels in room typology and guest expectations.",
+    "licensed_as": "love_hotel_business_act",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "HOTEL & SPA J-MEX Shinjuku Kabukicho (Adults Only)",
+    "lat": 35.6943,
+    "lng": 139.702,
+    "description": "Adults-only love hotel with karaoke, VOD, and large-screen TV in rooms.",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly",
+      "price_band_mid"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": "Licensed love hotel, a common and legal lodging category in this district.",
+    "licensed_as": "love_hotel_business_act",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "HOTEL Perrier (Adults Only)",
+    "lat": 35.6955,
+    "lng": 139.7061,
+    "description": "43-room boutique-style adults-only love hotel, reopened November 2019.",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly",
+      "price_band_mid"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": "Licensed love hotel, a common and legal lodging category in this district.",
+    "licensed_as": "love_hotel_business_act",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
   }
 ]

@@ -5,7 +5,9 @@
     "lng": 139.7001,
     "description": "24/7 Lawson location a short walk from Shinjuku Station toward Kabukicho.",
     "category": "convenience",
-    "tags": ["24h"],
+    "tags": [
+      "24h"
+    ],
     "last_updated": "2026-07-11",
     "reliability_score": 4,
     "source_type": "observed",
@@ -19,12 +21,304 @@
     "lng": 139.7003,
     "description": "One of three 7-Eleven locations within ~2 minutes of Shinjuku Station; combines konbini and a Seven Bank ATM.",
     "category": "convenience",
-    "tags": ["24h"],
+    "tags": [
+      "24h"
+    ],
     "last_updated": "2026-07-11",
     "reliability_score": 4,
     "source_type": "observed",
     "type": "official",
     "verification_method": "web-search-2026-07",
     "gray_zone_note": null
+  },
+  {
+    "category": "convenience",
+    "name": "7-Eleven Kabukicho 1-2-13",
+    "lat": 35.6949,
+    "lng": 139.7013,
+    "description": "7-Eleven near Seibu-Shinjuku Station, within Kabukicho 1-chome. Appears under two different aggregator-listed names for the same address (\"Seibu Shinjuku Sta.-front\" / \"Kuyakusho-dori\"); treated as one store.",
+    "tags": [
+      "24h"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "unofficial",
+    "gray_zone_note": "Store name inconsistent across sources; address is the more reliable identifier.",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "convenience",
+    "name": "7-Eleven Shinjuku Toho Building Store",
+    "lat": 35.6952,
+    "lng": 139.7028,
+    "description": "7-Eleven at Kabukicho 1-19-1, beside the Shinjuku Toho Building (Godzilla Road landmark).",
+    "tags": [
+      "24h"
+    ],
+    "reliability_score": 4,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "convenience",
+    "name": "7-Eleven Shinjuku-eki Yasukuni-dori Store",
+    "lat": 35.6944,
+    "lng": 139.701,
+    "description": "7-Eleven at Kabukicho 1-17-2, on Yasukuni-dori at the Kabukicho perimeter.",
+    "tags": [
+      "24h"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "convenience",
+    "name": "7-Eleven Kabukicho 1-26-6",
+    "lat": 35.6955,
+    "lng": 139.702,
+    "description": "7-Eleven store within Kabukicho 1-chome interior.",
+    "tags": [
+      "24h"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "convenience",
+    "name": "7-Eleven Kabukicho 2-chome Chuo Ten",
+    "lat": 35.6963,
+    "lng": 139.7038,
+    "description": "7-Eleven at Kabukicho 2-33-3, central 2-chome.",
+    "tags": [
+      "24h"
+    ],
+    "reliability_score": 4,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "convenience",
+    "name": "7-Eleven Kabukicho Nichome Higashi Ten",
+    "lat": 35.6968,
+    "lng": 139.7052,
+    "description": "7-Eleven near Higashi-Shinjuku Station, east Kabukicho 2-chome. Hosts an in-store Seven Bank ATM and a ChargeSPOT battery-rental unit.",
+    "tags": [
+      "24h",
+      "atm_instore",
+      "phone_charging"
+    ],
+    "reliability_score": 4,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "convenience",
+    "name": "Lawson Kabukicho Icchome",
+    "lat": 35.6951,
+    "lng": 139.7025,
+    "description": "Lawson at Kabukicho 1-12-6.",
+    "tags": [
+      "24h"
+    ],
+    "reliability_score": 4,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "convenience",
+    "name": "Lawson Kabukicho Nichome",
+    "lat": 35.6964,
+    "lng": 139.7043,
+    "description": "Lawson at Kabukicho 2-17-10.",
+    "tags": [
+      "24h"
+    ],
+    "reliability_score": 4,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "convenience",
+    "name": "Lawson Toei Higashi-Shinjuku Station Front",
+    "lat": 35.6957,
+    "lng": 139.7035,
+    "description": "Lawson at Kabukicho 2-3-16, near the Toei Oedo Line Higashi-Shinjuku Station entrance.",
+    "tags": [
+      "24h"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "convenience",
+    "name": "FamilyMart Kabukicho",
+    "lat": 35.6953,
+    "lng": 139.7018,
+    "description": "FamilyMart at Kabukicho 1-27-1, listed on FamilyMart's official store locator.",
+    "tags": [
+      "24h"
+    ],
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "convenience",
+    "name": "FamilyMart Shinjuku Kabukicho Ichibangai",
+    "lat": 35.6946,
+    "lng": 139.7017,
+    "description": "FamilyMart at Kabukicho 1-18-5, on the Kabukicho Ichibangai arcade.",
+    "tags": [
+      "24h"
+    ],
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "convenience",
+    "name": "FamilyMart Kabukicho Icchome",
+    "lat": 35.6949,
+    "lng": 139.7015,
+    "description": "FamilyMart at Kabukicho 1-16-1.",
+    "tags": [
+      "24h"
+    ],
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "convenience",
+    "name": "FamilyMart Shinjuku Golden-gai",
+    "lat": 35.6944,
+    "lng": 139.704,
+    "description": "FamilyMart at Kabukicho 1-1-6, directly bordering Golden Gai on the district's eastern edge.",
+    "tags": [
+      "24h"
+    ],
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": "Sits at Kabukicho's border rather than its interior.",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "convenience",
+    "name": "FamilyMart Kabukicho Kita (North)",
+    "lat": 35.6969,
+    "lng": 139.7047,
+    "description": "FamilyMart at Kabukicho 2-32-7, northern 2-chome.",
+    "tags": [
+      "24h"
+    ],
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "convenience",
+    "name": "FamilyMart Shinjuku Kabukicho",
+    "lat": 35.696,
+    "lng": 139.7033,
+    "description": "FamilyMart at Kabukicho 2-25-2.",
+    "tags": [
+      "24h"
+    ],
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "convenience",
+    "name": "FamilyMart Shinjuku Kuyakusho-dori",
+    "lat": 35.6958,
+    "lng": 139.703,
+    "description": "FamilyMart at Kabukicho 2-10-6, on Kuyakusho-dori (Ward Office Street).",
+    "tags": [
+      "24h"
+    ],
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "convenience",
+    "name": "Ministop Shinjuku Kabukicho",
+    "lat": 35.6966,
+    "lng": 139.7044,
+    "description": "Ministop at Kabukicho 2-22-1.",
+    "tags": [
+      "24h"
+    ],
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "convenience",
+    "name": "Ministop Kabukicho 2-chome",
+    "lat": 35.6971,
+    "lng": 139.705,
+    "description": "Ministop at Kabukicho 2-30-13, ~4 min walk from Seibu-Shinjuku Station north exit.",
+    "tags": [
+      "24h"
+    ],
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
   }
 ]

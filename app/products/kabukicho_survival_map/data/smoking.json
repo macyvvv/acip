@@ -5,7 +5,11 @@
     "lng": 139.6995,
     "description": "24h designated outdoor smoking area with smoke-separation panels near the West Exit Rotary; nearest large official smoking zone to Kabukicho.",
     "category": "smoking",
-    "tags": ["outdoor", "rain_ok", "crowded"],
+    "tags": [
+      "outdoor",
+      "rain_ok",
+      "crowded"
+    ],
     "last_updated": "2026-07-11",
     "reliability_score": 4,
     "source_type": "official",
@@ -19,12 +23,285 @@
     "lng": 139.7028,
     "description": "Paid cafe inside Kabukicho (Kawashin Bldg 2F) with an indoor designated smoking section; requires a purchase to use.",
     "category": "smoking",
-    "tags": ["indoor", "rain_ok"],
+    "tags": [
+      "indoor",
+      "rain_ok"
+    ],
     "last_updated": "2026-07-11",
     "reliability_score": 3,
     "source_type": "observed",
     "type": "unofficial",
     "verification_method": "web-search-2026-07",
     "gray_zone_note": "Requires a paid purchase to use; not a free public smoking area."
+  },
+  {
+    "category": "smoking",
+    "name": "Cinecity Plaza-side Public Smoking Area",
+    "lat": 35.6949,
+    "lng": 139.7025,
+    "description": "Ward-area outdoor designated smoking spot near Kabukicho Cinecity Plaza, free, 24h.",
+    "tags": [
+      "outdoor",
+      "rain_ok",
+      "crowded"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "smoking",
+    "name": "Kabukicho 1-3-7 Public Smoking Area",
+    "lat": 35.6944,
+    "lng": 139.7033,
+    "description": "Outdoor designated public smoking area listed for Kabukicho 1-chome address block 3-7.",
+    "tags": [
+      "outdoor",
+      "rain_ok"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": null,
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "smoking",
+    "name": "Ogado (Big Guard) Roadside Smoking Area",
+    "lat": 35.6928,
+    "lng": 139.6989,
+    "description": "Outdoor smoking area at Nishi-Shinjuku 7-1-1, just outside Kabukicho's southwest boundary; nearest option when approaching from Shinjuku Station side.",
+    "tags": [
+      "outdoor",
+      "rain_ok",
+      "crowded"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "gray_zone_note": "Border-adjacent, not strictly inside Kabukicho district boundary.",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "smoking",
+    "name": "Cafe Renoir (Ogado-yoko branch)",
+    "lat": 35.6929,
+    "lng": 139.6987,
+    "description": "Paid cafe chain location with heated-tobacco-compatible smoking seating, at the Kabukicho/Nishi-Shinjuku border.",
+    "tags": [
+      "indoor",
+      "rain_ok"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "unofficial",
+    "gray_zone_note": "Requires a purchase; border-adjacent to Kabukicho.",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "smoking",
+    "name": "Cafe Renoir (TOHO Cinemas-mae branch)",
+    "lat": 35.6949,
+    "lng": 139.7028,
+    "description": "Paid cafe inside Kabukicho (Kawashin Bldg 2F) with an indoor designated smoking section.",
+    "tags": [
+      "indoor",
+      "rain_ok"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "unofficial",
+    "gray_zone_note": "Requires a purchase to use the seating.",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "smoking",
+    "name": "Nicobar Shinjuku",
+    "lat": 35.6939,
+    "lng": 139.7038,
+    "description": "Bar at Kabukicho 1-2-13 with all-seats smoking allowed, open 17:00-5:00.",
+    "tags": [
+      "indoor"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "unofficial",
+    "gray_zone_note": "Bar entry required; not a standalone smoking area.",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "smoking",
+    "name": "Albatross G (Golden Gai)",
+    "lat": 35.6931,
+    "lng": 139.7043,
+    "description": "Golden Gai bar at Kabukicho 1-1-7 (5-Bankai bldg, 2F), 28 seats, all-seats smoking, 19:00-5:00.",
+    "tags": [
+      "indoor",
+      "hidden"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "unofficial",
+    "gray_zone_note": "Bar entry/tab required; narrow Golden Gai alley access.",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "smoking",
+    "name": "bar Gaslamp",
+    "lat": 35.6947,
+    "lng": 139.7027,
+    "description": "Bar at Kabukicho 1-4-12, 12 seats, smoking allowed, Mon-Sat 19:00-5:00.",
+    "tags": [
+      "indoor"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "unofficial",
+    "gray_zone_note": "Bar entry required.",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "smoking",
+    "name": "Ikkenme Sakaba Kabukicho",
+    "lat": 35.6958,
+    "lng": 139.701,
+    "description": "24h izakaya at Kabukicho 1-17-1 (Kurita Bldg B1), 52 seats, all-seats smoking.",
+    "tags": [
+      "indoor",
+      "crowded"
+    ],
+    "reliability_score": 4,
+    "source_type": "observed",
+    "type": "unofficial",
+    "gray_zone_note": "Food/drink order expected.",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "smoking",
+    "name": "Shinjuku Dagashi Bar",
+    "lat": 35.6952,
+    "lng": 139.702,
+    "description": "Izakaya-bar at Kabukicho 1-6-2 (T-Wing 5F), 90 seats, all-seats smoking, retro-candy theme.",
+    "tags": [
+      "indoor",
+      "crowded"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "unofficial",
+    "gray_zone_note": "Order/cover charge required.",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "smoking",
+    "name": "Izakaya Ikkyu Shinjuku Kabukicho",
+    "lat": 35.696,
+    "lng": 139.7008,
+    "description": "Large izakaya at Kabukicho 1-18-8 (Daiichi Monami Bldg 2F), 150 seats, all-seats smoking.",
+    "tags": [
+      "indoor",
+      "crowded"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "unofficial",
+    "gray_zone_note": "Order required.",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "smoking",
+    "name": "Yakiniku Niku no Ne",
+    "lat": 35.6959,
+    "lng": 139.7012,
+    "description": "Yakiniku restaurant at Kabukicho 1-19-3 (8F), 29 seats plus private rooms, all-seats smoking.",
+    "tags": [
+      "indoor"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "unofficial",
+    "gray_zone_note": "Meal order required.",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "smoking",
+    "name": "Golden Gai MISO SOUP",
+    "lat": 35.6931,
+    "lng": 139.7043,
+    "description": "Golden Gai bar at Kabukicho 1-1-9 (Hanazono Ichiban-gai), 15 seats, all-seats smoking, 19:00-5:00.",
+    "tags": [
+      "indoor",
+      "hidden"
+    ],
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "unofficial",
+    "gray_zone_note": "Very small bar; cover/bar-entry etiquette applies.",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "smoking",
+    "name": "Kurakura PART II",
+    "lat": 35.6931,
+    "lng": 139.7043,
+    "description": "Golden Gai bar at Kabukicho 1-1-9, 40 seats, all-seats smoking, 19:00-2:00.",
+    "tags": [
+      "indoor",
+      "hidden"
+    ],
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "unofficial",
+    "gray_zone_note": "Bar entry required; late-closing relative to other listed venues.",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "smoking",
+    "name": "Yakiniku Icchome",
+    "lat": 35.6963,
+    "lng": 139.6998,
+    "description": "Yakiniku restaurant at Kabukicho 1-26-1 (Fugetsu Kaikan Bldg 2F), 46 seats, all-seats smoking.",
+    "tags": [
+      "indoor"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "unofficial",
+    "gray_zone_note": "Meal order required.",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "smoking",
+    "name": "Otsu Shinjuku Kabukicho",
+    "lat": 35.6936,
+    "lng": 139.7015,
+    "description": "24h zosui/rice-soup restaurant at Kabukicho 1-11 (Ikuzasu Bldg 2F), 30 seats, all-seats smoking.",
+    "tags": [
+      "indoor",
+      "rain_ok"
+    ],
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "unofficial",
+    "gray_zone_note": "Order required; open 24h so useful as a late-night fallback.",
+    "last_updated": "2026-07-11",
+    "verification_method": "web-search-2026-07"
   }
 ]
