@@ -84,5 +84,37 @@
     "title": "Auto-triggered doc_creation following kabukicho_survival_map/marketing/auto-0002",
     "status": "completed",
     "source": "auto_trigger"
+  },
+  {
+    "business_id": "kabukicho_survival_map",
+    "role_id": "scenario_writing",
+    "task_id": "task-0001",
+    "title": "Tag-based evaluation copy + unofficial/gray-zone disclaimer text",
+    "status": "completed",
+    "source": "manual"
+  },
+  {
+    "business_id": "kabukicho_survival_map",
+    "role_id": "doc_creation",
+    "task_id": "task-0001-seo-copy",
+    "title": "SEO title/meta description + static UI copy",
+    "status": "completed",
+    "source": "manual"
+  },
+  {
+    "business_id": "kabukicho_survival_map",
+    "role_id": "marketing",
+    "task_id": "task-0001-promo-plan",
+    "title": "Post-launch promotion/distribution plan",
+    "status": "completed",
+    "source": "manual"
+  },
+  {
+    "business_id": "kabukicho_survival_map",
+    "role_id": "doc_creation",
+    "task_id": "auto-0004",
+    "title": "Auto-triggered doc_creation following kabukicho_survival_map/marketing/task-0001-promo-plan",
+    "status": "completed",
+    "source": "auto_trigger"
   }
 ]

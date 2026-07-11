@@ -9,11 +9,16 @@
       "policy_id": "PREAPP-KABUKICHO_SURVIVAL_MAP-MARKETING-0001",
       "status": "completed",
       "claimed_at": "2026-07-11T00:40:32.823606+00:00"
+    },
+    "task-0001-promo-plan": {
+      "policy_id": "PREAPP-KABUKICHO_SURVIVAL_MAP-MARKETING-0001",
+      "status": "completed",
+      "claimed_at": "2026-07-11T00:49:10.050343+00:00"
     }
   },
   "counters": {
     "2026-07-10": 1,
-    "2026-W28": 2,
-    "2026-07-11": 1
+    "2026-W28": 3,
+    "2026-07-11": 2
   }
 }
