@@ -56,6 +56,17 @@ def add_task(
         return queue
 
 
+def list_candidate_tasks(base_path: str | Path = ".") -> list[dict[str, Any]]:
+    """Pure, read-only. Returns every queue.json entry still status=="candidate",
+    in file order (oldest first, since add_task only ever appends). Adds zero
+    authorization surface by itself -- system/scripts/business_agent/
+    run_scheduled_execution.py uses this purely to discover what a human could
+    already call manually via run_approved_autonomous_execution.py; the one
+    real authorization decision still lives entirely inside
+    ApprovedAutonomousExecution.run()."""
+    return [item for item in load_queue(base_path) if item.get("status") == "candidate"]
+
+
 def mark_task_status(
     business_id: str,
     role_id: str,
