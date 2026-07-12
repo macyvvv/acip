@@ -45,6 +45,13 @@ Default operating mode for autonomy is one-shot approved execution only.
 ## Prohibition
 No new autonomy layer may be enabled unless a new readiness artifact and release gate are added first.
 
+The business-agent platform's Level 3b (scheduled/unattended execution of
+generation-only roles) satisfies this via `adr/ADR-0038-business-agent-level-3b-scheduled-unattended-execution.md`
+and its release-gate checklist — see
+`docs/current/BUSINESS_AGENT_AUTOMATION_READINESS.md`'s Level 3b section for
+the full readiness artifact. The repo-dev one-shot approval flow described
+above in this doc is unaffected.
+
 ## Approval Lifecycle
 
 Active approval candidates are limited to scopes in `candidate`, `approved`, `blocked`, or `failed` review states when operator action is still required.
