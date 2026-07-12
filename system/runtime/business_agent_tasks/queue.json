@@ -308,5 +308,21 @@
     "title": "Auto-triggered marketing following kabukicho_survival_map/market_research/task-0014-lodging-price-tiers",
     "status": "candidate",
     "source": "auto_trigger"
+  },
+  {
+    "business_id": "kabukicho_survival_map",
+    "role_id": "market_research",
+    "task_id": "task-0015-geragera-status-check",
+    "title": "Verify operating status of ゲラゲラ 新宿マンガ喫茶 entry",
+    "status": "completed",
+    "source": "manual"
+  },
+  {
+    "business_id": "kabukicho_survival_map",
+    "role_id": "marketing",
+    "task_id": "auto-0016",
+    "title": "Auto-triggered marketing following kabukicho_survival_map/market_research/task-0015-geragera-status-check",
+    "status": "candidate",
+    "source": "auto_trigger"
   }
 ]

@@ -187,26 +187,6 @@
     "verification_method": "web-search-2026-07"
   },
   {
-    "name": "ゲラゲラ 新宿マンガ喫茶",
-    "lat": 35.6951,
-    "lng": 139.7027,
-    "description": "ヒューマックスパビリオン内の漫画喫茶チェーン。一部の最新情報では閉店の可能性が示唆されており、未確認。",
-    "category": "lodging",
-    "tags": [
-      "shower_available",
-      "overnight_friendly",
-      "price_band_budget",
-      "24h"
-    ],
-    "reliability_score": 2,
-    "source_type": "observed",
-    "type": "unofficial",
-    "gray_zone_note": "ネットカフェの宿泊利用は旅館業法上の宿泊施設としての許可を得たものではありません。営業状況は今回の調査時点で未確認のため、公開前にご確認ください。",
-    "licensed_as": "internet_cafe_no_lodging_license",
-    "last_updated": "2026-07-11",
-    "verification_method": "web-search-2026-07"
-  },
-  {
     "name": "ホテル モアナ新宿(アダルト専用)",
     "lat": 35.697,
     "lng": 139.7052,
