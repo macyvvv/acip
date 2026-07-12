@@ -1,0 +1,7 @@
+{
+  "base_layer": "low warm room tone",
+  "noise_type": "fabric shift texture",
+  "frequency_range": "200-800Hz",
+  "trigger_timing": ["body turn", "weight resettle"],
+  "silence_duration": 0.9
+}

@@ -1,0 +1,7 @@
+{
+  "base_layer": "warm low room hum",
+  "noise_type": "stable breath texture",
+  "frequency_range": "200-800Hz",
+  "trigger_timing": ["mug set down", "hand return"],
+  "silence_duration": 1.0
+}

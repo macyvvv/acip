@@ -1,0 +1,11 @@
+{
+  "base_layer": "tight enclosed-space hush",
+  "noise_type": "near-silent breath texture",
+  "frequency_range": "150-650Hz",
+  "trigger_timing": [
+    "lips part",
+    "shoulders draw in",
+    "silence entry"
+  ],
+  "silence_duration": 1.4
+}

@@ -1,0 +1,7 @@
+{
+  "base_layer": "distant crashing surf and coastal wind",
+  "noise_type": "particle-like shimmer",
+  "frequency_range": "high-frequency/particle-like",
+  "trigger_timing": ["gust of spray", "eyes reopening", "silence entry"],
+  "silence_duration": 2.0
+}

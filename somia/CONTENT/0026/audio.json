@@ -1,0 +1,7 @@
+{
+  "base_layer": "soft interior room ambience",
+  "noise_type": "particle-like light shimmer",
+  "frequency_range": "high-frequency/particle-like",
+  "trigger_timing": ["curtain shift", "eyes opening", "silence entry"],
+  "silence_duration": 2.0
+}

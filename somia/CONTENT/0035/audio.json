@@ -1,0 +1,11 @@
+{
+  "base_layer": "low floor-level room hush",
+  "noise_type": "cushion-fabric shift texture",
+  "frequency_range": "150-600Hz",
+  "trigger_timing": [
+    "half-rise",
+    "resettle down",
+    "silence entry"
+  ],
+  "silence_duration": 1.2
+}

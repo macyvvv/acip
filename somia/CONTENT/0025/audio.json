@@ -1,0 +1,7 @@
+{
+  "base_layer": "shoreline ambience with distant surf",
+  "noise_type": "particle-like air shimmer",
+  "frequency_range": "high-frequency/particle-like",
+  "trigger_timing": ["breath release", "hair lift", "silence entry"],
+  "silence_duration": 2.0
+}
