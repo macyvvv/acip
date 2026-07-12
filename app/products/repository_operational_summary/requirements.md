@@ -9,7 +9,10 @@
 ## Constraints
 
 - Use only repository artifacts.
-- Avoid external services.
+- Avoid external services -- the real concern here is determinism (this tool
+  renders a stable summary from local repo state; a network call would make
+  output non-reproducible and dependent on external availability), not cost
+  or secrets (those are separately, explicitly covered by the next line).
 - Avoid secrets.
 - Keep behavior deterministic.
 
