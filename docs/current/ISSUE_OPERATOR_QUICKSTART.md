@@ -26,15 +26,14 @@ Boundaries:
 1. Open GitHub and create a new issue.
 2. Use the repository’s existing issue naming convention.
 
-## Run the Loop
-1. Sync open issues:
+## Sync Open Issues
 ```bash
 python3 system/scripts/sync_github_issues.py
 ```
-2. Run the supervisor / issue loop:
-```bash
-./system/scripts/run_until_idle.sh
-```
+This repo has no continuous/idle-loop runner -- matches the "Repeated
+autonomy disabled" boundary stated above. Each execution is one-shot via
+the Approval Console (see above); re-run it manually for the next
+candidate.
 
 ## Inspect After Execution
 - `system/runtime/github/open_issues.json`

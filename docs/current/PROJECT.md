@@ -16,9 +16,10 @@ GitOps
 
 ## Current Phase
 
-Phase 0
+Phase 3
 
-GitHub Foundation
+Business Agent Automation Platform live (Levels 0-3a/3c) + Governance
+Layer Overhaul in progress (`adr/ADR-0037`)
 
 ## Current Repository
 
@@ -28,17 +29,20 @@ Canonical
 
 ## Current Objective
 
-Constitution v3 Freeze
+Retire ChatGPT/Codex-era coordination scaffolding and rigid absolute rules
+that no longer match how this repo is actually operated (see
+`adr/ADR-0037`), while keeping every genuinely enforced or durable safety
+property intact: PR-required workflow, human approval gate, Level 3a/3c's
+real spend caps, secret-handling discipline.
 
 ## Current Priority
 
-1 Repository Foundation
+1 Governance layer overhaul (in progress)
 
-2 Constitution
+2 Business agent platform: Level 3b (scheduled/unattended execution) --
+not started, requires explicit separate operator sign-off
 
-3 Governance
-
-4 Runtime Preparation
+3 Product surfaces under `app/products/` -- ongoing iteration
 
 ## Decision Rule
 
@@ -48,6 +52,10 @@ over
 
 Local Optimization
 
+Name the real underlying concern (cost, irreversibility, determinism,
+secrets) in any new rule, rather than writing an unqualified absolute --
+see `adr/ADR-0037` for why this was added as an explicit convention.
+
 ## Human Responsibility
 
 Strategy
@@ -56,17 +64,9 @@ Approval
 
 Capital Allocation
 
-## ChatGPT Responsibility
+## Claude Code Responsibility
 
 Architecture
-
-Governance
-
-Optimization
-
-Review
-
-## Codex Responsibility
 
 Implementation
 
@@ -74,7 +74,14 @@ Refactoring
 
 Testing
 
-PR
+Review
+
+Pull Request authorship
+
+This repo used to split this work between ChatGPT (architecture/review)
+and Codex (implementation/PR) because neither tool retained context across
+sessions. Claude Code holds a continuous session and executes directly, so
+that split is gone -- see `CLAUDE.md`'s "Operating model" section.
 
 ## Success KPI
 
