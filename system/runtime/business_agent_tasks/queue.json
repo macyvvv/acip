@@ -170,7 +170,7 @@
     "role_id": "marketing",
     "task_id": "auto-0004",
     "title": "Auto-triggered marketing following kabukicho_survival_map/market_research/task-0003-smoking-deep",
-    "status": "candidate",
+    "status": "completed",
     "source": "auto_trigger"
   },
   {
@@ -330,7 +330,7 @@
     "role_id": "market_research",
     "task_id": "task-0003-finance-saas-niche",
     "title": "Batch 3: validate finance/SaaS niche + distribution cadence as next content pillar",
-    "status": "candidate",
+    "status": "completed",
     "source": "manual"
   },
   {
@@ -340,5 +340,21 @@
     "title": "First short-form video script draft: AIRI",
     "status": "candidate",
     "source": "manual"
+  },
+  {
+    "business_id": "kabukicho_survival_map",
+    "role_id": "doc_creation",
+    "task_id": "auto-0005",
+    "title": "Auto-triggered doc_creation following kabukicho_survival_map/marketing/auto-0004",
+    "status": "candidate",
+    "source": "auto_trigger"
+  },
+  {
+    "business_id": "text_syndicate",
+    "role_id": "marketing",
+    "task_id": "auto-0003",
+    "title": "Auto-triggered marketing following text_syndicate/market_research/task-0003-finance-saas-niche",
+    "status": "candidate",
+    "source": "auto_trigger"
   }
 ]

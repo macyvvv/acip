@@ -28,8 +28,8 @@
   },
   "business_agent_stats": {
     "text_syndicate:market_research": {
-      "runs": 3,
-      "success": 2,
+      "runs": 4,
+      "success": 3,
       "failure": 1,
       "metrics": {}
     },
@@ -46,8 +46,8 @@
       "metrics": {}
     },
     "kabukicho_survival_map:marketing": {
-      "runs": 3,
-      "success": 3,
+      "runs": 4,
+      "success": 4,
       "failure": 0,
       "metrics": {}
     },
@@ -70,5 +70,5 @@
       "metrics": {}
     }
   },
-  "last_updated": "2026-07-12T08:58:57.258812+00:00"
+  "last_updated": "2026-07-12T10:16:41.446228+00:00"
 }

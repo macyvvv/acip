@@ -7,11 +7,11 @@ scope_type:
 scope_id: 
 execution_triggered: true
 execution_mode: one_shot
-execution_result_status: failure
+execution_result_status: success
 completion_marker_path: /Users/ariel/Documents/tools/acip/system/runtime/business_agents/text_syndicate/market_research/task-0003-finance-saas-niche/latest.json
 request_path: /Users/ariel/Documents/tools/acip/system/runtime/request/execution_request.json
-stopped_reason: exit_code=124
-started_at: 2026-07-12T08:57:56.835873+00:00
-finished_at: 2026-07-12T08:58:57.263401+00:00
+stopped_reason: completion_marker_written
+started_at: 2026-07-12T10:15:00.206264+00:00
+finished_at: 2026-07-12T10:16:41.447002+00:00
 authorization_source: policy_pre_approval
 policy_id: PREAPP-TEXT_SYNDICATE-MARKET_RESEARCH-0001
