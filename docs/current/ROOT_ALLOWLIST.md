@@ -5,7 +5,7 @@ Current root entries:
 - `README.md`, `AGENTS.md`, `CLAUDE.md`, `VERSION`, `.gitignore`,
   `.env.example`
 - `.github/`, `.system/`
-- `app/`, `system/`, `web/`, `somia/`
+- `app/`, `system/`, `web/`, `somia/`, `scripts/`
 - `basis/`, `adr/`, `wbs/`, `docs/`, `specs/`, `contracts/`, `archive/`
 - `baseline/`, `context/`, `inbox/`, `knowledge/`, `packs/`, `queue/`,
   `releases/`
@@ -22,20 +22,36 @@ pointed at them (or, for `baseline/`/`releases/`, an orphaned checker that
 nothing calls) but not enforced in CI -- kept as-is, not archived, pending
 a closer look.
 
-**Correction to this doc's own prior claim**: an earlier revision of this
-file (Stage 4 of `adr/ADR-0037`) asserted that the pre-consolidation
-`scripts/` and `runtime/` root directories "no longer exist -- those all
-live under `system/` today." That was wrong -- both still exist at root,
-discovered while archiving the 11 directories above. Their contents look
-like stale, partially-diverged duplicates of `system/scripts/` and
-`system/runtime/` (e.g. root `scripts/extract_knowledge.py` is a shorter,
-differently-implemented version of `system/scripts/extract_knowledge.py`;
-root `runtime/planning/` and `runtime/repository_state/` overlap in name
-but not exactly in content with their `system/runtime/` counterparts).
-Not archived or otherwise touched yet -- flagged for a dedicated
-investigation (confirm nothing reads from the root paths before deciding
-whether to archive or delete), not assumed safe just because they look
-similar to already-archived scaffolding.
+**Root `runtime/` archived, root `scripts/` kept -- follow-up to a
+correction this doc itself needed twice.** Stage 4 of `adr/ADR-0037`
+originally claimed `scripts/` and `runtime/` "no longer exist -- those all
+live under `system/` today," which was wrong (both existed). A follow-up
+pass then guessed both were "stale, partially-diverged duplicates" of
+their `system/` counterparts without actually checking -- also wrong,
+for `scripts/` specifically. Investigating properly this time:
+
+- `scripts/extract_knowledge.py` is a genuine, intentional root-level CLI
+  wrapper (`from system.scripts.extract_knowledge import main`) matching
+  the documented human workflow in `docs/current/KNOWLEDGE_FACTORY.md`
+  ("Run `python scripts/extract_knowledge.py`") -- **not** a stale
+  duplicate. The earlier "shorter, differently-implemented" read was
+  comparing a 13-line delegating wrapper against the real implementation
+  it calls, not two independently-diverged copies. Kept as-is.
+- `runtime/planning/` and `runtime/repository_state/` had zero code
+  references anywhere (confirmed via `git grep`, both read and write
+  sides) and, for `planning/` specifically, contained genuinely stale
+  content (`current_pack: PACK-0001` at root vs. `PACK-0004` in
+  `system/runtime/planning/`, missing several files `system/runtime/
+  planning/` has since accumulated) -- real evidence of a frozen,
+  no-longer-updated pre-consolidation snapshot, not just a same-named
+  coincidence. Archived to
+  [archive/root_scaffolding_2026/runtime/](../../archive/root_scaffolding_2026/README.md).
+
+**Lesson applied going forward**: a plausible-sounding guess about
+staleness/duplication is not the same as checking it. Both of this doc's
+own errors above were guesses stated as findings; the fix each time was
+to actually diff the content and `git grep` for references before writing
+a conclusion.
 
 ## Policy
 
