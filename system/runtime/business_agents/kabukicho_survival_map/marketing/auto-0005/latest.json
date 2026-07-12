@@ -1,0 +1,21 @@
+{
+  "business_id": "kabukicho_survival_map",
+  "role_id": "marketing",
+  "task_id": "auto-0005",
+  "adapter_mode": "execute",
+  "resolved_model": "claude-sonnet-5",
+  "model_capability": "reasoning",
+  "allowed_tools": [
+    "Read",
+    "Grep",
+    "Glob",
+    "WebSearch"
+  ],
+  "agent_cli_command": "claude -p \"<rendered prompt>\" --model claude-sonnet-5 --tools Read,Grep,Glob,WebSearch --permission-mode bypassPermissions",
+  "stdout": "You've hit your session limit · resets 10:20pm (Asia/Tokyo)\n",
+  "stderr": "",
+  "exit_code": 1,
+  "success": false,
+  "captured_at": "2026-07-12T11:17:17.547300+00:00",
+  "artifact_path": "/Users/ariel/Documents/tools/acip/system/runtime/business_agents/kabukicho_survival_map/marketing/auto-0005/latest.json"
+}
