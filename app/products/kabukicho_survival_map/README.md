@@ -28,8 +28,14 @@ Canonical source: `system/runtime/data/kabukicho/{smoking,toilet,convenience,atm
 
 **Not yet decided** -- explicitly out of scope for this build (a separate, later decision per the operator). `web/public/kabukicho/` is a ready-to-serve static bundle; any static host works once chosen.
 
+## Testing
+
+- Data schema + build-output consistency: `python -m pytest app/products/kabukicho_survival_map/tests/` (part of the full `python -m pytest -q` suite).
+- Map/list pure logic (distance calculation, freshness dating, filtering) has no Python equivalent to test against -- `node app/products/kabukicho_survival_map/tests/test_app_logic.js` runs a small, framework-free Node test against the relevant functions in `app.js` directly (guarded `module.exports`, no effect on browser behavior). Not part of the Python pytest suite (different runtime); run it manually when touching `app.js`'s map/list/filter logic.
+- No automated coverage for the Google Maps rendering path itself (marker creation, info windows, category-switch re-pinning) -- verified manually via Playwright with a stubbed `google.maps` SDK during development; there's no committed harness for this yet.
+
 ## Review Focus
 
-- Data is a first draft; needs one human verification pass (see `market_research/task-0002`'s recommendations) before being treated as reliable.
-- Mobile UX: bottom nav, 1-tap category toggle, list-first, tap-to-Google-Maps -- test on an actual phone-width viewport, not just resized desktop.
-- Gray-zone/unofficial disclaimer renders inline on the affected card, not a separate screen.
+- Mobile UX: bottom nav, 1-tap category toggle, top map / bottom nearest-first list, tap-to-Google-Maps -- test on an actual phone-width viewport, not just resized desktop.
+- Gray-zone/unofficial disclaimer renders inline on the affected card, not a separate screen. A `gray_zone_note` on an `official`-type entry renders as a plain info note, not the disclaimer banner (see `app.js`'s `renderCard` comment).
+- Coordinates for most entries are still approximate (derived from landmark proximity via web search, not geocoded against a mapping API) -- flagged per-entry where known, not yet resolved.

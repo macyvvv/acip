@@ -15,8 +15,7 @@
     "source_type": "official",
     "type": "official",
     "verification_method": "web-search-2026-07",
-    "gray_zone_note": null,
-    "availability_type": "time-sensitive"
+    "gray_zone_note": null
   },
   {
     "category": "coin_locker",
@@ -195,7 +194,6 @@
     "reliability_score": 4,
     "source_type": "observed",
     "type": "official",
-    "access_restriction": "venue_customers_only",
     "gray_zone_note": null,
     "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
