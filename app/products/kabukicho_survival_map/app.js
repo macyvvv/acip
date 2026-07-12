@@ -64,8 +64,26 @@
     infoWindow: null,
     userLocation: null,
     userMarker: null,
-    locationStatus: "idle" // idle | requesting | granted | denied | unsupported
+    locationStatus: "idle", // idle | requesting | granted | denied | unsupported
+    // Tag ids currently toggled on, e.g. {shower_available: true}. A POI
+    // must carry every active tag (AND, not OR) to survive the filter --
+    // each additional toggle narrows the list further, matching how a
+    // "narrow down" filter is normally expected to behave. Reset on every
+    // category switch since each category's tag vocabulary is different
+    // (TAG_COPY[categoryId]); carrying a filter across categories would
+    // silently no-op or, worse, coincidentally match an unrelated tag.
+    activeFilters: {}
   };
+
+  function getFilteredPois(categoryId) {
+    var pois = state.data[categoryId] || [];
+    var activeTags = Object.keys(state.activeFilters).filter(function (t) { return state.activeFilters[t]; });
+    if (!activeTags.length) return pois;
+    return pois.filter(function (poi) {
+      var tags = poi.tags || [];
+      return activeTags.every(function (t) { return tags.indexOf(t) !== -1; });
+    });
+  }
 
   function haversineDistanceMeters(lat1, lng1, lat2, lng2) {
     var R = 6371000;
@@ -175,15 +193,24 @@
 
   function renderList() {
     var container = document.getElementById("poi-list");
-    var pois = sortedByDistance(state.data[state.activeCategory] || []);
+    var totalInCategory = (state.data[state.activeCategory] || []).length;
+    var pois = sortedByDistance(getFilteredPois(state.activeCategory));
+    var hasActiveFilter = Object.keys(state.activeFilters).some(function (t) { return state.activeFilters[t]; });
+
     if (!pois.length) {
-      container.innerHTML =
-        locationHintHtml() +
-        '<p class="no-results">このカテゴリに該当する場所が見つかりませんでした。<br>別のカテゴリを選択してください。</p>';
+      var emptyMessage = hasActiveFilter
+        ? '<p class="no-results">選択した条件に該当する場所が見つかりませんでした。<br>絞り込みを解除するか、別の条件をお試しください。</p>'
+        : '<p class="no-results">このカテゴリに該当する場所が見つかりませんでした。<br>別のカテゴリを選択してください。</p>';
+      container.innerHTML = locationHintHtml() + emptyMessage;
       return;
     }
+    var countNoteHtml =
+      hasActiveFilter
+        ? '<p class="filter-count-note">' + pois.length + " / " + totalInCategory + " 件を表示中</p>"
+        : "";
     container.innerHTML =
       locationHintHtml() +
+      countNoteHtml +
       pois.map(function (poi, index) { return renderCard(poi, state.activeCategory, index); }).join("");
 
     Array.prototype.forEach.call(container.querySelectorAll(".poi-card"), function (card) {
@@ -191,6 +218,36 @@
         if (evt.target.closest(".maps-link")) return;
         var idx = Number(card.getAttribute("data-poi-index"));
         focusMarker(pois[idx]);
+      });
+    });
+  }
+
+  function renderFilterBar() {
+    var bar = document.getElementById("filter-bar");
+    var tagCopy = TAG_COPY[state.activeCategory] || {};
+    var tagIds = Object.keys(tagCopy);
+    if (!tagIds.length) {
+      bar.innerHTML = "";
+      bar.hidden = true;
+      return;
+    }
+    bar.hidden = false;
+    bar.innerHTML = tagIds.map(function (tagId) {
+      var active = !!state.activeFilters[tagId];
+      return (
+        '<button class="filter-chip" data-tag="' + tagId + '" aria-pressed="' + active + '">' +
+        escapeHtml(tagCopy[tagId]) +
+        "</button>"
+      );
+    }).join("");
+
+    Array.prototype.forEach.call(bar.querySelectorAll(".filter-chip"), function (btn) {
+      btn.addEventListener("click", function () {
+        var tagId = btn.getAttribute("data-tag");
+        state.activeFilters[tagId] = !state.activeFilters[tagId];
+        renderFilterBar();
+        renderList();
+        renderMarkers();
       });
     });
   }
@@ -209,7 +266,12 @@
     Array.prototype.forEach.call(nav.querySelectorAll(".nav-btn"), function (btn) {
       btn.addEventListener("click", function () {
         state.activeCategory = btn.getAttribute("data-category");
+        // Each category has its own tag vocabulary (TAG_COPY[categoryId]) --
+        // carrying filters across categories would silently no-op or match
+        // an unrelated same-named tag, so start clean on every switch.
+        state.activeFilters = {};
         renderNav();
+        renderFilterBar();
         renderList();
         renderMarkers();
       });
@@ -232,7 +294,10 @@
   function renderMarkers() {
     if (!state.map) return;
     clearMarkers();
-    var pois = state.data[state.activeCategory] || [];
+    // Same filtered set as the list -- map and list must always agree on
+    // what's currently "shown", or a pin with no matching card (or vice
+    // versa) reads as a bug, not a feature.
+    var pois = getFilteredPois(state.activeCategory);
     if (!state.infoWindow) state.infoWindow = new google.maps.InfoWindow();
 
     var bounds = new google.maps.LatLngBounds();
@@ -385,6 +450,7 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     renderNav();
+    renderFilterBar();
     loadAll().then(function () {
       renderList();
       // Map init (initKabukichoMap) fires asynchronously once the Google
