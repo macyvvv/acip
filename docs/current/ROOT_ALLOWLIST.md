@@ -1,10 +1,5 @@
 # ROOT_ALLOWLIST
 
-This list was last reconciled against the pre-consolidation repo layout
-(`scripts/`, `orchestrator/`, `workers/`, `runtime/`, `graph/` at root),
-which no longer exists -- those all live under `system/` today. Updated to
-the actual current root entries below.
-
 Current root entries:
 
 - `README.md`, `AGENTS.md`, `CLAUDE.md`, `VERSION`, `.gitignore`,
@@ -12,16 +7,35 @@ Current root entries:
 - `.github/`, `.system/`
 - `app/`, `system/`, `web/`, `somia/`
 - `basis/`, `adr/`, `wbs/`, `docs/`, `specs/`, `contracts/`, `archive/`
-- `baseline/`, `cache/`, `catalog/`, `context/`, `control/`, `inbox/`,
-  `knowledge/`, `loader/`, `packs/`, `prompts/`, `queue/`, `registry/`,
-  `releases/`, `review/`, `rules/`, `runbooks/`, `solution/`, `templates/`
+- `baseline/`, `context/`, `inbox/`, `knowledge/`, `packs/`, `queue/`,
+  `releases/`
 
-**Note on the last group above** (`baseline/` through `templates/`): these
-are additional "repository operating system" prose directories beyond even
-`basis/`'s scope, most of which read as descriptive rather than enforced
-(same pattern as most of pre-overhaul `basis/`, see `adr/ADR-0037`). Not
-audited or touched by this pass -- flagged here as a real, larger follow-up
-candidate for a future governance stage, not silently ignored.
+**11 of the directories previously listed here** (`cache/`, `catalog/`,
+`control/`, `loader/`, `prompts/`, `registry/`, `review/`, `rules/`,
+`runbooks/`, `solution/`, `templates/`) were audited and archived to
+[archive/root_scaffolding_2026/](../../archive/root_scaffolding_2026/README.md)
+-- confirmed zero code/workflow references, same "unenforced prose"
+pattern as most of pre-overhaul `basis/` (see `adr/ADR-0037`). `knowledge/`
+and `packs/` were confirmed live/enforced in the same audit and kept.
+`inbox/`, `baseline/`, `releases/` were confirmed to have real code
+pointed at them (or, for `baseline/`/`releases/`, an orphaned checker that
+nothing calls) but not enforced in CI -- kept as-is, not archived, pending
+a closer look.
+
+**Correction to this doc's own prior claim**: an earlier revision of this
+file (Stage 4 of `adr/ADR-0037`) asserted that the pre-consolidation
+`scripts/` and `runtime/` root directories "no longer exist -- those all
+live under `system/` today." That was wrong -- both still exist at root,
+discovered while archiving the 11 directories above. Their contents look
+like stale, partially-diverged duplicates of `system/scripts/` and
+`system/runtime/` (e.g. root `scripts/extract_knowledge.py` is a shorter,
+differently-implemented version of `system/scripts/extract_knowledge.py`;
+root `runtime/planning/` and `runtime/repository_state/` overlap in name
+but not exactly in content with their `system/runtime/` counterparts).
+Not archived or otherwise touched yet -- flagged for a dedicated
+investigation (confirm nothing reads from the root paths before deciding
+whether to archive or delete), not assumed safe just because they look
+similar to already-archived scaffolding.
 
 ## Policy
 
