@@ -29,20 +29,22 @@ breakdown of all 18.
 | `solution/` | `requirements/schema/requirement.schema.json` | JSON Schema with no code validating against it |
 | `templates/` | `ADR_TEMPLATE.md` | Unreferenced; `adr/` itself has no code-driven scaffolding tool that uses this template |
 
-## Separately flagged, not archived here
+## `runtime/` (added in a follow-up pass)
 
-While moving these 11 directories, two more root-level entries were
-found that were **not** part of the originally-audited 18-directory
-cluster and are **not** archived in this pass, since they weren't yet
-verified safe: root-level `scripts/` (containing a shorter, differently-
-implemented `extract_knowledge.py` than the real `system/scripts/
-extract_knowledge.py`) and root-level `runtime/` (containing `planning/`
-and `repository_state/` subdirectories that overlap in name, but not
-exactly in content, with `system/runtime/planning/` and `system/runtime/
-repository_state/`). These look like leftover pre-consolidation
-duplicates of the real `system/` tree, not the same "unenforced prose"
-pattern as the 11 above -- flagged for a separate, dedicated
-investigation before any decision, not silently included here.
+| Archived directory | Contents | Notes |
+|---|---|---|
+| `runtime/planning/` | `PLANNING_STATE.md`, `latest.json`, `latest.md`, `planning_state.json` | Confirmed genuinely stale, not just a same-named coincidence: `current_pack` read `PACK-0001` here vs. `PACK-0004` in `system/runtime/planning/`, and this copy was missing several files (`autonomous_plan.json`, `background_system_image.json`, etc.) that `system/runtime/planning/` has since accumulated. Zero code references (both read and write sides checked via `git grep`) |
+| `runtime/repository_state/` | `REPOSITORY_STATE.md`, `latest.json`, `latest.md`, `repository_state.json` | Byte-identical to `system/runtime/repository_state/`'s files at archival time (coincidence of not having drifted, not evidence of a live sync) -- zero code references |
+
+**Root `scripts/` was investigated in the same pass and found NOT to be
+stale scaffolding** -- `scripts/extract_knowledge.py` is a genuine,
+intentional 13-line CLI wrapper (`from system.scripts.extract_knowledge
+import main`) matching the documented human workflow in
+[`docs/current/KNOWLEDGE_FACTORY.md`](../../docs/current/KNOWLEDGE_FACTORY.md).
+Kept in place, not archived. See
+[`docs/current/ROOT_ALLOWLIST.md`](../../docs/current/ROOT_ALLOWLIST.md)
+for the full account of two prior incorrect guesses about this pair of
+directories, corrected here.
 
 See [basis/README.md](../../basis/README.md) and
 [adr/ADR-0037-governance-layer-overhaul.md](../../adr/ADR-0037-governance-layer-overhaul.md)
