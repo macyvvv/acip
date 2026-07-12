@@ -1,12 +1,15 @@
-# ACIP GitHub Operations Kit v1
+# ACIP
 
-ACIP uses GitHub as the canonical operational system.
+An attempt to run a company mostly through AI agents, with GitHub as the
+system of record. Full operating instructions: `CLAUDE.md`. Mission/vision:
+`docs/current/PROJECT.md`. Current status: `docs/current/STATE.md`.
 
 ```text
-ChatGPT = Chief Architect
-Codex   = Implementation / Review Agent
-GitHub  = Source of Truth
-Human   = CEO / Approver
+Claude Code = Architecture, implementation, review, and PR authorship
+              (covers what ChatGPT and Codex used to do separately --
+              see CLAUDE.md's "Operating model")
+GitHub      = Source of Truth
+Human       = Strategy, approval, capital allocation
 ```
 
 No change is official until merged into `main`.
