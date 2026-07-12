@@ -8,8 +8,12 @@ import importlib.util
 from semantic_common import ROOT, Result, Doc, result, markdown_links
 
 REQUIRED_DIRS = [
-    "basis", "adr", "wbs", "docs", "catalog", "registry", "contracts",
-    "runbooks", "control", "scripts", ".github", ".github/ISSUE_TEMPLATE", ".github/workflows"
+    # catalog, registry, runbooks, control were removed from this list --
+    # archived to archive/root_scaffolding_2026/ (see adr/ADR-0037's
+    # follow-up root-directory audit); confirmed zero code/workflow
+    # references before archiving, so they're no longer required to exist.
+    "basis", "adr", "wbs", "docs", "contracts",
+    "scripts", ".github", ".github/ISSUE_TEMPLATE", ".github/workflows"
 ]
 
 REQUIRED_FILES = [
