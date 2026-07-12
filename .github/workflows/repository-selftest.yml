@@ -1,3 +1,0 @@
-name: Repository SelfTest
-on:
- workflow_dispatch:
