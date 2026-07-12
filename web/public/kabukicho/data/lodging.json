@@ -396,5 +396,63 @@
     "licensed_as": "internet_cafe_no_lodging_license",
     "last_updated": "2026-07-12",
     "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "グランカスタマ歌舞伎町店",
+    "lat": 35.6958,
+    "lng": 139.6994,
+    "description": "歌舞伎町2-37-1、B1F〜3Fの温浴施設付きネットカフェ・漫画喫茶チェーン。西武新宿駅から徒歩3分。24時間営業、シャワー・大浴場・ランドリー完備。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly",
+      "price_band_budget",
+      "24h"
+    ],
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": "ネットカフェの宿泊利用は旅館業法上の宿泊施設としての許可を得たものではありません。事業自体は適法ですが、法的・安全面ではグレーゾーンに近いものとして扱ってください。",
+    "licensed_as": "internet_cafe_no_lodging_license",
+    "last_updated": "2026-07-12",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "ホテルグレイスリー新宿",
+    "lat": 35.6953,
+    "lng": 139.7025,
+    "description": "歌舞伎町1-19-1、新宿東宝ビル内の970室・30階建てホテル。8階テラスから顔を出す実物大ゴジラヘッドが名物。JR新宿駅東口から徒歩5分、西武新宿駅から徒歩3分。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly",
+      "price_band_mid"
+    ],
+    "reliability_score": 5,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": null,
+    "licensed_as": "hotel_business_act",
+    "last_updated": "2026-07-12",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "HOTEL GROOVE SHINJUKU, A PARKROYAL Hotel",
+    "lat": 35.6963,
+    "lng": 139.7033,
+    "description": "歌舞伎町1-29-1、東急歌舞伎町タワー18〜38階の国際ブランドホテル(PARKROYAL)。2023年開業。西武新宿駅から徒歩1分。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly",
+      "price_band_mid"
+    ],
+    "reliability_score": 5,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": null,
+    "licensed_as": "hotel_business_act",
+    "last_updated": "2026-07-12",
+    "verification_method": "web-search-2026-07"
   }
 ]

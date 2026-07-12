@@ -51,5 +51,39 @@
     "gray_zone_note": null,
     "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "smoking",
+    "name": "西武新宿駅前公衆喫煙所",
+    "lat": 35.69391,
+    "lng": 139.700109,
+    "description": "歌舞伎町一丁目30番先、靖国通り大ガード横の新宿区指定屋外公衆喫煙所。歩道上パーテーション区切り、24時間利用可、無料。",
+    "tags": [
+      "outdoor",
+      "crowded"
+    ],
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": "歌舞伎町1丁目の住所地番だが西武新宿駅・大ガード直近で地区西端。以前の調査で対象外とした西新宿7-1-1の別施設とは異なる場所。",
+    "last_updated": "2026-07-12",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "category": "smoking",
+    "name": "新宿区立大久保公園 喫煙所",
+    "lat": 35.69744,
+    "lng": 139.701267,
+    "description": "歌舞伎町2-43、新宿区立大久保公園内の指定喫煙スペース。無料、入園料なし。",
+    "tags": [
+      "outdoor",
+      "crowded"
+    ],
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "gray_zone_note": "公園の開園時間内のみ利用可（4-9月 9:00-19:00、10-3月 9:00-18:00）。24時間利用可の路上喫煙所とは異なる。",
+    "last_updated": "2026-07-12",
+    "verification_method": "web-search-2026-07"
   }
 ]
