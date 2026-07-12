@@ -16,6 +16,12 @@
 ## Non-Functional Requirements
 
 - Deterministic output
-- No external API calls
+- No external API calls by default -- this is a cost/scope constraint for an
+  early-stage MVP (avoid unnecessary spend on a brief generator), not a
+  permanent architectural ban. If a real product need justifies a paid or
+  metered external API later, that's a deliberate decision to make and
+  document at that time (see `kabukicho_survival_map/requirements.md`'s
+  "Superseded requirement" section for the sibling product's real example of
+  this exact reversal), not an automatic violation of this rule.
 - No mutation of repository OS artifacts
 - Data expansion is reviewable and bounded
