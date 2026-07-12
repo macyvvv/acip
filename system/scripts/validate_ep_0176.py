@@ -17,7 +17,7 @@ sys.path.insert(0, str(ROOT))
 
 def main() -> int:
     required_paths = [
-        ROOT / "queue" / "READY" / "EP-0176-root-migration-dry-run.md",
+        ROOT / "archive" / "root_scaffolding_2026" / "queue" / "READY" / "EP-0176-root-migration-dry-run.md",
         ROOT / "system" / "orchestrator" / "root_migration_dry_run.py",
         ROOT / "docs" / "current" / "ROOT_MIGRATION_DRY_RUN.md",
         ROOT / "specs" / "EP-0176",

@@ -17,7 +17,7 @@ sys.path.insert(0, str(ROOT))
 
 def main() -> int:
     required_paths = [
-        ROOT / "queue" / "READY" / "EP-0174-target-layout-contract.md",
+        ROOT / "archive" / "root_scaffolding_2026" / "queue" / "READY" / "EP-0174-target-layout-contract.md",
         ROOT / "system" / "orchestrator" / "target_layout_contract.py",
         ROOT / "docs" / "current" / "TARGET_LAYOUT_CONTRACT.md",
         ROOT / "specs" / "EP-0174",

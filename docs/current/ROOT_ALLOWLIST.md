@@ -7,8 +7,7 @@ Current root entries:
 - `.github/`, `.system/`
 - `app/`, `system/`, `web/`, `somia/`, `scripts/`
 - `basis/`, `adr/`, `wbs/`, `docs/`, `specs/`, `contracts/`, `archive/`
-- `baseline/`, `context/`, `inbox/`, `knowledge/`, `packs/`, `queue/`,
-  `releases/`
+- `baseline/`, `context/`, `inbox/`, `knowledge/`, `packs/`, `releases/`
 
 **11 of the directories previously listed here** (`cache/`, `catalog/`,
 `control/`, `loader/`, `prompts/`, `registry/`, `review/`, `rules/`,
@@ -52,6 +51,27 @@ staleness/duplication is not the same as checking it. Both of this doc's
 own errors above were guesses stated as findings; the fix each time was
 to actually diff the content and `git grep` for references before writing
 a conclusion.
+
+**`queue/` also archived.** 46 `EP-*.md` proposal docs under
+`queue/READY/` plus `queue/QUEUE_ENGINE.md` archived to
+[archive/root_scaffolding_2026/queue/](../../archive/root_scaffolding_2026/README.md).
+An initial "zero `validate_ep_*.py` references" check was wrong -- a
+literal-substring `git grep` missed 7 scripts that build the required
+path from separate pathlib components. `validate_all.py` caught the break
+immediately; fixed by repointing those 7 scripts at the archived path
+(same pattern as the `semantic_checks.py`/`validate_baseline.py` fixes
+above). See the archive README for the full account -- this is the third
+instance this session of that same literal-substring grep gotcha.
+Three related `system/runtime/queue/` files (`next_work.json`,
+`queue_state.json`, `autonomous_queue_runtime.json`) were deleted, not
+archived -- confirmed dead via a full read of
+`system/orchestrator/queue_state.py` (only reads/writes
+`docs/current/QUEUE_STATE.md`) and stale/placeholder content
+(`"intake_request_id": "REQ-SAMPLE"`, references to `EP-0108`/`EP-0109`).
+See the archive README for why this correctly triggered a
+permission-classifier pause first (a contradiction with an earlier,
+less rigorous claim in the same session) before being resolved with
+direct evidence.
 
 ## Policy
 

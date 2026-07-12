@@ -17,7 +17,7 @@ sys.path.insert(0, str(ROOT))
 
 def main() -> int:
     required_paths = [
-        ROOT / "queue" / "READY" / "EP-0175-reference-impact-analyzer.md",
+        ROOT / "archive" / "root_scaffolding_2026" / "queue" / "READY" / "EP-0175-reference-impact-analyzer.md",
         ROOT / "system" / "orchestrator" / "reference_impact_analyzer.py",
         ROOT / "docs" / "current" / "REFERENCE_IMPACT_ANALYZER.md",
         ROOT / "specs" / "EP-0175",

@@ -17,7 +17,7 @@ sys.path.insert(0, str(ROOT))
 
 def main() -> int:
     required_paths = [
-        ROOT / "queue" / "READY" / "EP-0163-completion-marker-event-intake.md",
+        ROOT / "archive" / "root_scaffolding_2026" / "queue" / "READY" / "EP-0163-completion-marker-event-intake.md",
         ROOT / "system" / "orchestrator" / "completion_marker_event_intake.py",
         ROOT / "docs" / "current" / "COMPLETION_MARKER_EVENT_INTAKE.md",
         ROOT / "specs" / "EP-0163",

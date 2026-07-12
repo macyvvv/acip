@@ -17,7 +17,7 @@ sys.path.insert(0, str(ROOT))
 
 def main() -> int:
     required_paths = [
-        ROOT / "queue" / "READY" / "EP-0147-completion-report-automation.md",
+        ROOT / "archive" / "root_scaffolding_2026" / "queue" / "READY" / "EP-0147-completion-report-automation.md",
         ROOT / "system" / "orchestrator" / "completion_report_automation.py",
         ROOT / "docs" / "current" / "COMPLETION_REPORT_AUTOMATION.md",
         ROOT / "system" / "runtime" / "completion" / "completion_report.json",
