@@ -1,0 +1,12 @@
+{
+  "business_id": "text_syndicate",
+  "role_id": "market_research",
+  "task_id": "task-0003-finance-saas-niche",
+  "task_description": "Follow-up to task-0001, which identified AI tools, SaaS, and finance as the three highest affiliate-conversion niches on X/Threads (recurring-commission SaaS programs, entrepreneur/marketer audience skew). Batch 1-2 content has focused on the AI-tools niche. This batch: (1) research the SaaS and finance niches specifically as the next content pillar -- real affiliate programs, commission structures, and audience overlap/differentiation from the AI-tools niche already covered; (2) research current (2026) posting cadence and format best practices for X/Threads specifically for whichever of these two niches looks strongest, so marketing/doc_creation have a concrete cadence to work from, not just topics. Cite sources. Do not fabricate commission rates or program terms -- state clearly if a program's real terms cannot be found.",
+  "issue_number": null,
+  "approved_draft_id": null,
+  "request_id": "REQ-TEXT-SYNDICATE-MARKET-RESEARCH-TASK-0003-FINANCE-SAAS-NICHE",
+  "next_action": "Review the handoff and, if approved, continue through the existing execution flow.",
+  "created_at": "2026-07-12T08:57:17.858528+00:00",
+  "source": "business_agent_handoff"
+}

@@ -28,9 +28,9 @@
   },
   "business_agent_stats": {
     "text_syndicate:market_research": {
-      "runs": 2,
+      "runs": 3,
       "success": 2,
-      "failure": 0,
+      "failure": 1,
       "metrics": {}
     },
     "text_syndicate:doc_creation": {
@@ -70,5 +70,5 @@
       "metrics": {}
     }
   },
-  "last_updated": "2026-07-12T06:16:02.488298+00:00"
+  "last_updated": "2026-07-12T08:58:57.258812+00:00"
 }

@@ -1,0 +1,13 @@
+{
+  "tasks": {
+    "task-0003-finance-saas-niche": {
+      "policy_id": "PREAPP-TEXT_SYNDICATE-MARKET_RESEARCH-0001",
+      "status": "failed",
+      "claimed_at": "2026-07-12T08:57:56.854865+00:00"
+    }
+  },
+  "counters": {
+    "2026-07-12": 1,
+    "2026-W28": 1
+  }
+}
