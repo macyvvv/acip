@@ -17,7 +17,7 @@ sys.path.insert(0, str(ROOT))
 
 def main() -> int:
     required_paths = [
-        ROOT / "queue" / "READY" / "EP-0173-root-inventory-and-classification.md",
+        ROOT / "archive" / "root_scaffolding_2026" / "queue" / "READY" / "EP-0173-root-inventory-and-classification.md",
         ROOT / "system" / "orchestrator" / "root_inventory.py",
         ROOT / "docs" / "current" / "ROOT_INVENTORY_AND_CLASSIFICATION.md",
         ROOT / "specs" / "EP-0173",

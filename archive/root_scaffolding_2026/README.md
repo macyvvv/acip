@@ -46,6 +46,75 @@ Kept in place, not archived. See
 for the full account of two prior incorrect guesses about this pair of
 directories, corrected here.
 
+## `queue/` (added in a second follow-up pass)
+
+| Archived path | Contents | Notes |
+|---|---|---|
+| `queue/QUEUE_ENGINE.md` | 1 file | Prose describing a queue engine; `system/agent_runtime/queue_engine.py` is unrelated, separately-implemented code with no shared data path |
+| `queue/READY/` | 46 `EP-*.md` proposal docs (EP-0145 through EP-0207) | Work-item proposals for the ChatGPT/Codex coordination layer (worker registry, execution kernel, event runtime, local supervisor daemon) that `adr/ADR-0032` already removed the *implementation* of. Files stay physically here, at their archived path |
+
+**Correction: the original "zero `validate_ep_*.py` references" claim above
+was wrong.** It was based on `git grep -l "queue/READY"`, a literal-substring
+search -- but 7 of these scripts build the path from separate pathlib
+components (`ROOT / "queue" / "READY" / "EP-XXXX-....md"`), which that
+substring never matches. Running `python system/scripts/validate_all.py`
+after the move caught the false negative immediately
+(`validate_ep_0147.py` failed with a missing-file error). A corrected
+search, `grep -l '"queue"' system/scripts/validate_ep_*.py`, found the real
+list: `validate_ep_0147.py`, `validate_ep_0163.py`, `validate_ep_0173.py`,
+`validate_ep_0174.py`, `validate_ep_0175.py`, `validate_ep_0176.py`,
+`validate_ep_0177.py` -- each requires its own `queue/READY/EP-XXXX-*.md`
+to exist. (`validate_ep_0163.py` in particular checks
+`EP-0163-completion-marker-event-intake.md`, part of the separately
+confirmed-live `AGENT_COMPLETION_CONTRACT` cluster
+`system/orchestrator/completion_marker_event_intake.py` -- this file
+being CI-required is not a coincidence.)
+
+Fixed by repointing all 7 scripts' required path at this archive location
+(`archive/root_scaffolding_2026/queue/READY/EP-XXXX-....md`) instead of the
+original `queue/READY/`, matching the same pattern already used for
+`semantic_checks.py`'s `REQUIRED_FILES`/`REQUIRED_DIRS` and
+`validate_baseline.py`'s `REQUIRED` list earlier in this same governance
+pass -- point the checklist at the new canonical location rather than
+leaving it broken. Re-verified with
+`python system/scripts/validate_all.py` (all EP scripts + full `pytest`
+suite passing) before committing this move.
+
+This is the third time this session a literal-substring `git grep` produced
+a false negative against this codebase's `ROOT / "a" / "b" / "c"`
+pathlib-join style. The reliable check is `grep -l '"<component>"'` across
+each individual path segment, not the joined string.
+
+**Also deleted (not archived) as a directly-related finding**: three
+`system/runtime/queue/` files -- `next_work.json`, `queue_state.json`,
+`autonomous_queue_runtime.json`. Confirmed via a full read of
+`system/orchestrator/queue_state.py` (the module that owns the *real*,
+enforced queue state) that it only ever reads/writes
+`docs/current/QUEUE_STATE.md` -- it does not touch any of these three
+files. A repo-wide `git grep` scoped to `*.py`/`*.yml` (to avoid false
+matches inside large historical log blobs elsewhere in
+`system/runtime/`) found zero references to any of the three filenames.
+Their content was also demonstrably stale/placeholder
+(`autonomous_queue_runtime.json` contained a literal
+`"intake_request_id": "REQ-SAMPLE"`; `queue_state.json` referenced
+`EP-0108`/`EP-0109`, long superseded). Deleted rather than archived,
+consistent with how Stage 1 of `adr/ADR-0037` treated other orphaned
+*generated* runtime snapshots (e.g. `agent_handoff/readiness.md`) --
+archival is for documentation with real historical value; a stale,
+zero-consumer JSON snapshot has none.
+
+An initial attempt to delete these three files was correctly blocked by
+the permission classifier, which noticed a contradiction with an
+earlier, less rigorous research pass in this same session that had
+described `next_work.json` as part of "the real, enforced queue"
+without actually checking whether any code read it. The direct
+verification above (full-file read of `queue_state.py`, `*.py`/`*.yml`-
+scoped `git grep`) resolved the contradiction before proceeding --
+recorded here as a second instance of the same lesson
+`docs/current/ROOT_ALLOWLIST.md` already names: check, don't guess,
+even when the "guess" is a callback to something said earlier in the
+same investigation.
+
 See [basis/README.md](../../basis/README.md) and
 [adr/ADR-0037-governance-layer-overhaul.md](../../adr/ADR-0037-governance-layer-overhaul.md)
 for the related `basis/` consolidation this follows the same pattern as.

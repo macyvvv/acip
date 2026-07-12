@@ -1,7 +1,0 @@
-{
-  "intake_request_id": "REQ-SAMPLE",
-  "queue_transition": "READY->RUNNING",
-  "completion_status": "success",
-  "next_work_pack_id": "PACK-0002",
-  "next_action": "Proceed to next repository item."
-}
