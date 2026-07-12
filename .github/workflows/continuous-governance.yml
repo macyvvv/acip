@@ -1,3 +1,0 @@
-name: Continuous Governance
-on:
- workflow_dispatch:
