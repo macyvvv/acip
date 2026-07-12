@@ -15,11 +15,14 @@ REQUIRED = [
     "releases/RELEASE_v1.0.0-repository-os.md",
     "baseline/BASELINE_MANIFEST.md",
     "baseline/BASELINE_CHANGE_POLICY.md",
-    "basis/077_baseline_policy.md",
-    "basis/078_incremental_graph_policy.md",
-    "basis/079_context_diff_policy.md",
-    "basis/080_execution_queue_automation_policy.md",
-    "basis/081_review_gate_summary_policy.md",
+    # basis/077-081 were confirmed-empty stub placeholders (never authored)
+    # and were archived by the 2026-07 governance overhaul (adr/ADR-0037)
+    # along with the rest of basis/'s non-load-bearing corpus.
+    "archive/basis_corpus_2026/077_baseline_policy.md",
+    "archive/basis_corpus_2026/078_incremental_graph_policy.md",
+    "archive/basis_corpus_2026/079_context_diff_policy.md",
+    "archive/basis_corpus_2026/080_execution_queue_automation_policy.md",
+    "archive/basis_corpus_2026/081_review_gate_summary_policy.md",
     "adr/ADR-0024-repository-os-v1-baseline.md",
     "adr/ADR-0025-incremental-graph-and-context-diff.md",
     "wbs/WBS-0016-repository-os-v1-baseline.md",

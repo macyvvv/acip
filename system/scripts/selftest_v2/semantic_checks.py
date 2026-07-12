@@ -16,12 +16,13 @@ REQUIRED_FILES = [
     "docs/packs/README_REPOSITORY_COMPLETE_PACK.md",
     "docs/packs/README_AGENT_OS.md",
     "docs/packs/README_RUNTIME_READINESS.md",
-    "basis/026_autonomy_first_policy.md",
-    "basis/037_autonomous_workflow_policy.md",
-    "basis/042_execution_contract_policy.md",
-    "basis/046_runtime_readiness_boundary.md",
-    "basis/053_repository_selftest_policy.md",
-    "basis/061_semantic_selftest_policy.md",
+    # basis/026, 037, 042, 046, 053, 061 (the individual policy files this
+    # list used to require) were consolidated into basis/CORE_PRINCIPLES.md
+    # and basis/057_boundary_validation_policy.md by the 2026-07 governance
+    # overhaul (see adr/ADR-0037) -- requiring the new canonical files
+    # instead of the archived originals.
+    "basis/CORE_PRINCIPLES.md",
+    "basis/057_boundary_validation_policy.md",
     "adr/ADR-0018-repository-semantic-selftest-v2.md",
     "wbs/WBS-0012-repository-semantic-selftest-v2.md",
     "selftest.yml",
