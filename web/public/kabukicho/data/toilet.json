@@ -42,7 +42,8 @@
     "description": "西武新宿線の高架下、ブリックストリート沿い、西武新宿PePe横にある24時間利用可能な区管理トイレ。バリアフリートイレあり。",
     "tags": [
       "free",
-      "gender_separated"
+      "gender_separated",
+      "24h"
     ],
     "reliability_score": 4,
     "source_type": "observed",
@@ -77,7 +78,8 @@
     "description": "歌舞伎町2-44-1のハイジア内1階トイレ。深夜も利用可能と報告されています。",
     "tags": [
       "free",
-      "clean"
+      "clean",
+      "24h"
     ],
     "reliability_score": 3,
     "source_type": "observed",
@@ -112,7 +114,8 @@
     "tags": [
       "free",
       "clean",
-      "gender_separated"
+      "gender_separated",
+      "24h"
     ],
     "reliability_score": 4,
     "source_type": "observed",
@@ -164,7 +167,8 @@
     "lng": 139.7022,
     "description": "歌舞伎町1-16-5、24時間営業のドン・キホーテ店内トイレ。",
     "tags": [
-      "free"
+      "free",
+      "24h"
     ],
     "reliability_score": 2,
     "source_type": "observed",

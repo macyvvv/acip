@@ -138,7 +138,8 @@
     "tags": [
       "medium",
       "large",
-      "suitcase_ok"
+      "suitcase_ok",
+      "24h"
     ],
     "reliability_score": 3,
     "source_type": "observed",
@@ -207,7 +208,8 @@
     "description": "東急歌舞伎町タワーから徒歩約1分、レジャービル内の24時間利用可能な現金専用ロッカー。小型300円/中型400円。",
     "tags": [
       "small",
-      "medium"
+      "medium",
+      "24h"
     ],
     "reliability_score": 3,
     "source_type": "observed",

@@ -8,7 +8,8 @@
     "tags": [
       "outdoor",
       "rain_ok",
-      "crowded"
+      "crowded",
+      "24h"
     ],
     "last_updated": "2026-07-11",
     "reliability_score": 4,
@@ -26,7 +27,8 @@
     "tags": [
       "outdoor",
       "rain_ok",
-      "crowded"
+      "crowded",
+      "24h"
     ],
     "reliability_score": 3,
     "source_type": "observed",
@@ -60,7 +62,8 @@
     "description": "歌舞伎町一丁目30番先、靖国通り大ガード横の新宿区指定屋外公衆喫煙所。歩道上パーテーション区切り、24時間利用可、無料。",
     "tags": [
       "outdoor",
-      "crowded"
+      "crowded",
+      "24h"
     ],
     "reliability_score": 4,
     "source_type": "official",
