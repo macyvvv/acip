@@ -1,0 +1,21 @@
+{
+  "business_id": "text_syndicate",
+  "role_id": "market_research",
+  "task_id": "task-0003-finance-saas-niche",
+  "adapter_mode": "execute",
+  "resolved_model": "claude-sonnet-5",
+  "model_capability": "reasoning",
+  "allowed_tools": [
+    "Read",
+    "Grep",
+    "Glob",
+    "WebSearch"
+  ],
+  "agent_cli_command": "claude -p \"<rendered prompt>\" --model claude-sonnet-5 --tools Read,Grep,Glob,WebSearch --permission-mode bypassPermissions",
+  "stdout": "",
+  "stderr": "\ncommand timed out after 60s",
+  "exit_code": 124,
+  "success": false,
+  "captured_at": "2026-07-12T08:58:57.238206+00:00",
+  "artifact_path": "/Users/ariel/Documents/tools/acip/system/runtime/business_agents/text_syndicate/market_research/task-0003-finance-saas-niche/latest.json"
+}
