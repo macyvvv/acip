@@ -69,6 +69,11 @@
     userLocation: null,
     userMarker: null,
     locationStatus: "idle", // idle | requesting | granted | denied | unsupported
+    // categoryId -> true when its data/*.json fetch failed (network error
+    // or non-2xx response). Kept separate from state.data so a failed
+    // load can be shown as an error, not silently rendered as "0 results
+    // in this category."
+    loadFailed: {},
     // Tag ids currently toggled on, e.g. {shower_available: true}. A POI
     // must carry every active tag (AND, not OR) to survive the filter --
     // each additional toggle narrows the list further, matching how a
@@ -165,6 +170,15 @@
       typeof poi._distanceMeters === "number"
         ? '<span class="distance-badge">📍 現在地から ' + formatDistance(poi._distanceMeters) + "</span>"
         : "";
+    // reliability_score (1-5) is collected for every entry but was never
+    // surfaced -- only flag the low end (<=2, ~8 of ~90 entries) rather
+    // than showing a score on every card, matching how freshness/
+    // gray-zone info only appears when there's actually something to
+    // flag instead of cluttering every card with a routine "OK" signal.
+    var lowReliabilityHtml =
+      typeof poi.reliability_score === "number" && poi.reliability_score <= 2
+        ? '<span class="reliability-badge">ℹ️ 情報の確度: 参考程度</span>'
+        : "";
     var grayZoneHtml = isGrayZone
       ? '<div class="gray-zone-banner">' + DISCLAIMER_JA + "<br>" + DISCLAIMER_EN +
         (poi.gray_zone_note ? "<br>" + escapeHtml(poi.gray_zone_note) : "") + "</div>"
@@ -172,7 +186,7 @@
 
     return (
       '<article class="poi-card" data-poi-index="' + index + '">' +
-      '<div class="card-meta-row">' + freshHtml + distanceHtml + "</div>" +
+      '<div class="card-meta-row">' + freshHtml + distanceHtml + lowReliabilityHtml + "</div>" +
       "<h2>" + escapeHtml(poi.name) + "</h2>" +
       grayZoneHtml +
       '<p class="description">' + escapeHtml(poi.description) + "</p>" +
@@ -197,6 +211,13 @@
 
   function renderList() {
     var container = document.getElementById("poi-list");
+
+    if (state.loadFailed[state.activeCategory]) {
+      container.innerHTML =
+        '<p class="no-results">⚠ データの読み込みに失敗しました。<br>通信環境をご確認のうえ、ページを再読み込みしてください。</p>';
+      return;
+    }
+
     var totalInCategory = (state.data[state.activeCategory] || []).length;
     var pois = sortedByDistance(getFilteredPois(state.activeCategory));
     var hasActiveFilter = Object.keys(state.activeFilters).some(function (t) { return state.activeFilters[t]; });
@@ -399,23 +420,28 @@
     pane.innerHTML = '<div class="map-notice">' + message + "</div>";
   }
 
-  window.initKabukichoMap = function () {
-    state.map = new google.maps.Map(document.getElementById("map"), {
-      center: state.userLocation || KABUKICHO_CENTER,
-      zoom: 16,
-      streetViewControl: false,
-      mapTypeControl: false,
-      fullscreenControl: false
-    });
-    renderMarkers();
-    // A location fix from before the map finished loading (distance
-    // sorting doesn't wait on the map) has no marker yet -- add it now.
-    if (state.userLocation) renderUserMarker();
-  };
+  // Guarded for the same reason as the DOMContentLoaded registration
+  // below -- lets this file be require()d from a plain Node test script
+  // with no `window` global, with no effect on real browser behavior.
+  if (typeof window !== "undefined") {
+    window.initKabukichoMap = function () {
+      state.map = new google.maps.Map(document.getElementById("map"), {
+        center: state.userLocation || KABUKICHO_CENTER,
+        zoom: 16,
+        streetViewControl: false,
+        mapTypeControl: false,
+        fullscreenControl: false
+      });
+      renderMarkers();
+      // A location fix from before the map finished loading (distance
+      // sorting doesn't wait on the map) has no marker yet -- add it now.
+      if (state.userLocation) renderUserMarker();
+    };
 
-  window.gm_authFailure = function () {
-    showMapNotice("⚠ 地図を読み込めませんでした。APIキーの設定をご確認ください。");
-  };
+    window.gm_authFailure = function () {
+      showMapNotice("⚠ 地図を読み込めませんでした。APIキーの設定をご確認ください。");
+    };
+  }
 
   function loadGoogleMaps() {
     var apiKey = window.KABUKICHO_GMAPS_API_KEY;
@@ -442,29 +468,55 @@
     // Fetched relative to this file so the app is self-contained and
     // deployable as a static bundle -- data/ is a build-time copy of
     // system/runtime/data/kabukicho/ (the canonical source), see build.py.
+    // A failed fetch used to silently set state.data[cat.id] = [], which
+    // renderList() then displayed as an ordinary "no POIs in this
+    // category" empty state -- indistinguishable from a genuinely empty
+    // category. state.loadFailed tracks the real cause separately so the
+    // UI can tell "we checked, there's nothing" apart from "we couldn't
+    // check."
     return Promise.all(
       CATEGORIES.map(function (cat) {
         return fetch("data/" + cat.file)
-          .then(function (res) { return res.json(); })
+          .then(function (res) {
+            if (!res.ok) throw new Error("HTTP " + res.status);
+            return res.json();
+          })
           .then(function (json) { state.data[cat.id] = json; })
-          .catch(function () { state.data[cat.id] = []; });
+          .catch(function () {
+            state.data[cat.id] = [];
+            state.loadFailed[cat.id] = true;
+          });
       })
     );
   }
 
-  document.addEventListener("DOMContentLoaded", function () {
-    renderNav();
-    renderFilterBar();
-    loadAll().then(function () {
-      renderList();
-      // Map init (initKabukichoMap) fires asynchronously once the Google
-      // Maps script loads and calls back -- it re-renders markers itself,
-      // so it's safe to kick off in parallel with the initial list render.
-      loadGoogleMaps();
-      // Distance-based sorting for the bottom list doesn't depend on the
-      // map -- request it independently so it works even before the map
-      // finishes loading, or when no API key is configured at all.
-      requestUserLocation();
+  // Guarded so this file can also be `require()`d from a plain Node test
+  // script (see tests/test_app_logic.js) without a DOM/fetch/Google Maps
+  // environment -- browser behavior is unchanged, `document` is always
+  // defined there.
+  if (typeof document !== "undefined") {
+    document.addEventListener("DOMContentLoaded", function () {
+      renderNav();
+      renderFilterBar();
+      loadAll().then(function () {
+        renderList();
+        // Map init (initKabukichoMap) fires asynchronously once the Google
+        // Maps script loads and calls back -- it re-renders markers itself,
+        // so it's safe to kick off in parallel with the initial list render.
+        loadGoogleMaps();
+        // Distance-based sorting for the bottom list doesn't depend on the
+        // map -- request it independently so it works even before the map
+        // finishes loading, or when no API key is configured at all.
+        requestUserLocation();
+      });
     });
-  });
+  }
+
+  // Exposes a handful of pure, side-effect-free functions for direct
+  // Node-based unit testing (tests/test_app_logic.js) -- never runs in
+  // the browser (module is undefined there), so this has no effect on
+  // the shipped product.
+  if (typeof module !== "undefined" && module.exports) {
+    module.exports = { haversineDistanceMeters: haversineDistanceMeters, formatDistance: formatDistance, freshnessBadge: freshnessBadge };
+  }
 })();
