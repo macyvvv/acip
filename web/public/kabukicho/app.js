@@ -119,7 +119,17 @@
   }
 
   function renderCard(poi, categoryId, index) {
-    var isGrayZone = poi.type === "unofficial" || !!poi.gray_zone_note;
+    // type="unofficial" is the actual gray-zone/disclaimer signal -- the
+    // full "⚠ Unofficial Information" banner is reserved for that. A
+    // gray_zone_note on an official entry is ordinary supplementary info
+    // (hours limits, boundary notes, licensing nuance -- several
+    // official love-hotel entries' own notes explicitly say "not a
+    // gray-zone business"), not a warning, so it renders as a plain note
+    // instead of the disclaimer banner. Was previously conflated
+    // (isGrayZone = type==="unofficial" || !!gray_zone_note), which put
+    // the "unofficial, use at your own risk" banner on licensed
+    // businesses whose own note text said the opposite.
+    var isGrayZone = poi.type === "unofficial";
     var tagCopy = TAG_COPY[categoryId] || {};
     var tagsHtml = (poi.tags || [])
       .map(function (tag) {
@@ -136,7 +146,7 @@
     var grayZoneHtml = isGrayZone
       ? '<div class="gray-zone-banner">' + DISCLAIMER_JA + "<br>" + DISCLAIMER_EN +
         (poi.gray_zone_note ? "<br>" + escapeHtml(poi.gray_zone_note) : "") + "</div>"
-      : "";
+      : (poi.gray_zone_note ? '<div class="info-note">' + escapeHtml(poi.gray_zone_note) + "</div>" : "");
 
     return (
       '<article class="poi-card" data-poi-index="' + index + '">' +
