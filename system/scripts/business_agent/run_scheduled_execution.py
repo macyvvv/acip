@@ -135,6 +135,16 @@ def run_scheduled_execution(base_path: str | Path = ".") -> ScheduledExecutionSu
 
 
 def _run_wake(base_path: Path, started_at: str) -> ScheduledExecutionSummary:
+    # Checked BEFORE any candidate executes, not after -- executing legitimately
+    # dirties the tree with the wake's own output, so checking cleanliness only
+    # protects against PRE-EXISTING unrelated dirty state (a human's own
+    # in-progress work on the same clone), not the wake's own changes. A
+    # check placed after execution would spuriously fire on every real wake.
+    if not _working_tree_is_clean(base_path):
+        finished_at = _now()
+        audit_path = _write_audit(started_at, finished_at, False, False, 0, [], base_path, pr_skip_reason="working_tree_dirty_skip_wake")
+        return ScheduledExecutionSummary(started_at, finished_at, False, False, 0, [], None, "working_tree_dirty_skip_wake", str(audit_path))
+
     candidates = find_scheduled_candidates(base_path)
     executed: list[dict[str, Any]] = []
     for candidate in candidates:
@@ -185,9 +195,11 @@ def _run_wake(base_path: Path, started_at: str) -> ScheduledExecutionSummary:
 # --- Git/GitHub landing -----------------------------------------------------
 # The ONLY functions in this module that shell out to git/gh. Everything
 # above (candidate selection, execution) never touches git. Deliberately
-# conservative: refuses to touch the working tree at all unless it was clean
-# before this wake started, so an unattended run can never partially commit
-# a human's own in-progress, uncommitted work on the same clone.
+# conservative: _run_wake already refused to execute anything at all unless
+# the tree was clean *before* the wake started, so by the time this is
+# called, whatever is dirty is exclusively this wake's own known-good
+# output (protected end-to-end by the whole-invocation lock) -- there is
+# nothing left here to re-guard against a human's in-progress work with.
 
 def _run_git(args: list[str], base_path: Path, *, check: bool = True) -> subprocess.CompletedProcess[str]:
     return subprocess.run(["git", *args], cwd=base_path, capture_output=True, text=True, check=check)
@@ -199,9 +211,6 @@ def _working_tree_is_clean(base_path: Path) -> bool:
 
 
 def _land_via_pr(base_path: Path, run_key: str, executed: list[dict[str, Any]]) -> tuple[str | None, str | None]:
-    if not _working_tree_is_clean(base_path):
-        return None, "working_tree_dirty_skip_pr"
-
     current_branch = _run_git(["rev-parse", "--abbrev-ref", "HEAD"], base_path, check=False).stdout.strip()
     if current_branch != "main":
         if _run_git(["checkout", "main"], base_path, check=False).returncode != 0:

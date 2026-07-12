@@ -37,6 +37,38 @@ def _seed_candidate(tmp_path: Path, business_id: str, role_id: str, task_id: str
     _write_pre_approval_policy(tmp_path, business_id, role_id, **policy_overrides)
 
 
+def _init_git_repo(tmp_path: Path) -> None:
+    import subprocess
+
+    subprocess.run(["git", "init", "-q"], cwd=tmp_path, check=True)
+    subprocess.run(["git", "config", "user.email", "test@example.com"], cwd=tmp_path, check=True)
+    subprocess.run(["git", "config", "user.name", "Test"], cwd=tmp_path, check=True)
+    (tmp_path / "README.md").write_text("seed\n")
+    _write_gitignore(tmp_path)
+    subprocess.run(["git", "add", "README.md", ".gitignore"], cwd=tmp_path, check=True)
+    subprocess.run(["git", "commit", "-q", "-m", "seed"], cwd=tmp_path, check=True)
+    subprocess.run(["git", "branch", "-M", "main"], cwd=tmp_path, check=True)
+
+
+def _write_gitignore(tmp_path: Path) -> None:
+    # Mirrors the real repo's .gitignore for the two things run_scheduled_
+    # execution.py itself creates (system/core/file_lock.py's lock file,
+    # the scheduler's own audit dir) -- without this, a synthetic test
+    # repo has no .gitignore at all, so the runner's own lock file would
+    # show up as untracked and spuriously trip the pre-flight dirty check.
+    (tmp_path / ".gitignore").write_text("system/runtime/**/*.lock\nsystem/runtime/scheduler/audit/\n")
+
+
+def _commit_everything(tmp_path: Path, message: str = "seed pre-existing candidate state") -> None:
+    # Real production state: a candidate sitting in queue.json is already
+    # committed history (Level 1 writes it, a human/session PRs it in) --
+    # this must never itself register as "dirty" before a wake starts.
+    import subprocess
+
+    subprocess.run(["git", "add", "-A"], cwd=tmp_path, check=True)
+    subprocess.run(["git", "commit", "-q", "-m", message], cwd=tmp_path, check=True)
+
+
 def _fake_successful_run(calls: list[dict]):
     class FakeOutcome:
         success = True
@@ -111,7 +143,9 @@ def test_kill_switch_blocks_the_whole_wake(tmp_path: Path, monkeypatch) -> None:
 
 
 def test_happy_path_executes_and_lands_via_pr(tmp_path: Path, monkeypatch) -> None:
+    _init_git_repo(tmp_path)
     _seed_candidate(tmp_path, "text_syndicate", "market_research", "task-0001")
+    _commit_everything(tmp_path)
 
     calls: list[dict] = []
     monkeypatch.setattr("system.core.approved_autonomous_execution.BusinessAgentExecutionAdapter.run", _fake_successful_run(calls))
@@ -136,6 +170,8 @@ def test_happy_path_executes_and_lands_via_pr(tmp_path: Path, monkeypatch) -> No
 
 
 def test_no_candidates_never_attempts_to_land(tmp_path: Path, monkeypatch) -> None:
+    _init_git_repo(tmp_path)
+
     def fail_if_called(*args, **kwargs):
         raise AssertionError("_land_via_pr must never be called when nothing executed")
 
@@ -151,8 +187,10 @@ def test_one_scope_adapter_failure_does_not_abort_the_wake(tmp_path: Path, monke
     # adapter exception internally and returns a normal "failure" result
     # rather than propagating (confirmed by this test) -- the runner's own
     # loop must still move on to the next scope regardless.
+    _init_git_repo(tmp_path)
     _seed_candidate(tmp_path, "text_syndicate", "market_research", "task-0001")
     _seed_candidate(tmp_path, "kabukicho_survival_map", "market_research", "task-0001")
+    _commit_everything(tmp_path)
 
     def flaky_run(self, *, business_id, role_id, task_id, task_description="", approval_flag=False, dry_run=True):
         if business_id == "text_syndicate":
@@ -181,8 +219,10 @@ def test_one_scope_unexpected_exception_above_the_adapter_does_not_abort_the_wak
     # (e.g. a bug in a layer that isn't already exception-safe) must still
     # be caught by the runner's own loop, not just re-tested coverage of
     # the same inner catch.
+    _init_git_repo(tmp_path)
     _seed_candidate(tmp_path, "text_syndicate", "market_research", "task-0001")
     _seed_candidate(tmp_path, "kabukicho_survival_map", "market_research", "task-0001")
+    _commit_everything(tmp_path)
 
     real_run = scheduler.ApprovedAutonomousExecution.run
 
@@ -224,39 +264,109 @@ def test_overlapping_wake_is_skipped_not_double_run(tmp_path: Path, monkeypatch)
         held_file.close()
 
 
-# --- _land_via_pr: the only function allowed to shell out to git/gh ------
+# --- pre-flight dirty-tree guard: checked BEFORE execution, not after ----
+# (a real bug: an earlier version checked this only inside _land_via_pr,
+# which runs AFTER the wake's own candidates already executed and wrote
+# runtime-state files -- so it self-triggered on every real wake with any
+# output at all. Confirmed live against production data before the fix.)
 
-def test_land_via_pr_refuses_a_dirty_working_tree(tmp_path: Path, monkeypatch) -> None:
-    # Real git repo, deliberately left dirty by something unrelated to the
-    # scheduler (simulating a human's own in-progress work on the same
-    # clone) -- must refuse before touching branches/commits at all.
+def test_dirty_tree_before_the_wake_starts_skips_the_whole_wake_not_just_landing(tmp_path: Path, monkeypatch) -> None:
+    # A human's own in-progress, uncommitted work already sitting in the
+    # tree BEFORE the wake starts -- must refuse to execute anything at
+    # all, not just refuse to land afterward.
+    _init_git_repo(tmp_path)
+    (tmp_path / "unrelated_in_progress_work.txt").write_text("do not touch me\n")
+    _seed_candidate(tmp_path, "text_syndicate", "market_research", "task-0001")
+
+    calls: list[dict] = []
+    monkeypatch.setattr("system.core.approved_autonomous_execution.BusinessAgentExecutionAdapter.run", _fake_successful_run(calls))
+
+    def fail_if_called(*args, **kwargs):
+        raise AssertionError("_land_via_pr must never be reached when the tree was already dirty")
+
+    monkeypatch.setattr(scheduler, "_land_via_pr", fail_if_called)
+
+    summary = scheduler.run_scheduled_execution(tmp_path)
+    assert summary.executed == []
+    assert summary.candidates_considered == 0
+    assert summary.pr_skip_reason == "working_tree_dirty_skip_wake"
+    assert calls == []  # never even attempted
+    assert (tmp_path / "unrelated_in_progress_work.txt").read_text() == "do not touch me\n"
+
+
+def test_clean_tree_before_the_wake_lets_execution_and_landing_proceed(tmp_path: Path, monkeypatch) -> None:
+    # The wake's own output legitimately dirties the tree -- that must
+    # never be mistaken for a reason to skip landing.
+    _init_git_repo(tmp_path)
+    _seed_candidate(tmp_path, "text_syndicate", "market_research", "task-0001")
+    _commit_everything(tmp_path)
+
+    calls: list[dict] = []
+    monkeypatch.setattr("system.core.approved_autonomous_execution.BusinessAgentExecutionAdapter.run", _fake_successful_run(calls))
+
+    land_calls: list[tuple] = []
+
+    def fake_land(base_path, run_key, executed):
+        land_calls.append((base_path, run_key, executed))
+        return "https://github.com/example/pr/2", None
+
+    monkeypatch.setattr(scheduler, "_land_via_pr", fake_land)
+
+    summary = scheduler.run_scheduled_execution(tmp_path)
+    assert len(calls) == 1
+    assert summary.candidates_considered == 1
+    assert len(land_calls) == 1
+    assert summary.pr_url == "https://github.com/example/pr/2"
+
+
+# --- _land_via_pr: the only function allowed to shell out to git/gh ------
+# (reached only once _run_wake has already confirmed the tree was clean
+# before execution -- so by this point, whatever is dirty is exclusively
+# this wake's own known-good output; there is nothing left to re-guard.)
+
+def test_land_via_pr_commits_only_the_known_runtime_paths(tmp_path: Path, monkeypatch) -> None:
     import subprocess
 
-    subprocess.run(["git", "init", "-q"], cwd=tmp_path, check=True)
-    subprocess.run(["git", "config", "user.email", "test@example.com"], cwd=tmp_path, check=True)
-    subprocess.run(["git", "config", "user.name", "Test"], cwd=tmp_path, check=True)
-    (tmp_path / "README.md").write_text("seed\n")
-    subprocess.run(["git", "add", "README.md"], cwd=tmp_path, check=True)
-    subprocess.run(["git", "commit", "-q", "-m", "seed"], cwd=tmp_path, check=True)
-    subprocess.run(["git", "branch", "-M", "main"], cwd=tmp_path, check=True)
+    bare_origin = tmp_path / "bare_origin.git"
+    subprocess.run(["git", "init", "-q", "--bare", str(bare_origin)], check=True)
 
-    (tmp_path / "unrelated_in_progress_work.txt").write_text("do not touch me\n")
+    repo = tmp_path / "repo"
+    repo.mkdir()
+    _init_git_repo(repo)
+    subprocess.run(["git", "remote", "add", "origin", str(bare_origin)], cwd=repo, check=True)
+    subprocess.run(["git", "push", "-u", "origin", "main"], cwd=repo, check=True)
 
-    def fail_if_called(args, base_path, **kwargs):
-        raise AssertionError(f"no git command beyond the initial status check should run on a dirty tree: {args}")
+    (repo / "system" / "runtime" / "business_agent_tasks").mkdir(parents=True)
+    (repo / "system" / "runtime" / "business_agent_tasks" / "queue.json").write_text('{"fake": "queue update"}')
+    # A file outside the known runtime paths must never be swept in, even
+    # if present and modified -- only the explicit allowlist is `git add`ed.
+    (repo / "README.md").write_text("modified, not a runtime path\n")
 
-    # Allow the one status check _land_via_pr itself issues, forbid anything past it.
-    real_run_git = scheduler._run_git
+    real_subprocess_run = subprocess.run  # scheduler.subprocess IS this same module object --
+    # patching its .run would also intercept _run_git's own internal calls,
+    # so the fake must dispatch by command name, not replace wholesale.
 
-    def guarded_run_git(args, base_path, **kwargs):
-        if args[0] != "status":
-            fail_if_called(args, base_path, **kwargs)
-        return real_run_git(args, base_path, **kwargs)
+    def dispatching_run(cmd, *args, **kwargs):
+        if cmd[0] == "gh":
+            return subprocess.CompletedProcess(args=cmd, returncode=0, stdout="https://github.com/example/pr/3\n", stderr="")
+        return real_subprocess_run(cmd, *args, **kwargs)
 
-    monkeypatch.setattr(scheduler, "_run_git", guarded_run_git)
+    monkeypatch.setattr(scheduler.subprocess, "run", dispatching_run)
 
-    pr_url, reason = scheduler._land_via_pr(tmp_path, "20260712T000000Z", [])
-    assert pr_url is None
-    assert reason == "working_tree_dirty_skip_pr"
-    # the unrelated file must be untouched -- still there, still uncommitted
-    assert (tmp_path / "unrelated_in_progress_work.txt").read_text() == "do not touch me\n"
+    pr_url, reason = scheduler._land_via_pr(repo, "20260712T000000Z", [])
+
+    assert pr_url == "https://github.com/example/pr/3"
+    assert reason is None
+    # The commit landed on the scheduler's own branch (never main, never
+    # merged) -- check that branch specifically, not whatever HEAD is now.
+    log = subprocess.run(
+        ["git", "log", "--name-only", "-1", "scheduler/run-20260712T000000Z"], cwd=repo, capture_output=True, text=True
+    ).stdout
+    assert "queue.json" in log
+    assert "README.md" not in log
+    # _land_via_pr returns to main afterward; README.md's modification must
+    # still be present and uncommitted there -- never touched by landing.
+    branch = subprocess.run(["git", "rev-parse", "--abbrev-ref", "HEAD"], cwd=repo, capture_output=True, text=True).stdout.strip()
+    assert branch == "main"
+    status = subprocess.run(["git", "status", "--porcelain"], cwd=repo, capture_output=True, text=True).stdout
+    assert "README.md" in status  # still sitting there, uncommitted
