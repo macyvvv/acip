@@ -179,6 +179,14 @@ body {
   margin-bottom: 8px;
 }
 
+.info-note {
+  border-left: 3px solid #cccccc;
+  color: #555555;
+  padding: 4px 10px;
+  font-size: 0.82rem;
+  margin-bottom: 8px;
+}
+
 .maps-link {
   display: inline-block;
   margin-top: 4px;
