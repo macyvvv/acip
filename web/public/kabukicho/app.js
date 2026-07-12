@@ -21,27 +21,31 @@
       rain_ok: "屋根あり・雨の日も安心",
       crowded: "混雑しやすい時間帯あり",
       hidden: "見つけにくい場所・要注意",
-      unsafe: "治安面で注意が必要な場所"
+      unsafe: "治安面で注意が必要な場所",
+      "24h": "24時間利用可"
     },
     toilet: {
       clean: "清潔と報告されています",
       dirty: "汚れが気になるとの報告あり",
       free: "無料で利用できます",
       long_wait: "混雑時は待ち時間あり",
-      gender_separated: "男女別トイレです"
+      gender_separated: "男女別トイレです",
+      "24h": "24時間利用可"
     },
     coin_locker: {
       small: "小型ロッカー（手荷物向け）",
       medium: "中型ロッカー（機内持込サイズ）",
       large: "大型ロッカー（預け入れサイズ）",
       suitcase_ok: "スーツケース収納可",
-      suitcase_too_big: "大型スーツケースは入りません"
+      suitcase_too_big: "大型スーツケースは入りません",
+      "24h": "24時間利用可"
     },
     lodging: {
       shower_available: "シャワーあり（別料金の場合あり）",
       no_shower: "シャワー設備なし",
-      price_band_budget: "予算重視の価格帯",
-      price_band_mid: "標準的な価格帯",
+      price_band_budget: "予算重視の価格帯（目安 ~¥8,000/泊）",
+      price_band_mid: "標準的な価格帯（目安 ¥8,000〜20,000/泊）",
+      price_band_high: "上質・高価格帯（目安 ¥20,000/泊〜）",
       "24h": "24時間営業",
       overnight_friendly: "深夜〜宿泊利用に対応"
     },

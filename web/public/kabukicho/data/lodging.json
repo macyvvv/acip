@@ -71,25 +71,6 @@
     "verification_method": "web-search-2026-07"
   },
   {
-    "name": "グリーンプラザ新宿",
-    "lat": 35.6945,
-    "lng": 139.7002,
-    "description": "日本最大級のカプセルホテルの一つ。男性専用カプセル593室に加え、女性専用ドミトリー30床、サウナ完備。",
-    "category": "lodging",
-    "tags": [
-      "shower_available",
-      "overnight_friendly",
-      "price_band_budget"
-    ],
-    "reliability_score": 4,
-    "source_type": "observed",
-    "type": "official",
-    "gray_zone_note": null,
-    "licensed_as": "hotel_business_act",
-    "last_updated": "2026-07-11",
-    "verification_method": "web-search-2026-07"
-  },
-  {
     "name": "ELE Cabin 新宿歌舞伎町",
     "lat": 35.6963,
     "lng": 139.704,
@@ -426,7 +407,7 @@
     "tags": [
       "shower_available",
       "overnight_friendly",
-      "price_band_mid"
+      "price_band_high"
     ],
     "reliability_score": 5,
     "source_type": "official",
@@ -445,7 +426,7 @@
     "tags": [
       "shower_available",
       "overnight_friendly",
-      "price_band_mid"
+      "price_band_high"
     ],
     "reliability_score": 5,
     "source_type": "official",

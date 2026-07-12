@@ -64,12 +64,17 @@
       "policy_id": "PREAPP-KABUKICHO_SURVIVAL_MAP-MARKET_RESEARCH-0001",
       "status": "completed",
       "claimed_at": "2026-07-12T05:36:44.995806+00:00"
+    },
+    "task-0014-lodging-price-tiers": {
+      "policy_id": "PREAPP-KABUKICHO_SURVIVAL_MAP-MARKET_RESEARCH-0001",
+      "status": "completed",
+      "claimed_at": "2026-07-12T05:56:36.001131+00:00"
     }
   },
   "counters": {
     "2026-07-10": 1,
-    "2026-W28": 13,
+    "2026-W28": 14,
     "2026-07-11": 10,
-    "2026-07-12": 2
+    "2026-07-12": 3
   }
 }
