@@ -43,8 +43,9 @@
     lodging: {
       shower_available: "シャワーあり（別料金の場合あり）",
       no_shower: "シャワー設備なし",
-      price_band_budget: "予算重視の価格帯",
-      price_band_mid: "標準的な価格帯",
+      price_band_budget: "予算重視の価格帯（目安 ~¥8,000/泊）",
+      price_band_mid: "標準的な価格帯（目安 ¥8,000〜20,000/泊）",
+      price_band_high: "上質・高価格帯（目安 ¥20,000/泊〜）",
       "24h": "24時間営業",
       overnight_friendly: "深夜〜宿泊利用に対応"
     },
