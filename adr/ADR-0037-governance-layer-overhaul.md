@@ -271,3 +271,18 @@ Accepted and complete. Future governance additions should default to
 `CLAUDE.md`'s existing duplication check (search for an existing
 equivalent before adding a new doc/script/workflow) — both are now backed
 by two concrete, in-repo examples of what goes wrong when they're skipped.
+
+## Addendum (2026-07-14): system/runtime/workers/ and governor/ archived
+
+A repo-wide "is our current process/refactoring debt fine as-is"
+consultation (all 15 acip subagents + `opsboard`'s synthesis) surfaced
+`system/runtime/workers/` and `system/runtime/governor/` as more of the
+same pattern this ADR already addressed for `basis/` and the 18
+root-level directories (`archive/root_scaffolding_2026/`) — confirmed via
+the same test (`git grep` across `*.py`/`*.yml`/`docs/`/`system/`/`app/`:
+zero references to either path). Archived to
+`archive/runtime_scaffolding_2026/` with the same per-directory rationale
+format; `docs/current/GOVERNOR_RECOMMENDATION_SSOT.md` updated to stop
+describing a mechanism that was never actually wired up. Recorded here
+rather than as a new ADR since it's the identical pattern and criterion
+already adopted above, not a new decision.
