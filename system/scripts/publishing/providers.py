@@ -60,13 +60,17 @@ _REGISTRY: dict[str, type[PublishingProvider]] = {
 
 # Real platform providers are registered here once built; each needs its own
 # API access set up by the operator first (see DryRunProvider docstring).
-# Deliberately empty: no credentials exist yet for "x" (system.scripts.publishing
-# .providers_x), "threads" (...providers_threads), or "notecom" (...providers_
-# notecom) -- listing a module path here before it exists would turn an
-# unresolvable-provider request into a raw ModuleNotFoundError instead of the
-# clean PublishError below. Add an entry only once that module is actually
-# written and the operator has real credentials to test it against.
-_OPTIONAL_PROVIDER_MODULES: dict[str, str] = {}
+# "x" is now built (providers_x.py, X API v2 OAuth 1.0a) but the operator has
+# not yet obtained real credentials -- policy.json's provider field must stay
+# "dry_run" until X_API_KEY/X_API_KEY_SECRET/X_ACCESS_TOKEN/X_ACCESS_TOKEN_SECRET
+# are actually set, or every scheduled run will fail closed with PublishError.
+# "threads"/"notecom" remain deliberately unbuilt/unregistered -- listing a
+# module path here before it exists would turn an unresolvable-provider
+# request into a raw ModuleNotFoundError instead of the clean PublishError
+# below.
+_OPTIONAL_PROVIDER_MODULES: dict[str, str] = {
+    "x": "system.scripts.publishing.providers_x",
+}
 
 
 def register_provider(provider_cls: type[PublishingProvider]) -> None:

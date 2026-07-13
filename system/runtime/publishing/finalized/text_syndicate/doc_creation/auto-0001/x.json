@@ -1,0 +1,10 @@
+{
+  "business_id": "text_syndicate",
+  "role_id": "doc_creation",
+  "task_id": "auto-0001",
+  "platform": "x",
+  "final_text": "Ranking every AI meeting-notes tool I've actually paid for, worst to best:\n\nOtter.ai > Fireflies.ai > Fathom > Chorus\n\nAll three work. Otter's overpriced for what you get. Fathom's UI is clunky. Fireflies is the goldilocks zone.\n\nWhat's your ranking? Fight me in replies.",
+  "source_execution_hash": "93bee65dfc95c05f732736b871e7ba444bdc33abbbe2ebd832ed2a3662e5f417",
+  "finalized_by": "macy",
+  "finalized_at": "2026-07-13T22:26:00.334748+00:00"
+}
