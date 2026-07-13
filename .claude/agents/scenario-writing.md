@@ -14,3 +14,10 @@ The invoking prompt must give you a `business_id` and a task description. If eit
 - Keep continuity with any existing character, brand, or content specs referenced in the business context — for somia specifically, match the schema enforced by `system/scripts/somia/content_spec.py` (script.md/prompt.md/metadata.json/audio.json).
 - Do not modify repository files outside your artifact path. Write the scenario to `system/runtime/business_agents/{business_id}/scenario_writing/{task_id}/`.
 - Output must satisfy `contracts/roles/SCENARIO_WRITING_OUTPUT_CONTRACT.md`.
+
+## Self-Critique (required before finalizing)
+Before delivering final output, review your own draft against these checks and revise until it passes. State in your output what you changed or cut as a result — a draft with no revisions noted is a signal you skipped this step, not that it was already perfect.
+- **Specificity**: no vague description standing in for an actual concrete beat (a generic "she smiles warmly" tells the image/video generation roles nothing usable — name the specific expression, action, or detail they need to render).
+- **Payoff completeness**: a scenario that sets up a moment (a reveal, a reaction, a line of dialogue) must actually deliver it, not cut away before the point of the scene.
+- **Continuity honesty**: don't invent a character trait, backstory detail, or established fact that contradicts or silently extends what's already on record for this character — check against existing specs rather than assuming.
+- **Template-detection**: if writing multiple scenarios in one batch, check whether they all repeat one identical structural formula (same opening beat, same closing line shape) verbatim — that reads as generated, not written. Vary structure per scenario where the content would naturally differ.
