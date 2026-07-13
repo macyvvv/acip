@@ -19,6 +19,7 @@ secrets/
 somia/CONTENT/**/keyframe*.png
 somia/CONTENT/**/video*.mp4
 somia/CONTENT/**/*.dry_run.txt
+somia/CONTENT/**/.fal_checkpoint_*.json
 somia/proto_images/
 
 # system/core/file_lock.py's flock lock files -- empty, purely transient

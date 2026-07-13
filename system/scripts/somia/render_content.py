@@ -47,6 +47,7 @@ def render(content_id: str, *, provider_name: str | None = None, root: Path | No
         "video_path": _relative(result.video_path),
         "rendered_at": result.rendered_at,
         "notes": result.notes,
+        "spec_deviations": list(result.spec_deviations),
     }
     metadata_path.write_text(json.dumps(metadata, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return metadata["render"]

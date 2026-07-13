@@ -61,7 +61,8 @@ class IllustriousKlingProvider(VideoGenerationProvider):
         key = fal_client.api_key()
         output_dir.mkdir(parents=True, exist_ok=True)
 
-        keyframe_submission = fal_client.submit(
+        keyframe_checkpoint = output_dir / ".fal_checkpoint_illustrious_kling_keyframe.json"
+        keyframe_submission = fal_client.submit_resumable(
             KEYFRAME_RUNNER,
             {
                 "model_name": KEYFRAME_MODEL_NAME,
@@ -70,6 +71,7 @@ class IllustriousKlingProvider(VideoGenerationProvider):
                 "guidance_scale": DEFAULT_GUIDANCE_SCALE,
             },
             key,
+            keyframe_checkpoint,
         )
         keyframe_result = fal_client.await_result(
             keyframe_submission["status_url"],
@@ -80,9 +82,11 @@ class IllustriousKlingProvider(VideoGenerationProvider):
         keyframe_url = keyframe_result["images"][0]["url"]
         keyframe_path = output_dir / "keyframe.png"
         fal_client.download(keyframe_url, keyframe_path)
+        fal_client.clear_checkpoint(keyframe_checkpoint)
 
         motion_prompt = " ".join(part for part in (spec.animation_instruction, spec.camera_instruction) if part)
-        video_submission = fal_client.submit(
+        video_checkpoint = output_dir / ".fal_checkpoint_illustrious_kling_video.json"
+        video_submission = fal_client.submit_resumable(
             VIDEO_MODEL,
             {
                 "image_url": keyframe_url,
@@ -92,18 +96,23 @@ class IllustriousKlingProvider(VideoGenerationProvider):
                 "cfg_scale": DEFAULT_KLING_CFG_SCALE,
             },
             key,
+            video_checkpoint,
         )
         video_result = fal_client.await_result(video_submission["status_url"], video_submission["response_url"], key)
         video_url = video_result["video"]["url"]
         video_path = output_dir / "video.mp4"
         fal_client.download(video_url, video_path)
+        fal_client.clear_checkpoint(video_checkpoint)
 
+        spec_deviations = (
+            f"duration: spec requested 12s, rendered {DEFAULT_DURATION_SECONDS}s (Kling caps at 10s)",
+            "on_screen_text: not composited into the video (requires a separate compositing pass)",
+            "prompting: this checkpoint needs Danbooru-tag-style prompts (comma-separated tags, "
+            "not prose) to render cleanly -- write image_prompt accordingly",
+        )
         notes = (
             f"keyframe={KEYFRAME_MODEL_NAME} via {KEYFRAME_RUNNER}, video=kling v2.5-turbo/pro "
-            f"duration={DEFAULT_DURATION_SECONDS}s. Spec calls for 12s; Kling caps at 10s. "
-            "Confirmed in testing: this checkpoint needs Danbooru-tag-style prompts "
-            "(comma-separated tags, not prose) to render cleanly — write image_prompt "
-            "accordingly."
+            f"duration={DEFAULT_DURATION_SECONDS}s. " + " ".join(spec_deviations)
         )
         return RenderResult(
             provider=self.name,
@@ -112,6 +121,7 @@ class IllustriousKlingProvider(VideoGenerationProvider):
             video_path=str(video_path),
             rendered_at=datetime.now(timezone.utc).isoformat(),
             notes=notes,
+            spec_deviations=spec_deviations,
         )
 
 
