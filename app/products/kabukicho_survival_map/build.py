@@ -16,6 +16,7 @@ PRODUCT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = PRODUCT_DIR.parents[2]
 DATA_SOURCE = REPO_ROOT / "system" / "runtime" / "data" / "kabukicho"
 PUBLIC_DIR = REPO_ROOT / "web" / "public" / "kabukicho"
+SHARED_DIR = REPO_ROOT / "app" / "shared"
 
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
@@ -23,6 +24,11 @@ if str(REPO_ROOT) not in sys.path:
 from system.core.dotenv import load_dotenv  # noqa: E402
 
 STATIC_FILES = ("index.html", "app.js", "style.css")
+# Cross-product utilities (app/shared/) copied in flat alongside this
+# product's own static files -- same "committed local copy of a canonical
+# source" pattern as data/*.json above, since this repo has no bundler to
+# resolve a relative import across product/shared directory boundaries.
+SHARED_FILES = ("dom_escape.js",)
 LOCAL_CONFIG_FILE = PRODUCT_DIR / "local.config.js"
 
 
@@ -42,8 +48,13 @@ def build() -> None:
     for static_file in STATIC_FILES:
         shutil.copy2(PRODUCT_DIR / static_file, PUBLIC_DIR / static_file)
 
+    for shared_file in SHARED_FILES:
+        shutil.copy2(SHARED_DIR / shared_file, PRODUCT_DIR / shared_file)
+        shutil.copy2(SHARED_DIR / shared_file, PUBLIC_DIR / shared_file)
+
     print(f"Copied {len(list(DATA_SOURCE.glob('*.json')))} data file(s) to {local_data_dir} and {public_data_dir}")
     print(f"Copied {len(STATIC_FILES)} static file(s) to {PUBLIC_DIR}")
+    print(f"Copied {len(SHARED_FILES)} shared file(s) from {SHARED_DIR} to {PRODUCT_DIR} and {PUBLIC_DIR}")
 
     _write_local_gmaps_config()
 

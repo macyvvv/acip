@@ -139,11 +139,13 @@
     return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(lat + "," + lng);
   }
 
-  function escapeHtml(str) {
-    return String(str == null ? "" : str).replace(/[&<>"']/g, function (c) {
-      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
-    });
-  }
+  // Shared across app/products/* -- see app/shared/dom_escape.js. In the
+  // browser it's loaded via a <script> tag before this file (no bundler);
+  // in the Node test harness (tests/test_app_logic.js), window is
+  // undefined, so require() it directly instead.
+  var escapeHtml = (typeof window !== "undefined" && window.AcipDomUtils)
+    ? window.AcipDomUtils.escapeHtml
+    : require("../../shared/dom_escape.js").escapeHtml;
 
   function renderCard(poi, categoryId, index) {
     // type="unofficial" is the actual gray-zone/disclaimer signal -- the
