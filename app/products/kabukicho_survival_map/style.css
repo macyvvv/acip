@@ -311,3 +311,33 @@ body {
     right: 0;
   }
 }
+
+/* FAQ section: persistent for real visitors (outside #poi-list, so
+   app.js's renderList() never wipes it out), not just crawler content. */
+.faq-section {
+  padding: 16px;
+  padding-bottom: 96px; /* clear the fixed bottom-nav */
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.faq-section h2 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.faq-section details {
+  border-top: 1px solid #e0e0e0;
+  padding: 10px 0;
+}
+
+.faq-section summary {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.faq-section p {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #444444;
+}

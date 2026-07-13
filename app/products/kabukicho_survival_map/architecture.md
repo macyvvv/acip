@@ -44,6 +44,72 @@ Nothing in this repo can provision that key. An operator must: create/select a G
 - **Local testing** (this is what `.env`/`KABUKICHO_GMAPS_API_KEY` is for): set `KABUKICHO_GMAPS_API_KEY=...` in `.env` (gitignored, copy from `.env.example`), then run `build.py`. It reads the key via `system/core/dotenv.py` and writes it into `app/products/kabukicho_survival_map/local.config.js` -- a small, gitignored file, loaded by `index.html` via `<script src="local.config.js">` *before* the `window.KABUKICHO_GMAPS_API_KEY` placeholder, so the `||` fallback in that placeholder preserves the real value. Absent `.env` entry -> `build.py` removes any stale `local.config.js` and the map falls back to the setup notice. This file is **never** written into `web/public/kabukicho/` (that bundle is tracked in git) and never copied there by `build.py`.
 - **Production deploy**: needs its own, separate key-injection step tied to whichever host is eventually chosen (not yet decided -- see `requirements.md`'s "Explicitly Out of Scope"). Whatever that step is, it must write the real key into the *deployed*, not the *committed*, `index.html` -- e.g., a deploy-time environment variable substituted by the hosting platform's build step, never a `git commit` of the real key into `web/public/kabukicho/`.
 
+## SEO/AIO (search + AI-answer-engine visibility), 2026-07-13
+
+Hosting is explicitly gated on having a distribution strategy (see
+`requirements.md`'s deploy section and issue #36); this is that strategy's
+technical half. Driven by research into how AI answer engines (ChatGPT,
+Perplexity, Google AI Overviews) and traditional search actually crawl and
+cite hyperlocal guide content:
+
+- **The core problem this app had**: `app.js` fetches `data/*.json` and
+  renders the POI list entirely client-side. Most AI crawlers (and a
+  meaningful share of traditional ones) do not execute JavaScript, so the
+  raw HTML previously shipped with an empty `<main id="poi-list">` --
+  effectively invisible to anything that doesn't run JS.
+- **Fix**: `build.py` now pre-renders every category's full POI list (all
+  six categories, not just the default one -- a crawler only gets one page
+  load) as static HTML directly into `index.html` at build time
+  (`_render_poi_static_html`), via marker substitution (`<!-- SSG:* -->`
+  comments in the `index.html` template -- do not hand-edit those blocks,
+  they're regenerated every build). `app.js`'s `renderList()` fully
+  replaces `#poi-list`'s `innerHTML` on `DOMContentLoaded` regardless, so a
+  JS-capable browser only ever sees the static content for an instant
+  (progressive enhancement, not a UX change).
+- **Structured data**: `build.py` also generates a JSON-LD `<script>` block
+  (an `ItemList` of `Place` items, one per POI, plus a `FAQPage`) into
+  `<head>`. Deliberately `Place`, not `LocalBusiness` -- `LocalBusiness`
+  assumes business-identity semantics (`openingHours`, `priceRange`) that
+  don't fit a public toilet or an outdoor smoking spot; `additionalType`
+  carries the category label instead. Per Google's own 2026 AI-optimization
+  guidance, structured data is not required for AI Overviews specifically,
+  but it's still useful for ordinary Search (rich-result eligibility,
+  entity clarity) -- and ordinary Search indexing/eligibility is a
+  documented prerequisite for AI Overview surfacing.
+- **FAQ section**: a small, hand-curated (not keyword-stuffed) set of real
+  questions in `build.py`'s `FAQ_ITEMS`, rendered as visible `<details>`/
+  `<summary>` content in a `#faq-section` -- deliberately a sibling of
+  `#poi-list`, not inside it, so `renderList()` never wipes it out; it's
+  meant to persist for real visitors, not just crawlers. Google retired the
+  visual FAQ rich-result SERP snippet in 2026-05, but `FAQPage` markup is
+  still parsed, and Q&A-formatted content remains one of the easier
+  patterns for LLMs to extract/quote regardless of the SERP feature's
+  status -- so this is kept for the content-extraction value, not for a
+  rich-result appearance that no longer exists.
+- **`llms.txt`**: deliberately not implemented. Research found no major AI
+  platform officially requires or reliably uses it, and Google's own
+  AI-optimization guidance explicitly advises against relying on it. Low
+  cost but unproven benefit -- revisit only if that changes.
+- **`robots.txt`**: always generated (domain-independent), explicitly
+  `Allow`-ing standard crawlers plus AI bots that respect robots.txt
+  (`GPTBot`, `OAI-SearchBot`, `ClaudeBot`, `PerplexityBot`,
+  `Google-Extended`, `CCBot`) -- some hosts/CDNs block AI bots by default,
+  so an explicit `Allow` is safer than an assumed absence of `Disallow`.
+- **`sitemap.xml` / canonical tag**: both need a real, absolute deploy URL,
+  which doesn't exist yet -- `build.py` skips generating them (rather than
+  writing a placeholder domain that would mislead crawlers) until
+  `KABUKICHO_SITE_URL` is set in `.env` (see `.env.example`), printing a
+  reminder each time it's absent. Set it once a host is chosen and re-run
+  `build.py`.
+- **Competitive note**: research surfaced several existing smoking-area/
+  facility finders (smoking-map.jp, share-map.net, Doko?, "Japan Smoking
+  Area", CLUB JT's search) -- none combine all six of this app's categories
+  or are Kabukicho-specific, and several have real, documented weaknesses
+  (Japanese-only UI, 1.0-star ratings, no in-app search, region-locking).
+  That gap is this product's actual differentiation; nothing here changes
+  because of it, but it's why the SEO/AIO investment is worth making rather
+  than assuming the niche is already saturated.
+
 ## Extension points
 
 - Adding a POI: append an entry to the relevant `system/runtime/data/kabukicho/*.json` file matching the existing schema, then re-run `build.py`.
