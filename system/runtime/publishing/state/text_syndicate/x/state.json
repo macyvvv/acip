@@ -12,21 +12,21 @@
       "task_id": "auto-0001",
       "provider": "dry_run",
       "external_post_id": null,
-      "published_at": "2026-07-13T22:28:18.725631+00:00"
+      "published_at": "2026-07-13T23:52:55.362297+00:00"
     },
     "doc_creation:auto-0002": {
       "role_id": "doc_creation",
       "task_id": "auto-0002",
       "provider": "dry_run",
       "external_post_id": null,
-      "published_at": "2026-07-13T22:28:18.728436+00:00"
+      "published_at": "2026-07-13T23:52:55.369669+00:00"
     },
     "marketing:task-0002": {
       "role_id": "marketing",
       "task_id": "task-0002",
       "provider": "dry_run",
       "external_post_id": null,
-      "published_at": "2026-07-13T22:28:18.731111+00:00"
+      "published_at": "2026-07-13T23:52:55.375575+00:00"
     }
   },
   "counters": {

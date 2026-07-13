@@ -3,8 +3,8 @@
   "role_id": "marketing",
   "task_id": "task-0002",
   "platform": "x",
-  "final_text": "I gave ChatGPT, Claude, and Gemini the exact same messy client brief and graded the outputs.\n\nHere's which one I'd trust with actual paid work.\n\nThread:",
+  "final_text": "How ChatGPT, Claude, and Gemini tend to handle the same underspecified brief — \"write me a landing page pitch, make it punchy,\" no product/audience/tone given:\n\nChatGPT usually just picks reasonable defaults and writes the pitch, often without flagging what it assumed.\nClaude is more likely to either ask 1-2 clarifying questions first, or write the pitch and explicitly list its assumptions alongside it.\nGemini's behavior swings more with how the prompt is worded — the same ask phrased slightly differently can get you an assumptions-flagged draft or a request for more detail.\n\nIf you're pasting in a real client brief at 11pm with no time to answer follow-up questions, the model that tells you what it assumed — instead of silently guessing — is the one that saves you a redo the next morning.\n\nWhich of these matches what you've actually seen?",
   "source_execution_hash": "4e8b79626c9dd921dca88277e40f614a0db256cff4d8ae608abbcbfea3d0d495",
   "finalized_by": "macy",
-  "finalized_at": "2026-07-13T22:27:00.093125+00:00"
+  "finalized_at": "2026-07-13T23:49:59.306440+00:00"
 }

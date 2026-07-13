@@ -3,8 +3,8 @@
   "role_id": "doc_creation",
   "task_id": "auto-0001",
   "platform": "x",
-  "final_text": "Ranking every AI meeting-notes tool I've actually paid for, worst to best:\n\nOtter.ai > Fireflies.ai > Fathom > Chorus\n\nAll three work. Otter's overpriced for what you get. Fathom's UI is clunky. Fireflies is the goldilocks zone.\n\nWhat's your ranking? Fight me in replies.",
+  "final_text": "AI meeting-notes tools, compared on where the free tier actually caps out:\n\nOtter.ai: 300 min/month transcription, 30-min per-conversation limit, then $16.99/mo\nFireflies.ai: unlimited transcription AND unlimited AI summaries free — the real cap is 800 min of storage and a credit limit on advanced features (AskFred)\nFathom: unlimited recording/transcripts/basic summaries free — advanced AI summaries cap at 5/month, then $16/mo\n\nFireflies' free tier is the most generous of the three on the features people actually use daily. Fathom's \"advanced summary\" cap is the one that quietly runs out first if you're in back-to-back meetings.\n\nWhich of these have you actually hit the free-tier ceiling on?",
   "source_execution_hash": "93bee65dfc95c05f732736b871e7ba444bdc33abbbe2ebd832ed2a3662e5f417",
   "finalized_by": "macy",
-  "finalized_at": "2026-07-13T22:26:00.334748+00:00"
+  "finalized_at": "2026-07-13T23:49:59.191677+00:00"
 }
