@@ -16,7 +16,7 @@ def test_active_businesses_flagged_drifted_when_paths_missing(tmp_path):
 
 
 def test_active_businesses_not_drifted_when_paths_present(tmp_path):
-    (tmp_path / "app" / "products" / "kabukicho_survival_map_mvp").mkdir(parents=True)
+    (tmp_path / "app" / "products" / "kabukicho_survival_map").mkdir(parents=True)
     (tmp_path / "somia").mkdir(parents=True)
     (tmp_path / "system" / "scripts" / "somia").mkdir(parents=True)
 
