@@ -193,6 +193,13 @@ def _publish_oauth1(final_text: str) -> dict:
         raise PublishError(f"X API request failed ({exc.code}): {error_body}") from exc
 
 
+def _oauth1_credentials_available() -> bool:
+    return all(
+        _env_optional(name)
+        for name in ("X_API_KEY", "X_API_KEY_SECRET", "X_ACCESS_TOKEN", "X_ACCESS_TOKEN_SECRET")
+    )
+
+
 class XProvider(PublishingProvider):
     """Posts a tweet via X API v2 (POST /2/tweets). Real money per call
     (pay-per-use pricing) -- only reached when a policy explicitly selects
@@ -205,9 +212,21 @@ class XProvider(PublishingProvider):
         if platform != "x":
             raise PublishError(f"XProvider only handles platform='x', got '{platform}'")
 
-        if _env_optional("X_OAUTH2_ACCESS_TOKEN") or _OAUTH2_STATE_PATH.exists():
-            payload = _publish_oauth2(final_text)
-            auth_note = "OAuth 2.0 user context (auto-refreshed)"
+        oauth2_configured = _env_optional("X_OAUTH2_ACCESS_TOKEN") or _OAUTH2_STATE_PATH.exists()
+        if oauth2_configured:
+            try:
+                payload = _publish_oauth2(final_text)
+                auth_note = "OAuth 2.0 user context (auto-refreshed)"
+            except PublishError as oauth2_error:
+                # A broken/expired/already-rotated refresh_token must not
+                # silently kill every future scheduled post if a working
+                # OAuth 1.0a credential set also exists -- fall back rather
+                # than raise, but only once a complete OAuth 1.0a set is
+                # actually present (never guess/partial-fallback).
+                if not _oauth1_credentials_available():
+                    raise
+                payload = _publish_oauth1(final_text)
+                auth_note = f"OAuth 1.0a user context (fallback after OAuth 2.0 failed: {oauth2_error})"
         else:
             payload = _publish_oauth1(final_text)
             auth_note = "OAuth 1.0a user context"

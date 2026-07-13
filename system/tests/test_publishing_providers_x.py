@@ -114,6 +114,53 @@ def test_publish_http_error_raises_publish_error_oauth1(monkeypatch: pytest.Monk
         XProvider().publish("x", "hello world", "text_syndicate")
 
 
+def test_oauth2_failure_falls_back_to_oauth1_when_available(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    _isolate_oauth2_state(monkeypatch, tmp_path)
+    monkeypatch.setenv("X_OAUTH2_CLIENT_ID", "client-id")
+    monkeypatch.setenv("X_OAUTH2_CLIENT_SECRET", "client-secret")
+    monkeypatch.setenv("X_OAUTH2_ACCESS_TOKEN", "broken-access-token")
+    monkeypatch.setenv("X_OAUTH2_REFRESH_TOKEN", "broken-refresh-token")
+    monkeypatch.setenv("X_API_KEY", "key")
+    monkeypatch.setenv("X_API_KEY_SECRET", "keysecret")
+    monkeypatch.setenv("X_ACCESS_TOKEN", "token")
+    monkeypatch.setenv("X_ACCESS_TOKEN_SECRET", "tokensecret")
+
+    def fake_urlopen(request, timeout=30):
+        if request.full_url == providers_x.OAUTH2_TOKEN_URL:
+            raise urllib.error.HTTPError(
+                request.full_url, 400, "Bad Request", hdrs=None,
+                fp=__import__("io").BytesIO(b'{"error":"invalid_request"}'),
+            )
+        assert request.get_header("Authorization").startswith("OAuth ")
+        return _FakeResponse({"data": {"id": "555"}})
+
+    monkeypatch.setattr(urllib.request, "urlopen", fake_urlopen)
+
+    result = XProvider().publish("x", "hello world", "text_syndicate")
+    assert result.external_post_id == "555"
+    assert "fallback after OAuth 2.0 failed" in result.notes
+
+
+def test_oauth2_failure_raises_when_no_oauth1_fallback_available(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    _clear_oauth1_env(monkeypatch)
+    _isolate_oauth2_state(monkeypatch, tmp_path)
+    monkeypatch.setenv("X_OAUTH2_CLIENT_ID", "client-id")
+    monkeypatch.setenv("X_OAUTH2_CLIENT_SECRET", "client-secret")
+    monkeypatch.setenv("X_OAUTH2_ACCESS_TOKEN", "broken-access-token")
+    monkeypatch.setenv("X_OAUTH2_REFRESH_TOKEN", "broken-refresh-token")
+
+    def fake_urlopen(request, timeout=30):
+        raise urllib.error.HTTPError(
+            request.full_url, 400, "Bad Request", hdrs=None,
+            fp=__import__("io").BytesIO(b'{"error":"invalid_request"}'),
+        )
+
+    monkeypatch.setattr(urllib.request, "urlopen", fake_urlopen)
+
+    with pytest.raises(PublishError, match="400"):
+        XProvider().publish("x", "hello world", "text_syndicate")
+
+
 # ---- OAuth 2.0 path (preferred) -----------------------------------------
 
 def test_oauth2_bootstraps_from_env_and_refreshes_on_first_use(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
