@@ -28,6 +28,8 @@
 
 - command: confirm `latest.json` parses and names an explicit audience/channel for every copy draft
 - expected result: valid JSON, no unattributed audience/channel claims
+- command: confirm the output states what the self-critique pass changed/cut (see `.claude/agents/marketing.md`'s "Self-Critique" section) — specificity, payoff completeness, experience honesty, template-detection
+- expected result: no unresolved vague claims, no undelivered hooks/teasers, no fabricated first-person experience presented as real, no verbatim-repeated structure across multiple drafted items
 
 ## Emergency Stop
 
