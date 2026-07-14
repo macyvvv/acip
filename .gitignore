@@ -48,3 +48,10 @@ app/products/kabukicho_survival_map/local.config.js
 # the same directory IS tracked normally (a rare, deliberate human action,
 # same as its three sibling switches).
 system/runtime/scheduler/audit/
+
+# ADR-0040's merge-circuit-breaker counter (scheduled_merge_circuit.py) --
+# same reasoning as the audit trail above: it's mechanical, frequently-
+# updated operational state (increments on every merge-gate failure, resets
+# on success), not a rare deliberate human action like merge_paused.json
+# (its sibling switch, which IS tracked normally).
+system/runtime/scheduler/merge_circuit.json
