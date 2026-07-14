@@ -23,6 +23,35 @@ from system.scripts.analytics.providers import get_provider as get_analytics_pro
 DEFAULT_SUPPORTED_MODELS = ["claude-haiku-4-5", "claude-sonnet-5", "claude-opus-4-8"]
 DEFAULT_CLI_TIMEOUT_SECONDS = 60
 
+# A headless `claude -p ... --tools ... --permission-mode bypassPermissions`
+# call can exit 0 while printing only an account-level usage/session-limit
+# notice instead of doing any real work -- observed live via Level 3b's first
+# real scheduled wake (ADR-0038): 3 scopes were recorded execution_result_
+# status=success with exit_code=0, but their only stdout was a session-limit
+# notice, and no real content was produced. Exit code alone is not a
+# sufficient success signal for headless automation here, the same lesson
+# already learned once for --allowedTools not being a hard restriction --
+# the CLI's own signals need independent verification, not blind trust.
+_CLI_FAILURE_NOTICE_PATTERNS = ("session limit", "rate limit", "usage limit")
+# These notices are short, single-line messages, not real generated content --
+# bounding the check by length keeps it from false-positiving on legitimate
+# long-form content that happens to discuss rate limits as a topic.
+_CLI_FAILURE_NOTICE_MAX_LEN = 500
+
+
+def _cli_failure_notice(stdout: str) -> str | None:
+    """Returns a short reason string if stdout looks like a CLI-level failure
+    notice rather than real content, else None."""
+    text = stdout.strip()
+    if not text:
+        return "empty_stdout"
+    if len(text) <= _CLI_FAILURE_NOTICE_MAX_LEN:
+        lowered = text.lower()
+        for pattern in _CLI_FAILURE_NOTICE_PATTERNS:
+            if pattern in lowered:
+                return f"cli_notice:{pattern.replace(' ', '_')}"
+    return None
+
 
 @dataclass(frozen=True)
 class BusinessAgentExecutionResult:
@@ -40,6 +69,7 @@ class BusinessAgentExecutionResult:
     success: bool
     captured_at: str
     artifact_path: str
+    failure_reason: str | None = None
 
 
 class BusinessAgentExecutionError(ValueError):
@@ -90,7 +120,11 @@ class BusinessAgentExecutionAdapter:
             completed = self._run_command(command)
             stdout, stderr, exit_code = completed.stdout, completed.stderr, completed.returncode
 
-        success = exit_code == 0
+        # Only applied to a real (non-dry-run) call -- dry_run's fixed
+        # "dry-run only" stdout never matches a failure-notice pattern, so
+        # this is a no-op for dry runs, not a special case.
+        failure_reason = _cli_failure_notice(stdout) if not dry_run else None
+        success = exit_code == 0 and failure_reason is None
         result = BusinessAgentExecutionResult(
             business_id=business_id,
             role_id=role_id,
@@ -106,6 +140,7 @@ class BusinessAgentExecutionAdapter:
             success=success,
             captured_at=datetime.now(timezone.utc).isoformat(),
             artifact_path=str(self._artifact_dir(business_id, role_id, task_id) / "latest.json"),
+            failure_reason=failure_reason,
         )
         self._write_artifact(result)
         update_business_agent_kpi(business_id, role_id, success, self.base_path)

@@ -185,7 +185,11 @@ class ApprovedAutonomousExecution:
             execution_result_status="success" if outcome.success else "failure",
             completion_marker_path=outcome.artifact_path,
             request_path=request_path,
-            stopped_reason="completion_marker_written" if outcome.success else f"exit_code={outcome.exit_code}",
+            stopped_reason=(
+                "completion_marker_written"
+                if outcome.success
+                else (getattr(outcome, "failure_reason", None) or f"exit_code={outcome.exit_code}")
+            ),
             started_at=started_at,
             finished_at=_now(),
             authorization_source=authorization_source,
