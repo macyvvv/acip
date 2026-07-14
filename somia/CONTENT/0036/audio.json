@@ -1,0 +1,11 @@
+{
+  "base_layer": "distant hallway hush",
+  "noise_type": "shallow close-breath texture",
+  "frequency_range": "200-750Hz",
+  "trigger_timing": [
+    "lean forward",
+    "lean retraction",
+    "silence entry"
+  ],
+  "silence_duration": 1.0
+}

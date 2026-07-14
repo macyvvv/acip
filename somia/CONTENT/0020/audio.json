@@ -1,0 +1,11 @@
+{
+  "base_layer": "low ambient hum with faint window draft tone",
+  "noise_type": "slow heavy-breathing texture",
+  "frequency_range": "2k–6kHz",
+  "trigger_timing": [
+    "reflection drift",
+    "weight shift",
+    "silence entry"
+  ],
+  "silence_duration": 1.0
+}

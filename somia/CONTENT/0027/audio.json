@@ -1,0 +1,7 @@
+{
+  "base_layer": "shallow surf ambience",
+  "noise_type": "particle-like water shimmer",
+  "frequency_range": "high-frequency/particle-like",
+  "trigger_timing": ["wave wash", "gaze lift", "silence entry"],
+  "silence_duration": 2.0
+}

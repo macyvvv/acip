@@ -1,0 +1,7 @@
+{
+  "base_layer": "warm ambient hum",
+  "noise_type": "steady breath texture",
+  "frequency_range": "200-800Hz",
+  "trigger_timing": ["grip tighten", "grip ease"],
+  "silence_duration": 0.8
+}

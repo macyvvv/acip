@@ -1,0 +1,7 @@
+{
+  "base_layer": "warm kitchen ambience",
+  "noise_type": "stable breath texture",
+  "frequency_range": "200-800Hz",
+  "trigger_timing": ["steam rise", "stillness hold"],
+  "silence_duration": 0.9
+}

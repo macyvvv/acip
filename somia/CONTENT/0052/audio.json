@@ -1,0 +1,7 @@
+{
+  "base_layer": "warm room hum",
+  "noise_type": "soft breath catch",
+  "frequency_range": "200-800Hz",
+  "trigger_timing": ["lips part", "breath release"],
+  "silence_duration": 0.8
+}

@@ -1,0 +1,7 @@
+{
+  "base_layer": "open-water ambience",
+  "noise_type": "particle-like shimmer",
+  "frequency_range": "high-frequency/particle-like",
+  "trigger_timing": ["droplet fall", "gaze shift", "silence entry"],
+  "silence_duration": 2.0
+}

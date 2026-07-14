@@ -1,0 +1,7 @@
+{
+  "base_layer": "open-air room ambience",
+  "noise_type": "particle-like air shimmer",
+  "frequency_range": "high-frequency/particle-like",
+  "trigger_timing": ["curtain lift", "hair tuck", "silence entry"],
+  "silence_duration": 2.0
+}

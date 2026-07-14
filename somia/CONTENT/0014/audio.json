@@ -1,0 +1,11 @@
+{
+  "base_layer": "low electronic hum with steady monitor whine",
+  "noise_type": "shallow even-breath texture",
+  "frequency_range": "2k–6kHz",
+  "trigger_timing": [
+    "cursor-blink tick",
+    "lean-in shift",
+    "silence entry"
+  ],
+  "silence_duration": 0.8
+}

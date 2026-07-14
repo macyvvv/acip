@@ -1,0 +1,11 @@
+{
+  "base_layer": "ambient desk hum with distant traffic",
+  "noise_type": "quiet exhale and skin-contact texture",
+  "frequency_range": "2k–6kHz",
+  "trigger_timing": [
+    "notification pulse",
+    "finger tap",
+    "silence entry"
+  ],
+  "silence_duration": 0.9
+}

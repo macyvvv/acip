@@ -1,0 +1,7 @@
+{
+  "base_layer": "warm ambient room hum",
+  "noise_type": "slow exhale texture",
+  "frequency_range": "200-800Hz",
+  "trigger_timing": ["exhale", "gaze shift to door"],
+  "silence_duration": 1.0
+}

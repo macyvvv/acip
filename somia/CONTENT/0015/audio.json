@@ -1,0 +1,11 @@
+{
+  "base_layer": "soft rain-adjacent ambience with distant hum",
+  "noise_type": "light breath-shift texture",
+  "frequency_range": "2k–6kHz",
+  "trigger_timing": [
+    "rain-trace shift",
+    "gaze drift back",
+    "silence entry"
+  ],
+  "silence_duration": 1.0
+}

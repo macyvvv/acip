@@ -1,0 +1,11 @@
+{
+  "base_layer": "soft ambient bed with low monitor hum",
+  "noise_type": "quiet steady-breath texture",
+  "frequency_range": "2k–6kHz",
+  "trigger_timing": [
+    "notification ping",
+    "gaze waver",
+    "silence entry"
+  ],
+  "silence_duration": 0.8
+}

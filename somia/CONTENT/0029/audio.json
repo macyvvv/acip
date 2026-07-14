@@ -1,0 +1,7 @@
+{
+  "base_layer": "dawn coastal ambience",
+  "noise_type": "particle-like air shimmer",
+  "frequency_range": "high-frequency/particle-like",
+  "trigger_timing": ["hand close on pendant", "hair stir", "silence entry"],
+  "silence_duration": 2.0
+}

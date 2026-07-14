@@ -1,0 +1,11 @@
+{
+  "base_layer": "low electronic hum with faint monitor whine",
+  "noise_type": "short tight-breath texture",
+  "frequency_range": "2k–6kHz",
+  "trigger_timing": [
+    "glitch flicker",
+    "shoulder tighten",
+    "silence entry"
+  ],
+  "silence_duration": 0.8
+}

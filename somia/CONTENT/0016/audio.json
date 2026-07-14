@@ -1,0 +1,11 @@
+{
+  "base_layer": "quiet room tone with faint distant hum",
+  "noise_type": "slow exhale and fabric-settle texture",
+  "frequency_range": "2k–6kHz",
+  "trigger_timing": [
+    "glitch pulse",
+    "exhale",
+    "silence entry"
+  ],
+  "silence_duration": 0.9
+}
