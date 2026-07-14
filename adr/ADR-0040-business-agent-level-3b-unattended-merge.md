@@ -226,10 +226,27 @@ review entirely.
 
 - [x] ADR-0040 written.
 - [x] `pytest -q` and `validate_all.py` green (408 tests, up from 391).
-- [ ] At least one real wake with something to merge, observed end-to-end
-      by the operator (gate-by-gate, not just the final outcome).
-- [ ] Circuit breaker demoed tripping for real (3 consecutive induced
-      failures) and clearing via `resume_scheduled_merge.py`.
-- [ ] `rollback_scheduled_merge.py` demoed against a real (deliberately
-      bad) merge, confirming the revert PR opens correctly and is not
-      auto-merged.
+- [x] At least one real wake with something to merge, observed end-to-end
+      by the operator (gate-by-gate, not just the final outcome). PR #118
+      (2026-07-14/15): 3 real scopes executed successfully, all gates
+      passed (all-succeeded, allowlist, local validation, stale-base check
+      against real `origin/main`, GitHub CI green), merged unattended.
+      Content spot-checked as genuine (fresh `captured_at`, real generated
+      marketing copy, `exit_code=0`, `success=True`). Backlog dropped from
+      14 to 12 candidates.
+- [x] Circuit breaker demoed tripping for real (3 consecutive induced
+      failures) and clearing via `resume_scheduled_merge.py`. Confirmed
+      `is_scheduled_merge_paused()` flips to `True` with
+      `paused_by="circuit_breaker"` on the real production state path,
+      then cleanly resumed.
+- [x] `rollback_scheduled_merge.py` demoed against a real (deliberately
+      bad, clearly-labeled throwaway) merge (PR #120 -> merge commit
+      `0fae0fc`): the script correctly opened a revert PR (#121, diff
+      confirmed it only deleted the throwaway file) and did NOT auto-merge
+      it (`merged=false`) -- reviewed and merged manually, leaving no
+      permanent trace.
+
+Incidental finding while verifying: a pre-existing, unrelated flaky test
+(`test_stale_claim_can_be_reclaimed`, a UTC day-boundary bug in the test
+itself, not in `execution_pre_approval_state.py`) reproduced live during
+this verification and was fixed in the same session (separate PR #122).
