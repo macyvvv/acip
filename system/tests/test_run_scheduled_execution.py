@@ -115,6 +115,31 @@ def test_one_task_id_per_business_role_pair_oldest_first(tmp_path: Path) -> None
     assert candidates[0].task_id == "auto-0004"  # queue.json is append-ordered -- first entry is oldest
 
 
+def test_unsafe_task_id_is_never_selected(tmp_path: Path) -> None:
+    # ADR-0040: once merge can happen with zero human eyes on the diff, a
+    # malformed identifier reaching a filesystem path is a real
+    # path-traversal-shaped risk that used to be caught by PR review.
+    write_business_agent_handoff("text_syndicate", "market_research", "../../etc", "desc", tmp_path)
+    add_task("text_syndicate", "market_research", "../../etc", "title", tmp_path)
+    _write_pre_approval_policy(tmp_path, "text_syndicate", "market_research")
+    assert scheduler.find_scheduled_candidates(tmp_path) == []
+
+
+def test_unsafe_business_id_is_never_selected(tmp_path: Path) -> None:
+    write_business_agent_handoff("../evil", "market_research", "task-0001", "desc", tmp_path)
+    add_task("../evil", "market_research", "task-0001", "title", tmp_path)
+    _write_pre_approval_policy(tmp_path, "../evil", "market_research")
+    assert scheduler.find_scheduled_candidates(tmp_path) == []
+
+
+def test_safe_identifiers_still_selected(tmp_path: Path) -> None:
+    assert scheduler._is_safe_identifier("kabukicho_survival_map") is True
+    assert scheduler._is_safe_identifier("auto-0005") is True
+    assert scheduler._is_safe_identifier("") is False
+    assert scheduler._is_safe_identifier("../etc/passwd") is False
+    assert scheduler._is_safe_identifier("has space") is False
+
+
 def test_capped_at_max_per_wake(tmp_path: Path) -> None:
     for i in range(scheduler.MAX_TASK_EXECUTIONS_PER_WAKE + 3):
         business_id = f"biz-{i}"
@@ -154,7 +179,7 @@ def test_happy_path_executes_and_lands_via_pr(tmp_path: Path, monkeypatch) -> No
 
     def fake_land(base_path, run_key, executed):
         land_calls.append((base_path, run_key, executed))
-        return "https://github.com/example/pr/1", None
+        return "https://github.com/example/pr/1", None, True, "merged", None
 
     monkeypatch.setattr(scheduler, "_land_via_pr", fake_land)
 
@@ -163,6 +188,8 @@ def test_happy_path_executes_and_lands_via_pr(tmp_path: Path, monkeypatch) -> No
     assert len(summary.executed) == 1
     assert summary.executed[0]["execution_result_status"] == "success"
     assert summary.pr_url == "https://github.com/example/pr/1"
+    assert summary.merge_attempted is True
+    assert summary.merge_result == "merged"
     assert len(land_calls) == 1  # landing only attempted because something actually executed
     assert Path(summary.audit_path).exists()
     latest = json.loads((tmp_path / "system/runtime/scheduler/audit/latest.json").read_text())
@@ -204,7 +231,7 @@ def test_one_scope_adapter_failure_does_not_abort_the_wake(tmp_path: Path, monke
         return FakeOutcome()
 
     monkeypatch.setattr("system.core.approved_autonomous_execution.BusinessAgentExecutionAdapter.run", flaky_run)
-    monkeypatch.setattr(scheduler, "_land_via_pr", lambda base_path, run_key, executed: (None, "test_skip"))
+    monkeypatch.setattr(scheduler, "_land_via_pr", lambda base_path, run_key, executed: (None, "test_skip", False, None, None))
 
     summary = scheduler.run_scheduled_execution(tmp_path)
     assert len(summary.executed) == 2  # both scopes were attempted despite the first raising
@@ -234,7 +261,7 @@ def test_one_scope_unexpected_exception_above_the_adapter_does_not_abort_the_wak
     monkeypatch.setattr(scheduler.ApprovedAutonomousExecution, "run", flaky_top_level_run)
     calls: list[dict] = []
     monkeypatch.setattr("system.core.approved_autonomous_execution.BusinessAgentExecutionAdapter.run", _fake_successful_run(calls))
-    monkeypatch.setattr(scheduler, "_land_via_pr", lambda base_path, run_key, executed: (None, "test_skip"))
+    monkeypatch.setattr(scheduler, "_land_via_pr", lambda base_path, run_key, executed: (None, "test_skip", False, None, None))
 
     summary = scheduler.run_scheduled_execution(tmp_path)
     assert len(summary.executed) == 2
@@ -308,7 +335,7 @@ def test_clean_tree_before_the_wake_lets_execution_and_landing_proceed(tmp_path:
 
     def fake_land(base_path, run_key, executed):
         land_calls.append((base_path, run_key, executed))
-        return "https://github.com/example/pr/2", None
+        return "https://github.com/example/pr/2", None, False, None, None
 
     monkeypatch.setattr(scheduler, "_land_via_pr", fake_land)
 
@@ -352,11 +379,22 @@ def test_land_via_pr_commits_only_the_known_runtime_paths(tmp_path: Path, monkey
         return real_subprocess_run(cmd, *args, **kwargs)
 
     monkeypatch.setattr(scheduler.subprocess, "run", dispatching_run)
+    # This test is about the commit/allowlist mechanics of _land_via_pr, not
+    # ADR-0040's merge gate -- pause merge so _attempt_auto_merge short-
+    # circuits at its first gate instead of running real pytest/validate_all
+    # against this synthetic bare-origin repo.
+    from system.core.scheduled_merge_control import pause_scheduled_merge
 
-    pr_url, reason = scheduler._land_via_pr(repo, "20260712T000000Z", [])
+    pause_scheduled_merge("not under test here", "test", repo)
+
+    pr_url, reason, merge_attempted, merge_result, merge_skip_reason = scheduler._land_via_pr(
+        repo, "20260712T000000Z", []
+    )
 
     assert pr_url == "https://github.com/example/pr/3"
     assert reason is None
+    assert merge_attempted is False
+    assert merge_skip_reason == "merge_paused"
     # The commit landed on the scheduler's own branch (never main, never
     # merged) -- check that branch specifically, not whatever HEAD is now.
     log = subprocess.run(
@@ -370,3 +408,83 @@ def test_land_via_pr_commits_only_the_known_runtime_paths(tmp_path: Path, monkey
     assert branch == "main"
     status = subprocess.run(["git", "status", "--porcelain"], cwd=repo, capture_output=True, text=True).stdout
     assert "README.md" in status  # still sitting there, uncommitted
+
+
+# --- ADR-0040: _attempt_auto_merge gate ------------------------------------
+
+_SUCCESS_ITEM = {
+    "business_id": "text_syndicate",
+    "role_id": "market_research",
+    "task_id": "task-0001",
+    "execution_triggered": True,
+    "execution_result_status": "success",
+}
+_FAILURE_ITEM = {
+    "business_id": "text_syndicate",
+    "role_id": "marketing",
+    "task_id": "task-0001",
+    "execution_triggered": True,
+    "execution_result_status": "failure",
+}
+
+
+def test_merge_skipped_when_merge_switch_paused(tmp_path: Path) -> None:
+    from system.core.scheduled_merge_control import pause_scheduled_merge
+
+    pause_scheduled_merge("investigating", "macy", tmp_path)
+    attempted, result, skip_reason = scheduler._attempt_auto_merge(tmp_path, "url", "branch", "sha", [_SUCCESS_ITEM])
+    assert attempted is False
+    assert result is None
+    assert skip_reason == "merge_paused"
+
+
+def test_merge_skipped_on_partial_failure_in_wake(tmp_path: Path) -> None:
+    # A wake that ran 3 candidates where even one failed must never
+    # auto-merge -- the whole batch lands as a normal, human/session-
+    # reviewed PR instead, same as before this capability existed.
+    attempted, result, skip_reason = scheduler._attempt_auto_merge(
+        tmp_path, "url", "branch", "sha", [_SUCCESS_ITEM, _FAILURE_ITEM]
+    )
+    assert attempted is False
+    assert result is None
+    assert skip_reason == "partial_failure_in_wake"
+
+
+def test_diff_within_allowlist_accepts_only_tracked_paths(tmp_path: Path) -> None:
+    import subprocess
+
+    _init_git_repo(tmp_path)
+    (tmp_path / "system" / "runtime" / "business_agent_tasks").mkdir(parents=True)
+    (tmp_path / "system" / "runtime" / "business_agent_tasks" / "queue.json").write_text("{}")
+    subprocess.run(["git", "checkout", "-b", "scheduler/run-test"], cwd=tmp_path, check=True)
+    subprocess.run(["git", "add", "-A"], cwd=tmp_path, check=True)
+    subprocess.run(["git", "commit", "-q", "-m", "runtime update"], cwd=tmp_path, check=True)
+
+    ok, reason = scheduler._diff_within_allowlist(tmp_path, "scheduler/run-test")
+    assert ok is True
+    assert reason == ""
+
+
+def test_diff_outside_allowlist_is_rejected(tmp_path: Path) -> None:
+    import subprocess
+
+    _init_git_repo(tmp_path)
+    (tmp_path / "system" / "core").mkdir(parents=True)
+    (tmp_path / "system" / "core" / "some_module.py").write_text("# not a runtime-state path\n")
+    subprocess.run(["git", "checkout", "-b", "scheduler/run-test"], cwd=tmp_path, check=True)
+    subprocess.run(["git", "add", "-A"], cwd=tmp_path, check=True)
+    subprocess.run(["git", "commit", "-q", "-m", "unexpected code change"], cwd=tmp_path, check=True)
+
+    ok, reason = scheduler._diff_within_allowlist(tmp_path, "scheduler/run-test")
+    assert ok is False
+    assert "diff_outside_allowlist" in reason
+
+
+def test_allowlist_violation_counts_toward_circuit_breaker(tmp_path: Path, monkeypatch) -> None:
+    from system.core.scheduled_merge_circuit import _THRESHOLD
+    from system.core.scheduled_merge_control import is_scheduled_merge_paused
+
+    monkeypatch.setattr(scheduler, "_diff_within_allowlist", lambda base_path, branch: (False, "diff_outside_allowlist:evil.py"))
+    for _ in range(_THRESHOLD):
+        scheduler._attempt_auto_merge(tmp_path, "url", "branch", "sha", [_SUCCESS_ITEM])
+    assert is_scheduled_merge_paused(tmp_path) is True
