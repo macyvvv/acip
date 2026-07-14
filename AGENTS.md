@@ -1,36 +1,19 @@
 # AGENTS.md
 
-> Superseded by [CLAUDE.md](CLAUDE.md) for how Claude should operate in this
-> repo. Kept as historical record of the ChatGPT+Codex protocol.
+> [CLAUDE.md](CLAUDE.md) が本リポジトリの唯一の正本。本ファイルは旧
+> ChatGPT+Codexプロトコル時代の記録として残すのみで、`docs/current/STATE.md`
+> の生きた優先順位チェーンには含まれない。
 
-## Codex Role
+## Codex Role（歴史的記録）
 
-Codex is the repository preparation, review, and implementation agent.
+Codexはリポジトリ準備・レビュー・実装エージェントだった。
 
-## Current Phase
+## Phase 0（歴史的記録、既に終了）
 
 ```text
 Phase 0: GitHub foundation and constitution readiness
 ```
 
-Runtime implementation is not approved.
-
-## Required Behavior
-
-- Read `README.md`
-- Read `AGENTS.md`
-- Read `basis/`
-- Read relevant ADRs
-- State conclusion first
-- Separate facts, assumptions, and proposals
-- Never push directly to `main`
-- Never implement runtime behavior before approval
-
-## Prohibited
-
-- direct push to `main`
-- auto posting
-- scraping-dependent architecture
-- platform API integration in Phase 0
-- runtime agent implementation in Phase 0
-- changing upstream policy without ADR
+当時ランタイム実装は未承認だったが、現在は `app/products/` 配下に実プロダクト
+（`kabukicho_survival_map` 等）が稼働しており、この制約は既に実質を失っている。
+現在のフェーズは `docs/current/STATE.md` を参照。

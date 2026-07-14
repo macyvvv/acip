@@ -1,67 +1,82 @@
 # CLAUDE.md
 
-This file replaces the ChatGPT+Codex boot ritual (`AGENTS.md`, `.system/BOOT.md`,
-`.system/REVIEW.md`, `.system/DECISION.md`, `.system/STYLE.md`) as the operating
-instructions for this repository. Those files are kept as historical record of
-the old protocol; do not follow their response-format rituals (forced
-Conclusion/Next Action ordering, mandatory "Current Phase:" footer, single-step
-hand-holding). They existed to compensate for ChatGPT and Codex having no
-shared memory across sessions. Claude Code holds this file and the
-conversation directly, so that ceremony is dropped.
+本リポジトリで唯一の正本の運用指示書。`AGENTS.md` と `.system/*` は旧
+ChatGPT+Codex時代の記録として残すのみで、正本ではない（生きた優先順位は
+`docs/current/STATE.md` のRuntime Notes: `PROJECT.md` → `STATE.md` →
+`CLAUDE.md` → `basis/` → `adr/` → Issue → PR → Conversation）。旧ファイル群の
+儀式的フォーマット（Conclusion/Next Actionの強制順序、「Current Phase:」
+フッターなど）には従わない。ChatGPT/Codexはセッション間の記憶を持たなかった
+ためにこの儀式が必要だったが、Claude Codeは本ファイルと会話自体を記憶として
+保持するため不要である。
 
-## What this repo is
+## Mission
 
-An attempt to run a company mostly through AI agents, with GitHub as the
-system of record. Full mission/vision/phase: `docs/current/PROJECT.md`.
-Current phase/milestone/active issue/blockers: `docs/current/STATE.md`. Read
-these two when you need current status — don't reload them reflexively on
-every turn.
+堅牢性・クリーンネス・長期保守性・再現性・引き継ぎ容易性・実行効率・継続的な
+全体最適を最優先する。短期的な開発速度のために犠牲にしない。
 
-Real product surfaces live under `app/products/` (kabukicho_survival_map_mvp,
-minimal_launch_brief_generator, repository_operational_summary) and
-`app/tools/approval_console_mvp`. Everything else under `system/`, `docs/`,
-`basis/`, `adr/`, `specs/`, `contracts/` is process/governance scaffolding
-that grew to a much larger footprint than the product code (roughly 800
-markdown files and 24k lines of Python governing themselves — self-test,
-drift detection, boundary validation, continuous governance, knowledge graph,
-agent orchestrator, worker registry, queue/execution kernel, etc.). Be
-skeptical of adding to this layer; prefer shrinking it when you touch it.
+## このリポジトリは何か
 
-## Operating model
+AIエージェントを中心に会社を運営する試み。GitHubが記録の一次情報源。全体像は
+`docs/current/PROJECT.md`、現状は`docs/current/STATE.md`（必要な時に読めばよい）。
 
-- Claude now covers both what ChatGPT (architecture, review, optimization)
-  and Codex (implementation, refactoring, testing, PR) used to do separately.
-- Human keeps: strategy, approval, capital allocation. Nothing merges to
-  `main` without human review via PR.
-- `basis/*.md` (policy corpus) and `adr/*.md` (decision records) are the real
-  historical record of *why* things are the way they are. Read the relevant
-  ones when a change touches that area — don't front-load all of them.
-  `basis/` has an index at [basis/README.md](basis/README.md); some entries
-  there are marked "stub" — those are unwritten placeholders, not adopted
-  policy.
+実プロダクトは `app/products/`（kabukicho_survival_map, kabukicho_survival_map_mvp,
+minimal_launch_brief_generator, repository_operational_summary）と
+`app/tools/approval_console_mvp`。注意: `kabukicho_survival_map` が本物の
+フルスクラッチアプリ（HTML/CSS/JS、バックエンドなし）で、`kabukicho_survival_map_mvp`
+は育たなかった旧・小規模版。両者を混同しない。それ以外の `system/`, `docs/`,
+`basis/`, `adr/`, `specs/`, `contracts/` はガバナンスの足場で、プロダクト
+コードよりはるかに大きい（約800ファイル・24k行）。この層への追加には懐疑的で
+あるべきで、触るときはむしろ縮小する。
 
-## Hard rules (technically enforced, not just documented)
+## Knowledge First
 
-- Never push directly to `main`. Always: feature branch → commit → push →
-  PR → human review/merge. Activate the local guard once with
-  `bash system/scripts/git/install_hooks.sh` (see
-  `docs/current/MAIN_PROTECTION_POLICY.md`,
-  `docs/current/BRANCH_AND_PR_OPERATING_PROCEDURE.md`).
-- If a change affects architecture, governance, responsibility boundaries,
-  workflow, data model, or runtime behavior, add or update an ADR under
-  `adr/`.
-- Before adding a new doc/script/workflow, check whether an equivalent
-  artifact already exists (`basis/`, `adr/`, `docs/current/`, `system/`) and
-  extend/fix it instead of creating a duplicate. This repo already has a
-  duplication problem.
-- Don't flatter or default to agreeing — if a design in this repo is
-  overbuilt or inconsistent, say so directly.
+`basis/` が正本（ADR-0037のガバナンス層見直しで44ファイルから整理済み。詳細は
+`basis/README.md`）：
+
+- `basis/CORE_PRINCIPLES.md` — 実際に効いているルールの記録。まずこれを読む。
+- `basis/057_boundary_validation_policy.md` — 境界検証ポリシー。
+- `basis/REPOSITORY_CONVENTIONS.md` — 命名規約。
+
+設計・要件・アーキテクチャ・運用方針の変更時は該当する `basis/` ファイルと
+`adr/*.md`（決定記録＝「なぜ今の形か」の本当の記録）を同期する。
+
+## 実行方針とHard Rules（技術的に強制、文書だけではない）
+
+- 作業前に計画を提示し承認を取得する。承認後はScope内で自律的に完遂してよい。
+  Current Objectiveは変更しない — Scope内の改善は自律実行、Scope外は
+  Parking Lotへ記録する。
+- 局所最適ではなく全体最適を目的とする。作業単位ごとに、戦略・アーキテクチャ・
+  実装・品質・UX・ドキュメント・運用への影響を俯瞰的に自己点検し、Project
+  Goalとの整合性を継続的に監査する。改善案は自己批判と代替案比較を経てから
+  採用する。
+- アーキテクチャ・ガバナンス・責任境界・ワークフロー・データモデル・実行時挙動に
+  影響する変更は作業を止めて確認を取り、`adr/` にADRを追加・更新する。
+- `main` への直接pushは禁止。常に feature branch → commit → push → PR →
+  人間レビュー/マージ。ローカルガードは初回のみ
+  `bash system/scripts/git/install_hooks.sh` で有効化（`.git/hooks/`は
+  git非追跡のためclone毎に手動要。GitHub側のbranch protectionは無料プランの
+  privateリポジトリのため未設定 — 詳細は`docs/current/MAIN_PROTECTION_POLICY.md`）。
+- 新しいdoc/script/workflowを追加する前に、同等のものが既に存在しないか
+  （`basis/`, `adr/`, `docs/current/`, `system/`）確認し、あれば拡張・修正する。
+  このリポジトリは重複が既に問題化している。
+- 迎合しない。設計が過剰または一貫性を欠く場合はそう直接指摘する。
+- 人間が保持する領域：戦略、承認、資本配分。Claudeが担う領域：アーキテクチャ、
+  実装、リファクタリング、テスト、レビュー、PR作成。
+
+## UI Philosophy
+
+機能美を目指す。優先順位：視線誘導 > 認知負荷低減 > 情報階層 > 一貫性 >
+ミニマルデザイン > 操作効率 > アクセシビリティ。人間の認知特性を最優先する。
 
 ## Validation
 
-- Tests: `python -m pytest -q`
-- Full repo self-validation: `python system/scripts/validate_all.py`
-- Combined status export (what CI's `validate-all.yml` effectively checks):
-  `bash system/scripts/check_repo_os_status.sh`
+- テスト: `python -m pytest -q`
+- リポジトリ全体の自己検証: `python system/scripts/validate_all.py`
+- CIの `validate-all.yml` 相当の統合ステータス: `bash system/scripts/check_repo_os_status.sh`
 
-Run these before opening a PR for anything under `system/` or `app/`.
+`system/` または `app/` 配下を変更してPRを開く前に実行する。
+
+## Definition of Success
+
+Robust / Clean / Maintainable / Reproducible / Testable / Transferable /
+Scalable / Documented を満たすこと。
