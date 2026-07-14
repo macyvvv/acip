@@ -26,8 +26,15 @@
 
 ## Validation
 
-- command: confirm `latest.json` parses and contains non-empty `facts`/`recommendations` lists
+- command: confirm `latest.json` parses (it is an execution-adapter log — `business_id`/`role_id`/`task_id`/`resolved_model`/`stdout`/`exit_code`/etc., not a `facts`/`recommendations`-shaped payload) and that its `stdout` field contains clearly labeled Facts/Assumptions/Hypotheses/Recommendations sections, non-empty
 - expected result: valid JSON, no placeholder/canned text reused across unrelated businesses
+
+Corrected 2026-07-14: the previous wording ("contains non-empty
+`facts`/`recommendations` lists") described a top-level JSON shape no
+real artifact has ever had — every real `latest.json` on disk is the
+adapter's own execution-log shape, with the actual research content as
+markdown prose inside `stdout`. Fixed to describe what's actually
+produced and actually checkable.
 
 ## Emergency Stop
 

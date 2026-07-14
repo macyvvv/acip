@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import hashlib
 import json
 import os
 import time
@@ -17,6 +18,13 @@ FAL_QUEUE_BASE = "https://queue.fal.run"
 DEFAULT_POLL_INTERVAL_SECONDS = 3
 DEFAULT_TIMEOUT_SECONDS = int(os.environ.get("SOMIA_FAL_TIMEOUT_SECONDS", "600"))
 
+# Transient failure modes worth retrying: rate limit (429), and the vendor's
+# own 5xx range. A 4xx other than 429 means the request itself is wrong
+# (bad payload, auth) and retrying it verbatim will never succeed.
+RETRYABLE_HTTP_CODES = {429, 500, 502, 503, 504}
+DEFAULT_MAX_RETRIES = int(os.environ.get("SOMIA_FAL_MAX_RETRIES", "4"))
+DEFAULT_RETRY_BASE_SECONDS = float(os.environ.get("SOMIA_FAL_RETRY_BASE_SECONDS", "2"))
+
 
 def api_key() -> str:
     key = os.environ.get("SOMIA_VIDEO_API_KEY", "").strip()
@@ -25,27 +33,91 @@ def api_key() -> str:
     return key
 
 
-def fal_request(method: str, url: str, key: str, payload: dict | None = None) -> dict:
+def fal_request(
+    method: str,
+    url: str,
+    key: str,
+    payload: dict | None = None,
+    *,
+    max_retries: int = DEFAULT_MAX_RETRIES,
+    retry_base_seconds: float = DEFAULT_RETRY_BASE_SECONDS,
+) -> dict:
+    """A single transient blip (429/5xx) during a multi-minute paid render
+    used to kill the whole job with no retry. Retries those codes with
+    exponential backoff (retry_base_seconds * 2**attempt); anything else
+    (4xx auth/payload errors) fails immediately since retrying an
+    identically-wrong request can't succeed."""
     data = json.dumps(payload).encode("utf-8") if payload is not None else None
-    request = urllib.request.Request(
-        url,
-        data=data,
-        method=method,
-        headers={
-            "Authorization": f"Key {key}",
-            "Content-Type": "application/json",
-        },
-    )
-    try:
-        with urllib.request.urlopen(request, timeout=60) as response:
-            return json.loads(response.read().decode("utf-8"))
-    except urllib.error.HTTPError as exc:
-        body = exc.read().decode("utf-8", errors="replace")
-        raise VideoGenerationError(f"fal.ai request failed ({exc.code}) for {url}: {body}") from exc
+    attempt = 0
+    while True:
+        request = urllib.request.Request(
+            url,
+            data=data,
+            method=method,
+            headers={
+                "Authorization": f"Key {key}",
+                "Content-Type": "application/json",
+            },
+        )
+        try:
+            with urllib.request.urlopen(request, timeout=60) as response:
+                return json.loads(response.read().decode("utf-8"))
+        except urllib.error.HTTPError as exc:
+            body = exc.read().decode("utf-8", errors="replace")
+            if exc.code in RETRYABLE_HTTP_CODES and attempt < max_retries:
+                time.sleep(retry_base_seconds * (2**attempt))
+                attempt += 1
+                continue
+            raise VideoGenerationError(f"fal.ai request failed ({exc.code}) for {url}: {body}") from exc
+        except urllib.error.URLError as exc:
+            if attempt < max_retries:
+                time.sleep(retry_base_seconds * (2**attempt))
+                attempt += 1
+                continue
+            raise VideoGenerationError(f"fal.ai request failed (network error) for {url}: {exc}") from exc
 
 
 def submit(model_id: str, payload: dict, key: str) -> dict:
     return fal_request("POST", f"{FAL_QUEUE_BASE}/{model_id}", key, payload)
+
+
+def _payload_fingerprint(model_id: str, payload: dict) -> str:
+    canonical = json.dumps({"model_id": model_id, "payload": payload}, sort_keys=True)
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+
+
+def submit_resumable(model_id: str, payload: dict, key: str, checkpoint_path: Path) -> dict:
+    """Same as submit(), but persists {model_id, payload fingerprint,
+    status_url, response_url} to checkpoint_path first. If the process dies
+    mid-poll and is re-run against the same content dir, the next call with
+    an identical model_id/payload reuses the already-submitted job instead
+    of resubmitting (and re-billing) it. A different model_id/payload
+    invalidates the checkpoint rather than reusing a stale, unrelated job."""
+    fingerprint = _payload_fingerprint(model_id, payload)
+    if checkpoint_path.exists():
+        try:
+            saved = json.loads(checkpoint_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            saved = {}
+        if saved.get("fingerprint") == fingerprint:
+            return {"status_url": saved["status_url"], "response_url": saved["response_url"]}
+    submission = submit(model_id, payload, key)
+    checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
+    checkpoint_path.write_text(
+        json.dumps(
+            {
+                "fingerprint": fingerprint,
+                "status_url": submission["status_url"],
+                "response_url": submission["response_url"],
+            }
+        ),
+        encoding="utf-8",
+    )
+    return submission
+
+
+def clear_checkpoint(checkpoint_path: Path) -> None:
+    checkpoint_path.unlink(missing_ok=True)
 
 
 def await_result(

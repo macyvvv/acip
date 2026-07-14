@@ -18,6 +18,13 @@ class RenderResult:
     video_path: str | None
     rendered_at: str
     notes: str
+    # Structured list of ways this render deviated from the content spec
+    # (e.g. "duration: requested 12s, rendered 10s (vendor cap)",
+    # "on_screen_text: not composited, spec text not included"). Kept
+    # separate from free-text `notes` so a caller (render_content.py, a
+    # future QA pass) can check "did this deviate at all" without parsing
+    # prose. Empty list means no known deviation.
+    spec_deviations: tuple[str, ...] = ()
 
 
 class VideoGenerationError(RuntimeError):

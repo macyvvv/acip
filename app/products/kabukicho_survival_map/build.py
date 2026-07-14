@@ -17,6 +17,7 @@ PRODUCT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = PRODUCT_DIR.parents[2]
 DATA_SOURCE = REPO_ROOT / "system" / "runtime" / "data" / "kabukicho"
 PUBLIC_DIR = REPO_ROOT / "web" / "public" / "kabukicho"
+SHARED_DIR = REPO_ROOT / "app" / "shared"
 
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
@@ -28,6 +29,11 @@ from system.core.dotenv import load_dotenv  # noqa: E402
 # (see _render_index_html), not a plain copy.
 STATIC_FILES = ("app.js", "style.css")
 INDEX_TEMPLATE = PRODUCT_DIR / "index.html"
+# Cross-product utilities (app/shared/) copied in flat alongside this
+# product's own static files -- same "committed local copy of a canonical
+# source" pattern as data/*.json above, since this repo has no bundler to
+# resolve a relative import across product/shared directory boundaries.
+SHARED_FILES = ("dom_escape.js",)
 LOCAL_CONFIG_FILE = PRODUCT_DIR / "local.config.js"
 
 # Mirrors app.js's CATEGORIES array (id, label, JSON filename). Kept as a
@@ -277,6 +283,10 @@ def build() -> None:
     for static_file in STATIC_FILES:
         shutil.copy2(PRODUCT_DIR / static_file, PUBLIC_DIR / static_file)
 
+    for shared_file in SHARED_FILES:
+        shutil.copy2(SHARED_DIR / shared_file, PRODUCT_DIR / shared_file)
+        shutil.copy2(SHARED_DIR / shared_file, PUBLIC_DIR / shared_file)
+
     category_data = _load_category_data()
     (PUBLIC_DIR / "index.html").write_text(_render_index_html(category_data, site_url), encoding="utf-8")
     _write_robots_txt(site_url)
@@ -284,6 +294,7 @@ def build() -> None:
 
     print(f"Copied {len(list(DATA_SOURCE.glob('*.json')))} data file(s) to {local_data_dir} and {public_data_dir}")
     print(f"Copied {len(STATIC_FILES)} static file(s) + rendered index.html to {PUBLIC_DIR}")
+    print(f"Copied {len(SHARED_FILES)} shared file(s) from {SHARED_DIR} to {PRODUCT_DIR} and {PUBLIC_DIR}")
 
     _write_local_gmaps_config()
 

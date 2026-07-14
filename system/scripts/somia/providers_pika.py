@@ -1,12 +1,11 @@
 from __future__ import annotations
 
-from datetime import datetime, timezone
 from pathlib import Path
 import os
 
-from system.scripts.somia import fal_client
 from system.scripts.somia.content_spec import ContentSpec
 from system.scripts.somia.providers import RenderResult, VideoGenerationProvider, register_provider
+from system.scripts.somia.providers_fal_common import FluxVideoVendorConfig, generate_via_flux_keyframe_and_vendor_video
 
 # Pika is served through fal.ai's hosted queue API (Pika no longer runs its own
 # public API directly). Same auth/queue pattern is reused for the keyframe
@@ -30,7 +29,7 @@ DEFAULT_NEGATIVE_PROMPT = os.environ.get(
 # Pika v2.2 only supports 5 or 10 second clips; somia's 12-second format spec
 # does not map onto it exactly. Default to the closest supported duration (10s)
 # rather than silently rendering a mismatched clip without saying so.
-DEFAULT_DURATION_SECONDS = os.environ.get("SOMIA_PIKA_DURATION", "10")
+DEFAULT_DURATION_SECONDS = int(os.environ.get("SOMIA_PIKA_DURATION", "10"))
 DEFAULT_RESOLUTION = os.environ.get("SOMIA_PIKA_RESOLUTION", "720p")
 
 
@@ -44,46 +43,21 @@ class PikaProvider(VideoGenerationProvider):
     name = "pika"
 
     def generate(self, spec: ContentSpec, output_dir: Path) -> RenderResult:
-        key = fal_client.api_key()
-        output_dir.mkdir(parents=True, exist_ok=True)
-
-        keyframe_submission = fal_client.submit(KEYFRAME_MODEL, {"prompt": spec.image_prompt}, key)
-        keyframe_result = fal_client.await_result(keyframe_submission["status_url"], keyframe_submission["response_url"], key)
-        keyframe_url = keyframe_result["images"][0]["url"]
-        keyframe_path = output_dir / "keyframe.png"
-        fal_client.download(keyframe_url, keyframe_path)
-
-        motion_prompt = " ".join(part for part in (spec.animation_instruction, spec.camera_instruction) if part)
-        video_submission = fal_client.submit(
-            VIDEO_MODEL,
-            {
-                "image_url": keyframe_url,
-                "prompt": motion_prompt,
-                "negative_prompt": DEFAULT_NEGATIVE_PROMPT,
-                "duration": int(DEFAULT_DURATION_SECONDS),
-                "resolution": DEFAULT_RESOLUTION,
-            },
-            key,
-        )
-        video_result = fal_client.await_result(video_submission["status_url"], video_submission["response_url"], key)
-        video_url = video_result["video"]["url"]
-        video_path = output_dir / "video.mp4"
-        fal_client.download(video_url, video_path)
-
-        notes = (
-            f"pika v2.2, duration={DEFAULT_DURATION_SECONDS}s/resolution={DEFAULT_RESOLUTION}. "
-            "Spec calls for a 12s clip; Pika only supports 5 or 10s, so this used the closest "
-            "supported duration and does not include the spec's on-screen text overlay "
-            "(add it in a separate compositing pass). Style-drift toward photorealism was "
-            "observed and is not reliably prevented by negative_prompt."
-        )
-        return RenderResult(
-            provider=self.name,
-            model=f"{KEYFRAME_MODEL} + {VIDEO_MODEL}",
-            keyframe_path=str(keyframe_path),
-            video_path=str(video_path),
-            rendered_at=datetime.now(timezone.utc).isoformat(),
-            notes=notes,
+        return generate_via_flux_keyframe_and_vendor_video(
+            spec,
+            output_dir,
+            FluxVideoVendorConfig(
+                provider_name=self.name,
+                keyframe_model=KEYFRAME_MODEL,
+                video_model=VIDEO_MODEL,
+                negative_prompt=DEFAULT_NEGATIVE_PROMPT,
+                rendered_duration_seconds=DEFAULT_DURATION_SECONDS,
+                video_extra_payload={
+                    "duration": DEFAULT_DURATION_SECONDS,
+                    "resolution": DEFAULT_RESOLUTION,
+                },
+                known_caveat="style-drift toward photorealism was observed and is not reliably prevented by negative_prompt",
+            ),
         )
 
 

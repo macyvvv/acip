@@ -26,11 +26,16 @@ _SEED_BUSINESSES: tuple[dict[str, Any], ...] = (
         "business_id": "kabukicho_survival_map",
         "display_name": "Kabukicho Survival Map",
         "status": "active",
-        "content_root": "app/products/kabukicho_survival_map_mvp",
-        "product_code_path": "app/products/kabukicho_survival_map_mvp",
+        "content_root": "app/products/kabukicho_survival_map",
+        "product_code_path": "app/products/kabukicho_survival_map",
         "tracking_issue_numbers": (33, 34, 36),
         "historical_issue_numbers": (),
-        "notes": "Location/survival guide product for Kabukicho.",
+        "notes": (
+            "Location/survival guide product for Kabukicho. Fixed 2026-07-14: "
+            "previously pointed at kabukicho_survival_map_mvp (an earlier, much "
+            "smaller, superseded prototype) -- see CLAUDE.md's explicit warning "
+            "not to confuse the two. This is the real, from-scratch app."
+        ),
     },
     {
         "business_id": "somia",

@@ -57,9 +57,14 @@ _REGISTRY: dict[str, type[AnalyticsProvider]] = {
     "dry_run": DryRunProvider,
 }
 
-# Real platform providers are registered here once built; each needs its own
-# API access set up by the operator first (see DryRunProvider docstring).
-_OPTIONAL_PROVIDER_MODULES: dict[str, str] = {}
+# Real platform providers (X, Threads, note.com) are registered here once
+# built; each needs its own API access set up by the operator first (see
+# DryRunProvider docstring). `git_activity` is registered now: a real,
+# credential-free interim proxy provider (repo-activity metrics, not
+# platform audience/engagement data) -- see providers_git_activity.py.
+_OPTIONAL_PROVIDER_MODULES: dict[str, str] = {
+    "git_activity": "system.scripts.analytics.providers_git_activity",
+}
 
 
 def register_provider(provider_cls: type[AnalyticsProvider]) -> None:

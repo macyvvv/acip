@@ -9,10 +9,10 @@
 
 ## Businesses
 - `kabukicho_survival_map` (active): Kabukicho Survival Map
-  - content_root: app/products/kabukicho_survival_map_mvp (exists=true)
-  - product_code_path: app/products/kabukicho_survival_map_mvp (exists=true)
+  - content_root: app/products/kabukicho_survival_map (exists=true)
+  - product_code_path: app/products/kabukicho_survival_map (exists=true)
   - tracking_issue_numbers: [33, 34, 36]
-  - notes: Location/survival guide product for Kabukicho.
+  - notes: Location/survival guide product for Kabukicho. Fixed 2026-07-14: previously pointed at kabukicho_survival_map_mvp (an earlier, much smaller, superseded prototype) -- see CLAUDE.md's explicit warning not to confuse the two. This is the real, from-scratch app.
 - `somia` (active): Somia
   - content_root: somia (exists=true)
   - product_code_path: system/scripts/somia (exists=true)
