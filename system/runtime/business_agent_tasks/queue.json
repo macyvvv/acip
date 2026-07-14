@@ -178,7 +178,7 @@
     "role_id": "marketing",
     "task_id": "auto-0005",
     "title": "Auto-triggered marketing following kabukicho_survival_map/market_research/task-0004-toilet-deep",
-    "status": "candidate",
+    "status": "completed",
     "source": "auto_trigger"
   },
   {
@@ -346,7 +346,7 @@
     "role_id": "doc_creation",
     "task_id": "auto-0005",
     "title": "Auto-triggered doc_creation following kabukicho_survival_map/marketing/auto-0004",
-    "status": "candidate",
+    "status": "completed",
     "source": "auto_trigger"
   },
   {
@@ -354,6 +354,22 @@
     "role_id": "marketing",
     "task_id": "auto-0003",
     "title": "Auto-triggered marketing following text_syndicate/market_research/task-0003-finance-saas-niche",
+    "status": "completed",
+    "source": "auto_trigger"
+  },
+  {
+    "business_id": "kabukicho_survival_map",
+    "role_id": "doc_creation",
+    "task_id": "auto-0006",
+    "title": "Auto-triggered doc_creation following kabukicho_survival_map/marketing/auto-0005",
+    "status": "candidate",
+    "source": "auto_trigger"
+  },
+  {
+    "business_id": "text_syndicate",
+    "role_id": "doc_creation",
+    "task_id": "auto-0003",
+    "title": "Auto-triggered doc_creation following text_syndicate/marketing/auto-0003",
     "status": "candidate",
     "source": "auto_trigger"
   }
