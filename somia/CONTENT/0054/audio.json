@@ -1,0 +1,7 @@
+{
+  "base_layer": "warm ambient room hum",
+  "noise_type": "even low breath texture",
+  "frequency_range": "200-800Hz",
+  "trigger_timing": ["hairpin touch", "hand settle"],
+  "silence_duration": 0.9
+}

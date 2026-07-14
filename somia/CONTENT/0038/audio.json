@@ -1,0 +1,11 @@
+{
+  "base_layer": "low wall-adjacent hush",
+  "noise_type": "shifting breath texture",
+  "frequency_range": "200-800Hz",
+  "trigger_timing": [
+    "foot shift",
+    "shoulder stall",
+    "silence entry"
+  ],
+  "silence_duration": 1.1
+}

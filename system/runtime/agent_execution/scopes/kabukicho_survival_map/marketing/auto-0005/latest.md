@@ -1,0 +1,17 @@
+# APPROVED_AUTONOMOUS_EXECUTION
+
+handoff_id: REQ-KABUKICHO-SURVIVAL-MAP-MARKETING-AUTO-0005
+allow: true
+approval_id: 
+scope_type: 
+scope_id: 
+execution_triggered: true
+execution_mode: one_shot
+execution_result_status: failure
+completion_marker_path: /Users/ariel/Documents/tools/acip/system/runtime/business_agents/kabukicho_survival_map/marketing/auto-0005/latest.json
+request_path: /Users/ariel/Documents/tools/acip/system/runtime/request/execution_request.json
+stopped_reason: exit_code=1
+started_at: 2026-07-12T11:17:00.336549+00:00
+finished_at: 2026-07-12T11:17:17.552135+00:00
+authorization_source: policy_pre_approval
+policy_id: PREAPP-KABUKICHO_SURVIVAL_MAP-MARKETING-0001

@@ -1,0 +1,11 @@
+{
+  "base_layer": "low nook-enclosed hush",
+  "noise_type": "slow released-breath texture",
+  "frequency_range": "150-650Hz",
+  "trigger_timing": [
+    "shoulder lower",
+    "breath release",
+    "silence entry"
+  ],
+  "silence_duration": 1.5
+}

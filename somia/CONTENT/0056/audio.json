@@ -1,0 +1,7 @@
+{
+  "base_layer": "warm room hum",
+  "noise_type": "even breath texture",
+  "frequency_range": "200-800Hz",
+  "trigger_timing": ["gaze shift", "gaze return"],
+  "silence_duration": 0.9
+}

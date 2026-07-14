@@ -1,0 +1,7 @@
+{
+  "base_layer": "low ambient room tone",
+  "noise_type": "pulsed mid-band presence",
+  "frequency_range": "400Hz-1.2kHz",
+  "trigger_timing": ["eye shift", "on-screen text entry", "silence entry"],
+  "silence_duration": 2.0
+}

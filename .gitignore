@@ -13,6 +13,12 @@ secrets/
 .venv.*/
 .pytest_cache/
 
+# X OAuth 2.0 access/refresh token cache (system/scripts/publishing/providers_x.py)
+# -- live, rotating secrets (X issues a new refresh_token on every refresh),
+# not source; bootstrapped from .env's X_OAUTH2_ACCESS_TOKEN/X_OAUTH2_REFRESH_TOKEN
+# on first use, then this file becomes authoritative.
+system/runtime/publishing/oauth2/
+
 # somia generated render outputs — reproducible from specs, large binaries.
 # Specs (script.md/prompt.md/metadata.json) are the source of truth, not the
 # generated media. Keep these out of git; store finals in external storage.

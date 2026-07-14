@@ -1,0 +1,11 @@
+{
+  "base_layer": "faint window-draft hush",
+  "noise_type": "fabric-twist friction texture",
+  "frequency_range": "300-1200Hz",
+  "trigger_timing": [
+    "glance up",
+    "glance retraction",
+    "silence entry"
+  ],
+  "silence_duration": 1.0
+}

@@ -1,0 +1,11 @@
+{
+  "base_layer": "quiet room tone",
+  "noise_type": "close-mic breath texture",
+  "frequency_range": "200-800Hz",
+  "trigger_timing": [
+    "breath catch",
+    "hand freeze",
+    "silence entry"
+  ],
+  "silence_duration": 1.2
+}

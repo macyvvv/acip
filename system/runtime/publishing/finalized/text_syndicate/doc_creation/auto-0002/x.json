@@ -1,0 +1,10 @@
+{
+  "business_id": "text_syndicate",
+  "role_id": "doc_creation",
+  "task_id": "auto-0002",
+  "platform": "x",
+  "final_text": "Notion AI's page-summarize feature costs $10/mo. Pasting the same page into Claude's free tier with \"summarize in 3 bullets, flag anything that contradicts the rest of the doc\" gets you the same output for most docs under ~5k words.\n\nThe gap shows up on longer, messier documents where Notion AI's page-context integration actually earns its price.\n\nWhat's a paid AI feature you've found a $0 equivalent for — and where does the free version actually start to break down?",
+  "source_execution_hash": "8bac8f524bda8d8a05ba094917946c855c2a8e6f4b0c6f9db735da53c0c03d17",
+  "finalized_by": "macy",
+  "finalized_at": "2026-07-13T23:49:59.071271+00:00"
+}

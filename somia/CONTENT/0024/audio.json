@@ -1,0 +1,7 @@
+{
+  "base_layer": "rooftop open-air ambience",
+  "noise_type": "particle-like high wind shimmer",
+  "frequency_range": "high-frequency/particle-like",
+  "trigger_timing": ["earring adjust", "gaze hold", "silence entry"],
+  "silence_duration": 2.0
+}

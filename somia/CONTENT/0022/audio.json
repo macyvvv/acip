@@ -1,0 +1,7 @@
+{
+  "base_layer": "distant surf and coastal wind",
+  "noise_type": "high-frequency air shimmer",
+  "frequency_range": "high-frequency/particle-like",
+  "trigger_timing": ["hand lift", "pendant touch", "silence entry"],
+  "silence_duration": 2.0
+}

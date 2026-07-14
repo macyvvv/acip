@@ -1,0 +1,11 @@
+{
+  "base_layer": "low bedroom hush",
+  "noise_type": "uncertain breath texture",
+  "frequency_range": "200-700Hz",
+  "trigger_timing": [
+    "reach begins",
+    "hover stop",
+    "silence entry"
+  ],
+  "silence_duration": 1.3
+}

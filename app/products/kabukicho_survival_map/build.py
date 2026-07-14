@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import html
 import json
 import os
 import shutil
@@ -23,7 +24,11 @@ if str(REPO_ROOT) not in sys.path:
 
 from system.core.dotenv import load_dotenv  # noqa: E402
 
-STATIC_FILES = ("index.html", "app.js", "style.css")
+# index.html is handled separately from the other static files -- it's a
+# template with SSG:* markers that get substituted with generated content
+# (see _render_index_html), not a plain copy.
+STATIC_FILES = ("app.js", "style.css")
+INDEX_TEMPLATE = PRODUCT_DIR / "index.html"
 # Cross-product utilities (app/shared/) copied in flat alongside this
 # product's own static files -- same "committed local copy of a canonical
 # source" pattern as data/*.json above, since this repo has no bundler to
@@ -31,10 +36,240 @@ STATIC_FILES = ("index.html", "app.js", "style.css")
 SHARED_FILES = ("dom_escape.js",)
 LOCAL_CONFIG_FILE = PRODUCT_DIR / "local.config.js"
 
+# Mirrors app.js's CATEGORIES array (id, label, JSON filename). Kept as a
+# separate literal here rather than parsed out of app.js -- no shared
+# source of truth between the two currently. If a category is added/renamed
+# in app.js, update this list too or the static (SSG) render will silently
+# omit/mislabel it.
+CATEGORIES = [
+    {"id": "toilet", "file": "toilet.json", "label": "トイレ"},
+    {"id": "smoking", "file": "smoking.json", "label": "喫煙所"},
+    {"id": "convenience", "file": "convenience.json", "label": "コンビニ"},
+    {"id": "atm", "file": "atm.json", "label": "ATM・両替"},
+    {"id": "coin_locker", "file": "coin_locker.json", "label": "コインロッカー"},
+    {"id": "lodging", "file": "lodging.json", "label": "宿泊・ネット"},
+]
+
+# Fixed, hand-curated FAQ content -- genuine, answerable-in-one-line
+# questions a visitor (or an AI answer engine on their behalf) would
+# actually ask, not SEO-keyword-stuffing filler. Rendered as visible page
+# content (not hidden schema-only markup, which risks Google's structured
+# data spam policy) plus FAQPage JSON-LD. See somia's sibling research: Q&A
+# formatting remains one of the easiest patterns for LLMs to extract even
+# though Google retired the visual FAQ rich-result snippet in 2026-05.
+FAQ_ITEMS = [
+    (
+        "歌舞伎町に無料の喫煙所はありますか？",
+        "はい。本サイトのデータは「無料で使える屋外の指定喫煙所」のみを喫煙所カテゴリに掲載しています(店舗内の喫煙可能スペースは含みません)。カテゴリ「喫煙所」からタップ1つで一覧を確認できます。",
+    ),
+    (
+        "歌舞伎町のトイレは無料で使えますか？",
+        "掲載しているトイレの多くは無料の公共トイレですが、施設ごとに条件が異なる場合があります。各POIカードのタグ(free/clean/gender_separatedなど)で個別に確認してください。",
+    ),
+    (
+        "深夜でも使えるコインロッカーはありますか？",
+        "「24h」タグが付いているコインロッカー・コンビニ・ATMは24時間利用可能です。カテゴリ内でタグ絞り込みを使うと深夜対応の施設だけに絞れます。",
+    ),
+    (
+        "掲載されている情報はどのくらい新しいですか？",
+        "各POIには最終確認日(last_updated)と信頼度スコアがあり、7日以内に確認済みの場所には「最近更新されました」のバッジが表示されます。1ヶ月以上確認されていない情報には注意バッジが付きます。",
+    ),
+    (
+        "非公式(グレーゾーン)の情報とは何ですか？",
+        "風俗営業関連施設など、公式な出典で裏付けが取りにくい場所には「⚠ 非公式情報」の注意書きを表示しています。利用は自己責任でお願いします。",
+    ),
+]
+
+
+def _escape(value: object) -> str:
+    return html.escape("" if value is None else str(value), quote=True)
+
+
+def _load_category_data() -> list[tuple[dict, list[dict]]]:
+    loaded = []
+    for category in CATEGORIES:
+        path = DATA_SOURCE / category["file"]
+        pois = json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
+        loaded.append((category, pois))
+    return loaded
+
+
+def _render_poi_static_html(category_data: list[tuple[dict, list[dict]]]) -> str:
+    # All six categories, all POIs -- unlike app.js's runtime render (one
+    # active category at a time), a crawler only gets one page load, so
+    # everything needs to be present in the initial HTML at once.
+    sections = []
+    for category, pois in category_data:
+        if not pois:
+            continue
+        cards = []
+        for poi in pois:
+            tags_html = "".join(
+                '<span class="tag-chip">' + _escape(tag) + "</span>" for tag in poi.get("tags") or []
+            )
+            gray_zone_html = ""
+            if poi.get("type") == "unofficial":
+                gray_zone_html = (
+                    '<div class="gray-zone-banner">⚠ 非公式情報・内容は変更される場合があります・'
+                    "ご利用は自己責任でお願いします<br>"
+                    "⚠ Unofficial Information / Subject to change / Use at your own risk</div>"
+                )
+            elif poi.get("gray_zone_note"):
+                gray_zone_html = '<div class="info-note">' + _escape(poi["gray_zone_note"]) + "</div>"
+            maps_url = (
+                "https://www.google.com/maps/search/?api=1&query="
+                + _escape(str(poi.get("lat")) + "," + str(poi.get("lng")))
+            )
+            cards.append(
+                '<article class="poi-card">'
+                "<h3>" + _escape(poi.get("name")) + "</h3>"
+                + gray_zone_html
+                + '<p class="description">' + _escape(poi.get("description")) + "</p>"
+                '<div class="tag-row">' + tags_html + "</div>"
+                '<a class="maps-link" target="_blank" rel="noopener" href="' + maps_url + '">位置情報を見る</a>'
+                "</article>"
+            )
+        sections.append("<section><h2>" + _escape(category["label"]) + "</h2>" + "".join(cards) + "</section>")
+    return "".join(sections)
+
+
+def _render_faq_html() -> str:
+    items = []
+    for question, answer in FAQ_ITEMS:
+        items.append(
+            "<details><summary>" + _escape(question) + "</summary><p>" + _escape(answer) + "</p></details>"
+        )
+    return "<h2>よくある質問</h2>" + "".join(items)
+
+
+def _render_jsonld(category_data: list[tuple[dict, list[dict]]], site_url: str) -> str:
+    # Place (not LocalBusiness) for every POI -- LocalBusiness's schema
+    # assumes business-identity semantics (openingHours, priceRange) that
+    # don't fit a public toilet or a designated outdoor smoking spot.
+    # additionalType carries the category label as a lightweight, always-
+    # valid way to distinguish facility kinds without forcing a mismatched
+    # LocalBusiness subtype.
+    list_items = []
+    position = 1
+    for category, pois in category_data:
+        for poi in pois:
+            list_items.append(
+                {
+                    "@type": "ListItem",
+                    "position": position,
+                    "item": {
+                        "@type": "Place",
+                        "name": poi.get("name"),
+                        "description": poi.get("description"),
+                        "additionalType": category["label"],
+                        "geo": {
+                            "@type": "GeoCoordinates",
+                            "latitude": poi.get("lat"),
+                            "longitude": poi.get("lng"),
+                        },
+                    },
+                }
+            )
+            position += 1
+
+    item_list = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "歌舞伎町サバイバルマップ POI一覧",
+        "itemListElement": list_items,
+    }
+    if site_url:
+        item_list["url"] = site_url
+
+    faq_page = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": question,
+                "acceptedAnswer": {"@type": "Answer", "text": answer},
+            }
+            for question, answer in FAQ_ITEMS
+        ],
+    }
+
+    graph = json.dumps([item_list, faq_page], ensure_ascii=False, indent=2)
+    return '<script type="application/ld+json">\n' + graph + "\n</script>"
+
+
+def _render_index_html(category_data: list[tuple[dict, list[dict]]], site_url: str) -> str:
+    template = INDEX_TEMPLATE.read_text(encoding="utf-8")
+    template = template.replace("<!-- SSG:JSONLD -->", _render_jsonld(category_data, site_url))
+    template = template.replace(
+        '<p class="empty-state">カテゴリを選択して、歌舞伎町の施設を探してください。</p>',
+        _render_poi_static_html(category_data),
+    )
+    template = template.replace("<!-- SSG:FAQ_CONTENT -->", _render_faq_html())
+    if site_url:
+        canonical_tag = '<link rel="canonical" href="' + _escape(site_url) + '">'
+        template = template.replace("</head>", canonical_tag + "\n</head>", 1)
+    return template
+
+
+def _write_robots_txt(site_url: str) -> None:
+    # Domain-independent (relative paths only), so this is always written,
+    # regardless of whether KABUKICHO_SITE_URL is set. Explicitly allows
+    # standard search crawlers plus the AI answer-engine bots that respect
+    # robots.txt (GPTBot/OAI-SearchBot, PerplexityBot, Google-Extended,
+    # ClaudeBot, CCBot) -- several hosts/CDNs block AI bots by default, so
+    # an explicit Allow is safer than relying on an absent Disallow.
+    lines = [
+        "User-agent: *",
+        "Allow: /",
+        "",
+        "User-agent: GPTBot",
+        "Allow: /",
+        "User-agent: OAI-SearchBot",
+        "Allow: /",
+        "User-agent: ClaudeBot",
+        "Allow: /",
+        "User-agent: PerplexityBot",
+        "Allow: /",
+        "User-agent: Google-Extended",
+        "Allow: /",
+        "User-agent: CCBot",
+        "Allow: /",
+    ]
+    if site_url:
+        lines += ["", f"Sitemap: {site_url.rstrip('/')}/sitemap.xml"]
+    (PUBLIC_DIR / "robots.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def _write_sitemap_xml(site_url: str) -> None:
+    # Sitemap <loc> must be an absolute URL, which needs a real domain --
+    # skip entirely (rather than emit a placeholder that would confuse
+    # crawlers) until KABUKICHO_SITE_URL is set once a host is chosen.
+    if not site_url:
+        print("KABUKICHO_SITE_URL not set -- skipping sitemap.xml (needs a real absolute URL). "
+              "Set it in .env once a deploy domain is chosen, then re-run build.py.")
+        return
+    from datetime import date
+
+    loc = site_url.rstrip("/") + "/"
+    xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        "  <url>\n"
+        f"    <loc>{html.escape(loc)}</loc>\n"
+        f"    <lastmod>{date.today().isoformat()}</lastmod>\n"
+        "  </url>\n"
+        "</urlset>\n"
+    )
+    (PUBLIC_DIR / "sitemap.xml").write_text(xml, encoding="utf-8")
+
 
 def build() -> None:
     if not DATA_SOURCE.exists():
         raise FileNotFoundError(f"Data source not found: {DATA_SOURCE}")
+
+    load_dotenv(REPO_ROOT / ".env")
+    site_url = os.environ.get("KABUKICHO_SITE_URL", "").strip()
 
     local_data_dir = PRODUCT_DIR / "data"
     public_data_dir = PUBLIC_DIR / "data"
@@ -52,8 +287,13 @@ def build() -> None:
         shutil.copy2(SHARED_DIR / shared_file, PRODUCT_DIR / shared_file)
         shutil.copy2(SHARED_DIR / shared_file, PUBLIC_DIR / shared_file)
 
+    category_data = _load_category_data()
+    (PUBLIC_DIR / "index.html").write_text(_render_index_html(category_data, site_url), encoding="utf-8")
+    _write_robots_txt(site_url)
+    _write_sitemap_xml(site_url)
+
     print(f"Copied {len(list(DATA_SOURCE.glob('*.json')))} data file(s) to {local_data_dir} and {public_data_dir}")
-    print(f"Copied {len(STATIC_FILES)} static file(s) to {PUBLIC_DIR}")
+    print(f"Copied {len(STATIC_FILES)} static file(s) + rendered index.html to {PUBLIC_DIR}")
     print(f"Copied {len(SHARED_FILES)} shared file(s) from {SHARED_DIR} to {PRODUCT_DIR} and {PUBLIC_DIR}")
 
     _write_local_gmaps_config()

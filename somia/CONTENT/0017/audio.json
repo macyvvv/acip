@@ -1,0 +1,11 @@
+{
+  "base_layer": "low ambient hum with faint device standby tone",
+  "noise_type": "slow heavy-breathing texture",
+  "frequency_range": "2k–6kHz",
+  "trigger_timing": [
+    "hand slides off mug",
+    "leaf tremble",
+    "silence entry"
+  ],
+  "silence_duration": 1.1
+}

@@ -8,12 +8,12 @@
       "enabled": true,
       "provider": "dry_run",
       "allowed_source_roles": ["marketing", "doc_creation"],
-      "max_posts_per_day": 3,
-      "max_posts_per_week": 10,
+      "max_posts_per_day": 48,
+      "max_posts_per_week": 200,
       "require_disclosure_tag_for_affiliate_content": false,
       "authored_by": "macy",
-      "authored_at": "2026-07-10T00:00:00+00:00",
-      "reason": "text_syndicate pilot, dry-run only pending real X API credentials (paid write-access tier not yet obtained). X drafts in this business's current marketing strategy are non-affiliate reply-bait engagement posts (link, if any, goes in a reply, not the post body) -- disclosure enforcement matters most for note.com per market_research's flagged affiliate-disclosure compliance question, and should be set true on that platform's own policy entry once one is authored."
+      "authored_at": "2026-07-14T00:00:00+00:00",
+      "reason": "text_syndicate pilot, dry-run only pending real X API credentials (X_API_KEY/X_API_KEY_SECRET/X_ACCESS_TOKEN/X_ACCESS_TOKEN_SECRET; providers_x.py is built and ready). Cap raised 2026-07-14 from 3/day to 48/day (30-min cadence ceiling) per operator's explicit request for near-continuous posting -- actual volume is still bounded by how many posts have been through finalize_content.py, so this cap alone does not cause runaway posting; it only removes an artificial ceiling below the requested cadence. At $0.015/post (no link in body, matching this business's existing no-link-in-post-body strategy) the real-money ceiling this cap implies is ~$21.60/month if fully saturated every day. X drafts in this business's current marketing strategy are non-affiliate reply-bait engagement posts (link, if any, goes in a reply, not the post body) -- disclosure enforcement matters most for note.com per market_research's flagged affiliate-disclosure compliance question, and should be set true on that platform's own policy entry once one is authored."
     }
   ]
 }

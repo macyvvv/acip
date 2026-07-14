@@ -16,6 +16,7 @@ Source: GitHub issue #33 (PRODUCT-0003: Kabukicho Survival Map MVP, UGC-ready), 
 - SEO title + meta description.
 - Google Analytics placeholder, ID injected via config, never hardcoded.
 - Google Maps JavaScript API key placeholder (`window.KABUKICHO_GMAPS_API_KEY`), injected via config, never hardcoded -- same pattern as the GA ID. Empty by default; the map pane shows a setup notice instead of silently staying blank until an operator sets a real, referrer-restricted key.
+- SEO/AIO: full POI list pre-rendered as static HTML at build time (not client-side-only), JSON-LD structured data (`ItemList`/`Place` + `FAQPage`), a visible FAQ section, and `robots.txt` explicitly allowing standard + AI answer-engine crawlers. See `architecture.md`'s "SEO/AIO" section. `sitemap.xml`/canonical tag activate once `KABUKICHO_SITE_URL` is set.
 
 ## Non-Functional Requirements
 
@@ -35,4 +36,4 @@ The original spec (below) explicitly ruled out an embedded map and any external 
 ## Explicitly Out of Scope (per issue #33's "Future" section)
 
 - User submission (UGC), voting, ranking, real-time updates.
-- Deployment target selection (separate, later decision).
+- Deployment target selection (separate, later decision) -- explicitly gated on having a distribution strategy first (operator, 2026-07-13: "出しても人に見られる見込みがないならやれません"). The SEO/AIO work above is that strategy's technical half; the remaining piece is distribution/promotion channels, not more implementation.

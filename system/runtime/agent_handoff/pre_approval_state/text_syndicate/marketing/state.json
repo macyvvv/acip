@@ -4,10 +4,16 @@
       "policy_id": "PREAPP-TEXT_SYNDICATE-MARKETING-0001",
       "status": "completed",
       "claimed_at": "2026-07-11T00:06:47.031280+00:00"
+    },
+    "auto-0003": {
+      "policy_id": "PREAPP-TEXT_SYNDICATE-MARKETING-0001",
+      "status": "failed",
+      "claimed_at": "2026-07-12T11:17:21.945937+00:00"
     }
   },
   "counters": {
     "2026-07-11": 1,
-    "2026-W28": 1
+    "2026-W28": 2,
+    "2026-07-12": 1
   }
 }

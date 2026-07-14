@@ -1,0 +1,11 @@
+{
+  "base_layer": "low corner-room hush",
+  "noise_type": "fabric-drag texture",
+  "frequency_range": "250-900Hz",
+  "trigger_timing": [
+    "hood motion start",
+    "motion stall",
+    "silence entry"
+  ],
+  "silence_duration": 1.3
+}

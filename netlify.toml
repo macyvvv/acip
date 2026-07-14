@@ -1,0 +1,15 @@
+# Netlify config for the Kabukicho Survival Map (app/products/kabukicho_survival_map).
+# This is a monorepo (acip) with many unrelated products under it -- this
+# file only builds/publishes that one product's static bundle. If a second
+# product ever needs its own Netlify site, it needs its own site (with its
+# own base/publish paths), not a second block here.
+#
+# Required site environment variables (set in Netlify's dashboard, never
+# committed): KABUKICHO_GMAPS_API_KEY (referrer-restricted Google Maps JS
+# API key), KABUKICHO_SITE_URL (this site's own final URL, e.g.
+# https://kabukicho-survival.example.com -- activates sitemap.xml/canonical
+# generation in build.py; leave unset and redeploy once the real domain is
+# known, not before).
+[build]
+  command = "python3 app/products/kabukicho_survival_map/build.py"
+  publish = "web/public/kabukicho"
