@@ -63,6 +63,8 @@ unnoticed until multiple subagents flagged it independently.
 - command (Shape A): confirm `latest.md` contains complete scenario content consistent with referenced specs
 - command (Shape B): run `load_content_spec()` against the content dir and confirm it doesn't raise `ContentSpecError`
 - expected result: scenario is directly usable by the image_generation/video_generation roles without further drafting
+- command: confirm the output states what the self-critique pass changed/cut (see `.claude/agents/scenario-writing.md`'s "Self-Critique" section) — specificity, payoff completeness, continuity honesty, template-detection
+- expected result: no vague beats generation roles can't render, no scenes that cut away before their setup pays off, no invented continuity-breaking details, no verbatim-repeated structure across a batch
 
 ## Emergency Stop
 

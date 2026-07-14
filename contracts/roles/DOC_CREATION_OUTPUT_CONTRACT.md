@@ -28,6 +28,8 @@
 
 - command: confirm `latest.md` contains complete content, not an outline/placeholder
 - expected result: document is directly usable without further drafting
+- command: confirm the output states what the self-critique pass changed/cut (see `.claude/agents/doc-creation.md`'s "Self-Critique" section) — specificity, payoff completeness, experience honesty, template-detection
+- expected result: no unresolved vague claims, no undelivered promised sections, no fabricated first-person experience presented as real, no verbatim-repeated structure across multiple covered items
 
 ## Emergency Stop
 
