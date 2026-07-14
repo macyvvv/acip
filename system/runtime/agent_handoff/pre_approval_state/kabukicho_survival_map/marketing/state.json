@@ -24,12 +24,19 @@
       "policy_id": "PREAPP-KABUKICHO_SURVIVAL_MAP-MARKETING-0001",
       "status": "completed",
       "claimed_at": "2026-07-14T15:24:07.058834+00:00"
+    },
+    "auto-0006": {
+      "policy_id": "PREAPP-KABUKICHO_SURVIVAL_MAP-MARKETING-0001",
+      "status": "completed",
+      "claimed_at": "2026-07-14T16:22:22.871557+00:00"
     }
   },
   "counters": {
     "2026-07-10": 1,
     "2026-W28": 5,
     "2026-07-11": 2,
-    "2026-07-12": 2
+    "2026-07-12": 2,
+    "2026-07-14": 1,
+    "2026-W29": 1
   }
 }
