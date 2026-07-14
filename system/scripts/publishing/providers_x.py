@@ -122,9 +122,12 @@ def _get_valid_oauth2_access_token() -> str:
     return str(new_access_token)
 
 
-def _publish_oauth2(final_text: str) -> dict:
+def _publish_oauth2(final_text: str, in_reply_to: str | None = None) -> dict:
     access_token = _get_valid_oauth2_access_token()
-    body = json.dumps({"text": final_text}).encode("utf-8")
+    payload: dict = {"text": final_text}
+    if in_reply_to:
+        payload["reply"] = {"in_reply_to_tweet_id": in_reply_to}
+    body = json.dumps(payload).encode("utf-8")
     request = urllib.request.Request(
         TWEETS_URL,
         data=body,
@@ -171,14 +174,17 @@ def _oauth1_header(method: str, url: str, api_key: str, api_key_secret: str, acc
     return f"OAuth {header_params}"
 
 
-def _publish_oauth1(final_text: str) -> dict:
+def _publish_oauth1(final_text: str, in_reply_to: str | None = None) -> dict:
     api_key = _env("X_API_KEY")
     api_key_secret = _env("X_API_KEY_SECRET")
     access_token = _env("X_ACCESS_TOKEN")
     access_token_secret = _env("X_ACCESS_TOKEN_SECRET")
 
     auth_header = _oauth1_header("POST", TWEETS_URL, api_key, api_key_secret, access_token, access_token_secret)
-    body = json.dumps({"text": final_text}).encode("utf-8")
+    payload: dict = {"text": final_text}
+    if in_reply_to:
+        payload["reply"] = {"in_reply_to_tweet_id": in_reply_to}
+    body = json.dumps(payload).encode("utf-8")
     request = urllib.request.Request(
         TWEETS_URL,
         data=body,
@@ -208,14 +214,16 @@ class XProvider(PublishingProvider):
 
     name = "x"
 
-    def publish(self, platform: str, final_text: str, business_id: str) -> PublishResult:
+    def publish(
+        self, platform: str, final_text: str, business_id: str, *, in_reply_to: str | None = None
+    ) -> PublishResult:
         if platform != "x":
             raise PublishError(f"XProvider only handles platform='x', got '{platform}'")
 
         oauth2_configured = _env_optional("X_OAUTH2_ACCESS_TOKEN") or _OAUTH2_STATE_PATH.exists()
         if oauth2_configured:
             try:
-                payload = _publish_oauth2(final_text)
+                payload = _publish_oauth2(final_text, in_reply_to)
                 auth_note = "OAuth 2.0 user context (auto-refreshed)"
             except PublishError as oauth2_error:
                 # A broken/expired/already-rotated refresh_token must not
@@ -225,23 +233,24 @@ class XProvider(PublishingProvider):
                 # actually present (never guess/partial-fallback).
                 if not _oauth1_credentials_available():
                     raise
-                payload = _publish_oauth1(final_text)
+                payload = _publish_oauth1(final_text, in_reply_to)
                 auth_note = f"OAuth 1.0a user context (fallback after OAuth 2.0 failed: {oauth2_error})"
         else:
-            payload = _publish_oauth1(final_text)
+            payload = _publish_oauth1(final_text, in_reply_to)
             auth_note = "OAuth 1.0a user context"
 
         tweet_id = payload.get("data", {}).get("id")
         if not tweet_id:
             raise PublishError(f"X API response missing tweet id: {payload}")
 
+        reply_note = f", in reply to {in_reply_to}" if in_reply_to else ""
         return PublishResult(
             provider=self.name,
             platform=platform,
             business_id=business_id,
             external_post_id=str(tweet_id),
             published_at=datetime.now(timezone.utc).isoformat(),
-            notes=f"posted via X API v2 (POST /2/tweets), {auth_note}",
+            notes=f"posted via X API v2 (POST /2/tweets), {auth_note}{reply_note}",
         )
 
 

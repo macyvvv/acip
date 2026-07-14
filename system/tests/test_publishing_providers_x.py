@@ -95,6 +95,26 @@ def test_publish_success_oauth1(monkeypatch: pytest.MonkeyPatch, tmp_path: Path)
     assert "OAuth 1.0a" in result.notes
 
 
+def test_publish_reply_includes_reply_field_and_note_oauth1(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    _clear_oauth2_env(monkeypatch)
+    _isolate_oauth2_state(monkeypatch, tmp_path)
+    monkeypatch.setenv("X_API_KEY", "key")
+    monkeypatch.setenv("X_API_KEY_SECRET", "keysecret")
+    monkeypatch.setenv("X_ACCESS_TOKEN", "token")
+    monkeypatch.setenv("X_ACCESS_TOKEN_SECRET", "tokensecret")
+
+    def fake_urlopen(request, timeout=30):
+        body = json.loads(request.data.decode("utf-8"))
+        assert body == {"text": "reply text", "reply": {"in_reply_to_tweet_id": "999"}}
+        return _FakeResponse({"data": {"id": "1234567890", "text": "reply text"}})
+
+    monkeypatch.setattr(urllib.request, "urlopen", fake_urlopen)
+
+    result = XProvider().publish("x", "reply text", "text_syndicate", in_reply_to="999")
+    assert result.external_post_id == "1234567890"
+    assert "999" in result.notes
+
+
 def test_publish_http_error_raises_publish_error_oauth1(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
     _clear_oauth2_env(monkeypatch)
     _isolate_oauth2_state(monkeypatch, tmp_path)

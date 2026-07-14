@@ -29,7 +29,9 @@ class PublishingProvider(ABC):
     name: str = "unset"
 
     @abstractmethod
-    def publish(self, platform: str, final_text: str, business_id: str) -> PublishResult:
+    def publish(
+        self, platform: str, final_text: str, business_id: str, *, in_reply_to: str | None = None
+    ) -> PublishResult:
         raise NotImplementedError
 
 
@@ -43,14 +45,19 @@ class DryRunProvider(PublishingProvider):
 
     name = "dry_run"
 
-    def publish(self, platform: str, final_text: str, business_id: str) -> PublishResult:
+    def publish(
+        self, platform: str, final_text: str, business_id: str, *, in_reply_to: str | None = None
+    ) -> PublishResult:
+        notes = "dry-run: no platform API called, nothing was actually posted"
+        if in_reply_to:
+            notes += f" (would have replied to external post id {in_reply_to})"
         return PublishResult(
             provider=self.name,
             platform=platform,
             business_id=business_id,
             external_post_id=None,
             published_at=datetime.now(timezone.utc).isoformat(),
-            notes="dry-run: no platform API called, nothing was actually posted",
+            notes=notes,
         )
 
 

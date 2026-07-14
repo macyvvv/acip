@@ -40,13 +40,23 @@ def finalize_content(
     final_text: str,
     finalized_by: str,
     base_path: str | Path = ".",
+    *,
+    reply_to_external_id: str | None = None,
 ) -> Path:
     """Human-invoked, one-time act: distill an already-executed role's raw
     output into the one exact string that may later be auto-published. This
     is deliberately NOT a re-run through Approval Console/set_execution_
     approval.py -- it names WHAT will post, it never re-authorizes THAT the
     underlying generation may run (that's already been decided by the
-    existing execution-approval pipeline, untouched by this file)."""
+    existing execution-approval pipeline, untouched by this file).
+
+    reply_to_external_id: when set, this content publishes as a reply to an
+    existing external post (e.g. an X tweet id) rather than a standalone
+    post -- used for the reply-engagement growth workflow. The source
+    execution artifact requirement is unchanged: even a reply must trace
+    back to a real, successfully-executed marketing/doc_creation task (e.g.
+    one whose stdout records the reply candidates considered and the target
+    post being replied to), not an ad-hoc unlogged string."""
     artifact_path = _execution_artifact_path(business_id, role_id, task_id, base_path)
     if not artifact_path.exists():
         raise FinalizeContentError(
@@ -67,6 +77,7 @@ def finalize_content(
         "task_id": task_id,
         "platform": platform,
         "final_text": final_text,
+        "reply_to_external_id": reply_to_external_id,
         "source_execution_hash": source_execution_hash,
         "finalized_by": finalized_by,
         "finalized_at": datetime.now(timezone.utc).isoformat(),
@@ -92,6 +103,11 @@ def _build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--platform", required=True, choices=["x", "threads", "notecom"])
     parser.add_argument("--final-text-file", required=True, help="Path to a file containing the exact final text to publish.")
     parser.add_argument("--finalized-by", required=True)
+    parser.add_argument(
+        "--reply-to",
+        default=None,
+        help="External post id (e.g. an X tweet id) this content replies to, for the reply-engagement workflow. Omit for a standalone post.",
+    )
     return parser
 
 
@@ -107,6 +123,7 @@ def main() -> int:
             final_text,
             args.finalized_by,
             ROOT,
+            reply_to_external_id=args.reply_to,
         )
     except FinalizeContentError as exc:
         print(f"ERROR: {exc}")
