@@ -190,6 +190,36 @@ def test_business_role_task_failure_stops_safely(tmp_path: Path, monkeypatch) ->
     assert not (tmp_path / "system" / "runtime" / "business_agent_tasks" / "queue.json").exists()
 
 
+def test_business_role_task_cli_notice_failure_surfaces_reason_not_exit_code(tmp_path: Path, monkeypatch) -> None:
+    # ADR-0038's first real Level 3b wake found: an outcome can fail with
+    # exit_code=0 (a CLI-level usage/session-limit notice, not a crash) --
+    # stopped_reason must surface that, not the misleading "exit_code=0".
+    _write_business_role_handoff(tmp_path / "system" / "runtime" / "agent_handoff" / "latest.json")
+    _write_approval(
+        tmp_path / "system" / "runtime" / "agent_handoff" / "approval.json",
+        handoff_id="REQ-TEXT-SYNDICATE-MARKET-RESEARCH-TASK-0001",
+        scope_type="business_role_task",
+        scope_id="text_syndicate:market_research:task-0001",
+    )
+
+    class FakeOutcome:
+        success = False
+        artifact_path = "system/runtime/business_agents/text_syndicate/market_research/task-0001/latest.json"
+        exit_code = 0
+        failure_reason = "cli_notice:session_limit"
+
+    def fake_run(self, *, business_id, role_id, task_id, task_description="", approval_flag=False, dry_run=True):
+        return FakeOutcome()
+
+    monkeypatch.setattr("system.core.approved_autonomous_execution.BusinessAgentExecutionAdapter.run", fake_run)
+
+    result = ApprovedAutonomousExecution(tmp_path).run()
+
+    assert result.execution_result_status == "failure"
+    assert result.stopped_reason == "cli_notice:session_limit"
+    assert result.stopped_reason != "exit_code=0"
+
+
 def test_issue_scope_path_still_uses_local_execution_adapter(tmp_path: Path, monkeypatch) -> None:
     # Existing issue/draft handoffs never set business_id/role_id -- confirms the
     # new branch doesn't leak into the existing repo-dev path.

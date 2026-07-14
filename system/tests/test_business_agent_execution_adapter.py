@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import json
+import subprocess
 from pathlib import Path
+from unittest.mock import patch
 
 import pytest
 
@@ -128,6 +130,73 @@ def test_artifact_written_to_business_agents_namespace(tmp_path: Path) -> None:
     assert payload["role_id"] == "market_research"
     # zero collision with the existing repo-dev execution namespace
     assert not (tmp_path / "system" / "runtime" / "local_execution").exists()
+
+
+def test_exit_zero_session_limit_notice_is_not_success(tmp_path: Path) -> None:
+    # ADR-0038's first real Level 3b wake found: `claude -p` can exit 0 while
+    # printing only a session/usage-limit notice, no real content -- exit
+    # code alone must not be trusted as the success signal.
+    _seed_prompt_template(tmp_path)
+    adapter = BusinessAgentExecutionAdapter(tmp_path)
+    fake_completed = subprocess.CompletedProcess(
+        args=["claude"], returncode=0, stdout="You've hit your session limit · resets 10:20pm (Asia/Tokyo)\n", stderr=""
+    )
+    with patch.object(BusinessAgentExecutionAdapter, "_run_command", return_value=fake_completed):
+        result = adapter.run(
+            business_id="text_syndicate", role_id="market_research", task_id="task-0001", approval_flag=True, dry_run=False
+        )
+    assert result.exit_code == 0
+    assert result.success is False
+    assert result.failure_reason == "cli_notice:session_limit"
+
+
+def test_empty_stdout_on_real_run_is_not_success(tmp_path: Path) -> None:
+    _seed_prompt_template(tmp_path)
+    adapter = BusinessAgentExecutionAdapter(tmp_path)
+    fake_completed = subprocess.CompletedProcess(args=["claude"], returncode=0, stdout="", stderr="")
+    with patch.object(BusinessAgentExecutionAdapter, "_run_command", return_value=fake_completed):
+        result = adapter.run(
+            business_id="text_syndicate", role_id="market_research", task_id="task-0001", approval_flag=True, dry_run=False
+        )
+    assert result.success is False
+    assert result.failure_reason == "empty_stdout"
+
+
+def test_long_real_content_mentioning_rate_limits_still_succeeds(tmp_path: Path) -> None:
+    # The failure-notice check must not false-positive on legitimate,
+    # substantial content that happens to discuss rate limits as a topic --
+    # bounded by length, not just substring match.
+    _seed_prompt_template(tmp_path)
+    adapter = BusinessAgentExecutionAdapter(tmp_path)
+    long_content = "A detailed analysis of API rate limit strategies. " * 20
+    assert len(long_content) > 500
+    fake_completed = subprocess.CompletedProcess(args=["claude"], returncode=0, stdout=long_content, stderr="")
+    with patch.object(BusinessAgentExecutionAdapter, "_run_command", return_value=fake_completed):
+        result = adapter.run(
+            business_id="text_syndicate", role_id="market_research", task_id="task-0001", approval_flag=True, dry_run=False
+        )
+    assert result.success is True
+    assert result.failure_reason is None
+
+
+def test_nonzero_exit_still_fails_regardless_of_stdout(tmp_path: Path) -> None:
+    _seed_prompt_template(tmp_path)
+    adapter = BusinessAgentExecutionAdapter(tmp_path)
+    fake_completed = subprocess.CompletedProcess(args=["claude"], returncode=1, stdout="ordinary content", stderr="boom")
+    with patch.object(BusinessAgentExecutionAdapter, "_run_command", return_value=fake_completed):
+        result = adapter.run(
+            business_id="text_syndicate", role_id="market_research", task_id="task-0001", approval_flag=True, dry_run=False
+        )
+    assert result.success is False
+    assert result.failure_reason is None  # exit_code alone explains this one
+
+
+def test_dry_run_never_flagged_as_failure_notice(tmp_path: Path) -> None:
+    _seed_prompt_template(tmp_path)
+    adapter = BusinessAgentExecutionAdapter(tmp_path)
+    result = adapter.run(business_id="text_syndicate", role_id="market_research", task_id="task-0001", dry_run=True)
+    assert result.success is True
+    assert result.failure_reason is None
 
 
 def test_kpi_updated_on_run(tmp_path: Path) -> None:
