@@ -46,21 +46,21 @@
       "metrics": {}
     },
     "kabukicho_survival_map:marketing": {
-      "runs": 4,
+      "runs": 5,
       "success": 4,
-      "failure": 0,
+      "failure": 1,
       "metrics": {}
     },
     "kabukicho_survival_map:doc_creation": {
-      "runs": 4,
+      "runs": 5,
       "success": 4,
-      "failure": 0,
+      "failure": 1,
       "metrics": {}
     },
     "text_syndicate:marketing": {
-      "runs": 1,
+      "runs": 2,
       "success": 1,
-      "failure": 0,
+      "failure": 1,
       "metrics": {}
     },
     "kabukicho_survival_map:scenario_writing": {
@@ -70,5 +70,5 @@
       "metrics": {}
     }
   },
-  "last_updated": "2026-07-12T10:16:41.446228+00:00"
+  "last_updated": "2026-07-12T11:17:26.217001+00:00"
 }
