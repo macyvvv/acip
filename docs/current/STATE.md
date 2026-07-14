@@ -17,23 +17,26 @@ Long-term principles belong to docs/current/PROJECT.md or basis/.
 
 # Current Phase
 
-Phase 3 : Business Agent Automation Platform (Levels 0-3a/3c live) +
-Governance Layer Overhaul
+Phase 3 : Business Agent Automation Platform (Levels 0-3a/3c live, 3b
+built but unscheduled) -- Governance Layer Overhaul complete
+(`adr/ADR-0037`, incl. 2026-07-14 addendum)
 
 ---
 
 # Current Milestone
 
-Governance-layer overhaul (`adr/ADR-0037`): retiring ChatGPT/Codex-era
-coordination scaffolding and rigid absolute rules that no longer match how
-Claude Code actually operates this repository.
+Roadmap Phase A (see `docs/current/PROJECT.md`'s Current Priority):
+clear the 15-task Level-3b backlog, decide the cron/launchd wiring
+question, and document the `.claude/agents/` Ops layer
+(`adr/ADR-0039`) that `CLAUDE.md`/`AGENTS.md` don't yet mention.
 
 ---
 
 # Active Epic
 
-Governance layer overhaul, staged across several PRs (see
-`adr/ADR-0037-governance-layer-overhaul.md`).
+Business Agent Automation Platform roadmap, Phase A of 4 (see
+`docs/current/PROJECT.md`). Governance layer overhaul
+(`adr/ADR-0037-governance-layer-overhaul.md`) is complete, not active.
 
 ---
 
@@ -66,8 +69,20 @@ The business-agent automation platform is live in production:
   per-task approval needed for named `(business_id, role_id)` pairs.
 - Level 3c: policy-based unattended publishing, same shape as 3a for the
   publish step.
-- Level 3b (scheduled/unattended trigger) is explicitly not built --
-  requires separate operator sign-off.
+- Level 3b (scheduled/unattended trigger, `adr/ADR-0038`): the runner
+  (`system/scripts/business_agent/run_scheduled_execution.py`) and its
+  kill switch are built, but nothing invokes it on a schedule yet -- no
+  cron/launchd entry exists. Real consequence: 15 `candidate` tasks sit
+  stalled in `system/runtime/business_agent_tasks/queue.json`. Whether to
+  wire it up or deliberately leave it manual-trigger-only is an open
+  Phase A decision (see `docs/current/PROJECT.md`), not yet made.
+- `.claude/agents/*.md` (added 2026-07-14, `adr/ADR-0039`): 8
+  business-content roles + 6 Ops agents (DataOps/DevOps/MLOps/ModelOps/
+  MarketingOps/SecOps) + `opsboard`, usable directly in an interactive
+  Claude Code session. Runs parallel to, and does not replace, the
+  registry-driven role definitions that automated execution actually
+  reads -- ADR-0039 documents this as a temporary dual-authority
+  arrangement, not a permanent design.
 
 Real product surfaces live under `app/products/` (kabukicho_survival_map
 with an embedded Google Map + nearest-first list, text_syndicate content
@@ -86,24 +101,30 @@ GitHub branch protection (private repo, free plan).
 
 ## Actor
 
-Claude Code
+Claude Code / Human (Level 3b wiring decision needs explicit operator
+sign-off, per the standing rule that new autonomy-affecting decisions
+aren't self-authorized)
 
 ## Action
 
-Continue and complete the governance-layer overhaul's remaining stages
-(see `adr/ADR-0037` for current progress), then resume normal product work.
+Work Roadmap Phase A (`docs/current/PROJECT.md`'s Current Priority):
+triage the 15 stalled `candidate` tasks in `queue.json`, get an explicit
+decision on Level 3b's cron/launchd wiring, and add `.claude/agents/`
+Ops-layer references to `CLAUDE.md`/`AGENTS.md`.
 
 ## Success Condition
 
-All staged PRs merged, `python -m pytest -q` and `python system/scripts/
-validate_all.py` both clean, `adr/ADR-0037` fully records what changed and
-what explicitly did not.
+Zero stale `candidate` tasks left unaddressed (executed or explicitly
+discarded with reason), Level 3b's scheduling status recorded as a
+deliberate decision either way, `CLAUDE.md`/`AGENTS.md` reference the
+live `.claude/agents/` structure, `python -m pytest -q` and
+`python system/scripts/validate_all.py` both clean.
 
 ---
 
 # Last Updated
 
-2026-07-12
+2026-07-14
 
 ---
 
