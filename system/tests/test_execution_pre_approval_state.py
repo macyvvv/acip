@@ -62,12 +62,18 @@ def test_weekly_cap_exceeded(tmp_path: Path) -> None:
 
 def test_stale_claim_can_be_reclaimed(tmp_path: Path, monkeypatch) -> None:
     import system.core.execution_pre_approval_state as module
-    from datetime import datetime, timedelta, timezone
+    from datetime import timedelta
 
     claim_pre_approval("text_syndicate", "market_research", "task-0001", "POL-1", 3, 10, tmp_path)
 
     # Simulate time passing well beyond the staleness window without ever
     # calling mark_pre_approval_outcome (a crash-mid-execution scenario).
+    # Scoped to only the reclaim call (monkeypatch.context(), not the whole
+    # test) -- freezing time for the entire test made this genuinely flaky
+    # near a UTC day boundary: counts_for_today()'s day-key is real-time-
+    # based, so asserting against it while +20 minutes had already crossed
+    # into the next UTC day looked up the wrong day's counter (found live,
+    # reproduced consistently while it was ~23:5x UTC).
     real_datetime = module.datetime
 
     class _FrozenFuture(real_datetime):
@@ -75,10 +81,13 @@ def test_stale_claim_can_be_reclaimed(tmp_path: Path, monkeypatch) -> None:
         def now(cls, tz=None):
             return real_datetime.now(tz) + timedelta(minutes=20)
 
-    monkeypatch.setattr(module, "datetime", _FrozenFuture)
-    result = claim_pre_approval("text_syndicate", "market_research", "task-0001", "POL-1", 3, 10, tmp_path)
+    with monkeypatch.context() as m:
+        m.setattr(module, "datetime", _FrozenFuture)
+        result = claim_pre_approval("text_syndicate", "market_research", "task-0001", "POL-1", 3, 10, tmp_path)
     assert result == "claimed"
-    # Recovery re-claim must not consume a second cap slot
+    # Recovery re-claim must not consume a second cap slot -- checked with
+    # the real clock restored, matching the real day the original claim's
+    # counter was actually written under.
     assert counts_for_today("text_syndicate", "market_research", tmp_path) == 1
 
 
