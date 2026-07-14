@@ -25,6 +25,10 @@
      the `|| ""` fallback below preserves that value. */
   window.KABUKICHO_GMAPS_API_KEY = window.KABUKICHO_GMAPS_API_KEY || "";
 </script>
+<!-- SSG:JSONLD -- build.py replaces this with a JSON-LD <script> block
+     generated from system/runtime/data/kabukicho/*.json. Do not hand-edit;
+     it is regenerated on every build.py run. -->
+<!-- SSG:JSONLD -->
 </head>
 <body>
   <header class="app-header">
@@ -40,8 +44,27 @@
   </div>
 
   <main id="poi-list" class="poi-list" aria-live="polite">
+    <!-- SSG:POI_CONTENT -- build.py replaces this with a static render of
+         every category's POIs (all six, not just the default category),
+         from system/runtime/data/kabukicho/*.json. This is what a crawler
+         that does not execute JavaScript (most AI answer-engine bots) will
+         see; app.js's renderList() fully replaces #poi-list's innerHTML on
+         DOMContentLoaded, so a JS-capable browser never shows this content
+         for more than an instant. Do not hand-edit; regenerated every
+         build.py run. -->
     <p class="empty-state">カテゴリを選択して、歌舞伎町の施設を探してください。</p>
   </main>
+
+  <section id="faq-section" class="faq-section" aria-label="よくある質問">
+    <!-- SSG:FAQ_CONTENT -- build.py replaces this with static FAQ content +
+         FAQPage JSON-LD, generated from a small fixed Q&A list in build.py.
+         Deliberately OUTSIDE #poi-list so app.js's renderList() (which
+         replaces #poi-list's innerHTML on every category switch) never
+         wipes it out -- this content should persist for real visitors too,
+         not just crawlers. Do not hand-edit; regenerated every build.py
+         run. -->
+    <!-- SSG:FAQ_CONTENT -->
+  </section>
 
   <nav class="bottom-nav" id="bottom-nav" aria-label="カテゴリ">
     <!-- populated by app.js -->
