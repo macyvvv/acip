@@ -1,0 +1,8 @@
+# AGENT_HANDOFF
+
+business_id: kabukicho_survival_map
+role_id: doc_creation
+task_id: auto-0006
+task_description: Auto-triggered following successful completion of kabukicho_survival_map/marketing/auto-0005. Read its artifact at /Users/ariel/Documents/tools/acip/system/runtime/business_agents/kabukicho_survival_map/marketing/auto-0005/latest.json and produce the doc_creation output building on it.
+request_id: REQ-KABUKICHO-SURVIVAL-MAP-DOC-CREATION-AUTO-0006
+next_action: Review the handoff and, if approved, continue through the existing execution flow.

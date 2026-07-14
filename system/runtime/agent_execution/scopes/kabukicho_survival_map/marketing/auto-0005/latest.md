@@ -7,11 +7,11 @@ scope_type:
 scope_id: 
 execution_triggered: true
 execution_mode: one_shot
-execution_result_status: failure
+execution_result_status: success
 completion_marker_path: /Users/ariel/Documents/tools/acip/system/runtime/business_agents/kabukicho_survival_map/marketing/auto-0005/latest.json
 request_path: /Users/ariel/Documents/tools/acip/system/runtime/request/execution_request.json
-stopped_reason: exit_code=1
-started_at: 2026-07-12T11:17:00.336549+00:00
-finished_at: 2026-07-12T11:17:17.552135+00:00
+stopped_reason: completion_marker_written
+started_at: 2026-07-14T10:40:35.376059+00:00
+finished_at: 2026-07-14T10:41:45.245812+00:00
 authorization_source: policy_pre_approval
 policy_id: PREAPP-KABUKICHO_SURVIVAL_MAP-MARKETING-0001
