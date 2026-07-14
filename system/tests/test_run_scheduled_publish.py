@@ -202,3 +202,35 @@ def test_cross_scope_isolation_cap(tmp_path: Path) -> None:
     assert len(summary.published) == 2
     published_businesses = {item["business_id"] for item in summary.published}
     assert published_businesses == {"text_syndicate", "kabukicho_survival_map"}
+
+
+def test_reply_to_external_id_is_passed_through_to_provider(tmp_path: Path, monkeypatch) -> None:
+    _seed_execution(tmp_path, "text_syndicate", "marketing", "task-reply-0001", "reply candidates blob")
+    finalize_content(
+        "text_syndicate", "marketing", "task-reply-0001", "x", "reply text", "macy", tmp_path,
+        reply_to_external_id="42",
+    )
+    _seed_policy(tmp_path)
+
+    received = {}
+
+    class _SpyProvider:
+        name = "dry_run"
+
+        def publish(self, platform, final_text, business_id, *, in_reply_to=None):
+            from system.scripts.publishing.providers import PublishResult
+            from datetime import datetime, timezone
+
+            received["in_reply_to"] = in_reply_to
+            return PublishResult(
+                provider=self.name, platform=platform, business_id=business_id,
+                external_post_id="1", published_at=datetime.now(timezone.utc).isoformat(), notes="spy",
+            )
+
+    import system.scripts.publishing.run_scheduled_publish as run_module
+
+    monkeypatch.setattr(run_module, "get_provider", lambda name=None: _SpyProvider())
+
+    summary = run_scheduled_publish(tmp_path)
+    assert len(summary.published) == 1
+    assert received["in_reply_to"] == "42"

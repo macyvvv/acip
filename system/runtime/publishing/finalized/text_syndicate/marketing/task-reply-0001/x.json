@@ -1,0 +1,11 @@
+{
+  "business_id": "text_syndicate",
+  "role_id": "marketing",
+  "task_id": "task-reply-0001",
+  "platform": "x",
+  "final_text": "これは実務で刺さる検証ですね。トークン消費より「読んでないファイルまで送られる」方が怖いポイントだと思っていて、リポジトリの規模によっては圧迫だけでなく思わぬ情報が渡ってしまうリスクもありそうです。除外設定、何か固まった型ってあります？",
+  "reply_to_external_id": "2076774647790706808",
+  "source_execution_hash": "b48490526cd22fa6ba6a5bb02ba69ad680c624482f60fbf5666694742c298225",
+  "finalized_by": "macy",
+  "finalized_at": "2026-07-14T01:05:49.686973+00:00"
+}

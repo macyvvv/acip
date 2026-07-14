@@ -15,6 +15,11 @@ def test_dry_run_provider_shape() -> None:
     assert "dry-run" in result.notes
 
 
+def test_dry_run_provider_notes_reply_target() -> None:
+    result = DryRunProvider().publish("x", "hello", "text_syndicate", in_reply_to="1234567890")
+    assert "1234567890" in result.notes
+
+
 def test_default_provider_is_dry_run() -> None:
     provider = get_provider()
     assert provider.name == "dry_run"

@@ -55,3 +55,22 @@ def test_refinalizing_overwrites(tmp_path: Path) -> None:
 
 def test_missing_finalized_content_returns_none(tmp_path: Path) -> None:
     assert load_finalized_content("text_syndicate", "marketing", "task-0001", "x", tmp_path) is None
+
+
+def test_reply_to_external_id_defaults_to_none(tmp_path: Path) -> None:
+    _write_execution_artifact(tmp_path, "text_syndicate", "marketing", "task-0001", success=True, stdout="draft blob")
+    path = finalize_content("text_syndicate", "marketing", "task-0001", "x", "standalone post", "macy", tmp_path)
+    record = json.loads(path.read_text())
+    assert record["reply_to_external_id"] is None
+
+
+def test_reply_to_external_id_is_stored(tmp_path: Path) -> None:
+    _write_execution_artifact(tmp_path, "text_syndicate", "marketing", "task-reply-0001", success=True, stdout="reply candidates blob")
+    path = finalize_content(
+        "text_syndicate", "marketing", "task-reply-0001", "x", "reply text", "macy", tmp_path,
+        reply_to_external_id="1111111111",
+    )
+    record = json.loads(path.read_text())
+    assert record["reply_to_external_id"] == "1111111111"
+    loaded = load_finalized_content("text_syndicate", "marketing", "task-reply-0001", "x", tmp_path)
+    assert loaded["reply_to_external_id"] == "1111111111"

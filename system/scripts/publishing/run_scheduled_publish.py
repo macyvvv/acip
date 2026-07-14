@@ -158,7 +158,12 @@ def run_scheduled_publish(base_path: str | Path = ".") -> PublishRunSummary:
         policy = get_publishing_policy(candidate.business_id, candidate.platform, base_path)
         try:
             provider = get_provider(policy.provider)
-            result = provider.publish(candidate.platform, str(finalized["final_text"]), candidate.business_id)
+            result = provider.publish(
+                candidate.platform,
+                str(finalized["final_text"]),
+                candidate.business_id,
+                in_reply_to=finalized.get("reply_to_external_id"),
+            )
             record_publish(
                 candidate.business_id,
                 candidate.role_id,
