@@ -52,11 +52,11 @@ def _init_git_repo(tmp_path: Path) -> None:
 
 def _write_gitignore(tmp_path: Path) -> None:
     # Mirrors the real repo's .gitignore for the two things run_scheduled_
-    # execution.py itself creates (system/core/file_lock.py's lock file,
+    # execution.py itself creates (platform/system/core/file_lock.py's lock file,
     # the scheduler's own audit dir) -- without this, a synthetic test
     # repo has no .gitignore at all, so the runner's own lock file would
     # show up as untracked and spuriously trip the pre-flight dirty check.
-    (tmp_path / ".gitignore").write_text("system/runtime/**/*.lock\nsystem/runtime/scheduler/audit/\n")
+    (tmp_path / ".gitignore").write_text("platform/system/runtime/**/*.lock\nplatform/system/runtime/scheduler/audit/\n")
 
 
 def _commit_everything(tmp_path: Path, message: str = "seed pre-existing candidate state") -> None:
@@ -192,7 +192,7 @@ def test_happy_path_executes_and_lands_via_pr(tmp_path: Path, monkeypatch) -> No
     assert summary.merge_result == "merged"
     assert len(land_calls) == 1  # landing only attempted because something actually executed
     assert Path(summary.audit_path).exists()
-    latest = json.loads((tmp_path / "system/runtime/scheduler/audit/latest.json").read_text())
+    latest = json.loads((tmp_path / "platform/system/runtime/scheduler/audit/latest.json").read_text())
     assert latest["pr_url"] == "https://github.com/example/pr/1"
 
 

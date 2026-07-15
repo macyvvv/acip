@@ -11,7 +11,7 @@ exit_code: 0
 ## stdout
 ## Market Research — Kabukicho Survival Map (task-0012-smoking-free-backfill)
 
-Read-only research; no repository files modified. Checked `app/products/kabukicho_survival_map/data/smoking.json` (currently 3 entries) against new search results for genuinely free, no-purchase-required smoking spots within Kabukicho 1/2-chome.
+Read-only research; no repository files modified. Checked `platform/app/products/kabukicho_survival_map/data/smoking.json` (currently 3 entries) against new search results for genuinely free, no-purchase-required smoking spots within Kabukicho 1/2-chome.
 
 ### Facts (new, confirmed-free candidates)
 

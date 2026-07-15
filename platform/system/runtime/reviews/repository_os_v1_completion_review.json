@@ -20,11 +20,11 @@
     "Reviewing residual risks and parking lot items"
   ],
   "entry_points": [
-    "python system/scripts/validate_all.py",
+    "python platform/system/platform/scripts/validate_all.py",
     "python -m pytest -q",
-    "system/orchestrator/execution_kernel.py",
-    "system/orchestrator/solution_development_runtime.py",
-    "system/orchestrator/repository_governor.py"
+    "platform/system/orchestrator/execution_kernel.py",
+    "platform/system/orchestrator/solution_development_runtime.py",
+    "platform/system/orchestrator/repository_governor.py"
   ],
   "risks": [
     "Root layout remains warn-only.",

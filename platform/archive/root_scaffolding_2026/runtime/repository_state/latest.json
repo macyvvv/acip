@@ -8,7 +8,7 @@
     "ep_id": "PACK-0004",
     "primary_implementation_commit": "f583381",
     "fix_commit": "d4ea38d",
-    "validation_result": "python3 system/scripts/validate_all.py passed",
+    "validation_result": "python3 platform/system/platform/scripts/validate_all.py passed",
     "pytest_result": "python3 -m pytest -q passed, 93 passed",
     "worktree_state": "clean",
     "implemented_eps": [
@@ -18,7 +18,7 @@
       "EP-0159 Issue Synchronizer",
       "EP-0160 Handshake Validation"
     ],
-    "next_action": "ChatGPT can read system/runtime/handoff/latest.json for review intake.",
+    "next_action": "ChatGPT can read platform/system/runtime/handoff/latest.json for review intake.",
     "requires_human_approval": false,
     "latest_marker_contains_real_completion_data": true
   },
@@ -32,16 +32,16 @@
   ],
   "repository_health": "healthy",
   "runtime_health": "healthy",
-  "next_action": "ChatGPT can read system/runtime/handoff/latest.json for review intake.",
+  "next_action": "ChatGPT can read platform/system/runtime/handoff/latest.json for review intake.",
   "source_artifacts": [
-    "system/runtime/handoff/latest.json",
-    "system/runtime/handoff/completion/latest.json",
-    "system/runtime/event_runtime/",
+    "platform/system/runtime/handoff/latest.json",
+    "platform/system/runtime/handoff/completion/latest.json",
+    "platform/system/runtime/event_runtime/",
     "queue/",
-    "system/runtime/validation/",
-    "system/runtime/repository_constitution/constitution.json",
-    "packs/",
-    "docs/current/PACK_0005_EXECUTION_RECORD.md",
-    "docs/current/PACK_0003_EXECUTION_RECORD.md"
+    "platform/system/runtime/validation/",
+    "platform/system/runtime/repository_constitution/constitution.json",
+    "platform/packs/",
+    "platform/docs/current/PACK_0005_EXECUTION_RECORD.md",
+    "platform/docs/current/PACK_0003_EXECUTION_RECORD.md"
   ]
 }

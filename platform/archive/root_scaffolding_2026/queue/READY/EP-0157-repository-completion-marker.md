@@ -7,8 +7,8 @@ objective: Persist the latest Codex completion state as the repository SSOT.
 
 ## Scope
 
-- Update `system/runtime/handoff/latest.json`.
-- Update `system/runtime/handoff/completion/`.
+- Update `platform/system/runtime/handoff/latest.json`.
+- Update `platform/system/runtime/handoff/completion/`.
 - Preserve deterministic completion history.
 
 ## Success Criteria

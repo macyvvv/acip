@@ -23,7 +23,7 @@ class RootMigrationDryRun:
     def run(self) -> RootMigrationDryRunResult:
         inventory = RootInventory(self.base_path).classify()
         impacts = ReferenceImpactAnalyzer(self.base_path).analyze()
-        contract = TargetLayoutContract(root_allowlist=("README.md", "AGENTS.md", "docs/", "packs/", "queue/", "system/runtime/", "system/scripts/", "specs/", "system/orchestrator/", "system/tests/", "contracts/"), migration_policy='dry-run only until approved')
+        contract = TargetLayoutContract(root_allowlist=("README.md", "AGENTS.md", "platform/docs/", "platform/packs/", "queue/", "platform/system/runtime/", "platform/system/platform/scripts/", "platform/specs/", "platform/system/orchestrator/", "platform/system/tests/", "platform/contracts/"), migration_policy='dry-run only until approved')
         runtime_dir = self.base_path / 'runtime' / 'root_hygiene'
         runtime_dir.mkdir(parents=True, exist_ok=True)
         payload = {

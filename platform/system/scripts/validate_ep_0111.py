@@ -6,12 +6,16 @@ from pathlib import Path
 
 def _resolve_repo_root() -> Path:
     current = Path(__file__).resolve()
-    matches: list[Path] = []
+    # Prefer the outermost git root in case a nested .git directory exists.
+    git_matches: list[Path] = []
     for candidate in current.parents:
-        if (candidate / ".git").exists() or (candidate / "pyproject.toml").exists() or (candidate / "README.md").exists():
-            matches.append(candidate)
-    if matches:
-        return matches[-1]
+        if (candidate / ".git").exists():
+            git_matches.append(candidate)
+    if git_matches:
+        return git_matches[-1]
+    for candidate in current.parents:
+        if (candidate / "pyproject.toml").exists() or (candidate / "README.md").exists():
+            return candidate
     raise RuntimeError(f"Unable to locate repository root from {__file__}")
 
 ROOT = _resolve_repo_root()

@@ -77,11 +77,11 @@ class PublishRunSummary:
 
 
 def find_publish_candidates(base_path: str | Path = ".") -> list[PublishCandidate]:
-    """The finalized-content artifacts under system/runtime/publishing/finalized/
+    """The finalized-content artifacts under platform/system/runtime/publishing/finalized/
     ARE the candidate list -- not a scan of the task queue. Execution approval
     alone never makes a task a candidate; only an explicit, human-authored
     finalize_content.py call does."""
-    finalized_root = Path(base_path) / "system/runtime/publishing/finalized"
+    finalized_root = Path(base_path) / "platform/system/runtime/publishing/finalized"
     if not finalized_root.exists():
         return []
     candidates = []
@@ -99,7 +99,7 @@ def find_publish_candidates(base_path: str | Path = ".") -> list[PublishCandidat
 
 
 def _execution_artifact(business_id: str, role_id: str, task_id: str, base_path: str | Path) -> dict[str, Any] | None:
-    path = Path(base_path) / "system/runtime/business_agents" / business_id / role_id / task_id / "latest.json"
+    path = Path(base_path) / "platform/system/runtime/business_agents" / business_id / role_id / task_id / "latest.json"
     if not path.exists():
         return None
     return json.loads(path.read_text(encoding="utf-8"))
@@ -210,7 +210,7 @@ def _write_audit(
     blocked: list[dict[str, Any]],
     base_path: str | Path,
 ) -> Path:
-    audit_dir = Path(base_path) / "system/runtime/publishing/audit"
+    audit_dir = Path(base_path) / "platform/system/runtime/publishing/audit"
     audit_dir.mkdir(parents=True, exist_ok=True)
     payload = {
         "started_at": started_at,
@@ -256,7 +256,7 @@ def main() -> int:
     # os.environ -- this script previously never loaded .env itself, so a
     # real credential set sitting in .env (not exported into the invoking
     # shell) silently produced "X_OAUTH2_CLIENT_ID is not set" instead of
-    # actually posting. Mirrors system/scripts/somia/render_content.py's
+    # actually posting. Mirrors platform/system/platform/scripts/somia/render_content.py's
     # existing load_dotenv() call for the same reason.
     load_dotenv(ROOT / ".env")
     summary = run_scheduled_publish(ROOT)

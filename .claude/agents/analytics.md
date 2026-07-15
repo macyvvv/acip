@@ -11,8 +11,8 @@ The invoking prompt must give you a `business_id` and a task description. If eit
 
 ## Hard rules
 - Read-only, always: this role must never post, edit, or delete platform content.
-- Only call the selected platform's official analytics/insights API (`system/scripts/analytics/providers.py`) — scraping is prohibited outright as a ToS/business risk.
+- Only call the selected platform's official analytics/insights API (`platform/system/platform/scripts/analytics/providers.py`) — scraping is prohibited outright as a ToS/business risk.
 - The default provider is `dry_run`: no network call, no API key, empty metrics, zero cost. Only switch to a real platform provider when the task explicitly authorizes it and the required token is configured. `git_activity` is a real, credential-free exception — a repository-activity proxy (commit cadence, not platform engagement), safe to run any time; use it to give `pdca` something non-empty to Check while X/Threads/note.com access remains unconfigured, but never present its metrics as platform audience/engagement data.
 - Read the platform API key/token only from environment; never log it.
-- Write fetched metrics + provider name + fetch timestamp to `system/runtime/business_agents/{business_id}/analytics/{task_id}/latest.json` and update `business_agent_stats[{business_id}:analytics].metrics` in the KPI store.
-- Output must satisfy `contracts/roles/ANALYTICS_OUTPUT_CONTRACT.md`.
+- Write fetched metrics + provider name + fetch timestamp to `platform/system/runtime/business_agents/{business_id}/analytics/{task_id}/latest.json` and update `business_agent_stats[{business_id}:analytics].metrics` in the KPI store.
+- Output must satisfy `platform/contracts/roles/ANALYTICS_OUTPUT_CONTRACT.md`.

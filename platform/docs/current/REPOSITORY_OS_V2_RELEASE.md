@@ -82,7 +82,7 @@ Repository OS v2 is a projection-driven operating baseline built from authoritat
 
 ## Release Acceptance Criteria
 
-- `python3 scripts/validate_all.py` passes.
+- `python3 platform/scripts/validate_all.py` passes.
 - `python3 -m pytest -q` passes.
 - Worktree is clean.
 - Release artifacts are deterministic.

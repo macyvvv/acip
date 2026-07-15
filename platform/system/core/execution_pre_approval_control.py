@@ -6,10 +6,10 @@ from pathlib import Path
 from typing import Any
 
 # Dedicated kill switch for Level 3a policy-based execution pre-approval
-# (system/core/execution_pre_approval_policy.py +
-# system/core/approved_autonomous_execution.py's _try_policy_pre_approval).
+# (platform/system/core/execution_pre_approval_policy.py +
+# platform/system/core/approved_autonomous_execution.py's _try_policy_pre_approval).
 #
-# Deliberately NOT the same switch as system/core/business_agent_
+# Deliberately NOT the same switch as platform/system/core/business_agent_
 # automation_control.py's is_automation_paused(). That switch's docstring
 # is an explicit, load-bearing promise: pausing it "does not block a human
 # from manually running... run_approved_autonomous_execution.py... an

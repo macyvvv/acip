@@ -1,7 +1,7 @@
 {
   "version": 1,
   "state": {
-    "source_state": "docs/current/STATE.md",
+    "source_state": "platform/docs/current/STATE.md",
     "active_ep": "EP-0108",
     "next_ep": "EP-0109",
     "validation_status": "unknown"

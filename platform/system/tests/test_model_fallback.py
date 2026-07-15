@@ -15,7 +15,7 @@ def _prepare_base(tmp_path: Path, *, next_action: str = "Architecture change: hi
                 "request_status": "ready",
                 "request_priority": 100,
                 "approval_required": False,
-                "dependency": ["system/runtime/planning/latest.json"],
+                "dependency": ["platform/system/runtime/planning/latest.json"],
                 "worker_assignment": "Claude",
                 "next_action": next_action,
                 "objective": "Product Launch Checklist",

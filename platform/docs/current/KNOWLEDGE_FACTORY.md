@@ -4,21 +4,21 @@
 Convert chat logs into canonical repository knowledge assets.
 
 ## Input
-- `inbox/chat_logs/*.md`
-- `inbox/chat_logs/*.txt`
+- `platform/inbox/chat_logs/*.md`
+- `platform/inbox/chat_logs/*.txt`
 
 ## Output
-- `knowledge/dashboard.md`
-- `knowledge/current_state.md`
-- `knowledge/ideas.md`
-- `knowledge/decision_log.md`
-- `knowledge/glossary.md`
-- `knowledge/knowledge_graph.md`
-- `knowledge/parking_lot.md`
+- `platform/knowledge/dashboard.md`
+- `platform/knowledge/current_state.md`
+- `platform/knowledge/ideas.md`
+- `platform/knowledge/decision_log.md`
+- `platform/knowledge/glossary.md`
+- `platform/knowledge/knowledge_graph.md`
+- `platform/knowledge/parking_lot.md`
 
 ## Workflow
-1. Drop raw logs into `inbox/chat_logs/`
-2. Run `python scripts/extract_knowledge.py`
+1. Drop raw logs into `platform/inbox/chat_logs/`
+2. Run `python platform/scripts/extract_knowledge.py`
 3. Review diffs
 4. Commit only reviewed knowledge updates
 

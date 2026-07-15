@@ -15,7 +15,7 @@ Allow one explicitly approved autonomous handoff to trigger exactly one bounded 
 
 ## Exact Command
 ```bash
-python3 system/scripts/agent/run_approved_autonomous_execution.py
+python3 platform/system/platform/scripts/agent/run_approved_autonomous_execution.py
 ```
 
 ## Stop Conditions

@@ -1,7 +1,7 @@
 # CHAT_LOG_CAPTURE_RESEARCH
 
 ## Conclusion
-The most robust method for ACIP is to treat the official ChatGPT data export as the canonical source for chat logs, then import the exported archive into `inbox/chat_logs/` through a repository-native importer.
+The most robust method for ACIP is to treat the official ChatGPT data export as the canonical source for chat logs, then import the exported archive into `platform/inbox/chat_logs/` through a repository-native importer.
 
 This is the safest option because it is officially supported, durable across UI changes, and avoids scraping or policy-sensitive automation.
 
@@ -79,8 +79,8 @@ Use **official ChatGPT data export as the canonical capture method**.
 Operationally, ACIP should:
 1. request or trigger the export,
 2. unpack the export locally,
-3. normalize the conversations into `inbox/chat_logs/`,
-4. run `python scripts/extract_knowledge.py`.
+3. normalize the conversations into `platform/inbox/chat_logs/`,
+4. run `python platform/scripts/extract_knowledge.py`.
 
 If later automation is needed, add browser automation only as a thin trigger around the official export flow, not as the SSOT.
 
@@ -88,7 +88,7 @@ If later automation is needed, add browser automation only as a thin trigger aro
 Create a **Chat Log Importer EP** that:
 - reads ChatGPT export archives,
 - extracts conversation text deterministically,
-- writes normalized logs to `inbox/chat_logs/`,
+- writes normalized logs to `platform/inbox/chat_logs/`,
 - preserves provenance metadata,
 - deduplicates imports by conversation ID and export timestamp.
 
@@ -97,6 +97,6 @@ Create a **Chat Log Importer EP** that:
 - optional folder containing `conversations.json` and related export files
 
 ## Expected output
-- `inbox/chat_logs/*.md`
-- `inbox/chat_logs/*.txt`
-- knowledge extraction summary from `python scripts/extract_knowledge.py`
+- `platform/inbox/chat_logs/*.md`
+- `platform/inbox/chat_logs/*.txt`
+- knowledge extraction summary from `python platform/scripts/extract_knowledge.py`

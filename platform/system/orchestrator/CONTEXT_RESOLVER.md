@@ -9,10 +9,10 @@ Context Resolver builds bounded task context from Repository Graph and Agent Con
 - graph/repository_graph.json
 - graph/agent_context_pack.json
 - selftest.yml
-- basis/
-- adr/
-- wbs/
-- contracts/
+- platform/basis/
+- platform/adr/
+- platform/wbs/
+- platform/contracts/
 - runbooks/
 
 ## Rule

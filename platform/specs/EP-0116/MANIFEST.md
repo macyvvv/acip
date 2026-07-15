@@ -1,3 +1,3 @@
 # MANIFEST
 
-- `system/scripts/hygiene/audit_repository_root.py`
+- `platform/system/platform/scripts/hygiene/audit_repository_root.py`

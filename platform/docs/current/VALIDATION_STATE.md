@@ -1,7 +1,7 @@
 # VALIDATION_STATE
 
 last_validation_status: success
-last_validation_command: python scripts/validate_all.py
+last_validation_command: python platform/scripts/validate_all.py
 last_validation_report_json: runtime/validation/validation_report.json
 last_validation_report_md: runtime/validation/VALIDATION_REPORT.md
 validation_owner: Codex

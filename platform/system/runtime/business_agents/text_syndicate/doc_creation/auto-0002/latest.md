@@ -466,5 +466,5 @@ All documents match the marketing brief's specifications:
 - Affiliate disclosure: included per policy
 - Ready for immediate approval and publication
 
-**Output location:** System adapter will write to `/Users/ariel/acip/system/runtime/business_agents/text_syndicate/doc_creation/auto-0002/latest.{json,md}`
+**Output location:** System adapter will write to `/Users/ariel/acip/platform/system/runtime/business_agents/text_syndicate/doc_creation/auto-0002/latest.{json,md}`
 

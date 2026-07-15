@@ -13,7 +13,7 @@ Convert research findings into an incremental implementation issue for the Kabuk
 
 ## Assumptions
 - Night-time visitors need fast, local decision support.
-- The current product remains incremental relative to `app/products/kabukicho_survival_map_mvp`.
+- The current product remains incremental relative to `platform/app/products/kabukicho_survival_map_mvp`.
 - No backend or external mutation is allowed in this phase.
 
 ## User Value
@@ -40,7 +40,7 @@ Convert research findings into an incremental implementation issue for the Kabuk
 
 ## Validation Criteria
 - Research-backed opportunity remains deterministic in repository artifacts.
-- Issue scope stays incremental relative to `app/products/kabukicho_survival_map_mvp`.
+- Issue scope stays incremental relative to `platform/app/products/kabukicho_survival_map_mvp`.
 - Facts, assumptions, and recommendations remain separated.
 - No GitHub issue is auto-created.
 
@@ -50,11 +50,11 @@ Convert research findings into an incremental implementation issue for the Kabuk
 - Draft remains repository-native and deterministic.
 
 ## Dependencies
-- `system/runtime/research/request_kabukicho_expansion.json`
-- `system/runtime/research/latest.json`
-- `system/runtime/research/opportunities.json`
-- `system/runtime/research/insights.json`
-- `app/products/kabukicho_survival_map_mvp`
+- `platform/system/runtime/research/request_kabukicho_expansion.json`
+- `platform/system/runtime/research/latest.json`
+- `platform/system/runtime/research/opportunities.json`
+- `platform/system/runtime/research/insights.json`
+- `platform/app/products/kabukicho_survival_map_mvp`
 
 ## Implementation Constraints
 - Incremental only.

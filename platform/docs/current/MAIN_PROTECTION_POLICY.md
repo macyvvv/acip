@@ -8,7 +8,7 @@
 ## Required Local Controls
 - A pre-push guard must block pushes when the current branch is `main`.
 - A repository-contained hook template or installer must make the guard easy to activate.
-- Exact activation command: `bash system/scripts/git/install_hooks.sh`
+- Exact activation command: `bash platform/system/platform/scripts/git/install_hooks.sh`
 - Expected block message on `main`: `Blocked: direct push to main is prohibited. Switch to a feature branch and open a pull request.`
 - Expected allow behavior on feature branches: `Push allowed from branch: <branch-name>`
 

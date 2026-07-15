@@ -10,8 +10,8 @@
     "Produce approval-ready report"
   ],
   "validation": [
-    "python system/scripts/agent_runtime/run_dry_run_cycle.py",
-    "python system/scripts/agent_runtime/validate_agent_runtime_mvp.py"
+    "python platform/system/platform/scripts/agent_runtime/run_dry_run_cycle.py",
+    "python platform/system/platform/scripts/agent_runtime/validate_agent_runtime_mvp.py"
   ],
   "prohibited_actions": [
     "runtime external execution",
@@ -26,7 +26,7 @@
     "task_id": "ART-SAMPLE-0001",
     "title": "Sample dry-run repository task",
     "objective": "Validate that Agent Runtime can intake a repository task and produce approval-ready dry-run artifacts.",
-    "source": "/Users/ariel/Documents/tools/AI Native Company/system/runtime/task_inputs/sample_task.json",
+    "source": "/Users/ariel/Documents/tools/AI Native Company/platform/system/runtime/task_inputs/sample_task.json",
     "priority": "normal",
     "status": "normalized",
     "approval_required": true,

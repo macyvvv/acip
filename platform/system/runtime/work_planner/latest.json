@@ -151,13 +151,13 @@
   ],
   "blocked_candidates": [],
   "source_artifacts": [
-    "system/runtime/planning/latest.json",
-    "system/runtime/repository_state/latest.json",
-    "system/runtime/repository_constitution/constitution.json",
+    "platform/system/runtime/planning/latest.json",
+    "platform/system/runtime/repository_state/latest.json",
+    "platform/system/runtime/repository_constitution/constitution.json",
     "queue/",
-    "packs/",
-    "system/runtime/handoff/latest.json",
-    "system/runtime/event_runtime/",
-    "system/runtime/root_hygiene/"
+    "platform/packs/",
+    "platform/system/runtime/handoff/latest.json",
+    "platform/system/runtime/event_runtime/",
+    "platform/system/runtime/root_hygiene/"
   ]
 }

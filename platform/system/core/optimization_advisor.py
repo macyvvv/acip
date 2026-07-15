@@ -7,7 +7,7 @@ from system.core.failure_learning import load_failure_rules
 from system.core.kpi_store import load_kpi
 
 
-DEFAULT_OPTIMIZATION_SUGGESTIONS = Path("system/runtime/knowledge/optimization_suggestions.json")
+DEFAULT_OPTIMIZATION_SUGGESTIONS = Path("platform/system/runtime/platform/knowledge/optimization_suggestions.json")
 
 
 def _suggestions_path(base_path: Path | str | None = None) -> Path:

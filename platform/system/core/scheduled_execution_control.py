@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-# Dedicated kill switch for Level 3b (system/scripts/business_agent/
+# Dedicated kill switch for Level 3b (platform/system/platform/scripts/business_agent/
 # run_scheduled_execution.py) -- the 4th independent switch in this
 # platform, deliberately not a reuse of any of the other three:
 #

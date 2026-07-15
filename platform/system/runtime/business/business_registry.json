@@ -1,6 +1,6 @@
 {
   "source_artifacts": [
-    "system/core/business_registry.py"
+    "platform/system/core/business_registry.py"
   ],
   "summary": {
     "business_count": 4,
@@ -34,7 +34,7 @@
       "display_name": "Somia",
       "status": "active",
       "content_root": "businesses/somia/content",
-      "product_code_path": "platform/system/scripts/somia",
+      "product_code_path": "platform/system/platform/scripts/somia",
       "tracking_issue_numbers": [
         45,
         46

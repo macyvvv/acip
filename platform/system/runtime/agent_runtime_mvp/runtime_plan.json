@@ -10,8 +10,8 @@
     "Produce approval-ready report"
   ],
   "validation": [
-    "python system/scripts/agent_runtime/run_dry_run_cycle.py",
-    "python system/scripts/agent_runtime/validate_agent_runtime_mvp.py"
+    "python platform/system/platform/scripts/agent_runtime/run_dry_run_cycle.py",
+    "python platform/system/platform/scripts/agent_runtime/validate_agent_runtime_mvp.py"
   ],
   "prohibited_actions": [
     "runtime external execution",

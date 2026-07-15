@@ -19,7 +19,7 @@ def locked(path: str | Path, *, timeout_seconds: float = DEFAULT_LOCK_TIMEOUT_SE
     automatically on process death -- unlike an O_EXCL lockfile, which can
     deadlock permanently if the holder is killed). Only needed for state
     genuinely shared across concurrent invocations (business_agent_tasks/
-    queue.json, knowledge/kpi.json) -- per-task-scoped files never need
+    queue.json, platform/knowledge/kpi.json) -- per-task-scoped files never need
     this, since no two processes legitimately touch the same task's file.
 
     Raises FileLockTimeout on timeout rather than retrying silently: this

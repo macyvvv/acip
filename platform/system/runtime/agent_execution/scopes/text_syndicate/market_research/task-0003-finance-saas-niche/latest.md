@@ -8,8 +8,8 @@ scope_id:
 execution_triggered: true
 execution_mode: one_shot
 execution_result_status: success
-completion_marker_path: /Users/ariel/Documents/tools/acip/system/runtime/business_agents/text_syndicate/market_research/task-0003-finance-saas-niche/latest.json
-request_path: /Users/ariel/Documents/tools/acip/system/runtime/request/execution_request.json
+completion_marker_path: /Users/ariel/Documents/tools/acip/platform/system/runtime/business_agents/text_syndicate/market_research/task-0003-finance-saas-niche/latest.json
+request_path: /Users/ariel/Documents/tools/acip/platform/system/runtime/request/execution_request.json
 stopped_reason: completion_marker_written
 started_at: 2026-07-12T10:15:00.206264+00:00
 finished_at: 2026-07-12T10:16:41.447002+00:00

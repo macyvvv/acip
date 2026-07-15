@@ -7,7 +7,7 @@ The flow is deterministic. Chat context is not canonical.
 
 ## Canonical Flow
 1. Create a research request artifact.
-2. Generate research artifacts under `system/runtime/research/`.
+2. Generate research artifacts under `platform/system/runtime/research/`.
 3. Produce a ranked opportunity list.
 4. Convert the top opportunity into a research issue draft.
 5. Register the draft in `issue_draft_registry.json`.
@@ -15,7 +15,7 @@ The flow is deterministic. Chat context is not canonical.
 7. Promote approved drafts into `approved_issue_drafts.json`.
 8. Promote approved drafts into `issue_creation_drafts.json`.
 9. Manually create the GitHub issue from the draft body.
-10. Run `system/scripts/run_until_idle.sh`.
+10. Run `platform/system/platform/scripts/run_until_idle.sh`.
 11. Commit the completion marker only.
 12. Clean up runtime observation artifacts if needed.
 13. Push the completion-marker commit to `origin/main`.
@@ -28,7 +28,7 @@ python3 - <<'PY'
 import json
 from pathlib import Path
 
-path = Path("system/runtime/research/issue_creation_drafts.json")
+path = Path("platform/system/runtime/research/issue_creation_drafts.json")
 print(path.read_text(encoding="utf-8"))
 PY
 ```
@@ -39,7 +39,7 @@ python3 - <<'PY'
 import json
 from pathlib import Path
 
-drafts = json.loads(Path("system/runtime/research/issue_creation_drafts.json").read_text(encoding="utf-8"))
+drafts = json.loads(Path("platform/system/runtime/research/issue_creation_drafts.json").read_text(encoding="utf-8"))
 draft = drafts[0]
 Path("/tmp/issue_title.txt").write_text(draft["title"] + "\n", encoding="utf-8")
 Path("/tmp/issue_body.md").write_text(draft["issue_body_draft"], encoding="utf-8")
@@ -55,14 +55,14 @@ gh issue create \
 
 ### Execute Repository OS after the issue is created
 ```bash
-./system/scripts/run_until_idle.sh
+./platform/system/platform/scripts/run_until_idle.sh
 ```
 
 ### Commit completion marker only
 ```bash
-git add system/runtime/issues/completed/
-git add system/runtime/handoff/completion/latest.json
-git add system/runtime/handoff/completion/latest.md
+git add platform/system/runtime/issues/completed/
+git add platform/system/runtime/handoff/completion/latest.json
+git add platform/system/runtime/handoff/completion/latest.md
 git commit -m "chore: record issue completion marker"
 ```
 
@@ -84,11 +84,11 @@ rm -f /tmp/issue_title.txt /tmp/issue_body.md
 - Completion markers are canonical commit targets.
 
 ## Canonical Runtime Artifacts
-- `system/runtime/research/review_queue.json`
-- `system/runtime/research/review_decisions.json`
-- `system/runtime/research/approved_issue_drafts.json`
-- `system/runtime/research/issue_creation_drafts.json`
-- `system/runtime/issues/completed/`
+- `platform/system/runtime/research/review_queue.json`
+- `platform/system/runtime/research/review_decisions.json`
+- `platform/system/runtime/research/approved_issue_drafts.json`
+- `platform/system/runtime/research/issue_creation_drafts.json`
+- `platform/system/runtime/issues/completed/`
 
 ## Verified Example
 Issue `#36` is the first verified end-to-end example of this research-to-issue flow.
@@ -101,6 +101,6 @@ It is the reference case for:
 - Repository OS execution handoff
 
 ## Operator Notes
-- Treat `system/runtime/research/*` as review and handoff state, not source-of-truth business records.
+- Treat `platform/system/runtime/research/*` as review and handoff state, not source-of-truth business records.
 - Treat completion markers as the canonical record that an issue has finished execution.
 - If runtime observation files drift, regenerate them deterministically instead of editing by hand.

@@ -27,4 +27,4 @@ git push -u origin feature/<short-name>
 
 ## Operator Note
 - Use the local push guard and repository hook template to enforce the workflow.
-- Activate locally with: `bash system/scripts/git/install_hooks.sh`
+- Activate locally with: `bash platform/system/platform/scripts/git/install_hooks.sh`

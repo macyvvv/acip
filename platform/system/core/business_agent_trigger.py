@@ -10,16 +10,16 @@ from system.core.business_agent_task_queue import add_task, load_queue
 
 # Level 1 (queue population) + Level 2 (per-task scoping) automation: proposing
 # and activating the next task is automatic, but nothing here ever writes an
-# approval or runs anything. See docs/current/BUSINESS_AGENT_AUTOMATION_READINESS.md.
+# approval or runs anything. See platform/docs/current/BUSINESS_AGENT_AUTOMATION_READINESS.md.
 # Kept as a plain function, not a dispatcher/class -- this repo treats
 # premature shared abstractions as a real risk (ADR-0032), and this only ever
 # does two things: look up next_roles, call the two enqueue/activate primitives.
 #
 # No anti-clobber guard: each (business, role, task) scope has its own
-# handoff/approval files (system/core/business_agent_handoff.py's
+# handoff/approval files (platform/system/core/business_agent_handoff.py's
 # per-task scope_dir), so two different scopes never share a slot and there
 # is nothing left to clobber. This is what Level 2 removed, not narrowed --
-# see adr/ADR-0034.
+# see platform/adr/ADR-0034.
 
 
 def evaluate_and_enqueue_next_tasks(

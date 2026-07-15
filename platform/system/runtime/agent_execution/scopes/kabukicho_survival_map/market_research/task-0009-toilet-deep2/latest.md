@@ -8,8 +8,8 @@ scope_id:
 execution_triggered: true
 execution_mode: one_shot
 execution_result_status: success
-completion_marker_path: /Users/ariel/acip/system/runtime/business_agents/kabukicho_survival_map/market_research/task-0009-toilet-deep2/latest.json
-request_path: /Users/ariel/acip/system/runtime/request/execution_request.json
+completion_marker_path: /Users/ariel/acip/platform/system/runtime/business_agents/kabukicho_survival_map/market_research/task-0009-toilet-deep2/latest.json
+request_path: /Users/ariel/acip/platform/system/runtime/request/execution_request.json
 stopped_reason: completion_marker_written
 started_at: 2026-07-11T12:54:11.729907+00:00
 finished_at: 2026-07-11T12:57:35.205244+00:00

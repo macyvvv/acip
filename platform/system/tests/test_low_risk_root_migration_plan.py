@@ -5,6 +5,6 @@ from pathlib import Path
 
 
 def test_low_risk_root_migration_plan_exists() -> None:
-    payload = json.loads(Path('system/runtime/root_hygiene/low_risk_root_migration_plan.json').read_text(encoding='utf-8'))
+    payload = json.loads(Path('platform/system/runtime/root_hygiene/low_risk_root_migration_plan.json').read_text(encoding='utf-8'))
     assert payload['approval_gate'] == 'required before any file move'
     assert payload['actual_migration_executed'] is False

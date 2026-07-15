@@ -205,7 +205,7 @@ class LocalExecutionAdapter:
             "request_status": "ready",
             "request_priority": 0,
             "approval_required": False,
-            "dependency": ["system/runtime/supervisor/latest.json"],
+            "dependency": ["platform/system/runtime/supervisor/latest.json"],
             "worker_assignment": "Claude",
         }
 
@@ -230,9 +230,9 @@ class LocalExecutionAdapter:
             f"Selected Issue Title: {request.get('issue_title', 'unknown')}",
             "",
             issue_instruction,
-            "Read system/runtime/planning/latest.json, system/runtime/repository_state/latest.json, system/runtime/work_planner/latest.json, and system/runtime/request/execution_request.json.",
+            "Read platform/system/runtime/planning/latest.json, platform/system/runtime/repository_state/latest.json, platform/system/runtime/work_planner/latest.json, and platform/system/runtime/request/execution_request.json.",
             "Run:",
-            "- python3 system/scripts/validate_all.py",
+            "- python3 platform/system/platform/scripts/validate_all.py",
             "- python3 -m pytest -q",
             "- git status",
             "",
@@ -422,13 +422,13 @@ class LocalExecutionAdapter:
         issue_title = str(request.get("issue_title", "")).upper()
         required_paths_by_issue = {
             30: [
-                "app/products/minimal_launch_brief_generator/README.md",
-                "app/products/minimal_launch_brief_generator/requirements.md",
-                "app/products/minimal_launch_brief_generator/architecture.md",
-                "app/products/minimal_launch_brief_generator/release_notes.md",
-                "app/products/minimal_launch_brief_generator/src/__init__.py",
-                "app/products/minimal_launch_brief_generator/src/minimal_launch_brief_generator.py",
-                "app/products/minimal_launch_brief_generator/tests/test_minimal_launch_brief_generator.py",
+                "platform/app/products/minimal_launch_brief_generator/README.md",
+                "platform/app/products/minimal_launch_brief_generator/requirements.md",
+                "platform/app/products/minimal_launch_brief_generator/architecture.md",
+                "platform/app/products/minimal_launch_brief_generator/release_notes.md",
+                "platform/app/products/minimal_launch_brief_generator/src/__init__.py",
+                "platform/app/products/minimal_launch_brief_generator/src/minimal_launch_brief_generator.py",
+                "platform/app/products/minimal_launch_brief_generator/tests/test_minimal_launch_brief_generator.py",
             ]
         }
         required_paths = required_paths_by_issue.get(issue_number, [])
@@ -461,10 +461,10 @@ class LocalExecutionAdapter:
         payload = {
             **model_resolution,
             "source_artifacts": [
-                "system/runtime/supervisor/latest.json",
-                "system/runtime/repository_state/latest.json",
-                "system/runtime/planning/latest.json",
-                "system/runtime/request/execution_request.json",
+                "platform/system/runtime/supervisor/latest.json",
+                "platform/system/runtime/repository_state/latest.json",
+                "platform/system/runtime/planning/latest.json",
+                "platform/system/runtime/request/execution_request.json",
             ],
         }
         (runtime_dir / "model_resolution.json").write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -501,7 +501,7 @@ class LocalExecutionAdapter:
         resolved_model = model_resolution.get("resolved_model")
         agent_cli_command = ""
         if resolved_model:
-            agent_cli_command = f'claude -p "$(cat system/runtime/local_execution/agent_prompt.md)" --model {resolved_model}'
+            agent_cli_command = f'claude -p "$(cat platform/system/runtime/local_execution/agent_prompt.md)" --model {resolved_model}'
         return LocalExecutionResult(
             adapter_mode=adapter_mode,
             approval_required=bool(repository.get("approval_required", False)),
@@ -520,11 +520,11 @@ class LocalExecutionAdapter:
             exit_code=exit_code,
             captured_at=model_resolution["resolved_at"],
             source_artifacts=[
-                "system/runtime/supervisor/latest.json",
-                "system/runtime/repository_state/latest.json",
-                "system/runtime/planning/latest.json",
-                "system/runtime/request/execution_request.json",
-                "system/runtime/local_execution/model_resolution.json",
+                "platform/system/runtime/supervisor/latest.json",
+                "platform/system/runtime/repository_state/latest.json",
+                "platform/system/runtime/planning/latest.json",
+                "platform/system/runtime/request/execution_request.json",
+                "platform/system/runtime/local_execution/model_resolution.json",
                 str(prompt_path.relative_to(self.base_path)),
             ],
             blocked_by_usage_limit=blocked_by_usage_limit,

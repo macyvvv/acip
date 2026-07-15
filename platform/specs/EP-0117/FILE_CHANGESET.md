@@ -1,6 +1,6 @@
-- `contracts/REFACTORING_GOVERNANCE_CONTRACT.md`
-- `docs/current/REFACTORING_GOVERNANCE_GATE.md`
-- `docs/current/REFACTORING_DECISION_RECORD.md`
-- `system/scripts/hygiene/validate_refactoring_governance.py`
-- `system/scripts/validate_ep_0117.py`
-- `system/tests/test_refactoring_governance.py`
+- `platform/contracts/REFACTORING_GOVERNANCE_CONTRACT.md`
+- `platform/docs/current/REFACTORING_GOVERNANCE_GATE.md`
+- `platform/docs/current/REFACTORING_DECISION_RECORD.md`
+- `platform/system/platform/scripts/hygiene/validate_refactoring_governance.py`
+- `platform/system/platform/scripts/validate_ep_0117.py`
+- `platform/system/tests/test_refactoring_governance.py`

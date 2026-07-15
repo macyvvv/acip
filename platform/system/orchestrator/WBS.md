@@ -33,7 +33,7 @@ Status: Doing
 ## Task 001
 
 Artifact:
-system/orchestrator/ARCHITECTURE.md
+platform/system/orchestrator/ARCHITECTURE.md
 
 Owner:
 ChatGPT
@@ -44,7 +44,7 @@ Done:
 ## Task 002
 
 Artifact:
-system/orchestrator/ADR-0001.md
+platform/system/orchestrator/ADR-0001.md
 
 Owner:
 ChatGPT
@@ -55,7 +55,7 @@ Stateless Orchestrator / Repository SSOTの意思決定が記録されている�
 ## Task 003
 
 Artifact:
-system/orchestrator/WBS.md
+platform/system/orchestrator/WBS.md
 
 Owner:
 ChatGPT
@@ -72,13 +72,13 @@ Status: Backlog
 ## Task 001
 
 Artifact:
-system/orchestrator/state.py
+platform/system/orchestrator/state.py
 
 Owner:
 Codex
 
 Done:
-docs/current/CURRENT_STATE.md を読み込める。
+platform/docs/current/CURRENT_STATE.md を読み込める。
 
 ## Task 002
 
@@ -94,7 +94,7 @@ repository / branch / current_phase / current_objective / current_task / next_ac
 ## Task 003
 
 Artifact:
-system/tests/test_state.py
+platform/system/tests/test_state.py
 
 Owner:
 Codex
@@ -111,7 +111,7 @@ Status: Backlog
 ## Task 001
 
 Artifact:
-system/orchestrator/queue.py
+platform/system/orchestrator/queue.py
 
 Owner:
 Codex
@@ -150,7 +150,7 @@ Status: Backlog
 ## Task 001
 
 Artifact:
-system/orchestrator/worker.py
+platform/system/orchestrator/worker.py
 
 Owner:
 Codex
@@ -161,7 +161,7 @@ Worker base classが定義されている。
 ## Task 002
 
 Artifact:
-system/orchestrator/result.py
+platform/system/orchestrator/result.py
 
 Owner:
 Codex
@@ -178,7 +178,7 @@ Status: Backlog
 ## Task 001
 
 Artifact:
-system/orchestrator/dispatcher.py
+platform/system/orchestrator/dispatcher.py
 
 Owner:
 Codex
@@ -206,7 +206,7 @@ Status: Backlog
 ## Task 001
 
 Artifact:
-system/orchestrator/workers/codex_worker.py
+platform/system/orchestrator/workers/codex_worker.py
 
 Owner:
 Codex
@@ -234,7 +234,7 @@ Status: Backlog
 ## Task 001
 
 Artifact:
-system/orchestrator/workers/github_worker.py
+platform/system/orchestrator/workers/github_worker.py
 
 Owner:
 Codex
@@ -262,7 +262,7 @@ Status: Backlog
 ## Task 001
 
 Artifact:
-system/orchestrator/main.py
+platform/system/orchestrator/main.py
 
 Owner:
 Codex
@@ -273,4 +273,4 @@ CLIでCurrent Taskを表示できる。
 Command:
 
 ```bash
-python system/orchestrator/main.py status
+python platform/system/orchestrator/main.py status

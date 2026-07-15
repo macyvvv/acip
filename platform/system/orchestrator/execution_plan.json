@@ -3,7 +3,7 @@
   "task_id": "ORCH-0001",
   "owner": "Codex/scripts",
   "objective": "Validate Agent Orchestrator preparation without runtime execution",
-  "context_bundle": "system/orchestrator/context_bundle.json",
+  "context_bundle": "platform/system/orchestrator/context_bundle.json",
   "steps": [
     "Read context bundle",
     "Verify repository graph exists",
@@ -12,7 +12,7 @@
     "Validate Runtime Boundary",
     "Run orchestrator validation"
   ],
-  "validation": "python system/scripts/orchestrator/validate_orchestration.py",
+  "validation": "python platform/system/platform/scripts/orchestrator/validate_orchestration.py",
   "done_condition": "Validation passes and no runtime execution occurs",
   "escalation_condition": "Human approval required only for runtime transition, risk acceptance, capital allocation, or emergency stop",
   "prohibited_actions": [

@@ -14,15 +14,15 @@ This file is the first runtime instruction file after the ChatGPT Custom Instruc
 AI agents must reconstruct context in the following order.
 
 ```text
-1. docs/current/PROJECT.md
-2. docs/current/STATE.md
+1. platform/docs/current/PROJECT.md
+2. platform/docs/current/STATE.md
 3. AGENTS.md
-4. .system/BOOT.md
-5. .system/REVIEW.md
-6. .system/DECISION.md
-7. .system/STYLE.md
-8. basis/
-9. adr/
+4. platform/.platform/system/BOOT.md
+5. platform/.platform/system/REVIEW.md
+6. platform/.platform/system/DECISION.md
+7. platform/.platform/system/STYLE.md
+8. platform/basis/
+9. platform/adr/
 10. Issue
 11. PR
 12. Conversation

@@ -4,8 +4,8 @@
   "commit_sha": "deterministic",
   "completed_at": "deterministic",
   "deliverables": [
-    "system/scripts/build_public_site.py",
-    "system/tests/test_build_public_site.py",
-    "system/runtime/issues/completed/issue_0031.json"
+    "platform/system/platform/scripts/build_public_site.py",
+    "platform/system/tests/test_build_public_site.py",
+    "platform/system/runtime/issues/completed/issue_0031.json"
   ]
 }

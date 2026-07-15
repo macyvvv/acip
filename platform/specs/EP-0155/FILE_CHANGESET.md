@@ -1,5 +1,5 @@
-- `docs/current/GENERATED_ARTIFACT_REFRESH_COMMAND.md`
-- `system/orchestrator/generated_artifact_refresh.py`
-- `system/scripts/refresh_generated_artifacts.py`
-- `system/scripts/validate_ep_0155.py`
-- `system/tests/test_generated_artifact_refresh.py`
+- `platform/docs/current/GENERATED_ARTIFACT_REFRESH_COMMAND.md`
+- `platform/system/orchestrator/generated_artifact_refresh.py`
+- `platform/system/platform/scripts/refresh_generated_artifacts.py`
+- `platform/system/platform/scripts/validate_ep_0155.py`
+- `platform/system/tests/test_generated_artifact_refresh.py`

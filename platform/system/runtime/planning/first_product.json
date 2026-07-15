@@ -56,14 +56,14 @@
     "keep scope stable until justified"
   ],
   "source_artifacts": [
-    "docs/current/FIRST_POST_LAUNCH_WBS.md",
-    "docs/current/BACKGROUND_SYSTEM_IMAGE.md",
-    "docs/current/FIRST_PRODUCT_ROADMAP.md",
-    "docs/current/FIRST_PRODUCT_WBS.md",
-    "docs/current/BACKGROUND_SYSTEM_ARCHITECTURE.md",
-    "system/runtime/planning/latest.json",
-    "system/runtime/repository_state/latest.json",
-    "system/runtime/supervisor/latest.json",
-    "system/runtime/work_planner/latest.json"
+    "platform/docs/current/FIRST_POST_LAUNCH_WBS.md",
+    "platform/docs/current/BACKGROUND_SYSTEM_IMAGE.md",
+    "platform/docs/current/FIRST_PRODUCT_ROADMAP.md",
+    "platform/docs/current/FIRST_PRODUCT_WBS.md",
+    "platform/docs/current/BACKGROUND_SYSTEM_ARCHITECTURE.md",
+    "platform/system/runtime/planning/latest.json",
+    "platform/system/runtime/repository_state/latest.json",
+    "platform/system/runtime/supervisor/latest.json",
+    "platform/system/runtime/work_planner/latest.json"
   ]
 }

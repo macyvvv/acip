@@ -7,8 +7,8 @@
   "execution_triggered": true,
   "execution_mode": "one_shot",
   "execution_result_status": "failure",
-  "completion_marker_path": "/Users/ariel/Documents/tools/AI Native Company/system/runtime/handoff/completion/latest.json",
-  "request_path": "/Users/ariel/Documents/tools/AI Native Company/system/runtime/request/execution_request.json",
+  "completion_marker_path": "/Users/ariel/Documents/tools/AI Native Company/platform/system/runtime/handoff/completion/latest.json",
+  "request_path": "/Users/ariel/Documents/tools/AI Native Company/platform/system/runtime/request/execution_request.json",
   "stopped_reason": "can't concat str to bytes",
   "started_at": "2026-07-02T08:38:25.585149+00:00",
   "finished_at": "2026-07-02T08:38:30.660692+00:00"

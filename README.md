@@ -2,7 +2,7 @@
 
 An attempt to run a company mostly through AI agents, with GitHub as the
 system of record. Full operating instructions: `CLAUDE.md`. Mission/vision:
-`docs/current/PROJECT.md`. Current status: `docs/current/STATE.md`.
+`platform/docs/current/PROJECT.md`. Current status: `platform/docs/current/STATE.md`.
 
 ```text
 Claude Code = Architecture, implementation, review, and PR authorship

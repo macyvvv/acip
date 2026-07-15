@@ -5,12 +5,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-# Kill switch for Level 1/2 automatic next-task proposal (system/core/
+# Kill switch for Level 1/2 automatic next-task proposal (platform/system/core/
 # business_agent_trigger.py). Scoped narrowly and deliberately: pausing
 # freezes auto-*proposal* only. It does not block a human from manually
 # running propose_task.py, set_execution_approval.py, or
 # run_approved_autonomous_execution.py -- an explicit human action stays
-# explicit. See docs/current/BUSINESS_AGENT_AUTOMATION_READINESS.md.
+# explicit. See platform/docs/current/BUSINESS_AGENT_AUTOMATION_READINESS.md.
 
 
 def _sentinel_path(base_path: str | Path = ".") -> Path:

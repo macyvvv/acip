@@ -139,7 +139,7 @@
     return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(lat + "," + lng);
   }
 
-  // Shared across app/products/* -- see app/shared/dom_escape.js. In the
+  // Shared across platform/app/products/* -- see platform/app/shared/dom_escape.js. In the
   // browser it's loaded via a <script> tag before this file (no bundler);
   // in the Node test harness (tests/test_app_logic.js), window is
   // undefined, so require() it directly instead.
@@ -469,7 +469,7 @@
   function loadAll() {
     // Fetched relative to this file so the app is self-contained and
     // deployable as a static bundle -- data/ is a build-time copy of
-    // system/runtime/data/kabukicho/ (the canonical source), see build.py.
+    // platform/system/runtime/data/kabukicho/ (the canonical source), see build.py.
     // A failed fetch used to silently set state.data[cat.id] = [], which
     // renderList() then displayed as an ordinary "no POIs in this
     // category" empty state -- indistinguishable from a genuinely empty

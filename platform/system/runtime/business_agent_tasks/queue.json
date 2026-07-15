@@ -412,5 +412,21 @@
     "title": "Auto-triggered market_research following text_syndicate/pdca/wiring-check-0001",
     "status": "candidate",
     "source": "auto_trigger"
+  },
+  {
+    "business_id": "text_syndicate",
+    "role_id": "market_research",
+    "task_id": "task-0004-meeting-notes-tools",
+    "title": "Fact sheet: AI meeting-notes tools (Otter, Fireflies, Fathom, Notion AI)",
+    "status": "candidate",
+    "source": "manual"
+  },
+  {
+    "business_id": "text_syndicate",
+    "role_id": "market_research",
+    "task_id": "task-0005-ai-writing-tools",
+    "title": "Fact sheet: AI writing/research/coding assistants (Claude, Perplexity, Cursor, GitHub Copilot)",
+    "status": "candidate",
+    "source": "manual"
   }
 ]

@@ -11,7 +11,7 @@ Interpreter-specific availability of `pytest` is not guaranteed.
 
 ### Canonical `validate_all`
 ```bash
-python3 system/scripts/validate_all.py
+python3 platform/system/platform/scripts/validate_all.py
 ```
 
 ### Canonical pytest command
@@ -48,7 +48,7 @@ Example:
 ```
 
 ## Repository Policy vs Local Machine Behavior
-- Repository policy: `python3 system/scripts/validate_all.py` is the canonical repository validation entrypoint.
+- Repository policy: `python3 platform/system/platform/scripts/validate_all.py` is the canonical repository validation entrypoint.
 - Local machine shell defaults: may point to an interpreter without `pytest`.
 - Interpreter-specific availability of `pytest`: must be checked before running pytest.
 

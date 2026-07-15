@@ -1,6 +1,6 @@
 # VALIDATION_READ_ONLY_MODE
 
-`python3 scripts/validate_all.py` is read-only by default and does not refresh repository validation artifacts.
+`python3 platform/scripts/validate_all.py` is read-only by default and does not refresh repository validation artifacts.
 
 ## Rule
 

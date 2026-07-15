@@ -13,7 +13,7 @@ from system.scripts.publishing.finalize_content import (
 
 
 def _write_execution_artifact(tmp_path: Path, business_id: str, role_id: str, task_id: str, *, success: bool, stdout: str) -> None:
-    path = tmp_path / "system/runtime/business_agents" / business_id / role_id / task_id / "latest.json"
+    path = tmp_path / "platform/system/runtime/business_agents" / business_id / role_id / task_id / "latest.json"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps({"success": success, "stdout": stdout}))
 

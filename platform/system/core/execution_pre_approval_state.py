@@ -15,7 +15,7 @@ from system.core.file_lock import locked
 # This file is the SINGLE SOURCE OF TRUTH for a task's pre-approval
 # lifecycle (claimed/completed/failed). An earlier draft split this from a
 # separate read of the execution-outcome artifact under
-# system/runtime/business_agents/... -- that split created a real
+# platform/system/runtime/business_agents/... -- that split created a real
 # check-then-act race, since (unlike Level 3c's instant DryRunProvider)
 # BusinessAgentExecutionAdapter.run()'s subprocess call is genuinely slow
 # (up to 60s). Concurrency safety now depends entirely on this module's
@@ -37,7 +37,7 @@ class ExecutionPreApprovalAlreadyInFlightError(ExecutionPreApprovalStateError):
 
 
 def _state_path(business_id: str, role_id: str, base_path: str | Path = ".") -> Path:
-    return Path(base_path) / "system/runtime/agent_handoff/pre_approval_state" / business_id / role_id / "state.json"
+    return Path(base_path) / "platform/system/runtime/agent_handoff/pre_approval_state" / business_id / role_id / "state.json"
 
 
 def _default_state() -> dict[str, Any]:

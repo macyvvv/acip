@@ -38,7 +38,7 @@ class ExecutionPreApprovalPolicyRecord:
 
 
 def _policy_path(base_path: str | Path = ".") -> Path:
-    return Path(base_path) / "system/runtime/agent_handoff/auto_approval_policy.json"
+    return Path(base_path) / "platform/system/runtime/agent_handoff/auto_approval_policy.json"
 
 
 def _validate_structure(raw: dict) -> None:

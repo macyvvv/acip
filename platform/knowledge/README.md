@@ -24,7 +24,7 @@ Knowledge should be:
 
 ## Structure
 
-knowledge/
+platform/knowledge/
 
 - market/
 - platform/

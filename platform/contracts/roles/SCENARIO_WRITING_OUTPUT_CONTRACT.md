@@ -16,13 +16,13 @@ unnoticed until multiple subagents flagged it independently.
 
 ### Shape A — generic one-shot business (e.g. kabukicho_survival_map)
 
-- output_target: `system/runtime/business_agents/{business_id}/scenario_writing/{task_id}/latest.{json,md}`
+- output_target: `platform/system/runtime/business_agents/{business_id}/scenario_writing/{task_id}/latest.{json,md}`
 - Freeform markdown deliverable; no fixed section schema beyond "complete,
   directly usable content."
 
 ### Shape B — Somia structured content (the actual recurring case)
 
-- output_target: `somia/CONTENT/{content_id}/` (a bare numeric id, e.g.
+- output_target: `businesses/somia/content/CONTENT/{content_id}/` (a bare numeric id, e.g.
   `0001`, `0011` — not a `{business_id}/{task_id}` path), containing:
   - `prompt.md` with `## Image Prompt (KV)`, `## Negative Prompt`,
     `## Animation Instruction`, `## Camera Instruction` sections
@@ -33,7 +33,7 @@ unnoticed until multiple subagents flagged it independently.
   - `metadata.json` (character, and whatever else the task needs;
     `render_content.py` later appends a `render` key to this same file —
     do not pre-populate that key)
-- This exact shape is parsed by `system/scripts/somia/content_spec.py`'s
+- This exact shape is parsed by `platform/system/platform/scripts/somia/content_spec.py`'s
   `load_content_spec()` — a missing required section or file raises
   `ContentSpecError`. Validate against it before considering a batch
   complete; a malformed heading fails silently otherwise.
@@ -46,7 +46,7 @@ unnoticed until multiple subagents flagged it independently.
 
 - read: repository files, existing business_agent runtime artifacts, existing character/brand/content specs
 - write (Shape A): none — execution adapter writes `latest.{json,md}`, not the invoked agent
-- write (Shape B): the agent writes `prompt.md`/`script.md`/`metadata.json` directly under `somia/CONTENT/{content_id}/`
+- write (Shape B): the agent writes `prompt.md`/`script.md`/`metadata.json` directly under `businesses/somia/content/CONTENT/{content_id}/`
 - execute: none
 - report: complete scenario/script content
 

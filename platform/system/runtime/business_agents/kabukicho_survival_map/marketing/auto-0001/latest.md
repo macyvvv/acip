@@ -21,7 +21,7 @@ Per contract, this is read-only marketing output for the execution adapter to ca
 
 For first-time and infrequent visitors to Kabukicho who need fast, risk-aware orientation after dark, Kabukicho Survival Map is a mobile-first guide that separates confirmed information from caution and gray-zone notes — unlike generic listing sites, it tells you what's *verified*, what's *uncertain*, and what to *watch out for*, so your first move is a safe one.
 
-This directly reflects the product's actual structure (`source_note` / `caution_note` / `gray_zone_note` / `last_verified_note` fields and the category-first mobile UX in `app/products/kabukicho_survival_map_mvp/README.md`) — no claims beyond what the product delivers today.
+This directly reflects the product's actual structure (`source_note` / `caution_note` / `gray_zone_note` / `last_verified_note` fields and the category-first mobile UX in `platform/app/products/kabukicho_survival_map_mvp/README.md`) — no claims beyond what the product delivers today.
 
 ## Target Audiences & Channels
 

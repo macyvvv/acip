@@ -2,7 +2,7 @@
   "business_id": "text_syndicate",
   "role_id": "doc_creation",
   "task_id": "auto-0001",
-  "task_description": "Auto-triggered following successful completion of text_syndicate/marketing/task-0001. Read its artifact at system/runtime/business_agents/text_syndicate/marketing/task-0001/latest.md and produce the doc_creation output building on it.",
+  "task_description": "Auto-triggered following successful completion of text_syndicate/marketing/task-0001. Read its artifact at platform/system/runtime/business_agents/text_syndicate/marketing/task-0001/latest.md and produce the doc_creation output building on it.",
   "issue_number": null,
   "approved_draft_id": null,
   "request_id": "REQ-TEXT-SYNDICATE-DOC-CREATION-AUTO-0001",

@@ -7,9 +7,9 @@ Define the canonical repository layout and root allowlist.
 ## Canonical Layout
 
 - `README.md`, `AGENTS.md`, and standard tool config files may remain at root.
-- `docs/current` is the source of truth for current state.
-- `docs/ep` contains EP description documents.
-- `specs/EP-xxxx` contains implementation specifications.
+- `platform/docs/current` is the source of truth for current state.
+- `platform/docs/ep` contains EP description documents.
+- `platform/specs/EP-xxxx` contains implementation specifications.
 - `contracts` contains durable contracts.
 - `scripts` contains executable helpers and validation utilities.
 - `orchestrator` contains orchestration components.

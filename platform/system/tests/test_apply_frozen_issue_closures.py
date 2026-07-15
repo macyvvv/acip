@@ -19,7 +19,7 @@ def test_dry_run_produces_no_github_mutation(tmp_path, monkeypatch):
                 "github_action_recommended": "close",
                 "state_reason_if_closed": "completed",
                 "classification_reason": "completed repository evidence exists",
-                "evidence_source": "system/runtime/issues/completed/",
+                "evidence_source": "platform/system/runtime/issues/completed/",
                 "safe_to_apply": True,
             },
             {
@@ -59,7 +59,7 @@ def test_apply_mode_closes_only_safe_plan_items(tmp_path, monkeypatch):
                 "github_action_recommended": "close",
                 "state_reason_if_closed": "completed",
                 "classification_reason": "completed repository evidence exists",
-                "evidence_source": "system/runtime/issues/completed/",
+                "evidence_source": "platform/system/runtime/issues/completed/",
                 "safe_to_apply": True,
             },
             {

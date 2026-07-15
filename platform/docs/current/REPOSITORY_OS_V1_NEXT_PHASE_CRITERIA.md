@@ -5,7 +5,7 @@
 - Repository OS v1 completion review is accepted.
 - Root hygiene remains classified and tracked.
 - Generated artifact handling is stable enough for incremental cleanup.
-- Validation and pytest continue to pass through `scripts/validate_all.py` and `python -m pytest -q`.
+- Validation and pytest continue to pass through `platform/scripts/validate_all.py` and `python -m pytest -q`.
 
 ## Exit Criteria for Next Phase
 

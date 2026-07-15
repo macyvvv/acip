@@ -10,7 +10,7 @@ Runtime artifact writes are allowed only for explicit refresh or explicit runtim
 
 ## Default Rule
 
-- `python3 scripts/validate_all.py` is read-only and must not refresh artifacts.
+- `python3 platform/scripts/validate_all.py` is read-only and must not refresh artifacts.
 
 ## Boundary
 

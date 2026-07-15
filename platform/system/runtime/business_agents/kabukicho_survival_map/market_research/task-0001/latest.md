@@ -13,11 +13,11 @@ exit_code: 0
 
 **Business:** kabukicho_survival_map | **Role:** market_research | **Task:** task-0001 (concurrency demo)
 
-Per the output contract, this is read-only research output for the execution adapter to capture as the artifact (`system/runtime/business_agents/kabukicho_survival_map/market_research/task-0001/latest.{json,md}`) — I have not written any files.
+Per the output contract, this is read-only research output for the execution adapter to capture as the artifact (`platform/system/runtime/business_agents/kabukicho_survival_map/market_research/task-0001/latest.{json,md}`) — I have not written any files.
 
 ## Facts (grounded in repo artifacts)
 
-- The product's stated purpose is "Kabukicho Map Data Expansion" for a mobile-first survival/orientation guide (`app/products/kabukicho_survival_map_mvp/README.md`).
+- The product's stated purpose is "Kabukicho Map Data Expansion" for a mobile-first survival/orientation guide (`platform/app/products/kabukicho_survival_map_mvp/README.md`).
 - Current POI dataset (`data/kabukicho_map_places.json`) has entries across categories: `navigation`, `essentials`, `safety`, `escape`, `ugc` — each POI carries `source_note`, `caution_note`, `gray_zone_note`, and `last_verified_note` fields, all currently marked "Repository-local product curation" / "Needs periodic human review."
 - Requirements explicitly mandate: no external API calls, no live data ingestion, deterministic output, and POI details separated into confirmed / caution / gray-zone (`requirements.md`).
 - Review focus in the README asks whether "POI data が実用的に増えているか" (is POI data expanding usefully) and whether a mobile user can determine their first action quickly.

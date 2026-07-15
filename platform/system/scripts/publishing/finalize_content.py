@@ -25,11 +25,11 @@ class FinalizeContentError(ValueError):
 
 
 def _execution_artifact_path(business_id: str, role_id: str, task_id: str, base_path: str | Path = ".") -> Path:
-    return Path(base_path) / "system/runtime/business_agents" / business_id / role_id / task_id / "latest.json"
+    return Path(base_path) / "platform/system/runtime/business_agents" / business_id / role_id / task_id / "latest.json"
 
 
 def _finalized_path(business_id: str, role_id: str, task_id: str, platform: str, base_path: str | Path = ".") -> Path:
-    return Path(base_path) / "system/runtime/publishing/finalized" / business_id / role_id / task_id / f"{platform}.json"
+    return Path(base_path) / "platform/system/runtime/publishing/finalized" / business_id / role_id / task_id / f"{platform}.json"
 
 
 def finalize_content(

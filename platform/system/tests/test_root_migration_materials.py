@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 def test_root_migration_materials_exist() -> None:
-    path = Path('system/runtime/root_hygiene/root_migration_materials.json')
+    path = Path('platform/system/runtime/root_hygiene/root_migration_materials.json')
     payload = json.loads(path.read_text(encoding='utf-8'))
     assert 'root_entries' in payload
     assert 'migrations' in payload

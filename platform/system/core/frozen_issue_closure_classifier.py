@@ -141,7 +141,7 @@ def build_frozen_issue_closure_plan(base_path: Path | None = None) -> dict[str, 
         if closure_disposition == "close_completed":
             safe_to_apply = issue_number in open_numbers
             if issue_number in completed_numbers:
-                evidence_source = "system/runtime/issues/completed/"
+                evidence_source = "platform/system/runtime/issues/completed/"
         else:
             safe_to_apply = False
         records.append(
@@ -162,12 +162,12 @@ def build_frozen_issue_closure_plan(base_path: Path | None = None) -> dict[str, 
     plan = {
         "generated_at": "deterministic",
         "source_artifacts": [
-            "docs/current/ISSUE_PORTFOLIO_ROADMAP.md",
-            "docs/current/AUTONOMOUS_OPERATIONAL_BASELINE.md",
-            "docs/current/ISSUE_OPERATOR_QUICKSTART.md",
-            "system/runtime/roadmap/issue_portfolio.json",
-            "system/runtime/issues/completed/",
-            "system/runtime/github/open_issues.json",
+            "platform/docs/current/ISSUE_PORTFOLIO_ROADMAP.md",
+            "platform/docs/current/AUTONOMOUS_OPERATIONAL_BASELINE.md",
+            "platform/docs/current/ISSUE_OPERATOR_QUICKSTART.md",
+            "platform/system/runtime/roadmap/issue_portfolio.json",
+            "platform/system/runtime/issues/completed/",
+            "platform/system/runtime/github/open_issues.json",
         ],
         "summary": {
             "frozen_issue_count": len(records),

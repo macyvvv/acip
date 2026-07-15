@@ -42,7 +42,7 @@ def test_sharded_per_business_and_platform(tmp_path: Path) -> None:
 
 
 def test_corrupted_state_file_hard_fails(tmp_path: Path) -> None:
-    path = tmp_path / "system/runtime/publishing/state/text_syndicate/x/state.json"
+    path = tmp_path / "platform/system/runtime/publishing/state/text_syndicate/x/state.json"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text("{not valid json")
     with pytest.raises(PublishingStateError):

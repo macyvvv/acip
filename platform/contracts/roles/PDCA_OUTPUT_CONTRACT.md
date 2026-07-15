@@ -5,7 +5,7 @@
 - contract_id: PDCA_OUTPUT_CONTRACT
 - actor: pdca agent role (claude_invocation)
 - input_source: business_agent_stats KPI history for the business + prior role artifacts
-- output_target: system/runtime/business_agents/{business_id}/pdca/{task_id}/latest.{json,md}
+- output_target: platform/system/runtime/business_agents/{business_id}/pdca/{task_id}/latest.{json,md}
 - current_objective: produce a plan-do-check-act report and next-task recommendations for one business
 - approval_required: yes (one-shot approval gate, same as repo-dev execution)
 

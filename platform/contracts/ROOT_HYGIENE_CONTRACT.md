@@ -7,7 +7,7 @@ Root hygiene is detection-first.
 - keep only allowlisted root files in the repository root
 - classify all other root entries as review candidates
 - do not move or delete entries in this EP
-- record future move candidates in `docs/current/REFACTORING_QUEUE.md`
+- record future move candidates in `platform/docs/current/REFACTORING_QUEUE.md`
 
 ## Allowlist
 

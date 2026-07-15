@@ -16,11 +16,11 @@ raise SystemExit(1)
 PY
 )"
 
-python3 "$ROOT/system/scripts/validate_all.py" >/tmp/repo_os_validate_all.log
+python3 "$ROOT/platform/system/platform/scripts/validate_all.py" >/tmp/repo_os_validate_all.log
 PYTEST_OUTPUT="$(python3 -m pytest -q 2>&1)"
-STATUS_JSON="$ROOT/system/runtime/operator_status/latest.json"
-STATUS_MD="$ROOT/system/runtime/operator_status/latest.md"
-mkdir -p "$ROOT/system/runtime/operator_status"
+STATUS_JSON="$ROOT/platform/system/runtime/operator_status/latest.json"
+STATUS_MD="$ROOT/platform/system/runtime/operator_status/latest.md"
+mkdir -p "$ROOT/platform/system/runtime/operator_status"
 cat > "$STATUS_MD" <<'MD'
 # OPERATOR_STATUS
 
@@ -50,4 +50,4 @@ cat > "$STATUS_JSON" <<'JSON'
   "review_block": "status: healthy | action: review latest repository artifacts | next: run supervisor start command if execution is needed"
 }
 JSON
-echo "Repository OS status exported to system/runtime/operator_status/latest.md"
+echo "Repository OS status exported to platform/system/runtime/operator_status/latest.md"

@@ -30,13 +30,13 @@ def _seed_policy(tmp_path: Path, **overrides) -> None:
         "reason": "pilot",
     }
     entry.update(overrides)
-    path = tmp_path / "system/runtime/publishing/policy.json"
+    path = tmp_path / "platform/system/runtime/publishing/policy.json"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps({"version": 1, "policies": [entry]}))
 
 
 def _seed_execution(tmp_path: Path, business_id: str, role_id: str, task_id: str, stdout: str, *, success: bool = True) -> None:
-    path = tmp_path / "system/runtime/business_agents" / business_id / role_id / task_id / "latest.json"
+    path = tmp_path / "platform/system/runtime/business_agents" / business_id / role_id / task_id / "latest.json"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps({"success": success, "stdout": stdout}))
 
@@ -62,7 +62,7 @@ def test_full_dry_run_end_to_end(tmp_path: Path) -> None:
     assert summary.published[0]["provider"] == "dry_run"
     assert summary.blocked == []
     assert Path(summary.audit_path).exists()
-    latest = json.loads((tmp_path / "system/runtime/publishing/audit/latest.json").read_text())
+    latest = json.loads((tmp_path / "platform/system/runtime/publishing/audit/latest.json").read_text())
     assert len(latest["published"]) == 1
 
 
@@ -178,7 +178,7 @@ def test_cross_scope_isolation_cap(tmp_path: Path) -> None:
     # A second business/platform combo, unrelated, with its own cap.
     _seed_execution(tmp_path, "kabukicho_survival_map", "doc_creation", "task-0001", "blob")
     finalize_content("kabukicho_survival_map", "doc_creation", "task-0001", "threads", "final threads copy", "macy", tmp_path)
-    path = tmp_path / "system/runtime/publishing/policy.json"
+    path = tmp_path / "platform/system/runtime/publishing/policy.json"
     policies = json.loads(path.read_text())
     policies["policies"].append(
         {

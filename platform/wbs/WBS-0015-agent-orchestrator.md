@@ -35,7 +35,7 @@ This WBS adds Agent Orchestrator preparation without runtime execution.
 
 ## Acceptance Criteria
 
-- `python system/scripts/system/orchestrator/build_context_bundle.py` runs.
-- `python system/scripts/system/orchestrator/build_execution_plan.py` runs.
-- `python system/scripts/system/orchestrator/validate_orchestration.py` passes.
+- `python platform/system/platform/scripts/platform/system/orchestrator/build_context_bundle.py` runs.
+- `python platform/system/platform/scripts/platform/system/orchestrator/build_execution_plan.py` runs.
+- `python platform/system/platform/scripts/platform/system/orchestrator/validate_orchestration.py` passes.
 - Runtime Boundary remains intact.

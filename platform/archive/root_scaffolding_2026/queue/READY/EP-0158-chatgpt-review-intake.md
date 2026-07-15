@@ -7,7 +7,7 @@ objective: Define a single review intake path for ChatGPT.
 
 ## Scope
 
-- Default review input is `system/runtime/handoff/latest.json`.
+- Default review input is `platform/system/runtime/handoff/latest.json`.
 - Define review intake fields and expected decisions.
 - Avoid scanning queue or runtime state manually.
 

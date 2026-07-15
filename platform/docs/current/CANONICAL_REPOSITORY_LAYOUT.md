@@ -8,9 +8,9 @@ The repository is normalized around a small root and responsibility-specific dir
 
 ## Directory Roles
 
-- `docs/current`: current-state repository source of truth.
-- `docs/ep`: EP narrative and handoff documents.
-- `specs/EP-xxxx`: implementation specifications for each EP.
+- `platform/docs/current`: current-state repository source of truth.
+- `platform/docs/ep`: EP narrative and handoff documents.
+- `platform/specs/EP-xxxx`: implementation specifications for each EP.
 - `contracts`: stable repository contracts.
 - `scripts`: executable helpers, validation, and automation.
 - `orchestrator`: planning, routing, and execution coordination.
@@ -26,4 +26,4 @@ Root-level markdown should not be used for EP-specific README, MANIFEST, PACK, o
 
 ## Relation
 
-This document is the readable summary of `contracts/REPOSITORY_LAYOUT_CONTRACT.md`.
+This document is the readable summary of `platform/contracts/REPOSITORY_LAYOUT_CONTRACT.md`.

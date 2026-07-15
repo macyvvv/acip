@@ -6,16 +6,16 @@
 - Hand off only validated opportunities into later issue drafting.
 
 ## Inputs
-- `system/runtime/research/request_example.json`
-- `system/runtime/planning/latest.json`
-- `system/runtime/repository_state/latest.json`
-- Existing research artifacts under `system/runtime/research/`
+- `platform/system/runtime/research/request_example.json`
+- `platform/system/runtime/planning/latest.json`
+- `platform/system/runtime/repository_state/latest.json`
+- Existing research artifacts under `platform/system/runtime/research/`
 
 ## Outputs
-- `system/runtime/research/latest.json`
-- `system/runtime/research/latest.md`
-- `system/runtime/research/opportunities.json`
-- `system/runtime/research/insights.json`
+- `platform/system/runtime/research/latest.json`
+- `platform/system/runtime/research/latest.md`
+- `platform/system/runtime/research/opportunities.json`
+- `platform/system/runtime/research/insights.json`
 
 ## Boundaries
 - No product implementation changes.

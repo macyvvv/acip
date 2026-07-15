@@ -4,8 +4,8 @@ from pathlib import Path
 import re
 
 
-BROKEN_PREFIXES = ("system/system/", "agent_system/runtime/", "event_system/runtime/")
-ROOT_AGENT_RUNTIME_PATTERN = re.compile(r"(?<!system/)agent_runtime/")
+BROKEN_PREFIXES = ("platform/system/platform/system/", "agent_platform/system/runtime/", "event_platform/system/runtime/")
+ROOT_AGENT_RUNTIME_PATTERN = re.compile(r"(?<!platform/system/)agent_runtime/")
 
 
 def _iter_executable_files(root: Path) -> list[Path]:
@@ -33,6 +33,6 @@ def test_no_legacy_root_paths_in_executable_code() -> None:
         if any(prefix in text for prefix in BROKEN_PREFIXES):
             offenders.append(str(path.relative_to(root)))
             continue
-        if ROOT_AGENT_RUNTIME_PATTERN.search(text) and "system/scripts/agent_runtime/" not in text and "system/agent_runtime/" not in text:
+        if ROOT_AGENT_RUNTIME_PATTERN.search(text) and "platform/system/platform/scripts/agent_runtime/" not in text and "platform/system/agent_runtime/" not in text:
             offenders.append(str(path.relative_to(root)))
     assert offenders == []

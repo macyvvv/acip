@@ -24,9 +24,9 @@ The highest-level architectural and governance rules.
 
 Implemented by:
 
-- basis/
+- platform/basis/
 - ADR
-- docs/current/PROJECT.md
+- platform/docs/current/PROJECT.md
 
 ---
 
@@ -36,7 +36,7 @@ Operational behavior executed by AI agents.
 
 Implemented by:
 
-- .system/
+- platform/.platform/system/
 - AGENTS.md
 
 ---
@@ -45,7 +45,7 @@ Implemented by:
 
 Long-term mission, objectives, KPIs, and responsibilities.
 
-Stored in docs/current/PROJECT.md.
+Stored in platform/docs/current/PROJECT.md.
 
 ---
 
@@ -53,7 +53,7 @@ Stored in docs/current/PROJECT.md.
 
 Current operational status.
 
-Stored in docs/current/STATE.md.
+Stored in platform/docs/current/STATE.md.
 
 ---
 
@@ -215,15 +215,15 @@ Repository artifacts always take priority over conversation history.
 
 Priority:
 
-docs/current/PROJECT.md
+platform/docs/current/PROJECT.md
 
-docs/current/STATE.md
+platform/docs/current/STATE.md
 
 AGENTS.md
 
-.system/
+platform/.platform/system/
 
-basis/
+platform/basis/
 
 ADR
 

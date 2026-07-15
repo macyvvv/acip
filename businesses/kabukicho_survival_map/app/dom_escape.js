@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  // Shared across app/products/* — this repo deliberately has no bundler
+  // Shared across platform/app/products/* — this repo deliberately has no bundler
   // (see kabukicho_survival_map/architecture.md's "Why no framework/
   // bundler"), so a plain <script src="../shared/dom_escape.js"> tag,
   // loaded before a product's own app.js, is how a second product reuses

@@ -11,7 +11,7 @@ exit_code: 0
 ## stdout
 # Market Research: Text Syndicate — Impression/Affiliate-Driving Niches for Twitter/Threads/note.com
 
-Per the role contract, this is a report only — I have not written or modified any repository files. The execution adapter is expected to persist this to `system/runtime/business_agents/text_syndicate/market_research/task-0001/latest.{json,md}`.
+Per the role contract, this is a report only — I have not written or modified any repository files. The execution adapter is expected to persist this to `platform/system/runtime/business_agents/text_syndicate/market_research/task-0001/latest.{json,md}`.
 
 ## Facts (grounded in search results)
 

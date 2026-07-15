@@ -43,18 +43,18 @@ class RepositoryStateBuilder:
         packs = self._read_pack_ids()
         pending_review_items = self._pending_review_items(queue_state.status, completion)
         source_artifacts = [
-            "system/runtime/handoff/latest.json",
-            "system/runtime/handoff/completion/latest.json",
-            "system/runtime/event_runtime/",
+            "platform/system/runtime/handoff/latest.json",
+            "platform/system/runtime/handoff/completion/latest.json",
+            "platform/system/runtime/event_runtime/",
             "queue/",
-            "system/runtime/validation/",
-            "system/runtime/repository_constitution/constitution.json",
-            "packs/",
+            "platform/system/runtime/validation/",
+            "platform/system/runtime/repository_constitution/constitution.json",
+            "platform/packs/",
         ]
         if (self.base_path / "docs" / "current" / "PACK_0005_EXECUTION_RECORD.md").exists():
-            source_artifacts.append("docs/current/PACK_0005_EXECUTION_RECORD.md")
+            source_artifacts.append("platform/docs/current/PACK_0005_EXECUTION_RECORD.md")
         if (self.base_path / "docs" / "current" / "PACK_0003_EXECUTION_RECORD.md").exists():
-            source_artifacts.append("docs/current/PACK_0003_EXECUTION_RECORD.md")
+            source_artifacts.append("platform/docs/current/PACK_0003_EXECUTION_RECORD.md")
         return RepositoryStateProjection(
             active_pack=completion.get("pack_id", packs[0] if packs else "unknown"),
             active_ep=completion.get("ep_id", queue_state.next_ep),

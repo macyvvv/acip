@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
-DEFAULT_FAILURE_STORE = Path("system/runtime/knowledge/failures.json")
+DEFAULT_FAILURE_STORE = Path("platform/system/runtime/platform/knowledge/failures.json")
 
 
 def _failure_store_path(base_path: Path | str | None = None) -> Path:

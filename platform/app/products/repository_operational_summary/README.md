@@ -6,8 +6,8 @@ Print a concise operational summary from repository planning and state artifacts
 
 ## Scope
 
-- Read `system/runtime/planning/latest.json`
-- Read `system/runtime/repository_state/latest.json`
+- Read `platform/system/runtime/planning/latest.json`
+- Read `platform/system/runtime/repository_state/latest.json`
 - Render a human-readable summary
 
 ## Non-Goals

@@ -80,7 +80,7 @@ auto-merge is additive, never a replacement for the existing fallback.
    `_TRACKED_RUNTIME_PATHS`, not just trusted from the earlier `git add`
    step -- defense in depth against a future bug widening what gets staged.
 3. **Local validation**: `python -m pytest -q` and
-   `python system/scripts/validate_all.py` both clean on the wake's own
+   `python platform/system/platform/scripts/validate_all.py` both clean on the wake's own
    branch.
 4. **Stale-base check**: immediately before merging (not just at wake
    start), `origin/main` is re-fetched and compared against the base SHA
@@ -88,7 +88,7 @@ auto-merge is additive, never a replacement for the existing fallback.
    aborted and the PR left open. This is the direct fix for the concurrency
    failure mode this same session hit for real (PR #115 vs. #116) -- and
    it is deliberately checked against GitHub's own remote state, not the
-   local whole-invocation file lock (`system/core/file_lock.py`), because
+   local whole-invocation file lock (`platform/system/core/file_lock.py`), because
    that lock only protects one process on one clone; this repo has a
    confirmed second local clone, so a local-only lock cannot be the real
    safety property here.
@@ -97,11 +97,11 @@ auto-merge is additive, never a replacement for the existing fallback.
    minutes, 15s interval) -- not green, or timeout, both leave the PR open.
    Never blocks/retries indefinitely.
 6. **Merge kill switch**: a 5th independent switch
-   (`system/core/scheduled_merge_control.py::is_scheduled_merge_paused`),
+   (`platform/system/core/scheduled_merge_control.py::is_scheduled_merge_paused`),
    distinct from the existing four, gating only the merge step -- an
    operator can freeze auto-merge while leaving generation running, or vice
    versa.
-7. **Circuit breaker**: `system/core/scheduled_merge_circuit.py` counts
+7. **Circuit breaker**: `platform/system/core/scheduled_merge_circuit.py` counts
    *consecutive* merge-gate failures across wakes (any gate above, 2-5 --
    including a stale-base abort, which the critique pass flagged as the
    failure mode most likely to recur). 3 in a row auto-engages the merge
@@ -115,9 +115,9 @@ auto-merge is additive, never a replacement for the existing fallback.
    is a real path-traversal-shaped risk that used to be caught by PR
    review.
 9. **Audit trail**: every merge attempt/skip and its reason is recorded in
-   the existing `system/runtime/scheduler/audit/` payload
+   the existing `platform/system/runtime/scheduler/audit/` payload
    (`merge_attempted`, `merge_result`, `merge_skip_reason`).
-10. **Rollback**: `system/scripts/business_agent/rollback_scheduled_merge.py`
+10. **Rollback**: `platform/system/platform/scripts/business_agent/rollback_scheduled_merge.py`
     prepares a revert PR for a given merge commit -- itself never
     auto-merged, requiring the same human/session review a bad merge
     should have gotten in the first place.
@@ -126,7 +126,7 @@ Deliberately **not** built: a separate daily cap on auto-merges (the
 existing per-role generation caps already bound cost/frequency; the
 critique pass judged a merge-specific cap low-value complexity, addable
 later if real data justifies it) and any machine-checkable validation
-against `contracts/roles/*_OUTPUT_CONTRACT.md` beyond what gate 1 already
+against `platform/contracts/roles/*_OUTPUT_CONTRACT.md` beyond what gate 1 already
 guarantees (those contracts are prose quality standards -- "is this a
 complete document, not an outline" -- not a mechanically checkable schema
 today; claiming to validate them programmatically here would overclaim
@@ -185,7 +185,7 @@ the exact PR #115/#116 collision that happened in this same session.
   complexity given the existing per-role generation caps already bound
   the underlying cost/frequency -- addable later if real data justifies
   it.
-- **Machine-validating each artifact against its `contracts/roles/*_OUTPUT_
+- **Machine-validating each artifact against its `platform/contracts/roles/*_OUTPUT_
   CONTRACT.md`**: rejected as overclaiming -- those contracts are prose
   quality standards not mechanically checkable today; a future LLM-judge-
   based check is a legitimate separate project, not folded in here.
@@ -201,13 +201,13 @@ the exact PR #115/#116 collision that happened in this same session.
 
 ## Impact Scope
 
-- New: `system/core/scheduled_merge_control.py`,
-  `system/core/scheduled_merge_circuit.py`,
-  `system/scripts/business_agent/{pause,resume,rollback}_scheduled_merge.py`,
-  this ADR, `system/tests/test_scheduled_merge_control.py`,
-  `system/tests/test_scheduled_merge_circuit.py`, new tests appended to
-  `system/tests/test_run_scheduled_execution.py`.
-- Modified: `system/scripts/business_agent/run_scheduled_execution.py`
+- New: `platform/system/core/scheduled_merge_control.py`,
+  `platform/system/core/scheduled_merge_circuit.py`,
+  `platform/system/platform/scripts/business_agent/{pause,resume,rollback}_scheduled_merge.py`,
+  this ADR, `platform/system/tests/test_scheduled_merge_control.py`,
+  `platform/system/tests/test_scheduled_merge_circuit.py`, new tests appended to
+  `platform/system/tests/test_run_scheduled_execution.py`.
+- Modified: `platform/system/platform/scripts/business_agent/run_scheduled_execution.py`
   (`_land_via_pr` extended to attempt merge; `find_scheduled_candidates`
   gains identifier validation; `ScheduledExecutionSummary`/audit payload
   gain merge fields), existing tests in `test_run_scheduled_execution.py`

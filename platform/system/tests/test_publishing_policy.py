@@ -13,7 +13,7 @@ from system.core.publishing_policy import (
 
 
 def _write_policy(tmp_path: Path, policies: list[dict]) -> None:
-    path = tmp_path / "system/runtime/publishing/policy.json"
+    path = tmp_path / "platform/system/runtime/publishing/policy.json"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps({"version": 1, "policies": policies}))
 

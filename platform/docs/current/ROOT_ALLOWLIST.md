@@ -1,38 +1,37 @@
 # ROOT_ALLOWLIST
 
-Current root entries:
+Current root entries (target policy):
 
-- `README.md`, `AGENTS.md`, `CLAUDE.md`, `VERSION`, `.gitignore`,
-  `.env.example`
-- `.github/`, `.system/`
-- `app/`, `system/`, `web/`, `somia/`, `scripts/`
-- `basis/`, `adr/`, `wbs/`, `docs/`, `specs/`, `contracts/`, `archive/`
-- `baseline/`, `context/`, `inbox/`, `knowledge/`, `packs/`, `releases/`
+- Canonical containers: `platform/`, `businesses/`
+- Minimal config/meta: `README.md`, `AGENTS.md`, `CLAUDE.md`, `VERSION`, `.gitignore`, `.env`, `.env.example`, `.github/`, `.git/`, `.claude/`, `requirements-dev.txt`, `netlify.toml`, `selftest.yml`
+- Compatibility symlinks may temporarily remain during migration until all references are updated.
+
+Local machine artifacts (ignored by layout validation): `.DS_Store`, `.pytest_cache/`, `.venv/`.
 
 **11 of the directories previously listed here** (`cache/`, `catalog/`,
 `control/`, `loader/`, `prompts/`, `registry/`, `review/`, `rules/`,
 `runbooks/`, `solution/`, `templates/`) were audited and archived to
 [archive/root_scaffolding_2026/](../../archive/root_scaffolding_2026/README.md)
 -- confirmed zero code/workflow references, same "unenforced prose"
-pattern as most of pre-overhaul `basis/` (see `adr/ADR-0037`). `knowledge/`
-and `packs/` were confirmed live/enforced in the same audit and kept.
-`inbox/`, `baseline/`, `releases/` were confirmed to have real code
-pointed at them (or, for `baseline/`/`releases/`, an orphaned checker that
+pattern as most of pre-overhaul `platform/basis/` (see `platform/adr/ADR-0037`). `platform/knowledge/`
+and `platform/packs/` were confirmed live/enforced in the same audit and kept.
+`platform/inbox/`, `platform/baseline/`, `platform/releases/` were confirmed to have real code
+pointed at them (or, for `platform/baseline/`/`platform/releases/`, an orphaned checker that
 nothing calls) but not enforced in CI -- kept as-is, not archived, pending
 a closer look.
 
-**Root `runtime/` archived, root `scripts/` kept -- follow-up to a
-correction this doc itself needed twice.** Stage 4 of `adr/ADR-0037`
-originally claimed `scripts/` and `runtime/` "no longer exist -- those all
-live under `system/` today," which was wrong (both existed). A follow-up
+**Root `runtime/` archived, root `platform/scripts/` kept -- follow-up to a
+correction this doc itself needed twice.** Stage 4 of `platform/adr/ADR-0037`
+originally claimed `platform/scripts/` and `runtime/` "no longer exist -- those all
+live under `platform/system/` today," which was wrong (both existed). A follow-up
 pass then guessed both were "stale, partially-diverged duplicates" of
-their `system/` counterparts without actually checking -- also wrong,
-for `scripts/` specifically. Investigating properly this time:
+their `platform/system/` counterparts without actually checking -- also wrong,
+for `platform/scripts/` specifically. Investigating properly this time:
 
-- `scripts/extract_knowledge.py` is a genuine, intentional root-level CLI
+- `platform/scripts/extract_knowledge.py` is a genuine, intentional root-level CLI
   wrapper (`from system.scripts.extract_knowledge import main`) matching
-  the documented human workflow in `docs/current/KNOWLEDGE_FACTORY.md`
-  ("Run `python scripts/extract_knowledge.py`") -- **not** a stale
+  the documented human workflow in `platform/docs/current/KNOWLEDGE_FACTORY.md`
+  ("Run `python platform/scripts/extract_knowledge.py`") -- **not** a stale
   duplicate. The earlier "shorter, differently-implemented" read was
   comparing a 13-line delegating wrapper against the real implementation
   it calls, not two independently-diverged copies. Kept as-is.
@@ -40,7 +39,7 @@ for `scripts/` specifically. Investigating properly this time:
   references anywhere (confirmed via `git grep`, both read and write
   sides) and, for `planning/` specifically, contained genuinely stale
   content (`current_pack: PACK-0001` at root vs. `PACK-0004` in
-  `system/runtime/planning/`, missing several files `system/runtime/
+  `platform/system/runtime/planning/`, missing several files `platform/system/runtime/
   planning/` has since accumulated) -- real evidence of a frozen,
   no-longer-updated pre-consolidation snapshot, not just a same-named
   coincidence. Archived to
@@ -62,11 +61,11 @@ immediately; fixed by repointing those 7 scripts at the archived path
 (same pattern as the `semantic_checks.py`/`validate_baseline.py` fixes
 above). See the archive README for the full account -- this is the third
 instance this session of that same literal-substring grep gotcha.
-Three related `system/runtime/queue/` files (`next_work.json`,
+Three related `platform/system/runtime/queue/` files (`next_work.json`,
 `queue_state.json`, `autonomous_queue_runtime.json`) were deleted, not
 archived -- confirmed dead via a full read of
-`system/orchestrator/queue_state.py` (only reads/writes
-`docs/current/QUEUE_STATE.md`) and stale/placeholder content
+`platform/system/orchestrator/queue_state.py` (only reads/writes
+`platform/docs/current/QUEUE_STATE.md`) and stale/placeholder content
 (`"intake_request_id": "REQ-SAMPLE"`, references to `EP-0108`/`EP-0109`).
 See the archive README for why this correctly triggered a
 permission-classifier pause first (a contradiction with an earlier,
@@ -76,7 +75,7 @@ direct evidence.
 ## Policy
 
 This allowlist is report-first (was EP-0121; that EP-numbered tracking
-system is itself part of the legacy scaffolding, see `adr/ADR-0037`).
+system is itself part of the legacy scaffolding, see `platform/adr/ADR-0037`).
 Nothing currently enforces it. A prior audit (2026-07-07) explicitly
 considered and declined a full root-directory consolidation migration --
 judged as trading a purely cosmetic gain for a large, unscoped file-move

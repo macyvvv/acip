@@ -37,7 +37,7 @@ This WBS replaces raw lint-style SelfTest with configuration-driven semantic rep
 
 ## Acceptance Criteria
 
-- `python system/scripts/selftest_v2/validate_semantic_selftest.py` runs.
+- `python platform/system/platform/scripts/selftest_v2/validate_semantic_selftest.py` runs.
 - Archive files do not cause canonical duplicate failures.
 - Explanatory mentions of Current Objective do not cause drift failures.
 - Boundary descriptions do not cause runtime boundary failures.

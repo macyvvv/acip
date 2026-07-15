@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-07-14T15:24:06.989419+00:00",
+  "finished_at": "2026-07-14T15:28:17.514186+00:00",
+  "kill_switch_engaged": false,
+  "skipped_overlap": false,
+  "candidates_considered": 3,
+  "executed": [
+    {
+      "business_id": "kabukicho_survival_map",
+      "role_id": "marketing",
+      "task_id": "auto-0005",
+      "policy_id": "PREAPP-KABUKICHO_SURVIVAL_MAP-MARKETING-0001",
+      "execution_triggered": true,
+      "execution_result_status": "success",
+      "authorization_source": "policy_pre_approval",
+      "stopped_reason": "completion_marker_written"
+    },
+    {
+      "business_id": "kabukicho_survival_map",
+      "role_id": "doc_creation",
+      "task_id": "auto-0005",
+      "policy_id": "PREAPP-KABUKICHO_SURVIVAL_MAP-DOC_CREATION-0001",
+      "execution_triggered": true,
+      "execution_result_status": "success",
+      "authorization_source": "policy_pre_approval",
+      "stopped_reason": "completion_marker_written"
+    },
+    {
+      "business_id": "text_syndicate",
+      "role_id": "marketing",
+      "task_id": "auto-0003",
+      "policy_id": "PREAPP-TEXT_SYNDICATE-MARKETING-0001",
+      "execution_triggered": true,
+      "execution_result_status": "success",
+      "authorization_source": "policy_pre_approval",
+      "stopped_reason": "completion_marker_written"
+    }
+  ],
+  "pr_url": "https://github.com/macyvvv/acip/pull/116",
+  "pr_skip_reason": null
+}

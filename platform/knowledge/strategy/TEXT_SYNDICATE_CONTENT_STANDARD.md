@@ -2,7 +2,7 @@
 
 Status
 
-Canonical (business-specific concretization of `knowledge/strategy/PRODUCT_DEFINITION.md`'s
+Canonical (business-specific concretization of `platform/knowledge/strategy/PRODUCT_DEFINITION.md`'s
 QOL mission, for the `text_syndicate` business specifically)
 
 ---
@@ -22,7 +22,7 @@ X drafts for `text_syndicate` found two problems:
    itself preventing it.
 
 Both violate this repo's own stated mission
-(`knowledge/strategy/PRODUCT_DEFINITION.md`: "QOL is the product"):
+(`platform/knowledge/strategy/PRODUCT_DEFINITION.md`: "QOL is the product"):
 engagement-bait content doesn't save a reader anything, and fabricated
 facts actively cost a reader time or money if trusted. This document
 translates that abstract mission into concrete, checkable criteria
@@ -40,7 +40,7 @@ out ahead -- in time, money, or effort -- not merely "engaged."
    them at their usage level -- not a bare question with no informational
    payoff.
 2. **Every specific figure is sourced.** Verified via
-   `system/scripts/dataops/verify_sourced_facts.py` against a
+   `platform/system/platform/scripts/dataops/verify_sourced_facts.py` against a
    `market_research` fact sheet with a `verified_as_of` date. Never a
    number from memory/training data.
 3. **States uncertainty honestly.** If research found conflicting or
@@ -66,13 +66,13 @@ out ahead -- in time, money, or effort -- not merely "engaged."
 
 - `market_research` must produce named-product fact sheets before
   `marketing`/`doc_creation` name those products (see
-  `system/agent_runtime/role_prompts/market_research.md` and
+  `platform/system/agent_runtime/role_prompts/market_research.md` and
   `.claude/agents/market-research.md`, both updated 2026-07-15).
 - `doc_creation`/`marketing` may not introduce unsourced figures (see the
-  same date's updates to `system/agent_runtime/role_prompts/doc_creation.md`
+  same date's updates to `platform/system/agent_runtime/role_prompts/doc_creation.md`
   and `.claude/agents/doc-creation.md`, plus
-  `system/scripts/dataops/verify_sourced_facts.py`).
-- A human finalizing content via `system/scripts/publishing/finalize_content.py`
+  `platform/system/platform/scripts/dataops/verify_sourced_facts.py`).
+- A human finalizing content via `platform/system/platform/scripts/publishing/finalize_content.py`
   should check a draft against this standard before finalizing. This
   standard is a checklist for that human judgment, not a claim that
   everything here is machine-enforced end-to-end -- only the sourced-figure

@@ -11,9 +11,9 @@ The invoking prompt must give you a `business_id` and a task description. If eit
 
 ## Instructions
 - Write the requested script/scenario/narrative content directly and completely.
-- Keep continuity with any existing character, brand, or content specs referenced in the business context — for somia specifically, match the schema enforced by `platform/system/scripts/somia/content_spec.py` (script.md/prompt.md/metadata.json/audio.json).
-- Do not modify repository files outside your artifact path. Write the scenario to `system/runtime/business_agents/{business_id}/scenario_writing/{task_id}/`.
-- Output must satisfy `contracts/roles/SCENARIO_WRITING_OUTPUT_CONTRACT.md`.
+- Keep continuity with any existing character, brand, or content specs referenced in the business context — for somia specifically, match the schema enforced by `platform/system/platform/scripts/somia/content_spec.py` (script.md/prompt.md/metadata.json/audio.json).
+- Do not modify repository files outside your artifact path. Write the scenario to `platform/system/runtime/business_agents/{business_id}/scenario_writing/{task_id}/`.
+- Output must satisfy `platform/contracts/roles/SCENARIO_WRITING_OUTPUT_CONTRACT.md`.
 
 ## Self-Critique (required before finalizing)
 Before delivering final output, review your own draft against these checks and revise until it passes. State in your output what you changed or cut as a result — a draft with no revisions noted is a signal you skipped this step, not that it was already perfect.

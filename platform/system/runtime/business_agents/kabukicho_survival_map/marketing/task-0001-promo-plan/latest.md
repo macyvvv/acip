@@ -19,7 +19,7 @@ Per contract, this is read-only output for the execution adapter to persist — 
 
 ## Provisional-planning caveat
 
-`app/products/kabukicho_survival_map_mvp/` has no deployment, hosting, or domain configuration checked in (confirmed by directory listing: README, architecture, requirements, `src/`, `data/`, `tests/` only — no `deploy/`, no hosting config, no live URL). Every recommendation below is written for a **product that does not yet exist at a public URL**. Channel choice, SEO strategy, and "where do we send people" all assume a destination that isn't decided. Treat this as a promotion *framework* to slot a URL/App Store link into once deployment is chosen, not a launch-ready plan. Re-run this task once hosting is confirmed, since mobile-web vs. native-app vs. PWA changes which channels (App Store Optimization vs. web SEO) actually apply.
+`platform/app/products/kabukicho_survival_map_mvp/` has no deployment, hosting, or domain configuration checked in (confirmed by directory listing: README, architecture, requirements, `src/`, `data/`, `tests/` only — no `deploy/`, no hosting config, no live URL). Every recommendation below is written for a **product that does not yet exist at a public URL**. Channel choice, SEO strategy, and "where do we send people" all assume a destination that isn't decided. Treat this as a promotion *framework* to slot a URL/App Store link into once deployment is chosen, not a launch-ready plan. Re-run this task once hosting is confirmed, since mobile-web vs. native-app vs. PWA changes which channels (App Store Optimization vs. web SEO) actually apply.
 
 ## Building on prior work
 
@@ -33,7 +33,7 @@ This task answers a narrower question those didn't cover: **should this product 
 
 **Recommendation: piggyback initially, split off only if traction justifies it.**
 
-- text_syndicate (per `system/runtime/business_agents/text_syndicate/marketing/task-0001` and `task-0002`) already operates X/Threads/note.com accounts built for repeat, general-purpose content syndication. A brand-new dedicated Kabukicho Survival Map account starts at zero followers and zero algorithmic trust — for a single-city, single-district niche tool, that's a slow, resource-heavy way to reach launch-day users.
+- text_syndicate (per `platform/system/runtime/business_agents/text_syndicate/marketing/task-0001` and `task-0002`) already operates X/Threads/note.com accounts built for repeat, general-purpose content syndication. A brand-new dedicated Kabukicho Survival Map account starts at zero followers and zero algorithmic trust — for a single-city, single-district niche tool, that's a slow, resource-heavy way to reach launch-day users.
 - A location-specific *utility* tool's actual discovery paths (local SEO, maps/travel forums, short-form video) don't depend on owning a branded social account at all — a Google listing, a forum post, or a TikTok/Reels demo works whether or not "Kabukicho Survival Map" has its own handle.
 - Piggybacking lets Kabukicho-specific posts (using the task-0002 dataset) go out on text_syndicate's existing note.com/X/Threads reach immediately, while a dedicated account is reserved for **if** the product gets its own domain and sustained content cadence (e.g. seasonal Kabukicho updates, verified-POI refresh announcements) — at that point a dedicated handle earns its keep as a direct-to-user support/update channel.
 - **Audience: internal/product decision-makers.** **Channel: this report (not public copy).** This is a recommendation, not published copy — flagged as such per contract.

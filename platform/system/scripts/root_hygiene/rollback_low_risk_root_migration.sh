@@ -21,5 +21,5 @@ done
 
 echo "Reference rollback updates are intentionally not performed by this script."
 echo "Post-rollback validation commands:"
-echo "python3 system/scripts/validate_all.py"
+echo "python3 platform/system/platform/scripts/validate_all.py"
 echo "python3 -m pytest -q"

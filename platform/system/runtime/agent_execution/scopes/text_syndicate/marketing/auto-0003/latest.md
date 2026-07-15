@@ -8,8 +8,8 @@ scope_id:
 execution_triggered: true
 execution_mode: one_shot
 execution_result_status: success
-completion_marker_path: /Users/ariel/Documents/tools/acip/system/runtime/business_agents/text_syndicate/marketing/auto-0003/latest.json
-request_path: /Users/ariel/Documents/tools/acip/system/runtime/request/execution_request.json
+completion_marker_path: /Users/ariel/Documents/tools/acip/platform/system/runtime/business_agents/text_syndicate/marketing/auto-0003/latest.json
+request_path: /Users/ariel/Documents/tools/acip/platform/system/runtime/request/execution_request.json
 stopped_reason: completion_marker_written
 started_at: 2026-07-14T15:26:59.509085+00:00
 finished_at: 2026-07-14T15:28:17.504822+00:00

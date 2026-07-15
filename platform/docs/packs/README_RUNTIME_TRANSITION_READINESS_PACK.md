@@ -1,3 +1,0 @@
-# Runtime Transition Readiness Pack
-Validate:
-python scripts/validate_repository_knowledge_graph_runtime_integration.py

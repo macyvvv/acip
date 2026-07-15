@@ -41,7 +41,7 @@ class PublishingPolicyRecord:
 
 
 def _policy_path(base_path: str | Path = ".") -> Path:
-    return Path(base_path) / "system/runtime/publishing/policy.json"
+    return Path(base_path) / "platform/system/runtime/publishing/policy.json"
 
 
 def _validate_policy_record(raw: dict) -> PublishingPolicyRecord:

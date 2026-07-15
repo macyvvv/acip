@@ -20,9 +20,9 @@ Before responding, verify:
 
 Check:
 
-- consistency with docs/current/PROJECT.md
-- consistency with docs/current/STATE.md
-- consistency with basis/
+- consistency with platform/docs/current/PROJECT.md
+- consistency with platform/docs/current/STATE.md
+- consistency with platform/basis/
 - consistency with ADRs
 - responsibility boundaries
 - layer violations

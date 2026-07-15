@@ -9,15 +9,15 @@
 
 ## Required Inputs
 
-- `system/runtime/supervisor/latest.json`
-- `system/runtime/repository_state/latest.json`
-- `system/runtime/planning/latest.json`
-- `system/runtime/request/execution_request.json` if available
+- `platform/system/runtime/supervisor/latest.json`
+- `platform/system/runtime/repository_state/latest.json`
+- `platform/system/runtime/planning/latest.json`
+- `platform/system/runtime/request/execution_request.json` if available
 
 ## Required Outputs
 
-- `system/runtime/local_execution/latest.json`
-- `system/runtime/local_execution/latest.md`
+- `platform/system/runtime/local_execution/latest.json`
+- `platform/system/runtime/local_execution/latest.md`
 
 ## Required Behaviors
 

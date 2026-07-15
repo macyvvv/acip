@@ -8,8 +8,8 @@ scope_id:
 execution_triggered: true
 execution_mode: one_shot
 execution_result_status: success
-completion_marker_path: /Users/ariel/Documents/tools/acip/system/runtime/business_agents/kabukicho_survival_map/marketing/auto-0006/latest.json
-request_path: /Users/ariel/Documents/tools/acip/system/runtime/request/execution_request.json
+completion_marker_path: /Users/ariel/Documents/tools/acip/platform/system/runtime/business_agents/kabukicho_survival_map/marketing/auto-0006/latest.json
+request_path: /Users/ariel/Documents/tools/acip/platform/system/runtime/request/execution_request.json
 stopped_reason: completion_marker_written
 started_at: 2026-07-14T16:22:22.868957+00:00
 finished_at: 2026-07-14T16:23:33.947086+00:00

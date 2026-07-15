@@ -1,8 +1,8 @@
-# basis/README
+# platform/basis/README
 
-`basis/` is ACIP's policy corpus — the record of why the repository is
+`platform/basis/` is ACIP's policy corpus — the record of why the repository is
 governed the way it is. As of a full governance-layer review
-(`adr/ADR-0037-governance-layer-overhaul.md`), this directory holds only
+(`platform/adr/ADR-0037-governance-layer-overhaul.md`), this directory holds only
 what's still current:
 
 - **[CORE_PRINCIPLES.md](CORE_PRINCIPLES.md)** — the compact, current record.
@@ -10,7 +10,7 @@ what's still current:
   durable concern. Read this first.
 - **[057_boundary_validation_policy.md](057_boundary_validation_policy.md)**
   — kept standalone; maps to real, distinct enforcement
-  (`system/scripts/selftest/check_boundaries.py`, wired into
+  (`platform/system/platform/scripts/selftest/check_boundaries.py`, wired into
   `boundary-validation.yml`).
 - **[REPOSITORY_CONVENTIONS.md](REPOSITORY_CONVENTIONS.md)** — kept
   standalone; actively used naming-convention reference.
@@ -39,5 +39,5 @@ placeholder-pass files, superseded before this review even started).
   and this exact directory is where that problem was worst.
 - If you add a new policy that's genuinely load-bearing and doesn't fit
   `CORE_PRINCIPLES.md`'s scope, add it as its own file here and link it
-  from this index in the same PR — an unlinked `basis/` file is exactly
+  from this index in the same PR — an unlinked `platform/basis/` file is exactly
   the problem this index exists to fix.

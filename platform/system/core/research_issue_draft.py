@@ -31,10 +31,10 @@ def build_issue_draft_registry(base_path: Path | str | None = None) -> list[dict
                 "title": draft.get("title", ""),
                 "status": "draft",
                 "ready_for_issue_creation": False,
-                "target_product_scope": "app/products/kabukicho_survival_map_mvp",
+                "target_product_scope": "platform/app/products/kabukicho_survival_map_mvp",
                 "dependencies": draft.get("dependencies", []),
                 "validation_readiness": "ready",
-                "created_from": "system/runtime/research/issue_draft_opp_kabukicho_001.json",
+                "created_from": "platform/system/runtime/research/issue_draft_opp_kabukicho_001.json",
             }
         )
     return registry
