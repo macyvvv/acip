@@ -5,7 +5,7 @@
 - contract_id: IMAGE_GENERATION_OUTPUT_CONTRACT
 - actor: image_generation agent role (pluggable_provider — vendor call, not a direct claude_invocation)
 - input_source: business_registry business context + scenario/prompt text + provider registry module
-- output_target: `system/runtime/business_agents/{business_id}/image_generation/{task_id}/latest.{json,md}` + generated media path
+- output_target: `platform/system/runtime/business_agents/{business_id}/image_generation/{task_id}/latest.{json,md}` + generated media path
 - current_objective: produce a standalone image artifact for one business via a pluggable, business-agnostic provider registry
 - approval_required: yes (one-shot approval gate; each real run against a paid vendor is an explicit, separately-costed decision)
 
@@ -13,7 +13,7 @@
 
 A repo-wide consultation (2026-07-14) confirmed there is no dedicated
 image-generation provider registry anywhere in the repo, and no
-`system/runtime/business_agents/*/image_generation/` directory has ever
+`platform/system/runtime/business_agents/*/image_generation/` directory has ever
 been created. The only place image generation actually happens is as the
 keyframe half of Somia's `video_generation` provider call chain (see
 `VIDEO_GENERATION_OUTPUT_CONTRACT.md`) — a fused text-to-image step

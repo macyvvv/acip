@@ -7,7 +7,7 @@ from pathlib import Path
 from system.core.file_lock import locked
 
 
-DEFAULT_KPI_STORE = Path("system/runtime/knowledge/kpi.json")
+DEFAULT_KPI_STORE = Path("platform/system/runtime/platform/knowledge/kpi.json")
 
 
 def _kpi_path(base_path: Path | str | None = None) -> Path:

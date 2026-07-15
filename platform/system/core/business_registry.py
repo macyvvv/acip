@@ -42,7 +42,7 @@ _SEED_BUSINESSES: tuple[dict[str, Any], ...] = (
         "display_name": "Somia",
         "status": "active",
         "content_root": "businesses/somia/content",
-        "product_code_path": "platform/system/scripts/somia",
+        "product_code_path": "platform/system/platform/scripts/somia",
         "tracking_issue_numbers": (45, 46),
         "historical_issue_numbers": (),
         "notes": "AI character media / video content business. Image/video generation roles require paid vendor APIs (fal.ai/Kling).",
@@ -68,7 +68,7 @@ _SEED_BUSINESSES: tuple[dict[str, Any], ...] = (
         # product code (still genuinely greenfield -- product_code_path
         # stays None), but its drafted content is real, committed history
         # under this path.
-        "content_root": "system/runtime/business_agents/text_syndicate",
+        "content_root": "platform/system/runtime/business_agents/text_syndicate",
         "product_code_path": None,
         "tracking_issue_numbers": (),
         "historical_issue_numbers": (),
@@ -116,7 +116,7 @@ def build_business_registry(base_path: Path | None = None) -> dict[str, Any]:
 
     registry = {
         "source_artifacts": [
-            "system/core/business_registry.py",
+            "platform/system/core/business_registry.py",
         ],
         "summary": {
             "business_count": len(records),

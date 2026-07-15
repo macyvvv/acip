@@ -2,8 +2,8 @@
 
 ## Data Flow
 
-1. Load `system/runtime/planning/latest.json`.
-2. Load `system/runtime/repository_state/latest.json`.
+1. Load `platform/system/runtime/planning/latest.json`.
+2. Load `platform/system/runtime/repository_state/latest.json`.
 3. Normalize the fields needed for display.
 4. Render a concise text summary.
 

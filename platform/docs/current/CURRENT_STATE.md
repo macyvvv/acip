@@ -1,3 +1,3 @@
 # CURRENT_STATE
 
-See `docs/current/STATE.md` for the current repository state.
+See `platform/docs/current/STATE.md` for the current repository state.

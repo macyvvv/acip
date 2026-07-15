@@ -9,7 +9,7 @@ Business canonical root placeholder.
 
 ## Planned target layout
 
-- app/
+- platform/app/
 - content/
 - runtime/
-- docs/
+- platform/docs/

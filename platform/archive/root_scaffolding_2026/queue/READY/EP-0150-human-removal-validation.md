@@ -13,6 +13,6 @@ objective: Validate that ChatGPT can hand off to Codex through the repository qu
 
 ## Validation
 
-- `python3 system/scripts/validate_all.py`
+- `python3 platform/system/platform/scripts/validate_all.py`
 - `python3 -m pytest -q`
 

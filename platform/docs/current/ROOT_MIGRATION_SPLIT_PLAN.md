@@ -7,8 +7,8 @@
 
 ## Source of Truth
 
-- Business list: `system/runtime/business/business_registry.md`
-- Existing migration risk plan: `system/runtime/root_hygiene/root_migration_split_plan.json`
+- Business list: `platform/system/runtime/business/business_registry.md`
+- Existing migration risk plan: `platform/system/runtime/root_hygiene/root_migration_split_plan.json`
 
 ## Current Business Scope (Registry Driven)
 
@@ -56,7 +56,7 @@ Temporary during migration:
 
 ### Root Cleanup Targets
 
-- Platform sideへ集約: `adr/`, `baseline/`, `basis/`, `context/`, `contracts/`, `docs/`, `specs/`, `system/`, `scripts/`, `archive/`, `knowledge/`, `packs/`, `wbs/`, `app/`, `inbox/`, `releases/`, `web/`, `.system/`, `scratch/`
+- Platform sideへ集約: `platform/adr/`, `platform/baseline/`, `platform/basis/`, `platform/context/`, `platform/contracts/`, `platform/docs/`, `platform/specs/`, `platform/system/`, `platform/scripts/`, `archive/`, `platform/knowledge/`, `platform/packs/`, `platform/wbs/`, `platform/app/`, `platform/inbox/`, `platform/releases/`, `platform/web/`, `platform/.platform/system/`, `platform/scratch/`
 - Business side canonical targets: `businesses/dreamcore_video/content`, `businesses/physics_math_visualization/content`, `businesses/somia/content`, `businesses/kabukicho_survival_map/app`
 
 ### Platform Target Contents
@@ -109,7 +109,7 @@ Status note (2026-07-16):
 - `somia` moved to `businesses/somia/content`
 - Kabukicho product root moved to `businesses/kabukicho_survival_map/app`
 - compatibility symlink retired at legacy roots: `dreamcore_video`, `physics_math_visualization` (2026-07-16)
-- compatibility symlink retired at legacy product path: `app/products/kabukicho_survival_map` (2026-07-16)
+- compatibility symlink retired at legacy product path: `platform/app/products/kabukicho_survival_map` (2026-07-16)
 - compatibility symlink retired at legacy root: `somia` (2026-07-16)
 
 Compatibility note:
@@ -147,7 +147,7 @@ Compatibility note:
 
 ### Phase 4: Platform Extraction (High Risk)
 
-- Migrate operating-system/governance assets to `platform/`.
+- Migrate operating-platform/system/governance assets to `platform/`.
 - Retire legacy top-level paths after validation and rollback checkpoints.
 - Enforce root whitelist (only `platform/`, `businesses/`, and minimal config/meta files).
 

@@ -10,7 +10,7 @@ Level 3a (ADR-0036) let a written, capped, revocable policy pre-approve the exec
 *decision* for a `business_role_task` scope, so a human no longer has to run
 `set_execution_approval.py` for every generation task. But nothing actually *calls*
 `run_approved_autonomous_execution.py` unless a human (or Claude, in an active session)
-does so. `docs/current/BUSINESS_AGENT_AUTOMATION_READINESS.md` named this gap
+does so. `platform/docs/current/BUSINESS_AGENT_AUTOMATION_READINESS.md` named this gap
 explicitly as "Level 3b, scheduled/unattended execution" and deliberately left it
 unbuilt, listing four prerequisites: a real kill switch, an actual notification of
 what ran (git-tracked state alone is not sufficient), a rollback plan, and a
@@ -30,17 +30,17 @@ any future `claude_invocation`/`data_fetch` role) may run unattended, continuous
 Posting/publishing (Level 3c) and any deploy action remain human-gated, unchanged —
 this ADR does not touch either.
 
-- `system/core/scheduled_execution_control.py` — a 4th independent kill switch
+- `platform/system/core/scheduled_execution_control.py` — a 4th independent kill switch
   (`is_scheduled_execution_paused`), distinct from `is_automation_paused` (Level 1/2
   proposal-freeze), `is_pre_approval_paused` (Level 3a policy-claim gate), and
   `is_publishing_paused` (Level 3c) — each switch's own docstring is a promise about
   what it does and does not affect; reusing one here would silently redefine it for a
   new caller, the same reasoning ADR-0036 already applied when it declined to reuse
   `is_automation_paused`.
-- `system/core/business_agent_task_queue.py::list_candidate_tasks()` — a new, pure,
+- `platform/system/core/business_agent_task_queue.py::list_candidate_tasks()` — a new, pure,
   read-only selector (`queue.json` had none before this).
-- `system/scripts/business_agent/run_scheduled_execution.py` — the runner. Checks the
-  new switch first; takes a whole-invocation lock (`system/core/file_lock.py`, short
+- `platform/system/platform/scripts/business_agent/run_scheduled_execution.py` — the runner. Checks the
+  new switch first; takes a whole-invocation lock (`platform/system/core/file_lock.py`, short
   timeout, skip-and-log rather than block if a previous wake is still running);
   pre-filters candidates to one `task_id` per `(business_id, role_id)` pair (oldest
   first, capped at `MAX_TASK_EXECUTIONS_PER_WAKE = 5`) using
@@ -55,7 +55,7 @@ this ADR does not touch either.
   exported env vars — this already caused a real failure,
   `text_syndicate/market_research/task-0003-finance-saas-niche` timing out at the 60s
   default before this fix existed) rather than relying on inherited state.
-- Notification: a local audit trail (`system/runtime/scheduler/audit/`, gitignored —
+- Notification: a local audit trail (`platform/system/runtime/scheduler/audit/`, gitignored —
   rewritten several times a day, not meant to be git history) plus, when a wake
   actually executed something, an auto-opened PR (branch → commit of the touched
   runtime-state paths → push → `gh pr create`). **The scheduler never merges its own
@@ -141,16 +141,16 @@ for the pre-filter).
 
 ## Impact Scope
 
-- New: `system/core/scheduled_execution_control.py`,
-  `system/scripts/business_agent/{pause,resume}_scheduled_execution.py`,
-  `system/scripts/business_agent/run_scheduled_execution.py`, this ADR,
-  `system/tests/test_scheduled_execution_control.py`,
-  `system/tests/test_run_scheduled_execution.py`, `system/runtime/scheduler/`
+- New: `platform/system/core/scheduled_execution_control.py`,
+  `platform/system/platform/scripts/business_agent/{pause,resume}_scheduled_execution.py`,
+  `platform/system/platform/scripts/business_agent/run_scheduled_execution.py`, this ADR,
+  `platform/system/tests/test_scheduled_execution_control.py`,
+  `platform/system/tests/test_run_scheduled_execution.py`, `platform/system/runtime/scheduler/`
   (sentinel tracked, `audit/` gitignored).
-- Modified (additive only): `system/core/business_agent_task_queue.py`
-  (`list_candidate_tasks`), `system/tests/test_business_agent_task_queue.py`,
-  `.gitignore`, `docs/current/BUSINESS_AGENT_AUTOMATION_READINESS.md`,
-  `docs/current/AUTONOMOUS_OPERATIONAL_BASELINE.md`.
+- Modified (additive only): `platform/system/core/business_agent_task_queue.py`
+  (`list_candidate_tasks`), `platform/system/tests/test_business_agent_task_queue.py`,
+  `.gitignore`, `platform/docs/current/BUSINESS_AGENT_AUTOMATION_READINESS.md`,
+  `platform/docs/current/AUTONOMOUS_OPERATIONAL_BASELINE.md`.
 - Unaffected: `ApprovedAutonomousExecution`, `execution_pre_approval_*.py`,
   `publishing_control.py`, `business_agent_automation_control.py`,
   `business_agent_trigger.py` — the runner is purely a new *caller* of the existing,
@@ -210,7 +210,7 @@ and deserves its own moment of explicit sign-off rather than being bundled in he
 ## specifically; code and the `CronCreate` pilot ship independently of this list)
 
 - [x] ADR-0038 written.
-- [ ] `docs/current/BUSINESS_AGENT_AUTOMATION_READINESS.md`'s Level 3b section updated
+- [ ] `platform/docs/current/BUSINESS_AGENT_AUTOMATION_READINESS.md`'s Level 3b section updated
       with a real verified example (not a claim) and the 28/day cost line.
 - [ ] Kill switch demoed pause/resume against production.
 - [x] `pytest -q` and `validate_all.py` green, including the never-shells-out-to-git

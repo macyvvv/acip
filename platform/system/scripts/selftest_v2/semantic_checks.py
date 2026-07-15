@@ -9,7 +9,7 @@ from semantic_common import ROOT, Result, Doc, result, markdown_links
 
 REQUIRED_DIRS = [
     # catalog, registry, runbooks, control were removed from this list --
-    # archived to archive/root_scaffolding_2026/ (see adr/ADR-0037's
+    # archived to archive/root_scaffolding_2026/ (see platform/adr/ADR-0037's
     # follow-up root-directory audit); confirmed zero code/workflow
     # references before archiving, so they're no longer required to exist.
     "basis", "adr", "wbs", "docs", "contracts",
@@ -17,18 +17,18 @@ REQUIRED_DIRS = [
 ]
 
 REQUIRED_FILES = [
-    "docs/packs/README_REPOSITORY_COMPLETE_PACK.md",
-    "docs/packs/README_AGENT_OS.md",
-    "docs/packs/README_RUNTIME_READINESS.md",
-    # basis/026, 037, 042, 046, 053, 061 (the individual policy files this
-    # list used to require) were consolidated into basis/CORE_PRINCIPLES.md
-    # and basis/057_boundary_validation_policy.md by the 2026-07 governance
-    # overhaul (see adr/ADR-0037) -- requiring the new canonical files
+    "platform/docs/platform/packs/README.md",
+    "platform/docs/platform/packs/README.md",
+    "platform/docs/platform/packs/README.md",
+    # platform/basis/026, 037, 042, 046, 053, 061 (the individual policy files this
+    # list used to require) were consolidated into platform/basis/CORE_PRINCIPLES.md
+    # and platform/basis/057_boundary_validation_policy.md by the 2026-07 governance
+    # overhaul (see platform/adr/ADR-0037) -- requiring the new canonical files
     # instead of the archived originals.
-    "basis/CORE_PRINCIPLES.md",
-    "basis/057_boundary_validation_policy.md",
-    "adr/ADR-0018-repository-semantic-selftest-v2.md",
-    "wbs/WBS-0012-repository-semantic-selftest-v2.md",
+    "platform/basis/CORE_PRINCIPLES.md",
+    "platform/basis/057_boundary_validation_policy.md",
+    "platform/adr/ADR-0018-repository-semantic-selftest-v2.md",
+    "platform/wbs/WBS-0012-repository-semantic-selftest-v2.md",
     "selftest.yml",
 ]
 
@@ -73,7 +73,7 @@ def check_current_objective(docs: list[Doc], config: dict) -> list[Result]:
     for d in docs:
         if d.kind in {"archive", "template", "selftest"}:
             continue
-        if not d.rel.startswith("docs/current/"):
+        if not d.rel.startswith("platform/docs/current/"):
             continue
         for line in d.text.splitlines():
             for pat in patterns:
@@ -145,7 +145,7 @@ def check_orphans(docs: list[Doc], config: dict) -> list[Result]:
             continue
         if not d.h1:
             out.append(result("missing H1", False, d.rel, "markdown document has no H1", "warning"))
-        if references[d.rel] == 0 and d.rel.startswith(("basis/", "adr/", "wbs/")):
+        if references[d.rel] == 0 and d.rel.startswith(("platform/basis/", "platform/adr/", "platform/wbs/")):
             out.append(result("unreferenced governance doc", False, d.rel, "no inbound markdown reference", "warning"))
     return out or [result("orphan/dead document detection", True)]
 

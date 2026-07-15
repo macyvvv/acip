@@ -1,12 +1,12 @@
 {
   "generated_at": "deterministic",
   "source_artifacts": [
-    "docs/current/ISSUE_PORTFOLIO_ROADMAP.md",
-    "docs/current/AUTONOMOUS_OPERATIONAL_BASELINE.md",
-    "docs/current/ISSUE_OPERATOR_QUICKSTART.md",
-    "system/runtime/roadmap/issue_portfolio.json",
-    "system/runtime/issues/completed/",
-    "system/runtime/github/open_issues.json"
+    "platform/docs/current/ISSUE_PORTFOLIO_ROADMAP.md",
+    "platform/docs/current/AUTONOMOUS_OPERATIONAL_BASELINE.md",
+    "platform/docs/current/ISSUE_OPERATOR_QUICKSTART.md",
+    "platform/system/runtime/roadmap/issue_portfolio.json",
+    "platform/system/runtime/issues/completed/",
+    "platform/system/runtime/github/open_issues.json"
   ],
   "summary": {
     "frozen_issue_count": 31,
@@ -298,7 +298,7 @@
       "github_action_recommended": "close",
       "state_reason_if_closed": "completed",
       "classification_reason": "completed repository evidence exists",
-      "evidence_source": "system/runtime/issues/completed/",
+      "evidence_source": "platform/system/runtime/issues/completed/",
       "safe_to_apply": false
     },
     {
@@ -309,7 +309,7 @@
       "github_action_recommended": "close",
       "state_reason_if_closed": "completed",
       "classification_reason": "completed repository evidence exists",
-      "evidence_source": "system/runtime/issues/completed/",
+      "evidence_source": "platform/system/runtime/issues/completed/",
       "safe_to_apply": true
     },
     {
@@ -320,7 +320,7 @@
       "github_action_recommended": "close",
       "state_reason_if_closed": "completed",
       "classification_reason": "completed repository evidence exists",
-      "evidence_source": "system/runtime/issues/completed/",
+      "evidence_source": "platform/system/runtime/issues/completed/",
       "safe_to_apply": true
     },
     {
@@ -331,7 +331,7 @@
       "github_action_recommended": "close",
       "state_reason_if_closed": "completed",
       "classification_reason": "completed repository evidence exists",
-      "evidence_source": "system/runtime/issues/completed/",
+      "evidence_source": "platform/system/runtime/issues/completed/",
       "safe_to_apply": false
     },
     {
@@ -342,7 +342,7 @@
       "github_action_recommended": "close",
       "state_reason_if_closed": "completed",
       "classification_reason": "completed repository evidence exists",
-      "evidence_source": "system/runtime/issues/completed/",
+      "evidence_source": "platform/system/runtime/issues/completed/",
       "safe_to_apply": false
     },
     {
@@ -353,7 +353,7 @@
       "github_action_recommended": "close",
       "state_reason_if_closed": "completed",
       "classification_reason": "completed repository evidence exists",
-      "evidence_source": "system/runtime/issues/completed/",
+      "evidence_source": "platform/system/runtime/issues/completed/",
       "safe_to_apply": false
     }
   ]

@@ -20,7 +20,7 @@
     "WBS-0100-agent-runtime-mvp.md",
     "WBS-0101-agent-runtime-task-intake.md"
   ],
-  "approved_next_action": "ChatGPT can read system/runtime/handoff/latest.json for review intake.",
+  "approved_next_action": "ChatGPT can read platform/system/runtime/handoff/latest.json for review intake.",
   "parking_lot": [],
   "refactoring_priorities": [
     "mission_alignment",
@@ -30,14 +30,14 @@
   "blocked_items": [],
   "approval_required": false,
   "source_artifacts": [
-    "docs/current/PROJECT.md",
-    "docs/current/STATE.md",
-    "docs/current/ROADMAP.md",
-    "docs/current/REPOSITORY_CONSTITUTION.md",
-    "system/runtime/repository_state/latest.json",
-    "system/runtime/repository_constitution/constitution.json",
-    "system/runtime/validation/validation_report.json",
-    "packs/",
-    "wbs/"
+    "platform/docs/current/PROJECT.md",
+    "platform/docs/current/STATE.md",
+    "platform/docs/current/ROADMAP.md",
+    "platform/docs/current/REPOSITORY_CONSTITUTION.md",
+    "platform/system/runtime/repository_state/latest.json",
+    "platform/system/runtime/repository_constitution/constitution.json",
+    "platform/system/runtime/validation/validation_report.json",
+    "platform/packs/",
+    "platform/wbs/"
   ]
 }

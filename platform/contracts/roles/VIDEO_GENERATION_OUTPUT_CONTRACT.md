@@ -4,21 +4,21 @@
 
 - contract_id: VIDEO_GENERATION_OUTPUT_CONTRACT
 - actor: video_generation agent role (pluggable_provider — vendor call, not a direct claude_invocation)
-- input_source: a `businesses/somia/content/CONTENT/{content_id}/` spec, loaded via `platform/system/scripts/somia/content_spec.py::load_content_spec()`
-- output_target: `businesses/somia/content/CONTENT/{content_id}/` — provider writes `keyframe.png` (gitignored, see `.gitignore`'s `businesses/somia/content/CONTENT/**/keyframe*.png`) and a video file into that same directory, then `platform/system/scripts/somia/render_content.py::render()` appends a `render` key (`provider`, `model`, `keyframe_path`, `video_path`, `rendered_at`, `notes`) to that content id's existing `metadata.json`
+- input_source: a `businesses/somia/content/CONTENT/{content_id}/` spec, loaded via `platform/system/platform/scripts/somia/content_spec.py::load_content_spec()`
+- output_target: `businesses/somia/content/CONTENT/{content_id}/` — provider writes `keyframe.png` (gitignored, see `.gitignore`'s `businesses/somia/content/CONTENT/**/keyframe*.png`) and a video file into that same directory, then `platform/system/platform/scripts/somia/render_content.py::render()` appends a `render` key (`provider`, `model`, `keyframe_path`, `video_path`, `rendered_at`, `notes`) to that content id's existing `metadata.json`
 - current_objective: produce a video artifact (with its keyframe image as a byproduct of the same provider call) for one Somia content item via a pluggable, vendor-agnostic provider registry
 - approval_required: yes (one-shot approval gate; each real run against a paid vendor is an explicit, separately-costed decision)
 
 Documented against the actual implementation 2026-07-14, after a repo-wide
 consultation found the previous `output_target`
-(`system/runtime/business_agents/{business_id}/video_generation/{task_id}/`)
+(`platform/system/runtime/business_agents/{business_id}/video_generation/{task_id}/`)
 was never used by any real code — Somia is the only implementation of
 this role, and it has no notion of `business_id`/`task_id` at all.
 
 ## Important: image generation is not a separate stage here
 
 There is no independent image-generation provider call in this
-pipeline. `platform/system/scripts/somia/providers.py` is a
+pipeline. `platform/system/platform/scripts/somia/providers.py` is a
 `VideoGenerationProvider` registry; each real provider
 (`providers_illustrious_kling.py`, `providers_kling.py`,
 `providers_pika.py`) generates the keyframe image and the video inside

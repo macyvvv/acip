@@ -6,7 +6,7 @@
 
 - businesses/
 - platform/
-- docs/current/ROOT_MIGRATION_SPLIT_PLAN.md
+- platform/docs/current/ROOT_MIGRATION_SPLIT_PLAN.md
 - businesses/dreamcore_video/content/README.md
 - businesses/dreamcore_video/content/ideas/DCL-001_falling_without_ground.md
 - businesses/dreamcore_video/content/ideas/DCL-002_platform_minus_one.md
@@ -20,20 +20,20 @@
 - businesses/dreamcore_video/content/ideas/DCL-010_carpark_level_zero.md
 - businesses/dreamcore_video/content/ideas/DCL-011_gate_32_never_boards.md
 - businesses/dreamcore_video/content/ideas/DCL-012_hotel_corridor_404.md
-- wbs/WBS-DC-0002-dreamcore-video-loop-first-ideas.md
+- platform/wbs/WBS-DC-0002-dreamcore-video-loop-first-ideas.md
 
 ### Explicitly Out of Scope For Current Continuation
 
-- system/runtime/agent_handoff/scopes/text_syndicate/**
-- system/runtime/agent_execution/scopes/text_syndicate/**
-- system/runtime/business_agents/text_syndicate/**
+- platform/system/runtime/agent_handoff/scopes/text_syndicate/**
+- platform/system/runtime/agent_execution/scopes/text_syndicate/**
+- platform/system/runtime/business_agents/text_syndicate/**
 - unrelated runtime state files outside migration planning
 
 ## Policy
 
 - Non-breaking bootstrap only in phase 1
 - No file moves in this step
-- Update `system/runtime/business/business_registry.md` only when each move is completed
+- Update `platform/system/runtime/business/business_registry.md` only when each move is completed
 
 ## Root Exception Rule
 
@@ -48,61 +48,61 @@ Everything else is expected to converge into either `platform/` or `businesses/`
 
 ## Planned moves
 
-- app/products/kabukicho_survival_map -> businesses/kabukicho_survival_map/app
+- platform/app/products/kabukicho_survival_map -> businesses/kabukicho_survival_map/app
 - somia -> businesses/somia/content
 - dreamcore_video -> businesses/dreamcore_video/content
 - physics_math_visualization -> businesses/physics_math_visualization/content
 
 ## Planned platform convergence groups
 
-- adr/ -> platform/adr/
-- baseline/ -> platform/baseline/
-- basis/ -> platform/basis/
-- context/ -> platform/context/
-- contracts/ -> platform/contracts/
-- docs/ -> platform/docs/
-- specs/ -> platform/specs/
-- system/ -> platform/system/
-- scripts/ -> platform/scripts/
+- platform/adr/ -> platform/adr/
+- platform/baseline/ -> platform/baseline/
+- platform/basis/ -> platform/basis/
+- platform/context/ -> platform/context/
+- platform/contracts/ -> platform/contracts/
+- platform/docs/ -> platform/docs/
+- platform/specs/ -> platform/specs/
+- platform/system/ -> platform/system/
+- platform/scripts/ -> platform/scripts/
 - archive/ -> platform/archive/
-- knowledge/ -> platform/knowledge/
-- packs/ -> platform/packs/
-- wbs/ -> platform/wbs/
-- app/ -> platform/app/
-- inbox/ -> platform/inbox/
-- releases/ -> platform/releases/
-- web/ -> platform/web/
-- .system/ -> platform/.system/
-- scratch/ -> platform/scratch/
+- platform/knowledge/ -> platform/knowledge/
+- platform/packs/ -> platform/packs/
+- platform/wbs/ -> platform/wbs/
+- platform/app/ -> platform/app/
+- platform/inbox/ -> platform/inbox/
+- platform/releases/ -> platform/releases/
+- platform/web/ -> platform/web/
+- platform/.platform/system/ -> platform/.platform/system/
+- platform/scratch/ -> platform/scratch/
 
 ### Platform convergence status (2026-07-16)
 
-- adr/ -> platform/adr/ (done, compatibility symlink in place)
-- baseline/ -> platform/baseline/ (done, compatibility symlink in place)
-- basis/ -> platform/basis/ (done, compatibility symlink in place)
-- context/ -> platform/context/ (done, compatibility symlink in place)
-- contracts/ -> platform/contracts/ (done, compatibility symlink in place)
-- docs/ -> platform/docs/ (done, compatibility symlink in place)
-- scripts/ -> platform/scripts/ (done, compatibility symlink in place)
-- specs/ -> platform/specs/ (done, compatibility symlink in place)
+- platform/adr/ -> platform/adr/ (done, compatibility symlink in place)
+- platform/baseline/ -> platform/baseline/ (done, compatibility symlink in place)
+- platform/basis/ -> platform/basis/ (done, compatibility symlink in place)
+- platform/context/ -> platform/context/ (done, compatibility symlink in place)
+- platform/contracts/ -> platform/contracts/ (done, compatibility symlink in place)
+- platform/docs/ -> platform/docs/ (done, compatibility symlink in place)
+- platform/scripts/ -> platform/scripts/ (done, compatibility symlink in place)
+- platform/specs/ -> platform/specs/ (done, compatibility symlink in place)
 - archive/ -> platform/archive/ (done, compatibility symlink in place)
-- knowledge/ -> platform/knowledge/ (done, compatibility symlink in place)
-- packs/ -> platform/packs/ (done, compatibility symlink in place)
-- wbs/ -> platform/wbs/ (done, compatibility symlink in place)
-- system/ -> platform/system/ (done, compatibility symlink in place)
-- app/ -> platform/app/ (done, compatibility symlink in place)
-- inbox/ -> platform/inbox/ (done, compatibility symlink in place)
-- releases/ -> platform/releases/ (done, compatibility symlink in place)
-- web/ -> platform/web/ (done, compatibility symlink in place)
-- .system/ -> platform/.system/ (done, compatibility symlink in place)
-- scratch/ -> platform/scratch/ (done, compatibility symlink in place)
+- platform/knowledge/ -> platform/knowledge/ (done, compatibility symlink in place)
+- platform/packs/ -> platform/packs/ (done, compatibility symlink in place)
+- platform/wbs/ -> platform/wbs/ (done, compatibility symlink in place)
+- platform/system/ -> platform/system/ (done, compatibility symlink in place)
+- platform/app/ -> platform/app/ (done, compatibility symlink in place)
+- platform/inbox/ -> platform/inbox/ (done, compatibility symlink in place)
+- platform/releases/ -> platform/releases/ (done, compatibility symlink in place)
+- platform/web/ -> platform/web/ (done, compatibility symlink in place)
+- platform/.platform/system/ -> platform/.platform/system/ (done, compatibility symlink in place)
+- platform/scratch/ -> platform/scratch/ (done, compatibility symlink in place)
 
 ## First Low-Risk Move Set (Proposal)
 
 1. Move top-level dreamcore_video to businesses/dreamcore_video/content (done)
 2. Move top-level physics_math_visualization to businesses/physics_math_visualization/content (done)
 3. Move top-level somia to businesses/somia/content (done)
-4. Move app/products/kabukicho_survival_map to businesses/kabukicho_survival_map/app (done)
+4. Move platform/app/products/kabukicho_survival_map to businesses/kabukicho_survival_map/app (done)
 5. Keep original paths as temporary compatibility links until references are updated (done)
 6. Update only business_registry paths that are fully moved and validated (done for moved roots)
 

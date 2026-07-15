@@ -1,6 +1,6 @@
 # MANIFEST
 
-- `contracts/REPOSITORY_LAYOUT_CONTRACT.md`
-- `docs/current/CANONICAL_REPOSITORY_LAYOUT.md`
-- `docs/current/ROOT_ALLOWLIST.md`
-- `docs/current/LAYOUT_MIGRATION_RULES.md`
+- `platform/contracts/REPOSITORY_LAYOUT_CONTRACT.md`
+- `platform/docs/current/CANONICAL_REPOSITORY_LAYOUT.md`
+- `platform/docs/current/ROOT_ALLOWLIST.md`
+- `platform/docs/current/LAYOUT_MIGRATION_RULES.md`

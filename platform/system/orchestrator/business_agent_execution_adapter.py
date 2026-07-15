@@ -12,7 +12,7 @@ from system.core.business_registry import get_business
 from system.core.kpi_store import update_business_agent_kpi
 from system.scripts.analytics.providers import get_provider as get_analytics_provider
 
-# Sibling to system/orchestrator/local_execution_adapter.py, not a modification of
+# Sibling to platform/system/orchestrator/local_execution_adapter.py, not a modification of
 # it: that adapter's safety checks/deliverable verification are tied to
 # GitHub-issue-shaped repo-dev work (supervisor/planning/repository_state
 # projections, a hardcoded per-issue deliverable checklist) which has no

@@ -13,7 +13,7 @@ Document the macOS supervisor launch plan without introducing launchd automation
 ## Suggested macOS Launch Flow
 
 1. Activate `.venv`.
-2. Run `scripts/check_repo_os_status.sh`.
+2. Run `platform/scripts/check_repo_os_status.sh`.
 3. Start the supervisor process manually.
 4. Review `runtime/operator_status/latest.md`.
 

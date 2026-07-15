@@ -2,9 +2,9 @@
 
 ## Root hygiene follow-up
 
-- Move root EP README files into `docs/ep/`
-- Move root pack README files into `docs/packs/`
-- Move root manifest files into `docs/manifests/`
+- Move root EP README files into `platform/docs/ep/`
+- Move root pack README files into `platform/docs/platform/packs/`
+- Move root manifest files into `platform/docs/manifests/`
 - Reconcile `selftest.yml` entrypoints with relocated documents
 - Review legacy root documentation groups for archive placement
 

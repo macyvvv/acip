@@ -8,8 +8,8 @@ scope_id:
 execution_triggered: true
 execution_mode: one_shot
 execution_result_status: failure
-completion_marker_path: /Users/ariel/Documents/tools/acip/system/runtime/business_agents/text_syndicate/market_research/task-0004-meeting-notes-tools/latest.json
-request_path: /Users/ariel/Documents/tools/acip/system/runtime/request/execution_request.json
+completion_marker_path: /Users/ariel/Documents/tools/acip/platform/system/runtime/business_agents/text_syndicate/market_research/task-0004-meeting-notes-tools/latest.json
+request_path: /Users/ariel/Documents/tools/acip/platform/system/runtime/request/execution_request.json
 stopped_reason: exit_code=1
 started_at: 2026-07-15T05:47:02.417212+00:00
 finished_at: 2026-07-15T05:47:13.045913+00:00

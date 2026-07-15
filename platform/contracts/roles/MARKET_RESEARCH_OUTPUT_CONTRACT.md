@@ -5,7 +5,7 @@
 - contract_id: MARKET_RESEARCH_OUTPUT_CONTRACT
 - actor: market_research agent role (claude_invocation)
 - input_source: business_registry business context + task description
-- output_target: system/runtime/business_agents/{business_id}/market_research/{task_id}/latest.{json,md}
+- output_target: platform/system/runtime/business_agents/{business_id}/market_research/{task_id}/latest.{json,md}
 - current_objective: produce evidence-grounded facts/assumptions/hypotheses/recommendations for one business
 - approval_required: yes (one-shot approval gate, same as repo-dev execution)
 

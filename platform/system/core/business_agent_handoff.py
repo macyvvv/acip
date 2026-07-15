@@ -21,12 +21,12 @@ def compute_request_id(business_id: str, role_id: str, task_id: str) -> str:
 
 def scope_dir(business_id: str, role_id: str, task_id: str, base_path: str | Path = ".") -> Path:
     """Per-task handoff/approval directory -- mirrors the existing
-    system/runtime/business_agents/{business_id}/{role_id}/{task_id}/
+    platform/system/runtime/business_agents/{business_id}/{role_id}/{task_id}/
     artifact-directory convention (BusinessAgentExecutionAdapter._artifact_dir),
     for consistency. Two different (business, role, task) triples never
     share a path, so there is nothing for concurrent scopes to clobber --
-    this is Level 2's multi-slot handoff; see docs/current/
-    BUSINESS_AGENT_AUTOMATION_READINESS.md and adr/ADR-0034."""
+    this is Level 2's multi-slot handoff; see platform/docs/current/
+    BUSINESS_AGENT_AUTOMATION_READINESS.md and platform/adr/ADR-0034."""
     return Path(base_path) / "system" / "runtime" / "agent_handoff" / "scopes" / business_id / role_id / task_id
 
 
@@ -38,7 +38,7 @@ def write_business_agent_handoff(
     base_path: str | Path = ".",
 ) -> Path:
     """Writes to this scope's own handoff slot (never the top-level
-    system/runtime/agent_handoff/latest.json, which remains exclusively for
+    platform/system/runtime/agent_handoff/latest.json, which remains exclusively for
     the pre-existing issue/draft repo-dev flow). Deliberately does not go
     through AgentIssueBridge / agent_thread_runner (placeholder machinery,
     no real work happens there -- see project memory acip-repo-audit-2026-07)."""

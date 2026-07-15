@@ -1,24 +1,24 @@
 # basis_corpus_2026 (archived)
 
-These 43 files were the bulk of `basis/`'s original policy corpus, archived
+These 43 files were the bulk of `platform/basis/`'s original policy corpus, archived
 in one pass as part of a full governance-layer review
-(`adr/ADR-0037-governance-layer-overhaul.md`). The review found that almost
+(`platform/adr/ADR-0037-governance-layer-overhaul.md`). The review found that almost
 all of them were pure prose describing intended policy with no enforcing
 code behind them, several restated the identical concern in separate,
 independently-drifting copies, and roughly a third were explicitly
-unauthored stub placeholders per `basis/README.md`'s own index.
+unauthored stub placeholders per `platform/basis/README.md`'s own index.
 
-The current, compact replacement is [`basis/CORE_PRINCIPLES.md`](../../basis/CORE_PRINCIPLES.md)
+The current, compact replacement is [`platform/basis/CORE_PRINCIPLES.md`](../../platform/basis/CORE_PRINCIPLES.md)
 — 9 principles, each one traced to either something genuinely enforced by
 real code today or something genuinely durable. Two files stayed standalone
-in `basis/` rather than being folded in or archived:
-[`057_boundary_validation_policy.md`](../../basis/057_boundary_validation_policy.md)
+in `platform/basis/` rather than being folded in or archived:
+[`057_boundary_validation_policy.md`](../../platform/basis/057_boundary_validation_policy.md)
 (maps to real, distinct enforcement) and
-[`REPOSITORY_CONVENTIONS.md`](../../basis/REPOSITORY_CONVENTIONS.md)
+[`REPOSITORY_CONVENTIONS.md`](../../platform/basis/REPOSITORY_CONVENTIONS.md)
 (actively used naming reference).
 
 Kept here for history per this repo's own established convention (see
-`AGENTS.md`/`.system/*`, kept as historical record rather than deleted) and
+`AGENTS.md`/`platform/.platform/system/*`, kept as historical record rather than deleted) and
 per the prior archival precedent this follows,
 [`archive/basis_skeleton/`](../basis_skeleton/README.md). Archive space may
 duplicate numbers/titles and is excluded from canonical duplicate/orphan
@@ -31,15 +31,15 @@ checks (this was itself the subject of one of the archived files,
 |---|---|---|
 | `026_autonomy_first_policy.md` | Human owns Mission/Approval/Emergency Stop/Risk/Capital/Runtime Transition; everything else defaults to automation | `CLAUDE.md`'s "Human keeps: strategy, approval, capital allocation" + `CORE_PRINCIPLES.md` §4 |
 | `042_execution_contract_policy.md` | Every autonomous/semi-autonomous execution needs an Execution Contract before automation acts | `CORE_PRINCIPLES.md` §2/§3 — approval is explicit, never inferred |
-| `073_task_router_policy.md` | Routing table of work type → owner (Human/ChatGPT/Codex/scripts/CI) | Superseded outright — there is no multi-actor routing anymore; `CLAUDE.md`'s "Operating model" describes the current single-agent-plus-human shape |
-| `074_context_resolution_policy.md` | Context priority order: conventions > current state > architecture > ADR > WBS > graph > context pack > conversation | Superseded by `docs/current/STATE.md`'s "Repository Priority" chain (updated in the same overhaul, Stage 4), which drops the never-built graph/context-pack layers |
+| `073_task_router_policy.md` | Routing table of work type → owner (Human/ChatGPT/Codex/platform/scripts/CI) | Superseded outright — there is no multi-actor routing anymore; `CLAUDE.md`'s "Operating model" describes the current single-agent-plus-human shape |
+| `074_context_resolution_policy.md` | Context priority order: conventions > current state > architecture > ADR > WBS > graph > context pack > conversation | Superseded by `platform/docs/current/STATE.md`'s "Repository Priority" chain (updated in the same overhaul, Stage 4), which drops the never-built graph/context-pack layers |
 
 ## Repository health & self-test — grouped under `CORE_PRINCIPLES.md` §7 (avoid duplication) and real CI
 
 | Archived file | What it covered | Where the real content lives now |
 |---|---|---|
-| `053_repository_selftest_policy.md` | Self-test must mechanically verify the repository OS | `system/scripts/selftest_v2/*`, wired into `.github/workflows/repository-semantic-selftest-v2.yml` (live) |
-| `054_repository_health_policy.md` | Health = required dirs/files, executable validators, CI, no committed secrets | `python system/scripts/validate_all.py` + CI workflows (live) |
+| `053_repository_selftest_policy.md` | Self-test must mechanically verify the repository OS | `platform/system/platform/scripts/selftest_v2/*`, wired into `.github/workflows/repository-semantic-selftest-v2.yml` (live) |
+| `054_repository_health_policy.md` | Health = required dirs/files, executable validators, CI, no committed secrets | `python platform/system/platform/scripts/validate_all.py` + CI workflows (live) |
 | `055_dead_asset_detection_policy.md` | Dead-document signals (no inbound reference, missing title) | `semantic_checks.py`'s orphan detection (live) |
 | `056_link_integrity_policy.md` | Repository links must stay auditable | Not currently wired as a dedicated check; aspirational |
 | `058_drift_detection_policy.md` | Drift = files/policies contradicting the active operating model, must be reported | Not currently wired as a dedicated check; aspirational — this review (`ADR-0037`) is itself an instance of manually catching drift `058` describes |
@@ -56,7 +56,7 @@ checks (this was itself the subject of one of the archived files,
 | `062_policy_graph_policy.md` | Aspirational — no dedicated graph-build code exists |
 | `065_repository_knowledge_graph_policy.md` | Aspirational — the "knowledge graph" concept was largely removed by the earlier ADR-0032 cleanup |
 | `066_graph_extraction_policy.md` | Aspirational, never built |
-| `067_agent_context_pack_policy.md` | Aspirational — the actual `context/CHATGPT_CONTEXT_PACK.md`/`CODEX_CONTEXT_PACK.md` stub docs it described were deleted in Stage 1 of this same overhaul |
+| `067_agent_context_pack_policy.md` | Aspirational — the actual `platform/context/CHATGPT_CONTEXT_PACK.md`/`CODEX_CONTEXT_PACK.md` stub docs it described were deleted in Stage 1 of this same overhaul |
 | `078_incremental_graph_policy.md` | Confirmed stub — boilerplate placeholder, never authored |
 | `079_context_diff_policy.md` | Confirmed stub — boilerplate placeholder, never authored |
 | `082_context_loader_policy.md` | Confirmed stub — two-line placeholder, never authored |
@@ -72,7 +72,7 @@ checks (this was itself the subject of one of the archived files,
 | `070_runtime_dry_run_policy.md` | Same list, fourth copy ("Dry Run Must Not...") | `CORE_PRINCIPLES.md` §2 |
 | `072_agent_orchestrator_policy.md` | Same list, fifth copy ("Runtime Boundary") | `CORE_PRINCIPLES.md` §2 |
 | `069_agent_io_contract_policy.md` | Agent IO contracts must declare input/output/mutations/validation/rollback/approval | Aspirational, never built as a standalone contract format — Level 3a/3c's real code covers the load-bearing parts (approval, caps, kill switches) |
-| `071_runtime_transition_readiness_policy.md` | Runtime transition requires evidence: self-test pass, dry-run pass, recorded approval, rollback, emergency stop | Aspirational; the real, live equivalent is `docs/current/BUSINESS_AGENT_AUTOMATION_READINESS.md`'s Level 0-3c readiness criteria |
+| `071_runtime_transition_readiness_policy.md` | Runtime transition requires evidence: self-test pass, dry-run pass, recorded approval, rollback, emergency stop | Aspirational; the real, live equivalent is `platform/docs/current/BUSINESS_AGENT_AUTOMATION_READINESS.md`'s Level 0-3c readiness criteria |
 | `091_agent_runtime_mvp_policy.md` | Agent Runtime MVP: local dry-run planning only, no external mutation | Superseded — the "Agent Runtime" concept this described was mostly removed by the earlier ADR-0032 cleanup |
 | `092_agent_runtime_task_intake_policy.md` | Runtime may intake repo-defined tasks for dry-run planning only | Same cluster as `091`, same disposition |
 
@@ -80,8 +80,8 @@ checks (this was itself the subject of one of the archived files,
 
 | Archived file | What it covered | Where the real content lives now |
 |---|---|---|
-| `075_execution_queue_policy.md` | Queue item schema (task_id, objective, owner, context_bundle, validation_command, status) | Superseded by the real, live business-agent task queue (`system/core/business_agent_task_queue.py` and friends) — different, simpler shape than this schema described |
-| `076_review_gate_policy.md` | Review gates turn execution output into decision-ready summaries | Superseded by `app/tools/approval_console_mvp/` — the real, live implementation |
+| `075_execution_queue_policy.md` | Queue item schema (task_id, objective, owner, context_bundle, validation_command, status) | Superseded by the real, live business-agent task queue (`platform/system/core/business_agent_task_queue.py` and friends) — different, simpler shape than this schema described |
+| `076_review_gate_policy.md` | Review gates turn execution output into decision-ready summaries | Superseded by `platform/app/tools/approval_console_mvp/` — the real, live implementation |
 | `077_baseline_policy.md` | Confirmed stub — boilerplate placeholder | Never authored |
 | `080_execution_queue_automation_policy.md` | Confirmed stub — boilerplate placeholder | Never authored |
 | `081_review_gate_summary_policy.md` | Confirmed stub — boilerplate placeholder | Never authored |
@@ -93,4 +93,4 @@ checks (this was itself the subject of one of the archived files,
 | `089_replay_engine_policy.md` | Confirmed stub — title only | Never authored |
 | `090_audit_engine_policy.md` | Confirmed stub — title only | Never authored |
 
-See [basis/README.md](../../basis/README.md) for the current index.
+See [platform/basis/README.md](../../platform/basis/README.md) for the current index.

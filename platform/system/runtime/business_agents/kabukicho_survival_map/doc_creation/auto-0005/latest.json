@@ -16,6 +16,6 @@
   "exit_code": 0,
   "success": true,
   "captured_at": "2026-07-14T15:26:59.497702+00:00",
-  "artifact_path": "/Users/ariel/Documents/tools/acip/system/runtime/business_agents/kabukicho_survival_map/doc_creation/auto-0005/latest.json",
+  "artifact_path": "/Users/ariel/Documents/tools/acip/platform/system/runtime/business_agents/kabukicho_survival_map/doc_creation/auto-0005/latest.json",
   "failure_reason": null
 }

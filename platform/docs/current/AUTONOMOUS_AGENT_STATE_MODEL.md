@@ -5,8 +5,8 @@ Define the minimum deterministic state model for repository-native ChatGPT ↔ C
 
 ## Runtime State
 Canonical runtime files:
-- `system/runtime/agent_state/latest.json`
-- `system/runtime/agent_state/latest.md`
+- `platform/system/runtime/agent_state/latest.json`
+- `platform/system/runtime/agent_state/latest.md`
 
 ## State Machine
 Allowed states:

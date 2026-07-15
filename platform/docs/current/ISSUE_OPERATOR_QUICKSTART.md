@@ -3,7 +3,7 @@
 ## Approval Console MVP
 Canonical entrypoint for one-shot approved execution:
 ```bash
-python3 system/scripts/agent/run_approval_console.py
+python3 platform/system/platform/scripts/agent/run_approval_console.py
 ```
 
 Workflow:
@@ -28,7 +28,7 @@ Boundaries:
 
 ## Sync Open Issues
 ```bash
-python3 system/scripts/sync_github_issues.py
+python3 platform/system/platform/scripts/sync_github_issues.py
 ```
 This repo has no continuous/idle-loop runner -- matches the "Repeated
 autonomy disabled" boundary stated above. Each execution is one-shot via
@@ -36,19 +36,19 @@ the Approval Console (see above); re-run it manually for the next
 candidate.
 
 ## Inspect After Execution
-- `system/runtime/github/open_issues.json`
-- `system/runtime/supervisor/latest.json`
-- `system/runtime/local_execution/latest.json`
-- `system/runtime/handoff/latest.json`
-- `system/runtime/handoff/completion/latest.json`
-- `system/runtime/roadmap/issue_portfolio.json`
-- `system/runtime/issues/completed/issue_*.json`
+- `platform/system/runtime/github/open_issues.json`
+- `platform/system/runtime/supervisor/latest.json`
+- `platform/system/runtime/local_execution/latest.json`
+- `platform/system/runtime/handoff/latest.json`
+- `platform/system/runtime/handoff/completion/latest.json`
+- `platform/system/runtime/roadmap/issue_portfolio.json`
+- `platform/system/runtime/issues/completed/issue_*.json`
 
 ## Confirm Completion
-- Verify the issue has a completion marker in `system/runtime/issues/completed/`.
-- Verify the latest completion marker in `system/runtime/handoff/completion/latest.json`.
+- Verify the issue has a completion marker in `platform/system/runtime/issues/completed/`.
+- Verify the latest completion marker in `platform/system/runtime/handoff/completion/latest.json`.
 
 ## Identify Failure
-- Check `system/runtime/local_execution/latest.json` for failure reasons.
-- Check `system/runtime/supervisor/latest.json` for selection and status.
-- Check `system/runtime/github/open_issues.json` to confirm the issue is still open or removed.
+- Check `platform/system/runtime/local_execution/latest.json` for failure reasons.
+- Check `platform/system/runtime/supervisor/latest.json` for selection and status.
+- Check `platform/system/runtime/github/open_issues.json` to confirm the issue is still open or removed.

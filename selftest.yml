@@ -47,7 +47,7 @@ entrypoints:
   - AGENTS.md
 
 draft_dirs:
-  - knowledge/draft
+  - platform/knowledge/draft
 
 template_markers:
   filename_contains:

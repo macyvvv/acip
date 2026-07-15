@@ -11,7 +11,7 @@ exit_code: 0
 ## stdout
 ## Market Research — Kabukicho Survival Map (task-0010-smoking-deep2)
 
-Read-only research per the output contract; no repository files were modified. Existing dataset checked against `app/products/kabukicho_survival_map/data/smoking.json` (17 entries).
+Read-only research per the output contract; no repository files were modified. Existing dataset checked against `platform/app/products/kabukicho_survival_map/data/smoking.json` (17 entries).
 
 ---
 

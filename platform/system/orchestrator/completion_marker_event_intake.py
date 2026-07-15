@@ -25,7 +25,7 @@ class CompletionMarkerEventIntake:
             issue_id=int(payload["parent_issue"]),
             pack_id=str(payload["pack_id"]),
             ep_id=str(payload["ep_id"]),
-            marker_path="system/runtime/handoff/latest.json",
+            marker_path="platform/system/runtime/handoff/latest.json",
             actor="Codex",
             timestamp="2026-06-26T00:00:00Z",
             action="completion_marker_update",

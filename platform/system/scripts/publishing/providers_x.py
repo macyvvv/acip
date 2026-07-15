@@ -43,7 +43,7 @@ OAUTH2_TOKEN_URL = "https://api.x.com/2/oauth2/token"
 # every run -- the state file is what actually stays current across
 # scheduled invocations. Bootstrapped from .env's X_OAUTH2_ACCESS_TOKEN/
 # X_OAUTH2_REFRESH_TOKEN the first time it's needed.
-_OAUTH2_STATE_PATH = Path("system/runtime/publishing/oauth2/x_token_state.json")
+_OAUTH2_STATE_PATH = Path("platform/system/runtime/publishing/oauth2/x_token_state.json")
 _EXPIRY_SAFETY_MARGIN_SECONDS = 60
 
 
@@ -209,7 +209,7 @@ def _oauth1_credentials_available() -> bool:
 class XProvider(PublishingProvider):
     """Posts a tweet via X API v2 (POST /2/tweets). Real money per call
     (pay-per-use pricing) -- only reached when a policy explicitly selects
-    provider="x" (see system/runtime/publishing/policy.json); dry_run stays
+    provider="x" (see platform/system/runtime/publishing/policy.json); dry_run stays
     the default everywhere else."""
 
     name = "x"

@@ -6,7 +6,7 @@
   "message_type": "request_review",
   "related_issue": "ISSUE-0002",
   "related_artifacts": [
-    "system/core/agent_turn_runner.py"
+    "platform/system/core/agent_turn_runner.py"
   ],
   "objective": "Validate the one-turn review path",
   "requested_action": "review_one_turn",

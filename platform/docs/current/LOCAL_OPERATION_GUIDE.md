@@ -7,8 +7,8 @@ Reduce Human operation after Acceptance-0001 by standardizing local runtime oper
 ## Reproducible Environment
 
 1. `source .venv/bin/activate`
-2. `scripts/bootstrap_dev_env.sh`
-3. `scripts/check_repo_os_status.sh`
+2. `platform/scripts/bootstrap_dev_env.sh`
+3. `platform/scripts/check_repo_os_status.sh`
 
 ## Standard Workflow
 

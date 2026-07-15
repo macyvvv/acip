@@ -41,15 +41,15 @@ class PlanningStateBuilder:
         parking_lot = self._parking_lot(repo_state, packs)
         refactoring_priorities = self._refactoring_priorities(repo_state, constitution)
         source_artifacts = [
-            "docs/current/PROJECT.md",
-            "docs/current/STATE.md",
-            "docs/current/ROADMAP.md",
-            "docs/current/REPOSITORY_CONSTITUTION.md",
-            "system/runtime/repository_state/latest.json",
-            "system/runtime/repository_constitution/constitution.json",
-            "system/runtime/validation/validation_report.json",
-            "packs/",
-            "wbs/",
+            "platform/docs/current/PROJECT.md",
+            "platform/docs/current/STATE.md",
+            "platform/docs/current/ROADMAP.md",
+            "platform/docs/current/REPOSITORY_CONSTITUTION.md",
+            "platform/system/runtime/repository_state/latest.json",
+            "platform/system/runtime/repository_constitution/constitution.json",
+            "platform/system/runtime/validation/validation_report.json",
+            "platform/packs/",
+            "platform/wbs/",
         ]
         return PlanningStateProjection(
             mission=project.get("Mission", "Build an AI Native Company."),

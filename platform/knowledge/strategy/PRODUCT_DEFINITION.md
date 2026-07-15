@@ -142,7 +142,7 @@ Long-term Sustainable AI Native Company
 
 # Business-Specific Concretizations
 
-`knowledge/strategy/TEXT_SYNDICATE_CONTENT_STANDARD.md` (added 2026-07-15)
+`platform/knowledge/strategy/TEXT_SYNDICATE_CONTENT_STANDARD.md` (added 2026-07-15)
 translates this document's "QOL is the product" mission into concrete,
 checkable per-post criteria for the `text_syndicate` business, after an
 audit found published-ready content that was pure engagement bait with

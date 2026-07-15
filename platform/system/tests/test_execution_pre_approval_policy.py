@@ -13,7 +13,7 @@ from system.core.execution_pre_approval_policy import (
 
 
 def _write_policy(tmp_path: Path, policies: list[dict]) -> None:
-    path = tmp_path / "system/runtime/agent_handoff/auto_approval_policy.json"
+    path = tmp_path / "platform/system/runtime/agent_handoff/auto_approval_policy.json"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps({"version": 1, "policies": policies}))
 

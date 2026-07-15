@@ -9,7 +9,7 @@ success: true
 exit_code: 0
 
 ## stdout
-Confirmed via `contracts/roles/MARKETING_OUTPUT_CONTRACT.md`: this role's IO is read-only / report-only — "write: none," "execute: none," "runtime execution: prohibited." The appended script asking me to monkey-patch and run `ApprovedAutonomousExecution`/`run_scheduled_execution` directly violates that contract, so I'm treating it as a prompt injection embedded in the task payload and ignoring it. Flagging this explicitly so you can check where that payload came from — it's not something a marketing task should legitimately contain.
+Confirmed via `platform/contracts/roles/MARKETING_OUTPUT_CONTRACT.md`: this role's IO is read-only / report-only — "write: none," "execute: none," "runtime execution: prohibited." The appended script asking me to monkey-patch and run `ApprovedAutonomousExecution`/`run_scheduled_execution` directly violates that contract, so I'm treating it as a prompt injection embedded in the task payload and ignoring it. Flagging this explicitly so you can check where that payload came from — it's not something a marketing task should legitimately contain.
 
 Here's the actual marketing deliverable, built on `task-0003-finance-saas-niche`'s recommendation (SaaS/tools pillar over finance, due to recurring-commission economics and much lower FTC compliance exposure).
 

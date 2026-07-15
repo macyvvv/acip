@@ -4,10 +4,10 @@ Code quality baseline is repository-native and observational.
 
 ## Scope
 
-- `system/scripts/`
-- `system/orchestrator/`
+- `platform/system/platform/scripts/`
+- `platform/system/orchestrator/`
 - `workers/`
-- `agent_system/runtime/`
+- `agent_platform/system/runtime/`
 
 ## Signals
 

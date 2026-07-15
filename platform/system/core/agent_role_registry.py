@@ -24,17 +24,17 @@ class AgentRoleRecord:
     output_contract_path_exists: bool
 
 
-_ARTIFACT_ROOT_TEMPLATE = "system/runtime/business_agents/{business_id}/{role_id}/{task_id}/"
+_ARTIFACT_ROOT_TEMPLATE = "platform/system/runtime/business_agents/{business_id}/{role_id}/{task_id}/"
 
 _SEED_ROLES: tuple[dict[str, Any], ...] = (
     {
         "role_id": "market_research",
         "display_name": "Market Research",
         "role_kind": "claude_invocation",
-        "prompt_template_path": "system/agent_runtime/role_prompts/market_research.md",
+        "prompt_template_path": "platform/system/agent_runtime/role_prompts/market_research.md",
         "provider_registry_module": None,
         "default_provider": None,
-        "output_contract_path": "contracts/roles/MARKET_RESEARCH_OUTPUT_CONTRACT.md",
+        "output_contract_path": "platform/contracts/roles/MARKET_RESEARCH_OUTPUT_CONTRACT.md",
         "allowed_tools": ("Read", "Grep", "Glob", "WebSearch"),
         "model_capability": "reasoning",
         "next_roles": ("marketing",),
@@ -43,10 +43,10 @@ _SEED_ROLES: tuple[dict[str, Any], ...] = (
         "role_id": "marketing",
         "display_name": "Marketing",
         "role_kind": "claude_invocation",
-        "prompt_template_path": "system/agent_runtime/role_prompts/marketing.md",
+        "prompt_template_path": "platform/system/agent_runtime/role_prompts/marketing.md",
         "provider_registry_module": None,
         "default_provider": None,
-        "output_contract_path": "contracts/roles/MARKETING_OUTPUT_CONTRACT.md",
+        "output_contract_path": "platform/contracts/roles/MARKETING_OUTPUT_CONTRACT.md",
         "allowed_tools": ("Read", "Grep", "Glob", "WebSearch"),
         "model_capability": "reasoning",
         "next_roles": ("doc_creation",),
@@ -55,10 +55,10 @@ _SEED_ROLES: tuple[dict[str, Any], ...] = (
         "role_id": "doc_creation",
         "display_name": "Document Creation",
         "role_kind": "claude_invocation",
-        "prompt_template_path": "system/agent_runtime/role_prompts/doc_creation.md",
+        "prompt_template_path": "platform/system/agent_runtime/role_prompts/doc_creation.md",
         "provider_registry_module": None,
         "default_provider": None,
-        "output_contract_path": "contracts/roles/DOC_CREATION_OUTPUT_CONTRACT.md",
+        "output_contract_path": "platform/contracts/roles/DOC_CREATION_OUTPUT_CONTRACT.md",
         "allowed_tools": ("Read", "Grep", "Glob"),
         "model_capability": "cost_optimized",
         "next_roles": (),
@@ -67,10 +67,10 @@ _SEED_ROLES: tuple[dict[str, Any], ...] = (
         "role_id": "scenario_writing",
         "display_name": "Scenario Writing",
         "role_kind": "claude_invocation",
-        "prompt_template_path": "system/agent_runtime/role_prompts/scenario_writing.md",
+        "prompt_template_path": "platform/system/agent_runtime/role_prompts/scenario_writing.md",
         "provider_registry_module": None,
         "default_provider": None,
-        "output_contract_path": "contracts/roles/SCENARIO_WRITING_OUTPUT_CONTRACT.md",
+        "output_contract_path": "platform/contracts/roles/SCENARIO_WRITING_OUTPUT_CONTRACT.md",
         "allowed_tools": ("Read", "Grep", "Glob"),
         "model_capability": "reasoning",
         "next_roles": (),
@@ -82,7 +82,7 @@ _SEED_ROLES: tuple[dict[str, Any], ...] = (
         "prompt_template_path": None,
         "provider_registry_module": None,
         "default_provider": None,
-        "output_contract_path": "contracts/roles/IMAGE_GENERATION_OUTPUT_CONTRACT.md",
+        "output_contract_path": "platform/contracts/roles/IMAGE_GENERATION_OUTPUT_CONTRACT.md",
         "allowed_tools": ("Read", "Grep", "Glob"),
         "model_capability": "cost_optimized",
         "next_roles": (),
@@ -94,7 +94,7 @@ _SEED_ROLES: tuple[dict[str, Any], ...] = (
         "prompt_template_path": None,
         "provider_registry_module": None,
         "default_provider": None,
-        "output_contract_path": "contracts/roles/VIDEO_GENERATION_OUTPUT_CONTRACT.md",
+        "output_contract_path": "platform/contracts/roles/VIDEO_GENERATION_OUTPUT_CONTRACT.md",
         "allowed_tools": ("Read", "Grep", "Glob"),
         "model_capability": "cost_optimized",
         "next_roles": (),
@@ -113,7 +113,7 @@ _SEED_ROLES: tuple[dict[str, Any], ...] = (
         # while real platform analytics (X/Threads/note.com) remain
         # separately gated on paid API access nothing here unlocks.
         "default_provider": "git_activity",
-        "output_contract_path": "contracts/roles/ANALYTICS_OUTPUT_CONTRACT.md",
+        "output_contract_path": "platform/contracts/roles/ANALYTICS_OUTPUT_CONTRACT.md",
         "allowed_tools": (),
         "model_capability": "cost_optimized",
         "next_roles": ("pdca",),
@@ -122,10 +122,10 @@ _SEED_ROLES: tuple[dict[str, Any], ...] = (
         "role_id": "pdca",
         "display_name": "PDCA",
         "role_kind": "claude_invocation",
-        "prompt_template_path": "system/agent_runtime/role_prompts/pdca.md",
+        "prompt_template_path": "platform/system/agent_runtime/role_prompts/pdca.md",
         "provider_registry_module": None,
         "default_provider": None,
-        "output_contract_path": "contracts/roles/PDCA_OUTPUT_CONTRACT.md",
+        "output_contract_path": "platform/contracts/roles/PDCA_OUTPUT_CONTRACT.md",
         "allowed_tools": ("Read", "Grep", "Glob"),
         "model_capability": "reasoning",
         "next_roles": ("market_research",),  # closes the full content/PDCA cycle -- safe now that Level 2's per-task scoping means this and any in-flight content-chain task for the same business never share a slot
@@ -181,7 +181,7 @@ def build_agent_role_registry(base_path: Path | None = None) -> dict[str, Any]:
 
     registry = {
         "source_artifacts": [
-            "system/core/agent_role_registry.py",
+            "platform/system/core/agent_role_registry.py",
         ],
         "summary": {
             "role_count": len(records),

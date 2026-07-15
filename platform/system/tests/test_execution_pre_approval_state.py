@@ -105,7 +105,7 @@ def test_mark_outcome_without_prior_claim_raises(tmp_path: Path) -> None:
 
 
 def test_corrupted_state_file_hard_fails(tmp_path: Path) -> None:
-    path = tmp_path / "system/runtime/agent_handoff/pre_approval_state/text_syndicate/market_research/state.json"
+    path = tmp_path / "platform/system/runtime/agent_handoff/pre_approval_state/text_syndicate/market_research/state.json"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text("{not valid json")
     with pytest.raises(ExecutionPreApprovalStateError):

@@ -21,7 +21,7 @@ class PublishingStateError(RuntimeError):
 
 
 def _state_path(business_id: str, platform: str, base_path: str | Path = ".") -> Path:
-    return Path(base_path) / "system/runtime/publishing/state" / business_id / platform / "state.json"
+    return Path(base_path) / "platform/system/runtime/publishing/state" / business_id / platform / "state.json"
 
 
 def _default_state() -> dict[str, Any]:

@@ -20,4 +20,4 @@ Agent Runtime MVP
 
 ## Acceptance Criteria
 
-`python system/scripts/validate_ep_0100.py` passes.
+`python platform/system/platform/scripts/validate_ep_0100.py` passes.

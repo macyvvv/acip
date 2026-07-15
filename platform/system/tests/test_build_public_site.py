@@ -9,7 +9,7 @@ def test_completed_issue_generates_public_site(tmp_path: Path) -> None:
     completed_dir = tmp_path / "runtime" / "issues" / "completed"
     completed_dir.mkdir(parents=True)
     (completed_dir / "issue_0030.json").write_text(
-        '{"issue_number": 30, "issue_title": "PRODUCT-0001: Product Launch Checklist", "deliverables": ["app/products/minimal_launch_brief_generator/README.md"]}',
+        '{"issue_number": 30, "issue_title": "PRODUCT-0001: Product Launch Checklist", "deliverables": ["platform/app/products/minimal_launch_brief_generator/README.md"]}',
         encoding="utf-8",
     )
     product_dir = tmp_path / "app" / "products" / "minimal_launch_brief_generator"
@@ -37,7 +37,7 @@ def test_rebuild_is_idempotent(tmp_path: Path) -> None:
     completed_dir = tmp_path / "runtime" / "issues" / "completed"
     completed_dir.mkdir(parents=True)
     (completed_dir / "issue_0030.json").write_text(
-        '{"issue_number": 30, "issue_title": "PRODUCT-0001: Product Launch Checklist", "deliverables": ["app/products/minimal_launch_brief_generator/README.md"]}',
+        '{"issue_number": 30, "issue_title": "PRODUCT-0001: Product Launch Checklist", "deliverables": ["platform/app/products/minimal_launch_brief_generator/README.md"]}',
         encoding="utf-8",
     )
     product_dir = tmp_path / "app" / "products" / "minimal_launch_brief_generator"
@@ -56,7 +56,7 @@ def test_required_files_exist(tmp_path: Path) -> None:
     completed_dir = tmp_path / "runtime" / "issues" / "completed"
     completed_dir.mkdir(parents=True)
     (completed_dir / "issue_0030.json").write_text(
-        '{"issue_number": 30, "issue_title": "PRODUCT-0001: Product Launch Checklist", "deliverables": ["app/products/minimal_launch_brief_generator/README.md"]}',
+        '{"issue_number": 30, "issue_title": "PRODUCT-0001: Product Launch Checklist", "deliverables": ["platform/app/products/minimal_launch_brief_generator/README.md"]}',
         encoding="utf-8",
     )
     product_dir = tmp_path / "app" / "products" / "minimal_launch_brief_generator"

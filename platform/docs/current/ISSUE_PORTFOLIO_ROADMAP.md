@@ -35,13 +35,13 @@ The issue portfolio roadmap is the planning layer. Approval candidates are a fil
 - `NOW` items are the only items eligible to become recommended approval candidates under the current one-shot baseline.
 
 ## Runtime Artifacts
-- `system/runtime/roadmap/issue_portfolio.json`
-- `system/runtime/roadmap/issue_portfolio.md`
+- `platform/system/runtime/roadmap/issue_portfolio.json`
+- `platform/system/runtime/roadmap/issue_portfolio.md`
 
 ## Source Inputs
-- `system/runtime/github/open_issues.json`
-- `system/runtime/issues/completed/`
-- `system/runtime/research/issue_creation_drafts.json`
-- `docs/current/AUTONOMOUS_OPERATIONAL_BASELINE.md`
-- `docs/current/ISSUE_OPERATOR_QUICKSTART.md`
-- `docs/current/ISSUE_CENTRIC_OPERATION.md`
+- `platform/system/runtime/github/open_issues.json`
+- `platform/system/runtime/issues/completed/`
+- `platform/system/runtime/research/issue_creation_drafts.json`
+- `platform/docs/current/AUTONOMOUS_OPERATIONAL_BASELINE.md`
+- `platform/docs/current/ISSUE_OPERATOR_QUICKSTART.md`
+- `platform/docs/current/ISSUE_CENTRIC_OPERATION.md`

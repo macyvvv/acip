@@ -1,9 +1,9 @@
 # CORE_PRINCIPLES
 
 This is the current, compact record of why this repository is governed the
-way it is. It replaces the bulk of what used to be a 44-file `basis/` policy
+way it is. It replaces the bulk of what used to be a 44-file `platform/basis/` policy
 corpus (see `archive/basis_corpus_2026/README.md` for what was archived and
-why) after a full governance-layer review (`adr/ADR-0037-governance-layer-
+why) after a full governance-layer review (`platform/adr/ADR-0037-governance-layer-
 overhaul.md`) found that almost all of it was pure prose with no enforcing
 code behind it, and that several of its rules had gone stale enough to
 silently contradict later real decisions.
@@ -17,12 +17,12 @@ read the last principle first.
 ## 1. PR-required; no direct push to `main`
 
 Every change flows through a feature branch and a pull request. Enforced
-today by a real local pre-push hook (`system/scripts/git/
-prevent_main_push.sh`, activated via `bash system/scripts/git/
+today by a real local pre-push hook (`platform/system/platform/scripts/git/
+prevent_main_push.sh`, activated via `bash platform/system/platform/scripts/git/
 install_hooks.sh`) — but that hook lives in `.git/hooks/`, which git never
 tracks, so it's opt-in per clone, not automatic. There is no GitHub-side
 branch protection configured or available (this repo is private on
-GitHub's free plan). See `docs/current/MAIN_PROTECTION_POLICY.md` for the
+GitHub's free plan). See `platform/docs/current/MAIN_PROTECTION_POLICY.md` for the
 full, honest enforcement-boundary account — including what a real remote
 backstop would need to look like if this gap is ever worth closing further.
 
@@ -46,8 +46,8 @@ five independent copies of the same concern, drifting independently,
 instead of one.
 
 *Traces to: Level 3a/3c's real code and live caps
-(`system/core/execution_pre_approval_{policy,state,control}.py`,
-`system/runtime/agent_handoff/auto_approval_policy.json`) — genuinely
+(`platform/system/core/execution_pre_approval_{policy,state,control}.py`,
+`platform/system/runtime/agent_handoff/auto_approval_policy.json`) — genuinely
 enforced, gates real subprocess spend today.*
 
 ## 3. Approval must be explicit; never inferred from readiness alone
@@ -55,7 +55,7 @@ enforced, gates real subprocess spend today.*
 A scope being technically ready to execute is never itself treated as
 approval. Approval is a separate, explicit, human-written artifact.
 
-*Traces to: `docs/current/AUTONOMOUS_EXECUTION_APPROVAL_CONTRACT.md`,
+*Traces to: `platform/docs/current/AUTONOMOUS_EXECUTION_APPROVAL_CONTRACT.md`,
 already well-calibrated as an absolute rule before this review — this is
 the rare case where the existing wording already named a real,
 context-independent concern rather than needing a rewrite.*
@@ -80,7 +80,7 @@ any committed, deployable bundle. A key that's a genuine server-side
 secret never leaves the operator's own environment.
 
 *Traces to: the real, working pattern built this session
-(`businesses/kabukicho_survival_map/app/build.py`'s
+(`businesses/kabukicho_survival_map/platform/app/build.py`'s
 `_write_local_gmaps_config()`) + `selftest_v2/semantic_checks.py`'s
 secret-boundary check, enforced in CI today.*
 
@@ -129,20 +129,20 @@ and the rule stays honest as circumstances change instead of quietly going
 stale.
 
 *Traces to: the triggering incident for this entire review — see
-`adr/ADR-0037-governance-layer-overhaul.md`.*
+`platform/adr/ADR-0037-governance-layer-overhaul.md`.*
 
-## What's still standalone in `basis/`, not folded in here
+## What's still standalone in `platform/basis/`, not folded in here
 
 - [`057_boundary_validation_policy.md`](057_boundary_validation_policy.md)
   — maps to real, distinct enforcement
-  (`system/scripts/selftest/check_boundaries.py`, wired into
+  (`platform/system/platform/scripts/selftest/check_boundaries.py`, wired into
   `boundary-validation.yml`) with enough specific detail to be worth its
   own file rather than compressing into a principle above.
 - [`REPOSITORY_CONVENTIONS.md`](REPOSITORY_CONVENTIONS.md) — actively used
   naming-convention reference (SSOT statement, `UPPER_SNAKE_CASE` docs /
   `lower_snake_case` code convention).
 
-Everything else that used to live in `basis/` is archived at
+Everything else that used to live in `platform/basis/` is archived at
 `archive/basis_corpus_2026/`, with a README there mapping each archived
 file to whichever principle above (or piece of still-live code) actually
 covers its real content.

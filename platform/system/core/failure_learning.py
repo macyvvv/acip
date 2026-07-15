@@ -7,8 +7,8 @@ from pathlib import Path
 from system.core.failure_store import load_failures
 
 
-DEFAULT_FAILURE_RULES = Path("system/runtime/knowledge/failure_rules.json")
-DEFAULT_LEARNING_SUMMARY = Path("system/runtime/knowledge/learning_summary.json")
+DEFAULT_FAILURE_RULES = Path("platform/system/runtime/platform/knowledge/failure_rules.json")
+DEFAULT_LEARNING_SUMMARY = Path("platform/system/runtime/platform/knowledge/learning_summary.json")
 
 
 def _rules_path(base_path: Path | str | None = None) -> Path:

@@ -5,7 +5,7 @@
 - contract_id: MARKETING_OUTPUT_CONTRACT
 - actor: marketing agent role (claude_invocation)
 - input_source: business_registry business context + prior market_research artifacts + task description
-- output_target: system/runtime/business_agents/{business_id}/marketing/{task_id}/latest.{json,md}
+- output_target: platform/system/runtime/business_agents/{business_id}/marketing/{task_id}/latest.{json,md}
 - current_objective: produce positioning/messaging/channel-specific copy for one business
 - approval_required: yes (one-shot approval gate, same as repo-dev execution)
 

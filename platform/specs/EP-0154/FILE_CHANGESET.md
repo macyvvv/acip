@@ -1,4 +1,4 @@
-- `docs/current/WORKTREE_CLEANLINESS_GATE.md`
-- `system/orchestrator/worktree_cleanliness_gate.py`
-- `system/scripts/validate_ep_0154.py`
-- `system/tests/test_worktree_cleanliness_gate.py`
+- `platform/docs/current/WORKTREE_CLEANLINESS_GATE.md`
+- `platform/system/orchestrator/worktree_cleanliness_gate.py`
+- `platform/system/platform/scripts/validate_ep_0154.py`
+- `platform/system/tests/test_worktree_cleanliness_gate.py`

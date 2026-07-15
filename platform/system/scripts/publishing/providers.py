@@ -23,7 +23,7 @@ class PublishError(RuntimeError):
 
 class PublishingProvider(ABC):
     """One adapter per platform (X/Threads/note.com/...). Mirrors
-    system/scripts/analytics/providers.py's registry shape: swapping
+    platform/system/platform/scripts/analytics/providers.py's registry shape: swapping
     platforms should never require touching the scheduler."""
 
     name: str = "unset"

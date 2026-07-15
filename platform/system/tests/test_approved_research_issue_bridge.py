@@ -18,10 +18,10 @@ def _prepare(tmp_path: Path) -> None:
                     "title": "Kabukicho Survival Map MVP expansion: validate next-value POI and distribution opportunities",
                     "status": "draft",
                     "ready_for_issue_creation": True,
-                    "target_product_scope": "app/products/kabukicho_survival_map_mvp",
-                    "dependencies": ["system/runtime/research/request_kabukicho_expansion.json"],
+                    "target_product_scope": "platform/app/products/kabukicho_survival_map_mvp",
+                    "dependencies": ["platform/system/runtime/research/request_kabukicho_expansion.json"],
                     "validation_readiness": "ready",
-                    "created_from": "system/runtime/research/issue_draft_opp_kabukicho_001.json",
+                    "created_from": "platform/system/runtime/research/issue_draft_opp_kabukicho_001.json",
                 }
             ],
             indent=2,

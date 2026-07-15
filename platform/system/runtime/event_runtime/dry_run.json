@@ -4,7 +4,7 @@
   "issue_id": 13,
   "pack_id": "PACK-0005",
   "ep_id": "EP-0166",
-  "marker_path": "system/runtime/handoff/latest.json",
+  "marker_path": "platform/system/runtime/handoff/latest.json",
   "actor": "Codex",
   "timestamp": "2026-06-26T00:00:00Z",
   "action": "dry_run",

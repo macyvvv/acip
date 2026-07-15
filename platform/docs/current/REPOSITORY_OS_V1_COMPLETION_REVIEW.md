@@ -29,7 +29,7 @@ Repository OS v1 is the state reached by EP-0100 through EP-0142.
 
 ## Repository Entry Points
 
-- `python scripts/validate_all.py`
+- `python platform/scripts/validate_all.py`
 - `python -m pytest -q`
 - `orchestrator/execution_kernel.py`
 - `orchestrator/solution_development_runtime.py`

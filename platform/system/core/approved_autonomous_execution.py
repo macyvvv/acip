@@ -209,7 +209,7 @@ class ApprovedAutonomousExecution:
         if outcome.success:
             # Level 1 queue-population automation only -- this can enqueue and
             # possibly activate the next candidate, it never approves or runs
-            # anything. See docs/current/BUSINESS_AGENT_AUTOMATION_READINESS.md.
+            # anything. See platform/docs/current/BUSINESS_AGENT_AUTOMATION_READINESS.md.
             evaluate_and_enqueue_next_tasks(business_id, role_id, task_id, outcome.artifact_path, self.base_path)
         return result
 

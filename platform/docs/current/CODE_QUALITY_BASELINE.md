@@ -2,7 +2,7 @@
 
 ## Scope
 
-- `scripts/`
+- `platform/scripts/`
 - `orchestrator/`
 - `workers/`
 - `agent_runtime/`
@@ -14,7 +14,7 @@
 - `dataclass` and typing are preferred for repository contracts
 - `subprocess` usage is isolated to validation and orchestration boundaries
 - outputs are deterministic
-- validation entrypoints follow `scripts/validate_ep_*.py` patterns
+- validation entrypoints follow `platform/scripts/validate_ep_*.py` patterns
 - tests exist for the behavior under review
 - repository-generated artifacts are kept out of the root
 

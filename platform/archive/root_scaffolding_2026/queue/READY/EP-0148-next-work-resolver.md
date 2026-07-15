@@ -13,6 +13,6 @@ objective: Resolve the next work item deterministically using priority, dependen
 
 ## Validation
 
-- `python3 system/scripts/validate_all.py`
+- `python3 platform/system/platform/scripts/validate_all.py`
 - `python3 -m pytest -q`
 

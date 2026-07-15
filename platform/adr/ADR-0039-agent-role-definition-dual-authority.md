@@ -18,7 +18,7 @@ which one governs.
 
 Several roles found this on their own. `market-research`'s and
 `marketing`'s consultation reports independently noticed that
-`system/agent_runtime/role_prompts/*.md` (the legacy prompt template) and
+`platform/system/agent_runtime/role_prompts/*.md` (the legacy prompt template) and
 `.claude/agents/*.md` (the new Claude Code subagent definition) disagree
 on a real, consequential point — who writes the output artifact — not
 just cosmetic wording drift. `doc-creation`'s report found the same
@@ -43,15 +43,15 @@ targets, **both copies here are actually live**, so the fix is not
 
 Two independent definitions of the same 8 roles exist side by side:
 
-1. **`system/agent_runtime/role_prompts/*.md`** + machine-generated
-   `system/runtime/agent_roles/agent_role_registry.json` (source:
-   `system/core/agent_role_registry.py`). Confirmed live: it is imported
-   directly by `system/orchestrator/business_agent_execution_adapter.py`
+1. **`platform/system/agent_runtime/role_prompts/*.md`** + machine-generated
+   `platform/system/runtime/agent_roles/agent_role_registry.json` (source:
+   `platform/system/core/agent_role_registry.py`). Confirmed live: it is imported
+   directly by `platform/system/orchestrator/business_agent_execution_adapter.py`
    (`from system.core.agent_role_registry import get_role`), which reads
    each role's `model_capability` field and resolves it to a real
    `claude -p --model ...` invocation via `_resolve_model()`
    (`business_agent_execution_adapter.py:81,155-162`), and is the role
-   registry `system/core/business_agent_trigger.py` and
+   registry `platform/system/core/business_agent_trigger.py` and
    `execution_pre_approval_policy.py` route Level 3a/3c automated
    execution through. This is the production backbone for
    automated/unattended business-agent execution.
@@ -89,7 +89,7 @@ paths that are not interchangeable today:
 
 Instead:
 
-1. **`system/agent_runtime/role_prompts/*.md` + `agent_role_registry.json`
+1. **`platform/system/agent_runtime/role_prompts/*.md` + `agent_role_registry.json`
    is authoritative for automated/unattended execution** (Level 3a/3c,
    model-tier resolution, pre-approval policy). Any change to a role's
    allowed tools, output contract reference, or IO permissions that must

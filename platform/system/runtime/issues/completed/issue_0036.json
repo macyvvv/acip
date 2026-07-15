@@ -4,11 +4,11 @@
   "commit_sha": "deterministic",
   "completed_at": "deterministic",
   "deliverables": [
-    "system/runtime/research/issue_draft_opp_kabukicho_001.json",
-    "system/runtime/research/issue_draft_opp_kabukicho_001.md",
-    "system/runtime/research/issue_draft_registry.json",
-    "system/runtime/research/issue_draft_registry.md",
-    "system/runtime/research/approved_issue_drafts.json",
-    "system/runtime/research/approved_issue_drafts.md"
+    "platform/system/runtime/research/issue_draft_opp_kabukicho_001.json",
+    "platform/system/runtime/research/issue_draft_opp_kabukicho_001.md",
+    "platform/system/runtime/research/issue_draft_registry.json",
+    "platform/system/runtime/research/issue_draft_registry.md",
+    "platform/system/runtime/research/approved_issue_drafts.json",
+    "platform/system/runtime/research/approved_issue_drafts.md"
   ]
 }

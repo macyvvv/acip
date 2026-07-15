@@ -4,6 +4,6 @@ from system.orchestrator.runtime_artifact_policy import RuntimeArtifactWritePoli
 
 
 def test_runtime_artifact_policy_requires_explicit_refresh() -> None:
-    policy = RuntimeArtifactWritePolicy(registry=("system/runtime/validation/validation_report.json",))
-    assert policy.can_write("system/runtime/validation/validation_report.json") is False
-    assert policy.can_write("system/runtime/validation/validation_report.json", explicit_refresh=True) is True
+    policy = RuntimeArtifactWritePolicy(registry=("platform/system/runtime/validation/validation_report.json",))
+    assert policy.can_write("platform/system/runtime/validation/validation_report.json") is False
+    assert policy.can_write("platform/system/runtime/validation/validation_report.json", explicit_refresh=True) is True

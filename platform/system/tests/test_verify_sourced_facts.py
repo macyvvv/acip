@@ -7,7 +7,7 @@ from system.scripts.dataops.verify_sourced_facts import extract_figures, verify_
 
 
 def _write_artifact(base_path: Path, business_id: str, role_id: str, task_id: str, stdout: str) -> None:
-    artifact_dir = base_path / "system/runtime/business_agents" / business_id / role_id / task_id
+    artifact_dir = base_path / "platform/system/runtime/business_agents" / business_id / role_id / task_id
     artifact_dir.mkdir(parents=True, exist_ok=True)
     (artifact_dir / "latest.json").write_text(json.dumps({"stdout": stdout}), encoding="utf-8")
 

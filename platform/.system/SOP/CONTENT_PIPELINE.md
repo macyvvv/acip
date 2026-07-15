@@ -142,7 +142,7 @@ completed.
 
 Artifact
 
-knowledge/draft/CA-XXXX.md
+platform/knowledge/draft/CA-XXXX.md
 
 Owner
 
@@ -262,7 +262,7 @@ Wisdom
 
 # Repository
 
-knowledge/
+platform/knowledge/
 
 draft/
 

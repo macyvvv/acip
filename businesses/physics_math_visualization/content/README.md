@@ -39,7 +39,7 @@ Physics & Math Visualization は ACIP の教育系動画コンテンツ事業。
 
 ## WBS
 
-- `wbs/WBS-PMV-0001-physics-math-visualization-content-ideas.md`
+- `platform/wbs/WBS-PMV-0001-physics-math-visualization-content-ideas.md`
 
 ## Operating Principles
 

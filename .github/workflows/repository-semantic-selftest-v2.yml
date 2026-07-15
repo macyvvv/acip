@@ -23,4 +23,4 @@ jobs:
           python-version: '3.11'
 
       - name: Run semantic selftest v2
-        run: python system/scripts/selftest_v2/validate_semantic_selftest.py
+        run: python platform/system/platform/scripts/selftest_v2/validate_semantic_selftest.py

@@ -16,7 +16,7 @@ unnoticed until multiple subagents flagged it independently.
 
 ### Shape A — generic one-shot business (e.g. kabukicho_survival_map)
 
-- output_target: `system/runtime/business_agents/{business_id}/scenario_writing/{task_id}/latest.{json,md}`
+- output_target: `platform/system/runtime/business_agents/{business_id}/scenario_writing/{task_id}/latest.{json,md}`
 - Freeform markdown deliverable; no fixed section schema beyond "complete,
   directly usable content."
 
@@ -33,7 +33,7 @@ unnoticed until multiple subagents flagged it independently.
   - `metadata.json` (character, and whatever else the task needs;
     `render_content.py` later appends a `render` key to this same file —
     do not pre-populate that key)
-- This exact shape is parsed by `platform/system/scripts/somia/content_spec.py`'s
+- This exact shape is parsed by `platform/system/platform/scripts/somia/content_spec.py`'s
   `load_content_spec()` — a missing required section or file raises
   `ContentSpecError`. Validate against it before considering a batch
   complete; a malformed heading fails silently otherwise.

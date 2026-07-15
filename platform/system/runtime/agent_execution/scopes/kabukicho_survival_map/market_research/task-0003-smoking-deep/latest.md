@@ -8,8 +8,8 @@ scope_id:
 execution_triggered: true
 execution_mode: one_shot
 execution_result_status: success
-completion_marker_path: /Users/ariel/acip/system/runtime/business_agents/kabukicho_survival_map/market_research/task-0003-smoking-deep/latest.json
-request_path: /Users/ariel/acip/system/runtime/request/execution_request.json
+completion_marker_path: /Users/ariel/acip/platform/system/runtime/business_agents/kabukicho_survival_map/market_research/task-0003-smoking-deep/latest.json
+request_path: /Users/ariel/acip/platform/system/runtime/request/execution_request.json
 stopped_reason: completion_marker_written
 started_at: 2026-07-11T05:10:04.166301+00:00
 finished_at: 2026-07-11T05:13:11.889864+00:00

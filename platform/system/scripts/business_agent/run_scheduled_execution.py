@@ -35,7 +35,7 @@ from system.core.scheduled_execution_control import is_scheduled_execution_pause
 from system.core.scheduled_merge_circuit import record_merge_gate_failure, record_merge_gate_success
 from system.core.scheduled_merge_control import is_scheduled_merge_paused
 
-# ADR-0038. See docs/current/BUSINESS_AGENT_AUTOMATION_READINESS.md's Level 3b
+# ADR-0038. See platform/docs/current/BUSINESS_AGENT_AUTOMATION_READINESS.md's Level 3b
 # section for the full spec this implements: a kill switch, an actual
 # notification (not just git-tracked state), a rollback plan, and a cost
 # guard. Scope is generation-only roles (claude_invocation/data_fetch) --
@@ -74,12 +74,12 @@ _CI_POLL_INTERVAL_SECONDS = 15
 os.environ.setdefault("CLAUDE_EXECUTION_TIMEOUT_SECONDS", "240")
 
 _TRACKED_RUNTIME_PATHS = [
-    "system/runtime/agent_execution",
-    "system/runtime/agent_handoff/scopes",
-    "system/runtime/agent_handoff/pre_approval_state",
-    "system/runtime/business_agents",
-    "system/runtime/business_agent_tasks/queue.json",
-    "system/runtime/knowledge/kpi.json",
+    "platform/system/runtime/agent_execution",
+    "platform/system/runtime/agent_handoff/scopes",
+    "platform/system/runtime/agent_handoff/pre_approval_state",
+    "platform/system/runtime/business_agents",
+    "platform/system/runtime/business_agent_tasks/queue.json",
+    "platform/system/runtime/platform/knowledge/kpi.json",
 ]
 
 
@@ -407,7 +407,7 @@ def _run_local_validation(base_path: Path) -> tuple[bool, str]:
     if pytest_result.returncode != 0:
         return False, "local_pytest_failed"
     validate_result = subprocess.run(
-        [sys.executable, "system/scripts/validate_all.py"], cwd=base_path, capture_output=True, text=True
+        [sys.executable, "platform/system/platform/scripts/validate_all.py"], cwd=base_path, capture_output=True, text=True
     )
     if validate_result.returncode != 0:
         return False, "local_validate_all_failed"

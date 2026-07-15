@@ -21,7 +21,7 @@ def _write_handoff(path: Path) -> None:
                 "thread_final_state": "waiting_for_review",
                 "stop_reason": "idle",
                 "request_id": "REQ-DRAFT-DRAFT-OPP-KABUKICHO-001",
-                "request_path": "system/runtime/request/execution_request.json",
+                "request_path": "platform/system/runtime/request/execution_request.json",
                 "next_action": "Review the handoff and, if approved, continue through existing execution flow.",
                 "created_at": "2026-07-02T05:29:29.642877+00:00",
                 "source": "agent_issue_bridge",
@@ -117,7 +117,7 @@ def test_business_role_task_dispatches_to_business_agent_adapter(tmp_path: Path,
 
     class FakeOutcome:
         success = True
-        artifact_path = "system/runtime/business_agents/text_syndicate/market_research/task-0001/latest.json"
+        artifact_path = "platform/system/runtime/business_agents/text_syndicate/market_research/task-0001/latest.json"
         exit_code = 0
 
     def fake_run(self, *, business_id, role_id, task_id, task_description="", approval_flag=False, dry_run=True):
@@ -204,7 +204,7 @@ def test_business_role_task_cli_notice_failure_surfaces_reason_not_exit_code(tmp
 
     class FakeOutcome:
         success = False
-        artifact_path = "system/runtime/business_agents/text_syndicate/market_research/task-0001/latest.json"
+        artifact_path = "platform/system/runtime/business_agents/text_syndicate/market_research/task-0001/latest.json"
         exit_code = 0
         failure_reason = "cli_notice:session_limit"
 
@@ -270,7 +270,7 @@ def test_scope_parameterized_run_uses_per_task_approval(tmp_path: Path, monkeypa
 
     class FakeOutcome:
         success = True
-        artifact_path = "system/runtime/business_agents/text_syndicate/market_research/task-0001/latest.json"
+        artifact_path = "platform/system/runtime/business_agents/text_syndicate/market_research/task-0001/latest.json"
         exit_code = 0
 
     def fake_run(self, **kwargs):
@@ -319,7 +319,7 @@ def test_two_businesses_execute_independently_without_interference(tmp_path: Pat
 
     def fake_run(self, *, business_id, role_id, task_id, task_description="", approval_flag=False, dry_run=True):
         calls.append({"business_id": business_id, "role_id": role_id, "task_id": task_id})
-        return FakeOutcome(f"system/runtime/business_agents/{business_id}/{role_id}/{task_id}/latest.json")
+        return FakeOutcome(f"platform/system/runtime/business_agents/{business_id}/{role_id}/{task_id}/latest.json")
 
     monkeypatch.setattr("system.core.approved_autonomous_execution.BusinessAgentExecutionAdapter.run", fake_run)
 
@@ -363,7 +363,7 @@ def _write_pre_approval_policy(tmp_path: Path, business_id: str, role_id: str, *
 def _fake_successful_run(calls: list[dict]):
     class FakeOutcome:
         success = True
-        artifact_path = "system/runtime/business_agents/text_syndicate/market_research/task-0001/latest.json"
+        artifact_path = "platform/system/runtime/business_agents/text_syndicate/market_research/task-0001/latest.json"
         exit_code = 0
 
     def fake_run(self, *, business_id, role_id, task_id, task_description="", approval_flag=False, dry_run=True):
@@ -530,7 +530,7 @@ def test_policy_pre_approval_retry_after_failure_does_not_recharge_cap(tmp_path:
     attempts = {"count": 0}
 
     class FailingThenSucceedingOutcome:
-        artifact_path = "system/runtime/business_agents/text_syndicate/market_research/task-0001/latest.json"
+        artifact_path = "platform/system/runtime/business_agents/text_syndicate/market_research/task-0001/latest.json"
         exit_code = 0
 
         def __init__(self, success):
@@ -638,7 +638,7 @@ def test_cross_scope_isolation_for_pre_approval(tmp_path: Path, monkeypatch) -> 
 
         class FakeOutcome:
             success = True
-            artifact_path = f"system/runtime/business_agents/{business_id}/{role_id}/{task_id}/latest.json"
+            artifact_path = f"platform/system/runtime/business_agents/{business_id}/{role_id}/{task_id}/latest.json"
             exit_code = 0
 
         return FakeOutcome()

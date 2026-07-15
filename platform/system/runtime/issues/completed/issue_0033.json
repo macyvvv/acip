@@ -4,14 +4,14 @@
   "commit_sha": "deterministic",
   "completed_at": "deterministic",
   "deliverables": [
-    "app/products/kabukicho_survival_map_mvp/README.md",
-    "app/products/kabukicho_survival_map_mvp/requirements.md",
-    "app/products/kabukicho_survival_map_mvp/architecture.md",
-    "app/products/kabukicho_survival_map_mvp/release_notes.md",
-    "app/products/kabukicho_survival_map_mvp/__init__.py",
-    "app/products/kabukicho_survival_map_mvp/src/__init__.py",
-    "app/products/kabukicho_survival_map_mvp/src/kabukicho_survival_map_mvp.py",
-    "app/products/kabukicho_survival_map_mvp/tests/__init__.py",
-    "app/products/kabukicho_survival_map_mvp/tests/test_kabukicho_survival_map_mvp.py"
+    "platform/app/products/kabukicho_survival_map_mvp/README.md",
+    "platform/app/products/kabukicho_survival_map_mvp/requirements.md",
+    "platform/app/products/kabukicho_survival_map_mvp/architecture.md",
+    "platform/app/products/kabukicho_survival_map_mvp/release_notes.md",
+    "platform/app/products/kabukicho_survival_map_mvp/__init__.py",
+    "platform/app/products/kabukicho_survival_map_mvp/src/__init__.py",
+    "platform/app/products/kabukicho_survival_map_mvp/src/kabukicho_survival_map_mvp.py",
+    "platform/app/products/kabukicho_survival_map_mvp/tests/__init__.py",
+    "platform/app/products/kabukicho_survival_map_mvp/tests/test_kabukicho_survival_map_mvp.py"
   ]
 }

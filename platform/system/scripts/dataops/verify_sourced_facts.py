@@ -46,7 +46,7 @@ def _normalize(figure: str) -> str:
 
 
 def _stdout_of(business_id: str, role_id: str, task_id: str, base_path: str | Path) -> str:
-    path = Path(base_path) / "system/runtime/business_agents" / business_id / role_id / task_id / "latest.json"
+    path = Path(base_path) / "platform/system/runtime/business_agents" / business_id / role_id / task_id / "latest.json"
     if not path.exists():
         raise FileNotFoundError(f"No artifact at {path}")
     payload = json.loads(path.read_text(encoding="utf-8"))
@@ -54,7 +54,7 @@ def _stdout_of(business_id: str, role_id: str, task_id: str, base_path: str | Pa
 
 
 def sourced_figures_for_business(business_id: str, base_path: str | Path = ".") -> set[str]:
-    research_root = Path(base_path) / "system/runtime/business_agents" / business_id / "market_research"
+    research_root = Path(base_path) / "platform/system/runtime/business_agents" / business_id / "market_research"
     figures: set[str] = set()
     if not research_root.exists():
         return figures

@@ -12,20 +12,20 @@ def _resolve_repo_root() -> Path:
 ROOT = _resolve_repo_root()
 REQUIRED = [
     "VERSION",
-    "releases/RELEASE_v1.0.0-repository-os.md",
-    "baseline/BASELINE_MANIFEST.md",
-    "baseline/BASELINE_CHANGE_POLICY.md",
-    # basis/077-081 were confirmed-empty stub placeholders (never authored)
-    # and were archived by the 2026-07 governance overhaul (adr/ADR-0037)
-    # along with the rest of basis/'s non-load-bearing corpus.
+    "platform/releases/RELEASE_v1.0.0-repository-os.md",
+    "platform/baseline/BASELINE_MANIFEST.md",
+    "platform/baseline/BASELINE_CHANGE_POLICY.md",
+    # platform/basis/077-081 were confirmed-empty stub placeholders (never authored)
+    # and were archived by the 2026-07 governance overhaul (platform/adr/ADR-0037)
+    # along with the rest of platform/basis/'s non-load-bearing corpus.
     "archive/basis_corpus_2026/077_baseline_policy.md",
     "archive/basis_corpus_2026/078_incremental_graph_policy.md",
     "archive/basis_corpus_2026/079_context_diff_policy.md",
     "archive/basis_corpus_2026/080_execution_queue_automation_policy.md",
     "archive/basis_corpus_2026/081_review_gate_summary_policy.md",
-    "adr/ADR-0024-repository-os-v1-baseline.md",
-    "adr/ADR-0025-incremental-graph-and-context-diff.md",
-    "wbs/WBS-0016-repository-os-v1-baseline.md",
+    "platform/adr/ADR-0024-repository-os-v1-baseline.md",
+    "platform/adr/ADR-0025-incremental-graph-and-context-diff.md",
+    "platform/wbs/WBS-0016-repository-os-v1-baseline.md",
 ]
 
 def main() -> int:

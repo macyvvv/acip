@@ -11,7 +11,7 @@ exit_code: 0
 ## stdout
 # Marketing: Text Syndicate — Positioning, Niche Pilot Recommendation, and Draft Copy
 
-Per the role contract, this is a report only — I have not written or modified any repository files. The execution adapter is expected to persist this to `system/runtime/business_agents/text_syndicate/marketing/task-0001/latest.{json,md}`.
+Per the role contract, this is a report only — I have not written or modified any repository files. The execution adapter is expected to persist this to `platform/system/runtime/business_agents/text_syndicate/marketing/task-0001/latest.{json,md}`.
 
 ## 1. Positioning statement
 

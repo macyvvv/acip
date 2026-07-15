@@ -30,7 +30,7 @@ ValidationOrchestrator = _module.ValidationOrchestrator
 
 
 def main() -> int:
-    print("Validation policy: docs/current/VALIDATION_COMMAND_POLICY.md")
+    print("Validation policy: platform/docs/current/VALIDATION_COMMAND_POLICY.md")
     orchestrator = ValidationOrchestrator(ROOT)
     result = orchestrator.run()
     for step in result.validation_steps:

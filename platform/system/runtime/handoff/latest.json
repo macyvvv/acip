@@ -5,7 +5,7 @@
   "ep_id": "PACK-0004",
   "primary_implementation_commit": "f583381",
   "fix_commit": "d4ea38d",
-  "validation_result": "python3 system/scripts/validate_all.py passed",
+  "validation_result": "python3 platform/system/platform/scripts/validate_all.py passed",
   "pytest_result": "python3 -m pytest -q passed, 93 passed",
   "worktree_state": "clean",
   "implemented_eps": [
@@ -15,7 +15,7 @@
     "EP-0159 Issue Synchronizer",
     "EP-0160 Handshake Validation"
   ],
-  "next_action": "ChatGPT can read system/runtime/handoff/latest.json for review intake.",
+  "next_action": "ChatGPT can read platform/system/runtime/handoff/latest.json for review intake.",
   "requires_human_approval": false,
   "latest_marker_contains_real_completion_data": true
 }

@@ -35,7 +35,7 @@ This WBS adds Repository Knowledge Graph and runtime integration preparation wit
 
 ## Acceptance Criteria
 
-- `python system/scripts/graph/build_repository_graph.py` runs.
-- `python system/scripts/graph/validate_repository_graph.py` passes.
-- `python system/scripts/context/build_agent_context_pack.py` runs.
+- `python platform/system/platform/scripts/graph/build_repository_graph.py` runs.
+- `python platform/system/platform/scripts/graph/validate_repository_graph.py` passes.
+- `python platform/system/platform/scripts/platform/context/build_agent_context_pack.py` runs.
 - Runtime boundary remains intact.

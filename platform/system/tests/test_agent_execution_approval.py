@@ -20,7 +20,7 @@ def _write_handoff(path: Path, *, request_id: str = "REQ-DRAFT-DRAFT-OPP-KABUKIC
                 "thread_final_state": "waiting_for_review",
                 "stop_reason": "idle",
                 "request_id": request_id,
-                "request_path": "system/runtime/request/execution_request.json",
+                "request_path": "platform/system/runtime/request/execution_request.json",
                 "next_action": "Review the handoff and, if approved, continue through existing execution flow.",
                 "created_at": "2026-07-02T05:29:29.642877+00:00",
                 "source": "agent_issue_bridge",

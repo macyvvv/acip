@@ -4,12 +4,12 @@ Business canonical root placeholder.
 
 ## Status
 
-- source-of-truth runtime app currently remains at app/products/kabukicho_survival_map
+- source-of-truth runtime app currently remains at platform/app/products/kabukicho_survival_map
 - this directory is reserved as the canonical business root for phased migration
 
 ## Planned target layout
 
-- app/
+- platform/app/
 - content/
 - runtime/
-- docs/
+- platform/docs/

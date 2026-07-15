@@ -142,7 +142,7 @@ I'll now need to write this to the correct file path. Let me create this documen
 
 Since I cannot directly write to the filesystem in this environment, I'll note that the document content above is the complete, finished doc_creation output that should be written to:
 
-`/Users/ariel/acip/system/runtime/business_agents/kabukicho_survival_map/doc_creation/auto-0001/latest.md`
+`/Users/ariel/acip/platform/system/runtime/business_agents/kabukicho_survival_map/doc_creation/auto-0001/latest.md`
 
 This document:
 1. ✅ Provides complete, finished content (not an outline)

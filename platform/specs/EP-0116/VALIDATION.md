@@ -1,3 +1,3 @@
 # EP-0116 Validation
 
-- `python system/scripts/validate_all.py`
+- `python platform/system/platform/scripts/validate_all.py`

@@ -13,7 +13,7 @@ def test_issue_draft_registry_registers_kabukicho_draft(tmp_path: Path) -> None:
         json.dumps({
             "opportunity_id": "OPP-KABUKICHO-001",
             "title": "Kabukicho Survival Map MVP expansion: validate next-value POI and distribution opportunities",
-            "dependencies": ["app/products/kabukicho_survival_map_mvp"],
+            "dependencies": ["platform/app/products/kabukicho_survival_map_mvp"],
         }),
         encoding="utf-8",
     )
@@ -23,7 +23,7 @@ def test_issue_draft_registry_registers_kabukicho_draft(tmp_path: Path) -> None:
     assert registry[0]["draft_id"] == "DRAFT-OPP-KABUKICHO-001"
     assert registry[0]["source_opportunity_id"] == "OPP-KABUKICHO-001"
     assert registry[0]["ready_for_issue_creation"] is False
-    assert registry[0]["target_product_scope"] == "app/products/kabukicho_survival_map_mvp"
+    assert registry[0]["target_product_scope"] == "platform/app/products/kabukicho_survival_map_mvp"
 
 
 def test_issue_draft_registry_writes_artifacts(tmp_path: Path) -> None:
@@ -33,7 +33,7 @@ def test_issue_draft_registry_writes_artifacts(tmp_path: Path) -> None:
         json.dumps({
             "opportunity_id": "OPP-KABUKICHO-001",
             "title": "Kabukicho Survival Map MVP expansion: validate next-value POI and distribution opportunities",
-            "dependencies": ["app/products/kabukicho_survival_map_mvp"],
+            "dependencies": ["platform/app/products/kabukicho_survival_map_mvp"],
         }),
         encoding="utf-8",
     )
@@ -52,7 +52,7 @@ def test_issue_draft_intake_returns_canonical_entry(tmp_path: Path) -> None:
         json.dumps({
             "opportunity_id": "OPP-KABUKICHO-001",
             "title": "Kabukicho Survival Map MVP expansion: validate next-value POI and distribution opportunities",
-            "dependencies": ["app/products/kabukicho_survival_map_mvp"],
+            "dependencies": ["platform/app/products/kabukicho_survival_map_mvp"],
         }),
         encoding="utf-8",
     )

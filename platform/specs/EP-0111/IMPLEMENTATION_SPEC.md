@@ -1,6 +1,6 @@
 # EP-0111 Implementation Spec
 
-- Discover `system/scripts/validate_ep_*.py`
+- Discover `platform/system/platform/scripts/validate_ep_*.py`
 - Execute in ascending EP order
 - Execute `python -m pytest -q` last
 - Persist machine-readable and human-readable reports

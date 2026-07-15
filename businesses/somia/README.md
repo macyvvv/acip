@@ -11,4 +11,4 @@ Business canonical root placeholder.
 
 - content/
 - runtime/
-- docs/
+- platform/docs/

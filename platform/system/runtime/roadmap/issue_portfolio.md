@@ -72,12 +72,12 @@ Define the canonical portfolio view for tracked repository work so operators can
 - Broad architecture and operator-control work stays out of the one-shot queue until explicitly promoted.
 
 ## Sources
-- `system/runtime/github/open_issues.json`
-- `system/runtime/issues/completed/`
-- `system/runtime/work_planner/latest.json`
-- `system/runtime/supervisor/latest.json`
-- `system/runtime/repository_state/latest.json`
-- `docs/current/AUTONOMOUS_OPERATIONAL_BASELINE.md`
-- `docs/current/ISSUE_OPERATOR_QUICKSTART.md`
-- `docs/current/ISSUE_CENTRIC_OPERATION.md`
-- `docs/current/RESEARCH_TO_ISSUE_OPERATING_PROCEDURE.md`
+- `platform/system/runtime/github/open_issues.json`
+- `platform/system/runtime/issues/completed/`
+- `platform/system/runtime/work_planner/latest.json`
+- `platform/system/runtime/supervisor/latest.json`
+- `platform/system/runtime/repository_state/latest.json`
+- `platform/docs/current/AUTONOMOUS_OPERATIONAL_BASELINE.md`
+- `platform/docs/current/ISSUE_OPERATOR_QUICKSTART.md`
+- `platform/docs/current/ISSUE_CENTRIC_OPERATION.md`
+- `platform/docs/current/RESEARCH_TO_ISSUE_OPERATING_PROCEDURE.md`

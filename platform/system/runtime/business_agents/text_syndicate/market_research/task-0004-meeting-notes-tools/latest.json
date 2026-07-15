@@ -17,6 +17,6 @@
   "exit_code": 1,
   "success": false,
   "captured_at": "2026-07-15T05:47:13.035230+00:00",
-  "artifact_path": "/Users/ariel/Documents/tools/acip/system/runtime/business_agents/text_syndicate/market_research/task-0004-meeting-notes-tools/latest.json",
+  "artifact_path": "/Users/ariel/Documents/tools/acip/platform/system/runtime/business_agents/text_syndicate/market_research/task-0004-meeting-notes-tools/latest.json",
   "failure_reason": null
 }

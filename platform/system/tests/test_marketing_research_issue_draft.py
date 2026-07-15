@@ -15,7 +15,7 @@ def test_marketing_research_issue_draft_is_canonical(tmp_path: Path) -> None:
     draft = json.loads(json_path.read_text(encoding="utf-8"))
     assert draft["opportunity_id"] == "OPP-KABUKICHO-001"
     assert draft["title"].startswith("Kabukicho Survival Map MVP expansion")
-    assert "app/products/kabukicho_survival_map_mvp" in draft["dependencies"]
+    assert "platform/app/products/kabukicho_survival_map_mvp" in draft["dependencies"]
     assert "No GitHub issue is auto-created." in draft["validation_criteria"]
     assert "No automatic issue creation." in draft["implementation_constraints"]
     markdown = md_path.read_text(encoding="utf-8")

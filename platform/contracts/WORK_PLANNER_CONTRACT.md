@@ -8,13 +8,13 @@
 
 ## Required Inputs
 
-- `system/runtime/planning/latest.json`
-- `system/runtime/repository_state/latest.json`
-- `system/runtime/repository_constitution/constitution.json`
+- `platform/system/runtime/planning/latest.json`
+- `platform/system/runtime/repository_state/latest.json`
+- `platform/system/runtime/repository_constitution/constitution.json`
 - `queue/`
-- `packs/`
-- `system/runtime/handoff/latest.json`
-- `system/runtime/event_system/runtime/`
+- `platform/packs/`
+- `platform/system/runtime/handoff/latest.json`
+- `platform/system/runtime/event_platform/system/runtime/`
 - root hygiene migration plans if present
 
 ## Required Output Fields

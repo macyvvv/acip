@@ -15,7 +15,7 @@ class QueueStateError(ValueError):
     pass
 
 
-def read_queue_state(path: str | Path = "docs/current/QUEUE_STATE.md") -> QueueState:
+def read_queue_state(path: str | Path = "platform/docs/current/QUEUE_STATE.md") -> QueueState:
     state_path = Path(path)
     if not state_path.exists():
         raise FileNotFoundError(f"Queue state file not found: {state_path}")
@@ -27,7 +27,7 @@ def read_queue_state(path: str | Path = "docs/current/QUEUE_STATE.md") -> QueueS
     return QueueState(status=values["status"], active_ep=values["active_ep"], next_ep=values["next_ep"])
 
 
-def write_queue_state(state: QueueState, path: str | Path = "docs/current/QUEUE_STATE.md") -> None:
+def write_queue_state(state: QueueState, path: str | Path = "platform/docs/current/QUEUE_STATE.md") -> None:
     state_path = Path(path)
     state_path.parent.mkdir(parents=True, exist_ok=True)
     state_path.write_text(

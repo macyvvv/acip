@@ -59,7 +59,7 @@ def add_task(
 def list_candidate_tasks(base_path: str | Path = ".") -> list[dict[str, Any]]:
     """Pure, read-only. Returns every queue.json entry still status=="candidate",
     in file order (oldest first, since add_task only ever appends). Adds zero
-    authorization surface by itself -- system/scripts/business_agent/
+    authorization surface by itself -- platform/system/platform/scripts/business_agent/
     run_scheduled_execution.py uses this purely to discover what a human could
     already call manually via run_approved_autonomous_execution.py; the one
     real authorization decision still lives entirely inside

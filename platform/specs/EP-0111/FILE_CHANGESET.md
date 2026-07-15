@@ -1,9 +1,9 @@
-- `system/orchestrator/validation_orchestrator.py`
-- `system/scripts/validate_all.py`
-- `system/scripts/validate_ep_0111.py`
-- `docs/current/VALIDATION_STATE.md`
-- `system/runtime/validation/validation_report.json`
-- `system/runtime/validation/VALIDATION_REPORT.md`
+- `platform/system/orchestrator/validation_orchestrator.py`
+- `platform/system/platform/scripts/validate_all.py`
+- `platform/system/platform/scripts/validate_ep_0111.py`
+- `platform/docs/current/VALIDATION_STATE.md`
+- `platform/system/runtime/validation/validation_report.json`
+- `platform/system/runtime/validation/VALIDATION_REPORT.md`
 - `.github/workflows/validate-all.yml`
-- `docs/ep/README_EP0111_VALIDATION_ORCHESTRATOR.md`
-- `system/tests/test_validation_orchestrator.py`
+- `platform/docs/ep/README_EP0111_VALIDATION_ORCHESTRATOR.md`
+- `platform/system/tests/test_validation_orchestrator.py`

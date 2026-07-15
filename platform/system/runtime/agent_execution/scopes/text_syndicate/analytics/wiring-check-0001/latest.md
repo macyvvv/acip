@@ -8,8 +8,8 @@ scope_id: text_syndicate:analytics:wiring-check-0001
 execution_triggered: true
 execution_mode: one_shot
 execution_result_status: success
-completion_marker_path: /Users/ariel/Documents/tools/acip/system/runtime/business_agents/text_syndicate/analytics/wiring-check-0001/latest.json
-request_path: /Users/ariel/Documents/tools/acip/system/runtime/request/execution_request.json
+completion_marker_path: /Users/ariel/Documents/tools/acip/platform/system/runtime/business_agents/text_syndicate/analytics/wiring-check-0001/latest.json
+request_path: /Users/ariel/Documents/tools/acip/platform/system/runtime/request/execution_request.json
 stopped_reason: completion_marker_written
 started_at: 2026-07-15T00:51:41.114477+00:00
 finished_at: 2026-07-15T00:51:41.126572+00:00

@@ -62,7 +62,7 @@ def _detect_product_directory(base_path: Path, issue: dict) -> Path | None:
     for deliverable in deliverables:
         if not isinstance(deliverable, str):
             continue
-        match = re.match(r"(?:app/products|product)/([^/]+)/", deliverable)
+        match = re.match(r"(?:platform/app/products|product)/([^/]+)/", deliverable)
         if match:
             candidate_name = match.group(1)
             for candidate in (

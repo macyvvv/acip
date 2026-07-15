@@ -64,7 +64,7 @@ def load_config_fallback() -> dict[str, Any]:
             ]
         },
         "entrypoints": ["README.md", "README_REPOSITORY_COMPLETE_PACK.md", "PROJECT.md", "STATE.md", "ROADMAP.md", "CHANGELOG.md", "AGENTS.md"],
-        "draft_dirs": ["knowledge/draft"],
+        "draft_dirs": ["platform/knowledge/draft"],
         "template_markers": {"filename_contains": ["TEMPLATE", "REPORT", "CHECKLIST", "PROMPT"]},
         "index_markers": {"filename_contains": ["INDEX", "QUEUE", "REGISTRY"]},
         "approved_current_objectives": ["Canonical Asset Production", "Agent OS Foundation", "Repository Operating System Stabilization", "Constitution v3 Freeze"],
@@ -107,7 +107,7 @@ def classify(path: Path, text: str, config: dict[str, Any]) -> str:
             return "index"
     if path.name in set(config.get("entrypoints", [])):
         return "entrypoint"
-    if "system/scripts/selftest" in r or "system/scripts/selftest_v2" in r:
+    if "platform/system/platform/scripts/selftest" in r or "platform/system/platform/scripts/selftest_v2" in r:
         return "selftest"
     return "canonical"
 

@@ -21,7 +21,7 @@ from system.core.publishing_control import pause_publishing
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Freeze the publishing scheduler (system/scripts/publishing/run_scheduled_publish.py) "
+        description="Freeze the publishing scheduler (platform/system/platform/scripts/publishing/run_scheduled_publish.py) "
         "across all businesses/platforms. No manual override exists -- paused means zero posts, full stop."
     )
     parser.add_argument("--reason", required=True)

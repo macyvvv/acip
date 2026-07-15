@@ -11,7 +11,7 @@ Human → GitHub Issue → GitHub sync → Supervisor selection → Execution �
 
 ### Intake
 - A human creates a GitHub Issue.
-- `system/scripts/sync_github_issues.py` syncs open issues into `system/runtime/github/open_issues.json`.
+- `platform/system/platform/scripts/sync_github_issues.py` syncs open issues into `platform/system/runtime/github/open_issues.json`.
 
 ### Eligibility
 - The supervisor reads the synced issue mirror and repository runtime state.
@@ -22,7 +22,7 @@ Human → GitHub Issue → GitHub sync → Supervisor selection → Execution �
 - The local execution adapter runs the request through Claude Code (`claude -p`).
 
 ### Completion
-- The processed issue is recorded in `system/runtime/issues/completed/`.
+- The processed issue is recorded in `platform/system/runtime/issues/completed/`.
 - The latest completion marker is updated in runtime artifacts.
 
 ### Human Review
@@ -30,16 +30,16 @@ Human → GitHub Issue → GitHub sync → Supervisor selection → Execution �
 - Reviewers inspect sync output, supervisor output, execution output, and completion markers.
 
 ## Canonical Artifacts
-- `system/runtime/github/open_issues.json`
-- `system/runtime/supervisor/latest.json`
-- `system/runtime/local_execution/latest.json`
-- `system/runtime/local_execution/model_resolution.json`
-- `system/runtime/issues/completed/issue_*.json`
-- `system/runtime/handoff/completion/latest.json`
+- `platform/system/runtime/github/open_issues.json`
+- `platform/system/runtime/supervisor/latest.json`
+- `platform/system/runtime/local_execution/latest.json`
+- `platform/system/runtime/local_execution/model_resolution.json`
+- `platform/system/runtime/issues/completed/issue_*.json`
+- `platform/system/runtime/handoff/completion/latest.json`
 
 ## Validation Touchpoints
-- `python3 system/scripts/validate_all.py`
-- Canonical pytest command from `docs/current/VALIDATION_COMMAND_POLICY.md`
+- `python3 platform/system/platform/scripts/validate_all.py`
+- Canonical pytest command from `platform/docs/current/VALIDATION_COMMAND_POLICY.md`
 
 ## Current Assessment
 - Issue intake is present.

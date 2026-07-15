@@ -6,9 +6,9 @@
   "message_type": "request_execution",
   "related_issue": "ISSUE-0003",
   "related_artifacts": [
-    "docs/current/CHATGPT_CODEX_MESSAGE_CONTRACT.md",
-    "docs/current/AUTONOMOUS_AGENT_STATE_MODEL.md",
-    "docs/current/AUTONOMOUS_CONVERSATION_VERTICAL_SLICE.md"
+    "platform/docs/current/CHATGPT_CODEX_MESSAGE_CONTRACT.md",
+    "platform/docs/current/AUTONOMOUS_AGENT_STATE_MODEL.md",
+    "platform/docs/current/AUTONOMOUS_CONVERSATION_VERTICAL_SLICE.md"
   ],
   "objective": "Demonstrate a bounded autonomous conversation thread",
   "requested_action": "advance_thread",

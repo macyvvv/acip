@@ -16,5 +16,5 @@
   "exit_code": 0,
   "success": true,
   "captured_at": "2026-07-10T20:10:23.388537+00:00",
-  "artifact_path": "/Users/ariel/acip/system/runtime/business_agents/text_syndicate/doc_creation/auto-0001/latest.json"
+  "artifact_path": "/Users/ariel/acip/platform/system/runtime/business_agents/text_syndicate/doc_creation/auto-0001/latest.json"
 }

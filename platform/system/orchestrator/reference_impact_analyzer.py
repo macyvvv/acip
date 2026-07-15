@@ -17,9 +17,9 @@ class ReferenceImpactAnalyzer:
 
     def analyze(self) -> tuple[ReferenceImpact, ...]:
         impacts = (
-            ReferenceImpact(path='docs/', impact='low'),
-            ReferenceImpact(path='system/runtime/', impact='low'),
-            ReferenceImpact(path='packs/', impact='low'),
+            ReferenceImpact(path='platform/docs/', impact='low'),
+            ReferenceImpact(path='platform/system/runtime/', impact='low'),
+            ReferenceImpact(path='platform/packs/', impact='low'),
         )
         runtime_dir = self.base_path / 'runtime' / 'root_hygiene'
         runtime_dir.mkdir(parents=True, exist_ok=True)
