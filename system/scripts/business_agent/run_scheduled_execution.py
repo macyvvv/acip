@@ -45,9 +45,10 @@ from system.core.scheduled_merge_control import is_scheduled_merge_paused
 # same way Level 3a already guarantees this for interactive/session-triggered
 # runs. Posting/publishing (Level 3c) and any deploy action are untouched.
 #
-# ADR-0040 extends this with an unattended-merge capability, gated
-# separately (see _attempt_auto_merge below) -- generation and merge are
-# two distinct trust decisions with two distinct kill switches.
+# ADR-0040 (Level 3d) extends this with an unattended-merge capability,
+# gated separately (see _attempt_auto_merge below) -- generation (3b) and
+# merge (3d) are two distinct trust decisions with two distinct kill
+# switches, not one capability under a single letter.
 
 MAX_TASK_EXECUTIONS_PER_WAKE = 5
 

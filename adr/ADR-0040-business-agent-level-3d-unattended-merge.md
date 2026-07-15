@@ -1,8 +1,23 @@
-# ADR-0040: Business Agent Platform -- Unattended Merge for Scheduled Execution
+# ADR-0040: Business Agent Platform -- Level 3d: Unattended Merge for Scheduled Execution
 
 ## Status
 
 Accepted
+
+## Naming Correction (added on review)
+
+This capability is **Level 3d**, not a sub-feature of Level 3b. This
+platform's Level-3 lettering convention is one letter per distinct
+human-approval-boundary crossing: 3a = pre-approval of the execution
+*decision*, 3b = the scheduled *trigger* that acts on that decision
+unattended, 3c = pre-approval of *publishing*. This ADR crosses a fourth,
+independent boundary -- unattended *landing to `main`* -- which this ADR's
+own Drawbacks section already named as "the first time content reaches
+main with zero human eyes," a bigger crossing than 3b's original scope
+(generation only). Originally filed as an extension of 3b; relabeled 3d
+after a full Level 1-3 MECE review found the original framing understated
+what this ADR actually does and could read as if "Level 3b" always meant
+"schedule + merge," which it did not before this ADR existed.
 
 ## Triggering Incident
 

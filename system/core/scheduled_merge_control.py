@@ -5,8 +5,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-# Dedicated kill switch for the unattended-merge capability added to
-# system/scripts/business_agent/run_scheduled_execution.py (ADR-0040) --
+# Dedicated kill switch for the unattended-merge capability (Level 3d)
+# added to system/scripts/business_agent/run_scheduled_execution.py
+# (ADR-0040) -- a distinct level from 3b (the scheduled generation trigger
+# this gates the landing of), not a sub-feature of it --
 # the 5th independent switch in this platform, deliberately not a reuse of
 # any of the other four (see scheduled_execution_control.py's own docstring
 # for the same reasoning applied to itself): "should a successful wake's
