@@ -9,7 +9,7 @@ from semantic_common import ROOT, Result, Doc, result, markdown_links
 
 REQUIRED_DIRS = [
     # catalog, registry, runbooks, control were removed from this list --
-    # archived to archive/root_scaffolding_2026/ (see platform/adr/ADR-0037's
+    # archived to platform/archive/root_scaffolding_2026/ (see platform/adr/ADR-0037's
     # follow-up root-directory audit); confirmed zero code/workflow
     # references before archiving, so they're no longer required to exist.
     "basis", "adr", "wbs", "docs", "contracts",

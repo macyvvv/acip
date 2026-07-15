@@ -30,8 +30,8 @@ canonical_space:
     - __pycache__
     - .pytest_cache
   exclude_files:
-    - archive/README_SELFTEST_PACK.md
-    - archive/README_REPOSITORY_SELFTEST_PACK.md
+    - platform/archive/README_SELFTEST_PACK.md
+    - platform/archive/README_REPOSITORY_SELFTEST_PACK.md
 
 entrypoints:
   - README.md

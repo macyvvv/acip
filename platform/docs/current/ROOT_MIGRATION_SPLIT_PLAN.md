@@ -56,8 +56,8 @@ Temporary during migration:
 
 ### Root Cleanup Targets
 
-- Platform sideへ集約: `platform/adr/`, `platform/baseline/`, `platform/basis/`, `platform/context/`, `platform/contracts/`, `platform/docs/`, `platform/specs/`, `platform/system/`, `platform/scripts/`, `archive/`, `platform/knowledge/`, `platform/packs/`, `platform/wbs/`, `platform/app/`, `platform/inbox/`, `platform/releases/`, `platform/web/`, `platform/.platform/system/`, `platform/scratch/`
-- Business side canonical targets: `businesses/dreamcore_video/content`, `businesses/physics_math_visualization/content`, `businesses/somia/content`, `businesses/kabukicho_survival_map/app`
+- Platform sideへ集約: `platform/adr/`, `platform/baseline/`, `platform/basis/`, `platform/context/`, `platform/contracts/`, `platform/docs/`, `platform/specs/`, `platform/system/`, `platform/scripts/`, `platform/archive/`, `platform/knowledge/`, `platform/packs/`, `platform/wbs/`, `platform/app/`, `platform/inbox/`, `platform/releases/`, `platform/web/`, `platform/.platform/system/`, `platform/scratch/`
+- Business side canonical targets: `businesses/dreamcore_video/content`, `businesses/physics_math_visualization/content`, `businesses/platform/somia/content`, `businesses/kabukicho_survival_map/app`
 
 ### Platform Target Contents
 
@@ -72,7 +72,7 @@ Temporary during migration:
 ### Businesses Target Contents
 
 - `businesses/kabukicho_survival_map/`
-- `businesses/somia/`
+- `businesses/platform/somia/`
 - `businesses/music_platform/` (greenfield placeholder)
 - `businesses/text_syndicate/` (greenfield placeholder)
 - `businesses/dreamcore_video/`
@@ -106,7 +106,7 @@ Status note (2026-07-16):
 
 - `dreamcore_video` moved to `businesses/dreamcore_video/content`
 - `physics_math_visualization` moved to `businesses/physics_math_visualization/content`
-- `somia` moved to `businesses/somia/content`
+- `somia` moved to `businesses/platform/somia/content`
 - Kabukicho product root moved to `businesses/kabukicho_survival_map/app`
 - compatibility symlink retired at legacy roots: `dreamcore_video`, `physics_math_visualization` (2026-07-16)
 - compatibility symlink retired at legacy product path: `platform/app/products/kabukicho_survival_map` (2026-07-16)

@@ -31,7 +31,7 @@ The bottleneck isn't content quality (research/marketing/doc_creation output loo
 2. **Operator decision, not an agent task**: either configure real X API credentials to flip `publishing/policy.json`'s `text_syndicate`/`x` policy off `dry_run`, or explicitly decide to stay dry-run longer — right now the pilot is producing unpublished drafts indefinitely with no stated exit criterion. Flag this to the human operator directly; this is capital/tooling allocation, not something to route to another agent role.
 3. **market_research**: do not start a third content pillar yet. There's no data to tell whether pillar #1 (AI-tools) or #2 (SaaS-tools) works — adding a third compounds the same unmeasured-bet problem. If tasked again, the highest-value next task is auditing whether note.com (explicitly part of this business's own definition) has *any* research, policy, or provider coverage at all — right now it appears nowhere outside the business description.
 4. **marketing**: hold on drafting further batches until either real publishing or a content_root-backed analytics signal exists — more unpublished drafts don't advance Check.
-5. **scenario_writing**: not applicable to this business (it's a somia/kabukicho_survival_map role for narrative/scenario content, not text-only social copy) — no recommendation.
+5. **scenario_writing**: not applicable to this business (it's a platform/somia/kabukicho_survival_map role for narrative/scenario content, not text-only social copy) — no recommendation.
 
 **Bottom line**: this cycle's honest output is "the loop is not yet closed, here's exactly why, here's the one-line fix and the one operator decision that unblocks it" — not a false Check based on absent data.
 

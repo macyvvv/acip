@@ -71,7 +71,7 @@ confirmed-live `AGENT_COMPLETION_CONTRACT` cluster
 being CI-required is not a coincidence.)
 
 Fixed by repointing all 7 scripts' required path at this archive location
-(`archive/root_scaffolding_2026/queue/READY/EP-XXXX-....md`) instead of the
+(`platform/archive/root_scaffolding_2026/queue/READY/EP-XXXX-....md`) instead of the
 original `queue/READY/`, matching the same pattern already used for
 `semantic_checks.py`'s `REQUIRED_FILES`/`REQUIRED_DIRS` and
 `validate_baseline.py`'s `REQUIRED` list earlier in this same governance

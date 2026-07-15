@@ -13,31 +13,31 @@
   "final_from_to_table": [
     {
       "from": "baseline",
-      "to": "archive/platform/baseline/"
+      "to": "platform/archive/platform/baseline/"
     },
     {
       "from": "control",
-      "to": "archive/control/"
+      "to": "platform/archive/control/"
     },
     {
       "from": "loader",
-      "to": "archive/loader/"
+      "to": "platform/archive/loader/"
     },
     {
       "from": "prompts",
-      "to": "archive/prompts/"
+      "to": "platform/archive/prompts/"
     },
     {
       "from": "releases",
-      "to": "archive/platform/releases/"
+      "to": "platform/archive/platform/releases/"
     },
     {
       "from": "rules",
-      "to": "archive/rules/"
+      "to": "platform/archive/rules/"
     },
     {
       "from": "templates",
-      "to": "archive/templates/"
+      "to": "platform/archive/templates/"
     }
   ],
   "exact_reference_update_targets": {
@@ -228,13 +228,13 @@
   "pre_migration_validation_command": "python3 platform/system/platform/scripts/validate_all.py",
   "post_migration_validation_command": "python3 platform/system/platform/scripts/validate_all.py && python3 -m pytest -q",
   "rollback_commands": [
-    "mv archive/baseline baseline",
-    "mv archive/control control",
-    "mv archive/loader loader",
-    "mv archive/prompts prompts",
-    "mv archive/releases releases",
-    "mv archive/rules rules",
-    "mv archive/templates templates"
+    "mv platform/archive/baseline baseline",
+    "mv platform/archive/control control",
+    "mv platform/archive/loader loader",
+    "mv platform/archive/prompts prompts",
+    "mv platform/archive/releases releases",
+    "mv platform/archive/rules rules",
+    "mv platform/archive/templates templates"
   ],
   "execution_order": [
     "baseline",

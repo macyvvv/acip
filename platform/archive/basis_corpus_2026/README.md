@@ -20,7 +20,7 @@ in `platform/basis/` rather than being folded in or archived:
 Kept here for history per this repo's own established convention (see
 `AGENTS.md`/`platform/.platform/system/*`, kept as historical record rather than deleted) and
 per the prior archival precedent this follows,
-[`archive/basis_skeleton/`](../basis_skeleton/README.md). Archive space may
+[`platform/archive/basis_skeleton/`](../basis_skeleton/README.md). Archive space may
 duplicate numbers/titles and is excluded from canonical duplicate/orphan
 checks (this was itself the subject of one of the archived files,
 `064_selftest_v2_archive_policy.md`).
@@ -45,9 +45,9 @@ checks (this was itself the subject of one of the archived files,
 | `058_drift_detection_policy.md` | Drift = files/policies contradicting the active operating model, must be reported | Not currently wired as a dedicated check; aspirational — this review (`ADR-0037`) is itself an instance of manually catching drift `058` describes |
 | `059_duplicate_detection_policy.md` | Duplicate governance docs create ambiguity | `semantic_checks.py`'s duplicate detection (live) |
 | `060_continuous_governance_policy.md` | CI must run self-test/boundary/link/secret/runtime-readiness checks on PRs | Governance Stage 2 of this same overhaul actually cleaned up CI to match this intent — see `.github/workflows/` |
-| `061_semantic_selftest_policy.md` | Self-test v2 must separate canonical/archive/draft/template/report/index space | `selftest_v2/` itself, which this file described before it was built |
+| `061_semantic_selftest_policy.md` | Self-test v2 must separate canonical/platform/archive/draft/template/report/index space | `selftest_v2/` itself, which this file described before it was built |
 | `063_selftest_v2_boundary_policy.md` | Boundary checks must distinguish prohibited execution from text merely describing the boundary | Implemented directly in `semantic_checks.py` |
-| `064_selftest_v2_archive_policy.md` | `archive/**` is historical space: may duplicate numbers, may be unreferenced, still scanned for secrets | This very archive follows that policy; the policy's principle is now just an implicit repo convention rather than a standalone file |
+| `064_selftest_v2_archive_policy.md` | `platform/archive/**` is historical space: may duplicate numbers, may be unreferenced, still scanned for secrets | This very archive follows that policy; the policy's principle is now just an implicit repo convention rather than a standalone file |
 
 ## Knowledge graph & context — never built beyond stubs; archived without a live replacement
 

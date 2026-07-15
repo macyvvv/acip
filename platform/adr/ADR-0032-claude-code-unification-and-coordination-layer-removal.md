@@ -31,7 +31,7 @@ The GitHub-committed coordination layer that existed solely to bridge two
 memoryless services is removed. What remains:
 
 - The actual product surfaces (`platform/app/products/*`, `platform/app/tools/approval_console_mvp`,
-  `somia/`).
+  `platform/somia/`).
 - The real issue pipeline: `platform/system/platform/scripts/sync_github_issues.py` →
   `platform/system/runtime/roadmap/issue_portfolio.json` (human-curated priority) →
   `platform/app/tools/approval_console_mvp` (candidate selection + approval) →
@@ -102,7 +102,7 @@ matched their own contracts).
   event_contract, reference_impact_analyzer, planning_state_builder,
   repository_state_builder, queue_state}.py` and matching tests.
 - Unaffected: `platform/app/products/*`, `platform/app/tools/approval_console_mvp`,
-  `somia/`, `platform/system/platform/scripts/sync_github_issues.py` and
+  `platform/somia/`, `platform/system/platform/scripts/sync_github_issues.py` and
   `platform/system/platform/scripts/github/*`, git hooks / main-branch protection,
   `platform/basis/`, `platform/adr/`.
 

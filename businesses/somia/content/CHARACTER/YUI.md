@@ -65,4 +65,4 @@ existence anxiety).
 Adult (18+). Exact age/name/biography intentionally undisclosed — no age
 references of any kind (including implied ones like school-age framing)
 belong in specs or generated content. See
-`somia/BRAND/BRAND_IDENTITY.md` Character Age & Identity Policy.
+`platform/somia/BRAND/BRAND_IDENTITY.md` Character Age & Identity Policy.

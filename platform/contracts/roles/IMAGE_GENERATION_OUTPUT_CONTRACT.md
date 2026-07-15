@@ -19,12 +19,12 @@ keyframe half of Somia's `video_generation` provider call chain (see
 `VIDEO_GENERATION_OUTPUT_CONTRACT.md`) — a fused text-to-image step
 inside `providers_illustrious_kling.py`/`providers_kling.py`/`providers_pika.py`'s
 `generate()`, using `fal-ai/lora` (text-to-image), writing straight to
-`businesses/somia/content/CONTENT/{content_id}/keyframe.png`. That path is **not** this
+`businesses/platform/somia/content/CONTENT/{content_id}/keyframe.png`. That path is **not** this
 contract's `output_target`, and this role is not currently invocable as
 an independent stage for Somia.
 
 Separately, Somia's production pipeline notes
-(`businesses/somia/content/PRODUCTION/PIPELINE.md`) name an img2img reference-consistency
+(`businesses/platform/somia/content/PRODUCTION/PIPELINE.md`) name an img2img reference-consistency
 step (`fal-ai/lora/image-to-image`, `noise_strength≈0.45` against a
 character's `ref_*/keyframe.png`) as "the single biggest quality lever" —
 but that step is marked `[manual]` there and has no provider adapter code

@@ -1,6 +1,6 @@
 ---
 name: dataops
-description: Use for data pipeline integrity and schema consistency across acip's structured datasets — platform/system/runtime/data/kabukicho/*.json (POI schema), businesses/somia/content/CONTENT/*/ (script.md/prompt.md/metadata.json/audio.json specs validated by content_spec.py), and business_agent research artifacts. Proactively invoke when adding/editing dataset entries at scale, before trusting a bulk data change, or when a product's data-load path might be silently failing.
+description: Use for data pipeline integrity and schema consistency across acip's structured datasets — platform/system/runtime/data/kabukicho/*.json (POI schema), businesses/platform/somia/content/CONTENT/*/ (script.md/prompt.md/metadata.json/audio.json specs validated by content_spec.py), and business_agent research artifacts. Proactively invoke when adding/editing dataset entries at scale, before trusting a bulk data change, or when a product's data-load path might be silently failing.
 tools: Read, Grep, Glob, Bash
 ---
 
@@ -15,7 +15,7 @@ When a task needs research-then-documentation for a business, you are the one wh
 
 ## What you own
 - `platform/system/runtime/data/kabukicho/*.json` — one array per POI category (smoking/toilet/convenience/atm/coin_locker/lodging). Required fields per issue #33: name, lat/lng, description, category, tags, last_updated, reliability_score (1-5), source_type, type. Verify every entry still matches this shape after a bulk edit — a missing field fails silently in `app.js`'s render, not loudly.
-- `businesses/somia/content/CONTENT/<id>/` — script.md/prompt.md/metadata.json/audio.json, parsed by `platform/system/platform/scripts/somia/content_spec.py`'s `load_content_spec()`. Run it against every content dir after a batch add; a malformed heading (e.g. a missing `## Text` section) fails silently unless checked.
+- `businesses/platform/somia/content/CONTENT/<id>/` — script.md/prompt.md/metadata.json/audio.json, parsed by `platform/system/platform/scripts/platform/somia/content_spec.py`'s `load_content_spec()`. Run it against every content dir after a batch add; a malformed heading (e.g. a missing `## Text` section) fails silently unless checked.
 - Data freshness: `last_updated` staleness (kabukicho's freshness badges: ≤7d recent, ≤30d ok, else stale), and `reliability_score` distribution.
 - Cross-file consistency: category counts, no duplicate entries, no orphaned references between a product's `CATEGORIES`/`TAG_COPY` config (in app.js) and its actual data files' categories/tags.
 

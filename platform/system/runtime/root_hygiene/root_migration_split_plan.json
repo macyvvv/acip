@@ -33,31 +33,31 @@
   "low_risk_migrations": [
     {
       "from": "baseline",
-      "to": "archive/platform/baseline/"
+      "to": "platform/archive/platform/baseline/"
     },
     {
       "from": "control",
-      "to": "archive/control/"
+      "to": "platform/archive/control/"
     },
     {
       "from": "loader",
-      "to": "archive/loader/"
+      "to": "platform/archive/loader/"
     },
     {
       "from": "prompts",
-      "to": "archive/prompts/"
+      "to": "platform/archive/prompts/"
     },
     {
       "from": "releases",
-      "to": "archive/platform/releases/"
+      "to": "platform/archive/platform/releases/"
     },
     {
       "from": "rules",
-      "to": "archive/rules/"
+      "to": "platform/archive/rules/"
     },
     {
       "from": "templates",
-      "to": "archive/templates/"
+      "to": "platform/archive/templates/"
     }
   ],
   "low_risk_reference_updates": [
@@ -212,13 +212,13 @@
     }
   ],
   "low_risk_rollback": {
-    "archive/platform/baseline/": "baseline",
-    "archive/control/": "control",
-    "archive/loader/": "loader",
-    "archive/prompts/": "prompts",
-    "archive/platform/releases/": "releases",
-    "archive/rules/": "rules",
-    "archive/templates/": "templates"
+    "platform/archive/platform/baseline/": "baseline",
+    "platform/archive/control/": "control",
+    "platform/archive/loader/": "loader",
+    "platform/archive/prompts/": "prompts",
+    "platform/archive/platform/releases/": "releases",
+    "platform/archive/rules/": "rules",
+    "platform/archive/templates/": "templates"
   },
   "recommended_next_pack": "PACK-0007-L1"
 }

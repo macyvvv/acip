@@ -23,11 +23,11 @@ platform/system/runtime/publishing/oauth2/
 # somia generated render outputs — reproducible from specs, large binaries.
 # Specs (script.md/prompt.md/metadata.json) are the source of truth, not the
 # generated media. Keep these out of git; store finals in external storage.
-businesses/somia/content/CONTENT/**/keyframe*.png
-businesses/somia/content/CONTENT/**/video*.mp4
-businesses/somia/content/CONTENT/**/*.dry_run.txt
-businesses/somia/content/CONTENT/**/.fal_checkpoint_*.json
-businesses/somia/content/proto_images/
+businesses/platform/somia/content/CONTENT/**/keyframe*.png
+businesses/platform/somia/content/CONTENT/**/video*.mp4
+businesses/platform/somia/content/CONTENT/**/*.dry_run.txt
+businesses/platform/somia/content/CONTENT/**/.fal_checkpoint_*.json
+businesses/platform/somia/content/proto_images/
 
 # platform/system/core/file_lock.py's flock lock files -- empty, purely transient
 # locking artifacts, never meaningful state. Scoped to platform/system/runtime/ only,

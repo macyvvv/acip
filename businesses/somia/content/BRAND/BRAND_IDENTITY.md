@@ -40,7 +40,7 @@ an art project. The goal is content people come back to compulsively:
 ## Brand Philosophy
 
 - Each character has her own relationship-to-dependency angle and her own
-  visual environment (see `somia/CHARACTER/*.md`) — e.g. Mina/Nao/Yui read
+  visual environment (see `platform/somia/CHARACTER/*.md`) — e.g. Mina/Nao/Yui read
   warm and domestic, Airi/Rena read moody and withdrawn (dim room,
   screen-glow, quiet control). Both are valid; neither is universal.
 - The one rule that applies to every character regardless of tone: no
