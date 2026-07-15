@@ -92,7 +92,7 @@ _OPTIONAL_PROVIDER_MODULES: dict[str, str] = {
 
 def register_provider(provider_cls: type[VideoGenerationProvider]) -> None:
     """Vendor adapters call this to plug in without editing this file's registry
-    literal, e.g. from a platform/system/platform/scripts/somia/providers_pika.py module."""
+    literal, e.g. from a platform/system/platform/scripts/platform/somia/providers_pika.py module."""
     _REGISTRY[provider_cls.name] = provider_cls
 
 

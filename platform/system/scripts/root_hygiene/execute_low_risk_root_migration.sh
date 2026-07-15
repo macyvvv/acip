@@ -21,16 +21,16 @@ for target in "${TARGETS[@]}"; do
     echo "Missing expected root entry: $target" >&2
     exit 1
   fi
-  if [[ -e "$ROOT_DIR/archive/$target" ]]; then
-    echo "Unexpected existing archive target: archive/$target" >&2
+  if [[ -e "$ROOT_DIR/platform/archive/$target" ]]; then
+    echo "Unexpected existing archive target: platform/archive/$target" >&2
     exit 1
   fi
 done
 
 mkdir -p "$ROOT_DIR/archive"
 for target in "${TARGETS[@]}"; do
-  printf 'mkdir -p %q\n' "$ROOT_DIR/archive/$target"
-  printf 'mv %q %q\n' "$ROOT_DIR/$target" "$ROOT_DIR/archive/$target"
+  printf 'mkdir -p %q\n' "$ROOT_DIR/platform/archive/$target"
+  printf 'mv %q %q\n' "$ROOT_DIR/$target" "$ROOT_DIR/platform/archive/$target"
 done
 
 echo "Reference updates are intentionally not performed by this script." \

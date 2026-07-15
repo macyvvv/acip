@@ -2,7 +2,7 @@
 
 This is the current, compact record of why this repository is governed the
 way it is. It replaces the bulk of what used to be a 44-file `platform/basis/` policy
-corpus (see `archive/basis_corpus_2026/README.md` for what was archived and
+corpus (see `platform/archive/basis_corpus_2026/README.md` for what was archived and
 why) after a full governance-layer review (`platform/adr/ADR-0037-governance-layer-
 overhaul.md`) found that almost all of it was pure prose with no enforcing
 code behind it, and that several of its rules had gone stale enough to
@@ -143,6 +143,6 @@ stale.
   `lower_snake_case` code convention).
 
 Everything else that used to live in `platform/basis/` is archived at
-`archive/basis_corpus_2026/`, with a README there mapping each archived
+`platform/archive/basis_corpus_2026/`, with a README there mapping each archived
 file to whichever principle above (or piece of still-live code) actually
 covers its real content.

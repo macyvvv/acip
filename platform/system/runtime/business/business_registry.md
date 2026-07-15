@@ -14,7 +14,7 @@
   - tracking_issue_numbers: [33, 34, 36]
   - notes: Location/survival guide product for Kabukicho. Fixed 2026-07-14: previously pointed at kabukicho_survival_map_mvp (an earlier, much smaller, superseded prototype) -- see CLAUDE.md's explicit warning not to confuse the two. This is the real, from-scratch app.
 - `somia` (active): Somia
-  - content_root: businesses/somia/content (exists=true)
+  - content_root: businesses/platform/somia/content (exists=true)
   - product_code_path: platform/system/platform/scripts/somia (exists=true)
   - tracking_issue_numbers: [45, 46]
   - notes: AI character media / video content business. Image/video generation roles require paid vendor APIs (fal.ai/Kling).

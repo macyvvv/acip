@@ -93,7 +93,7 @@ def rel(path: Path) -> str:
 
 def classify(path: Path, text: str, config: dict[str, Any]) -> str:
     r = rel(path)
-    if r.startswith("archive/"):
+    if r.startswith("platform/archive/"):
         return "archive"
     for d in config.get("draft_dirs", []):
         if r.startswith(d.rstrip("/") + "/"):

@@ -115,7 +115,7 @@ Which would you actually pick — bigger ceiling with a volume gate, or simpler 
 
 ---
 
-### Supporting Context Document (for archive/reference)
+### Supporting Context Document (for platform/archive/reference)
 
 **Pillar Definition: SaaS Tools with Recurring Commissions**
 

@@ -61,4 +61,4 @@ with a withheld backstory — the mystery is elemental, not secretive.
 ## Character Age & Identity
 
 Adult (18+). Exact age/name/biography intentionally undisclosed — see
-`somia/BRAND/BRAND_IDENTITY.md` Character Age & Identity Policy.
+`platform/somia/BRAND/BRAND_IDENTITY.md` Character Age & Identity Policy.

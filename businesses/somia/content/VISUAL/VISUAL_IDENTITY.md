@@ -64,7 +64,7 @@ that means the piece missed, even if it's superficially a *positive*
 reaction (e.g. Mina: plain "comfort" is a failure; Rena: viewer feeling
 directly "targeted" is a failure). When writing or reviewing content,
 check against the specific character's failure condition in
-`somia/CHARACTER/<name>.md`, not just against generic quality.
+`platform/somia/CHARACTER/<name>.md`, not just against generic quality.
 
 ## Eye Contact Rule (cross-character default)
 

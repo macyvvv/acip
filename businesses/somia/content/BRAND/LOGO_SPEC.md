@@ -17,7 +17,7 @@
 ## Asset File
 
 - No image asset is committed yet — this file is the spec, not the file.
-  Add the actual logo file (svg/png) under `somia/BRAND/` when available;
+  Add the actual logo file (svg/png) under `platform/somia/BRAND/` when available;
   Claude cannot generate the image itself.
 
 ## Placement

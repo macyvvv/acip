@@ -17,7 +17,7 @@ from system.scripts.somia.providers import VideoGenerationError, get_provider
 
 
 def _build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Render a somia/CONTENT/<id> spec into a video via a pluggable provider.")
+    parser = argparse.ArgumentParser(description="Render a platform/somia/CONTENT/<id> spec into a video via a pluggable provider.")
     parser.add_argument("--content-id", required=True, help="e.g. 0001")
     parser.add_argument("--provider", default=None, help="Overrides SOMIA_VIDEO_PROVIDER env var. Defaults to dry_run.")
     return parser

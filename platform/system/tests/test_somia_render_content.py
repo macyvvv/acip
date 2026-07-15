@@ -108,5 +108,5 @@ def test_render_updates_metadata_with_render_record(tmp_path: Path) -> None:
     assert metadata["hypothesis"] == "test"
     assert metadata["render"]["provider"] == "dry_run"
     # Paths are stored repo-relative so committing metadata.json doesn't churn per machine.
-    assert render_record["video_path"] == "somia/CONTENT/0001/video.dry_run.txt"
-    assert render_record["keyframe_path"] == "somia/CONTENT/0001/keyframe.dry_run.txt"
+    assert render_record["video_path"] == "platform/somia/CONTENT/0001/video.dry_run.txt"
+    assert render_record["keyframe_path"] == "platform/somia/CONTENT/0001/keyframe.dry_run.txt"

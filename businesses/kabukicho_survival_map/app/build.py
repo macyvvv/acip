@@ -311,7 +311,7 @@ def _write_local_gmaps_config() -> None:
     # load_dotenv() populates os.environ as a side effect (without
     # overriding a variable already set in the real shell environment) --
     # read back from there, matching this repo's established convention
-    # (see platform/system/platform/scripts/somia/providers_kling.py) rather than relying on
+    # (see platform/system/platform/scripts/platform/somia/providers_kling.py) rather than relying on
     # its returned dict, which only reflects the file, not a real
     # shell-exported KABUKICHO_GMAPS_API_KEY.
     load_dotenv(REPO_ROOT / ".env")

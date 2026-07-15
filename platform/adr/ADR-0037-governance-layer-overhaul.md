@@ -130,8 +130,8 @@ first:
    review requested and given before merge, not just CI-green): added
    `platform/basis/CORE_PRINCIPLES.md` (9 principles, each traced to real enforced
    code or a genuinely durable concern), kept 2 files standalone,
-   archived the remaining 43 to `archive/basis_corpus_2026/` with a
-   mapping README, following the existing `archive/basis_skeleton/`
+   archived the remaining 43 to `platform/archive/basis_corpus_2026/` with a
+   mapping README, following the existing `platform/archive/basis_skeleton/`
    precedent. Found and fixed two real, live dependencies on the moved
    file paths in the same pass (`semantic_checks.py`'s `REQUIRED_FILES`,
    wired into CI on every PR; `validate_baseline.py`, confirmed unwired
@@ -211,7 +211,7 @@ reinforcing that this wasn't a one-off, isolated incident.
 ## Drawbacks
 
 - `platform/basis/`'s original 46 files are no longer directly browsable as a flat
-  list — a reader now needs to know to check `archive/basis_corpus_2026/`
+  list — a reader now needs to know to check `platform/archive/basis_corpus_2026/`
   for anything not covered by the 9 compact principles. Mitigated by a
   full file-by-file mapping table in that archive's README.
 - The ~18 additional root-level "repository operating system" prose
@@ -246,7 +246,7 @@ reinforcing that this wasn't a one-off, isolated incident.
 - Rewritten (Stage 3): 4 docs (3 product `requirements.md` + 1
   automation-readiness doc's "Forbidden Now" section).
 - Rewritten (Stage 4): 7 docs.
-- Moved (Stage 5): 43 `platform/basis/` files → `archive/basis_corpus_2026/`; added
+- Moved (Stage 5): 43 `platform/basis/` files → `platform/archive/basis_corpus_2026/`; added
   2 new files (`CORE_PRINCIPLES.md`, the archive's mapping `README.md`);
   rewrote `platform/basis/README.md`; fixed 2 live-code file-path dependencies and
   1 cross-referencing archive README.
@@ -278,10 +278,10 @@ A repo-wide "is our current process/refactoring debt fine as-is"
 consultation (all 15 acip subagents + `opsboard`'s synthesis) surfaced
 `platform/system/runtime/workers/` and `platform/system/runtime/governor/` as more of the
 same pattern this ADR already addressed for `platform/basis/` and the 18
-root-level directories (`archive/root_scaffolding_2026/`) — confirmed via
+root-level directories (`platform/archive/root_scaffolding_2026/`) — confirmed via
 the same test (`git grep` across `*.py`/`*.yml`/`platform/docs/`/`platform/system/`/`platform/app/`:
 zero references to either path). Archived to
-`archive/runtime_scaffolding_2026/` with the same per-directory rationale
+`platform/archive/runtime_scaffolding_2026/` with the same per-directory rationale
 format; `platform/docs/current/GOVERNOR_RECOMMENDATION_SSOT.md` updated to stop
 describing a mechanism that was never actually wired up. Recorded here
 rather than as a new ADR since it's the identical pattern and criterion

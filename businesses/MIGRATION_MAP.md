@@ -49,7 +49,7 @@ Everything else is expected to converge into either `platform/` or `businesses/`
 ## Planned moves
 
 - platform/app/products/kabukicho_survival_map -> businesses/kabukicho_survival_map/app
-- somia -> businesses/somia/content
+- somia -> businesses/platform/somia/content
 - dreamcore_video -> businesses/dreamcore_video/content
 - physics_math_visualization -> businesses/physics_math_visualization/content
 
@@ -64,7 +64,7 @@ Everything else is expected to converge into either `platform/` or `businesses/`
 - platform/specs/ -> platform/specs/
 - platform/system/ -> platform/system/
 - platform/scripts/ -> platform/scripts/
-- archive/ -> platform/archive/
+- platform/archive/ -> platform/archive/
 - platform/knowledge/ -> platform/knowledge/
 - platform/packs/ -> platform/packs/
 - platform/wbs/ -> platform/wbs/
@@ -85,7 +85,7 @@ Everything else is expected to converge into either `platform/` or `businesses/`
 - platform/docs/ -> platform/docs/ (done, compatibility symlink in place)
 - platform/scripts/ -> platform/scripts/ (done, compatibility symlink in place)
 - platform/specs/ -> platform/specs/ (done, compatibility symlink in place)
-- archive/ -> platform/archive/ (done, compatibility symlink in place)
+- platform/archive/ -> platform/archive/ (done, compatibility symlink in place)
 - platform/knowledge/ -> platform/knowledge/ (done, compatibility symlink in place)
 - platform/packs/ -> platform/packs/ (done, compatibility symlink in place)
 - platform/wbs/ -> platform/wbs/ (done, compatibility symlink in place)
@@ -101,7 +101,7 @@ Everything else is expected to converge into either `platform/` or `businesses/`
 
 1. Move top-level dreamcore_video to businesses/dreamcore_video/content (done)
 2. Move top-level physics_math_visualization to businesses/physics_math_visualization/content (done)
-3. Move top-level somia to businesses/somia/content (done)
+3. Move top-level somia to businesses/platform/somia/content (done)
 4. Move platform/app/products/kabukicho_survival_map to businesses/kabukicho_survival_map/app (done)
 5. Keep original paths as temporary compatibility links until references are updated (done)
 6. Update only business_registry paths that are fully moved and validated (done for moved roots)

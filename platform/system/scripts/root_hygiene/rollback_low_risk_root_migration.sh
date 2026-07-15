@@ -5,8 +5,8 @@ ROOT_DIR="${ROOT_DIR:-$(git rev-parse --show-toplevel)}"
 TARGETS=(baseline control loader prompts releases rules templates)
 
 for target in "${TARGETS[@]}"; do
-  if [[ ! -e "$ROOT_DIR/archive/$target" ]]; then
-    echo "Missing archive entry: archive/$target" >&2
+  if [[ ! -e "$ROOT_DIR/platform/archive/$target" ]]; then
+    echo "Missing archive entry: platform/archive/$target" >&2
     exit 1
   fi
   if [[ -e "$ROOT_DIR/$target" ]]; then
@@ -16,7 +16,7 @@ for target in "${TARGETS[@]}"; do
 done
 
 for target in "${TARGETS[@]}"; do
-  printf 'mv %q %q\n' "$ROOT_DIR/archive/$target" "$ROOT_DIR/$target"
+  printf 'mv %q %q\n' "$ROOT_DIR/platform/archive/$target" "$ROOT_DIR/$target"
 done
 
 echo "Reference rollback updates are intentionally not performed by this script."

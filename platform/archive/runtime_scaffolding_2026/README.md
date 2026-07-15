@@ -6,7 +6,7 @@ consultation (2026-07-14, run across all 15 acip subagents plus
 `opsboard`'s synthesis) as looking like more of the same
 mostly-unenforced "repository operating system" pattern that
 `platform/adr/ADR-0037-governance-layer-overhaul.md` already found and partly
-cleaned up (see also `archive/root_scaffolding_2026/` for that pass'
+cleaned up (see also `platform/archive/root_scaffolding_2026/` for that pass'
 root-level directory cluster). This is a distinct, later finding, not
 part of ADR-0037's original 18-directory list — recorded as an addendum
 to that ADR rather than a new one, since it's the same pattern and the

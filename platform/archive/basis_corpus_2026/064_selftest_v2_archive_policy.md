@@ -6,7 +6,7 @@ Archived files preserve historical reasoning and must be excluded from canonical
 
 ## Rules
 
-- `archive/**` is historical space.
+- `platform/archive/**` is historical space.
 - Archive content may duplicate ADR or WBS numbers.
 - Archive content may be unreferenced.
 - Archive content may contain stale terms.

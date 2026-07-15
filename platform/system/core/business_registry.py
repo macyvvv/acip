@@ -41,7 +41,7 @@ _SEED_BUSINESSES: tuple[dict[str, Any], ...] = (
         "business_id": "somia",
         "display_name": "Somia",
         "status": "active",
-        "content_root": "businesses/somia/content",
+        "content_root": "businesses/platform/somia/content",
         "product_code_path": "platform/system/platform/scripts/somia",
         "tracking_issue_numbers": (45, 46),
         "historical_issue_numbers": (),

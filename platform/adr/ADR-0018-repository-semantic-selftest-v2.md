@@ -20,7 +20,7 @@ Adopt Repository Semantic SelfTest v2.
 v2 introduces:
 
 - `selftest.yml`
-- canonical/archive/draft/template/index classification
+- canonical/platform/archive/draft/template/index classification
 - declaration-only Current Objective parsing
 - graph-oriented repository analysis
 - severity model
