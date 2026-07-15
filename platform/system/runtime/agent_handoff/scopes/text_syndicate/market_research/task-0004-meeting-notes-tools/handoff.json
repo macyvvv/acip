@@ -1,0 +1,12 @@
+{
+  "business_id": "text_syndicate",
+  "role_id": "market_research",
+  "task_id": "task-0004-meeting-notes-tools",
+  "task_description": "Deepen an existing content pillar (AI-tools workflow content, per task-0001/pdca/wiring-check-0001) with real, sourced fact sheets for AI meeting-notes/summarization tools already referenced in prior (unsourced, since-flagged) drafts: Otter.ai, Fireflies.ai, Fathom, and Notion AI's page-summarize feature. For each: current price, free-tier limit (minutes/month, storage cap, or usage cap as applicable), verified_as_of date (today), and the primary source URL (official pricing page). Flag any conflicting or stale info explicitly. This directly re-grounds content that previously stated invented figures for these exact products.",
+  "issue_number": null,
+  "approved_draft_id": null,
+  "request_id": "REQ-TEXT-SYNDICATE-MARKET-RESEARCH-TASK-0004-MEETING-NOTES-TOOLS",
+  "next_action": "Review the handoff and, if approved, continue through the existing execution flow.",
+  "created_at": "2026-07-15T05:45:05.761433+00:00",
+  "source": "business_agent_handoff"
+}

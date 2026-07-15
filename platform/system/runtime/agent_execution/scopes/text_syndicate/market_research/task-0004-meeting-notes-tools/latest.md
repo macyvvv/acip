@@ -1,0 +1,17 @@
+# APPROVED_AUTONOMOUS_EXECUTION
+
+handoff_id: REQ-TEXT-SYNDICATE-MARKET-RESEARCH-TASK-0004-MEETING-NOTES-TOOLS
+allow: true
+approval_id: 
+scope_type: 
+scope_id: 
+execution_triggered: true
+execution_mode: one_shot
+execution_result_status: failure
+completion_marker_path: /Users/ariel/Documents/tools/acip/system/runtime/business_agents/text_syndicate/market_research/task-0004-meeting-notes-tools/latest.json
+request_path: /Users/ariel/Documents/tools/acip/system/runtime/request/execution_request.json
+stopped_reason: exit_code=1
+started_at: 2026-07-15T05:47:02.417212+00:00
+finished_at: 2026-07-15T05:47:13.045913+00:00
+authorization_source: policy_pre_approval
+policy_id: PREAPP-TEXT_SYNDICATE-MARKET_RESEARCH-0001

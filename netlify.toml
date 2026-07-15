@@ -1,4 +1,4 @@
-# Netlify config for the Kabukicho Survival Map (app/products/kabukicho_survival_map).
+# Netlify config for the Kabukicho Survival Map (businesses/kabukicho_survival_map/app).
 # This is a monorepo (acip) with many unrelated products under it -- this
 # file only builds/publishes that one product's static bundle. If a second
 # product ever needs its own Netlify site, it needs its own site (with its
@@ -11,5 +11,5 @@
 # generation in build.py; leave unset and redeploy once the real domain is
 # known, not before).
 [build]
-  command = "python3 app/products/kabukicho_survival_map/build.py"
+  command = "python3 businesses/kabukicho_survival_map/app/build.py"
   publish = "web/public/kabukicho"
