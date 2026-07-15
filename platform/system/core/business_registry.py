@@ -26,8 +26,8 @@ _SEED_BUSINESSES: tuple[dict[str, Any], ...] = (
         "business_id": "kabukicho_survival_map",
         "display_name": "Kabukicho Survival Map",
         "status": "active",
-        "content_root": "app/products/kabukicho_survival_map",
-        "product_code_path": "app/products/kabukicho_survival_map",
+        "content_root": "businesses/kabukicho_survival_map/app",
+        "product_code_path": "businesses/kabukicho_survival_map/app",
         "tracking_issue_numbers": (33, 34, 36),
         "historical_issue_numbers": (),
         "notes": (
@@ -41,8 +41,8 @@ _SEED_BUSINESSES: tuple[dict[str, Any], ...] = (
         "business_id": "somia",
         "display_name": "Somia",
         "status": "active",
-        "content_root": "somia",
-        "product_code_path": "system/scripts/somia",
+        "content_root": "businesses/somia/content",
+        "product_code_path": "platform/system/scripts/somia",
         "tracking_issue_numbers": (45, 46),
         "historical_issue_numbers": (),
         "notes": "AI character media / video content business. Image/video generation roles require paid vendor APIs (fal.ai/Kling).",
@@ -68,7 +68,7 @@ _SEED_BUSINESSES: tuple[dict[str, Any], ...] = (
         # product code (still genuinely greenfield -- product_code_path
         # stays None), but its drafted content is real, committed history
         # under this path.
-        "content_root": "system/runtime/business_agents/text_syndicate",
+        "content_root": "platform/system/runtime/business_agents/text_syndicate",
         "product_code_path": None,
         "tracking_issue_numbers": (),
         "historical_issue_numbers": (),
