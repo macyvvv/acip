@@ -1,0 +1,12 @@
+{
+  "business_id": "text_syndicate",
+  "role_id": "pdca",
+  "task_id": "auto-0001",
+  "task_description": "Auto-triggered following successful completion of text_syndicate/analytics/wiring-check-0001. Read its artifact at /Users/ariel/Documents/tools/acip/system/runtime/business_agents/text_syndicate/analytics/wiring-check-0001/latest.json and produce the pdca output building on it.",
+  "issue_number": null,
+  "approved_draft_id": null,
+  "request_id": "REQ-TEXT-SYNDICATE-PDCA-AUTO-0001",
+  "next_action": "Review the handoff and, if approved, continue through the existing execution flow.",
+  "created_at": "2026-07-15T00:51:41.138445+00:00",
+  "source": "business_agent_handoff"
+}

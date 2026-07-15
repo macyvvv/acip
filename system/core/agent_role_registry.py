@@ -105,7 +105,14 @@ _SEED_ROLES: tuple[dict[str, Any], ...] = (
         "role_kind": "data_fetch",
         "prompt_template_path": None,
         "provider_registry_module": "system.scripts.analytics.providers",
-        "default_provider": "dry_run",
+        # dry_run was the bootstrapping default before git_activity existed.
+        # git_activity is real, credential-free, and safe to run any time
+        # (a repository-activity proxy -- commit cadence, not platform
+        # engagement) -- switched 2026-07-15 so analytics/pdca runs produce
+        # at least some real signal instead of an explicit no-data marker,
+        # while real platform analytics (X/Threads/note.com) remain
+        # separately gated on paid API access nothing here unlocks.
+        "default_provider": "git_activity",
         "output_contract_path": "contracts/roles/ANALYTICS_OUTPUT_CONTRACT.md",
         "allowed_tools": (),
         "model_capability": "cost_optimized",

@@ -27,7 +27,8 @@
 ## Validation
 
 - command: confirm `latest.json` parses (it is an execution-adapter log — `business_id`/`role_id`/`task_id`/`resolved_model`/`stdout`/`exit_code`/etc., not a `facts`/`recommendations`-shaped payload) and that its `stdout` field contains clearly labeled Facts/Assumptions/Hypotheses/Recommendations sections, non-empty
-- expected result: valid JSON, no placeholder/canned text reused across unrelated businesses
+- command: if the task named or implied specific products/tools downstream content will name, confirm `stdout` contains a fact-sheet entry per product (price, free-tier limit, `verified_as_of` date, source URL) — required 2026-07-15 after a DataOps audit found `doc_creation` fabricating specific prices/percentages for products no market_research artifact had ever covered (e.g. a materially wrong Perplexity Pro price, invented "70%/50%" savings figures)
+- expected result: valid JSON, no placeholder/canned text reused across unrelated businesses; every named product has a dated, sourced fact sheet entry when the task calls for naming products
 
 Corrected 2026-07-14: the previous wording ("contains non-empty
 `facts`/`recommendations` lists") described a top-level JSON shape no

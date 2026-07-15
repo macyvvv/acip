@@ -102,17 +102,23 @@ def test_analytics_role_dry_run_never_calls_provider(tmp_path: Path) -> None:
     assert result.success is True
 
 
-def test_analytics_role_real_run_uses_default_dry_run_provider_safely(tmp_path: Path) -> None:
+def test_analytics_role_real_run_uses_default_git_activity_provider_safely(tmp_path: Path) -> None:
     # Real execution (adapter dry_run=False) still resolves to the analytics
-    # role's own default_provider, which is itself "dry_run" until a real
-    # platform provider is registered -- so this stays network-free too.
+    # role's own default_provider -- switched 2026-07-15 from "dry_run" to
+    # "git_activity" (real, credential-free, safe to run any time) so a real
+    # run produces at least some real signal. text_syndicate's content_root
+    # (also set 2026-07-15, per this business's own first real PDCA cycle's
+    # recommendation) is a real path in this actual repo's git history, so
+    # git_activity measures real (if business-agent-generated, not
+    # human-authored) commit cadence -- still network-free, still safe,
+    # just no longer "nothing to measure."
     adapter = BusinessAgentExecutionAdapter(tmp_path)
     result = adapter.run(
         business_id="text_syndicate", role_id="analytics", task_id="task-0001", approval_flag=True, dry_run=False
     )
     assert result.adapter_mode == "execute"
     assert result.success is True
-    assert "dry-run" in result.stdout.lower()
+    assert "repository-activity proxy" in result.stdout.lower()
     kpi_path = tmp_path / "system" / "runtime" / "knowledge" / "kpi.json"
     assert kpi_path.exists()
     kpi = json.loads(kpi_path.read_text(encoding="utf-8"))
