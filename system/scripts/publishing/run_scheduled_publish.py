@@ -32,6 +32,7 @@ from system.core.publishing_state import (
     is_already_published,
     record_publish,
 )
+from system.core.dotenv import load_dotenv
 from system.scripts.publishing.finalize_content import load_finalized_content
 from system.scripts.publishing.providers import PublishError, get_provider
 
@@ -251,6 +252,13 @@ def _markdown(payload: dict[str, Any]) -> str:
 
 def main() -> int:
     argparse.ArgumentParser(description="Run the publishing scheduler once against all finalized content candidates.").parse_args()
+    # A real provider (e.g. providers_x.py) reads X_OAUTH2_*/X_API_* from
+    # os.environ -- this script previously never loaded .env itself, so a
+    # real credential set sitting in .env (not exported into the invoking
+    # shell) silently produced "X_OAUTH2_CLIENT_ID is not set" instead of
+    # actually posting. Mirrors system/scripts/somia/render_content.py's
+    # existing load_dotenv() call for the same reason.
+    load_dotenv(ROOT / ".env")
     summary = run_scheduled_publish(ROOT)
     print(f"kill_switch_engaged={str(summary.kill_switch_engaged).lower()}")
     print(f"candidates_considered={summary.candidates_considered}")
