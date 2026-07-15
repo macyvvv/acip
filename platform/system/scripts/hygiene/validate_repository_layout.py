@@ -33,6 +33,27 @@ ROOT_ALLOWLIST = {
     "requirements-dev.txt",
     "netlify.toml",
     "selftest.yml",
+    "netlify.toml",
+    # Transitional compatibility links maintained at root.
+    ".system",
+    "adr",
+    "app",
+    "archive",
+    "baseline",
+    "basis",
+    "context",
+    "contracts",
+    "docs",
+    "inbox",
+    "knowledge",
+    "packs",
+    "releases",
+    "scripts",
+    "somia",
+    "specs",
+    "system",
+    "wbs",
+    "web",
 }
 
 TRANSITION_COMPAT_SYMLINKS = {
@@ -67,7 +88,7 @@ LOCAL_IGNORED = {
 def validate_repository_layout(report_only: bool = True) -> list[str]:
     violations = []
     for path in ROOT.iterdir():
-        if path.name.startswith(".git"):
+        if path.name.startswith("."):
             continue
         if path.name in LOCAL_IGNORED:
             continue

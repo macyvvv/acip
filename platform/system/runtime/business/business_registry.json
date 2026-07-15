@@ -7,7 +7,10 @@
     "active_count": 2,
     "greenfield_count": 2,
     "dormant_count": 0,
-    "drifted_business_ids": []
+    "drifted_business_ids": [
+      "kabukicho_survival_map",
+      "somia"
+    ]
   },
   "businesses": [
     {
@@ -22,8 +25,8 @@
         36
       ],
       "historical_issue_numbers": [],
-      "content_root_exists": true,
-      "product_code_path_exists": true,
+      "content_root_exists": false,
+      "product_code_path_exists": false,
       "notes": "Location/survival guide product for Kabukicho. Fixed 2026-07-14: previously pointed at kabukicho_survival_map_mvp (an earlier, much smaller, superseded prototype) -- see CLAUDE.md's explicit warning not to confuse the two. This is the real, from-scratch app."
     },
     {
@@ -37,8 +40,8 @@
         46
       ],
       "historical_issue_numbers": [],
-      "content_root_exists": true,
-      "product_code_path_exists": true,
+      "content_root_exists": false,
+      "product_code_path_exists": false,
       "notes": "AI character media / video content business. Image/video generation roles require paid vendor APIs (fal.ai/Kling)."
     },
     {
@@ -59,7 +62,7 @@
       "business_id": "text_syndicate",
       "display_name": "Text Syndicate",
       "status": "greenfield",
-      "content_root": null,
+      "content_root": "platform/system/runtime/business_agents/text_syndicate",
       "product_code_path": null,
       "tracking_issue_numbers": [],
       "historical_issue_numbers": [],
