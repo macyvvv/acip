@@ -61,7 +61,14 @@ _SEED_BUSINESSES: tuple[dict[str, Any], ...] = (
         "business_id": "text_syndicate",
         "display_name": "Text Syndicate",
         "status": "greenfield",
-        "content_root": None,
+        # Set 2026-07-15 per this business's first real PDCA cycle's own
+        # recommendation: with content_root unset, the credential-free
+        # git_activity analytics provider had nothing to measure at all,
+        # leaving pdca permanently Check-empty. text_syndicate has no
+        # product code (still genuinely greenfield -- product_code_path
+        # stays None), but its drafted content is real, committed history
+        # under this path.
+        "content_root": "system/runtime/business_agents/text_syndicate",
         "product_code_path": None,
         "tracking_issue_numbers": (),
         "historical_issue_numbers": (),

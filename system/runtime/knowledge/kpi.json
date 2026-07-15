@@ -68,7 +68,19 @@
       "success": 1,
       "failure": 0,
       "metrics": {}
+    },
+    "text_syndicate:analytics": {
+      "runs": 1,
+      "success": 1,
+      "failure": 0,
+      "metrics": {}
+    },
+    "text_syndicate:pdca": {
+      "runs": 2,
+      "success": 1,
+      "failure": 1,
+      "metrics": {}
     }
   },
-  "last_updated": "2026-07-14T16:25:08.373236+00:00"
+  "last_updated": "2026-07-15T00:57:43.164882+00:00"
 }

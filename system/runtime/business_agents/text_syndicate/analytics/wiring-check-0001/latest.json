@@ -1,0 +1,17 @@
+{
+  "business_id": "text_syndicate",
+  "role_id": "analytics",
+  "task_id": "wiring-check-0001",
+  "adapter_mode": "execute",
+  "resolved_model": null,
+  "model_capability": "cost_optimized",
+  "allowed_tools": [],
+  "agent_cli_command": "analytics provider=dry_run",
+  "stdout": "dry-run: no platform API called, no metrics available yet",
+  "stderr": "",
+  "exit_code": 0,
+  "success": true,
+  "captured_at": "2026-07-15T00:51:41.121410+00:00",
+  "artifact_path": "/Users/ariel/Documents/tools/acip/system/runtime/business_agents/text_syndicate/analytics/wiring-check-0001/latest.json",
+  "failure_reason": null
+}

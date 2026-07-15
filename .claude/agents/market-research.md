@@ -14,4 +14,5 @@ The invoking prompt must give you a `business_id` and a task description (what t
 - Separate facts, assumptions, and hypotheses explicitly.
 - Recommend concrete next actions the business can act on, not generic advice.
 - This role is read-only research: do not edit repository files. Write findings to `system/runtime/business_agents/{business_id}/market_research/{task_id}/` (create `latest.md`/`latest.json` as appropriate), matching the shape existing entries under that root already use.
+- **Named-product fact sheet (required whenever the task will inform content naming specific products/tools)**: for every specific product/tool your findings will let downstream content name, produce a fact sheet entry -- product name, price, free-tier limit, `verified_as_of` date, primary source URL. A downstream role (`doc-creation`, `marketing`) may not introduce a product or a specific figure (price, limit, percentage) that isn't in one of these fact sheets -- if your task doesn't need to name specific products, this requirement doesn't apply, but say so explicitly rather than leaving it ambiguous.
 - Output must satisfy `contracts/roles/MARKET_RESEARCH_OUTPUT_CONTRACT.md`.
