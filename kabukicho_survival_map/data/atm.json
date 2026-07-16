@@ -1,0 +1,216 @@
+[
+  {
+    "name": "セブン銀行ATM(セブン-イレブン歌舞伎町1-2-13店)",
+    "lat": 35.694372,
+    "lng": 139.703326,
+    "description": "西武新宿駅そば、歌舞伎町一丁目のセブン-イレブン店内ATM。国際カード対応、多言語メニュー、手数料約110円。",
+    "category": "atm",
+    "tags": [
+      "24h",
+      "international_card_ok"
+    ],
+    "last_updated": "2026-07-11",
+    "reliability_score": 3,
+    "source_type": "inferred",
+    "type": "official",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "セブン銀行ATM(セブン-イレブン新宿東宝ビル店)",
+    "lat": 35.695478,
+    "lng": 139.701959,
+    "description": "歌舞伎町1-19-1、新宿東宝ビル(ゴジラロード)そばのセブン-イレブン店内ATM。",
+    "category": "atm",
+    "tags": [
+      "24h",
+      "international_card_ok"
+    ],
+    "last_updated": "2026-07-11",
+    "reliability_score": 3,
+    "source_type": "inferred",
+    "type": "official",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "セブン銀行ATM(セブン-イレブン新宿駅靖国通り店)",
+    "lat": 35.693848,
+    "lng": 139.701106,
+    "description": "歌舞伎町1-17-2、靖国通り沿いのセブン-イレブン店内ATM。",
+    "category": "atm",
+    "tags": [
+      "24h",
+      "international_card_ok"
+    ],
+    "last_updated": "2026-07-11",
+    "reliability_score": 3,
+    "source_type": "inferred",
+    "type": "official",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "セブン銀行ATM(セブン-イレブン歌舞伎町1-26-6店)",
+    "lat": 35.695027,
+    "lng": 139.700469,
+    "description": "歌舞伎町一丁目内のセブン-イレブン店内ATM。",
+    "category": "atm",
+    "tags": [
+      "24h",
+      "international_card_ok"
+    ],
+    "last_updated": "2026-07-11",
+    "reliability_score": 3,
+    "source_type": "inferred",
+    "type": "official",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "セブン銀行ATM(セブン-イレブン歌舞伎町二丁目中央店)",
+    "lat": 35.697198,
+    "lng": 139.702639,
+    "description": "歌舞伎町2-33-3、二丁目中央部のセブン-イレブン店内ATM。",
+    "category": "atm",
+    "tags": [
+      "24h",
+      "international_card_ok"
+    ],
+    "last_updated": "2026-07-11",
+    "reliability_score": 3,
+    "source_type": "inferred",
+    "type": "official",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "セブン銀行ATM(セブン-イレブン歌舞伎町二丁目東店)",
+    "lat": 35.694931,
+    "lng": 139.706231,
+    "description": "東新宿駅そば、このセブン-イレブンには店内ATM設置が直接確認されています。",
+    "category": "atm",
+    "tags": [
+      "24h",
+      "international_card_ok"
+    ],
+    "last_updated": "2026-07-11",
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "三菱UFJ銀行 西武新宿駅前ATMコーナー",
+    "lat": 35.6957,
+    "lng": 139.6995,
+    "description": "歌舞伎町1-30-1、西武新宿駅に隣接する三菱UFJ銀行の店舗外ATMコーナー。",
+    "category": "atm",
+    "tags": [
+      "international_card_ok"
+    ],
+    "last_updated": "2026-07-11",
+    "reliability_score": 4,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "三菱UFJ銀行 新宿サブナードATMコーナー",
+    "lat": 35.6942,
+    "lng": 139.6998,
+    "description": "歌舞伎町一丁目、地下街「新宿サブナード」B1F内の三菱UFJ銀行店舗外ATMコーナー。",
+    "category": "atm",
+    "tags": [
+      "international_card_ok"
+    ],
+    "last_updated": "2026-07-11",
+    "reliability_score": 4,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "イオン銀行ATM(ミニストップ新宿歌舞伎町店・2号機)",
+    "lat": 35.695988,
+    "lng": 139.704297,
+    "description": "歌舞伎町2-22-1のミニストップ店内ATM。イオン銀行公式情報で24時間利用可と案内。",
+    "category": "atm",
+    "tags": [
+      "24h",
+      "international_card_ok"
+    ],
+    "last_updated": "2026-07-11",
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "みずほ銀行ATM(ミニストップ新宿歌舞伎町店・1号機)",
+    "lat": 35.695988,
+    "lng": 139.704297,
+    "description": "イオン銀行ATMと同じ歌舞伎町2-22-1に設置された、みずほ銀行の店舗外ATM。同一住所に2台の別機が併設されています。",
+    "category": "atm",
+    "tags": [
+      "international_card_ok"
+    ],
+    "last_updated": "2026-07-11",
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "ゆうちょ銀行ATM(ファミリーマート新宿歌舞伎町店)",
+    "lat": 35.695153,
+    "lng": 139.703734,
+    "description": "歌舞伎町2-25-2のファミリーマート店内ゆうちょ銀行ATM。営業時間0:05〜23:55(深夜の短いメンテナンス時間を除きほぼ24時間)。",
+    "category": "atm",
+    "tags": [
+      "24h"
+    ],
+    "last_updated": "2026-07-11",
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "新宿歌舞伎町郵便局 ATM",
+    "lat": 35.697966,
+    "lng": 139.702286,
+    "description": "歌舞伎町2-41-8、西武新宿駅北口から徒歩約2分の郵便局窓口併設ATM。営業時間は平日9:00〜17:30、土曜9:00〜12:30(24時間ではありません)。",
+    "category": "atm",
+    "tags": [],
+    "last_updated": "2026-07-11",
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "新宿区役所前郵便局 ATM",
+    "lat": 35.693941,
+    "lng": 139.703386,
+    "description": "歌舞伎町1-4-1、新宿区役所内郵便局のATM。営業時間は平日9:00〜17:00のみ(24時間ではありません)。",
+    "category": "atm",
+    "tags": [],
+    "last_updated": "2026-07-11",
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "SMBC信託銀行プレスティア 新宿東口支店ATM",
+    "lat": 35.6903,
+    "lng": 139.7018,
+    "description": "外国人居住者向け銀行(旧シティバンク銀行、2015年にSMBC信託銀行プレスティアへ移管)。新宿3-24-1、歌舞伎町から靖国通りを挟んで南へ約700m、地区の境界外。ATM営業時間は月〜金7:00〜24:00、土7:00〜23:50、日7:00〜21:00。キャッシュカードでの引き出しのみ対応、外貨現金の引き出しは不可(両替は窓口のみ、平日9:00〜15:00)。",
+    "category": "atm",
+    "tags": [
+      "international_card_ok"
+    ],
+    "last_updated": "2026-07-11",
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "歌舞伎町の町丁境界外に位置していますが、外国人向け銀行サービスとして最寄りのATMのため参考掲載しています(地区内の施設ではありません)。"
+  }
+]
