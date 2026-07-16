@@ -350,6 +350,8 @@ def _write_pre_approval_policy(tmp_path: Path, business_id: str, role_id: str, *
         "enabled": True,
         "max_auto_approvals_per_day": 1,
         "max_auto_approvals_per_week": 5,
+        "max_allowed_tools": 4,
+        "max_model_capability": "reasoning",
         "authored_by": "macy",
         "authored_at": "2026-07-11T00:00:00+00:00",
         "reason": "pilot",
@@ -624,6 +626,8 @@ def test_cross_scope_isolation_for_pre_approval(tmp_path: Path, monkeypatch) -> 
             "enabled": True,
             "max_auto_approvals_per_day": 1,
             "max_auto_approvals_per_week": 5,
+            "max_allowed_tools": 4,
+            "max_model_capability": "reasoning",
             "authored_by": "macy",
             "authored_at": "2026-07-11T00:00:00+00:00",
             "reason": "pilot",
@@ -651,4 +655,3 @@ def test_cross_scope_isolation_for_pre_approval(tmp_path: Path, monkeypatch) -> 
     assert result_a.execution_result_status == "success"
     assert result_b.execution_result_status == "success"
     assert {c["business_id"] for c in calls} == {"text_syndicate", "kabukicho_survival_map"}
-

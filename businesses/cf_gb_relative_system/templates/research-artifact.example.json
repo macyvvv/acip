@@ -1,0 +1,91 @@
+{
+  "schema_version": "artifact-envelope:v1",
+  "artifact_id": "E-005B/research-contract",
+  "task_id": "E-005B",
+  "producer": {
+    "role": "dataops",
+    "worker_id": "worker/e005b",
+    "execution_kind": "interactive_agent",
+    "version": "2026.07.16"
+  },
+  "generated_at": "2026-07-16T00:00:00Z",
+  "payload_schema": "research-artifact:v1",
+  "payload_path": "businesses/cf_gb_relative_system/artifacts/E-005B/research-output.json",
+  "content_hash": {
+    "algorithm": "sha256",
+    "hex": "1111111111111111111111111111111111111111111111111111111111111111"
+  },
+  "provenance": {
+    "business_id": "cf_gb_relative_system",
+    "manifest_version": "1.0.0",
+    "input_artifacts": [
+      "businesses/cf_gb_relative_system/STATISTICAL_PROTOCOL.md"
+    ],
+    "canonical_sources": [
+      "businesses/cf_gb_relative_system/STATISTICAL_PROTOCOL.md"
+    ],
+    "code_version": {
+      "git_commit": "abcdef0",
+      "dirty": true
+    }
+  },
+  "payload": {
+    "study": {
+      "schema_version": "study:v1",
+      "study_id": "study_revenue_lift_001",
+      "question": "Will automated relative-business cards improve affiliate clickthrough rate?",
+      "population": "Eligible page sessions on GB relative pages",
+      "frame": {
+        "description": "All tracked page sessions with valid attribution in July 2026",
+        "coverage_limitations": [
+          "Bot-filtered traffic excluded"
+        ]
+      },
+      "unit": "session",
+      "estimand": {
+        "kind": "proportion",
+        "target": "clickthrough conversion rate"
+      },
+      "primary_metric": {
+        "name": "ctr",
+        "formula": "affiliate_clicks / eligible_sessions",
+        "window": "2026-07-01/2026-07-31",
+        "timezone": "UTC"
+      },
+      "precision": {
+        "kind": "ci_half_width",
+        "value": 0.02
+      },
+      "stopping": {
+        "rule": "fixed_n",
+        "decision_boundary": "complete at n >= 1200"
+      },
+      "sample_size_method": {
+        "library": "statsmodels",
+        "version": "0.14.2",
+        "inputs": {
+          "baseline_rate": 0.12,
+          "target_half_width": 0.02
+        }
+      },
+      "missingness": "Late events after 24h cutoff excluded and counted.",
+      "analysis_code_version": "analysis:abcdef0"
+    },
+    "result": {
+      "estimate": 0.14,
+      "standard_error": 0.011,
+      "confidence_interval": {
+        "level": 0.95,
+        "lower": 0.118,
+        "upper": 0.162
+      },
+      "sample_size": 1240,
+      "missing_count": 12,
+      "excluded_count": 8,
+      "protocol_deviations": [],
+      "decision_status": "valid",
+      "code_version": "analysis:abcdef0",
+      "data_version": "dataset:2026-07-16"
+    }
+  }
+}

@@ -1,0 +1,2 @@
+# Intentionally empty lock for the bootstrap skeleton.
+# The initial local app contract has no third-party runtime dependencies.

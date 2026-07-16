@@ -1,0 +1,91 @@
+schema_version: minimum-runtime-role-set:v1
+business_id: cf_gb_relative_system
+generated_at: "2026-07-16T00:00:00+09:00"
+decision_basis:
+  - businesses/cf_gb_relative_system/OUTCOME_BACKLOG.md
+  - platform/adr/ADR-0041-interactive-business-product-legal-role-expansion.md
+principles:
+  - Only roles required to start Phase 0 and Phase minus 1 execution are admitted.
+  - Every role stays within evidence production and bounded automation authority.
+  - Human retains strategy approval, capital allocation, and legal-risk acceptance.
+roles:
+  - executor: businessops
+    responsibility: Define the minimum unattended runtime role set and author gate-policy inputs.
+    authority_boundary: >
+      Selects minimum unattended runtime role coverage and gate-policy inputs;
+      does not approve strategy, legal risk, spend, or publication.
+    covers_tasks:
+      - E-002A
+      - E-006A
+      - E-006B
+
+  - executor: productops
+    responsibility: Supervise manifest consistency and implementation sequencing for approved scope.
+    authority_boundary: >
+      Supervises product implementation order and contract consistency; does not
+      change business scope or release policy.
+    covers_tasks:
+      - E-003B
+      - E-004A
+      - E-005C
+
+  - executor: software-engineering
+    responsibility: Implement deterministic code, schemas, tests, and application skeletons.
+    authority_boundary: >
+      Implements deterministic code, schemas, and tests inside approved
+      contracts; does not invent policy or override gates.
+    covers_tasks:
+      - E-001B
+      - E-001C
+      - E-010A
+
+  - executor: dataops
+    responsibility: Define artifact envelopes, templates, and evidence integrity contracts.
+    authority_boundary: >
+      Defines evidence envelopes, templates, and data integrity rules; does not
+      approve business or legal decisions.
+    covers_tasks:
+      - E-005A
+      - E-005B
+
+  - executor: analytics
+    responsibility: Define measurement schemas and statistical preregistration contracts.
+    authority_boundary: >
+      Defines study and measurement schemas and later statistical libraries;
+      does not validate business readiness or policy exceptions.
+    covers_tasks:
+      - E-009A
+      - E-009C
+      - E-009E
+
+  - executor: legalops
+    responsibility: Maintain legal expiry, evidence, and quarantine policies.
+    authority_boundary: >
+      Maintains legal evidence and expiry policies; does not provide legal
+      acceptance or qualified counsel sign-off.
+    covers_tasks:
+      - E-006C
+      - E-008C
+
+  - executor: secops
+    responsibility: Define deny-default security, spend, and publish control policies.
+    authority_boundary: >
+      Defines deny-default control policies for security, spend, and publish
+      readiness; does not approve business release.
+    covers_tasks:
+      - E-006D
+      - E-002D
+
+nonessential_roles_excluded:
+  - finance-analysis
+  - ux-research
+  - quality-assurance
+  - legal-research
+  - devops
+  - marketingops
+  - modelops
+  - market-research
+notes:
+  - DevOps, QA, and research roles remain blocked until their upstream contracts exist.
+  - This set is the minimum executor surface required to start deterministic work.
+  - covers_tasks lists only Phase minus 1 tasks that are immediately executable or directly unlocked by this minimum role set.

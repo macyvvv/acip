@@ -27,8 +27,8 @@ built but unscheduled) -- Governance Layer Overhaul complete
 
 Roadmap Phase A (see `platform/docs/current/PROJECT.md`'s Current Priority):
 clear the 15-task Level-3b backlog, decide the cron/launchd wiring
-question, and document the `.claude/agents/` Ops layer
-(`platform/adr/ADR-0039`) that `CLAUDE.md`/`AGENTS.md` don't yet mention.
+question, and keep the `.claude/agents/` interactive layer documented and
+aligned with ADR-0039/ADR-0041.
 
 ---
 
@@ -76,13 +76,11 @@ The business-agent automation platform is live in production:
   stalled in `platform/system/runtime/business_agent_tasks/queue.json`. Whether to
   wire it up or deliberately leave it manual-trigger-only is an open
   Phase A decision (see `platform/docs/current/PROJECT.md`), not yet made.
-- `.claude/agents/*.md` (added 2026-07-14, `platform/adr/ADR-0039`): 8
-  business-content roles + 6 Ops agents (DataOps/DevOps/MLOps/ModelOps/
-  MarketingOps/SecOps) + `opsboard`, usable directly in an interactive
-  Claude Code session. Runs parallel to, and does not replace, the
-  registry-driven role definitions that automated execution actually
-  reads -- ADR-0039 documents this as a temporary dual-authority
-  arrangement, not a permanent design.
+- `.claude/agents/*.md`: 15 specialist roles + 9 Ops agents + `opsboard`
+  (25 interactive roles). ADR-0041 added interactive-only BusinessOps,
+  ProductOps, LegalOps and seven specialists; they do not expand unattended
+  authority. The original eight business-content roles still run parallel
+  to registry definitions under ADR-0039's dual-authority rule.
 
 Real product surfaces live under `platform/app/products/` (kabukicho_survival_map
 with an embedded Google Map + nearest-first list, text_syndicate content
@@ -109,14 +107,14 @@ aren't self-authorized)
 
 Work Roadmap Phase A (`platform/docs/current/PROJECT.md`'s Current Priority):
 triage the 15 stalled `candidate` tasks in `queue.json`, get an explicit
-decision on Level 3b's cron/launchd wiring, and add `.claude/agents/`
-Ops-layer references to `CLAUDE.md`/`AGENTS.md`.
+decision on Level 3b's cron/launchd wiring, and keep the documented
+interactive role inventory aligned with its live definitions.
 
 ## Success Condition
 
 Zero stale `candidate` tasks left unaddressed (executed or explicitly
 discarded with reason), Level 3b's scheduling status recorded as a
-deliberate decision either way, `CLAUDE.md`/`AGENTS.md` reference the
+deliberate decision either way, `CLAUDE.md`/PROJECT/STATE reference the
 live `.claude/agents/` structure, `python -m pytest -q` and
 `python platform/system/platform/scripts/validate_all.py` both clean.
 
@@ -124,7 +122,7 @@ live `.claude/agents/` structure, `python -m pytest -q` and
 
 # Last Updated
 
-2026-07-14
+2026-07-17
 
 ---
 

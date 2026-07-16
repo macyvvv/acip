@@ -1,0 +1,9 @@
+[project]
+name = "cf-gb-relative-system-app"
+version = "0.1.0"
+description = "Minimal reproducible app skeleton for the CF/GB relative system."
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

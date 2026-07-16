@@ -1,0 +1,492 @@
+schema_version: role-contract-pack:v1
+business_id: cf_gb_relative_system
+generated_at: "2026-07-16T00:00:00+09:00"
+source_role_matrix: businesses/cf_gb_relative_system/artifacts/E-002A/role-matrix.yaml
+design_principles:
+  - Contracts are deterministic and deny-default on missing evidence, schema, or policy.
+  - Every role writes bounded artifacts rather than mutating task state directly.
+  - Tool access is least-privilege and capped per task execution.
+  - Cost and timeout caps are small enough for retryable Phase minus 1 work.
+roles:
+  - executor: businessops
+    prompt_contract:
+      objective: Produce minimum-runtime role and gate-policy artifacts from approved backlog and policy inputs.
+      required_inputs:
+        - versioned source artifact or canonical markdown path
+        - task id and output target path
+        - current task acceptance criteria
+      required_behavior:
+        - restate governing policy assumptions explicitly
+        - emit only bounded YAML or JSON artifacts
+        - fail closed when policy owner, expiry, or fallback is ambiguous
+      forbidden_behavior:
+        - approve release, legal risk, spend exception, or publication
+        - invent data outside cited source inputs
+    output_contract:
+      artifact_kind: policy_input_artifact
+      required_fields:
+        - schema_version
+        - business_id
+        - task_id
+        - generated_at
+        - evidence_sources
+        - policy_owner
+        - decision_rules
+        - fallback
+      validation_rule: Output must be machine-parseable YAML or JSON and preserve deterministic decision branches.
+    tool_contract:
+      allowed_tools:
+        - read_repo_files
+        - apply_patch_for_target_artifact_only
+        - shell_validation_commands
+      disallowed_tools:
+        - network_calls
+        - production_side_effects
+        - task_state_mutation
+      filesystem_scope:
+        read:
+          - businesses/cf_gb_relative_system/
+          - platform/adr/
+        write:
+          - businesses/cf_gb_relative_system/artifacts/
+          - businesses/cf_gb_relative_system/templates/
+          - businesses/cf_gb_relative_system/schemas/
+    cost_contract:
+      max_model_tier: standard_reasoning
+      max_tokens_in: 24000
+      max_tokens_out: 6000
+      max_tool_calls: 12
+    timeout_seconds: 1800
+    timeout_contract:
+      wall_clock_seconds: 1800
+      idle_timeout_seconds: 300
+
+  - executor: productops
+    prompt_contract:
+      objective: Maintain manifest consistency, dependency validity, and implementation sequencing inside approved scope.
+      required_inputs:
+        - canonical manifest
+        - executable WBS
+        - upstream contract artifacts
+      required_behavior:
+        - preserve state-machine semantics and dependency ordering
+        - emit machine-readable task definitions with deterministic acceptance
+        - stop on scope expansion or missing executable contract
+      forbidden_behavior:
+        - approve business scope change
+        - bypass dependency gates
+    output_contract:
+      artifact_kind: orchestration_contract
+      required_fields:
+        - schema_version
+        - task_ids
+        - dependency_edges
+        - acceptance_commands
+        - failure_states
+      validation_rule: Every ready task must resolve inputs, targets, execution workflow, and deterministic acceptance.
+    tool_contract:
+      allowed_tools:
+        - read_repo_files
+        - apply_patch_for_manifest_wbs_docs
+        - shell_validation_commands
+      disallowed_tools:
+        - network_calls
+        - runtime_production_changes
+      filesystem_scope:
+        read:
+          - businesses/cf_gb_relative_system/
+          - platform/docs/current/
+        write:
+          - businesses/cf_gb_relative_system/
+    cost_contract:
+      max_model_tier: standard_reasoning
+      max_tokens_in: 32000
+      max_tokens_out: 8000
+      max_tool_calls: 16
+    timeout_seconds: 2400
+    timeout_contract:
+      wall_clock_seconds: 2400
+      idle_timeout_seconds: 300
+
+  - executor: software-engineering
+    prompt_contract:
+      objective: Implement deterministic code, schemas, tests, and app skeleton changes required by approved contracts.
+      required_inputs:
+        - upstream contract artifact
+        - target files from manifest
+        - acceptance commands
+      required_behavior:
+        - change only declared targets or directly adjacent tests
+        - add deterministic tests for every new executable path
+        - preserve deny-default behavior when upstream contracts are incomplete
+      forbidden_behavior:
+        - invent policy semantics
+        - mark task complete without passing acceptance
+    output_contract:
+      artifact_kind: code_change_set
+      required_fields:
+        - changed_files
+        - tests_added_or_updated
+        - acceptance_results
+        - residual_risks
+      validation_rule: Each change set must include runnable verification evidence and zero unresolved syntax or import errors.
+    tool_contract:
+      allowed_tools:
+        - read_repo_files
+        - apply_patch
+        - shell_build_test_commands
+      disallowed_tools:
+        - network_calls_unless_explicitly_required
+        - destructive_git_reset
+        - undeclared_file_writes
+      filesystem_scope:
+        read:
+          - platform/
+          - businesses/cf_gb_relative_system/
+        write:
+          - platform/
+          - businesses/cf_gb_relative_system/app/
+    cost_contract:
+      max_model_tier: standard_reasoning
+      max_tokens_in: 32000
+      max_tokens_out: 8000
+      max_tool_calls: 24
+    timeout_seconds: 7200
+    timeout_contract:
+      wall_clock_seconds: 7200
+      idle_timeout_seconds: 600
+
+  - executor: dataops
+    prompt_contract:
+      objective: Define evidence envelopes, artifact templates, and data integrity contracts for unattended execution.
+      required_inputs:
+        - artifact envelope schema
+        - statistical protocol where applicable
+        - target schema and template paths
+      required_behavior:
+        - produce versioned schemas and example fixtures
+        - make provenance, hash, schema version, and role metadata mandatory
+        - reject unverifiable or ambiguous evidence
+      forbidden_behavior:
+        - approve business readiness
+        - relax required provenance fields for convenience
+    output_contract:
+      artifact_kind: data_contract_artifact
+      required_fields:
+        - schema_version
+        - artifact_type
+        - required_fields
+        - fixture_examples
+        - validation_examples
+      validation_rule: Schemas must pass Draft 2020-12 validation and example fixtures must satisfy the schema.
+    tool_contract:
+      allowed_tools:
+        - read_repo_files
+        - apply_patch_for_schemas_templates
+        - shell_schema_validation_commands
+      disallowed_tools:
+        - network_calls
+        - runtime_state_mutation
+      filesystem_scope:
+        read:
+          - businesses/cf_gb_relative_system/
+        write:
+          - businesses/cf_gb_relative_system/schemas/
+          - businesses/cf_gb_relative_system/templates/
+          - businesses/cf_gb_relative_system/artifacts/
+    cost_contract:
+      max_model_tier: standard_reasoning
+      max_tokens_in: 24000
+      max_tokens_out: 7000
+      max_tool_calls: 16
+    timeout_seconds: 3600
+    timeout_contract:
+      wall_clock_seconds: 3600
+      idle_timeout_seconds: 300
+
+  - executor: analytics
+    prompt_contract:
+      objective: Produce statistical schemas, power and confidence utilities, and preregistration validators from the statistical protocol.
+      required_inputs:
+        - statistical protocol
+        - measurement schema contracts
+        - benchmark tolerances if defined
+      required_behavior:
+        - encode estimand, precision, stopping, and SRM logic explicitly
+        - separate assumptions from computed outputs
+        - fail closed on under-specified study design
+      forbidden_behavior:
+        - infer missing study parameters silently
+        - certify business readiness or release gates
+    output_contract:
+      artifact_kind: statistical_contract_or_library
+      required_fields:
+        - schema_version
+        - formulas_or_algorithms
+        - input_requirements
+        - benchmark_fixtures
+        - failure_conditions
+      validation_rule: Benchmarks must be reproducible within stated tolerance and invalid designs must raise explicit failures.
+    tool_contract:
+      allowed_tools:
+        - read_repo_files
+        - apply_patch
+        - shell_test_commands
+      disallowed_tools:
+        - network_calls
+        - unbounded notebook_outputs
+      filesystem_scope:
+        read:
+          - businesses/cf_gb_relative_system/
+          - platform/
+        write:
+          - businesses/cf_gb_relative_system/schemas/
+          - platform/system/core/
+          - platform/system/tests/
+    cost_contract:
+      max_model_tier: standard_reasoning
+      max_tokens_in: 32000
+      max_tokens_out: 8000
+      max_tool_calls: 20
+    timeout_seconds: 7200
+    timeout_contract:
+      wall_clock_seconds: 7200
+      idle_timeout_seconds: 600
+
+  - executor: modelops
+    prompt_contract:
+      objective: Produce runtime role contract packs that close gaps between minimum role selection and the currently ready Phase minus 1 executor surface.
+      required_inputs:
+        - source role matrix
+        - current manifest ready queue
+        - acceptance criteria for downstream runtime implementation
+      required_behavior:
+        - surface contradictions between selected minimum roles and actual ready executors
+        - emit machine-parseable YAML only
+        - preserve least-privilege defaults for every newly added executor
+      forbidden_behavior:
+        - mutate manifest state
+        - authorize production execution
+    output_contract:
+      artifact_kind: role_contract_artifact
+      required_fields:
+        - schema_version
+        - business_id
+        - roles
+        - secops_review
+        - dataops_review
+      validation_rule: Added executors must map to ready tasks and define prompt, tool, cost, and timeout constraints.
+    tool_contract:
+      allowed_tools:
+        - read_repo_files
+        - apply_patch_for_role_contract_pack
+        - shell_validation_commands
+      disallowed_tools:
+        - network_calls
+        - task_state_mutation
+        - production_side_effects
+      filesystem_scope:
+        read:
+          - businesses/cf_gb_relative_system/
+          - platform/
+        write:
+          - businesses/cf_gb_relative_system/artifacts/
+    cost_contract:
+      max_model_tier: standard_reasoning
+      max_tokens_in: 24000
+      max_tokens_out: 6000
+      max_tool_calls: 12
+    timeout_seconds: 3600
+    timeout_contract:
+      wall_clock_seconds: 3600
+      idle_timeout_seconds: 300
+
+  - executor: devops
+    prompt_contract:
+      objective: Implement deterministic CI, preview, promotion, scheduler, and recovery delivery contracts for the approved app skeleton.
+      required_inputs:
+        - reproducible local app artifact
+        - repository validation policy
+        - declared workflow targets
+      required_behavior:
+        - keep preview and production promotion paths separated
+        - validate the same built artifact across stages
+        - include rollback or restore hooks in delivery flow
+      forbidden_behavior:
+        - publish directly from unverified source state
+        - bypass repository validation gates
+    output_contract:
+      artifact_kind: delivery_contract_artifact
+      required_fields:
+        - schema_version
+        - workflow_files
+        - build_steps
+        - promotion_guards
+        - rollback_checks
+      validation_rule: Delivery contracts must build once, reuse the same artifact, and run through the repository validation policy.
+    tool_contract:
+      allowed_tools:
+        - read_repo_files
+        - apply_patch
+        - shell_build_test_commands
+      disallowed_tools:
+        - network_calls
+        - production_secret_access
+        - destructive_git_reset
+      filesystem_scope:
+        read:
+          - businesses/cf_gb_relative_system/
+          - .github/
+          - platform/
+        write:
+          - businesses/cf_gb_relative_system/app/
+          - .github/workflows/
+          - platform/system/tests/
+    cost_contract:
+      max_model_tier: standard_reasoning
+      max_tokens_in: 24000
+      max_tokens_out: 6000
+      max_tool_calls: 14
+    timeout_seconds: 7200
+    timeout_contract:
+      wall_clock_seconds: 7200
+      idle_timeout_seconds: 300
+
+  - executor: legalops
+    prompt_contract:
+      objective: Maintain legal evidence, expiry, quarantine, and deny rules without granting legal sign-off.
+      required_inputs:
+        - governing legal policy inputs
+        - task-specific evidence requirements
+        - expiry and fallback rules
+      required_behavior:
+        - mark unknown or expired legal state as deny or quarantine
+        - record counsel-required boundaries explicitly
+        - preserve jurisdiction and authority metadata
+      forbidden_behavior:
+        - provide qualified legal acceptance
+        - auto-approve unresolved exceptions
+    output_contract:
+      artifact_kind: legal_policy_artifact
+      required_fields:
+        - schema_version
+        - jurisdiction
+        - authority
+        - effective_at
+        - expires_at
+        - deny_conditions
+        - quarantine_conditions
+      validation_rule: Missing jurisdiction, unknown authority, or expired evidence must deterministically block normal flow.
+    tool_contract:
+      allowed_tools:
+        - read_repo_files
+        - apply_patch_for_policy_artifacts
+        - shell_validation_commands
+      disallowed_tools:
+        - network_calls
+        - privileged_release_or_financial_actions
+      filesystem_scope:
+        read:
+          - businesses/cf_gb_relative_system/
+        write:
+          - businesses/cf_gb_relative_system/templates/
+          - businesses/cf_gb_relative_system/artifacts/
+    cost_contract:
+      max_model_tier: standard_reasoning
+      max_tokens_in: 24000
+      max_tokens_out: 6000
+      max_tool_calls: 12
+    timeout_seconds: 3600
+    timeout_contract:
+      wall_clock_seconds: 3600
+      idle_timeout_seconds: 300
+
+  - executor: secops
+    prompt_contract:
+      objective: Define deny-default execution, spend, publish, and security controls for unattended runtime.
+      required_inputs:
+        - runtime role contract or policy artifact
+        - risk categories and severity thresholds
+        - tool and spend boundaries
+      required_behavior:
+        - default deny on missing approval, missing control data, or critical severity
+        - encode least-privilege tool boundaries and budget caps
+        - require quarantine path for unresolved security conditions
+      forbidden_behavior:
+        - grant release approval
+        - weaken control thresholds without explicit policy input
+    output_contract:
+      artifact_kind: security_control_artifact
+      required_fields:
+        - schema_version
+        - severity_rules
+        - spend_caps
+        - tool_permissions
+        - publish_controls
+        - quarantine_fallback
+      validation_rule: Over-cap, unauthorized tool, or critical severity cases must produce deterministic deny outcomes.
+    tool_contract:
+      allowed_tools:
+        - read_repo_files
+        - apply_patch_for_policy_artifacts
+        - shell_validation_commands
+      disallowed_tools:
+        - network_calls
+        - production_secret_access
+        - task_state_mutation
+      filesystem_scope:
+        read:
+          - businesses/cf_gb_relative_system/
+          - platform/
+        write:
+          - businesses/cf_gb_relative_system/templates/
+          - businesses/cf_gb_relative_system/artifacts/
+          - platform/system/tests/
+    cost_contract:
+      max_model_tier: standard_reasoning
+      max_tokens_in: 24000
+      max_tokens_out: 6000
+      max_tool_calls: 14
+    timeout_seconds: 3600
+    timeout_contract:
+      wall_clock_seconds: 3600
+      idle_timeout_seconds: 300
+reviews:
+  secops:
+    reviewer: secops
+    verdict: proceed
+    review_focus:
+      - least privilege
+      - deny default
+      - cost and tool caps
+      - quarantine path
+    findings:
+      - All roles prohibit task-state mutation and external side effects by default.
+      - Software-engineering and analytics retain broader write scopes, but both are bounded to declared repo areas and acceptance tests.
+      - ProductOps remains orchestration-only and cannot bypass dependency gates.
+    required_adjustments_applied:
+      - Added explicit disallow rules for production side effects and destructive git reset.
+      - Added quarantine fallback and unauthorized-tool denial expectations to legal and security-related roles.
+  dataops:
+    reviewer: dataops
+    verdict: proceed
+    review_focus:
+      - schema determinism
+      - provenance completeness
+      - machine-parseable outputs
+      - reproducible fixtures
+    findings:
+      - Every role contract now requires machine-parseable structured output rather than free-form narrative only.
+      - Data-bearing roles require schema_version, evidence sources, and validation examples or acceptance results.
+      - Statistical and policy artifacts explicitly separate required inputs from assumptions and failure conditions.
+    required_adjustments_applied:
+      - Added validation_rule to every output contract.
+      - Required versioned fields and benchmark or fixture evidence for all data- or statistics-bearing outputs.
+secops_review:
+  reviewer: secops
+  verdict: proceed
+  anchored_section: reviews.secops
+dataops_review:
+  reviewer: dataops
+  verdict: proceed
+  anchored_section: reviews.dataops

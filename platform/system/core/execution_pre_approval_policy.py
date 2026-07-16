@@ -14,10 +14,16 @@ _REQUIRED_FIELDS = (
     "role_id",
     "enabled",
     "max_auto_approvals_per_day",
+    "max_allowed_tools",
+    "max_model_capability",
     "authored_by",
     "authored_at",
     "reason",
 )
+_MODEL_CAPABILITY_ORDER = {
+    "cost_optimized": 1,
+    "reasoning": 2,
+}
 
 
 class ExecutionPreApprovalPolicyError(ValueError):
@@ -32,6 +38,8 @@ class ExecutionPreApprovalPolicyRecord:
     enabled: bool
     max_auto_approvals_per_day: int
     max_auto_approvals_per_week: int | None
+    max_allowed_tools: int
+    max_model_capability: str
     authored_by: str
     authored_at: str
     reason: str
@@ -63,8 +71,19 @@ def _validate_structure(raw: dict) -> None:
     ):
         raise ExecutionPreApprovalPolicyError("max_auto_approvals_per_week must be a positive integer when present")
 
+    max_allowed_tools = raw["max_allowed_tools"]
+    if not isinstance(max_allowed_tools, int) or max_allowed_tools < 0:
+        raise ExecutionPreApprovalPolicyError("max_allowed_tools must be a non-negative integer")
 
-def _validate_role_eligibility(role_id: str, base_path: str | Path) -> None:
+    max_model_capability = raw["max_model_capability"]
+    if max_model_capability not in _MODEL_CAPABILITY_ORDER:
+        raise ExecutionPreApprovalPolicyError(
+            "max_model_capability must be one of "
+            f"{sorted(_MODEL_CAPABILITY_ORDER)}"
+        )
+
+
+def _validate_role_eligibility(record: ExecutionPreApprovalPolicyRecord, base_path: str | Path) -> None:
     """Checked against the LIVE role registry, every time -- never cached or
     trusted from the policy file. Two independent load-bearing checks, both
     re-validated on every evaluation so a future registry change (a new
@@ -80,19 +99,35 @@ def _validate_role_eligibility(role_id: str, base_path: str | Path) -> None:
     Raises loudly (not a quiet None) -- a policy naming a now-dangerous or
     unknown role is a misconfiguration worth surfacing every time, not
     silently skipping."""
-    role = get_role(role_id, base_path)
+    role = get_role(record.role_id, base_path)
     if role is None:
-        raise ExecutionPreApprovalPolicyError(f"Policy names unknown role_id '{role_id}'")
+        raise ExecutionPreApprovalPolicyError(f"Policy names unknown role_id '{record.role_id}'")
     if role.role_kind not in _ELIGIBLE_ROLE_KINDS:
         raise ExecutionPreApprovalPolicyError(
-            f"Policy names role_id '{role_id}' with role_kind='{role.role_kind}' -- "
+            f"Policy names role_id '{record.role_id}' with role_kind='{role.role_kind}' -- "
             f"only {sorted(_ELIGIBLE_ROLE_KINDS)} may ever be pre-approved, never pluggable_provider"
         )
     mutating = sorted(set(role.allowed_tools) & _MUTATING_TOOLS)
     if mutating:
         raise ExecutionPreApprovalPolicyError(
-            f"Policy names role_id '{role_id}' whose allowed_tools include mutating tool(s) {mutating} -- "
+            f"Policy names role_id '{record.role_id}' whose allowed_tools include mutating tool(s) {mutating} -- "
             f"pre-approval requires a read-only tool surface"
+        )
+    if len(role.allowed_tools) > record.max_allowed_tools:
+        raise ExecutionPreApprovalPolicyError(
+            f"Policy names role_id '{record.role_id}' with {len(role.allowed_tools)} allowed_tools "
+            f"but policy cap is {record.max_allowed_tools}"
+        )
+    role_capability_rank = _MODEL_CAPABILITY_ORDER.get(role.model_capability)
+    policy_capability_rank = _MODEL_CAPABILITY_ORDER[record.max_model_capability]
+    if role_capability_rank is None:
+        raise ExecutionPreApprovalPolicyError(
+            f"Policy names role_id '{record.role_id}' with unknown model_capability '{role.model_capability}'"
+        )
+    if role_capability_rank > policy_capability_rank:
+        raise ExecutionPreApprovalPolicyError(
+            f"Policy names role_id '{record.role_id}' with model_capability='{role.model_capability}' "
+            f"but policy cap is '{record.max_model_capability}'"
         )
 
 
@@ -104,6 +139,8 @@ def _to_record(raw: dict) -> ExecutionPreApprovalPolicyRecord:
         enabled=bool(raw["enabled"]),
         max_auto_approvals_per_day=raw["max_auto_approvals_per_day"],
         max_auto_approvals_per_week=raw.get("max_auto_approvals_per_week"),
+        max_allowed_tools=raw["max_allowed_tools"],
+        max_model_capability=str(raw["max_model_capability"]),
         authored_by=str(raw["authored_by"]),
         authored_at=str(raw["authored_at"]),
         reason=str(raw["reason"]),
@@ -140,6 +177,6 @@ def get_execution_pre_approval_policy(
         if record.business_id == business_id and record.role_id == role_id:
             if not record.enabled:
                 return None
-            _validate_role_eligibility(record.role_id, base_path)
+            _validate_role_eligibility(record, base_path)
             return record
     return None

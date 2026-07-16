@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acip.local/cf-gb-relative-system/schemas/event/v1",
+  "title": "Instrumented event",
+  "description": "Stable event contract with explicit versioning and dedup identity.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "event_name",
+    "event_version",
+    "event_id",
+    "occurred_at",
+    "identity",
+    "properties"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "event:v1"
+    },
+    "event_name": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]{2,63}$"
+    },
+    "event_version": {
+      "type": "string",
+      "pattern": "^v[0-9]+$"
+    },
+    "event_id": {
+      "type": "string",
+      "pattern": "^evt_[a-z0-9][a-z0-9_-]{8,63}$"
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Stable identity is event_name + event_version + dedup_key. session_id and actor_id are optional carriers only.",
+      "required": [
+        "dedup_key"
+      ],
+      "properties": {
+        "dedup_key": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9._:-]{8,128}$"
+        },
+        "session_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9._:-]{3,128}$"
+        },
+        "actor_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9._:-]{3,128}$"
+        }
+      }
+    },
+    "properties": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": true
+    }
+  }
+}

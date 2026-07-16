@@ -18,6 +18,8 @@ def _write_pre_approval_policy(tmp_path: Path, business_id: str, role_id: str, *
         "enabled": True,
         "max_auto_approvals_per_day": 10,
         "max_auto_approvals_per_week": 50,
+        "max_allowed_tools": 4,
+        "max_model_capability": "reasoning",
         "authored_by": "macy",
         "authored_at": "2026-07-12T00:00:00+00:00",
         "reason": "pilot",

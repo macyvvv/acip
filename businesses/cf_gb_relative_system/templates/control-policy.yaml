@@ -1,0 +1,226 @@
+schema: control-policy:v1
+policy_id: cf-gb-control-pack
+policy_owner: secops
+description: >-
+  Fail-closed control policies for unattended spend approval, publish gating,
+  and rollback initiation. These policies are deterministic fixtures for the
+  autonomous policy engine and do not authorize out-of-band exceptions.
+
+evaluation:
+  clock: UTC
+  default_decision: deny
+  precedence:
+    - deny
+    - quarantined
+    - allow
+  severity_order:
+    - Critical
+    - High
+    - Medium
+    - Low
+
+spend_policy:
+  policy_id: spend-cap
+  currency: JPY
+  default_decision: deny
+  required_fields:
+    - cap_amount
+    - committed_amount
+    - forecast_amount
+    - evaluated_at
+  rules:
+    - rule_id: over-cap-deny
+      priority: 100
+      when:
+        projected_total_gt_cap: true
+      decision: deny
+      reason_code: SPEND_CAP_EXCEEDED
+      automatic_action: block_execution
+    - rule_id: cap-edge-quarantine
+      priority: 90
+      when:
+        projected_total_eq_cap: true
+      decision: quarantined
+      reason_code: SPEND_CAP_AT_LIMIT
+      automatic_action: require_reforecast
+    - rule_id: under-cap-allow
+      priority: 10
+      when:
+        projected_total_lt_cap: true
+      decision: allow
+      reason_code: SPEND_WITHIN_CAP
+      automatic_action: continue
+
+publish_policy:
+  policy_id: publish-readiness
+  default_decision: deny
+  required_fields:
+    - artifact_signed
+    - release_candidate_id
+    - highest_open_severity
+    - rollback_ready
+    - evaluated_at
+  rules:
+    - rule_id: critical-severity-blocks-publish
+      priority: 110
+      when:
+        highest_open_severity_in:
+          - Critical
+      decision: deny
+      reason_code: OPEN_CRITICAL_FINDING
+      automatic_action: block_publish
+    - rule_id: high-severity-blocks-publish
+      priority: 100
+      when:
+        highest_open_severity_in:
+          - High
+      decision: deny
+      reason_code: OPEN_HIGH_FINDING
+      automatic_action: block_publish
+    - rule_id: unsigned-artifact-blocks-publish
+      priority: 90
+      when:
+        artifact_signed: false
+      decision: deny
+      reason_code: ARTIFACT_UNSIGNED
+      automatic_action: block_publish
+    - rule_id: rollback-not-ready-blocks-publish
+      priority: 80
+      when:
+        rollback_ready: false
+      decision: deny
+      reason_code: ROLLBACK_NOT_READY
+      automatic_action: block_publish
+    - rule_id: publish-allow
+      priority: 10
+      when:
+        artifact_signed: true
+        highest_open_severity_in:
+          - Medium
+          - Low
+          - None
+        rollback_ready: true
+      decision: allow
+      reason_code: PUBLISH_CONTROLS_GREEN
+      automatic_action: continue
+
+rollback_policy:
+  policy_id: rollback-trigger
+  default_decision: allow
+  required_fields:
+    - production_incident
+    - data_integrity_verified
+    - customer_impact_active
+    - evaluated_at
+  rules:
+    - rule_id: integrity-loss-triggers-rollback
+      priority: 100
+      when:
+        data_integrity_verified: false
+      decision: deny
+      reason_code: ROLLBACK_REQUIRED_DATA_INTEGRITY
+      automatic_action: initiate_rollback
+    - rule_id: active-customer-impact-triggers-rollback
+      priority: 90
+      when:
+        production_incident: true
+        customer_impact_active: true
+      decision: deny
+      reason_code: ROLLBACK_REQUIRED_CUSTOMER_IMPACT
+      automatic_action: initiate_rollback
+    - rule_id: stable-state-continue
+      priority: 10
+      when:
+        data_integrity_verified: true
+        customer_impact_active: false
+      decision: allow
+      reason_code: ROLLBACK_NOT_REQUIRED
+      automatic_action: continue
+
+fixtures:
+  - fixture_id: spend-under-cap-allows
+    control: spend_policy
+    facts:
+      cap_amount: 500000
+      committed_amount: 120000
+      forecast_amount: 80000
+      evaluated_at: "2026-07-16T00:00:00Z"
+    expected:
+      decision: allow
+      reason_code: SPEND_WITHIN_CAP
+      matched_rule_id: under-cap-allow
+
+  - fixture_id: spend-over-cap-denies
+    control: spend_policy
+    facts:
+      cap_amount: 500000
+      committed_amount: 340000
+      forecast_amount: 180000
+      evaluated_at: "2026-07-16T00:00:00Z"
+    expected:
+      decision: deny
+      reason_code: SPEND_CAP_EXCEEDED
+      matched_rule_id: over-cap-deny
+
+  - fixture_id: publish-critical-blocks
+    control: publish_policy
+    facts:
+      artifact_signed: true
+      release_candidate_id: rc-20260716-01
+      highest_open_severity: Critical
+      rollback_ready: true
+      evaluated_at: "2026-07-16T00:00:00Z"
+    expected:
+      decision: deny
+      reason_code: OPEN_CRITICAL_FINDING
+      matched_rule_id: critical-severity-blocks-publish
+
+  - fixture_id: publish-high-blocks
+    control: publish_policy
+    facts:
+      artifact_signed: true
+      release_candidate_id: rc-20260716-02
+      highest_open_severity: High
+      rollback_ready: true
+      evaluated_at: "2026-07-16T00:00:00Z"
+    expected:
+      decision: deny
+      reason_code: OPEN_HIGH_FINDING
+      matched_rule_id: high-severity-blocks-publish
+
+  - fixture_id: publish-green-allows
+    control: publish_policy
+    facts:
+      artifact_signed: true
+      release_candidate_id: rc-20260716-03
+      highest_open_severity: Medium
+      rollback_ready: true
+      evaluated_at: "2026-07-16T00:00:00Z"
+    expected:
+      decision: allow
+      reason_code: PUBLISH_CONTROLS_GREEN
+      matched_rule_id: publish-allow
+
+  - fixture_id: rollback-on-integrity-loss
+    control: rollback_policy
+    facts:
+      production_incident: true
+      data_integrity_verified: false
+      customer_impact_active: true
+      evaluated_at: "2026-07-16T00:00:00Z"
+    expected:
+      decision: deny
+      reason_code: ROLLBACK_REQUIRED_DATA_INTEGRITY
+      matched_rule_id: integrity-loss-triggers-rollback
+
+  - fixture_id: rollback-not-required
+    control: rollback_policy
+    facts:
+      production_incident: false
+      data_integrity_verified: true
+      customer_impact_active: false
+      evaluated_at: "2026-07-16T00:00:00Z"
+    expected:
+      decision: allow
+      reason_code: ROLLBACK_NOT_REQUIRED
+      matched_rule_id: stable-state-continue

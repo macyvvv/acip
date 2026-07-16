@@ -1,0 +1,54 @@
+name: cf-gb-relative-system-preview
+
+on:
+  pull_request:
+    paths:
+      - "businesses/cf_gb_relative_system/**"
+      - "platform/system/**"
+      - ".github/workflows/cf-gb-relative-system-preview.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "businesses/cf_gb_relative_system/**"
+      - "platform/system/**"
+
+jobs:
+  build-preview:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: businesses/cf_gb_relative_system/app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run app tests
+        run: python -m pytest -q tests
+      - name: Build release artifact
+        run: python build_artifact.py
+      - name: Upload preview artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cf-gb-relative-system-preview
+          path: businesses/cf_gb_relative_system/app/dist/
+
+  validate-and-promote:
+    needs: build-preview
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate repository state
+        run: python platform/system/platform/scripts/validate_all.py
+      - name: Download built artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: cf-gb-relative-system-preview
+          path: promotion_artifact
+      - name: Verify promotion bundle exists
+        run: test -f promotion_artifact/cf-gb-relative-system-app.tar.gz
