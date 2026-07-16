@@ -42,7 +42,7 @@ _SEED_BUSINESSES: tuple[dict[str, Any], ...] = (
         "display_name": "Somia",
         "status": "active",
         "content_root": "businesses/platform/somia/content",
-        "product_code_path": "platform/system/platform/scripts/somia",
+        "product_code_path": "platform/system/scripts/somia",
         "tracking_issue_numbers": (45, 46),
         "historical_issue_numbers": (),
         "notes": "AI character media / video content business. Image/video generation roles require paid vendor APIs (fal.ai/Kling).",
@@ -77,6 +77,10 @@ _SEED_BUSINESSES: tuple[dict[str, Any], ...] = (
 )
 
 
+def _path_exists_any(root: Path, *relative_paths: str | None) -> bool:
+    return any(_path_exists(root, relative_path) for relative_path in relative_paths)
+
+
 def _path_exists(root: Path, relative: str | None) -> bool:
     if relative is None:
         return False
@@ -87,7 +91,11 @@ def build_business_registry(base_path: Path | None = None) -> dict[str, Any]:
     root = Path(base_path) if base_path is not None else get_repo_root()
     records: list[BusinessRecord] = []
     for seed in _SEED_BUSINESSES:
-        content_root_exists = _path_exists(root, seed["content_root"])
+        content_root = seed["content_root"]
+        if seed["business_id"] == "somia":
+            content_root_exists = _path_exists_any(root, content_root, "businesses/somia/content")
+        else:
+            content_root_exists = _path_exists(root, content_root)
         product_code_path_exists = _path_exists(root, seed["product_code_path"])
         records.append(
             BusinessRecord(

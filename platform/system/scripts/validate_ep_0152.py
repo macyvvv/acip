@@ -6,20 +6,23 @@ from pathlib import Path
 
 def _resolve_repo_root() -> Path:
     current = Path(__file__).resolve()
+    matches: list[Path] = []
     for candidate in current.parents:
         if (candidate / ".git").exists() or (candidate / "pyproject.toml").exists() or (candidate / "README.md").exists():
-            return candidate
+            matches.append(candidate)
+    if matches:
+        return matches[-1]
     raise RuntimeError(f"Unable to locate repository root from {__file__}")
 
 ROOT = _resolve_repo_root()
-sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "platform"))
 
 
 def main() -> int:
     required_paths = [
-        ROOT / "docs" / "current" / "VALIDATION_READ_ONLY_MODE.md",
-        ROOT / "system" / "scripts" / "validate_all.py",
-        ROOT / "system" / "tests" / "test_validate_all_read_only.py",
+        ROOT / "platform" / "docs" / "current" / "VALIDATION_READ_ONLY_MODE.md",
+        ROOT / "platform" / "system" / "scripts" / "validate_all.py",
+        ROOT / "platform" / "system" / "tests" / "test_validate_all_read_only.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

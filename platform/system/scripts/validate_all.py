@@ -17,9 +17,9 @@ def _resolve_repo_root() -> Path:
 
 ROOT = _resolve_repo_root()
 sys.path.insert(0, str(ROOT))
-sys.path.insert(0, str(ROOT / "system"))
+sys.path.insert(0, str(ROOT / "platform"))
 
-_VALIDATION_ORCHESTRATOR_PATH = ROOT / "system" / "orchestrator" / "validation_orchestrator.py"
+_VALIDATION_ORCHESTRATOR_PATH = ROOT / "platform" / "system" / "orchestrator" / "validation_orchestrator.py"
 _spec = importlib.util.spec_from_file_location("validation_orchestrator", _VALIDATION_ORCHESTRATOR_PATH)
 if _spec is None or _spec.loader is None:
     raise RuntimeError(f"Unable to load validation orchestrator from {_VALIDATION_ORCHESTRATOR_PATH}")

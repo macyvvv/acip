@@ -8,21 +8,24 @@ from pathlib import Path
 
 def _resolve_repo_root() -> Path:
     current = Path(__file__).resolve()
+    matches: list[Path] = []
     for candidate in current.parents:
         if (candidate / ".git").exists() or (candidate / "pyproject.toml").exists() or (candidate / "README.md").exists():
-            return candidate
+            matches.append(candidate)
+    if matches:
+        return matches[-1]
     raise RuntimeError(f"Unable to locate repository root from {__file__}")
 
 ROOT = _resolve_repo_root()
 def main() -> int:
     commands = [
-        [sys.executable, "platform/system/platform/scripts/validate_ep_0108.py"],
+        [sys.executable, "platform/system/scripts/validate_ep_0108.py"],
     ]
     for command in commands:
         print("$ " + " ".join(command))
         subprocess.check_call(command, cwd=ROOT)
 
-    queue_state = (ROOT / "docs" / "current" / "QUEUE_STATE.md").read_text(encoding="utf-8")
+    queue_state = (ROOT / "platform" / "docs" / "current" / "QUEUE_STATE.md").read_text(encoding="utf-8")
     required = ["active_ep: EP-0108", "next_ep: EP-0109"]
     missing = [item for item in required if item not in queue_state]
     if missing:

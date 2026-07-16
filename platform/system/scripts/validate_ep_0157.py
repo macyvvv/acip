@@ -6,23 +6,26 @@ from pathlib import Path
 
 def _resolve_repo_root() -> Path:
     current = Path(__file__).resolve()
+    matches: list[Path] = []
     for candidate in current.parents:
         if (candidate / ".git").exists() or (candidate / "pyproject.toml").exists() or (candidate / "README.md").exists():
-            return candidate
+            matches.append(candidate)
+    if matches:
+        return matches[-1]
     raise RuntimeError(f"Unable to locate repository root from {__file__}")
 
 ROOT = _resolve_repo_root()
-sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "platform"))
 
 
 def main() -> int:
     required_paths = [
-        ROOT / "system" / "orchestrator" / "repository_completion_marker.py",
-        ROOT / "docs" / "current" / "REPOSITORY_COMPLETION_MARKER.md",
-        ROOT / "system" / "runtime" / "handoff" / "latest.json",
-        ROOT / "system" / "runtime" / "handoff" / "completion",
-        ROOT / "specs" / "EP-0157",
-        ROOT / "system" / "tests" / "test_repository_completion_marker.py",
+        ROOT / "platform" / "system" / "orchestrator" / "repository_completion_marker.py",
+        ROOT / "platform" / "docs" / "current" / "REPOSITORY_COMPLETION_MARKER.md",
+        ROOT / "platform" / "system" / "runtime" / "handoff" / "latest.json",
+        ROOT / "platform" / "system" / "runtime" / "handoff" / "completion",
+        ROOT / "platform" / "specs" / "EP-0157",
+        ROOT / "platform" / "system" / "tests" / "test_repository_completion_marker.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

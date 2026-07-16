@@ -20,19 +20,19 @@ def _resolve_repo_root() -> Path:
     raise RuntimeError(f"Unable to locate repository root from {__file__}")
 
 ROOT = _resolve_repo_root()
-sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "platform"))
 
 
 def main() -> int:
     required_paths = [
-        ROOT / "contracts" / "REFACTORING_GOVERNANCE_CONTRACT.md",
-        ROOT / "docs" / "current" / "REFACTORING_GOVERNANCE_GATE.md",
-        ROOT / "docs" / "current" / "REFACTORING_DECISION_RECORD.md",
-        ROOT / "system" / "scripts" / "hygiene" / "validate_refactoring_governance.py",
-        ROOT / "docs" / "ep" / "README_EP0117_REFACTORING_GOVERNANCE.md",
-        ROOT / "specs" / "EP-0117",
+        ROOT / "platform" / "contracts" / "REFACTORING_GOVERNANCE_CONTRACT.md",
+        ROOT / "platform" / "docs" / "current" / "REFACTORING_GOVERNANCE_GATE.md",
+        ROOT / "platform" / "docs" / "current" / "REFACTORING_DECISION_RECORD.md",
+        ROOT / "platform" / "system" / "scripts" / "hygiene" / "validate_refactoring_governance.py",
+        ROOT / "platform" / "docs" / "ep" / "EP_LEGACY_BUNDLE.md",
+        ROOT / "platform" / "specs" / "EP-0117",
         ROOT / ".github" / "workflows" / "ep0117-refactoring-governance.yml",
-        ROOT / "system" / "tests" / "test_refactoring_governance.py",
+        ROOT / "platform" / "system" / "tests" / "test_refactoring_governance.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

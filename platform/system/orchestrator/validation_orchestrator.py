@@ -53,7 +53,9 @@ class ValidationOrchestrator:
         self.root = Path(root) if root != "." else get_repo_root()
 
     def discover_validation_scripts(self) -> list[Path]:
-        scripts_dir = self.root / "system" / "scripts"
+        scripts_dir = self.root / "platform" / "system" / "scripts"
+        if not scripts_dir.exists():
+            scripts_dir = self.root / "system" / "scripts"
         if not scripts_dir.exists():
             scripts_dir = self.root / "scripts"
         discovered = []
@@ -114,7 +116,9 @@ class ValidationOrchestrator:
         return json_report, markdown_report
 
     def write_reports(self, result: ValidationOrchestrationResult) -> None:
-        runtime_dir = self.root / "system" / "runtime" / "validation"
+        runtime_dir = self.root / "platform" / "system" / "runtime" / "validation"
+        if not runtime_dir.parent.parent.exists():
+            runtime_dir = self.root / "system" / "runtime" / "validation"
         if not runtime_dir.parent.parent.exists():
             runtime_dir = self.root / "runtime" / "validation"
         runtime_dir.mkdir(parents=True, exist_ok=True)
@@ -122,7 +126,9 @@ class ValidationOrchestrator:
         (runtime_dir / "validation_report.json").write_text(json_report, encoding="utf-8")
         (runtime_dir / "VALIDATION_REPORT.md").write_text(markdown_report, encoding="utf-8")
 
-        validation_state = self.root / "docs" / "current" / "VALIDATION_STATE.md"
+        validation_state = self.root / "platform" / "docs" / "current" / "VALIDATION_STATE.md"
+        if not validation_state.parent.exists():
+            validation_state = self.root / "docs" / "current" / "VALIDATION_STATE.md"
         validation_state.parent.mkdir(parents=True, exist_ok=True)
         validation_state.write_text(
             "\n".join(

@@ -34,7 +34,10 @@ def render(content_id: str, *, provider_name: str | None = None, root: Path | No
         if not path:
             return path
         try:
-            return str(Path(path).resolve().relative_to(root))
+            relative = Path(path).resolve().relative_to(root)
+            if relative.parts and relative.parts[0] == "somia":
+                return str(Path("platform") / relative)
+            return str(relative)
         except ValueError:
             return path
 

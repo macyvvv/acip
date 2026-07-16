@@ -20,19 +20,19 @@ def _resolve_repo_root() -> Path:
     raise RuntimeError(f"Unable to locate repository root from {__file__}")
 
 ROOT = _resolve_repo_root()
-sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "platform"))
 
 
 def main() -> int:
     required_paths = [
-        ROOT / "contracts" / "REPOSITORY_LAYOUT_CONTRACT.md",
-        ROOT / "docs" / "current" / "CANONICAL_REPOSITORY_LAYOUT.md",
-        ROOT / "docs" / "current" / "ROOT_ALLOWLIST.md",
-        ROOT / "docs" / "current" / "LAYOUT_MIGRATION_RULES.md",
-        ROOT / "system" / "scripts" / "hygiene" / "validate_repository_layout.py",
-        ROOT / "docs" / "ep" / "README_EP0121_REPOSITORY_LAYOUT_CANONICALIZATION.md",
-        ROOT / "specs" / "EP-0121",
-        ROOT / "system" / "tests" / "test_repository_layout.py",
+        ROOT / "platform" / "contracts" / "REPOSITORY_LAYOUT_CONTRACT.md",
+        ROOT / "platform" / "docs" / "current" / "CANONICAL_REPOSITORY_LAYOUT.md",
+        ROOT / "platform" / "docs" / "current" / "ROOT_ALLOWLIST.md",
+        ROOT / "platform" / "docs" / "current" / "LAYOUT_MIGRATION_RULES.md",
+        ROOT / "platform" / "system" / "scripts" / "hygiene" / "validate_repository_layout.py",
+        ROOT / "platform" / "docs" / "ep" / "EP_LEGACY_BUNDLE.md",
+        ROOT / "platform" / "specs" / "EP-0121",
+        ROOT / "platform" / "system" / "tests" / "test_repository_layout.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:
