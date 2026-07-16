@@ -245,7 +245,7 @@
     }
 
     var compactDesktop = window.matchMedia("(min-width: 1024px) and (max-height: 760px)").matches;
-    var openMaxHeight = compactDesktop ? "44dvh" : "70dvh";
+    var openMaxHeight = compactDesktop ? "50dvh" : "70dvh";
 
     panel.style.setProperty("transform", "translateY(0)");
     panel.style.setProperty("opacity", "1");
