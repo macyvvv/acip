@@ -6,22 +6,25 @@ from pathlib import Path
 
 def _resolve_repo_root() -> Path:
     current = Path(__file__).resolve()
+    matches: list[Path] = []
     for candidate in current.parents:
         if (candidate / ".git").exists() or (candidate / "pyproject.toml").exists() or (candidate / "README.md").exists():
-            return candidate
+            matches.append(candidate)
+    if matches:
+        return matches[-1]
     raise RuntimeError(f"Unable to locate repository root from {__file__}")
 
 ROOT = _resolve_repo_root()
-sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "platform"))
 
 
 def main() -> int:
     required_paths = [
-        ROOT / "archive" / "root_scaffolding_2026" / "queue" / "READY" / "EP-0147-completion-report-automation.md",
-        ROOT / "system" / "orchestrator" / "completion_report_automation.py",
-        ROOT / "docs" / "current" / "COMPLETION_REPORT_AUTOMATION.md",
-        ROOT / "system" / "runtime" / "completion" / "completion_report.json",
-        ROOT / "system" / "tests" / "test_completion_report_automation.py",
+        ROOT / "platform" / "archive" / "root_scaffolding_2026" / "queue" / "READY" / "EP-0147-completion-report-automation.md",
+        ROOT / "platform" / "system" / "orchestrator" / "completion_report_automation.py",
+        ROOT / "platform" / "docs" / "current" / "COMPLETION_REPORT_AUTOMATION.md",
+        ROOT / "platform" / "system" / "runtime" / "completion" / "completion_report.json",
+        ROOT / "platform" / "system" / "tests" / "test_completion_report_automation.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

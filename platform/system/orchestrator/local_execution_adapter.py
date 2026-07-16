@@ -432,7 +432,16 @@ class LocalExecutionAdapter:
             ]
         }
         required_paths = required_paths_by_issue.get(issue_number, [])
-        missing_paths = [path for path in required_paths if not (self.base_path / path).exists()]
+        missing_paths = []
+        for path in required_paths:
+            candidate = self.base_path / path
+            if candidate.exists():
+                continue
+            if path.startswith("platform/"):
+                alternate = self.base_path / path[len("platform/") :]
+                if alternate.exists():
+                    continue
+            missing_paths.append(path)
         return {
             "ok": not missing_paths,
             "issue_number": issue_number,

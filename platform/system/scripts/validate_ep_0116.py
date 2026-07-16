@@ -20,23 +20,23 @@ def _resolve_repo_root() -> Path:
     raise RuntimeError(f"Unable to locate repository root from {__file__}")
 
 ROOT = _resolve_repo_root()
-sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "platform"))
 
 
 def main() -> int:
     required_paths = [
-        ROOT / "docs" / "current" / "ROOT_HYGIENE_REPORT.md",
-        ROOT / "docs" / "current" / "CODE_QUALITY_BASELINE.md",
-        ROOT / "docs" / "current" / "REFACTORING_QUEUE.md",
-        ROOT / "contracts" / "ROOT_HYGIENE_CONTRACT.md",
-        ROOT / "contracts" / "CODE_QUALITY_CONTRACT.md",
-        ROOT / "system" / "scripts" / "hygiene" / "audit_repository_root.py",
-        ROOT / "system" / "scripts" / "hygiene" / "audit_code_quality.py",
-        ROOT / "docs" / "ep" / "README_EP0116_REPOSITORY_HYGIENE_CODE_QUALITY.md",
-        ROOT / "specs" / "EP-0116",
+        ROOT / "platform" / "docs" / "current" / "ROOT_HYGIENE_REPORT.md",
+        ROOT / "platform" / "docs" / "current" / "CODE_QUALITY_BASELINE.md",
+        ROOT / "platform" / "docs" / "current" / "REFACTORING_QUEUE.md",
+        ROOT / "platform" / "contracts" / "ROOT_HYGIENE_CONTRACT.md",
+        ROOT / "platform" / "contracts" / "CODE_QUALITY_CONTRACT.md",
+        ROOT / "platform" / "system" / "scripts" / "hygiene" / "audit_repository_root.py",
+        ROOT / "platform" / "system" / "scripts" / "hygiene" / "audit_code_quality.py",
+        ROOT / "platform" / "docs" / "ep" / "EP_LEGACY_BUNDLE.md",
+        ROOT / "platform" / "specs" / "EP-0116",
         ROOT / ".github" / "workflows" / "ep0116-repository-hygiene-code-quality.yml",
-        ROOT / "system" / "tests" / "test_repository_hygiene.py",
-        ROOT / "system" / "tests" / "test_code_quality_baseline.py",
+        ROOT / "platform" / "system" / "tests" / "test_repository_hygiene.py",
+        ROOT / "platform" / "system" / "tests" / "test_code_quality_baseline.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

@@ -6,22 +6,25 @@ from pathlib import Path
 
 def _resolve_repo_root() -> Path:
     current = Path(__file__).resolve()
+    matches: list[Path] = []
     for candidate in current.parents:
         if (candidate / ".git").exists() or (candidate / "pyproject.toml").exists() or (candidate / "README.md").exists():
-            return candidate
+            matches.append(candidate)
+    if matches:
+        return matches[-1]
     raise RuntimeError(f"Unable to locate repository root from {__file__}")
 
 ROOT = _resolve_repo_root()
-sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "platform"))
 
 
 def main() -> int:
     required_paths = [
-        ROOT / "archive" / "root_scaffolding_2026" / "queue" / "READY" / "EP-0174-target-layout-contract.md",
-        ROOT / "system" / "orchestrator" / "target_layout_contract.py",
-        ROOT / "docs" / "current" / "TARGET_LAYOUT_CONTRACT.md",
-        ROOT / "specs" / "EP-0174",
-        ROOT / "system" / "tests" / "test_target_layout_contract.py",
+        ROOT / "platform" / "archive" / "root_scaffolding_2026" / "queue" / "READY" / "EP-0174-target-layout-contract.md",
+        ROOT / "platform" / "system" / "orchestrator" / "target_layout_contract.py",
+        ROOT / "platform" / "docs" / "current" / "TARGET_LAYOUT_CONTRACT.md",
+        ROOT / "platform" / "specs" / "EP-0174",
+        ROOT / "platform" / "system" / "tests" / "test_target_layout_contract.py",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:

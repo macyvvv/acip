@@ -179,7 +179,10 @@ class BusinessAgentExecutionAdapter:
         return result
 
     def _render_prompt(self, business, role, task_description: str) -> str:
-        template = (self.base_path / role.prompt_template_path).read_text(encoding="utf-8")
+        template_path = self.base_path / role.prompt_template_path
+        if not template_path.exists() and str(role.prompt_template_path).startswith("platform/"):
+            template_path = self.base_path / str(role.prompt_template_path)[len("platform/") :]
+        template = template_path.read_text(encoding="utf-8")
         business_context = business.notes
         return (
             template.replace("{business_name}", business.display_name)

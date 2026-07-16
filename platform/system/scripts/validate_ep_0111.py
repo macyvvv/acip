@@ -21,20 +21,20 @@ def _resolve_repo_root() -> Path:
 ROOT = _resolve_repo_root()
 def main() -> int:
     required_paths = [
-        ROOT / "system" / "orchestrator" / "validation_orchestrator.py",
-        ROOT / "system" / "scripts" / "validate_all.py",
-        ROOT / "docs" / "current" / "VALIDATION_STATE.md",
-        ROOT / "system" / "runtime" / "validation" / "validation_report.json",
-        ROOT / "system" / "runtime" / "validation" / "VALIDATION_REPORT.md",
+        ROOT / "platform" / "system" / "orchestrator" / "validation_orchestrator.py",
+        ROOT / "platform" / "system" / "scripts" / "validate_all.py",
+        ROOT / "platform" / "docs" / "current" / "VALIDATION_STATE.md",
+        ROOT / "platform" / "system" / "runtime" / "validation" / "validation_report.json",
+        ROOT / "platform" / "system" / "runtime" / "validation" / "VALIDATION_REPORT.md",
         ROOT / ".github" / "workflows" / "validate-all.yml",
-        ROOT / "docs" / "ep" / "README_EP0111_VALIDATION_ORCHESTRATOR.md",
+        ROOT / "platform" / "docs" / "ep" / "EP_LEGACY_BUNDLE.md",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_paths if not path.exists()]
     if missing:
         print("FAIL: missing validation orchestrator files:", ", ".join(missing))
         return 1
 
-    validation_state = (ROOT / "docs" / "current" / "VALIDATION_STATE.md").read_text(encoding="utf-8")
+    validation_state = (ROOT / "platform" / "docs" / "current" / "VALIDATION_STATE.md").read_text(encoding="utf-8")
     required_fields = [
         "last_validation_status:",
         "last_validation_command:",

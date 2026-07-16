@@ -7,28 +7,24 @@ import sys
 
 def _resolve_repo_root() -> Path:
     current = Path(__file__).resolve()
+    matches: list[Path] = []
     for candidate in current.parents:
         if (candidate / ".git").exists() or (candidate / "pyproject.toml").exists() or (candidate / "README.md").exists():
-            return candidate
+            matches.append(candidate)
+    if matches:
+        return matches[-1]
     raise RuntimeError(f"Unable to locate repository root from {__file__}")
 
 ROOT = _resolve_repo_root()
 ALLOWED_ROOT_MARKDOWN = {"README.md", "AGENTS.md", "CLAUDE.md"}
 EXPECTED_PATHS = [
-    ROOT / "docs" / "current" / "PROJECT.md",
-    ROOT / "docs" / "current" / "STATE.md",
-    ROOT / "docs" / "current" / "ROADMAP.md",
-    ROOT / "docs" / "CHANGELOG.md",
-    ROOT / "docs" / "packs" / "README_REPOSITORY_COMPLETE_PACK.md",
-    ROOT / "docs" / "packs" / "README_AGENT_OS.md",
-    ROOT / "docs" / "packs" / "README_RUNTIME_READINESS.md",
-    ROOT / "docs" / "packs" / "README_GOVERNANCE.md",
-    ROOT / "docs" / "packs" / "README_KNOWLEDGE_FACTORY.md",
-    ROOT / "docs" / "manifests" / "MANIFEST.md",
-    ROOT / "docs" / "manifests" / "MANIFEST_EP0100.md",
-    ROOT / "docs" / "manifests" / "MANIFEST_EP0100_1.md",
-    ROOT / "docs" / "manifests" / "MANIFEST_EP0100_2.md",
-    ROOT / "docs" / "manifests" / "MANIFEST_EP0101.md",
+    ROOT / "platform" / "docs" / "current" / "PROJECT.md",
+    ROOT / "platform" / "docs" / "current" / "STATE.md",
+    ROOT / "platform" / "docs" / "current" / "ROADMAP.md",
+    ROOT / "platform" / "docs" / "CHANGELOG.md",
+    ROOT / "platform" / "docs" / "packs" / "README.md",
+    ROOT / "platform" / "docs" / "packs" / "PACKS_DOCS_LEGACY_BUNDLE.md",
+    ROOT / "platform" / "docs" / "manifests" / "MANIFEST_LEGACY_BUNDLE.md",
 ]
 
 

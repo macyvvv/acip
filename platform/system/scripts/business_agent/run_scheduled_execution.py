@@ -74,12 +74,12 @@ _CI_POLL_INTERVAL_SECONDS = 15
 os.environ.setdefault("CLAUDE_EXECUTION_TIMEOUT_SECONDS", "240")
 
 _TRACKED_RUNTIME_PATHS = [
-    "platform/system/runtime/agent_execution",
-    "platform/system/runtime/agent_handoff/scopes",
-    "platform/system/runtime/agent_handoff/pre_approval_state",
-    "platform/system/runtime/business_agents",
-    "platform/system/runtime/business_agent_tasks/queue.json",
-    "platform/system/runtime/platform/knowledge/kpi.json",
+    "system/runtime/agent_execution",
+    "system/runtime/agent_handoff/scopes",
+    "system/runtime/agent_handoff/pre_approval_state",
+    "system/runtime/business_agents",
+    "system/runtime/business_agent_tasks/queue.json",
+    "system/runtime/platform/knowledge/kpi.json",
 ]
 
 
