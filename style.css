@@ -1149,9 +1149,9 @@ body.controls-open .left-pane-controls {
   }
 
   body:not(.controls-open) .left-pane-controls {
-    max-height: 0;
-    opacity: 0;
-    pointer-events: none;
+    max-height: 84px;
+    opacity: 1;
+    pointer-events: auto;
     margin-bottom: 0;
   }
 
@@ -1170,6 +1170,19 @@ body.controls-open .left-pane-controls {
     background: rgba(255, 252, 247, 0.96);
     box-shadow: none;
     border-bottom: 1px solid rgba(83, 63, 38, 0.08);
+  }
+
+  body:not(.controls-open) .controls-shell {
+    display: block;
+    padding-bottom: 8px;
+  }
+
+  body:not(.controls-open) .controls-shell > :not(.controls-panel-head) {
+    display: none;
+  }
+
+  body:not(.controls-open) .controls-panel-head {
+    margin-bottom: 0;
   }
 
   .mode-chip {
@@ -1219,6 +1232,30 @@ body.controls-open .left-pane-controls {
   .app-header button.controls-toggle .controls-toggle-icon,
   .app-header button.controls-toggle .controls-toggle-label {
     color: #201a15 !important;
+  }
+
+  .inline-sponsored-card,
+  .monetization-slot {
+    padding: 8px 9px;
+    border-radius: 14px;
+  }
+
+  .inline-sponsored-label,
+  .monetization-slot-label {
+    margin-bottom: 4px;
+    font-size: 0.56rem;
+  }
+
+  .inline-sponsored-card strong,
+  .monetization-slot-body strong {
+    margin-bottom: 2px;
+    font-size: 0.78rem;
+  }
+
+  .inline-sponsored-card p,
+  .monetization-slot-body p {
+    font-size: 0.68rem;
+    line-height: 1.32;
   }
 }
 

@@ -219,6 +219,18 @@
     return typeof window !== "undefined" && window.matchMedia("(max-width: 1023px)").matches;
   }
 
+  function mapDefaultZoom() {
+    return isMobileViewport() ? 15 : 16;
+  }
+
+  function mapSinglePoiZoom() {
+    return isMobileViewport() ? 16 : 17;
+  }
+
+  function mapFitBoundsPadding() {
+    return isMobileViewport() ? 24 : 48;
+  }
+
   function setControlsOpen(open) {
     state.controlsOpen = !!open;
     if (typeof document === "undefined") return;
@@ -232,6 +244,13 @@
       var button = document.getElementById(id);
       if (button) button.setAttribute("aria-expanded", state.controlsOpen ? "true" : "false");
     });
+
+    var close = document.getElementById("controls-close");
+    if (close) {
+      var label = state.controlsOpen ? "閉じる" : "開く";
+      close.textContent = label;
+      close.setAttribute("aria-label", "条件パネルを" + label);
+    }
   }
 
   function closeControlsOnMobile() {
@@ -1251,12 +1270,12 @@
 
     if (!pois.length) {
       state.map.setCenter(state.userLocation || KABUKICHO_CENTER);
-      state.map.setZoom(16);
+      state.map.setZoom(mapDefaultZoom());
     } else if (pois.length === 1 && !state.userLocation) {
       state.map.setCenter(bounds.getCenter());
-      state.map.setZoom(17);
+      state.map.setZoom(mapSinglePoiZoom());
     } else {
-      state.map.fitBounds(bounds, 48);
+      state.map.fitBounds(bounds, mapFitBoundsPadding());
     }
     hideMapFallback();
     enqueueRefinementForPois(pois);
@@ -1290,7 +1309,7 @@
     var apply = document.getElementById("filter-apply");
 
     function openControls() { setControlsOpen(true); }
-    function closeControls() { setControlsOpen(false); }
+    function toggleControls() { setControlsOpen(!state.controlsOpen); }
 
     if (toggle) {
       toggle.addEventListener("click", function () {
@@ -1298,8 +1317,8 @@
       });
     }
     if (reopen) openControls && reopen.addEventListener("click", openControls);
-    if (close) close.addEventListener("click", closeControls);
-    if (backdrop) backdrop.addEventListener("click", closeControls);
+    if (close) close.addEventListener("click", toggleControls);
+    if (backdrop) backdrop.addEventListener("click", function () { setControlsOpen(false); });
     if (apply) apply.addEventListener("click", applyFilterSelection);
 
     if (typeof window !== "undefined") {
@@ -1372,7 +1391,7 @@
       state.geocoder = new google.maps.Geocoder();
       state.map = new google.maps.Map(document.getElementById("map"), {
         center: state.userLocation || KABUKICHO_CENTER,
-        zoom: 16,
+        zoom: mapDefaultZoom(),
         streetViewControl: false,
         mapTypeControl: false,
         fullscreenControl: false
