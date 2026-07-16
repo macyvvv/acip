@@ -370,6 +370,14 @@ body.controls-open .left-pane-controls {
   gap: 12px;
 }
 
+.current-context-overlay {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid rgba(83, 63, 38, 0.1);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.92);
+}
+
 .controls-panel-kicker {
   display: block;
   margin-bottom: 4px;
@@ -1201,6 +1209,10 @@ body.controls-open .left-pane-controls {
     opacity: 0;
     transform: translateY(-6px);
     pointer-events: none;
+  }
+
+  body.controls-open .results-shell-head {
+    display: none;
   }
 
   .mode-chip {

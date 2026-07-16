@@ -616,8 +616,11 @@
   }
 
   function renderCurrentContext(pois, totalInCategory, aggregateFailures) {
-    var container = document.getElementById("current-context");
-    if (!container) return;
+    var containers = [
+      document.getElementById("current-context"),
+      document.getElementById("current-context-overlay")
+    ].filter(function (el) { return !!el; });
+    if (!containers.length) return;
 
     var mode = getModeDefinition(state.activeMode);
     var activeFilterCount = Object.keys(state.activeFilters).filter(function (key) { return state.activeFilters[key]; }).length;
@@ -642,9 +645,12 @@
         ? "必要な施設だけを短く見て、詳細はタップで展開できます。"
         : mode.summary);
 
-    container.innerHTML =
+    var html =
       '<div class="current-context-head">' + pills.join("") + '</div>' +
       '<p class="current-context-note">' + escapeHtml(note) + '</p>';
+    containers.forEach(function (container) {
+      container.innerHTML = html;
+    });
   }
 
   function scorePoiForMode(modeId, poi) {
