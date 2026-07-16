@@ -8,9 +8,19 @@ from typing import Any
 
 def _resolve_repo_root() -> Path:
     current = Path(__file__).resolve()
+    git_candidates: list[Path] = []
+    fallback: Path | None = None
     for candidate in current.parents:
-        if (candidate / ".git").exists() or (candidate / "pyproject.toml").exists() or (candidate / "README.md").exists():
+        if (candidate / "selftest.yml").exists():
             return candidate
+        if (candidate / ".git").exists():
+            git_candidates.append(candidate)
+        if fallback is None and ((candidate / "pyproject.toml").exists() or (candidate / "README.md").exists()):
+            fallback = candidate
+    if git_candidates:
+        return git_candidates[-1]
+    if fallback is not None:
+        return fallback
     raise RuntimeError(f"Unable to locate repository root from {__file__}")
 
 ROOT = _resolve_repo_root()

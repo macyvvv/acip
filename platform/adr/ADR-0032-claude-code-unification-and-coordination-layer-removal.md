@@ -44,7 +44,7 @@ memoryless services is removed. What remains:
   duplicate/orphan detection (`platform/system/platform/scripts/selftest*`), the
   `validate_ep_*.py` chain for product/hygiene EPs, and `pytest`.
 - `platform/basis/` and `platform/adr/` as the historical policy/decision record, now indexed
-  at [platform/basis/README.md](../platform/basis/README.md) instead of being unlinked.
+  at [platform/basis/README.md](../basis/README.md) instead of being unlinked.
 - `CLAUDE.md` at the repository root replaces `AGENTS.md` /
   `platform/.platform/system/BOOT.md` / `platform/.platform/system/REVIEW.md` / `platform/.platform/system/DECISION.md` /
   `platform/.platform/system/STYLE.md` as the operating instructions for the agent; those

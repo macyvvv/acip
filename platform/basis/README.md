@@ -18,13 +18,13 @@ what's still current:
 The other 43 files that used to live here were archived in one pass —
 almost all of them were pure prose with no enforcing code behind them, and
 several restated the identical concern in independently-drifting copies.
-See **[platform/archive/basis_corpus_2026/README.md](../platform/archive/basis_corpus_2026/README.md)**
+See **[platform/archive/basis_corpus_2026/README.md](../archive/basis_corpus_2026/README.md)**
 for the full file-by-file mapping of what was archived and where its real
 content lives now (folded into a `CORE_PRINCIPLES.md` principle, superseded
 by real code, or confirmed to have never been built beyond a stub).
 
 An earlier, smaller archival pass exists at
-[platform/archive/basis_skeleton/](../platform/archive/basis_skeleton/README.md) (7 early
+[platform/archive/basis_skeleton/](../archive/basis_skeleton/README.md) (7 early
 placeholder-pass files, superseded before this review even started).
 
 ## Reading this corpus going forward
