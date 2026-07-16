@@ -231,6 +231,25 @@
     return isMobileViewport() ? 24 : 48;
   }
 
+  function syncDesktopControlsInlineState() {
+    if (typeof document === "undefined") return;
+    var panel = document.getElementById("control-panel");
+    if (!panel) return;
+
+    if (isMobileViewport()) {
+      panel.style.removeProperty("max-height");
+      panel.style.removeProperty("opacity");
+      panel.style.removeProperty("pointer-events");
+      panel.style.removeProperty("transform");
+      return;
+    }
+
+    panel.style.setProperty("transform", "translateY(0)");
+    panel.style.setProperty("opacity", "1");
+    panel.style.setProperty("pointer-events", "auto", "important");
+    panel.style.setProperty("max-height", state.controlsOpen ? "70dvh" : "84px", "important");
+  }
+
   function setControlsOpen(open) {
     state.controlsOpen = !!open;
     if (typeof document === "undefined") return;
@@ -251,6 +270,8 @@
       close.textContent = label;
       close.setAttribute("aria-label", "条件パネルを" + label);
     }
+
+    syncDesktopControlsInlineState();
   }
 
   function closeControlsOnMobile() {
