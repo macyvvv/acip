@@ -20,7 +20,7 @@ Runtime/distribution source: `platform/system/runtime/data/kabukicho/{smoking,to
 
 ## Build
 
-`python3 businesses/kabukicho_survival_map/app/build.py` exports the business-owned DB into runtime JSON, then copies that data into this product's own `data/` (for local serving) and into `platform/web/public/kabukicho/` (the deployable static bundle). No bundler, no backend -- per issue #33's "no over-engineering" constraint.
+`python3 businesses/kabukicho_survival_map/app/build.py` exports the business-owned DB into runtime JSON, then copies that data into this product's own `data/` (for local serving) and into `platform/web/public/kabukicho_survival_map/` (the deployable static bundle). No bundler, no backend -- per issue #33's "no over-engineering" constraint.
 
 ### DB-first operation
 
@@ -54,7 +54,7 @@ This fails non-zero when hard duplicates exceed the threshold.
 
 ## Deployment
 
-GitHub Pages currently serves the built output from `https://macyvvv.github.io/acip/`. Repository-side, the deployable artifact remains `platform/web/public/kabukicho/`.
+GitHub Pages target URL is `https://macyvvv.github.io/acip/kabukicho_survival_map/`. Repository-side, the deployable artifact remains `platform/web/public/kabukicho_survival_map/`.
 
 ## Testing
 

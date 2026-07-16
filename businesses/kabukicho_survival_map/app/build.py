@@ -13,13 +13,13 @@ from pathlib import Path
 # platform runtime JSON is the cross-platform distribution surface. This build
 # exports runtime JSON first, then copies it plus the static HTML/JS/CSS into:
 #   - this product dir's own data/ (so index.html can be opened/served locally)
-#   - platform/web/public/kabukicho/ (the deployable static bundle)
+#   - platform/web/public/kabukicho_survival_map/ (the deployable static bundle)
 
 PRODUCT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = PRODUCT_DIR.parents[2]
 PLATFORM_ROOT = REPO_ROOT / "platform"
 DATA_SOURCE = PLATFORM_ROOT / "system" / "runtime" / "data" / "kabukicho"
-PUBLIC_DIR = PLATFORM_ROOT / "web" / "public" / "kabukicho"
+PUBLIC_DIR = PLATFORM_ROOT / "web" / "public" / "kabukicho_survival_map"
 SHARED_DIR = PLATFORM_ROOT / "app" / "shared"
 
 if str(PLATFORM_ROOT) not in sys.path:

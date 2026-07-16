@@ -8,7 +8,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[4]
 DATA_SOURCE = REPO_ROOT / "platform" / "system" / "runtime" / "data" / "kabukicho"
 PRODUCT_DIR = REPO_ROOT / "businesses" / "kabukicho_survival_map" / "app"
-PUBLIC_DIR = REPO_ROOT / "platform" / "web" / "public" / "kabukicho"
+PUBLIC_DIR = REPO_ROOT / "platform" / "web" / "public" / "kabukicho_survival_map"
 
 CATEGORY_FILES = ("smoking.json", "toilet.json", "convenience.json", "atm.json", "coin_locker.json", "lodging.json")
 DB_SYNC_SCRIPT = REPO_ROOT / "businesses" / "kabukicho_survival_map" / "app" / "scripts" / "poi_db_sync.py"

@@ -13,14 +13,14 @@ platform/app/products/kabukicho_survival_map/  <- compatibility symlink to busin
   style.css                           <- mobile-first styles, top map / bottom list split, bottom nav
   data/*.json                         <- build-time local copy of runtime JSON
   build.py                            <- exports runtime JSON + copies bundle files
-platform/web/public/kabukicho/                 <- deployable static bundle (build output)
+platform/web/public/kabukicho_survival_map/    <- deployable static bundle (build output)
 ```
 
 ## Data flow
 
 1. Business-agent roles (`market_research`, `scenario_writing`, `doc_creation`) produce research/copy as read-only text artifacts under `platform/system/runtime/business_agents/kabukicho_survival_map/`.
 2. A human maintains the business-owned SQLite store at `businesses/kabukicho_survival_map/app/data/kabukicho_poi.db`, with `scripts/poi_db_sync.py` exporting the runtime JSON at `platform/system/runtime/data/kabukicho/`.
-3. `build.py` exports that runtime JSON, then copies it (plus the static HTML/JS/CSS) into `platform/web/public/kabukicho/`, the deployable bundle.
+3. `build.py` exports that runtime JSON, then copies it (plus the static HTML/JS/CSS) into `platform/web/public/kabukicho_survival_map/`, the deployable bundle.
 4. In the browser, `app.js` fetches `data/*.json` relative to itself, renders the bottom-nav-filtered POI list (bottom pane), and plots the same filtered set as pins on an embedded Google Map (top pane). No server-side logic anywhere.
 
 ## Commercial / Monetization surfaces
@@ -84,7 +84,7 @@ Nothing in this repo can provision that key. An operator must: create/select a G
 
 **Important, and different from this repo's other `.env` secrets (`OPENAI_API_KEY` etc.)**: a Google Maps *JavaScript* API key is not a server-side secret -- it must ship inside client-side JS that runs in every visitor's browser, so once the site is actually deployed, anyone can read it via view-source or the network tab. `.env` only keeps it out of *git history*; the real protection against abuse is the HTTP referrer restriction on the key itself in Google Cloud Console, not secrecy. Both paths below assume that restriction is set.
 
-- **Local testing** (this is what `.env`/`KABUKICHO_GMAPS_API_KEY` is for): set `KABUKICHO_GMAPS_API_KEY=...` in `.env` (gitignored, copy from `.env.example`), then run `build.py`. It reads the key via `platform/system/core/dotenv.py` and writes it into `businesses/kabukicho_survival_map/app/local.config.js` -- a small, gitignored file, loaded by `index.html` via `<script src="local.config.js">` *before* the `window.KABUKICHO_GMAPS_API_KEY` placeholder, so the `||` fallback in that placeholder preserves the real value. `build.py` also writes the same key into `platform/web/public/kabukicho/local.config.js` as part of the deploy artifact, so the public bundle can show the live map when the key is present.
+- **Local testing** (this is what `.env`/`KABUKICHO_GMAPS_API_KEY` is for): set `KABUKICHO_GMAPS_API_KEY=...` in `.env` (gitignored, copy from `.env.example`), then run `build.py`. It reads the key via `platform/system/core/dotenv.py` and writes it into `businesses/kabukicho_survival_map/app/local.config.js` -- a small, gitignored file, loaded by `index.html` via `<script src="local.config.js">` *before* the `window.KABUKICHO_GMAPS_API_KEY` placeholder, so the `||` fallback in that placeholder preserves the real value. `build.py` also writes the same key into `platform/web/public/kabukicho_survival_map/local.config.js` as part of the deploy artifact, so the public bundle can show the live map when the key is present.
 - **Production deploy**: the deploy artifact may include the browser-side Google Maps key, but the key itself must still be referrer-restricted in Google Cloud Console. If a host-specific injection step is used later, it should overwrite the public bundle's `local.config.js` or equivalent at build/deploy time, never rely on a server-side secret at runtime.
 
 ## SEO/AIO (search + AI-answer-engine visibility), 2026-07-13

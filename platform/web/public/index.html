@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ACIP Sites</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f1e8;
+      --ink: #182026;
+      --muted: #5f6b76;
+      --card: #fffaf2;
+      --line: #d7c8ae;
+      --accent: #8a1c1c;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
+      background: linear-gradient(180deg, #efe4d1 0%, var(--bg) 45%, #f8f6f1 100%);
+      color: var(--ink);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+    main {
+      width: min(760px, 100%);
+      background: rgba(255, 250, 242, 0.88);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 18px 50px rgba(24, 32, 38, 0.08);
+      backdrop-filter: blur(12px);
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(32px, 5vw, 48px);
+      letter-spacing: 0.04em;
+    }
+    p {
+      margin: 0 0 18px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    a.card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 22px 24px;
+      transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+    }
+    a.card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      box-shadow: 0 14px 30px rgba(138, 28, 28, 0.12);
+    }
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+    .title {
+      display: block;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .href {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 13px;
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>ACIP</h1>
+    <p>この GitHub Pages は複数事業の公開入口として使う。現時点の公開サイトは 1 件で、今後ここに追加していく。</p>
+    <a class="card" href="./kabukicho_survival_map/">
+      <span class="eyebrow">Site</span>
+      <span class="title">Kabukicho Survival Map</span>
+      <span class="href">/acip/kabukicho_survival_map/</span>
+    </a>
+  </main>
+</body>
+</html>
