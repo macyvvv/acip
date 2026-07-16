@@ -184,6 +184,33 @@
     }
   }
 
+  function trackEvent(eventName, params) {
+    if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+    window.gtag("event", eventName, params || {});
+  }
+
+  function activeFilterCount() {
+    return Object.keys(state.activeFilters).filter(function (tagId) {
+      return !!state.activeFilters[tagId];
+    }).length;
+  }
+
+  function analyticsContext(extra) {
+    var payload = {};
+    if (!extra) return payload;
+    Object.keys(extra).forEach(function (key) {
+      payload[key] = extra[key];
+    });
+    return payload;
+  }
+
+  function trackClick(params) {
+    trackEvent("click", analyticsContext(Object.assign({
+      ui_mode: state.activeMode,
+      ui_category: state.activeCategory
+    }, params || {})));
+  }
+
   function getModePois() {
     var mode = getModeDefinition(state.activeMode);
     if (!mode.aggregateCategories || state.activeCategory !== MODE_ALL_CATEGORY_ID) {
@@ -301,6 +328,11 @@
     renderList();
     renderMarkers();
     setControlsOpen(false);
+    trackClick({
+      ui_area: "panel_controls",
+      ui_action: "filter_apply",
+      ui_label: "この条件で検索"
+    });
   }
 
   function clearExpandedCardIfMissing(pois) {
@@ -919,11 +951,37 @@
     Array.prototype.forEach.call(container.querySelectorAll("[data-card-toggle]"), function (button) {
       button.addEventListener("click", function () {
         var poiKey = button.getAttribute("data-card-toggle");
+        var wasExpanded = state.expandedCardKey === poiKey;
         var nextExpanded = state.expandedCardKey === poiKey ? null : poiKey;
         var targetPoi = pois.find(function (poi) { return getPoiKey(poi) === poiKey; });
         if (targetPoi) focusMarker(targetPoi);
         state.expandedCardKey = nextExpanded;
+        if (targetPoi) {
+          trackClick({
+            ui_area: "list_poi_card",
+            ui_action: wasExpanded ? "poi_card_collapse" : "poi_card_expand",
+            ui_label: targetPoi.name,
+            ui_category: targetPoi.category || state.activeCategory,
+            ui_rank_index: pois.indexOf(targetPoi) + 1
+          });
+        }
         renderList();
+      });
+    });
+    Array.prototype.forEach.call(container.querySelectorAll(".maps-link"), function (link) {
+      link.addEventListener("click", function () {
+        var article = link.closest(".poi-card");
+        if (!article) return;
+        var poiIndex = Number(article.getAttribute("data-poi-index"));
+        var targetPoi = pois[poiIndex];
+        if (!targetPoi) return;
+        trackClick({
+          ui_area: "list_poi_link",
+          ui_action: "poi_open_maps",
+          ui_label: targetPoi.name,
+          ui_category: targetPoi.category || state.activeCategory,
+          ui_rank_index: poiIndex + 1
+        });
       });
     });
   }
@@ -1077,11 +1135,25 @@
         var tagId = btn.getAttribute("data-tag");
         if (tagId === NONE_FILTER_TAG_ID) {
           state.activeFilters = {};
+          trackClick({
+            ui_area: "panel_filter",
+            ui_action: "filter_toggle",
+            ui_label: "条件指定なし",
+            ui_filter_id: NONE_FILTER_TAG_ID,
+            ui_selected: true
+          });
         } else {
           state.activeFilters[tagId] = !state.activeFilters[tagId];
           if (hasActiveFilterSelections()) {
             state.activeFilters[NONE_FILTER_TAG_ID] = false;
           }
+          trackClick({
+            ui_area: "panel_filter",
+            ui_action: "filter_toggle",
+            ui_label: tagCopy[tagId] || tagId,
+            ui_filter_id: tagId,
+            ui_selected: !!state.activeFilters[tagId]
+          });
         }
         // Reflect chip selection immediately so taps feel responsive.
         renderFilterBar();
@@ -1124,6 +1196,12 @@
         renderMarkers();
         syncDesktopControlsInlineState();
         scrollListToTop();
+        trackClick({
+          ui_area: "panel_category",
+          ui_action: "category_select",
+          ui_label: btn.textContent ? btn.textContent.trim() : state.activeCategory,
+          ui_category: state.activeCategory
+        });
       });
     });
   }
@@ -1153,6 +1231,12 @@
         renderList();
         renderMarkers();
         scrollListToTop();
+        trackClick({
+          ui_area: "panel_mode",
+          ui_action: "mode_select",
+          ui_label: btn.querySelector(".mode-chip-title") ? btn.querySelector(".mode-chip-title").textContent.trim() : state.activeMode,
+          ui_mode: state.activeMode
+        });
       });
     });
   }
@@ -1361,14 +1445,34 @@
     if (toggle) {
       toggle.addEventListener("click", function () {
         setControlsOpen(!state.controlsOpen);
+        trackClick({
+          ui_area: "panel_controls",
+          ui_action: state.controlsOpen ? "controls_open" : "controls_close",
+          ui_label: "条件",
+          ui_trigger_id: "controls_toggle"
+        });
       });
     }
-    if (reopen) openControls && reopen.addEventListener("click", openControls);
+    if (reopen) openControls && reopen.addEventListener("click", function () {
+      openControls();
+      trackClick({
+        ui_area: "panel_controls",
+        ui_action: "controls_open",
+        ui_label: "条件を変更",
+        ui_trigger_id: "reopen_controls"
+      });
+    });
     if (close) {
       close.addEventListener("click", function (event) {
         event.preventDefault();
         event.stopPropagation();
         toggleControls();
+        trackClick({
+          ui_area: "panel_controls",
+          ui_action: state.controlsOpen ? "controls_open" : "controls_close",
+          ui_label: close.textContent ? close.textContent.trim() : "閉じる",
+          ui_trigger_id: "controls_close"
+        });
       });
     }
     if (panelHead) {
@@ -1377,7 +1481,15 @@
         if (!state.controlsOpen && !isMobileViewport()) setControlsOpen(true);
       });
     }
-    if (backdrop) backdrop.addEventListener("click", function () { setControlsOpen(false); });
+    if (backdrop) backdrop.addEventListener("click", function () {
+      setControlsOpen(false);
+      trackClick({
+        ui_area: "panel_controls",
+        ui_action: "controls_close",
+        ui_label: "backdrop",
+        ui_trigger_id: "controls_backdrop"
+      });
+    });
     if (apply) apply.addEventListener("click", applyFilterSelection);
 
     if (typeof window !== "undefined") {
