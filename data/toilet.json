@@ -1,0 +1,175 @@
+[
+  {
+    "name": "新宿遊歩道公園(四季の道)公衆トイレ",
+    "lat": 35.6942,
+    "lng": 139.7031,
+    "description": "新宿区管理の公衆トイレ。歌舞伎町一丁目、遊歩道公園(四季の道)内にあります。",
+    "category": "toilet",
+    "tags": [
+      "free",
+      "gender_separated"
+    ],
+    "last_updated": "2026-07-11",
+    "reliability_score": 3,
+    "source_type": "official",
+    "type": "official",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "東急歌舞伎町タワー トイレ",
+    "lat": 35.695935,
+    "lng": 139.700657,
+    "description": "地上53階の複合施設内トイレ。ジェンダーレス設計は反発を受けて男女別に変更された経緯があり、現在も配置が変わる可能性があります。",
+    "category": "toilet",
+    "tags": [
+      "clean",
+      "free",
+      "gender_separated"
+    ],
+    "last_updated": "2026-07-11",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "西武新宿駅前公衆便所",
+    "lat": 35.694749,
+    "lng": 139.70014,
+    "description": "西武新宿線の高架下、ブリックストリート沿い、西武新宿PePe横にある24時間利用可能な区管理トイレ。バリアフリートイレあり。",
+    "category": "toilet",
+    "tags": [
+      "free",
+      "gender_separated",
+      "24h"
+    ],
+    "last_updated": "2026-07-11",
+    "reliability_score": 4,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "大久保公園トイレ",
+    "lat": 35.697439,
+    "lng": 139.701333,
+    "description": "歌舞伎町二丁目、Haijia(ハイジア)そばの区立公園トイレ。バリアフリートイレ(オストメイト・ベビーシート対応)あり。",
+    "category": "toilet",
+    "tags": [
+      "free",
+      "clean",
+      "gender_separated"
+    ],
+    "last_updated": "2026-07-11",
+    "reliability_score": 4,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "利用可能時間は19時頃までで、24時間ではありません。"
+  },
+  {
+    "name": "Haijia(東京都健康プラザ ハイジア)1階トイレ",
+    "lat": 35.6961,
+    "lng": 139.7017,
+    "description": "歌舞伎町2-44-1のハイジア内1階トイレ。深夜も利用可能と報告されています。",
+    "category": "toilet",
+    "tags": [
+      "free",
+      "clean",
+      "24h"
+    ],
+    "last_updated": "2026-07-11",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "新宿区役所本庁舎1階トイレ",
+    "lat": 35.69386,
+    "lng": 139.703447,
+    "description": "区役所窓口業務時間のみ利用可能(平日8:30〜17:00、火曜のみ19:00まで)。",
+    "category": "toilet",
+    "tags": [
+      "free",
+      "gender_separated"
+    ],
+    "last_updated": "2026-07-11",
+    "reliability_score": 3,
+    "source_type": "official",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "区役所の窓口業務時間内のみ利用可能で、夜間は利用できません。"
+  },
+  {
+    "name": "四季の路(新宿遊歩道公園)トイレ",
+    "lat": 35.6949,
+    "lng": 139.7042,
+    "description": "歌舞伎町1-1、ゴールデン街のすぐそばにある24時間利用可能な区トイレ。インターホン付きのバリアフリー多機能トイレ。",
+    "category": "toilet",
+    "tags": [
+      "free",
+      "clean",
+      "gender_separated",
+      "24h"
+    ],
+    "last_updated": "2026-07-11",
+    "reliability_score": 4,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "東急歌舞伎町タワー 2階トイレ",
+    "lat": 35.695935,
+    "lng": 139.700657,
+    "description": "2023年の改装で男女別に変更された商業施設内トイレ(元はジェンダーレス設計で反発を受け約4ヶ月で廃止)。",
+    "category": "toilet",
+    "tags": [
+      "free",
+      "clean",
+      "gender_separated"
+    ],
+    "last_updated": "2026-07-11",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "unofficial",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "施設の営業時間内のみで24時間ではありません。時間帯によって利用条件が異なる場合があります。"
+  },
+  {
+    "name": "TOHOシネマズ新宿 3階トイレ",
+    "lat": 35.695154,
+    "lng": 139.701964,
+    "description": "新宿東宝ビル3階、1階からエスカレーター2つ分のロビートイレ。3F・5Fに車椅子対応トイレもあり、深夜上映時も利用可能。",
+    "category": "toilet",
+    "tags": [
+      "clean",
+      "long_wait",
+      "gender_separated"
+    ],
+    "last_updated": "2026-07-11",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "unofficial",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "施設・映画館の営業時間内のみ利用可能。3階ロビーのトイレは混雑しやすいです。"
+  },
+  {
+    "name": "MEGAドン・キホーテ新宿歌舞伎町店 トイレ",
+    "lat": 35.6946,
+    "lng": 139.7022,
+    "description": "歌舞伎町1-16-5、24時間営業のドン・キホーテ店内トイレ。",
+    "category": "toilet",
+    "tags": [
+      "free",
+      "24h"
+    ],
+    "last_updated": "2026-07-11",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "unofficial",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "小売店内のトイレのため、利用条件は店舗の判断による場合があります。購入不要かどうかは未確認です。"
+  }
+]
