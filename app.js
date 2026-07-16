@@ -244,13 +244,10 @@
       return;
     }
 
-    var compactDesktop = window.matchMedia("(min-width: 1024px) and (max-height: 760px)").matches;
-    var openMaxHeight = compactDesktop ? "50dvh" : "70dvh";
-
     panel.style.setProperty("transform", "translateY(0)");
     panel.style.setProperty("opacity", "1");
     panel.style.setProperty("pointer-events", "auto", "important");
-    panel.style.setProperty("max-height", state.controlsOpen ? openMaxHeight : "84px", "important");
+    panel.style.setProperty("max-height", "84px", "important");
   }
 
   function setControlsOpen(open) {
