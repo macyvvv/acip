@@ -1,0 +1,49 @@
+{
+  "schema_version": "artifact-envelope:v1",
+  "artifact_id": "E-005B/code-contract",
+  "task_id": "E-005B",
+  "producer": {
+    "role": "software-engineering",
+    "worker_id": "worker/e005b-code",
+    "execution_kind": "interactive_agent",
+    "version": "2026.07.16"
+  },
+  "generated_at": "2026-07-16T00:00:00Z",
+  "payload_schema": "code-artifact:v1",
+  "payload_path": "businesses/cf_gb_relative_system/artifacts/E-005B/code-output.json",
+  "content_hash": {
+    "algorithm": "sha256",
+    "hex": "4444444444444444444444444444444444444444444444444444444444444444"
+  },
+  "provenance": {
+    "business_id": "cf_gb_relative_system",
+    "manifest_version": "1.0.0",
+    "input_artifacts": [
+      "businesses/cf_gb_relative_system/schemas/artifact-envelope.json"
+    ],
+    "canonical_sources": [
+      "businesses/cf_gb_relative_system/schemas/artifact-envelope.json"
+    ],
+    "code_version": {
+      "git_commit": "abcdef0",
+      "dirty": true
+    }
+  },
+  "payload": {
+    "change_id": "chg_templates_001",
+    "summary": "Adds task-type artifact contracts for research, legal, finance, code, and QA outputs.",
+    "changed_files": [
+      {
+        "path": "businesses/cf_gb_relative_system/schemas/research-artifact.json",
+        "change_kind": "added",
+        "test_impact": "schema validation"
+      }
+    ],
+    "verification": [
+      {
+        "command": "python -c schema_validation",
+        "status": "passed"
+      }
+    ]
+  }
+}

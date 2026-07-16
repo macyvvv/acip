@@ -1,0 +1,200 @@
+schema: legal-policy:v1
+policy_id: cf-gb-legal-evidence
+policy_owner: legalops
+description: >-
+  Fail-closed policy for deciding whether legal evidence may support an
+  automated business action. This policy records operational controls; it is
+  not a legal opinion.
+
+evaluation:
+  clock: UTC
+  expiry_boundary: "expires_at <= evaluated_at"
+  required_evidence_fields:
+    - jurisdiction
+    - authority
+    - authority_version
+    - conditions
+    - effective_at
+    - expires_at
+    - source_uri
+    - verified_at
+  unknown_values:
+    - null
+    - ""
+    - unknown
+  precedence:
+    - deny
+    - quarantined
+    - allow
+
+rules:
+  - rule_id: legal-evidence-unknown
+    priority: 100
+    when:
+      any_required_evidence_field_is_unknown: true
+    decision: deny
+    reason_code: LEGAL_EVIDENCE_UNKNOWN
+    automatic_action: disable
+    retryable: false
+
+  - rule_id: legal-evidence-expired
+    priority: 90
+    when:
+      expires_at_lte_evaluated_at: true
+    decision: deny
+    reason_code: LEGAL_EVIDENCE_EXPIRED
+    automatic_action: disable
+    retryable: false
+
+  - rule_id: legal-conditions-not-satisfied
+    priority: 80
+    when:
+      all_conditions_satisfied: false
+    decision: deny
+    reason_code: LEGAL_CONDITIONS_NOT_SATISFIED
+    automatic_action: disable
+    retryable: false
+
+  - rule_id: qualified-counsel-exception
+    priority: 70
+    when:
+      exception_type: qualified_counsel
+    decision: quarantined
+    reason_code: COUNSEL_REVIEW_REQUIRED
+    automatic_action: disable
+    retryable: false
+    quarantine:
+      queue: qualified-counsel
+      release_by_policy_engine: false
+      required_resolution_fields:
+        - counsel_identity
+        - counsel_authority
+        - jurisdiction
+        - opinion_reference
+        - conditions
+        - authority_version
+        - effective_at
+        - expires_at
+      resolution: >-
+        Counsel evidence must create a new versioned policy/evidence record.
+        An exception request never overrides deny or releases itself.
+
+  - rule_id: verified-current-evidence
+    priority: 10
+    when:
+      all_required_evidence_fields_known: true
+      expires_at_gt_evaluated_at: true
+      all_conditions_satisfied: true
+      exception_type: none
+    decision: allow
+    reason_code: LEGAL_EVIDENCE_CURRENT
+    automatic_action: enable
+    retryable: false
+
+defaults:
+  no_rule_matched:
+    decision: deny
+    reason_code: LEGAL_POLICY_NO_MATCH
+    automatic_action: disable
+  evaluation_error:
+    decision: quarantined
+    reason_code: LEGAL_POLICY_EVALUATION_ERROR
+    automatic_action: disable
+    quarantine_queue: legalops
+
+evidence_record_template:
+  evidence_id: replace-with-stable-id
+  jurisdiction: JP
+  authority: replace-with-primary-authority
+  authority_version: replace-with-version-or-publication-date
+  conditions:
+    - condition_id: replace-with-condition-id
+      description: replace-with-machine-testable-condition
+      satisfied: false
+  effective_at: "2026-01-01T00:00:00Z"
+  expires_at: "2026-12-31T00:00:00Z"
+  source_uri: "https://replace.example/primary-source"
+  verified_at: "2026-01-01T00:00:00Z"
+  exception_type: none
+
+fixtures:
+  - fixture_id: valid-current-evidence-allows
+    evaluated_at: "2026-06-01T00:00:00Z"
+    evidence:
+      jurisdiction: JP
+      authority: primary-authority
+      authority_version: "2026-01-01"
+      conditions:
+        - condition_id: commercial-use
+          description: commercial use is within the recorded permission
+          satisfied: true
+      effective_at: "2026-01-01T00:00:00Z"
+      expires_at: "2026-12-31T00:00:00Z"
+      source_uri: "https://example.invalid/primary-source"
+      verified_at: "2026-05-31T00:00:00Z"
+      exception_type: none
+    expected:
+      decision: allow
+      reason_code: LEGAL_EVIDENCE_CURRENT
+      automatic_action: enable
+
+  - fixture_id: unknown-authority-denies
+    evaluated_at: "2026-06-01T00:00:00Z"
+    evidence:
+      jurisdiction: JP
+      authority: unknown
+      authority_version: "2026-01-01"
+      conditions:
+        - condition_id: commercial-use
+          description: commercial use is within the recorded permission
+          satisfied: true
+      effective_at: "2026-01-01T00:00:00Z"
+      expires_at: "2026-12-31T00:00:00Z"
+      source_uri: "https://example.invalid/primary-source"
+      verified_at: "2026-05-31T00:00:00Z"
+      exception_type: none
+    expected:
+      decision: deny
+      reason_code: LEGAL_EVIDENCE_UNKNOWN
+      automatic_action: disable
+
+  - fixture_id: boundary-expiry-denies
+    evaluated_at: "2026-06-01T00:00:00Z"
+    evidence:
+      jurisdiction: JP
+      authority: primary-authority
+      authority_version: "2026-01-01"
+      conditions:
+        - condition_id: commercial-use
+          description: commercial use is within the recorded permission
+          satisfied: true
+      effective_at: "2026-01-01T00:00:00Z"
+      expires_at: "2026-06-01T00:00:00Z"
+      source_uri: "https://example.invalid/primary-source"
+      verified_at: "2026-05-31T00:00:00Z"
+      exception_type: none
+    expected:
+      decision: deny
+      reason_code: LEGAL_EVIDENCE_EXPIRED
+      automatic_action: disable
+
+  - fixture_id: counsel-exception-quarantines
+    evaluated_at: "2026-06-01T00:00:00Z"
+    evidence:
+      jurisdiction: JP
+      authority: primary-authority
+      authority_version: "2026-01-01"
+      conditions:
+        - condition_id: commercial-use
+          description: counsel review requested for an out-of-policy use
+          satisfied: true
+      effective_at: "2026-01-01T00:00:00Z"
+      expires_at: "2026-12-31T00:00:00Z"
+      source_uri: "https://example.invalid/primary-source"
+      verified_at: "2026-05-31T00:00:00Z"
+      exception_type: qualified_counsel
+    expected:
+      decision: quarantined
+      reason_code: COUNSEL_REVIEW_REQUIRED
+      automatic_action: disable
+      quarantine_queue: qualified-counsel

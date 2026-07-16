@@ -1,0 +1,58 @@
+{
+  "schema_version": "artifact-envelope:v1",
+  "artifact_id": "E-005B/finance-contract",
+  "task_id": "E-005B",
+  "producer": {
+    "role": "finance-analysis",
+    "worker_id": "worker/e005b-finance",
+    "execution_kind": "interactive_agent",
+    "version": "2026.07.16"
+  },
+  "generated_at": "2026-07-16T00:00:00Z",
+  "payload_schema": "finance-artifact:v1",
+  "payload_path": "businesses/cf_gb_relative_system/artifacts/E-005B/finance-output.json",
+  "content_hash": {
+    "algorithm": "sha256",
+    "hex": "3333333333333333333333333333333333333333333333333333333333333333"
+  },
+  "provenance": {
+    "business_id": "cf_gb_relative_system",
+    "manifest_version": "1.0.0",
+    "input_artifacts": [
+      "businesses/cf_gb_relative_system/STATISTICAL_PROTOCOL.md"
+    ],
+    "canonical_sources": [
+      "businesses/cf_gb_relative_system/STATISTICAL_PROTOCOL.md"
+    ],
+    "code_version": {
+      "git_commit": "abcdef0",
+      "dirty": true
+    }
+  },
+  "payload": {
+    "model_id": "fin_revenue_case_001",
+    "time_horizon": "2026-Q3",
+    "currency": "JPY",
+    "base_case": {
+      "revenue": 1800000,
+      "cost": 420000,
+      "gross_profit": 1380000
+    },
+    "sensitivity_cases": [
+      {
+        "case_id": "low_ctr",
+        "delta_revenue": -250000,
+        "delta_cost": 0,
+        "probability_weight": 0.3
+      }
+    ],
+    "assumptions": [
+      "CTR estimate comes from preregistered July 2026 study.",
+      "Affiliate payout approval lag remains within 30 days."
+    ],
+    "linked_study_ids": [
+      "study_revenue_lift_001"
+    ],
+    "decision_status": "valid"
+  }
+}

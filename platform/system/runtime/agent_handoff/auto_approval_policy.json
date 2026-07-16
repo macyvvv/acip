@@ -7,6 +7,8 @@
       "role_id": "doc_creation",
       "enabled": true,
       "max_auto_approvals_per_day": 3,
+      "max_allowed_tools": 3,
+      "max_model_capability": "cost_optimized",
       "authored_by": "macy",
       "authored_at": "2026-07-11T00:00:00+00:00",
       "reason": "Pilot Level 3a policy so the text_syndicate content chain no longer needs a manual set_execution_approval.py call for every doc_creation task."
@@ -17,6 +19,8 @@
       "role_id": "market_research",
       "enabled": true,
       "max_auto_approvals_per_day": 3,
+      "max_allowed_tools": 4,
+      "max_model_capability": "reasoning",
       "authored_by": "macy",
       "authored_at": "2026-07-11T00:00:00+00:00",
       "reason": "Extends text_syndicate's pre-approval coverage to market_research, matching kabukicho_survival_map's full-chain policy, so the continuous content pipeline (market_research -> marketing -> doc_creation) can run without a manual set_execution_approval.py call at any hop."
@@ -27,6 +31,8 @@
       "role_id": "marketing",
       "enabled": true,
       "max_auto_approvals_per_day": 3,
+      "max_allowed_tools": 4,
+      "max_model_capability": "reasoning",
       "authored_by": "macy",
       "authored_at": "2026-07-11T00:00:00+00:00",
       "reason": "Extends text_syndicate's pre-approval coverage to marketing, matching kabukicho_survival_map's full-chain policy, so the continuous content pipeline (market_research -> marketing -> doc_creation) can run without a manual set_execution_approval.py call at any hop."
@@ -37,6 +43,8 @@
       "role_id": "market_research",
       "enabled": true,
       "max_auto_approvals_per_day": 10,
+      "max_allowed_tools": 4,
+      "max_model_capability": "reasoning",
       "authored_by": "macy",
       "authored_at": "2026-07-11T00:00:00+00:00",
       "reason": "Raised from 3 to 10/day per the operator's explicit, formal request (2026-07-11) to support several category-focused deep-dive research tasks in one pass -- the initial 12-POI dataset across 6 categories was too sparse to be useful (target: ~100+ total)."
@@ -47,6 +55,8 @@
       "role_id": "marketing",
       "enabled": true,
       "max_auto_approvals_per_day": 3,
+      "max_allowed_tools": 4,
+      "max_model_capability": "reasoning",
       "authored_by": "macy",
       "authored_at": "2026-07-11T00:00:00+00:00",
       "reason": "Pilot Level 3a policy so kabukicho_survival_map's marketing tasks (the next_roles hop from market_research) no longer need a manual set_execution_approval.py call each time."
@@ -57,6 +67,8 @@
       "role_id": "doc_creation",
       "enabled": true,
       "max_auto_approvals_per_day": 3,
+      "max_allowed_tools": 3,
+      "max_model_capability": "cost_optimized",
       "authored_by": "macy",
       "authored_at": "2026-07-11T00:00:00+00:00",
       "reason": "Pilot Level 3a policy so kabukicho_survival_map's doc_creation tasks (the next_roles hop from marketing) no longer need a manual set_execution_approval.py call each time."
@@ -67,6 +79,8 @@
       "role_id": "scenario_writing",
       "enabled": true,
       "max_auto_approvals_per_day": 3,
+      "max_allowed_tools": 3,
+      "max_model_capability": "reasoning",
       "authored_by": "macy",
       "authored_at": "2026-07-11T00:00:00+00:00",
       "reason": "Covers scenario_writing (tag-based evaluation copy and unofficial/gray-zone disclaimer text per issue #33's spec) with the same no-manual-approval treatment as the rest of kabukicho_survival_map's chain."

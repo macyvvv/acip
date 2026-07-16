@@ -63,6 +63,17 @@ minimal_launch_brief_generator, repository_operational_summary）と
 - 人間が保持する領域：戦略、承認、資本配分。Claudeが担う領域：アーキテクチャ、
   実装、リファクタリング、テスト、レビュー、PR作成。
 
+## Interactive Agent Layer
+
+`.claude/agents/` はinteractive Claude Code rolesの正本。現在は9 Ops、15 specialist agents、
+`opsboard`の計25役割で構成する。BusinessOps、ProductOps、LegalOpsと配下7役割は
+`platform/adr/ADR-0041`で追加されたinteractive-only rolesであり、unattended registryには
+存在しない。
+
+元の8 business-content rolesは自動実行側にも定義がある。`platform/adr/ADR-0039`の
+dual-authority ruleに従い、共有役割のIO、contract、permissionを実質変更する場合は両方を
+同期する。`.claude/agents/*.md`の存在から無人実行権限を推測してはならない。
+
 ## UI Philosophy
 
 機能美を目指す。優先順位：視線誘導 > 認知負荷低減 > 情報階層 > 一貫性 >

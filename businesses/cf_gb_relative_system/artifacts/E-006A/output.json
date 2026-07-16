@@ -1,0 +1,117 @@
+{
+  "task_id": "E-006A",
+  "decisions": [
+    {
+      "decision_id": "initial_area",
+      "normal_path": "policy_engine",
+      "policy_owner": "owner",
+      "fallback": "quarantined",
+      "exception": "owner_exception"
+    },
+    {
+      "decision_id": "source_legal_risk",
+      "normal_path": "policy_engine",
+      "policy_owner": "ops_policy",
+      "fallback": "quarantined",
+      "exception": "qualified_counsel"
+    },
+    {
+      "decision_id": "people_media_scope",
+      "normal_path": "policy_engine",
+      "policy_owner": "ops_policy",
+      "fallback": "quarantined",
+      "exception": "owner_exception"
+    },
+    {
+      "decision_id": "correction_policy",
+      "normal_path": "policy_engine",
+      "policy_owner": "ops_policy",
+      "fallback": "quarantined",
+      "exception": "owner_exception"
+    },
+    {
+      "decision_id": "pilot_loss_cap",
+      "normal_path": "policy_engine",
+      "policy_owner": "owner",
+      "fallback": "quarantined",
+      "exception": "owner_exception"
+    },
+    {
+      "decision_id": "architecture",
+      "normal_path": "policy_engine",
+      "policy_owner": "ops_policy",
+      "fallback": "quarantined",
+      "exception": "owner_exception"
+    },
+    {
+      "decision_id": "security_residual_risk",
+      "normal_path": "policy_engine",
+      "policy_owner": "ops_policy",
+      "fallback": "quarantined",
+      "exception": "owner_exception"
+    },
+    {
+      "decision_id": "ai_adoption",
+      "normal_path": "policy_engine",
+      "policy_owner": "ops_policy",
+      "fallback": "quarantined",
+      "exception": "owner_exception"
+    },
+    {
+      "decision_id": "gate_2",
+      "normal_path": "policy_engine",
+      "policy_owner": "ops_policy",
+      "fallback": "quarantined",
+      "exception": "owner_exception"
+    },
+    {
+      "decision_id": "gate_3",
+      "normal_path": "policy_engine",
+      "policy_owner": "ops_policy",
+      "fallback": "quarantined",
+      "exception": "owner_exception"
+    },
+    {
+      "decision_id": "public_release",
+      "normal_path": "policy_engine",
+      "policy_owner": "ops_policy",
+      "fallback": "quarantined",
+      "exception": "owner_exception"
+    },
+    {
+      "decision_id": "repeatability",
+      "normal_path": "policy_engine",
+      "policy_owner": "ops_policy",
+      "fallback": "quarantined",
+      "exception": "owner_exception"
+    },
+    {
+      "decision_id": "reinvestment",
+      "normal_path": "policy_engine",
+      "policy_owner": "owner",
+      "fallback": "quarantined",
+      "exception": "owner_exception"
+    },
+    {
+      "decision_id": "regional_legal_risk",
+      "normal_path": "policy_engine",
+      "policy_owner": "ops_policy",
+      "fallback": "quarantined",
+      "exception": "qualified_counsel"
+    },
+    {
+      "decision_id": "regional_release",
+      "normal_path": "policy_engine",
+      "policy_owner": "ops_policy",
+      "fallback": "quarantined",
+      "exception": "owner_exception"
+    },
+    {
+      "decision_id": "phase_transition",
+      "normal_path": "policy_engine",
+      "policy_owner": "owner",
+      "fallback": "quarantined",
+      "exception": "owner_exception"
+    }
+  ]
+}

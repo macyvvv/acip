@@ -22,6 +22,15 @@ Runtime/distribution source: `platform/system/runtime/data/kabukicho/{smoking,to
 
 `python3 businesses/kabukicho_survival_map/app/build.py` exports the business-owned DB into runtime JSON, then copies that data into this product's own `data/` (for local serving) and into `platform/web/public/kabukicho_survival_map/` (the deployable static bundle). No bundler, no backend -- per issue #33's "no over-engineering" constraint.
 
+GA4 / AdSense deployment is also build-time driven:
+
+- `KABUKICHO_GA_ID` enables GA4 in the public bundle
+- `KABUKICHO_ADSENSE_CLIENT` enables AdSense Auto ads in the public bundle
+
+Both are browser-side public IDs, not server-side secrets. `build.py` injects
+them into `platform/web/public/kabukicho_survival_map/index.html` so GitHub
+Pages can serve them without relying on a tracked config file.
+
 ### DB-first operation
 
 This product now uses a DB-first data flow.

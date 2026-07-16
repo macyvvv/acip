@@ -26,6 +26,8 @@ def _entry(**overrides) -> dict:
         "enabled": True,
         "max_auto_approvals_per_day": 1,
         "max_auto_approvals_per_week": 5,
+        "max_allowed_tools": 4,
+        "max_model_capability": "reasoning",
         "authored_by": "macy",
         "authored_at": "2026-07-11T00:00:00+00:00",
         "reason": "pilot",
@@ -46,6 +48,8 @@ def test_well_formed_load_and_lookup(tmp_path: Path) -> None:
     assert record.business_id == "text_syndicate"
     assert record.role_id == "market_research"
     assert record.max_auto_approvals_per_day == 1
+    assert record.max_allowed_tools == 4
+    assert record.max_model_capability == "reasoning"
 
 
 def test_missing_entry_returns_none(tmp_path: Path) -> None:
@@ -69,6 +73,18 @@ def test_missing_required_field_raises(tmp_path: Path) -> None:
 
 def test_non_positive_cap_raises(tmp_path: Path) -> None:
     _write_policy(tmp_path, [_entry(max_auto_approvals_per_day=0)])
+    with pytest.raises(ExecutionPreApprovalPolicyError):
+        load_execution_pre_approval_policies(tmp_path)
+
+
+def test_negative_tool_cap_raises(tmp_path: Path) -> None:
+    _write_policy(tmp_path, [_entry(max_allowed_tools=-1)])
+    with pytest.raises(ExecutionPreApprovalPolicyError):
+        load_execution_pre_approval_policies(tmp_path)
+
+
+def test_unknown_model_cap_raises(tmp_path: Path) -> None:
+    _write_policy(tmp_path, [_entry(max_model_capability="premium")])
     with pytest.raises(ExecutionPreApprovalPolicyError):
         load_execution_pre_approval_policies(tmp_path)
 
@@ -111,6 +127,48 @@ def test_mutating_allowed_tools_raises_even_for_claude_invocation(tmp_path: Path
     _write_policy(tmp_path, [_entry(role_id="marketing")])
     with pytest.raises(ExecutionPreApprovalPolicyError):
         get_execution_pre_approval_policy("text_syndicate", "marketing", tmp_path)
+
+
+def test_tool_cap_raises_when_live_role_exceeds_policy_limit(tmp_path: Path) -> None:
+    _write_policy(tmp_path, [_entry(role_id="marketing", max_allowed_tools=3)])
+    with pytest.raises(ExecutionPreApprovalPolicyError):
+        get_execution_pre_approval_policy("text_syndicate", "marketing", tmp_path)
+
+
+def test_cost_cap_raises_when_live_role_exceeds_policy_limit(tmp_path: Path) -> None:
+    _write_policy(tmp_path, [_entry(role_id="marketing", max_model_capability="cost_optimized")])
+    with pytest.raises(ExecutionPreApprovalPolicyError):
+        get_execution_pre_approval_policy("text_syndicate", "marketing", tmp_path)
+
+
+def test_cf_gb_relative_system_has_no_auto_approval_policy_in_live_repo() -> None:
+    """cf_gb_relative_system's E-002D: every one of its executors
+    (businessops/productops/software-engineering/dataops/legalops/secops/
+    analytics-as-specialist) is interactive-only per ADR-0041 and was
+    deliberately never added to agent_role_registry.py (E-002C). Checked
+    against the real repo (not a tmp_path fixture) so this actually proves
+    today's deny-default posture, not just the policy engine's logic."""
+    repo_root = Path(__file__).resolve().parents[3]
+    assert load_execution_pre_approval_policies(repo_root) == [] or all(
+        record.business_id != "cf_gb_relative_system"
+        for record in load_execution_pre_approval_policies(repo_root)
+    )
+    for role_id in ("businessops", "productops", "software-engineering", "dataops", "legalops", "secops"):
+        assert get_execution_pre_approval_policy("cf_gb_relative_system", role_id, repo_root) is None
+
+
+def test_cf_gb_relative_system_interactive_only_roles_cannot_be_pre_approved(tmp_path: Path) -> None:
+    """Fail-closed proof: even if someone authors a policy entry naming one
+    of cf_gb_relative_system's ADR-0041 interactive-only executors, it must
+    raise (unknown role_id in the unattended registry) rather than silently
+    grant auto-approval."""
+    for role_id in ("businessops", "productops", "software-engineering", "dataops", "legalops", "secops"):
+        _write_policy(
+            tmp_path,
+            [_entry(business_id="cf_gb_relative_system", role_id=role_id, policy_id=f"PREAPP-CF-GB-{role_id}")],
+        )
+        with pytest.raises(ExecutionPreApprovalPolicyError):
+            get_execution_pre_approval_policy("cf_gb_relative_system", role_id, tmp_path)
 
 
 def test_cross_scope_isolation(tmp_path: Path) -> None:

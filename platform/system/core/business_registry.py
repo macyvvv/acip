@@ -74,6 +74,20 @@ _SEED_BUSINESSES: tuple[dict[str, Any], ...] = (
         "historical_issue_numbers": (),
         "notes": "Provisional slug. Text-only content for Twitter/Threads/note.com, monetized via impressions and affiliate links. No existing code; zero external generation cost, so this is the platform pilot business.",
     },
+    {
+        "business_id": "cf_gb_relative_system",
+        "display_name": "CF/GB Relative System",
+        "status": "greenfield",
+        "content_root": "businesses/cf_gb_relative_system/app",
+        "product_code_path": "businesses/cf_gb_relative_system/app",
+        "tracking_issue_numbers": (),
+        "historical_issue_numbers": (),
+        "notes": (
+            "Greenfield business registered for the Phase -1 enabling work. "
+            "The app path is canonical; executable product code is introduced "
+            "by the delivery-skeleton work package."
+        ),
+    },
 )
 
 

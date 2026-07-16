@@ -216,6 +216,19 @@ def _render_index_html(category_data: list[tuple[dict, list[dict]]], site_url: s
     return template
 
 
+def _inject_public_runtime_config(html_text: str, ga_id: str, adsense_client: str) -> str:
+    public_config = (
+        "<script>\n"
+        f"  window.KABUKICHO_GA_ID = {json.dumps(ga_id)};\n"
+        f"  window.KABUKICHO_ADSENSE_CLIENT = {json.dumps(adsense_client)};\n"
+        "</script>\n"
+    )
+    marker = '<script>\n  /* GA placeholder -- ID injected via config, never hardcoded. Empty string\n'
+    if marker not in html_text:
+        raise RuntimeError("Unable to inject public GA/AdSense config: template marker not found")
+    return html_text.replace(marker, public_config + marker, 1)
+
+
 def _write_robots_txt(site_url: str) -> None:
     # Domain-independent (relative paths only), so this is always written,
     # regardless of whether KABUKICHO_SITE_URL is set. Explicitly allows
@@ -274,6 +287,8 @@ def build() -> None:
 
     load_dotenv(REPO_ROOT / ".env")
     site_url = os.environ.get("KABUKICHO_SITE_URL", "").strip()
+    ga_id = os.environ.get("KABUKICHO_GA_ID", "").strip()
+    adsense_client = os.environ.get("KABUKICHO_ADSENSE_CLIENT", "").strip()
 
     # DB-first flow: export canonical runtime JSON from SQLite before copying
     # any data into product/public bundles.
@@ -299,13 +314,17 @@ def build() -> None:
         shutil.copy2(SHARED_DIR / shared_file, PUBLIC_DIR / shared_file)
 
     category_data = _load_category_data()
-    (PUBLIC_DIR / "index.html").write_text(_render_index_html(category_data, site_url), encoding="utf-8")
+    rendered_index_html = _render_index_html(category_data, site_url)
+    rendered_index_html = _inject_public_runtime_config(rendered_index_html, ga_id, adsense_client)
+    (PUBLIC_DIR / "index.html").write_text(rendered_index_html, encoding="utf-8")
     _write_robots_txt(site_url)
     _write_sitemap_xml(site_url)
 
     print(f"Copied {len(list(DATA_SOURCE.glob('*.json')))} data file(s) to {local_data_dir} and {public_data_dir}")
     print(f"Copied {len(STATIC_FILES)} static file(s) + rendered index.html to {PUBLIC_DIR}")
     print(f"Copied {len(SHARED_FILES)} shared file(s) from {SHARED_DIR} to {PRODUCT_DIR} and {PUBLIC_DIR}")
+    print(f"GA4 enabled in public bundle: {'yes' if ga_id else 'no'}")
+    print(f"AdSense enabled in public bundle: {'yes' if adsense_client else 'no'}")
 
     _write_local_gmaps_config()
 

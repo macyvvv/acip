@@ -1,0 +1,32 @@
+{
+  "schema_version": "artifact-envelope:v1",
+  "artifact_id": "E-005A/schema-contract",
+  "task_id": "E-005A",
+  "producer": {
+    "role": "dataops",
+    "worker_id": "worker/e005a",
+    "execution_kind": "interactive_agent",
+    "version": "2026.07.16"
+  },
+  "generated_at": "2026-07-16T00:00:00Z",
+  "payload_schema": "artifact-envelope-schema:v1",
+  "payload_path": "businesses/cf_gb_relative_system/artifacts/E-005A/output.json",
+  "content_hash": {
+    "algorithm": "sha256",
+    "hex": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+  },
+  "provenance": {
+    "business_id": "cf_gb_relative_system",
+    "manifest_version": "1.0.0",
+    "input_artifacts": [
+      "businesses/cf_gb_relative_system/OUTCOME_BACKLOG.md"
+    ],
+    "canonical_sources": [
+      "businesses/cf_gb_relative_system/OUTCOME_BACKLOG.md"
+    ],
+    "code_version": {
+      "git_commit": "abcdef0",
+      "dirty": true
+    }
+  }
+}

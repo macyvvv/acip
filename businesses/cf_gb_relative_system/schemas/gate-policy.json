@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acip.local/cf-gb-relative-system/schemas/gate-policy/v1",
+  "title": "CF/GB gate policy contract",
+  "description": "Versioned, deny-safe contract for deterministic Go, Rework, or Stop gate decisions.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "policy_id",
+    "policy_version",
+    "gate_id",
+    "owner",
+    "effective_at",
+    "expires_at",
+    "default_decision",
+    "rules",
+    "fixtures"
+  ],
+  "properties": {
+    "schema_version": {"const": "gate-policy:v1"},
+    "policy_id": {"type": "string", "pattern": "^[a-z][a-z0-9_-]{2,63}$"},
+    "policy_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "gate_id": {"type": "string", "pattern": "^[A-Z][A-Z0-9_-]{1,31}$"},
+    "owner": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "contact"],
+      "properties": {
+        "role": {"enum": ["owner", "ops_policy", "qualified_counsel"]},
+        "contact": {"type": "string", "minLength": 3, "maxLength": 254}
+      }
+    },
+    "effective_at": {"type": "string", "format": "date-time"},
+    "expires_at": {"type": "string", "format": "date-time"},
+    "default_decision": {
+      "description": "Unknown, missing, or unmatched input must never produce Go.",
+      "enum": ["Rework", "Stop"]
+    },
+    "rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/rule"}
+    },
+    "fixtures": {
+      "type": "array",
+      "minItems": 3,
+      "items": {"$ref": "#/$defs/fixture"}
+    }
+  },
+  "$defs": {
+    "scalar": {"type": ["string", "number", "integer", "boolean", "null"]},
+    "condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fact", "operator", "value"],
+      "properties": {
+        "fact": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]{1,127}$"},
+        "operator": {"enum": ["eq", "ne", "gt", "gte", "lt", "lte", "in", "not_in"]},
+        "value": {
+          "oneOf": [
+            {"$ref": "#/$defs/scalar"},
+            {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/scalar"}}
+          ]
+        }
+      }
+    },
+    "rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rule_id", "priority", "decision", "reason_code", "all"],
+      "properties": {
+        "rule_id": {"type": "string", "pattern": "^[a-z][a-z0-9_-]{2,63}$"},
+        "priority": {"type": "integer", "minimum": 1, "maximum": 10000},
+        "decision": {"enum": ["Go", "Rework", "Stop"]},
+        "reason_code": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]{2,63}$"},
+        "all": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/condition"}}
+      }
+    },
+    "fixture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fixture_id", "evaluated_at", "facts", "expected"],
+      "properties": {
+        "fixture_id": {"type": "string", "pattern": "^[a-z][a-z0-9_-]{2,63}$"},
+        "evaluated_at": {"type": "string", "format": "date-time"},
+        "facts": {
+          "type": "object",
+          "additionalProperties": {"$ref": "#/$defs/scalar"}
+        },
+        "expected": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["decision", "reason_code", "matched_rule_id"],
+          "properties": {
+            "decision": {"enum": ["Go", "Rework", "Stop"]},
+            "reason_code": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]{2,63}$"},
+            "matched_rule_id": {
+              "type": ["string", "null"],
+              "pattern": "^[a-z][a-z0-9_-]{2,63}$"
+            }
+          }
+        }
+      }
+    }
+  }
+}

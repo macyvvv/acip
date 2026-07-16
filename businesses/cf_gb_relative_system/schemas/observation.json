@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acip.local/cf-gb-relative-system/schemas/observation/v1",
+  "title": "Observation record",
+  "description": "Immutable observed fact before aggregation or publication.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "observation_id",
+    "study_id",
+    "entity_id",
+    "observed_at",
+    "source",
+    "measures"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "observation:v1"
+    },
+    "observation_id": {
+      "type": "string",
+      "pattern": "^obs_[a-z0-9][a-z0-9_-]{5,63}$"
+    },
+    "study_id": {
+      "type": "string",
+      "pattern": "^study_[a-z0-9][a-z0-9_-]{5,63}$"
+    },
+    "entity_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._:-]{2,127}$"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "channel",
+        "record_locator"
+      ],
+      "properties": {
+        "channel": {
+          "enum": [
+            "survey",
+            "event_log",
+            "manual_audit",
+            "external_report"
+          ]
+        },
+        "record_locator": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 255
+        }
+      }
+    },
+    "measures": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": [
+          "number",
+          "integer",
+          "string",
+          "boolean",
+          "null"
+        ]
+      }
+    },
+    "quality_flags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z0-9_]{3,64}$"
+      },
+      "uniqueItems": true
+    }
+  }
+}

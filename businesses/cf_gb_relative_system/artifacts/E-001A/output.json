@@ -1,0 +1,13 @@
+{
+  "task_id": "E-001A",
+  "business_id": "cf_gb_relative_system",
+  "currently_registered": false,
+  "registry_path": "platform/system/core/business_registry.py",
+  "canonical_roots": [
+    "app",
+    "artifacts",
+    "schemas",
+    "templates"
+  ],
+  "registration_status": "required"
+}

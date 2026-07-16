@@ -1,0 +1,56 @@
+{
+  "schema_version": "artifact-envelope:v1",
+  "artifact_id": "E-005B/legal-contract",
+  "task_id": "E-005B",
+  "producer": {
+    "role": "legalops",
+    "worker_id": "worker/e005b-legal",
+    "execution_kind": "interactive_agent",
+    "version": "2026.07.16"
+  },
+  "generated_at": "2026-07-16T00:00:00Z",
+  "payload_schema": "legal-artifact:v1",
+  "payload_path": "businesses/cf_gb_relative_system/artifacts/E-005B/legal-output.json",
+  "content_hash": {
+    "algorithm": "sha256",
+    "hex": "2222222222222222222222222222222222222222222222222222222222222222"
+  },
+  "provenance": {
+    "business_id": "cf_gb_relative_system",
+    "manifest_version": "1.0.0",
+    "input_artifacts": [
+      "businesses/cf_gb_relative_system/templates/legal-policy.yaml"
+    ],
+    "canonical_sources": [
+      "businesses/cf_gb_relative_system/templates/legal-policy.yaml"
+    ],
+    "code_version": {
+      "git_commit": "abcdef0",
+      "dirty": true
+    }
+  },
+  "payload": {
+    "evidence_id": "legal.cfgb.001",
+    "jurisdiction": "JP",
+    "authority": "google-business-profile-policy",
+    "authority_version": "2026-01-01",
+    "conditions": [
+      {
+        "condition_id": "profile-content-policy",
+        "description": "Published data remains within documented profile usage policy.",
+        "satisfied": true
+      }
+    ],
+    "effective_at": "2026-01-01T00:00:00Z",
+    "expires_at": "2026-12-31T00:00:00Z",
+    "source_uri": "https://example.invalid/legal-source",
+    "verified_at": "2026-07-15T00:00:00Z",
+    "exception_type": "none",
+    "evaluation": {
+      "evaluated_at": "2026-07-16T00:00:00Z",
+      "decision": "allow",
+      "reason_code": "LEGAL_EVIDENCE_CURRENT",
+      "automatic_action": "enable"
+    }
+  }
+}

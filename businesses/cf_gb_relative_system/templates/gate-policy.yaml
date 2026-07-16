@@ -1,0 +1,78 @@
+schema_version: gate-policy:v1
+policy_id: phase_zero_readiness
+policy_version: 1.0.0
+gate_id: GATE_PHASE_ZERO
+owner:
+  role: ops_policy
+  contact: businessops@acip.local
+effective_at: "2026-07-17T00:00:00+09:00"
+expires_at: "2026-10-15T00:00:00+09:00"
+default_decision: Stop
+rules:
+  # Lowest number wins. Stop precedes Rework, and Go is evaluated last.
+  - rule_id: stop_on_critical_risk
+    priority: 10
+    decision: Stop
+    reason_code: CRITICAL_RISK_OPEN
+    all:
+      - fact: critical_risk_count
+        operator: gt
+        value: 0
+  - rule_id: rework_on_incomplete_evidence
+    priority: 20
+    decision: Rework
+    reason_code: EVIDENCE_INCOMPLETE
+    all:
+      - fact: evidence_complete
+        operator: eq
+        value: false
+  - rule_id: go_on_complete_safe_evidence
+    priority: 100
+    decision: Go
+    reason_code: READINESS_CONFIRMED
+    all:
+      - fact: evidence_complete
+        operator: eq
+        value: true
+      - fact: critical_risk_count
+        operator: eq
+        value: 0
+
+# Fixtures are examples for E-006E engine tests. Evaluation is deterministic:
+# ascending priority, first matching rule, otherwise default_decision.
+fixtures:
+  - fixture_id: deterministic_go
+    evaluated_at: "2026-08-01T00:00:00+09:00"
+    facts:
+      evidence_complete: true
+      critical_risk_count: 0
+    expected:
+      decision: Go
+      reason_code: READINESS_CONFIRMED
+      matched_rule_id: go_on_complete_safe_evidence
+  - fixture_id: deterministic_rework
+    evaluated_at: "2026-08-01T00:00:00+09:00"
+    facts:
+      evidence_complete: false
+      critical_risk_count: 0
+    expected:
+      decision: Rework
+      reason_code: EVIDENCE_INCOMPLETE
+      matched_rule_id: rework_on_incomplete_evidence
+  - fixture_id: deterministic_stop
+    evaluated_at: "2026-08-01T00:00:00+09:00"
+    facts:
+      evidence_complete: true
+      critical_risk_count: 1
+    expected:
+      decision: Stop
+      reason_code: CRITICAL_RISK_OPEN
+      matched_rule_id: stop_on_critical_risk
+  - fixture_id: deterministic_default_stop
+    evaluated_at: "2026-08-01T00:00:00+09:00"
+    facts:
+      evidence_complete: true
+    expected:
+      decision: Stop
+      reason_code: NO_MATCH_DEFAULT
+      matched_rule_id: null

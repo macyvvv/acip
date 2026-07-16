@@ -48,9 +48,10 @@ tasks in `platform/system/runtime/business_agent_tasks/queue.json` (mostly
 `kabukicho_survival_map` Level-1 auto-triggers never executed); decide,
 per task, execute or discard. Decide Level 3b's cron/launchd wiring
 question explicitly (currently built but unscheduled -- neither "on" nor
-"deliberately off" is recorded anywhere). Document the `.claude/agents/`
-Ops layer (8 business roles + 6 Ops + `opsboard`, added 2026-07-14) in
-`CLAUDE.md`/`AGENTS.md`, which currently don't mention it at all.
+"deliberately off" is recorded anywhere). Keep the `.claude/agents/`
+interactive layer documented: 15 specialist roles + 9 Ops + `opsboard`.
+The ADR-0041 BusinessOps/ProductOps/LegalOps expansion is interactive-only
+and does not expand unattended execution authority.
 
 2 **Phase B (short-term)** -- Stabilize the free-tier `claude_invocation`
 roles (`market_research`/`marketing`/`doc_creation`/`scenario_writing`/

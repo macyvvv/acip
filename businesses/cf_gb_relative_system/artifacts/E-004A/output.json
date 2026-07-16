@@ -1,0 +1,42 @@
+{
+  "task_id": "E-004A",
+  "states": [
+    "ready",
+    "blocked",
+    "running",
+    "succeeded",
+    "failed",
+    "quarantined"
+  ],
+  "allowed_transitions": {
+    "blocked": [
+      "ready",
+      "quarantined"
+    ],
+    "ready": [
+      "running",
+      "quarantined"
+    ],
+    "running": [
+      "succeeded",
+      "failed",
+      "quarantined"
+    ],
+    "failed": [
+      "ready",
+      "quarantined"
+    ],
+    "succeeded": [],
+    "quarantined": [
+      "ready"
+    ]
+  },
+  "atomic_claim": {
+    "required": true,
+    "idempotency_key": "business_id:task_id:manifest_version"
+  },
+  "quarantine": {
+    "fail_closed": true,
+    "requires_policy_or_exception_resolution": true
+  }
+}

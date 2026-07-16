@@ -1,0 +1,749 @@
+manifest_version: "1.0"
+business_id: cf_gb_relative_system
+root_path: businesses/cf_gb_relative_system
+artifact_root: businesses/cf_gb_relative_system/artifacts
+path_resolution:
+  repo_prefixes: [businesses/, platform/, .github/]
+  default_base: root_path
+state_model: [ready, blocked, running, succeeded, failed, quarantined]
+tasks:
+  - id: E-001A
+    wp: WP-E1
+    title: Confirm registry and path contract
+    state: succeeded
+    depends: []
+    executor: software-engineering
+    supervisor: productops
+    trigger: approved_phase_minus_1
+    execution: {kind: command, command: "python businesses/cf_gb_relative_system/run_bootstrap_task.py E-001A"}
+    inputs: ["Business Strategy.md", "platform/system/core/business_registry.py"]
+    targets: ["artifacts/E-001A/output.json"]
+    outputs: ["registration-design-v1"]
+    input_schema: "repo-files"
+    output_schema: "bootstrap:E-001A:v1"
+    statistical_method: "not_applicable"
+    acceptance: {commands: ["python businesses/cf_gb_relative_system/run_bootstrap_task.py --validate E-001A"], criteria: ["registry state recorded", "canonical roots specified"]}
+    reliability: {timeout_seconds: 1800, max_attempts: 1, failure_state: failed}
+    next: [E-001B, E-001C]
+
+  - id: E-001B
+    wp: WP-E1
+    title: Register business in runtime registry
+    state: succeeded
+    depends: [E-001A]
+    executor: software-engineering
+    supervisor: productops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "software-engineering:registry-implementation"}
+    inputs: ["artifacts/E-001A/output.json"]
+    targets: ["platform/system/core/business_registry.py", "platform/system/tests/test_business_registry.py"]
+    outputs: ["registered-business-record"]
+    input_schema: "bootstrap:E-001A:v1"
+    output_schema: "business-registry-record:v1"
+    statistical_method: "not_applicable"
+    acceptance: {commands: ["PYTHONPATH=platform python -m pytest -q platform/system/tests/test_business_registry.py"], criteria: ["get_business returns cf_gb_relative_system", "registry paths resolve"]}
+    reliability: {timeout_seconds: 1800, max_attempts: 2, failure_state: failed}
+    next: [E-002A]
+
+  - id: E-001C
+    wp: WP-E1
+    title: Create canonical business roots
+    state: succeeded
+    depends: [E-001A]
+    executor: software-engineering
+    supervisor: productops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "software-engineering:root-bootstrap"}
+    inputs: ["artifacts/E-001A/output.json"]
+    targets: ["app/", "artifacts/", "schemas/", "templates/"]
+    outputs: ["business-root-layout"]
+    input_schema: "bootstrap:E-001A:v1"
+    output_schema: "business-root-layout:v1"
+    statistical_method: "not_applicable"
+    acceptance: {commands: ["test -d businesses/cf_gb_relative_system/app", "test -d businesses/cf_gb_relative_system/artifacts", "test -d businesses/cf_gb_relative_system/schemas", "test -d businesses/cf_gb_relative_system/templates"], criteria: ["all canonical roots exist"]}
+    reliability: {timeout_seconds: 900, max_attempts: 1, failure_state: failed}
+    next: [E-005A, E-009A, E-010A]
+
+  - id: E-002A
+    wp: WP-E2
+    title: Select minimum unattended runtime roles
+    state: succeeded
+    depends: [E-001B]
+    executor: businessops
+    supervisor: opsboard
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "businessops:runtime-role-selection"}
+    inputs: ["OUTCOME_BACKLOG.md", "ADR-0041"]
+    targets: ["artifacts/E-002A/role-matrix.yaml"]
+    outputs: ["minimum-runtime-role-set"]
+    input_schema: "runtime-role-selection-input:v1"
+    output_schema: "minimum-runtime-role-set:v1"
+    statistical_method: "not_applicable"
+    acceptance: {commands: ["python -c \"from pathlib import Path; import yaml; p=Path('businesses/cf_gb_relative_system/artifacts/E-002A/role-matrix.yaml'); d=yaml.safe_load(p.read_text()); assert d['schema_version']; assert d['roles']; assert all('executor' in r and 'authority_boundary' in r for r in d['roles'])\""], criteria: ["every Phase 0 executor resolves", "nonessential roles excluded", "authority boundary recorded"]}
+    reliability: {timeout_seconds: 1800, max_attempts: 1, failure_state: quarantined}
+    next: [E-002B]
+
+  - id: E-002B
+    wp: WP-E2
+    title: Design role prompt output tool and cost contracts
+    state: succeeded
+    depends: [E-002A]
+    executor: modelops
+    supervisor: modelops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "modelops:runtime-contract-design"}
+    inputs: ["artifacts/E-002A/role-matrix.yaml"]
+    targets: ["artifacts/E-002B/role-contract-pack.yaml"]
+    outputs: ["role-contract-pack"]
+    input_schema: "minimum-runtime-role-set:v1"
+    output_schema: "role-contract-pack:v1"
+    statistical_method: "not_applicable"
+    acceptance: {commands: ["python -c \"from pathlib import Path; import yaml; p=Path('businesses/cf_gb_relative_system/artifacts/E-002B/role-contract-pack.yaml'); d=yaml.safe_load(p.read_text()); assert d['schema_version']; assert d['roles']; assert all('prompt_contract' in r and 'tool_contract' in r and 'cost_contract' in r for r in d['roles'])\""], criteria: ["prompt/output/tool/cost/timeout defined", "SecOps and DataOps reviews attached"]}
+    reliability: {timeout_seconds: 3600, max_attempts: 1, failure_state: quarantined}
+    next: [E-002C]
+
+  - id: E-002C
+    wp: WP-E2
+    title: Resolve runtime role contracts as interactive-only roles (ADR-0041)
+    state: succeeded
+    depends: [E-002B]
+    executor: software-engineering
+    supervisor: productops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "software-engineering:runtime-role-implementation"}
+    inputs: ["artifacts/E-002B/role-contract-pack.yaml"]
+    targets: [".claude/agents/businessops.md", ".claude/agents/business-strategy.md", ".claude/agents/finance-analysis.md", ".claude/agents/productops.md", ".claude/agents/product-management.md", ".claude/agents/ux-research.md", ".claude/agents/quality-assurance.md", ".claude/agents/software-engineering.md", ".claude/agents/legalops.md", ".claude/agents/legal-research.md", "platform/adr/ADR-0041-interactive-business-product-legal-role-expansion.md"]
+    outputs: ["interactive-only-runtime-roles"]
+    input_schema: "role-contract-pack:v1"
+    output_schema: "interactive-only-runtime-roles:v1"
+    statistical_method: "not_applicable"
+    acceptance: {commands: ["test -f platform/adr/ADR-0041-interactive-business-product-legal-role-expansion.md", "PYTHONPATH=platform python -m pytest -q platform/system/tests/test_agent_role_registry.py"], criteria: ["all E-002B roles resolve to an interactive .claude/agents/*.md definition", "platform/system/core/agent_role_registry.py (unattended execution) stays at its pre-existing 8-role seed set -- ADR-0041 explicitly rejected adding these roles there"]}
+    reliability: {timeout_seconds: 7200, max_attempts: 2, failure_state: failed}
+    next: [E-002D, E-004B]
+
+  - id: E-002D
+    wp: WP-E2
+    title: Implement deny-default execution policy
+    state: succeeded
+    depends: [E-002C]
+    executor: secops
+    supervisor: secops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "secops:execution-policy"}
+    inputs: ["runtime-role-registry"]
+    targets: ["platform/system/runtime/agent_handoff/", "platform/system/tests/"]
+    outputs: ["execution-policy"]
+    input_schema: "runtime-role-registry:v1"
+    output_schema: "execution-policy:v1"
+    statistical_method: "not_applicable"
+    acceptance: {commands: ["PYTHONPATH=platform python -m pytest -q platform/system/tests/test_execution_pre_approval_policy.py"], criteria: ["unauthorized role denied", "cost and tool caps enforced"]}
+    reliability: {timeout_seconds: 3600, max_attempts: 2, failure_state: quarantined}
+    next: [E-010E]
+
+  - id: E-003A
+    wp: WP-E3
+    title: Canonicalize task manifest schema
+    state: succeeded
+    depends: []
+    executor: software-engineering
+    supervisor: productops
+    trigger: approved_phase_minus_1
+    execution: {kind: interactive_agent, workflow: "software-engineering:manifest-schema"}
+    inputs: ["WBS.md", "task_manifest.schema.json"]
+    targets: ["task_manifest.schema.json"]
+    outputs: ["manifest-schema-v1"]
+    input_schema: "task_manifest.schema.json"
+    output_schema: "task_manifest.schema.json"
+    statistical_method: "not_applicable"
+    acceptance: {commands: ["python businesses/cf_gb_relative_system/validate_task_manifest.py"], criteria: ["schema validates current manifest"]}
+    reliability: {timeout_seconds: 1800, max_attempts: 1, failure_state: failed}
+    next: [E-003B]
+
+  - id: E-003B
+    wp: WP-E3
+    title: Canonicalize Phase minus 1 task manifest
+    state: succeeded
+    depends: [E-003A]
+    executor: product-management
+    supervisor: productops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "product-management:manifest-sync"}
+    inputs: ["WBS.md", "task_manifest.schema.json"]
+    targets: ["task_manifest.yaml"]
+    outputs: ["validated-task-dag"]
+    input_schema: "task_manifest.schema.json"
+    output_schema: "task_manifest.schema.json"
+    statistical_method: "graph_validation"
+    acceptance: {commands: ["python businesses/cf_gb_relative_system/validate_task_manifest.py"], criteria: ["duplicate zero", "undefined dependency zero", "cycle zero"]}
+    reliability: {timeout_seconds: 1800, max_attempts: 1, failure_state: failed}
+    next: [E-004A, E-006A]
+
+  - id: E-004A
+    wp: WP-E3
+    title: Design task state and atomic claim contract
+    state: succeeded
+    depends: [E-003B]
+    executor: software-engineering
+    supervisor: productops
+    trigger: dependencies_succeeded
+    execution: {kind: command, command: "python businesses/cf_gb_relative_system/run_bootstrap_task.py E-004A"}
+    inputs: ["validated-task-dag"]
+    targets: ["artifacts/E-004A/output.json"]
+    outputs: ["task-state-contract"]
+    input_schema: "task_manifest.schema.json"
+    output_schema: "bootstrap:E-004A:v1"
+    statistical_method: "not_applicable"
+    acceptance: {commands: ["python businesses/cf_gb_relative_system/run_bootstrap_task.py --validate E-004A"], criteria: ["allowed transitions defined", "idempotency and atomic claim specified", "quarantine defined"]}
+    reliability: {timeout_seconds: 1800, max_attempts: 1, failure_state: failed}
+    next: [E-004B]
+
+  - id: E-004B
+    wp: WP-E3
+    title: Implement DAG ready claim complete engine
+    state: succeeded
+    depends: [E-004A, E-002C]
+    executor: software-engineering
+    supervisor: productops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "software-engineering:dag-runner"}
+    inputs: ["task-state-contract", "validated-task-dag"]
+    targets: ["platform/system/core/", "platform/system/tests/"]
+    outputs: ["dag-runner"]
+    input_schema: "bootstrap:E-004A:v1+task_manifest.schema.json"
+    output_schema: "dag-runner:v1"
+    statistical_method: "deterministic_state_machine"
+    acceptance: {commands: ["PYTHONPATH=platform python -m pytest -q platform/system/tests -k 'dag or task_state'"], criteria: ["ready dependency release", "atomic claim", "invalid transition rejected"]}
+    reliability: {timeout_seconds: 7200, max_attempts: 2, failure_state: failed}
+    next: [E-004C, E-005C]
+
+  - id: E-004C
+    wp: WP-E3
+    title: Implement retry resume and reconciliation
+    state: ready
+    depends: [E-004B]
+    executor: devops
+    supervisor: devops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "devops:dag-reliability"}
+    inputs: ["dag-runner"]
+    targets: ["platform/system/core/", "platform/system/tests/"]
+    outputs: ["recoverable-dag-runner"]
+    acceptance: {commands: ["python -m pytest -q platform/system/tests -k 'retry or resume or reconcile'"], criteria: ["crash replay safe", "bounded retry", "stale claim recovered"]}
+    reliability: {timeout_seconds: 7200, max_attempts: 2, failure_state: failed}
+    next: [E-007C, E-010C]
+
+  - id: E-005A
+    wp: WP-E4
+    title: Define artifact envelope schema
+    state: succeeded
+    depends: [E-001C]
+    executor: dataops
+    supervisor: dataops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "dataops:artifact-envelope"}
+    inputs: ["OUTCOME_BACKLOG.md"]
+    targets: ["schemas/artifact-envelope.json"]
+    outputs: ["artifact-envelope-schema"]
+    input_schema: "outcome-backlog:v1"
+    output_schema: "artifact-envelope-schema:v1"
+    statistical_method: "not_applicable"
+    acceptance: {commands: ["python -c \"import json, jsonschema; from pathlib import Path; schema=json.loads(Path('businesses/cf_gb_relative_system/schemas/artifact-envelope.json').read_text()); jsonschema.Draft202012Validator.check_schema(schema)\""], criteria: ["provenance/hash/schema version required", "invalid envelope fixture rejected"]}
+    reliability: {timeout_seconds: 1800, max_attempts: 1, failure_state: failed}
+    next: [E-005B]
+
+  - id: E-005B
+    wp: WP-E4
+    title: Define task-type artifact templates
+    state: succeeded
+    depends: [E-005A]
+    executor: dataops
+    supervisor: dataops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "dataops:artifact-templates"}
+    inputs: ["artifact-envelope-schema", "STATISTICAL_PROTOCOL.md"]
+    targets: ["schemas/", "templates/"]
+    outputs: ["artifact-type-contracts"]
+    input_schema: "artifact-envelope-schema:v1"
+    output_schema: "artifact-type-contracts:v1"
+    statistical_method: "schema_contract_only"
+    acceptance: {commands: ["python -c \"from pathlib import Path; import json; import jsonschema; required=['research','legal','finance','code','qa']; [jsonschema.Draft202012Validator.check_schema(json.loads(Path(f'businesses/cf_gb_relative_system/schemas/{name}-artifact.json').read_text())) for name in required]; assert all(Path(f'businesses/cf_gb_relative_system/templates/{name}-artifact.example.json').is_file() for name in required)\""], criteria: ["research/legal/finance/code/QA templates validate", "versioned examples exist"]}
+    reliability: {timeout_seconds: 3600, max_attempts: 1, failure_state: failed}
+    next: [E-005C, E-009B]
+
+  - id: E-005C
+    wp: WP-E4
+    title: Implement evidence validator completion hook
+    state: ready
+    depends: [E-005B, E-004B]
+    executor: software-engineering
+    supervisor: productops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "software-engineering:evidence-validator"}
+    inputs: ["artifact-type-contracts", "dag-runner"]
+    targets: ["platform/system/core/", "platform/system/tests/"]
+    outputs: ["evidence-gated-completion"]
+    acceptance: {commands: ["python -m pytest -q platform/system/tests -k 'artifact or evidence'"], criteria: ["invalid artifact cannot complete task"]}
+    reliability: {timeout_seconds: 7200, max_attempts: 2, failure_state: failed}
+    next: [E-006E, E-010E]
+
+  - id: E-006A
+    wp: WP-E5
+    title: Classify owner decisions into policy and exception
+    state: succeeded
+    depends: [E-003B]
+    executor: businessops
+    supervisor: opsboard
+    trigger: dependencies_succeeded
+    execution: {kind: command, command: "python businesses/cf_gb_relative_system/run_bootstrap_task.py E-006A"}
+    inputs: ["OUTCOME_BACKLOG.md", "HUMAN_REPLACEMENT_MATRIX.md"]
+    targets: ["artifacts/E-006A/output.json"]
+    outputs: ["decision-automation-matrix"]
+    input_schema: "outcome-decision-list:v1"
+    output_schema: "bootstrap:E-006A:v1"
+    statistical_method: "not_applicable"
+    acceptance: {commands: ["python businesses/cf_gb_relative_system/run_bootstrap_task.py --validate E-006A"], criteria: ["all former Human decisions classified", "deny and quarantine fallback defined"]}
+    reliability: {timeout_seconds: 3600, max_attempts: 1, failure_state: quarantined}
+    next: [E-006B, E-006C, E-006D]
+
+  - id: E-006B
+    wp: WP-E5
+    title: Define gate policy schema and fixtures
+    state: succeeded
+    depends: [E-006A]
+    executor: businessops
+    supervisor: opsboard
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "businessops:gate-policy"}
+    inputs: ["decision-automation-matrix"]
+    targets: ["schemas/gate-policy.json", "templates/gate-policy.yaml"]
+    outputs: ["gate-policy-contract"]
+    input_schema: "bootstrap:E-006A:v1"
+    output_schema: "gate-policy:v1"
+    statistical_method: "not_applicable"
+    acceptance: {commands: ["python -c \"from pathlib import Path; assert Path('businesses/cf_gb_relative_system/schemas/gate-policy.json').is_file(); assert Path('businesses/cf_gb_relative_system/templates/gate-policy.yaml').is_file()\""], criteria: ["Go/Rework/Stop deterministic fixtures", "policy owner and expiry required"]}
+    reliability: {timeout_seconds: 3600, max_attempts: 1, failure_state: failed}
+    next: [E-006E]
+
+  - id: E-006C
+    wp: WP-E5
+    title: Define legal expiry and deny policy
+    state: succeeded
+    depends: [E-006A]
+    executor: legalops
+    supervisor: legalops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "legalops:expiry-policy"}
+    inputs: ["decision-automation-matrix"]
+    targets: ["templates/legal-policy.yaml"]
+    outputs: ["legal-deny-policy"]
+    input_schema: "bootstrap:E-006A:v1"
+    output_schema: "legal-policy:v1"
+    statistical_method: "not_applicable"
+    acceptance: {commands: ["python -c \"from pathlib import Path; assert Path('businesses/cf_gb_relative_system/templates/legal-policy.yaml').is_file()\""], criteria: ["unknown and expired deny", "counsel exception quarantines"]}
+    reliability: {timeout_seconds: 3600, max_attempts: 1, failure_state: quarantined}
+    next: [E-006E]
+
+  - id: E-006D
+    wp: WP-E5
+    title: Define spend security and publish policies
+    state: succeeded
+    depends: [E-006A]
+    executor: secops
+    supervisor: secops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "secops:gate-controls"}
+    inputs: ["decision-automation-matrix"]
+    targets: ["templates/control-policy.yaml"]
+    outputs: ["control-policies"]
+    input_schema: "bootstrap:E-006A:v1"
+    output_schema: "control-policy:v1"
+    statistical_method: "not_applicable"
+    acceptance: {commands: ["python -c \"from pathlib import Path; assert Path('businesses/cf_gb_relative_system/templates/control-policy.yaml').is_file()\""], criteria: ["over-cap denied", "Critical or High blocks publish", "rollback condition defined"]}
+    reliability: {timeout_seconds: 3600, max_attempts: 1, failure_state: quarantined}
+    next: [E-006E]
+
+  - id: E-006E
+    wp: WP-E5
+    title: Implement autonomous policy engine
+    state: blocked
+    depends: [E-005C, E-006B, E-006C, E-006D]
+    executor: software-engineering
+    supervisor: productops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "software-engineering:policy-engine"}
+    inputs: ["gate-policy-contract", "legal-deny-policy", "control-policies"]
+    targets: ["platform/system/core/", "platform/system/tests/"]
+    outputs: ["policy-engine"]
+    acceptance: {commands: ["python -m pytest -q platform/system/tests -k 'policy or gate'"], criteria: ["fixture decisions deterministic", "unresolved exception quarantined"]}
+    reliability: {timeout_seconds: 7200, max_attempts: 2, failure_state: quarantined}
+    next: [E-006F, E-007A, E-008A]
+
+  - id: E-006F
+    wp: WP-E5
+    title: Implement gate and policy console
+    state: blocked
+    depends: [E-006E, E-009D]
+    executor: software-engineering
+    supervisor: productops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "software-engineering:gate-console"}
+    inputs: ["policy-engine", "statistics-dashboard"]
+    targets: ["app/", "platform/system/tests/"]
+    outputs: ["gate-policy-console"]
+    acceptance: {commands: ["python -m pytest -q businesses/cf_gb_relative_system/app/tests -k 'gate or policy'"], criteria: ["normal path automatic", "decision and policy version auditable"]}
+    reliability: {timeout_seconds: 14400, max_attempts: 2, failure_state: failed}
+    next: [E-010E]
+
+  - id: E-006G
+    wp: WP-E5
+    title: Implement legal evidence and expiry dashboard
+    state: ready
+    depends: [E-006C, E-009D]
+    executor: software-engineering
+    supervisor: productops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "software-engineering:legal-dashboard"}
+    inputs: ["legal-deny-policy", "statistics-dashboard"]
+    targets: ["app/", "platform/system/tests/"]
+    outputs: ["legal-expiry-dashboard"]
+    acceptance: {commands: ["python -m pytest -q businesses/cf_gb_relative_system/app/tests -k 'legal or expiry'"], criteria: ["expiry visible", "unknown or expired source disabled"]}
+    reliability: {timeout_seconds: 14400, max_attempts: 2, failure_state: failed}
+    next: [E-010E]
+
+  - id: E-006H
+    wp: WP-E5
+    title: Implement spend and cap dashboard
+    state: ready
+    depends: [E-006D, E-009D]
+    executor: software-engineering
+    supervisor: productops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "software-engineering:spend-dashboard"}
+    inputs: ["control-policies", "statistics-dashboard"]
+    targets: ["app/", "platform/system/tests/"]
+    outputs: ["spend-cap-dashboard"]
+    acceptance: {commands: ["python -m pytest -q businesses/cf_gb_relative_system/app/tests -k 'spend or cap'"], criteria: ["committed forecast and cap visible", "over-cap blocked"]}
+    reliability: {timeout_seconds: 14400, max_attempts: 2, failure_state: failed}
+    next: [E-010E]
+
+  - id: E-007A
+    wp: WP-E6
+    title: Define participant consent and portal requirements
+    state: blocked
+    depends: [E-006E]
+    executor: product-management
+    supervisor: productops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "product-management:research-portal-prd"}
+    inputs: ["STATISTICAL_PROTOCOL.md", "HUMAN_REPLACEMENT_MATRIX.md"]
+    targets: ["artifacts/E-007A/portal-prd.md"]
+    outputs: ["portal-requirements"]
+    acceptance: {commands: [], criteria: ["consent/withdrawal/retention/quota/nonresponse defined", "LegalOps SecOps DataOps review"]}
+    reliability: {timeout_seconds: 3600, max_attempts: 1, failure_state: quarantined}
+    next: [E-007B, E-007C]
+
+  - id: E-007B
+    wp: WP-E6
+    title: Implement research UX and WTP portal
+    state: blocked
+    depends: [E-007A, E-009A]
+    executor: software-engineering
+    supervisor: productops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "software-engineering:research-portal"}
+    inputs: ["portal-requirements", "measurement-contract"]
+    targets: ["app/", "platform/system/tests/"]
+    outputs: ["research-portal"]
+    acceptance: {commands: ["python -m pytest -q businesses/cf_gb_relative_system/app/tests"], criteria: ["consent and withdrawal E2E", "accessible survey tasks", "deduplicated ingestion"]}
+    reliability: {timeout_seconds: 14400, max_attempts: 2, failure_state: failed}
+    next: [E-007D]
+
+  - id: E-007C
+    wp: WP-E7
+    title: Implement participant MA workflow
+    state: blocked
+    depends: [E-007A, E-004C]
+    executor: software-engineering
+    supervisor: productops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "software-engineering:participant-ma"}
+    inputs: ["portal-requirements", "recoverable-dag-runner"]
+    targets: ["platform/system/core/", "platform/system/tests/"]
+    outputs: ["participant-ma-workflow"]
+    acceptance: {commands: ["python -m pytest -q platform/system/tests -k 'participant or quota or reminder'"], criteria: ["quota and duplicate controls", "bounded reminders", "study-close event"]}
+    reliability: {timeout_seconds: 14400, max_attempts: 2, failure_state: failed}
+    next: [E-007D]
+
+  - id: E-007D
+    wp: WP-E7
+    title: Independently accept portal and MA workflow
+    state: blocked
+    depends: [E-007B, E-007C, E-007E, E-007F]
+    executor: quality-assurance
+    supervisor: productops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "quality-assurance:portal-ma-acceptance"}
+    inputs: ["research-portal", "participant-ma-workflow"]
+    targets: ["artifacts/E-007D/acceptance.md"]
+    outputs: ["portal-ma-acceptance"]
+    acceptance: {commands: [], criteria: ["consent/dropout/nonresponse/a11y cases passed", "skips and defects explicit"]}
+    reliability: {timeout_seconds: 7200, max_attempts: 1, failure_state: quarantined}
+    next: [E-010E]
+
+  - id: E-007E
+    wp: WP-E6
+    title: Implement store verification page
+    state: blocked
+    depends: [E-007A, E-009A]
+    executor: software-engineering
+    supervisor: productops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "software-engineering:store-verification"}
+    inputs: ["portal-requirements", "measurement-contract"]
+    targets: ["app/", "platform/system/tests/"]
+    outputs: ["store-verification-page"]
+    acceptance: {commands: ["python -m pytest -q businesses/cf_gb_relative_system/app/tests -k 'store_verification'"], criteria: ["identity evidence captured", "duplicate dispute and quarantine E2E"]}
+    reliability: {timeout_seconds: 14400, max_attempts: 2, failure_state: failed}
+    next: [E-007D]
+
+  - id: E-007F
+    wp: WP-E6
+    title: Implement instrumented usability page
+    state: blocked
+    depends: [E-007A, E-009A]
+    executor: software-engineering
+    supervisor: productops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "software-engineering:usability-instrumentation"}
+    inputs: ["portal-requirements", "measurement-contract"]
+    targets: ["app/", "platform/system/tests/"]
+    outputs: ["instrumented-usability-page"]
+    acceptance: {commands: ["python -m pytest -q businesses/cf_gb_relative_system/app/tests -k 'usability'"], criteria: ["task error and assist events recorded", "accessible flow"]}
+    reliability: {timeout_seconds: 14400, max_attempts: 2, failure_state: failed}
+    next: [E-007D]
+
+  - id: E-008A
+    wp: WP-E8
+    title: Define correction and exception workflow
+    state: blocked
+    depends: [E-006E]
+    executor: product-management
+    supervisor: productops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "product-management:exception-prd"}
+    inputs: ["HUMAN_REPLACEMENT_MATRIX.md"]
+    targets: ["artifacts/E-008A/exception-prd.md"]
+    outputs: ["exception-workflow-contract"]
+    acceptance: {commands: [], criteria: ["identity/SLA/appeal/legal-hold/escalation defined"]}
+    reliability: {timeout_seconds: 3600, max_attempts: 1, failure_state: quarantined}
+    next: [E-008B]
+
+  - id: E-008B
+    wp: WP-E8
+    title: Implement correction and exception console
+    state: blocked
+    depends: [E-008A, E-009A]
+    executor: software-engineering
+    supervisor: productops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "software-engineering:exception-console"}
+    inputs: ["exception-workflow-contract", "measurement-contract"]
+    targets: ["app/", "platform/system/tests/"]
+    outputs: ["exception-console"]
+    acceptance: {commands: ["python -m pytest -q businesses/cf_gb_relative_system/app/tests -k 'correction or exception'"], criteria: ["authz/abuse/audit E2E", "normal cases automated"]}
+    reliability: {timeout_seconds: 14400, max_attempts: 2, failure_state: failed}
+    next: [E-008C]
+
+  - id: E-008C
+    wp: WP-E8
+    title: Implement counsel and owner quarantine handoff
+    state: blocked
+    depends: [E-008B]
+    executor: legalops
+    supervisor: legalops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "legalops:exception-handoff"}
+    inputs: ["exception-console"]
+    targets: ["artifacts/E-008C/handoff-contract.md", "platform/system/tests/"]
+    outputs: ["safe-exception-handoff"]
+    acceptance: {commands: [], criteria: ["unresolved case never auto-approved", "expiry and evidence preserved"]}
+    reliability: {timeout_seconds: 3600, max_attempts: 1, failure_state: quarantined}
+    next: [E-010E]
+
+  - id: E-009A
+    wp: WP-E9
+    title: Define observation event and study schemas
+    state: succeeded
+    depends: [E-001C]
+    executor: analytics
+    supervisor: marketingops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "analytics:measurement-schema"}
+    inputs: ["STATISTICAL_PROTOCOL.md"]
+    targets: ["schemas/observation.json", "schemas/event.json", "schemas/study.json"]
+    outputs: ["measurement-contract"]
+    input_schema: "statistical-protocol:v1"
+    output_schema: "measurement-contract:v1"
+    statistical_method: "schema_contract_only"
+    acceptance: {commands: ["python -c \"import json, jsonschema; from pathlib import Path; paths=['businesses/cf_gb_relative_system/schemas/observation.json','businesses/cf_gb_relative_system/schemas/event.json','businesses/cf_gb_relative_system/schemas/study.json']; [jsonschema.Draft202012Validator.check_schema(json.loads(Path(p).read_text())) for p in paths]\""], criteria: ["population/frame/estimand/precision/stopping required", "event version and identity rules defined"]}
+    reliability: {timeout_seconds: 3600, max_attempts: 1, failure_state: failed}
+    next: [E-007B, E-008B, E-009B, E-009C]
+
+  - id: E-009B
+    wp: WP-E9
+    title: Implement raw validated metric transforms
+    state: succeeded
+    depends: [E-009A, E-005B]
+    executor: software-engineering
+    supervisor: productops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "software-engineering:statistical-etl"}
+    inputs: ["measurement-contract", "artifact-type-contracts"]
+    targets: ["platform/system/core/", "platform/system/tests/"]
+    outputs: ["reproducible-metric-datasets"]
+    input_schema: "measurement-contract+artifact-type-contracts:v1"
+    output_schema: "reproducible-metric-datasets:v1"
+    statistical_method: "deterministic_etl"
+    acceptance: {commands: ["PYTHONPATH=platform python -m pytest -q platform/system/tests -k 'metric or observation or transform'"], criteria: ["seeded replay identical", "late data revision retained"]}
+    reliability: {timeout_seconds: 14400, max_attempts: 2, failure_state: failed}
+    next: [E-009D]
+
+  - id: E-009C
+    wp: WP-E9
+    title: Implement sample size CI power and SRM library
+    state: succeeded
+    depends: [E-009A]
+    executor: analytics
+    supervisor: marketingops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "analytics:statistics-library"}
+    inputs: ["measurement-contract"]
+    targets: ["platform/system/core/", "platform/system/tests/"]
+    outputs: ["statistics-engine"]
+    input_schema: "measurement-contract:v1"
+    output_schema: "statistics-engine:v1"
+    statistical_method: "sample_size_ci_power_srm"
+    acceptance: {commands: ["python -m pytest -q platform/system/tests -k 'sample_size or confidence or power or srm'"], criteria: ["benchmark results within tolerance", "invalid study blocked"]}
+    reliability: {timeout_seconds: 14400, max_attempts: 2, failure_state: failed}
+    next: [E-009D]
+
+  - id: E-009D
+    wp: WP-E9
+    title: Implement metric freshness and quality dashboard
+    state: succeeded
+    depends: [E-009B, E-009C]
+    executor: software-engineering
+    supervisor: productops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "software-engineering:statistics-dashboard"}
+    inputs: ["reproducible-metric-datasets", "statistics-engine"]
+    targets: ["app/", "platform/system/tests/"]
+    outputs: ["statistics-dashboard"]
+    input_schema: "reproducible-metric-datasets:v1+statistics-engine:v1"
+    output_schema: "statistics-dashboard:v1"
+    statistical_method: "metric_quality_monitoring"
+    acceptance: {commands: ["python -m pytest -q businesses/cf_gb_relative_system/app/tests -k 'metric or dashboard'"], criteria: ["stale/missing alerts", "estimate CI and revision displayed"]}
+    reliability: {timeout_seconds: 14400, max_attempts: 2, failure_state: failed}
+    next: [E-006F, E-006G, E-006H]
+
+  - id: E-009E
+    wp: WP-E9
+    title: Implement study preregistration validator
+    state: blocked
+    depends: [E-005C, E-009A, E-009C]
+    executor: analytics
+    supervisor: marketingops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "analytics:study-validator"}
+    inputs: ["STATISTICAL_PROTOCOL.md", "measurement-contract", "statistics-engine"]
+    targets: ["platform/system/core/", "platform/system/tests/"]
+    outputs: ["study-preregistration-validator"]
+    acceptance: {commands: ["python -m pytest -q platform/system/tests -k 'study or preregistration'"], criteria: ["missing population/frame/estimand/precision/stopping blocks start"]}
+    reliability: {timeout_seconds: 7200, max_attempts: 2, failure_state: failed}
+    next: [E-010E]
+
+  - id: E-010A
+    wp: WP-E10
+    title: Create application environment and dependency skeleton
+    state: succeeded
+    depends: [E-001C]
+    executor: software-engineering
+    supervisor: productops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "software-engineering:app-skeleton"}
+    inputs: ["business-root-layout"]
+    targets: ["app/", ".env.example"]
+    outputs: ["reproducible-local-app"]
+    input_schema: "business-root-layout:v1"
+    output_schema: "reproducible-local-app:v1"
+    statistical_method: "not_applicable"
+    acceptance: {commands: ["python -m pytest -q businesses/cf_gb_relative_system/app/tests"], criteria: ["clean local build", "dependency lock", "no secret values"]}
+    reliability: {timeout_seconds: 7200, max_attempts: 2, failure_state: failed}
+    next: [E-010B]
+
+  - id: E-010B
+    wp: WP-E10
+    title: Implement CI preview and artifact promotion
+    state: succeeded
+    depends: [E-010A]
+    executor: devops
+    supervisor: devops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "devops:delivery-skeleton"}
+    inputs: ["reproducible-local-app"]
+    targets: [".github/workflows/", "businesses/cf_gb_relative_system/app/"]
+    outputs: ["preview-delivery"]
+    input_schema: "reproducible-local-app:v1"
+    output_schema: "preview-delivery:v1"
+    statistical_method: "not_applicable"
+    acceptance: {commands: ["python platform/system/platform/scripts/validate_all.py"], criteria: ["same artifact promoted", "preview/prod separated", "rollback tested"]}
+    reliability: {timeout_seconds: 14400, max_attempts: 2, failure_state: failed}
+    next: [E-010C]
+
+  - id: E-010C
+    wp: WP-E10
+    title: Implement scheduler DLQ and health lag alerts
+    state: blocked
+    depends: [E-004C, E-010B]
+    executor: devops
+    supervisor: devops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "devops:scheduler-observability"}
+    inputs: ["recoverable-dag-runner", "preview-delivery"]
+    targets: ["platform/system/core/", "platform/system/tests/"]
+    outputs: ["observable-scheduler"]
+    acceptance: {commands: ["python -m pytest -q platform/system/tests -k 'scheduler or dlq or alert'"], criteria: ["timeout reaches DLQ", "lag and failure alert"]}
+    reliability: {timeout_seconds: 14400, max_attempts: 2, failure_state: failed}
+    next: [E-010D]
+
+  - id: E-010D
+    wp: WP-E10
+    title: Implement backup restore and kill switch
+    state: blocked
+    depends: [E-010C]
+    executor: devops
+    supervisor: devops
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "devops:recovery-controls"}
+    inputs: ["observable-scheduler"]
+    targets: ["platform/system/core/", "platform/system/tests/", "artifacts/E-010D/"]
+    outputs: ["recoverable-operations"]
+    acceptance: {commands: ["python -m pytest -q platform/system/tests -k 'restore or kill_switch'"], criteria: ["failure injection restored", "kill switch fails closed"]}
+    reliability: {timeout_seconds: 14400, max_attempts: 2, failure_state: quarantined}
+    next: [E-010E]
+
+  - id: E-010E
+    wp: WP-E10
+    title: Decide Phase minus 1 release readiness
+    state: blocked
+    depends: [E-002D, E-004C, E-005C, E-006F, E-006G, E-006H, E-007D, E-008C, E-009D, E-009E, E-010D]
+    executor: opsboard
+    supervisor: opsboard
+    trigger: dependencies_succeeded
+    execution: {kind: interactive_agent, workflow: "opsboard:phase-minus-1-readiness"}
+    inputs: ["all-enabling-artifacts"]
+    targets: ["artifacts/E-010E/readiness.md"]
+    outputs: ["phase-0-ready-decision"]
+    acceptance: {commands: ["python -m pytest -q", "python platform/system/platform/scripts/validate_all.py"], criteria: ["DevOps Ready", "all Critical blockers closed", "business Phase 0 queue accepted"]}
+    reliability: {timeout_seconds: 7200, max_attempts: 1, failure_state: quarantined}
+    next: []

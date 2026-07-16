@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acip.local/cf-gb-relative-system/schemas/code-artifact/v1",
+  "title": "Code artifact",
+  "description": "Versioned implementation artifact with changed files and verification evidence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "artifact_id",
+    "task_id",
+    "producer",
+    "generated_at",
+    "payload_schema",
+    "payload_path",
+    "content_hash",
+    "provenance",
+    "payload"
+  ],
+  "properties": {
+    "schema_version": { "const": "artifact-envelope:v1" },
+    "artifact_id": { "type": "string", "pattern": "^[A-Z]-[0-9]{3}[A-Z]/[a-z0-9][a-z0-9._-]{2,127}$" },
+    "task_id": { "type": "string", "pattern": "^E-[0-9]{3}[A-Z]$" },
+    "producer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "worker_id", "execution_kind", "version"],
+      "properties": {
+        "role": { "type": "string", "pattern": "^[a-z][a-z0-9-]{1,63}$" },
+        "worker_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._/-]{2,127}$" },
+        "execution_kind": { "enum": ["interactive_agent", "command", "manual_import"] },
+        "version": { "type": "string", "minLength": 1, "maxLength": 128 }
+      }
+    },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "payload_schema": { "const": "code-artifact:v1" },
+    "payload_path": { "type": "string", "pattern": "^businesses/cf_gb_relative_system/artifacts/E-[0-9]{3}[A-Z]/[A-Za-z0-9._/-]+$" },
+    "content_hash": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "hex"],
+      "properties": {
+        "algorithm": { "const": "sha256" },
+        "hex": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["business_id", "manifest_version", "input_artifacts", "canonical_sources", "code_version"],
+      "properties": {
+        "business_id": { "const": "cf_gb_relative_system" },
+        "manifest_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+        "input_artifacts": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^businesses/cf_gb_relative_system/[A-Za-z0-9._/-]+$" },
+          "uniqueItems": true
+        },
+        "canonical_sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "pattern": "^[A-Za-z0-9_./-]{3,255}$" },
+          "uniqueItems": true
+        },
+        "code_version": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["git_commit", "dirty"],
+          "properties": {
+            "git_commit": { "type": "string", "pattern": "^[a-f0-9]{7,40}$" },
+            "dirty": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["change_id", "summary", "changed_files", "verification"],
+      "properties": {
+        "change_id": { "type": "string", "pattern": "^chg_[a-z0-9][a-z0-9_-]{5,63}$" },
+        "summary": { "type": "string", "minLength": 10 },
+        "changed_files": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "change_kind"],
+            "properties": {
+              "path": { "type": "string", "pattern": "^(businesses|platform)/[A-Za-z0-9._/-]+$" },
+              "change_kind": { "enum": ["added", "modified", "deleted"] },
+              "test_impact": { "type": "string", "minLength": 3 }
+            }
+          }
+        },
+        "verification": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["command", "status"],
+            "properties": {
+              "command": { "type": "string", "minLength": 3 },
+              "status": { "enum": ["passed", "failed", "not_run"] },
+              "notes": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

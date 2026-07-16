@@ -1,0 +1,51 @@
+{
+  "schema_version": "artifact-envelope:v1",
+  "artifact_id": "E-005B/qa-contract",
+  "task_id": "E-005B",
+  "producer": {
+    "role": "quality-assurance",
+    "worker_id": "worker/e005b-qa",
+    "execution_kind": "interactive_agent",
+    "version": "2026.07.16"
+  },
+  "generated_at": "2026-07-16T00:00:00Z",
+  "payload_schema": "qa-artifact:v1",
+  "payload_path": "businesses/cf_gb_relative_system/artifacts/E-005B/qa-output.json",
+  "content_hash": {
+    "algorithm": "sha256",
+    "hex": "5555555555555555555555555555555555555555555555555555555555555555"
+  },
+  "provenance": {
+    "business_id": "cf_gb_relative_system",
+    "manifest_version": "1.0.0",
+    "input_artifacts": [
+      "businesses/cf_gb_relative_system/STATISTICAL_PROTOCOL.md"
+    ],
+    "canonical_sources": [
+      "businesses/cf_gb_relative_system/STATISTICAL_PROTOCOL.md"
+    ],
+    "code_version": {
+      "git_commit": "abcdef0",
+      "dirty": true
+    }
+  },
+  "payload": {
+    "plan_id": "qa_phase0_001",
+    "coverage_scope": [
+      "artifact schema validation",
+      "example fixture integrity"
+    ],
+    "executions": [
+      {
+        "test_id": "schema-check",
+        "status": "passed",
+        "evidence_ref": "businesses/cf_gb_relative_system/templates/research-artifact.example.json"
+      }
+    ],
+    "findings": [],
+    "decision": {
+      "release_status": "pass",
+      "rationale": "All required contract examples validate against their schemas."
+    }
+  }
+}
