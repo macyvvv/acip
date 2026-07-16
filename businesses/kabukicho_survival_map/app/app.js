@@ -4,9 +4,9 @@
   // Category order matches doc_creation/task-0001-seo-copy's recommended
   // sort: by frequency/urgency, not alphabetically.
   var CATEGORIES = [
-    { id: "toilet", file: "toilet.json", label: "トイレ", icon: "🚻", subtitle: "Public restrooms" },
-    { id: "smoking", file: "smoking.json", label: "喫煙所", icon: "🚬", subtitle: "Designated smoking zones" },
     { id: "convenience", file: "convenience.json", label: "コンビニ", icon: "🏪", subtitle: "24/7 services" },
+    { id: "smoking", file: "smoking.json", label: "喫煙所", icon: "🚬", subtitle: "Designated smoking zones" },
+    { id: "toilet", file: "toilet.json", label: "トイレ", icon: "🚻", subtitle: "Public restrooms" },
     { id: "atm", file: "atm.json", label: "ATM・両替", icon: "💳", subtitle: "Cash withdrawal & exchange" },
     { id: "coin_locker", file: "coin_locker.json", label: "コインロッカー", icon: "🧳", subtitle: "Luggage storage" },
     { id: "lodging", file: "lodging.json", label: "宿泊・ネット", icon: "🏨", subtitle: "Overnight & day-use facilities" }
@@ -27,19 +27,6 @@
       summary: "現在地に近い順を基本に、カテゴリごとに通常の地図探索ができます。"
     },
     {
-      id: "toilet_now",
-      label: "トイレ急ぎ",
-      copy: "近くて使いやすい順",
-      targetCategories: ["toilet"],
-      aggregateCategories: false,
-      preferredTags: ["24h", "free", "clean", "gender_separated"],
-      negativeTags: ["dirty", "long_wait"],
-      categoryBoosts: { toilet: 4 },
-      sortStrategy: ["distance", "modeScore", "freshness"],
-      emptyStateMessage: "近くで使いやすいトイレが見つかりませんでした。通常のトイレ一覧に切り替えて探してください。",
-      summary: "いま一番早く使えそうなトイレを、距離と使いやすさで優先表示します。"
-    },
-    {
       id: "late_night",
       label: "朝まで過ごす",
       copy: "終電後の避難導線",
@@ -51,6 +38,19 @@
       sortStrategy: ["distance", "modeScore", "freshness", "reliability"],
       emptyStateMessage: "朝まで向きの候補が見つかりませんでした。宿泊・ネットかコンビニを個別に確認してください。",
       summary: "終電後に必要な宿泊・休憩・現金・荷物導線をまとめて、朝までしのげる候補を優先します。"
+    },
+    {
+      id: "toilet_now",
+      label: "トイレ急ぎ",
+      copy: "近くて使いやすい順",
+      targetCategories: ["toilet"],
+      aggregateCategories: false,
+      preferredTags: ["24h", "free", "clean", "gender_separated"],
+      negativeTags: ["dirty", "long_wait"],
+      categoryBoosts: { toilet: 4 },
+      sortStrategy: ["distance", "modeScore", "freshness"],
+      emptyStateMessage: "近くで使いやすいトイレが見つかりませんでした。通常のトイレ一覧に切り替えて探してください。",
+      summary: "いま一番早く使えそうなトイレを、距離と使いやすさで優先表示します。"
     },
     {
       id: "smoking_now",
@@ -231,6 +231,43 @@
     return isMobileViewport() ? 24 : 48;
   }
 
+  function syncDesktopControlsInlineState() {
+    if (typeof document === "undefined") return;
+    var panel = document.getElementById("control-panel");
+    var overlay = document.getElementById("controls-panel-overlay");
+    if (!panel) return;
+
+    if (isMobileViewport()) {
+      panel.style.removeProperty("max-height");
+      panel.style.removeProperty("opacity");
+      panel.style.removeProperty("pointer-events");
+      panel.style.removeProperty("transform");
+      if (overlay) {
+        overlay.style.removeProperty("max-height");
+        overlay.style.removeProperty("overflow");
+      }
+      return;
+    }
+
+    var overlayMaxByMode = {
+      nearby: "72dvh",
+      toilet_now: "76dvh",
+      smoking_now: "76dvh",
+      late_night: "80dvh"
+    };
+
+    panel.style.setProperty("transform", "translateY(0)");
+    panel.style.setProperty("opacity", "1");
+    panel.style.setProperty("pointer-events", "auto", "important");
+    panel.style.setProperty("max-height", "84px", "important");
+
+    if (overlay) {
+      var overlayMax = overlayMaxByMode[state.activeMode] || "74dvh";
+      overlay.style.setProperty("max-height", overlayMax, "important");
+      overlay.style.setProperty("overflow", "visible", "important");
+    }
+  }
+
   function setControlsOpen(open) {
     state.controlsOpen = !!open;
     if (typeof document === "undefined") return;
@@ -244,6 +281,15 @@
       var button = document.getElementById(id);
       if (button) button.setAttribute("aria-expanded", state.controlsOpen ? "true" : "false");
     });
+
+    var close = document.getElementById("controls-close");
+    if (close) {
+      var label = state.controlsOpen ? "閉じる" : "開く";
+      close.textContent = label;
+      close.setAttribute("aria-label", "条件パネルを" + label);
+    }
+
+    syncDesktopControlsInlineState();
   }
 
   function closeControlsOnMobile() {
@@ -562,13 +608,13 @@
     return mapsUrl(pos.lat, pos.lng);
   }
 
-  // Shared across platform/app/products/* -- see platform/app/shared/dom_escape.js. In the
-  // browser it's loaded via a <script> tag before this file (no bundler);
-  // in the Node test harness (tests/test_app_logic.js), window is
-  // undefined, so require() it directly instead.
+  // Shared DOM escaping utility. In the browser it's loaded via a <script>
+  // tag before this file (no bundler); in the Node test harness
+  // (tests/test_app_logic.js), window is undefined, so require() the local
+  // committed copy directly instead of reaching through a platform-only path.
   var escapeHtml = (typeof window !== "undefined" && window.AcipDomUtils)
     ? window.AcipDomUtils.escapeHtml
-    : require("../../shared/dom_escape.js").escapeHtml;
+    : require("./dom_escape.js").escapeHtml;
 
   function modeSummaryHtml() {
     var mode = getModeDefinition(state.activeMode);
@@ -588,8 +634,11 @@
   }
 
   function renderCurrentContext(pois, totalInCategory, aggregateFailures) {
-    var container = document.getElementById("current-context");
-    if (!container) return;
+    var containers = [
+      document.getElementById("current-context"),
+      document.getElementById("current-context-overlay")
+    ].filter(function (el) { return !!el; });
+    if (!containers.length) return;
 
     var mode = getModeDefinition(state.activeMode);
     var activeFilterCount = Object.keys(state.activeFilters).filter(function (key) { return state.activeFilters[key]; }).length;
@@ -614,9 +663,12 @@
         ? "必要な施設だけを短く見て、詳細はタップで展開できます。"
         : mode.summary);
 
-    container.innerHTML =
+    var html =
       '<div class="current-context-head">' + pills.join("") + '</div>' +
       '<p class="current-context-note">' + escapeHtml(note) + '</p>';
+    containers.forEach(function (container) {
+      container.innerHTML = html;
+    });
   }
 
   function scorePoiForMode(modeId, poi) {
@@ -1070,6 +1122,7 @@
         renderFilterBar();
         renderList();
         renderMarkers();
+        syncDesktopControlsInlineState();
         scrollListToTop();
       });
     });
@@ -1298,11 +1351,12 @@
     var toggle = document.getElementById("controls-toggle");
     var reopen = document.getElementById("reopen-controls");
     var close = document.getElementById("controls-close");
+    var panelHead = document.querySelector(".controls-panel-head");
     var backdrop = document.getElementById("controls-backdrop");
     var apply = document.getElementById("filter-apply");
 
     function openControls() { setControlsOpen(true); }
-    function closeControls() { setControlsOpen(false); }
+    function toggleControls() { setControlsOpen(!state.controlsOpen); }
 
     if (toggle) {
       toggle.addEventListener("click", function () {
@@ -1310,8 +1364,20 @@
       });
     }
     if (reopen) openControls && reopen.addEventListener("click", openControls);
-    if (close) close.addEventListener("click", closeControls);
-    if (backdrop) backdrop.addEventListener("click", closeControls);
+    if (close) {
+      close.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        toggleControls();
+      });
+    }
+    if (panelHead) {
+      panelHead.addEventListener("click", function (event) {
+        if (event.target && event.target.id === "controls-close") return;
+        if (!state.controlsOpen && !isMobileViewport()) setControlsOpen(true);
+      });
+    }
+    if (backdrop) backdrop.addEventListener("click", function () { setControlsOpen(false); });
     if (apply) apply.addEventListener("click", applyFilterSelection);
 
     if (typeof window !== "undefined") {

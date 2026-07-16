@@ -2,7 +2,7 @@
 // framework, matching this product's "no over-engineering" constraint
 // (see architecture.md). Run directly: `node tests/test_app_logic.js`
 // from the product directory, or from the repo root:
-// `node platform/app/products/kabukicho_survival_map/tests/test_app_logic.js`.
+// `node businesses/kabukicho_survival_map/app/tests/test_app_logic.js`.
 // Not part of the Python pytest suite (different runtime); intended as
 // a quick regression check for the map/list logic that previously had
 // zero automated coverage (only ad hoc Playwright checks during
