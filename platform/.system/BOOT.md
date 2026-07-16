@@ -1,6 +1,6 @@
 # BOOT
 
-> Superseded by [CLAUDE.md](../CLAUDE.md) for how Claude should operate in
+> Superseded by [CLAUDE.md](../../CLAUDE.md) for how Claude should operate in
 > this repo. Kept as historical record of the ChatGPT+Codex protocol.
 
 ## Purpose

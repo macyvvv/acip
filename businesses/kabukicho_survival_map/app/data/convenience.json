@@ -12,313 +12,287 @@
     "reliability_score": 4,
     "source_type": "observed",
     "type": "official",
-    "verification_method": "web-search-2026-07",
-    "gray_zone_note": null
+    "verification_method": "web-search-2026-07"
   },
   {
-    "name": "セブン-イレブン(セブン銀行ATM併設・新宿駅エリア)",
-    "lat": 35.6908,
-    "lng": 139.7003,
-    "description": "新宿駅から徒歩2分圏内にある3店舗のセブン-イレブンの一つ。セブン銀行ATM併設。",
+    "name": "セブン-イレブン歌舞伎町1-2-13店",
+    "lat": 35.694372,
+    "lng": 139.703326,
+    "description": "西武新宿駅そば、歌舞伎町一丁目にあるセブン-イレブン。",
     "category": "convenience",
     "tags": [
-      "24h"
+      "24h",
+      "atm_instore"
     ],
     "last_updated": "2026-07-11",
-    "reliability_score": 4,
-    "source_type": "observed",
-    "type": "official",
-    "verification_method": "web-search-2026-07",
-    "gray_zone_note": null
-  },
-  {
-    "category": "convenience",
-    "name": "セブン-イレブン歌舞伎町1-2-13店",
-    "lat": 35.6949,
-    "lng": 139.7013,
-    "description": "西武新宿駅そば、歌舞伎町一丁目にあるセブン-イレブン。",
-    "tags": [
-      "24h"
-    ],
     "reliability_score": 3,
     "source_type": "observed",
     "type": "unofficial",
-    "gray_zone_note": "情報源によって店舗名の表記が異なりますが、住所の方が信頼できる識別情報です。",
-    "last_updated": "2026-07-11",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "情報源によって店舗名の表記が異なりますが、住所の方が信頼できる識別情報です。"
   },
   {
-    "category": "convenience",
     "name": "セブン-イレブン新宿東宝ビル店",
-    "lat": 35.6952,
-    "lng": 139.7028,
+    "lat": 35.695478,
+    "lng": 139.701959,
     "description": "歌舞伎町1-19-1、新宿東宝ビル(ゴジラロード)そばのセブン-イレブン。",
+    "category": "convenience",
     "tags": [
-      "24h"
+      "24h",
+      "atm_instore"
     ],
+    "last_updated": "2026-07-11",
     "reliability_score": 4,
     "source_type": "observed",
     "type": "official",
-    "gray_zone_note": null,
-    "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
-    "category": "convenience",
     "name": "セブン-イレブン新宿駅靖国通り店",
-    "lat": 35.6944,
-    "lng": 139.701,
+    "lat": 35.693848,
+    "lng": 139.701106,
     "description": "歌舞伎町1-17-2、靖国通り沿い、歌舞伎町の境界付近のセブン-イレブン。",
+    "category": "convenience",
     "tags": [
-      "24h"
+      "24h",
+      "atm_instore"
     ],
+    "last_updated": "2026-07-11",
     "reliability_score": 3,
     "source_type": "observed",
     "type": "official",
-    "gray_zone_note": null,
-    "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
-    "category": "convenience",
     "name": "セブン-イレブン歌舞伎町1-26-6店",
-    "lat": 35.6955,
-    "lng": 139.702,
+    "lat": 35.695027,
+    "lng": 139.700469,
     "description": "歌舞伎町一丁目内にあるセブン-イレブン。",
+    "category": "convenience",
     "tags": [
-      "24h"
+      "24h",
+      "atm_instore"
     ],
+    "last_updated": "2026-07-11",
     "reliability_score": 3,
     "source_type": "observed",
     "type": "official",
-    "gray_zone_note": null,
-    "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
-    "category": "convenience",
     "name": "セブン-イレブン歌舞伎町二丁目中央店",
-    "lat": 35.6963,
-    "lng": 139.7038,
+    "lat": 35.697198,
+    "lng": 139.702639,
     "description": "歌舞伎町2-33-3、二丁目中央部にあるセブン-イレブン。",
+    "category": "convenience",
     "tags": [
-      "24h"
+      "24h",
+      "atm_instore"
     ],
+    "last_updated": "2026-07-11",
     "reliability_score": 4,
     "source_type": "observed",
     "type": "official",
-    "gray_zone_note": null,
-    "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
-    "category": "convenience",
     "name": "セブン-イレブン歌舞伎町二丁目東店",
-    "lat": 35.6968,
-    "lng": 139.7052,
+    "lat": 35.694931,
+    "lng": 139.706231,
     "description": "東新宿駅そば、歌舞伎町二丁目東側のセブン-イレブン。セブン銀行ATMとChargeSPOT(モバイルバッテリーレンタル)を併設。",
+    "category": "convenience",
     "tags": [
       "24h",
       "atm_instore",
       "phone_charging"
     ],
+    "last_updated": "2026-07-11",
     "reliability_score": 4,
     "source_type": "observed",
     "type": "official",
-    "gray_zone_note": null,
-    "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
-    "category": "convenience",
     "name": "ローソン歌舞伎町一丁目店",
     "lat": 35.6951,
     "lng": 139.7025,
     "description": "歌舞伎町1-12-6のローソン。",
+    "category": "convenience",
     "tags": [
       "24h"
     ],
+    "last_updated": "2026-07-11",
     "reliability_score": 4,
     "source_type": "observed",
     "type": "official",
-    "gray_zone_note": null,
-    "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
-    "category": "convenience",
     "name": "ローソン歌舞伎町二丁目店",
     "lat": 35.6964,
     "lng": 139.7043,
     "description": "歌舞伎町2-17-10のローソン。",
+    "category": "convenience",
     "tags": [
       "24h"
     ],
+    "last_updated": "2026-07-11",
     "reliability_score": 4,
     "source_type": "observed",
     "type": "official",
-    "gray_zone_note": null,
-    "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
-    "category": "convenience",
     "name": "ローソン都営東新宿駅前店",
     "lat": 35.6957,
     "lng": 139.7035,
     "description": "歌舞伎町2-3-16、都営大江戸線東新宿駅入口そばのローソン。",
+    "category": "convenience",
     "tags": [
       "24h"
     ],
+    "last_updated": "2026-07-11",
     "reliability_score": 3,
     "source_type": "observed",
     "type": "official",
-    "gray_zone_note": null,
-    "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
-    "category": "convenience",
     "name": "ファミリーマート歌舞伎町店",
     "lat": 35.6953,
     "lng": 139.7018,
     "description": "歌舞伎町1-27-1のファミリーマート。ファミリーマート公式店舗検索に掲載。",
+    "category": "convenience",
     "tags": [
       "24h"
     ],
+    "last_updated": "2026-07-11",
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "gray_zone_note": null,
-    "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
-    "category": "convenience",
     "name": "ファミリーマート新宿歌舞伎町一番街店",
     "lat": 35.6946,
     "lng": 139.7017,
     "description": "歌舞伎町1-18-5、歌舞伎町一番街アーケード沿い。",
+    "category": "convenience",
     "tags": [
       "24h"
     ],
+    "last_updated": "2026-07-11",
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "gray_zone_note": null,
-    "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
-    "category": "convenience",
     "name": "ファミリーマート歌舞伎町一丁目店",
     "lat": 35.6949,
     "lng": 139.7015,
     "description": "歌舞伎町1-16-1のファミリーマート。",
+    "category": "convenience",
     "tags": [
       "24h"
     ],
+    "last_updated": "2026-07-11",
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "gray_zone_note": null,
-    "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
-    "category": "convenience",
     "name": "ファミリーマート新宿ゴールデン街店",
-    "lat": 35.6944,
-    "lng": 139.704,
+    "lat": 35.694126,
+    "lng": 139.704971,
     "description": "歌舞伎町1-1-6、ゴールデン街に隣接する歌舞伎町東端のファミリーマート。",
+    "category": "convenience",
     "tags": [
       "24h"
     ],
+    "last_updated": "2026-07-11",
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "gray_zone_note": "歌舞伎町の内部ではなく境界付近に位置しています。",
-    "last_updated": "2026-07-11",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "歌舞伎町の内部ではなく境界付近に位置しています。"
   },
   {
-    "category": "convenience",
     "name": "ファミリーマート歌舞伎町北店",
     "lat": 35.6969,
     "lng": 139.7047,
     "description": "歌舞伎町2-32-7、二丁目北側のファミリーマート。",
+    "category": "convenience",
     "tags": [
       "24h"
     ],
+    "last_updated": "2026-07-11",
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "gray_zone_note": null,
-    "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
-    "category": "convenience",
     "name": "ファミリーマート新宿歌舞伎町店",
-    "lat": 35.696,
-    "lng": 139.7033,
+    "lat": 35.695153,
+    "lng": 139.703734,
     "description": "歌舞伎町2-25-2のファミリーマート。",
+    "category": "convenience",
     "tags": [
-      "24h"
+      "24h",
+      "atm_instore"
     ],
+    "last_updated": "2026-07-11",
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "gray_zone_note": null,
-    "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
-    "category": "convenience",
     "name": "ファミリーマート新宿区役所通り店",
-    "lat": 35.6958,
-    "lng": 139.703,
+    "lat": 35.695357,
+    "lng": 139.70456,
     "description": "歌舞伎町2-10-6、区役所通り沿いのファミリーマート。",
+    "category": "convenience",
     "tags": [
       "24h"
     ],
+    "last_updated": "2026-07-11",
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "gray_zone_note": null,
-    "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
-    "category": "convenience",
     "name": "ミニストップ新宿歌舞伎町店",
-    "lat": 35.6966,
-    "lng": 139.7044,
+    "lat": 35.695988,
+    "lng": 139.704297,
     "description": "歌舞伎町2-22-1のミニストップ。",
+    "category": "convenience",
     "tags": [
-      "24h"
+      "24h",
+      "atm_instore"
     ],
+    "last_updated": "2026-07-11",
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "gray_zone_note": null,
-    "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   },
   {
-    "category": "convenience",
     "name": "ミニストップ歌舞伎町二丁目店",
-    "lat": 35.6971,
-    "lng": 139.705,
+    "lat": 35.697334,
+    "lng": 139.703737,
     "description": "歌舞伎町2-30-13、西武新宿駅北口から徒歩約4分のミニストップ。",
+    "category": "convenience",
     "tags": [
       "24h"
     ],
+    "last_updated": "2026-07-11",
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "gray_zone_note": null,
-    "last_updated": "2026-07-11",
     "verification_method": "web-search-2026-07"
   }
 ]

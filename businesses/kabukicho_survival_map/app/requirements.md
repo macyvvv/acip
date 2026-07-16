@@ -15,8 +15,11 @@ Source: GitHub issue #33 (PRODUCT-0003: Kabukicho Survival Map MVP, UGC-ready), 
 - Freshness indicators (recently updated / may be outdated).
 - SEO title + meta description.
 - Google Analytics placeholder, ID injected via config, never hardcoded.
+- GA4-oriented event surfaces must exist for mode/category/filter/card/map/ad interactions.
 - Google Maps JavaScript API key placeholder (`window.KABUKICHO_GMAPS_API_KEY`), injected via config, never hardcoded -- same pattern as the GA ID. Empty by default; the map pane shows a setup notice instead of silently staying blank until an operator sets a real, referrer-restricted key.
 - SEO/AIO: full POI list pre-rendered as static HTML at build time (not client-side-only), JSON-LD structured data (`ItemList`/`Place` + `FAQPage`), a visible FAQ section, and `robots.txt` explicitly allowing standard + AI answer-engine crawlers. See `architecture.md`'s "SEO/AIO" section. `sitemap.xml`/canonical tag activate once `KABUKICHO_SITE_URL` is set.
+- The layout must reserve explicit sponsored / affiliate placement areas without blocking the primary utility flow.
+- Sponsored / affiliate modules must be visually differentiated from organic POI results.
 
 ## Non-Functional Requirements
 
@@ -24,6 +27,7 @@ Source: GitHub issue #33 (PRODUCT-0003: Kabukicho Survival Map MVP, UGC-ready), 
 - Static JSON-based data, no runtime data fetching beyond the local `data/*.json` files.
 - Fast rendering, no blocking assets.
 - No over-engineering: no bundler, no framework -- plain HTML/CSS/JS plus a small Python copy-script for the build step. The map uses the classic `google.maps.Marker` (not `AdvancedMarkerElement`) specifically to avoid an extra `libraries=marker` script param for what is a handful of static pins.
+- Monetization placement must degrade gracefully when empty; the page layout should not collapse or leave broken gaps.
 
 ## Superseded requirement (kept for history)
 

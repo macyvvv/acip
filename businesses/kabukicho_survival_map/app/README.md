@@ -6,19 +6,47 @@ The real MVP for issue #33 ("Kabukicho Survival Map MVP (UGC-ready)"): a mobile-
 
 This is a from-scratch implementation, separate from `platform/app/products/kabukicho_survival_map_mvp/` (an earlier, much smaller Python markdown-brief generator that never became a real app).
 
+This directory is the business-owned source of truth. `platform/app/products/kabukicho_survival_map` is kept only as a compatibility symlink for older platform references.
+
 ## Content pipeline
 
 Content for this product (POI research, tag-evaluation copy, SEO/UI copy, promotion planning) was produced by the multi-business agent platform's `kabukicho_survival_map` business roles (`market_research`, `scenario_writing`, `doc_creation`, `marketing`), running under Level 3a policy pre-approval -- see `platform/docs/current/BUSINESS_AGENT_AUTOMATION_READINESS.md` and `platform/system/runtime/business_agents/kabukicho_survival_map/`. The actual app (HTML/CSS/JS, data schema, build script) is regular code, written directly -- the business-agent roles are read-only and cannot write application code.
 
 ## Data
 
-Canonical source: `platform/system/runtime/data/kabukicho/{smoking,toilet,convenience,atm,coin_locker,lodging}.json`, one array per category, schema per issue #33 section 1 plus this product's additions (`verification_method`, `gray_zone_note`, and lodging's `licensed_as`).
+Runtime/distribution source: `platform/system/runtime/data/kabukicho/{smoking,toilet,convenience,atm,coin_locker,lodging}.json`, one array per category, schema per issue #33 section 1 plus this product's additions (`verification_method`, `gray_zone_note`, and lodging's `licensed_as`).
 
 **Current dataset is a first draft pending human verification** -- coordinates are approximate (derived from landmark proximity via web search, not geocoded), and several fields (pricing, hours, gender-separation status) are time-sensitive. See `market_research/task-0002`'s own recommendations before treating this as production-verified data.
 
 ## Build
 
-`python3 platform/app/products/kabukicho_survival_map/build.py` copies the canonical data into this product's own `data/` (for local serving) and into `platform/web/public/kabukicho/` (the deployable static bundle). No bundler, no backend -- per issue #33's "no over-engineering" constraint.
+`python3 businesses/kabukicho_survival_map/app/build.py` exports the business-owned DB into runtime JSON, then copies that data into this product's own `data/` (for local serving) and into `platform/web/public/kabukicho_survival_map/` (the deployable static bundle). No bundler, no backend -- per issue #33's "no over-engineering" constraint.
+
+### DB-first operation
+
+This product now uses a DB-first data flow.
+
+- Canonical editable store: `businesses/kabukicho_survival_map/app/data/kabukicho_poi.db`
+- Runtime/distribution JSON: `platform/system/runtime/data/kabukicho/*.json`
+
+Core commands:
+
+- Import runtime JSON into DB:
+	- `/Users/ariel/Documents/tools/acip/.venv/bin/python scripts/poi_db_sync.py import-json`
+- Export DB back to runtime JSON:
+	- `/Users/ariel/Documents/tools/acip/.venv/bin/python scripts/poi_db_sync.py export-json`
+- Generate nearby-coordinate report:
+	- `/Users/ariel/Documents/tools/acip/.venv/bin/python scripts/poi_db_sync.py check-nearby --threshold-m 40 --hard-m 8 --similar-name-threshold 0.64 --similar-name-radius-m 140`
+
+`build.py` runs `export-json` automatically before copying files.
+
+### Nearby duplicate gate
+
+To block risky coordinate regressions in CI/local validation, run:
+
+- `/Users/ariel/Documents/tools/acip/.venv/bin/python scripts/poi_db_sync.py check-nearby --threshold-m 40 --hard-m 8 --similar-name-threshold 0.64 --similar-name-radius-m 140 --max-hard-duplicates 10`
+
+This fails non-zero when hard duplicates exceed the threshold.
 
 ## Entry point
 
@@ -26,12 +54,12 @@ Canonical source: `platform/system/runtime/data/kabukicho/{smoking,toilet,conven
 
 ## Deployment
 
-**Not yet decided** -- explicitly out of scope for this build (a separate, later decision per the operator). `platform/web/public/kabukicho/` is a ready-to-serve static bundle; any static host works once chosen.
+GitHub Pages target URL is `https://macyvvv.github.io/acip/kabukicho_survival_map/`. Repository-side, the deployable artifact remains `platform/web/public/kabukicho_survival_map/`.
 
 ## Testing
 
-- Data schema + build-output consistency: `python -m pytest platform/app/products/kabukicho_survival_map/tests/` (part of the full `python -m pytest -q` suite).
-- Map/list pure logic (distance calculation, freshness dating, filtering) has no Python equivalent to test against -- `node platform/app/products/kabukicho_survival_map/tests/test_app_logic.js` runs a small, framework-free Node test against the relevant functions in `app.js` directly (guarded `module.exports`, no effect on browser behavior). Not part of the Python pytest suite (different runtime); run it manually when touching `app.js`'s map/list/filter logic.
+- Data schema + build-output consistency: `python -m pytest businesses/kabukicho_survival_map/app/tests/` (part of the full `python -m pytest -q` suite).
+- Map/list pure logic (distance calculation, freshness dating, filtering) has no Python equivalent to test against -- `node businesses/kabukicho_survival_map/app/tests/test_app_logic.js` runs a small, framework-free Node test against the relevant functions in `app.js` directly (guarded `module.exports`, no effect on browser behavior). Not part of the Python pytest suite (different runtime); run it manually when touching `app.js`'s map/list/filter logic.
 - No automated coverage for the Google Maps rendering path itself (marker creation, info windows, category-switch re-pinning) -- verified manually via Playwright with a stubbed `google.maps` SDK during development; there's no committed harness for this yet.
 
 ## Review Focus

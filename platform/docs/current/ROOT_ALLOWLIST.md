@@ -11,7 +11,7 @@ Local machine artifacts (ignored by layout validation): `.DS_Store`, `.pytest_ca
 **11 of the directories previously listed here** (`cache/`, `catalog/`,
 `control/`, `loader/`, `prompts/`, `registry/`, `review/`, `rules/`,
 `runbooks/`, `solution/`, `templates/`) were audited and archived to
-[platform/archive/root_scaffolding_2026/](../../platform/archive/root_scaffolding_2026/README.md)
+[platform/archive/root_scaffolding_2026/](../../archive/root_scaffolding_2026/README.md)
 -- confirmed zero code/workflow references, same "unenforced prose"
 pattern as most of pre-overhaul `platform/basis/` (see `platform/adr/ADR-0037`). `platform/knowledge/`
 and `platform/packs/` were confirmed live/enforced in the same audit and kept.
@@ -43,7 +43,7 @@ for `platform/scripts/` specifically. Investigating properly this time:
   planning/` has since accumulated) -- real evidence of a frozen,
   no-longer-updated pre-consolidation snapshot, not just a same-named
   coincidence. Archived to
-  [platform/archive/root_scaffolding_2026/runtime/](../../platform/archive/root_scaffolding_2026/README.md).
+  [platform/archive/root_scaffolding_2026/runtime/](../../archive/root_scaffolding_2026/README.md).
 
 **Lesson applied going forward**: a plausible-sounding guess about
 staleness/duplication is not the same as checking it. Both of this doc's
@@ -53,7 +53,7 @@ a conclusion.
 
 **`queue/` also archived.** 46 `EP-*.md` proposal docs under
 `queue/READY/` plus `queue/QUEUE_ENGINE.md` archived to
-[platform/archive/root_scaffolding_2026/queue/](../../platform/archive/root_scaffolding_2026/README.md).
+[platform/archive/root_scaffolding_2026/queue/](../../archive/root_scaffolding_2026/README.md).
 An initial "zero `validate_ep_*.py` references" check was wrong -- a
 literal-substring `git grep` missed 7 scripts that build the required
 path from separate pathlib components. `validate_all.py` caught the break

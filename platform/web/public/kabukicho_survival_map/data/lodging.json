@@ -1,8 +1,8 @@
 [
   {
     "name": "ブース ネットカフェ&カプセル",
-    "lat": 35.6945,
-    "lng": 139.702,
+    "lat": 35.694176,
+    "lng": 139.701872,
     "description": "ゴジラヘッド近くのネットカフェ&カプセルホテル。カプセル宿泊は約3,000円/泊(土曜3,700円)、ネットカフェ席は600円/2時間〜。シャワーは有料オプションで標準では含まれません。",
     "category": "lodging",
     "tags": [
@@ -20,8 +20,8 @@
   },
   {
     "name": "新宿区役所前カプセルホテル",
-    "lat": 35.6944,
-    "lng": 139.7038,
+    "lat": 35.69386,
+    "lng": 139.703447,
     "description": "歌舞伎町にある実名・レビュー掲載済みのカプセルホテル。新宿区役所に隣接。",
     "category": "lodging",
     "tags": [
@@ -33,23 +33,7 @@
     "source_type": "observed",
     "type": "official",
     "verification_method": "web-search-2026-07",
-    "gray_zone_note": null,
     "licensed_as": "hotel_business_act"
-  },
-  {
-    "name": "マルハン パチンコ店(目印・宿泊施設ではありません)",
-    "lat": 35.6947,
-    "lng": 139.7023,
-    "description": "宿泊施設ではなく、目印としてのみ掲載。三者間の景品交換方式によりパチンコは賭博法の適用外とされていますが、宿泊・休憩施設ではありません。",
-    "category": "lodging",
-    "tags": [],
-    "last_updated": "2026-07-11",
-    "reliability_score": 2,
-    "source_type": "inferred",
-    "type": "unofficial",
-    "verification_method": "web-search-2026-07",
-    "gray_zone_note": "目印としての参考情報のみです。宿泊・休憩施設ではありません。ギャンブルは日本の法律で規制されています。",
-    "licensed_as": "not_applicable"
   },
   {
     "name": "カプセルホテル新宿510",
@@ -62,18 +46,17 @@
       "overnight_friendly",
       "price_band_budget"
     ],
+    "last_updated": "2026-07-11",
     "reliability_score": 4,
     "source_type": "observed",
     "type": "official",
-    "gray_zone_note": null,
-    "licensed_as": "hotel_business_act",
-    "last_updated": "2026-07-11",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "licensed_as": "hotel_business_act"
   },
   {
     "name": "ELE Cabin 新宿歌舞伎町",
-    "lat": 35.6963,
-    "lng": 139.704,
+    "lat": 35.697463,
+    "lng": 139.704544,
     "description": "歌舞伎町にあるモダンなカプセルホテル。",
     "category": "lodging",
     "tags": [
@@ -81,18 +64,17 @@
       "overnight_friendly",
       "price_band_budget"
     ],
+    "last_updated": "2026-07-11",
     "reliability_score": 3,
     "source_type": "observed",
     "type": "official",
-    "gray_zone_note": null,
-    "licensed_as": "hotel_business_act",
-    "last_updated": "2026-07-11",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "licensed_as": "hotel_business_act"
   },
   {
     "name": "アパホテル新宿歌舞伎町タワー",
-    "lat": 35.695,
-    "lng": 139.7027,
+    "lat": 35.695935,
+    "lng": 139.700657,
     "description": "ビジネスホテル。JR新宿駅東口から徒歩6分、東急歌舞伎町タワーエリア内。",
     "category": "lodging",
     "tags": [
@@ -100,18 +82,17 @@
       "overnight_friendly",
       "price_band_mid"
     ],
+    "last_updated": "2026-07-11",
     "reliability_score": 5,
     "source_type": "official",
     "type": "official",
-    "gray_zone_note": null,
-    "licensed_as": "hotel_business_act",
-    "last_updated": "2026-07-11",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "licensed_as": "hotel_business_act"
   },
   {
     "name": "アパホテル新宿歌舞伎町中央",
-    "lat": 35.6965,
-    "lng": 139.705,
+    "lat": 35.695558,
+    "lng": 139.702846,
     "description": "166室のビジネスホテル。JR新宿駅東口から徒歩7分。",
     "category": "lodging",
     "tags": [
@@ -119,13 +100,12 @@
       "overnight_friendly",
       "price_band_mid"
     ],
+    "last_updated": "2026-07-11",
     "reliability_score": 5,
     "source_type": "official",
     "type": "official",
-    "gray_zone_note": null,
-    "licensed_as": "hotel_business_act",
-    "last_updated": "2026-07-11",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "licensed_as": "hotel_business_act"
   },
   {
     "name": "東横イン東京新宿歌舞伎町",
@@ -138,13 +118,12 @@
       "overnight_friendly",
       "price_band_mid"
     ],
+    "last_updated": "2026-07-11",
     "reliability_score": 5,
     "source_type": "official",
     "type": "official",
-    "gray_zone_note": null,
-    "licensed_as": "hotel_business_act",
-    "last_updated": "2026-07-11",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "licensed_as": "hotel_business_act"
   },
   {
     "name": "快活CLUB 新宿歌舞伎町店",
@@ -158,13 +137,13 @@
       "price_band_budget",
       "24h"
     ],
+    "last_updated": "2026-07-11",
     "reliability_score": 3,
     "source_type": "observed",
     "type": "official",
+    "verification_method": "web-search-2026-07",
     "gray_zone_note": "ネットカフェの宿泊利用は旅館業法上の宿泊施設としての許可を得たものではありません。事業自体は適法ですが、法的・安全面ではグレーゾーンに近いものとして扱ってください。",
-    "licensed_as": "internet_cafe_no_lodging_license",
-    "last_updated": "2026-07-11",
-    "verification_method": "web-search-2026-07"
+    "licensed_as": "internet_cafe_no_lodging_license"
   },
   {
     "name": "グランサイバーカフェ Bagus 新宿(歌舞伎町)",
@@ -178,18 +157,18 @@
       "price_band_budget",
       "24h"
     ],
+    "last_updated": "2026-07-11",
     "reliability_score": 3,
     "source_type": "observed",
     "type": "official",
+    "verification_method": "web-search-2026-07",
     "gray_zone_note": "ネットカフェの宿泊利用は旅館業法上の宿泊施設としての許可を得たものではありません。",
-    "licensed_as": "internet_cafe_no_lodging_license",
-    "last_updated": "2026-07-11",
-    "verification_method": "web-search-2026-07"
+    "licensed_as": "internet_cafe_no_lodging_license"
   },
   {
     "name": "ホテル モアナ新宿(アダルト専用)",
-    "lat": 35.697,
-    "lng": 139.7052,
+    "lat": 35.697059,
+    "lng": 139.703407,
     "description": "歌舞伎町二丁目にある40室のアダルト専用ラブホテル。情報源には「新大久保駅から150m」との記載もあるが、住所と地理的に矛盾しており裏付けが取れていません。",
     "category": "lodging",
     "tags": [
@@ -197,18 +176,18 @@
       "overnight_friendly",
       "price_band_mid"
     ],
+    "last_updated": "2026-07-11",
     "reliability_score": 2,
     "source_type": "observed",
     "type": "official",
+    "verification_method": "web-search-2026-07",
     "gray_zone_note": "許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリーです(旅館業・風営法上の許可事業)。グレーゾーンの業態ではありませんが、通常のホテルとは客室タイプや利用形態が異なります。",
-    "licensed_as": "love_hotel_business_act",
-    "last_updated": "2026-07-11",
-    "verification_method": "web-search-2026-07"
+    "licensed_as": "love_hotel_business_act"
   },
   {
     "name": "HOTEL & SPA J-MEX 新宿歌舞伎町(アダルト専用)",
-    "lat": 35.6943,
-    "lng": 139.702,
+    "lat": 35.693825,
+    "lng": 139.703356,
     "description": "アダルト専用ラブホテル。カラオケ・VOD・大画面テレビを完備した客室。",
     "category": "lodging",
     "tags": [
@@ -216,13 +195,13 @@
       "overnight_friendly",
       "price_band_mid"
     ],
+    "last_updated": "2026-07-11",
     "reliability_score": 3,
     "source_type": "observed",
     "type": "official",
+    "verification_method": "web-search-2026-07",
     "gray_zone_note": "許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリーです。",
-    "licensed_as": "love_hotel_business_act",
-    "last_updated": "2026-07-11",
-    "verification_method": "web-search-2026-07"
+    "licensed_as": "love_hotel_business_act"
   },
   {
     "name": "HOTEL Perrier(アダルト専用)",
@@ -235,13 +214,13 @@
       "overnight_friendly",
       "price_band_mid"
     ],
+    "last_updated": "2026-07-11",
     "reliability_score": 3,
     "source_type": "observed",
     "type": "official",
+    "verification_method": "web-search-2026-07",
     "gray_zone_note": "許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリーです。",
-    "licensed_as": "love_hotel_business_act",
-    "last_updated": "2026-07-11",
-    "verification_method": "web-search-2026-07"
+    "licensed_as": "love_hotel_business_act"
   },
   {
     "name": "スーパーホテル新宿歌舞伎町",
@@ -254,13 +233,12 @@
       "overnight_friendly",
       "price_band_mid"
     ],
+    "last_updated": "2026-07-12",
     "reliability_score": 5,
     "source_type": "official",
     "type": "official",
-    "gray_zone_note": null,
-    "licensed_as": "hotel_business_act",
-    "last_updated": "2026-07-12",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "licensed_as": "hotel_business_act"
   },
   {
     "name": "カプセルホテル トランジット新宿",
@@ -273,13 +251,12 @@
       "overnight_friendly",
       "price_band_budget"
     ],
+    "last_updated": "2026-07-12",
     "reliability_score": 4,
     "source_type": "observed",
     "type": "official",
-    "gray_zone_note": null,
-    "licensed_as": "hotel_business_act",
-    "last_updated": "2026-07-12",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "licensed_as": "hotel_business_act"
   },
   {
     "name": "ホテルバリアンリゾート新宿本店",
@@ -292,13 +269,13 @@
       "overnight_friendly",
       "price_band_mid"
     ],
+    "last_updated": "2026-07-12",
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
+    "verification_method": "web-search-2026-07",
     "gray_zone_note": "許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリーです。",
-    "licensed_as": "love_hotel_business_act",
-    "last_updated": "2026-07-12",
-    "verification_method": "web-search-2026-07"
+    "licensed_as": "love_hotel_business_act"
   },
   {
     "name": "HOTEL PASHA",
@@ -311,18 +288,18 @@
       "overnight_friendly",
       "price_band_mid"
     ],
+    "last_updated": "2026-07-12",
     "reliability_score": 3,
     "source_type": "observed",
     "type": "official",
+    "verification_method": "web-search-2026-07",
     "gray_zone_note": "許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリーです。",
-    "licensed_as": "love_hotel_business_act",
-    "last_updated": "2026-07-12",
-    "verification_method": "web-search-2026-07"
+    "licensed_as": "love_hotel_business_act"
   },
   {
     "name": "HOTEL ATLAS",
-    "lat": 35.696,
-    "lng": 139.707,
+    "lat": 35.69621,
+    "lng": 139.705455,
     "description": "歌舞伎町2-12-9のアダルト向けラブホテル。東新宿駅から徒歩3分。全室人工温泉浴槽完備。",
     "category": "lodging",
     "tags": [
@@ -330,13 +307,13 @@
       "overnight_friendly",
       "price_band_mid"
     ],
+    "last_updated": "2026-07-12",
     "reliability_score": 3,
     "source_type": "observed",
     "type": "official",
+    "verification_method": "web-search-2026-07",
     "gray_zone_note": "許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリーです。",
-    "licensed_as": "love_hotel_business_act",
-    "last_updated": "2026-07-12",
-    "verification_method": "web-search-2026-07"
+    "licensed_as": "love_hotel_business_act"
   },
   {
     "name": "アプレシオ 新宿ハイジア店",
@@ -350,13 +327,13 @@
       "price_band_budget",
       "24h"
     ],
+    "last_updated": "2026-07-12",
     "reliability_score": 3,
     "source_type": "observed",
     "type": "official",
+    "verification_method": "web-search-2026-07",
     "gray_zone_note": "ネットカフェの宿泊利用は旅館業法上の宿泊施設としての許可を得たものではありません。事業自体は適法ですが、法的・安全面ではグレーゾーンに近いものとして扱ってください。",
-    "licensed_as": "internet_cafe_no_lodging_license",
-    "last_updated": "2026-07-12",
-    "verification_method": "web-search-2026-07"
+    "licensed_as": "internet_cafe_no_lodging_license"
   },
   {
     "name": "グランカスタマ歌舞伎町店",
@@ -370,13 +347,13 @@
       "price_band_budget",
       "24h"
     ],
+    "last_updated": "2026-07-12",
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
+    "verification_method": "web-search-2026-07",
     "gray_zone_note": "ネットカフェの宿泊利用は旅館業法上の宿泊施設としての許可を得たものではありません。事業自体は適法ですが、法的・安全面ではグレーゾーンに近いものとして扱ってください。",
-    "licensed_as": "internet_cafe_no_lodging_license",
-    "last_updated": "2026-07-12",
-    "verification_method": "web-search-2026-07"
+    "licensed_as": "internet_cafe_no_lodging_license"
   },
   {
     "name": "ホテルグレイスリー新宿",
@@ -389,13 +366,12 @@
       "overnight_friendly",
       "price_band_high"
     ],
+    "last_updated": "2026-07-12",
     "reliability_score": 5,
     "source_type": "official",
     "type": "official",
-    "gray_zone_note": null,
-    "licensed_as": "hotel_business_act",
-    "last_updated": "2026-07-12",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "licensed_as": "hotel_business_act"
   },
   {
     "name": "HOTEL GROOVE SHINJUKU, A PARKROYAL Hotel",
@@ -408,12 +384,11 @@
       "overnight_friendly",
       "price_band_high"
     ],
+    "last_updated": "2026-07-12",
     "reliability_score": 5,
     "source_type": "official",
     "type": "official",
-    "gray_zone_note": null,
-    "licensed_as": "hotel_business_act",
-    "last_updated": "2026-07-12",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "licensed_as": "hotel_business_act"
   }
 ]

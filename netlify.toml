@@ -11,5 +11,5 @@
 # generation in build.py; leave unset and redeploy once the real domain is
 # known, not before).
 [build]
-  command = "python3 businesses/kabukicho_survival_map/platform/app/build.py"
-  publish = "platform/web/public/kabukicho"
+  command = "python3 businesses/kabukicho_survival_map/app/build.py"
+  publish = "platform/web/public/kabukicho_survival_map"

@@ -12,14 +12,19 @@ REQUIRED_DIRS = [
     # archived to platform/archive/root_scaffolding_2026/ (see platform/adr/ADR-0037's
     # follow-up root-directory audit); confirmed zero code/workflow
     # references before archiving, so they're no longer required to exist.
-    "basis", "adr", "wbs", "docs", "contracts",
-    "scripts", ".github", ".github/ISSUE_TEMPLATE", ".github/workflows"
+    "platform/basis",
+    "platform/adr",
+    "platform/wbs",
+    "platform/docs",
+    "platform/contracts",
+    "platform/scripts",
+    ".github",
+    ".github/ISSUE_TEMPLATE",
+    ".github/workflows",
 ]
 
 REQUIRED_FILES = [
-    "platform/docs/platform/packs/README.md",
-    "platform/docs/platform/packs/README.md",
-    "platform/docs/platform/packs/README.md",
+    "platform/packs/README.md",
     # platform/basis/026, 037, 042, 046, 053, 061 (the individual policy files this
     # list used to require) were consolidated into platform/basis/CORE_PRINCIPLES.md
     # and platform/basis/057_boundary_validation_policy.md by the 2026-07 governance
@@ -174,7 +179,8 @@ def check_secrets(docs: list[Doc], config: dict) -> list[Result]:
         "aws_access_key": r"AKIA[0-9A-Z]{16}",
         "private_key": r"-----BEGIN (RSA |EC |OPENSSH |)PRIVATE KEY-----",
     }
-    patterns.update(secret_cfg.get("patterns", {}) or {})
+    for name, pattern in (secret_cfg.get("patterns", {}) or {}).items():
+        patterns.setdefault(name, pattern)
     compiled = [(k, re.compile(v)) for k, v in patterns.items()]
     for d in docs:
         if Path(d.rel).name in allowlist:
