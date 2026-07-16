@@ -27,19 +27,6 @@
       summary: "現在地に近い順を基本に、カテゴリごとに通常の地図探索ができます。"
     },
     {
-      id: "toilet_now",
-      label: "トイレ急ぎ",
-      copy: "近くて使いやすい順",
-      targetCategories: ["toilet"],
-      aggregateCategories: false,
-      preferredTags: ["24h", "free", "clean", "gender_separated"],
-      negativeTags: ["dirty", "long_wait"],
-      categoryBoosts: { toilet: 4 },
-      sortStrategy: ["distance", "modeScore", "freshness"],
-      emptyStateMessage: "近くで使いやすいトイレが見つかりませんでした。通常のトイレ一覧に切り替えて探してください。",
-      summary: "いま一番早く使えそうなトイレを、距離と使いやすさで優先表示します。"
-    },
-    {
       id: "late_night",
       label: "朝まで過ごす",
       copy: "終電後の避難導線",
@@ -51,6 +38,19 @@
       sortStrategy: ["distance", "modeScore", "freshness", "reliability"],
       emptyStateMessage: "朝まで向きの候補が見つかりませんでした。宿泊・ネットかコンビニを個別に確認してください。",
       summary: "終電後に必要な宿泊・休憩・現金・荷物導線をまとめて、朝までしのげる候補を優先します。"
+    },
+    {
+      id: "toilet_now",
+      label: "トイレ急ぎ",
+      copy: "近くて使いやすい順",
+      targetCategories: ["toilet"],
+      aggregateCategories: false,
+      preferredTags: ["24h", "free", "clean", "gender_separated"],
+      negativeTags: ["dirty", "long_wait"],
+      categoryBoosts: { toilet: 4 },
+      sortStrategy: ["distance", "modeScore", "freshness"],
+      emptyStateMessage: "近くで使いやすいトイレが見つかりませんでした。通常のトイレ一覧に切り替えて探してください。",
+      summary: "いま一番早く使えそうなトイレを、距離と使いやすさで優先表示します。"
     },
     {
       id: "smoking_now",
