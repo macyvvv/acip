@@ -1276,11 +1276,11 @@ body.controls-open .left-pane-controls {
 
 @media (min-width: 1024px) and (max-height: 760px) {
   .left-pane-controls {
-    max-height: 56dvh;
+    max-height: 44dvh;
   }
 
   body.controls-open .left-pane-controls {
-    max-height: 56dvh;
+    max-height: 44dvh;
   }
 
   .controls-shell {
@@ -1294,7 +1294,7 @@ body.controls-open .left-pane-controls {
 
   .mode-chip {
     min-width: 136px;
-    padding: 8px 10px;
+    padding: 7px 10px;
     border-radius: 14px;
   }
 
@@ -1304,8 +1304,7 @@ body.controls-open .left-pane-controls {
   }
 
   .mode-chip-copy {
-    font-size: 0.63rem;
-    line-height: 1.2;
+    display: none;
   }
 
   .bottom-nav {
