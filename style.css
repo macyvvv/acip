@@ -1191,8 +1191,8 @@ body.controls-open .left-pane-controls {
     border-radius: 0 0 16px 16px;
     background: #fffaf4;
     box-shadow: 0 14px 28px rgba(23, 20, 17, 0.16);
-    max-height: min(56dvh, 480px);
-    overflow-y: auto;
+    max-height: 76dvh;
+    overflow: visible;
     opacity: 0;
     transform: translateY(-6px);
     pointer-events: none;
@@ -1311,8 +1311,9 @@ body.controls-open .left-pane-controls {
 
   .controls-panel-overlay {
     top: calc(100% + 6px);
-    max-height: min(46dvh, 360px);
+    max-height: 72dvh;
     padding: 10px 12px 10px;
+    overflow: visible;
   }
 
   .controls-panel-title {

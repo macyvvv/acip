@@ -234,6 +234,7 @@
   function syncDesktopControlsInlineState() {
     if (typeof document === "undefined") return;
     var panel = document.getElementById("control-panel");
+    var overlay = document.getElementById("controls-panel-overlay");
     if (!panel) return;
 
     if (isMobileViewport()) {
@@ -241,13 +242,30 @@
       panel.style.removeProperty("opacity");
       panel.style.removeProperty("pointer-events");
       panel.style.removeProperty("transform");
+      if (overlay) {
+        overlay.style.removeProperty("max-height");
+        overlay.style.removeProperty("overflow");
+      }
       return;
     }
+
+    var overlayMaxByMode = {
+      nearby: "72dvh",
+      toilet_now: "76dvh",
+      smoking_now: "76dvh",
+      late_night: "80dvh"
+    };
 
     panel.style.setProperty("transform", "translateY(0)");
     panel.style.setProperty("opacity", "1");
     panel.style.setProperty("pointer-events", "auto", "important");
     panel.style.setProperty("max-height", "84px", "important");
+
+    if (overlay) {
+      var overlayMax = overlayMaxByMode[state.activeMode] || "74dvh";
+      overlay.style.setProperty("max-height", overlayMax, "important");
+      overlay.style.setProperty("overflow", "visible", "important");
+    }
   }
 
   function setControlsOpen(open) {
@@ -1104,6 +1122,7 @@
         renderFilterBar();
         renderList();
         renderMarkers();
+        syncDesktopControlsInlineState();
         scrollListToTop();
       });
     });
