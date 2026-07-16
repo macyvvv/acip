@@ -1149,9 +1149,9 @@ body.controls-open .left-pane-controls {
   }
 
   body:not(.controls-open) .left-pane-controls {
-    max-height: 84px;
+    max-height: 84px !important;
     opacity: 1;
-    pointer-events: auto;
+    pointer-events: auto !important;
     margin-bottom: 0;
   }
 
@@ -1183,6 +1183,7 @@ body.controls-open .left-pane-controls {
 
   body:not(.controls-open) .controls-panel-head {
     margin-bottom: 0;
+    cursor: pointer;
   }
 
   .mode-chip {

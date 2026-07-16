@@ -1305,6 +1305,7 @@
     var toggle = document.getElementById("controls-toggle");
     var reopen = document.getElementById("reopen-controls");
     var close = document.getElementById("controls-close");
+    var panelHead = document.querySelector(".controls-panel-head");
     var backdrop = document.getElementById("controls-backdrop");
     var apply = document.getElementById("filter-apply");
 
@@ -1317,7 +1318,19 @@
       });
     }
     if (reopen) openControls && reopen.addEventListener("click", openControls);
-    if (close) close.addEventListener("click", toggleControls);
+    if (close) {
+      close.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        toggleControls();
+      });
+    }
+    if (panelHead) {
+      panelHead.addEventListener("click", function (event) {
+        if (event.target && event.target.id === "controls-close") return;
+        if (!state.controlsOpen && !isMobileViewport()) setControlsOpen(true);
+      });
+    }
     if (backdrop) backdrop.addEventListener("click", function () { setControlsOpen(false); });
     if (apply) apply.addEventListener("click", applyFilterSelection);
 
