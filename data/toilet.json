@@ -1,19 +1,19 @@
 [
   {
     "name": "新宿遊歩道公園(四季の道)公衆トイレ",
-    "lat": 35.6942,
-    "lng": 139.7031,
+    "lat": 35.693478,
+    "lng": 139.704157,
     "description": "新宿区管理の公衆トイレ。歌舞伎町一丁目、遊歩道公園(四季の道)内にあります。",
     "category": "toilet",
     "tags": [
       "free",
       "gender_separated"
     ],
-    "last_updated": "2026-07-11",
-    "reliability_score": 3,
+    "last_updated": "2026-07-16",
+    "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "google-maps-place-2026-07-16"
   },
   {
     "name": "東急歌舞伎町タワー トイレ",
@@ -103,8 +103,8 @@
   },
   {
     "name": "四季の路(新宿遊歩道公園)トイレ",
-    "lat": 35.6949,
-    "lng": 139.7042,
+    "lat": 35.693478,
+    "lng": 139.704157,
     "description": "歌舞伎町1-1、ゴールデン街のすぐそばにある24時間利用可能な区トイレ。インターホン付きのバリアフリー多機能トイレ。",
     "category": "toilet",
     "tags": [
@@ -113,11 +113,11 @@
       "gender_separated",
       "24h"
     ],
-    "last_updated": "2026-07-11",
+    "last_updated": "2026-07-16",
     "reliability_score": 4,
     "source_type": "observed",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "google-maps-place-2026-07-16"
   },
   {
     "name": "東急歌舞伎町タワー 2階トイレ",

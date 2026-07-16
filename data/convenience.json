@@ -21,7 +21,8 @@
     "description": "西武新宿駅そば、歌舞伎町一丁目にあるセブン-イレブン。",
     "category": "convenience",
     "tags": [
-      "24h"
+      "24h",
+      "atm_instore"
     ],
     "last_updated": "2026-07-11",
     "reliability_score": 3,
@@ -37,7 +38,8 @@
     "description": "歌舞伎町1-19-1、新宿東宝ビル(ゴジラロード)そばのセブン-イレブン。",
     "category": "convenience",
     "tags": [
-      "24h"
+      "24h",
+      "atm_instore"
     ],
     "last_updated": "2026-07-11",
     "reliability_score": 4,
@@ -52,7 +54,8 @@
     "description": "歌舞伎町1-17-2、靖国通り沿い、歌舞伎町の境界付近のセブン-イレブン。",
     "category": "convenience",
     "tags": [
-      "24h"
+      "24h",
+      "atm_instore"
     ],
     "last_updated": "2026-07-11",
     "reliability_score": 3,
@@ -67,7 +70,8 @@
     "description": "歌舞伎町一丁目内にあるセブン-イレブン。",
     "category": "convenience",
     "tags": [
-      "24h"
+      "24h",
+      "atm_instore"
     ],
     "last_updated": "2026-07-11",
     "reliability_score": 3,
@@ -82,7 +86,8 @@
     "description": "歌舞伎町2-33-3、二丁目中央部にあるセブン-イレブン。",
     "category": "convenience",
     "tags": [
-      "24h"
+      "24h",
+      "atm_instore"
     ],
     "last_updated": "2026-07-11",
     "reliability_score": 4,
@@ -235,7 +240,8 @@
     "description": "歌舞伎町2-25-2のファミリーマート。",
     "category": "convenience",
     "tags": [
-      "24h"
+      "24h",
+      "atm_instore"
     ],
     "last_updated": "2026-07-11",
     "reliability_score": 4,
@@ -265,7 +271,8 @@
     "description": "歌舞伎町2-22-1のミニストップ。",
     "category": "convenience",
     "tags": [
-      "24h"
+      "24h",
+      "atm_instore"
     ],
     "last_updated": "2026-07-11",
     "reliability_score": 4,
