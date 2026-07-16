@@ -301,6 +301,23 @@
 
     document.body.classList.toggle("controls-open", state.controlsOpen);
 
+    var mapPane = document.getElementById("map-pane");
+    if (mapPane) {
+      if (state.controlsOpen) {
+        mapPane.style.zIndex = "1";
+        mapPane.style.pointerEvents = "none";
+        mapPane.style.visibility = "hidden";
+        mapPane.style.opacity = "0";
+        mapPane.style.filter = "saturate(0.55) blur(0.8px)";
+      } else {
+        mapPane.style.removeProperty("z-index");
+        mapPane.style.removeProperty("pointer-events");
+        mapPane.style.removeProperty("visibility");
+        mapPane.style.removeProperty("opacity");
+        mapPane.style.removeProperty("filter");
+      }
+    }
+
     var backdrop = document.getElementById("controls-backdrop");
     if (backdrop) backdrop.hidden = !state.controlsOpen;
 
@@ -328,6 +345,7 @@
     renderList();
     renderMarkers();
     setControlsOpen(false);
+    scrollListToTop();
     trackClick({
       ui_area: "panel_controls",
       ui_action: "filter_apply",
@@ -866,13 +884,16 @@
     // businesses whose own note text said the opposite.
     var isGrayZone = poi.type === "unofficial";
     var tagCopy = TAG_COPY[categoryId] || {};
+    var freshness = freshnessBadge(poi.last_updated);
     var judgmentSignals = getJudgmentSignals(poi);
     var quickTagsHtml = judgmentSignals
       .map(function (signal) {
         return '<span class="signal-chip signal-chip-' + signal.tone + '">' + escapeHtml(signal.label) + "</span>";
       })
       .join("");
-    var freshHtml = "";
+    var freshHtml = freshness
+      ? '<span class="freshness-badge ' + freshness.cls + '">' + escapeHtml(freshness.text) + "</span>"
+      : "";
     var distanceHtml =
       typeof poi._distanceMeters === "number"
         ? '<span class="distance-badge">📍 現在地から ' + formatDistance(poi._distanceMeters) + "</span>"
@@ -922,9 +943,16 @@
     if (mode.aggregateCategories && state.activeCategory === MODE_ALL_CATEGORY_ID && categoryBadgeHtml) {
       collapsedMetaHtml += categoryBadgeHtml;
     }
-    var supportingHtml = collapsedMetaHtml
-      ? '<div class="poi-card-quick-tags">' + collapsedMetaHtml + '</div>'
-      : '<p class="poi-card-supporting">' + escapeHtml(summaryLine) + '</p>';
+    var supportingParts = [];
+    if (summaryLine) {
+      supportingParts.push('<span class="poi-card-summary">' + escapeHtml(summaryLine) + "</span>");
+    }
+    if (collapsedMetaHtml) {
+      supportingParts.push('<div class="poi-card-quick-tags">' + collapsedMetaHtml + '</div>');
+    }
+    var supportingHtml = supportingParts.length
+      ? '<div class="poi-card-supporting">' + supportingParts.join("") + "</div>"
+      : "";
     var detailMetaHtml = modeBadgeHtml + categoryBadgeHtml;
 
     return (
@@ -987,7 +1015,7 @@
   }
 
   function inlineSponsoredHtml(index) {
-    var slotNum = Math.floor(index / 5) + 1;
+    var slotNum = Math.floor(index / 7) + 1;
     var title;
     var copy;
     if (state.activeMode === "late_night") {
@@ -1019,7 +1047,7 @@
     pois.forEach(function (poi, localIndex) {
       var absoluteIndex = offset + localIndex;
       html += renderCard(poi, poi.category || categoryId, absoluteIndex);
-      if ((localIndex + 1) % 5 === 0 && localIndex < pois.length - 1) {
+      if ((localIndex + 1) % 7 === 0 && localIndex < pois.length - 1) {
         html += inlineSponsoredHtml(localIndex);
       }
     });
@@ -1066,8 +1094,8 @@
 
     if (!pois.length) {
       var emptyMessage = hasActiveFilter
-        ? '<p class="no-results">選択した条件に該当する場所が見つかりませんでした。<br>絞り込みを解除するか、別の条件をお試しください。</p>'
-        : '<p class="no-results">' + escapeHtml(mode.emptyStateMessage || "このカテゴリに該当する場所が見つかりませんでした。別のカテゴリを選択してください。") + '</p>';
+        ? '<p class="no-results">選択した条件では候補がありませんでした。<br>絞り込みを1つ外すか、別のモードに切り替えてください。</p>'
+        : '<p class="no-results">' + escapeHtml(mode.emptyStateMessage || "このカテゴリに該当する場所が見つかりませんでした。別のカテゴリを選ぶか、条件を変えてみてください。") + '</p>';
       container.innerHTML = modeSummaryHtml() + locationHintHtml() + partialLoadHtml + emptyMessage;
       return;
     }
@@ -1157,6 +1185,9 @@
         }
         // Reflect chip selection immediately so taps feel responsive.
         renderFilterBar();
+        renderList();
+        renderMarkers();
+        scrollListToTop();
       });
     });
   }
@@ -1437,7 +1468,6 @@
     var close = document.getElementById("controls-close");
     var panelHead = document.querySelector(".controls-panel-head");
     var backdrop = document.getElementById("controls-backdrop");
-    var apply = document.getElementById("filter-apply");
 
     function openControls() { setControlsOpen(true); }
     function toggleControls() { setControlsOpen(!state.controlsOpen); }
@@ -1490,7 +1520,6 @@
         ui_trigger_id: "controls_backdrop"
       });
     });
-    if (apply) apply.addEventListener("click", applyFilterSelection);
 
     if (typeof window !== "undefined") {
       window.addEventListener("resize", function () {

@@ -6,27 +6,6 @@
   --bg-panel-strong: #fffaf3;
   --bg-soft: #efe4d4;
   --bg-map-fallback: #d6d1c8;
-  --text-main: #171411;
-  --text-sub: #675f56;
-  --text-soft: #857b71;
-  --line-soft: rgba(82, 63, 36, 0.12);
-  --line-strong: rgba(82, 63, 36, 0.18);
-  --ink-active: #211d19;
-  --ink-active-soft: #29241f;
-  --seg-mode-bg: rgba(255, 249, 240, 0.96);
-  --seg-nav-bg: rgba(247, 239, 228, 0.94);
-  --seg-filter-bg: rgba(242, 234, 221, 0.92);
-  --accent-1: #ffd274;
-  --accent-2: #ff9f7d;
-  --accent-3: #1c6ef2;
-  --shadow-soft: 0 12px 34px rgba(35, 26, 16, 0.08);
-  --shadow-strong: 0 24px 56px rgba(28, 20, 12, 0.18);
-  --radius-lg: 22px;
-  --radius-md: 16px;
-  --radius-sm: 12px;
-}
-
-html, body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -770,17 +749,6 @@ body.controls-open .left-pane-controls {
   margin: 0 0 12px;
 }
 
-@media (max-width: 1023px) {
-  .filter-actions {
-    justify-content: stretch;
-  }
-
-  .filter-apply {
-    width: 100%;
-    min-height: 40px;
-  }
-}
-
 .empty-state,
 .no-results {
   padding: 34px 16px;
@@ -861,7 +829,7 @@ body.controls-open .left-pane-controls {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 10px;
-  align-items: center;
+  align-items: start;
   padding: 12px 13px 11px;
   border: 0;
   background: transparent;
@@ -884,14 +852,30 @@ body.controls-open .left-pane-controls {
   margin: 0;
   font-size: 0.94rem;
   line-height: 1.28;
-  white-space: nowrap;
+  white-space: normal;
   overflow: hidden;
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-overflow: clip;
 }
 
 .poi-card-supporting {
-  display: none;
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  margin-top: 6px;
   overflow: hidden;
+}
+
+.poi-card-summary {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  color: #574d42;
+  font-size: 0.8rem;
+  line-height: 1.38;
 }
 
 .poi-card-side {
@@ -999,6 +983,27 @@ body.controls-open .left-pane-controls {
   background: #f0f0f0;
   color: #666;
   font-size: 0.73rem;
+}
+
+.freshness-badge {
+  padding: 4px 8px;
+  font-size: 0.73rem;
+  font-weight: 700;
+}
+
+.freshness-badge.freshness-recent {
+  background: rgba(73, 154, 81, 0.14);
+  color: #2d6b35;
+}
+
+.freshness-badge.freshness-month {
+  background: rgba(255, 193, 62, 0.18);
+  color: #8b5d00;
+}
+
+.freshness-badge.freshness-stale {
+  background: rgba(194, 97, 62, 0.13);
+  color: #8b3f28;
 }
 
 .signal-chip,
@@ -1193,7 +1198,7 @@ body.controls-open .left-pane-controls {
     left: auto;
     right: auto;
     bottom: auto;
-    z-index: 6;
+    z-index: 60;
     padding: 0;
     transform: translateY(0);
     pointer-events: auto;
@@ -1244,6 +1249,20 @@ body.controls-open .left-pane-controls {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
+  }
+
+  body.controls-open .controls-backdrop {
+    z-index: 50;
+  }
+
+  body.controls-open .left-pane-controls {
+    z-index: 60;
+  }
+
+  body.controls-open .map-pane {
+    pointer-events: none;
+    opacity: 0.18;
+    filter: saturate(0.55) blur(0.8px);
   }
 
   body:not(.controls-open) .controls-panel-overlay {
@@ -1326,20 +1345,6 @@ body.controls-open .left-pane-controls {
   }
 }
 
-@media (max-width: 1023px) {
-  .app-header button.controls-toggle {
-    background: rgba(232, 232, 232, 0.96) !important;
-    border-color: rgba(86, 82, 77, 0.18) !important;
-    color: #201a15 !important;
-    box-shadow: 0 10px 22px rgba(56, 49, 42, 0.12) !important;
-  }
-
-  .app-header button.controls-toggle .controls-toggle-icon,
-  .app-header button.controls-toggle .controls-toggle-label {
-    color: #201a15 !important;
-  }
-}
-
 @media (min-width: 1024px) and (max-height: 760px) {
   .controls-shell {
     gap: 8px;
@@ -1388,6 +1393,11 @@ body.controls-open .left-pane-controls {
   }
 
   .nav-btn span:last-child {
+    width: 4em;
+    text-align: center;
+    line-height: 1.08;
+    word-break: keep-all;
+    overflow-wrap: normal;
     font-size: 0.7rem;
   }
 }
