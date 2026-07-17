@@ -43,6 +43,37 @@ an art project. The goal is content people come back to compulsively:
   visual environment (see `platform/somia/CHARACTER/*.md`) — e.g. Mina/Nao/Yui read
   warm and domestic, Airi/Rena read moody and withdrawn (dim room,
   screen-glow, quiet control). Both are valid; neither is universal.
+- **Cross-character signature technique — visual noise at the moment of
+  internal thought.** Every character has exactly one beat per piece
+  where her composed exterior briefly lets an internal reaction through
+  — a controlled break, not a resolution (see each character's own
+  Dependency Trigger / Failure Condition). At that specific beat, a burst
+  of visual noise should be perceptible at **consistent
+  strength/prominence across all five characters** — this is a brand-wide
+  signature, not an Airi-exclusive trait, added 2026-07-18 after review
+  found `visual-effects` had incorrectly scoped it to Airi alone. The
+  concrete texture of that noise is native to each character's own
+  visual world, not a single copy-pasted effect:
+  - Airi (digital/screen world): glitch fragments, UI-fragment tears,
+    chromatic drift — already documented in her own CHARACTER.md.
+  - Nao (natural/elemental world): a brief ripple/refraction distortion
+    in light through water or moving fabric, not a digital artifact —
+    the "noise" reads as a natural-world disturbance, never a screen
+    artifact, to stay inside her elemental register.
+  - Mina/Rena/Yui: not yet specified per-character (author when their
+    next content piece is planned) — do not invent a texture for them
+    speculatively; each needs the same "what's her world's native
+    disturbance" reasoning Nao and Airi got, not a generic filler effect.
+  - The strength/prominence of the noise burst must match across
+    characters even though the texture differs — a barely-visible flicker
+    for one character and an overt glitch for another would violate the
+    "consistent strength" requirement.
+- The horror-grammar prohibition below applies to this technique with
+  extra weight: a digital-glitch texture forced onto a character whose
+  world has no digital elements (e.g. Nao) reads as "something wrong
+  intruding" rather than "an internal moment breaking through" — exactly
+  the horror-vs-intimacy trap this document already warns about. Keep the
+  texture native to the character's world specifically to avoid this.
 - The one rule that applies to every character regardless of tone: no
   horror or suspense grammar. Empty/abandoned spaces, a figure suddenly
   present, and ominous on-screen text read as horror when actually

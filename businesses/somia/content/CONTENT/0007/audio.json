@@ -3,8 +3,9 @@
   "noise_type": "high-frequency detail, particle-like texture, sparse events",
   "frequency_range": "8kHz+",
   "trigger_timing": [
-    "wind swell at 5.0s turn",
-    "pull back to sparse/silent by 9.0s"
+    "held ambient bed 0.0-4.0s (beat 1)",
+    "wind swell at 4.0s turn anticipation, sustained through the acknowledgment beat",
+    "pull back to sparse/silent by 9.0s (beat 3 return + loop point)"
   ],
   "silence_duration": 1.0
 }
