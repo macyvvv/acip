@@ -1,9 +1,10 @@
 {
-  "base_layer": "soft ambient bed",
-  "noise_type": "high-frequency detail with sparse events",
+  "base_layer": "soft wind and sea ambient bed",
+  "noise_type": "high-frequency detail, particle-like texture, sparse events",
   "frequency_range": "8kHz+",
   "trigger_timing": [
-    "silence entry"
+    "wind swell at 5.0s turn",
+    "pull back to sparse/silent by 9.0s"
   ],
-  "silence_duration": 1.4
+  "silence_duration": 1.0
 }
