@@ -109,7 +109,9 @@
     { id: "toilet", file: "toilet.json", label: { ja: "トイレ", en: "Toilet" }, icon: "🚻", subtitle: "Public restrooms" },
     { id: "atm", file: "atm.json", label: { ja: "ATM・両替", en: "ATM / Exchange" }, icon: "💳", subtitle: "Cash withdrawal & exchange" },
     { id: "coin_locker", file: "coin_locker.json", label: { ja: "コインロッカー", en: "Coin Locker" }, icon: "🧳", subtitle: "Luggage storage" },
-    { id: "lodging", file: "lodging.json", label: { ja: "宿泊・ネット", en: "Lodging / Net Cafe" }, icon: "🏨", subtitle: "Overnight & day-use facilities" }
+    { id: "lodging", file: "lodging.json", label: { ja: "宿泊・ネカフェ", en: "Lodging / Net Cafe" }, icon: "🏨", subtitle: "Overnight & day-use facilities" },
+    { id: "karaoke", file: "karaoke.json", label: { ja: "カラオケ", en: "Karaoke" }, icon: "🎤", subtitle: "Karaoke boxes" },
+    { id: "shisha_bar", file: "shisha_bar.json", label: { ja: "シーシャバー", en: "Shisha Bar" }, icon: "💨", subtitle: "Shisha / hookah bars" }
   ];
 
   var MODES = [
@@ -133,19 +135,19 @@
       id: "late_night",
       label: { ja: "朝まで過ごす", en: "Until Morning" },
       copy: { ja: "終電後の避難導線", en: "After the last train" },
-      targetCategories: ["lodging", "convenience", "toilet", "atm", "coin_locker"],
+      targetCategories: ["lodging", "convenience", "toilet", "karaoke", "shisha_bar"],
       aggregateCategories: true,
-      preferredTags: ["24h", "overnight_friendly", "shower_available", "suitcase_ok", "large"],
+      preferredTags: ["24h", "overnight_friendly", "shower_available", "free_drink_bar", "group_friendly"],
       negativeTags: [],
-      categoryBoosts: { lodging: 5, convenience: 2, toilet: 1, atm: 1, coin_locker: 1 },
+      categoryBoosts: { lodging: 5, convenience: 2, toilet: 1, karaoke: 3, shisha_bar: 2 },
       sortStrategy: ["distance", "modeScore", "freshness", "reliability"],
       emptyStateMessage: {
-        ja: "朝まで向きの候補が見つかりませんでした。宿泊・ネットかコンビニを個別に確認してください。",
+        ja: "朝まで向きの候補が見つかりませんでした。宿泊・ネカフェかコンビニを個別に確認してください。",
         en: "No good options found for staying until morning. Try checking Lodging or Convenience Store individually."
       },
       summary: {
-        ja: "終電後に必要な宿泊・休憩・現金・荷物導線をまとめて、朝までしのげる候補を優先します。",
-        en: "Prioritizes lodging, rest, cash, and luggage options you'd need to make it through until morning."
+        ja: "終電後に必要な宿泊・休憩・時間つぶし導線をまとめて、朝までしのげる候補を優先します。",
+        en: "Prioritizes lodging, rest, and time-killing options you'd need to make it through until morning."
       }
     },
     {
@@ -234,6 +236,16 @@
       "24h": { ja: "24h", en: "24h" },
       international_card_ok: { ja: "海外カード", en: "Intl. cards OK" },
       convenience_colocated: { ja: "コンビニ併設", en: "Inside convenience store" }
+    },
+    karaoke: {
+      "24h": { ja: "24h", en: "24h" },
+      free_drink_bar: { ja: "フリードリンク", en: "Free drink bar" },
+      one_person_ok: { ja: "一人カラオケ可", en: "Solo-friendly" }
+    },
+    shisha_bar: {
+      "24h": { ja: "24h", en: "24h" },
+      group_friendly: { ja: "グループ向け", en: "Group-friendly" },
+      reservation_recommended: { ja: "予約推奨", en: "Reservation recommended" }
     }
   };
 
@@ -855,8 +867,9 @@
       if (poi.category === "lodging" && tags.indexOf("overnight_friendly") !== -1) return { ja: "朝まで滞在向き", en: "Good until morning" };
       if (poi.category === "lodging" && tags.indexOf("shower_available") !== -1) return { ja: "シャワーあり", en: "Has a shower" };
       if (poi.category === "convenience" && tags.indexOf("24h") !== -1) return { ja: "24時間の補給拠点", en: "24h supply stop" };
-      if (poi.category === "atm" && tags.indexOf("24h") !== -1) return { ja: "深夜の現金確保", en: "Cash late at night" };
-      if (poi.category === "coin_locker" && (tags.indexOf("large") !== -1 || tags.indexOf("suitcase_ok") !== -1)) return { ja: "荷物を預けやすい", en: "Easy to store luggage" };
+      if (poi.category === "karaoke" && tags.indexOf("free_drink_bar") !== -1) return { ja: "フリードリンクで長居しやすい", en: "Free drinks, easy to stay long" };
+      if (poi.category === "karaoke" && tags.indexOf("one_person_ok") !== -1) return { ja: "一人でも入りやすい", en: "Solo-friendly" };
+      if (poi.category === "shisha_bar" && tags.indexOf("group_friendly") !== -1) return { ja: "グループで時間つぶしやすい", en: "Good for killing time with a group" };
       if (poi.category === "toilet" && tags.indexOf("24h") !== -1) return { ja: "深夜でも使いやすい", en: "Usable late at night" };
       return { ja: "終電後に役立つ候補", en: "Useful after the last train" };
     }
@@ -908,7 +921,11 @@
       dirty: { tag: "dirty", label: { ja: "清潔さ注意", en: "Cleanliness varies" }, tone: "warn", base: 48 },
       unsafe: { tag: "unsafe", label: { ja: "周辺注意", en: "Use caution" }, tone: "warn", base: 51 },
       hidden: { tag: "hidden", label: { ja: "見つけにくい", en: "Hard to find" }, tone: "warn", base: 43 },
-      outdoor: { tag: "outdoor", label: { ja: "屋外", en: "Outdoor" }, tone: "neutral", base: 36 }
+      outdoor: { tag: "outdoor", label: { ja: "屋外", en: "Outdoor" }, tone: "neutral", base: 36 },
+      free_drink_bar: { tag: "free_drink_bar", label: { ja: "フリードリンク", en: "Free drink bar" }, tone: "strong", base: 65 },
+      one_person_ok: { tag: "one_person_ok", label: { ja: "一人カラオケ可", en: "Solo-friendly" }, tone: "neutral", base: 50 },
+      group_friendly: { tag: "group_friendly", label: { ja: "グループ向け", en: "Group-friendly" }, tone: "neutral", base: 50 },
+      reservation_recommended: { tag: "reservation_recommended", label: { ja: "予約推奨", en: "Reservation recommended" }, tone: "warn", base: 44 }
     };
     var categoryPriority = {
       toilet: ["free", "24h", "clean", "gender_separated", "long_wait", "dirty"],
@@ -916,12 +933,14 @@
       convenience: ["24h", "atm_instore", "phone_charging"],
       atm: ["24h", "international_card_ok"],
       coin_locker: ["suitcase_ok", "large", "24h", "medium", "small", "suitcase_too_big"],
-      lodging: ["overnight_friendly", "shower_available", "24h", "price_band_budget", "price_band_mid", "price_band_high", "no_shower"]
+      lodging: ["overnight_friendly", "shower_available", "24h", "price_band_budget", "price_band_mid", "price_band_high", "no_shower"],
+      karaoke: ["free_drink_bar", "24h", "one_person_ok"],
+      shisha_bar: ["24h", "group_friendly", "reservation_recommended"]
     };
     var modeBoosts = {
       toilet_now: { free: 30, "24h": 34, clean: 28, gender_separated: 18, long_wait: 8, dirty: 12 },
       smoking_now: { indoor: 34, rain_ok: 28, "24h": 24, crowded: 10, unsafe: 10, hidden: 8 },
-      late_night: { overnight_friendly: 34, shower_available: 28, suitcase_ok: 22, large: 20, "24h": 20, price_band_budget: 16 }
+      late_night: { overnight_friendly: 34, shower_available: 28, free_drink_bar: 22, group_friendly: 20, "24h": 20, price_band_budget: 16 }
     };
     var order = categoryPriority[categoryId] || Object.keys(candidates);
     var boosts = modeBoosts[modeId] || {};

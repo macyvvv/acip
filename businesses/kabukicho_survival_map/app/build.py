@@ -51,7 +51,9 @@ CATEGORIES = [
     {"id": "toilet", "file": "toilet.json", "label": "トイレ"},
     {"id": "atm", "file": "atm.json", "label": "ATM・両替"},
     {"id": "coin_locker", "file": "coin_locker.json", "label": "コインロッカー"},
-    {"id": "lodging", "file": "lodging.json", "label": "宿泊・ネット"},
+    {"id": "lodging", "file": "lodging.json", "label": "宿泊・ネカフェ"},
+    {"id": "karaoke", "file": "karaoke.json", "label": "カラオケ"},
+    {"id": "shisha_bar", "file": "shisha_bar.json", "label": "シーシャバー"},
 ]
 
 # Fixed, hand-curated FAQ content -- genuine, answerable-in-one-line

@@ -33,6 +33,8 @@ CATEGORY_FILES = (
     "atm.json",
     "coin_locker.json",
     "lodging.json",
+    "karaoke.json",
+    "shisha_bar.json",
 )
 
 

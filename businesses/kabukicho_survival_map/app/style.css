@@ -326,7 +326,24 @@ body.controls-open {
   border-top-right-radius: 26px;
   margin-top: -18px;
   box-shadow: 0 -12px 26px rgba(36, 28, 18, 0.08);
-  backdrop-filter: blur(14px);
+  /* No backdrop-filter here at this (mobile) width on purpose: it would
+     make .left-pane a containing block for its position:fixed descendants
+     (#controls-backdrop, #control-panel) per the CSS Filter Effects spec.
+     WebKit (Safari, and LINE's in-app browser which is also WKWebView)
+     honors that and traps the "fixed" control panel inside .left-pane's
+     stacking context, so it paints *behind* the sibling .map-pane despite
+     its z-index:30 -- reported live as the mobile filter panel sinking
+     under the map on real iOS Safari/LINE, not reproducible in desktop
+     Chrome's device-emulation mode (Blink is more lenient here). Desktop
+     re-enables the blur below because .left-pane-controls switches to
+     position:sticky there, which isn't affected by this containing-block
+     rule. */
+}
+
+@media (min-width: 1024px) {
+  .left-pane {
+    backdrop-filter: blur(14px);
+  }
 }
 
 .controls-backdrop {

@@ -10,7 +10,16 @@ DATA_SOURCE = REPO_ROOT / "platform" / "system" / "runtime" / "data" / "kabukich
 PRODUCT_DIR = REPO_ROOT / "businesses" / "kabukicho_survival_map" / "app"
 PUBLIC_DIR = REPO_ROOT / "platform" / "web" / "public" / "kabukicho_survival_map"
 
-CATEGORY_FILES = ("smoking.json", "toilet.json", "convenience.json", "atm.json", "coin_locker.json", "lodging.json")
+CATEGORY_FILES = (
+    "smoking.json",
+    "toilet.json",
+    "convenience.json",
+    "atm.json",
+    "coin_locker.json",
+    "lodging.json",
+    "karaoke.json",
+    "shisha_bar.json",
+)
 DB_SYNC_SCRIPT = REPO_ROOT / "businesses" / "kabukicho_survival_map" / "app" / "scripts" / "poi_db_sync.py"
 BUILD_SCRIPT = REPO_ROOT / "businesses" / "kabukicho_survival_map" / "app" / "build.py"
 
