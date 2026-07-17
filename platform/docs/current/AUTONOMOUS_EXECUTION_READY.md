@@ -10,7 +10,7 @@ zero live code references `execution_bridge` anywhere today.
 `platform/docs/current/BUSINESS_AGENT_AUTOMATION_READINESS.md` -- describes the
 actual execution-approval flow in production today (Levels 0-3a/3c),
 built on `platform/system/core/agent_execution_approval.py::evaluate_business_
-agent_scope_approval()` and `platform/system/platform/scripts/agent/run_approved_autonomous_
+agent_scope_approval()` and `platform/system/scripts/agent/run_approved_autonomous_
 execution.py`, with real per-role daily caps and kill switches. Read that
 doc, not this one, for anything about autonomous execution readiness.
 

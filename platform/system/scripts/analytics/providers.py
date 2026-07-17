@@ -22,7 +22,7 @@ class AnalyticsFetchError(RuntimeError):
 
 class AnalyticsProvider(ABC):
     """One adapter per platform (X/Threads/note.com/...). Mirrors
-    platform/system/platform/scripts/platform/somia/providers.py's registry shape: swapping platforms
+    platform/system/scripts/platform/somia/providers.py's registry shape: swapping platforms
     should never require touching the execution adapter."""
 
     name: str = "unset"

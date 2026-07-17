@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-# Kill switch for the Level 3c publishing scheduler (platform/system/platform/scripts/publishing/
+# Kill switch for the Level 3c publishing scheduler (platform/system/scripts/publishing/
 # run_scheduled_publish.py). Kept separate from platform/system/core/business_agent_
 # automation_control.py's task-proposal switch on purpose: "stop new tasks
 # from being queued" and "stop already-approved content from posting

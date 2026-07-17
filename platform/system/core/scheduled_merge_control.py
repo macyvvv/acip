@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Any
 
 # Dedicated kill switch for the unattended-merge capability (Level 3d)
-# added to platform/system/platform/scripts/business_agent/run_scheduled_execution.py
+# added to platform/system/scripts/business_agent/run_scheduled_execution.py
 # (ADR-0040) -- a distinct level from 3b (the scheduled generation trigger
 # this gates the landing of), not a sub-feature of it --
 # the 5th independent switch in this platform, deliberately not a reuse of

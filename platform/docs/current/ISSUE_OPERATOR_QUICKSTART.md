@@ -3,7 +3,7 @@
 ## Approval Console MVP
 Canonical entrypoint for one-shot approved execution:
 ```bash
-python3 platform/system/platform/scripts/agent/run_approval_console.py
+python3 platform/system/scripts/agent/run_approval_console.py
 ```
 
 Workflow:
@@ -28,7 +28,7 @@ Boundaries:
 
 ## Sync Open Issues
 ```bash
-python3 platform/system/platform/scripts/sync_github_issues.py
+python3 platform/system/scripts/sync_github_issues.py
 ```
 This repo has no continuous/idle-loop runner -- matches the "Repeated
 autonomy disabled" boundary stated above. Each execution is one-shot via

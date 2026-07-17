@@ -7,7 +7,7 @@ One-shot approved autonomous execution is operational. Repeated autonomy and ope
 - Scope: `DRAFT-OPP-KABUKICHO-001`
 - Command:
 ```bash
-CODEX_EXECUTION_TIMEOUT_SECONDS=300 python3 platform/system/platform/scripts/agent/run_approved_autonomous_execution.py
+CODEX_EXECUTION_TIMEOUT_SECONDS=300 python3 platform/system/scripts/agent/run_approved_autonomous_execution.py
 ```
 - Execution result status: `success`
 - Stopped reason: `completion_marker_written`

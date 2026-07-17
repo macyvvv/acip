@@ -256,7 +256,7 @@ def main() -> int:
     # os.environ -- this script previously never loaded .env itself, so a
     # real credential set sitting in .env (not exported into the invoking
     # shell) silently produced "X_OAUTH2_CLIENT_ID is not set" instead of
-    # actually posting. Mirrors platform/system/platform/scripts/platform/somia/render_content.py's
+    # actually posting. Mirrors platform/system/scripts/platform/somia/render_content.py's
     # existing load_dotenv() call for the same reason.
     load_dotenv(ROOT / ".env")
     summary = run_scheduled_publish(ROOT)

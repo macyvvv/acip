@@ -2,7 +2,7 @@
 
 ## Intake
 - status: pass
-- evidence: `platform/system/runtime/github/open_issues.json`, `platform/system/platform/scripts/sync_github_issues.py`
+- evidence: `platform/system/runtime/github/open_issues.json`, `platform/system/scripts/sync_github_issues.py`
 - gap:
 - required_fix:
 - severity: low

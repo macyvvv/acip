@@ -4,7 +4,17 @@ from pathlib import Path
 import re
 
 
-BROKEN_PREFIXES = ("platform/system/platform/system/", "agent_platform/system/runtime/", "event_platform/system/runtime/")
+BROKEN_PREFIXES = (
+    "platform/system/platform/system/",
+    "agent_platform/system/runtime/",
+    "event_platform/system/runtime/",
+    # A duplicate "platform/system/platform/scripts/" legacy shim directory
+    # (validate_all.py + root_hygiene/*.sh re-exec wrappers, byte-identical
+    # to the real scripts at platform/system/scripts/) existed for a while
+    # and drifted into ~40 files' worth of stale references before being
+    # deleted 2026-07-17. Guarding here so it can't silently reappear.
+    "platform/system/platform/scripts/",
+)
 ROOT_AGENT_RUNTIME_PATTERN = re.compile(r"(?<!platform/system/)agent_runtime/")
 
 
@@ -33,6 +43,6 @@ def test_no_legacy_root_paths_in_executable_code() -> None:
         if any(prefix in text for prefix in BROKEN_PREFIXES):
             offenders.append(str(path.relative_to(root)))
             continue
-        if ROOT_AGENT_RUNTIME_PATTERN.search(text) and "platform/system/platform/scripts/agent_runtime/" not in text and "platform/system/agent_runtime/" not in text:
+        if ROOT_AGENT_RUNTIME_PATTERN.search(text) and "platform/system/scripts/agent_runtime/" not in text and "platform/system/agent_runtime/" not in text:
             offenders.append(str(path.relative_to(root)))
     assert offenders == []

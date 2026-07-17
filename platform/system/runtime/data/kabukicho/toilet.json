@@ -1,25 +1,8 @@
 [
   {
-    "name": "新宿遊歩道公園(四季の道)公衆トイレ",
-    "lat": 35.693478,
-    "lng": 139.704157,
-    "description": "新宿区管理の公衆トイレ。歌舞伎町一丁目、遊歩道公園(四季の道)内にあります。",
-    "category": "toilet",
-    "tags": [
-      "free",
-      "gender_separated"
-    ],
-    "last_updated": "2026-07-16",
-    "reliability_score": 4,
-    "source_type": "official",
-    "type": "official",
-    "verification_method": "google-maps-place-2026-07-16",
-    "coord_verified": "verified"
-  },
-  {
     "name": "東急歌舞伎町タワー トイレ",
-    "lat": 35.6963,
-    "lng": 139.7033,
+    "lat": 35.695935,
+    "lng": 139.700657,
     "description": "地上53階の複合施設内トイレ。ジェンダーレス設計は反発を受けて男女別に変更された経緯があり、現在も配置が変わる可能性があります。",
     "category": "toilet",
     "tags": [
@@ -31,8 +14,8 @@
     "reliability_score": 3,
     "source_type": "observed",
     "type": "official",
-    "verification_method": "coord-review-2026-07-17",
-    "coord_verified": "corrected"
+    "verification_method": "osm-cross-reference-2026-07-17",
+    "coord_verified": "verified"
   },
   {
     "name": "西武新宿駅前公衆便所",
@@ -125,8 +108,8 @@
   },
   {
     "name": "東急歌舞伎町タワー 2階トイレ",
-    "lat": 35.6963,
-    "lng": 139.7033,
+    "lat": 35.695935,
+    "lng": 139.700657,
     "description": "2023年の改装で男女別に変更された商業施設内トイレ(元はジェンダーレス設計で反発を受け約4ヶ月で廃止)。",
     "category": "toilet",
     "tags": [
@@ -138,9 +121,9 @@
     "reliability_score": 3,
     "source_type": "observed",
     "type": "unofficial",
-    "verification_method": "coord-review-2026-07-17",
+    "verification_method": "osm-cross-reference-2026-07-17",
     "gray_zone_note": "施設の営業時間内のみで24時間ではありません。時間帯によって利用条件が異なる場合があります。",
-    "coord_verified": "corrected"
+    "coord_verified": "verified"
   },
   {
     "name": "TOHOシネマズ新宿 3階トイレ",

@@ -15,7 +15,7 @@ The flow is deterministic. Chat context is not canonical.
 7. Promote approved drafts into `approved_issue_drafts.json`.
 8. Promote approved drafts into `issue_creation_drafts.json`.
 9. Manually create the GitHub issue from the draft body.
-10. Run `platform/system/platform/scripts/run_until_idle.sh`.
+10. Run `platform/system/scripts/run_until_idle.sh`.
 11. Commit the completion marker only.
 12. Clean up runtime observation artifacts if needed.
 13. Push the completion-marker commit to `origin/main`.
@@ -55,7 +55,7 @@ gh issue create \
 
 ### Execute Repository OS after the issue is created
 ```bash
-./platform/system/platform/scripts/run_until_idle.sh
+./platform/system/scripts/run_until_idle.sh
 ```
 
 ### Commit completion marker only

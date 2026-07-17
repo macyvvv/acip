@@ -20,7 +20,7 @@ The operational baseline for autonomy is one-shot approved execution only.
 - Scope: `DRAFT-OPP-KABUKICHO-001`
 - Command:
 ```bash
-CODEX_EXECUTION_TIMEOUT_SECONDS=300 python3 platform/system/platform/scripts/agent/run_approved_autonomous_execution.py
+CODEX_EXECUTION_TIMEOUT_SECONDS=300 python3 platform/system/scripts/agent/run_approved_autonomous_execution.py
 ```
 - Result: `success`
 - Stop reason: `completion_marker_written`
@@ -28,7 +28,7 @@ CODEX_EXECUTION_TIMEOUT_SECONDS=300 python3 platform/system/platform/scripts/age
 ## Operator Entry Point
 Canonical Approval Console command:
 ```bash
-python3 platform/system/platform/scripts/agent/run_approval_console.py
+python3 platform/system/scripts/agent/run_approval_console.py
 ```
 
 Flow:

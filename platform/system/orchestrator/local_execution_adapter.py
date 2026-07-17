@@ -232,7 +232,7 @@ class LocalExecutionAdapter:
             issue_instruction,
             "Read platform/system/runtime/planning/latest.json, platform/system/runtime/repository_state/latest.json, platform/system/runtime/work_planner/latest.json, and platform/system/runtime/request/execution_request.json.",
             "Run:",
-            "- python3 platform/system/platform/scripts/validate_all.py",
+            "- python3 platform/system/scripts/validate_all.py",
             "- python3 -m pytest -q",
             "- git status",
             "",

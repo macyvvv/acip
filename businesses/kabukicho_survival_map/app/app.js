@@ -67,6 +67,14 @@
     document.title = tr(PAGE_TITLE);
     var descriptionTag = document.getElementById("page-description");
     if (descriptionTag) descriptionTag.setAttribute("content", tr(PAGE_DESCRIPTION));
+    var ogTitleTag = document.getElementById("og-title");
+    if (ogTitleTag) ogTitleTag.setAttribute("content", tr(PAGE_TITLE));
+    var ogDescriptionTag = document.getElementById("og-description");
+    if (ogDescriptionTag) ogDescriptionTag.setAttribute("content", tr(PAGE_DESCRIPTION));
+    var twitterTitleTag = document.getElementById("twitter-title");
+    if (twitterTitleTag) twitterTitleTag.setAttribute("content", tr(PAGE_TITLE));
+    var twitterDescriptionTag = document.getElementById("twitter-description");
+    if (twitterDescriptionTag) twitterDescriptionTag.setAttribute("content", tr(PAGE_DESCRIPTION));
     var headingEl = document.getElementById("page-heading");
     if (headingEl) headingEl.textContent = tr(PAGE_HEADING);
     var subtitleEl = document.getElementById("page-subtitle");
@@ -119,7 +127,13 @@
       id: "nearby",
       label: { ja: "近くで探す", en: "Nearby" },
       copy: { ja: "カテゴリ別に通常探索", en: "Browse by category" },
-      targetCategories: CATEGORIES.map(function (cat) { return cat.id; }),
+      // karaoke/shisha_bar are deliberately excluded here -- they're
+      // late_night-only ("time to kill until morning", not something
+      // you'd urgently need to find in the middle of the day the way the
+      // other categories are), see the late_night mode below.
+      targetCategories: CATEGORIES.filter(function (cat) {
+        return cat.id !== "karaoke" && cat.id !== "shisha_bar";
+      }).map(function (cat) { return cat.id; }),
       aggregateCategories: false,
       preferredTags: [],
       negativeTags: [],
@@ -886,11 +900,6 @@
     return "";
   }
 
-  function shortDescription(text) {
-    if (!text) return "";
-    return text.length > 54 ? text.slice(0, 54) + "..." : text;
-  }
-
   function getJudgmentSignals(poi) {
     var tags = poi.tags || [];
     var categoryId = poi.category || state.activeCategory;
@@ -1022,7 +1031,6 @@
       : (poi.gray_zone_note ? '<div class="info-note">' + escapeHtml(poi.gray_zone_note) + "</div>" : "");
     var poiKey = getPoiKey(poi);
     var expanded = state.expandedCardKey === poiKey;
-    var summaryLine = shortDescription(poi.description);
     var signalTagMap = {};
     judgmentSignals.forEach(function (signal) { signalTagMap[signal.tag] = true; });
     var detailTagsHtml = (poi.tags || [])
@@ -1037,9 +1045,6 @@
       collapsedMetaHtml += categoryBadgeHtml;
     }
     var supportingParts = [];
-    if (summaryLine) {
-      supportingParts.push('<span class="poi-card-summary">' + escapeHtml(summaryLine) + "</span>");
-    }
     if (collapsedMetaHtml) {
       supportingParts.push('<div class="poi-card-quick-tags">' + collapsedMetaHtml + '</div>');
     }

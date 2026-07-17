@@ -407,7 +407,7 @@ def _run_local_validation(base_path: Path) -> tuple[bool, str]:
     if pytest_result.returncode != 0:
         return False, "local_pytest_failed"
     validate_result = subprocess.run(
-        [sys.executable, "platform/system/platform/scripts/validate_all.py"], cwd=base_path, capture_output=True, text=True
+        [sys.executable, "platform/system/scripts/validate_all.py"], cwd=base_path, capture_output=True, text=True
     )
     if validate_result.returncode != 0:
         return False, "local_validate_all_failed"
