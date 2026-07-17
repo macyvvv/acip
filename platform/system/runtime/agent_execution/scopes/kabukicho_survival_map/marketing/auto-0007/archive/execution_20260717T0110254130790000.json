@@ -1,0 +1,17 @@
+{
+  "allow": true,
+  "handoff_id": "REQ-KABUKICHO-SURVIVAL-MAP-MARKETING-AUTO-0007",
+  "approval_id": null,
+  "scope_type": null,
+  "scope_id": null,
+  "execution_triggered": true,
+  "execution_mode": "one_shot",
+  "execution_result_status": "failure",
+  "completion_marker_path": "/Users/ariel/Documents/tools/acip/platform/system/runtime/business_agents/kabukicho_survival_map/marketing/auto-0007/latest.json",
+  "request_path": "/Users/ariel/Documents/tools/acip/platform/system/runtime/request/execution_request.json",
+  "stopped_reason": "empty_stdout",
+  "started_at": "2026-07-17T01:10:25.413079+00:00",
+  "finished_at": "2026-07-17T01:11:25.618964+00:00",
+  "authorization_source": "policy_pre_approval",
+  "policy_id": "PREAPP-KABUKICHO_SURVIVAL_MAP-MARKETING-0001"
+}

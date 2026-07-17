@@ -1,0 +1,153 @@
+[
+  {
+    "name": "カラオケルーム歌広場 新宿区役所前店",
+    "lat": 35.695323,
+    "lng": 139.701925,
+    "description": "歌舞伎町1-2-2の全室24時間営業。西武新宿駅・新宿駅東口から徒歩圏。",
+    "category": "karaoke",
+    "tags": [
+      "24h"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "カラオケルーム歌広場 新宿歌舞伎町ゴジラロード店",
+    "lat": 35.695026,
+    "lng": 139.702439,
+    "description": "歌舞伎町1-17-10のゴジラロード沿い、24時間営業のカラオケルーム。",
+    "category": "karaoke",
+    "tags": [
+      "24h"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "カラオケ館 歌舞伎町本店",
+    "lat": 35.694959,
+    "lng": 139.701767,
+    "description": "歌舞伎町1-17-10の24時間営業(金・土・祝前日は翌8時まで)のカラオケボックス。",
+    "category": "karaoke",
+    "tags": [],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "カラオケ館 歌舞伎町店",
+    "lat": 35.695404,
+    "lng": 139.702237,
+    "description": "歌舞伎町1-22-7の西武新宿駅そばのカラオケボックス。",
+    "category": "karaoke",
+    "tags": [],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "カラオケ館 新・歌舞伎町店",
+    "lat": 35.694785,
+    "lng": 139.70226,
+    "description": "歌舞伎町1-12-3の24時間営業(金・土・祝前日は翌8時まで)のカラオケボックス。",
+    "category": "karaoke",
+    "tags": [],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "カラオケ館 新宿靖国通り店",
+    "lat": 35.695252,
+    "lng": 139.701701,
+    "description": "歌舞伎町1-5-7の靖国通り沿いのカラオケボックス。",
+    "category": "karaoke",
+    "tags": [],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "カラオケ館 西武新宿駅前店",
+    "lat": 35.695212,
+    "lng": 139.702539,
+    "description": "歌舞伎町1-28-1の西武新宿駅前のカラオケボックス。",
+    "category": "karaoke",
+    "tags": [],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "カラオケパセラ新宿本店",
+    "lat": 35.694764,
+    "lng": 139.70186,
+    "description": "歌舞伎町1-3-16の新宿駅東口から徒歩5分、24時間365日営業の大型複合カラオケ施設。フリードリンク付きプランあり。",
+    "category": "karaoke",
+    "tags": [
+      "24h",
+      "free_drink_bar"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "プレミアムカラオケ モディス東新宿",
+    "lat": 35.69597,
+    "lng": 139.705876,
+    "description": "歌舞伎町2-18-5の東新宿駅A1出口徒歩4分、24時間営業の隠れ家個室カラオケ。",
+    "category": "karaoke",
+    "tags": [
+      "24h"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "カラオケまねきねこ 新宿歌舞伎町中央店",
+    "lat": 35.695494,
+    "lng": 139.701993,
+    "description": "歌舞伎町1-21-1の西武新宿駅から徒歩2分、24時間営業・年中無休のカラオケボックス。",
+    "category": "karaoke",
+    "tags": [
+      "24h"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  }
+]

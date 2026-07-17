@@ -137,18 +137,22 @@ body.controls-open {
   letter-spacing: 0.04em;
 }
 
-@media (max-width: 1023px) {
-  .app-header .controls-toggle {
-    background: rgba(232, 232, 232, 0.96);
-    border-color: rgba(86, 82, 77, 0.18);
-    color: #201a15;
-    box-shadow: 0 10px 22px rgba(56, 49, 42, 0.12);
-  }
-
-  .app-header .controls-toggle-icon,
-  .app-header .controls-toggle-label {
-    color: #201a15;
-  }
+.lang-toggle {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.4em;
+  padding: 8px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fffdf9;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .app-layout {
@@ -322,7 +326,24 @@ body.controls-open {
   border-top-right-radius: 26px;
   margin-top: -18px;
   box-shadow: 0 -12px 26px rgba(36, 28, 18, 0.08);
-  backdrop-filter: blur(14px);
+  /* No backdrop-filter here at this (mobile) width on purpose: it would
+     make .left-pane a containing block for its position:fixed descendants
+     (#controls-backdrop, #control-panel) per the CSS Filter Effects spec.
+     WebKit (Safari, and LINE's in-app browser which is also WKWebView)
+     honors that and traps the "fixed" control panel inside .left-pane's
+     stacking context, so it paints *behind* the sibling .map-pane despite
+     its z-index:30 -- reported live as the mobile filter panel sinking
+     under the map on real iOS Safari/LINE, not reproducible in desktop
+     Chrome's device-emulation mode (Blink is more lenient here). Desktop
+     re-enables the blur below because .left-pane-controls switches to
+     position:sticky there, which isn't affected by this containing-block
+     rule. */
+}
+
+@media (min-width: 1024px) {
+  .left-pane {
+    backdrop-filter: blur(14px);
+  }
 }
 
 .controls-backdrop {
@@ -535,6 +556,19 @@ body.controls-open .left-pane-controls {
 .filter-chip-none[aria-pressed="true"] {
   background: var(--ink-active-soft);
   border-color: var(--ink-active-soft);
+  color: #fffaf4;
+}
+
+.filter-chip-unofficial {
+  border-style: dashed;
+  border-color: rgba(160, 95, 43, 0.35);
+  background: rgba(255, 246, 233, 0.92);
+  color: #7a4617;
+}
+
+.filter-chip-unofficial[aria-pressed="true"] {
+  background: #7a4617;
+  border-color: #7a4617;
   color: #fffaf4;
 }
 
@@ -770,17 +804,6 @@ body.controls-open .left-pane-controls {
   margin: 0 0 12px;
 }
 
-@media (max-width: 1023px) {
-  .filter-actions {
-    justify-content: stretch;
-  }
-
-  .filter-apply {
-    width: 100%;
-    min-height: 40px;
-  }
-}
-
 .empty-state,
 .no-results {
   padding: 34px 16px;
@@ -861,7 +884,7 @@ body.controls-open .left-pane-controls {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 10px;
-  align-items: center;
+  align-items: start;
   padding: 12px 13px 11px;
   border: 0;
   background: transparent;
@@ -880,18 +903,34 @@ body.controls-open .left-pane-controls {
   margin-bottom: 6px;
 }
 
-.poi-card h2 {
+.poi-card h3 {
   margin: 0;
   font-size: 0.94rem;
   line-height: 1.28;
-  white-space: nowrap;
+  white-space: normal;
   overflow: hidden;
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-overflow: clip;
 }
 
 .poi-card-supporting {
-  display: none;
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  margin-top: 6px;
   overflow: hidden;
+}
+
+.poi-card-summary {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  color: #574d42;
+  font-size: 0.8rem;
+  line-height: 1.38;
 }
 
 .poi-card-side {
@@ -999,6 +1038,27 @@ body.controls-open .left-pane-controls {
   background: #f0f0f0;
   color: #666;
   font-size: 0.73rem;
+}
+
+.freshness-badge {
+  padding: 4px 8px;
+  font-size: 0.73rem;
+  font-weight: 700;
+}
+
+.freshness-badge.freshness-recent {
+  background: rgba(73, 154, 81, 0.14);
+  color: #2d6b35;
+}
+
+.freshness-badge.freshness-month {
+  background: rgba(255, 193, 62, 0.18);
+  color: #8b5d00;
+}
+
+.freshness-badge.freshness-stale {
+  background: rgba(194, 97, 62, 0.13);
+  color: #8b3f28;
 }
 
 .signal-chip,
@@ -1193,7 +1253,7 @@ body.controls-open .left-pane-controls {
     left: auto;
     right: auto;
     bottom: auto;
-    z-index: 6;
+    z-index: 60;
     padding: 0;
     transform: translateY(0);
     pointer-events: auto;
@@ -1246,6 +1306,37 @@ body.controls-open .left-pane-controls {
     pointer-events: auto;
   }
 
+  /* Per-mode overlay height -- mirrors app.js's renderModeBar(), which sets
+     data-active-mode on <body> on every mode change (including while the
+     panel is already open, unlike the old JS-computed inline max-height
+     this replaced, which only recalculated on open/close). */
+  body[data-active-mode="nearby"] .controls-panel-overlay {
+    max-height: 72dvh;
+  }
+
+  body[data-active-mode="toilet_now"] .controls-panel-overlay,
+  body[data-active-mode="smoking_now"] .controls-panel-overlay {
+    max-height: 76dvh;
+  }
+
+  body[data-active-mode="late_night"] .controls-panel-overlay {
+    max-height: 80dvh;
+  }
+
+  body.controls-open .controls-backdrop {
+    z-index: 50;
+  }
+
+  body.controls-open .left-pane-controls {
+    z-index: 60;
+  }
+
+  body.controls-open .map-pane {
+    pointer-events: none;
+    opacity: 0.18;
+    filter: saturate(0.55) blur(0.8px);
+  }
+
   body:not(.controls-open) .controls-panel-overlay {
     opacity: 0;
     transform: translateY(-6px);
@@ -1289,17 +1380,6 @@ body.controls-open .left-pane-controls {
 }
 
 @media (max-width: 1023px) {
-  .app-header button.controls-toggle {
-    background: rgba(232, 232, 232, 0.96) !important;
-    border-color: rgba(86, 82, 77, 0.18) !important;
-    color: #201a15 !important;
-    box-shadow: 0 10px 22px rgba(56, 49, 42, 0.12) !important;
-  }
-
-  .app-header button.controls-toggle .controls-toggle-icon,
-  .app-header button.controls-toggle .controls-toggle-label {
-    color: #201a15 !important;
-  }
 
   .inline-sponsored-card,
   .monetization-slot {
@@ -1323,20 +1403,6 @@ body.controls-open .left-pane-controls {
   .monetization-slot-body p {
     font-size: 0.68rem;
     line-height: 1.32;
-  }
-}
-
-@media (max-width: 1023px) {
-  .app-header button.controls-toggle {
-    background: rgba(232, 232, 232, 0.96) !important;
-    border-color: rgba(86, 82, 77, 0.18) !important;
-    color: #201a15 !important;
-    box-shadow: 0 10px 22px rgba(56, 49, 42, 0.12) !important;
-  }
-
-  .app-header button.controls-toggle .controls-toggle-icon,
-  .app-header button.controls-toggle .controls-toggle-label {
-    color: #201a15 !important;
   }
 }
 
@@ -1388,6 +1454,57 @@ body.controls-open .left-pane-controls {
   }
 
   .nav-btn span:last-child {
+    width: 4em;
+    text-align: center;
+    line-height: 1.08;
+    word-break: keep-all;
+    overflow-wrap: normal;
     font-size: 0.7rem;
   }
+}
+
+.app-footer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 16px 20px 24px;
+  font-size: 0.8rem;
+}
+
+.app-footer a {
+  color: var(--text-sub);
+  text-decoration: underline;
+}
+
+.app-footer a:hover {
+  color: var(--text-main);
+}
+
+.legal-page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+  color: var(--text-main);
+}
+
+.legal-page h1 {
+  font-size: 1.4rem;
+  margin-bottom: 4px;
+}
+
+.legal-page h2 {
+  font-size: 1.05rem;
+  margin-top: 28px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+
+.legal-page p,
+.legal-page li {
+  color: var(--text-sub);
+  line-height: 1.7;
+}
+
+.legal-page a {
+  color: var(--accent-3);
 }

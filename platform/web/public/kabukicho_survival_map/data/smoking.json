@@ -49,12 +49,13 @@
     "reliability_score": 3,
     "source_type": "observed",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "西武新宿駅前公衆喫煙所",
-    "lat": 35.694749,
-    "lng": 139.70014,
+    "lat": 35.69391,
+    "lng": 139.700109,
     "description": "歌舞伎町一丁目30番先、靖国通り大ガード横の新宿区指定屋外公衆喫煙所。歩道上パーテーション区切り、24時間利用可、無料。",
     "category": "smoking",
     "tags": [
@@ -62,12 +63,13 @@
       "crowded",
       "24h"
     ],
-    "last_updated": "2026-07-12",
+    "last_updated": "2026-07-17",
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "web-search-2026-07",
-    "gray_zone_note": "歌舞伎町1丁目の住所地番だが西武新宿駅・大ガード直近で地区西端。以前の調査で対象外とした西新宿7-1-1の別施設とは異なる場所。"
+    "verification_method": "navitime-ekimaemap-2026-07-17",
+    "gray_zone_note": "歌舞伎町1丁目の住所地番だが西武新宿駅・大ガード直近で地区西端。以前の調査で対象外とした西新宿7-1-1の別施設とは異なる場所。",
+    "coord_verified": "corrected"
   },
   {
     "name": "新宿区立大久保公園 喫煙所",
@@ -84,6 +86,61 @@
     "source_type": "official",
     "type": "official",
     "verification_method": "web-search-2026-07",
-    "gray_zone_note": "公園の開園時間内のみ利用可（4-9月 9:00-19:00、10-3月 9:00-18:00）。24時間利用可の路上喫煙所とは異なる。"
+    "gray_zone_note": "公園の開園時間内のみ利用可（4-9月 9:00-19:00、10-3月 9:00-18:00）。24時間利用可の路上喫煙所とは異なる。",
+    "coord_verified": "verified"
+  },
+  {
+    "name": "新宿駅東口公衆喫煙所",
+    "lat": 35.69227,
+    "lng": 139.70234,
+    "description": "新宿駅東口広場（新宿三丁目38番先）の新宿区指定屋外公衆喫煙所。歌舞伎町南東側アクセスの基本導線。",
+    "category": "smoking",
+    "tags": [
+      "outdoor",
+      "crowded",
+      "rain_ok"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "verification_method": "web-search-2026-07"
+  },
+  {
+    "name": "新宿駅東南口高架下公衆喫煙所",
+    "lat": 35.68958,
+    "lng": 139.7029,
+    "description": "新宿駅東南口広場横・国道高架下（新宿三丁目37番先）の新宿区指定屋外公衆喫煙所。雨天時の退避導線として使いやすい。",
+    "category": "smoking",
+    "tags": [
+      "outdoor",
+      "rain_ok",
+      "crowded"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "中心座標からの距離が約592mで、非公式区分の「大ガード沿い路上喫煙所」(約423m)より歌舞伎町中心から遠い。official/unofficialの線引き基準の再検証が必要（データ品質レビューで指摘、2026-07-17）。"
+  },
+  {
+    "name": "大ガード沿い路上喫煙所（境界外フォールバック）",
+    "lat": 35.6928,
+    "lng": 139.6989,
+    "description": "西新宿7-1-1付近の屋外喫煙スポット。歌舞伎町外だが西側から流入する際の回避導線として使われる。",
+    "category": "smoking",
+    "tags": [
+      "outdoor",
+      "crowded",
+      "unsafe"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "unofficial",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "歌舞伎町1-2丁目の境界外（西新宿側）。本アプリでは非公式導線トグルON時のみ表示。時間帯・巡回状況で利用可否が変わるため常用は非推奨。",
+    "coord_verified": "verified"
   }
 ]

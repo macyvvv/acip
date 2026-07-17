@@ -33,6 +33,8 @@ CATEGORY_FILES = (
     "atm.json",
     "coin_locker.json",
     "lodging.json",
+    "karaoke.json",
+    "shisha_bar.json",
 )
 
 
@@ -67,6 +69,57 @@ ALLOWED_HARD_DUPLICATE_PAIRS = {
             ("toilet.json", "東急歌舞伎町タワー 2階トイレ"),
         }
     ),
+    frozenset(
+        {
+            ("coin_locker.json", "Zepp新宿ロッカー(地下1階・地下4階)"),
+            ("coin_locker.json", "東急歌舞伎町タワー地下1階コインロッカー"),
+        }
+    ),
+    frozenset(
+        {
+            ("coin_locker.json", "Zepp新宿ロッカー(地下1階・地下4階)"),
+            ("coin_locker.json", "東急歌舞伎町タワー4階シネマフロアロッカー"),
+        }
+    ),
+    frozenset(
+        {
+            ("coin_locker.json", "Zepp新宿ロッカー(地下1階・地下4階)"),
+            ("coin_locker.json", "東急歌舞伎町タワー10階(109シネマズプレミアム新宿)ロッカー"),
+        }
+    ),
+    # JR Shinjuku East Exit locker complex: 3 separate installations sharing the same reference coordinate
+    frozenset(
+        {
+            ("coin_locker.json", "JR新宿駅地下1階コインロッカー(東口・中央東口)"),
+            ("coin_locker.json", "JR新宿駅東口地下通路コインロッカー"),
+        }
+    ),
+    frozenset(
+        {
+            ("coin_locker.json", "JR新宿駅地下1階コインロッカー(東口・中央東口)"),
+            ("coin_locker.json", "ルミネエスト新宿1階コインロッカー"),
+        }
+    ),
+    frozenset(
+        {
+            ("coin_locker.json", "JR新宿駅東口地下通路コインロッカー"),
+            ("coin_locker.json", "ルミネエスト新宿1階コインロッカー"),
+        }
+    ),
+    # 新宿遊歩道公園: standard toilet block + separate barrier-free multi-purpose unit at same address
+    frozenset(
+        {
+            ("toilet.json", "新宿遊歩道公園(四季の道)公衆トイレ"),
+            ("toilet.json", "四季の路(新宿遊歩道公園)トイレ"),
+        }
+    ),
+    # ブース × 快活CLUB: different net-cafe brands in adjacent buildings on the same block (7m apart)
+    frozenset(
+        {
+            ("lodging.json", "ブース ネットカフェ&カプセル"),
+            ("lodging.json", "快活CLUB 新宿歌舞伎町店"),
+        }
+    ),
 }
 
 KNOWN_KEYS = {
@@ -83,6 +136,7 @@ KNOWN_KEYS = {
     "verification_method",
     "gray_zone_note",
     "licensed_as",
+    "coord_verified",
 }
 
 
@@ -124,6 +178,7 @@ def ensure_schema(conn: sqlite3.Connection) -> None:
           verification_method TEXT,
           gray_zone_note TEXT,
           licensed_as TEXT,
+          coord_verified TEXT DEFAULT NULL,
           extra_json TEXT NOT NULL DEFAULT '{}',
           UNIQUE(file_name, sort_order)
         );
@@ -140,6 +195,12 @@ def ensure_schema(conn: sqlite3.Connection) -> None:
           ON pois(category, lat, lng);
         """
     )
+    # Migration for existing DBs that predate coord_verified column
+    try:
+        conn.execute("ALTER TABLE pois ADD COLUMN coord_verified TEXT DEFAULT NULL")
+        conn.commit()
+    except sqlite3.OperationalError:
+        pass  # column already exists
 
 
 def haversine_m(lat1: float, lng1: float, lat2: float, lng2: float) -> float:
@@ -167,8 +228,8 @@ def import_json(conn: sqlite3.Connection) -> None:
                 INSERT INTO pois (
                   file_name, sort_order, name, lat, lng, description, category,
                   last_updated, reliability_score, source_type, type,
-                  verification_method, gray_zone_note, licensed_as, extra_json
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                  verification_method, gray_zone_note, licensed_as, coord_verified, extra_json
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     file_name,
@@ -185,6 +246,7 @@ def import_json(conn: sqlite3.Connection) -> None:
                     entry.get("verification_method"),
                     entry.get("gray_zone_note"),
                     entry.get("licensed_as"),
+                    entry.get("coord_verified"),
                     json.dumps(extra, ensure_ascii=False),
                 ),
             )
@@ -243,6 +305,8 @@ def export_json(conn: sqlite3.Connection) -> None:
                 entry["gray_zone_note"] = row["gray_zone_note"]
             if row["licensed_as"] is not None:
                 entry["licensed_as"] = row["licensed_as"]
+            if row["coord_verified"] is not None:
+                entry["coord_verified"] = row["coord_verified"]
 
             extra = json.loads(row["extra_json"] or "{}")
             entry.update(extra)

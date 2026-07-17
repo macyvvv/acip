@@ -185,6 +185,63 @@ def test_long_real_content_mentioning_rate_limits_still_succeeds(tmp_path: Path)
     assert result.failure_reason is None
 
 
+def test_leaked_artifact_header_in_stdout_is_not_success(tmp_path: Path) -> None:
+    # Observed live (kabukicho_survival_map/doc_creation/auto-0007,
+    # 2026-07-17): a role echoed this adapter's own "# BUSINESS_AGENT_
+    # EXECUTION" latest.md template -- for a *different* task_id -- into its
+    # generated stdout, almost certainly copied from a past task's latest.md
+    # fed back in as prompt context. That artifact was still recorded
+    # success=true; exit_code/emptiness checks alone cannot catch this.
+    _seed_prompt_template(tmp_path)
+    adapter = BusinessAgentExecutionAdapter(tmp_path)
+    contaminated = (
+        "Perfect! Now I have the pattern. Let me draft the document.\n\n"
+        "# BUSINESS_AGENT_EXECUTION\n\n"
+        "business_id: kabukicho_survival_map\n"
+        "role_id: marketing\n"
+        "task_id: auto-0009\n"
+    )
+    fake_completed = subprocess.CompletedProcess(args=["claude"], returncode=0, stdout=contaminated, stderr="")
+    with patch.object(BusinessAgentExecutionAdapter, "_run_command", return_value=fake_completed):
+        result = adapter.run(
+            business_id="text_syndicate", role_id="market_research", task_id="task-0001", approval_flag=True, dry_run=False
+        )
+    assert result.success is False
+    assert result.failure_reason == "artifact_header_leaked_into_stdout"
+
+
+def test_mismatched_task_id_line_in_stdout_is_not_success(tmp_path: Path) -> None:
+    # Same failure shape as above, but without the header marker itself --
+    # a bare "task_id: <other>" line leaking in is enough of a signal on
+    # its own.
+    _seed_prompt_template(tmp_path)
+    adapter = BusinessAgentExecutionAdapter(tmp_path)
+    contaminated = "Some generated content.\ntask_id: some-other-task\nMore content.\n"
+    fake_completed = subprocess.CompletedProcess(args=["claude"], returncode=0, stdout=contaminated, stderr="")
+    with patch.object(BusinessAgentExecutionAdapter, "_run_command", return_value=fake_completed):
+        result = adapter.run(
+            business_id="text_syndicate", role_id="market_research", task_id="task-0001", approval_flag=True, dry_run=False
+        )
+    assert result.success is False
+    assert result.failure_reason == "mismatched_task_id_in_stdout:some-other-task"
+
+
+def test_matching_task_id_line_in_stdout_still_succeeds(tmp_path: Path) -> None:
+    # A "task_id: <same id>" line is not contamination -- must not
+    # false-positive on legitimate content that happens to mention it.
+    _seed_prompt_template(tmp_path)
+    adapter = BusinessAgentExecutionAdapter(tmp_path)
+    fake_completed = subprocess.CompletedProcess(
+        args=["claude"], returncode=0, stdout="Some content.\ntask_id: task-0001\nMore content.\n", stderr=""
+    )
+    with patch.object(BusinessAgentExecutionAdapter, "_run_command", return_value=fake_completed):
+        result = adapter.run(
+            business_id="text_syndicate", role_id="market_research", task_id="task-0001", approval_flag=True, dry_run=False
+        )
+    assert result.success is True
+    assert result.failure_reason is None
+
+
 def test_nonzero_exit_still_fails_regardless_of_stdout(tmp_path: Path) -> None:
     _seed_prompt_template(tmp_path)
     adapter = BusinessAgentExecutionAdapter(tmp_path)

@@ -13,7 +13,8 @@
     "reliability_score": 3,
     "source_type": "inferred",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "セブン銀行ATM(セブン-イレブン新宿東宝ビル店)",
@@ -29,7 +30,8 @@
     "reliability_score": 3,
     "source_type": "inferred",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "セブン銀行ATM(セブン-イレブン新宿駅靖国通り店)",
@@ -45,7 +47,8 @@
     "reliability_score": 3,
     "source_type": "inferred",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "セブン銀行ATM(セブン-イレブン歌舞伎町1-26-6店)",
@@ -61,7 +64,8 @@
     "reliability_score": 3,
     "source_type": "inferred",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "セブン銀行ATM(セブン-イレブン歌舞伎町二丁目中央店)",
@@ -77,7 +81,8 @@
     "reliability_score": 3,
     "source_type": "inferred",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "セブン銀行ATM(セブン-イレブン歌舞伎町二丁目東店)",
@@ -96,6 +101,40 @@
     "verification_method": "web-search-2026-07"
   },
   {
+    "name": "ローソン銀行ATM(歌舞伎町一丁目1号機・2号機共同出張所)",
+    "lat": 35.695124,
+    "lng": 139.702457,
+    "description": "歌舞伎町1-12-6(ローソン歌舞伎町一丁目店)に併設されたローソン銀行ATM。",
+    "category": "atm",
+    "tags": [
+      "24h",
+      "convenience_colocated"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "verification_method": "lawsonbank-atm-map-2026-07",
+    "coord_verified": "verified"
+  },
+  {
+    "name": "ローソン銀行ATM(都営東新宿駅前共同出張所)",
+    "lat": 35.697641,
+    "lng": 139.707196,
+    "description": "歌舞伎町2-3-16(ローソン都営東新宿駅前店)に併設されたローソン銀行ATM。",
+    "category": "atm",
+    "tags": [
+      "24h",
+      "convenience_colocated"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "verification_method": "lawsonbank-atm-map-2026-07",
+    "coord_verified": "verified"
+  },
+  {
     "name": "三菱UFJ銀行 西武新宿駅前ATMコーナー",
     "lat": 35.6957,
     "lng": 139.6995,
@@ -108,7 +147,8 @@
     "reliability_score": 4,
     "source_type": "observed",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "三菱UFJ銀行 新宿サブナードATMコーナー",
@@ -123,7 +163,8 @@
     "reliability_score": 4,
     "source_type": "observed",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "イオン銀行ATM(ミニストップ新宿歌舞伎町店・2号機)",
@@ -139,7 +180,8 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "みずほ銀行ATM(ミニストップ新宿歌舞伎町店・1号機)",
@@ -154,7 +196,93 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
+  },
+  {
+    "name": "ATM(ミニストップ歌舞伎町二丁目店)",
+    "lat": 35.697329,
+    "lng": 139.703744,
+    "description": "歌舞伎町2-30-13のミニストップ店舗詳細ページでサービス『ATM』掲載を確認。銀行種別は公式詳細に明記されていないため未特定。",
+    "category": "atm",
+    "tags": [
+      "24h",
+      "convenience_colocated"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "verification_method": "ministop-map-detail-2026-07",
+    "coord_verified": "verified"
+  },
+  {
+    "name": "ゆうちょ銀行ATM(ファミリーマート歌舞伎町店)",
+    "lat": 35.695149,
+    "lng": 139.700688,
+    "description": "歌舞伎町1-27-1のファミリーマート店内ゆうちょ銀行ATM。ファミリーマート公式APIの設備コード(C23=7)で確認。",
+    "category": "atm",
+    "tags": [
+      "24h",
+      "convenience_colocated"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "verification_method": "familymart-store-api-c23-2026-07",
+    "coord_verified": "verified"
+  },
+  {
+    "name": "E-net ATM(ファミリーマート歌舞伎町一丁目店)",
+    "lat": 35.693617,
+    "lng": 139.702244,
+    "description": "歌舞伎町1-16-1のファミリーマート店内E-net ATM。ファミリーマート公式APIの設備コード(C23=1)で確認。",
+    "category": "atm",
+    "tags": [
+      "24h",
+      "convenience_colocated"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "verification_method": "familymart-store-api-c23-2026-07",
+    "coord_verified": "verified"
+  },
+  {
+    "name": "E-net ATM(ファミリーマート歌舞伎町北店)",
+    "lat": 35.697961,
+    "lng": 139.702747,
+    "description": "歌舞伎町2-32-7のファミリーマート店内E-net ATM。ファミリーマート公式APIの設備コード(C23=1)で確認。",
+    "category": "atm",
+    "tags": [
+      "24h",
+      "convenience_colocated"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "verification_method": "familymart-store-api-c23-2026-07",
+    "coord_verified": "verified"
+  },
+  {
+    "name": "ゆうちょ銀行ATM(ファミリーマート新宿区役所通り店)",
+    "lat": 35.695326,
+    "lng": 139.704574,
+    "description": "歌舞伎町2-10-6のファミリーマート店内ゆうちょ銀行ATM。ファミリーマート公式APIの設備コード(C23=7)で確認。",
+    "category": "atm",
+    "tags": [
+      "24h",
+      "convenience_colocated"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "verification_method": "familymart-store-api-c23-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "ゆうちょ銀行ATM(ファミリーマート新宿歌舞伎町店)",
@@ -169,7 +297,8 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "新宿歌舞伎町郵便局 ATM",
@@ -182,7 +311,8 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "新宿区役所前郵便局 ATM",
@@ -195,7 +325,8 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "SMBC信託銀行プレスティア 新宿東口支店ATM",
@@ -211,6 +342,24 @@
     "source_type": "official",
     "type": "official",
     "verification_method": "web-search-2026-07",
-    "gray_zone_note": "歌舞伎町の町丁境界外に位置していますが、外国人向け銀行サービスとして最寄りのATMのため参考掲載しています(地区内の施設ではありません)。"
+    "gray_zone_note": "歌舞伎町の町丁境界外に位置していますが、外国人向け銀行サービスとして最寄りのATMのため参考掲載しています(地区内の施設ではありません)。",
+    "coord_verified": "verified"
+  },
+  {
+    "name": "ローソン銀行ATM(新宿歌舞伎町二丁目共同出張所)",
+    "lat": 35.69667,
+    "lng": 139.703622,
+    "description": "歌舞伎町2-29-1(ローソン新宿歌舞伎町二丁目店)に併設されたローソン銀行ATM。",
+    "category": "atm",
+    "tags": [
+      "24h",
+      "convenience_colocated"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 4,
+    "source_type": "official",
+    "type": "official",
+    "verification_method": "lawsonbank-atm-map-2026-07",
+    "coord_verified": "verified"
   }
 ]

@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_root="$(git rev-parse --show-toplevel)"
+cd "${repo_root}"
+
+# Blocks commits that introduce likely-leaked credentials. This exists because
+# a Google Maps API key was previously committed via a generated
+# local.config.js file (see kabukicho_survival_map incident, 2026-07) and
+# only caught after the fact -- .gitignore alone did not prevent it.
+patterns=(
+  'AIza[0-9A-Za-z_-]{35}'                 # Google API key
+  'sk-[A-Za-z0-9]{20,}'                   # OpenAI/Anthropic-style secret key
+  'ghp_[A-Za-z0-9]{36}'                   # GitHub personal access token
+  'AKIA[0-9A-Z]{16}'                      # AWS access key ID
+  '-----BEGIN [A-Z ]*PRIVATE KEY-----'    # PEM private key block
+)
+
+staged_files="$(git diff --cached --name-only --diff-filter=ACM)"
+if [ -z "${staged_files}" ]; then
+  exit 0
+fi
+
+found=0
+while IFS= read -r file; do
+  [ -f "${file}" ] || continue
+  for pattern in "${patterns[@]}"; do
+    if git diff --cached -- "${file}" | grep -E -q "^\+.*${pattern}"; then
+      echo "pre-commit: possible secret matching /${pattern}/ in ${file}" >&2
+      found=1
+    fi
+  done
+done <<< "${staged_files}"
+
+if [ "${found}" -eq 1 ]; then
+  echo "pre-commit: refusing to commit. Remove the secret or use an env var / .env (gitignored) instead." >&2
+  echo "pre-commit: if this is a false positive, commit with --no-verify after double-checking." >&2
+  exit 1
+fi
+
+exit 0

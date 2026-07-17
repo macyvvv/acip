@@ -53,6 +53,36 @@ def _cli_failure_notice(stdout: str) -> str | None:
     return None
 
 
+# _to_markdown() below writes this exact header into every artifact's
+# latest.md, with the real task_id on the following "task_id: ..." line.
+# Observed live (kabukicho_survival_map/doc_creation/auto-0007, 2026-07-17):
+# a role's own generated stdout can contain this same header -- verbatim,
+# with a *different* task_id -- almost certainly because a past task's
+# latest.md was fed back in as prompt context and the model echoed its
+# literal template instead of treating it as background information. That
+# artifact was still recorded execution_result_status=success, indistinguishable
+# from real content by exit_code/emptiness checks alone. This is the same
+# "exit code alone is not sufficient" lesson _cli_failure_notice above exists
+# for, applied to a different failure shape.
+_ARTIFACT_HEADER_MARKER = "# BUSINESS_AGENT_EXECUTION"
+_TASK_ID_LINE_PREFIX = "task_id:"
+
+
+def _stdout_contamination_reason(stdout: str, task_id: str) -> str | None:
+    """Returns a short reason string if stdout appears to contain a leaked
+    copy of this adapter's own artifact template (this role's or another
+    task's), else None."""
+    if _ARTIFACT_HEADER_MARKER in stdout:
+        return "artifact_header_leaked_into_stdout"
+    for line in stdout.splitlines():
+        stripped = line.strip()
+        if stripped.lower().startswith(_TASK_ID_LINE_PREFIX):
+            leaked_task_id = stripped[len(_TASK_ID_LINE_PREFIX):].strip()
+            if leaked_task_id and leaked_task_id != task_id:
+                return f"mismatched_task_id_in_stdout:{leaked_task_id}"
+    return None
+
+
 @dataclass(frozen=True)
 class BusinessAgentExecutionResult:
     business_id: str
@@ -124,6 +154,8 @@ class BusinessAgentExecutionAdapter:
         # "dry-run only" stdout never matches a failure-notice pattern, so
         # this is a no-op for dry runs, not a special case.
         failure_reason = _cli_failure_notice(stdout) if not dry_run else None
+        if failure_reason is None and not dry_run:
+            failure_reason = _stdout_contamination_reason(stdout, task_id)
         success = exit_code == 0 and failure_reason is None
         result = BusinessAgentExecutionResult(
             business_id=business_id,

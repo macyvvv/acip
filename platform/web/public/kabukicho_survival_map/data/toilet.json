@@ -13,12 +13,13 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "google-maps-place-2026-07-16"
+    "verification_method": "google-maps-place-2026-07-16",
+    "coord_verified": "verified"
   },
   {
     "name": "東急歌舞伎町タワー トイレ",
-    "lat": 35.695935,
-    "lng": 139.700657,
+    "lat": 35.6963,
+    "lng": 139.7033,
     "description": "地上53階の複合施設内トイレ。ジェンダーレス設計は反発を受けて男女別に変更された経緯があり、現在も配置が変わる可能性があります。",
     "category": "toilet",
     "tags": [
@@ -26,11 +27,12 @@
       "free",
       "gender_separated"
     ],
-    "last_updated": "2026-07-11",
+    "last_updated": "2026-07-17",
     "reliability_score": 3,
     "source_type": "observed",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "coord-review-2026-07-17",
+    "coord_verified": "corrected"
   },
   {
     "name": "西武新宿駅前公衆便所",
@@ -65,7 +67,8 @@
     "source_type": "observed",
     "type": "official",
     "verification_method": "web-search-2026-07",
-    "gray_zone_note": "利用可能時間は19時頃までで、24時間ではありません。"
+    "gray_zone_note": "利用可能時間は19時頃までで、24時間ではありません。",
+    "coord_verified": "verified"
   },
   {
     "name": "Haijia(東京都健康プラザ ハイジア)1階トイレ",
@@ -117,12 +120,13 @@
     "reliability_score": 4,
     "source_type": "observed",
     "type": "official",
-    "verification_method": "google-maps-place-2026-07-16"
+    "verification_method": "google-maps-place-2026-07-16",
+    "coord_verified": "verified"
   },
   {
     "name": "東急歌舞伎町タワー 2階トイレ",
-    "lat": 35.695935,
-    "lng": 139.700657,
+    "lat": 35.6963,
+    "lng": 139.7033,
     "description": "2023年の改装で男女別に変更された商業施設内トイレ(元はジェンダーレス設計で反発を受け約4ヶ月で廃止)。",
     "category": "toilet",
     "tags": [
@@ -130,12 +134,13 @@
       "clean",
       "gender_separated"
     ],
-    "last_updated": "2026-07-11",
+    "last_updated": "2026-07-17",
     "reliability_score": 3,
     "source_type": "observed",
     "type": "unofficial",
-    "verification_method": "web-search-2026-07",
-    "gray_zone_note": "施設の営業時間内のみで24時間ではありません。時間帯によって利用条件が異なる場合があります。"
+    "verification_method": "coord-review-2026-07-17",
+    "gray_zone_note": "施設の営業時間内のみで24時間ではありません。時間帯によって利用条件が異なる場合があります。",
+    "coord_verified": "corrected"
   },
   {
     "name": "TOHOシネマズ新宿 3階トイレ",

@@ -1,22 +1,124 @@
 (function () {
   "use strict";
 
+  // Two-letter language codes only (ja/en) -- kept minimal per this
+  // product's "no over-engineering" constraint (issue #33). See setLanguage()
+  // below for how this is chosen/persisted, and tr() for how {ja,en} objects
+  // throughout this file (CATEGORIES/MODES/TAG_COPY labels, FAQ_ITEMS, and
+  // inline literal strings) get resolved to a display string. Named tr(),
+  // not the shorter t(), because `t` is already this file's established
+  // parameter name for "tag" in many filter closures (e.g. `function (t) {
+  // return state.activeFilters[t]; }`) -- reusing it for translation would
+  // silently shadow those and risk a "t is not a function" bug the moment
+  // someone adds a translated string inside one of those closures.
+  var CURRENT_LANG = "ja";
+
+  // Resolves a {ja,en} object to the current language's string. Plain
+  // strings (and null/undefined, used for e.g. MODES[0].emptyStateMessage)
+  // pass through unchanged, so call sites that haven't been translated yet
+  // never break.
+  function tr(value) {
+    if (value === null || typeof value === "undefined" || typeof value === "string") return value;
+    return value[CURRENT_LANG] || value.ja || value.en || "";
+  }
+
+  var LANG_STORAGE_KEY = "kabukicho_lang";
+  var PAGE_TITLE = {
+    ja: "歌舞伎町サバイバルマップ | 喫煙所・トイレ・ロッカー・宿泊情報",
+    en: "Kabukicho Survival Map: Smoking Areas, Toilets, Lockers & Lodging"
+  };
+  var PAGE_DESCRIPTION = {
+    ja: "歌舞伎町の喫煙所・トイレ・ATM・コインロッカー・宿泊施設を状況別にすぐ探せる地図。信頼度・最終確認日つきのPOI情報をスマホで手早く確認できます。",
+    en: "Find smoking areas, public toilets, ATMs, coin lockers, and affordable lodging in Kabukicho. Mobile-first map with verified POI details and freshness badges."
+  };
+  var PAGE_HEADING = { ja: "歌舞伎町サバイバルマップ", en: "Kabukicho Survival Map" };
+  var PAGE_SUBTITLE = { ja: "近くで今使える場所を、状況別にすばやく探す", en: "Quickly find what you need nearby, by situation" };
+  var CONTROLS_TOGGLE_LABEL = { ja: "条件", en: "Filters" };
+
+  // Detects a stored preference first (an explicit prior choice always
+  // wins), then falls back to the device's own language -- a tourist whose
+  // phone is set to English gets an English UI on first visit without
+  // having to find the toggle.
+  function detectInitialLang() {
+    if (typeof window !== "undefined" && window.localStorage) {
+      try {
+        var stored = window.localStorage.getItem(LANG_STORAGE_KEY);
+        if (stored === "ja" || stored === "en") return stored;
+      } catch (error) {
+        // Storage can fail in private mode or quota pressure -- fall through.
+      }
+    }
+    if (typeof navigator !== "undefined" && navigator.language) {
+      return navigator.language.toLowerCase().indexOf("ja") === 0 ? "ja" : "en";
+    }
+    return "ja";
+  }
+
+  // Updates every static/chrome element that depends on CURRENT_LANG but
+  // isn't already covered by the regular render* functions -- <title>,
+  // meta description, h1/subtitle, the controls-toggle label, and the
+  // toggle button's own text. Split out from setLanguage() so the initial
+  // DOMContentLoaded pass can apply the detected language once, cheaply,
+  // before the first real render (instead of running a full re-render
+  // immediately followed by another one).
+  function applyLanguageChrome() {
+    if (typeof document === "undefined") return;
+    document.documentElement.lang = CURRENT_LANG;
+    document.title = tr(PAGE_TITLE);
+    var descriptionTag = document.getElementById("page-description");
+    if (descriptionTag) descriptionTag.setAttribute("content", tr(PAGE_DESCRIPTION));
+    var headingEl = document.getElementById("page-heading");
+    if (headingEl) headingEl.textContent = tr(PAGE_HEADING);
+    var subtitleEl = document.getElementById("page-subtitle");
+    if (subtitleEl) subtitleEl.textContent = tr(PAGE_SUBTITLE);
+    var controlsToggleLabelEl = document.getElementById("controls-toggle-label");
+    if (controlsToggleLabelEl) controlsToggleLabelEl.textContent = tr(CONTROLS_TOGGLE_LABEL);
+    var langToggle = document.getElementById("lang-toggle");
+    if (langToggle) {
+      langToggle.textContent = CURRENT_LANG === "ja" ? "EN" : "日本語";
+      langToggle.setAttribute("aria-label", CURRENT_LANG === "ja" ? "Switch to English" : "日本語に切り替え");
+    }
+  }
+
+  function setLanguage(lang) {
+    CURRENT_LANG = lang === "en" ? "en" : "ja";
+    if (typeof window !== "undefined" && window.localStorage) {
+      try {
+        window.localStorage.setItem(LANG_STORAGE_KEY, CURRENT_LANG);
+      } catch (error) {
+        // Storage can fail in private mode or quota pressure -- non-fatal.
+      }
+    }
+    if (typeof document === "undefined") return;
+
+    applyLanguageChrome();
+    renderModeBar();
+    renderNav();
+    renderFilterBar();
+    renderList();
+    renderMarkers();
+    renderFaq();
+    renderCurrentContext(getCurrentVisiblePois(), (state.data[state.activeCategory] || []).length, getAggregateLoadFailures(getModeDefinition(state.activeMode)));
+  }
+
   // Category order matches doc_creation/task-0001-seo-copy's recommended
   // sort: by frequency/urgency, not alphabetically.
   var CATEGORIES = [
-    { id: "convenience", file: "convenience.json", label: "コンビニ", icon: "🏪", subtitle: "24/7 services" },
-    { id: "smoking", file: "smoking.json", label: "喫煙所", icon: "🚬", subtitle: "Designated smoking zones" },
-    { id: "toilet", file: "toilet.json", label: "トイレ", icon: "🚻", subtitle: "Public restrooms" },
-    { id: "atm", file: "atm.json", label: "ATM・両替", icon: "💳", subtitle: "Cash withdrawal & exchange" },
-    { id: "coin_locker", file: "coin_locker.json", label: "コインロッカー", icon: "🧳", subtitle: "Luggage storage" },
-    { id: "lodging", file: "lodging.json", label: "宿泊・ネット", icon: "🏨", subtitle: "Overnight & day-use facilities" }
+    { id: "convenience", file: "convenience.json", label: { ja: "コンビニ", en: "Convenience Store" }, icon: "🏪", subtitle: "24/7 services" },
+    { id: "smoking", file: "smoking.json", label: { ja: "喫煙所", en: "Smoking Area" }, icon: "🚬", subtitle: "Designated smoking zones" },
+    { id: "toilet", file: "toilet.json", label: { ja: "トイレ", en: "Toilet" }, icon: "🚻", subtitle: "Public restrooms" },
+    { id: "atm", file: "atm.json", label: { ja: "ATM・両替", en: "ATM / Exchange" }, icon: "💳", subtitle: "Cash withdrawal & exchange" },
+    { id: "coin_locker", file: "coin_locker.json", label: { ja: "コインロッカー", en: "Coin Locker" }, icon: "🧳", subtitle: "Luggage storage" },
+    { id: "lodging", file: "lodging.json", label: { ja: "宿泊・ネカフェ", en: "Lodging / Net Cafe" }, icon: "🏨", subtitle: "Overnight & day-use facilities" },
+    { id: "karaoke", file: "karaoke.json", label: { ja: "カラオケ", en: "Karaoke" }, icon: "🎤", subtitle: "Karaoke boxes" },
+    { id: "shisha_bar", file: "shisha_bar.json", label: { ja: "シーシャバー", en: "Shisha Bar" }, icon: "💨", subtitle: "Shisha / hookah bars" }
   ];
 
   var MODES = [
     {
       id: "nearby",
-      label: "近くで探す",
-      copy: "カテゴリ別に通常探索",
+      label: { ja: "近くで探す", en: "Nearby" },
+      copy: { ja: "カテゴリ別に通常探索", en: "Browse by category" },
       targetCategories: CATEGORIES.map(function (cat) { return cat.id; }),
       aggregateCategories: false,
       preferredTags: [],
@@ -24,46 +126,67 @@
       categoryBoosts: {},
       sortStrategy: ["distance", "freshness"],
       emptyStateMessage: null,
-      summary: "現在地に近い順を基本に、カテゴリごとに通常の地図探索ができます。"
+      summary: {
+        ja: "現在地に近い順を基本に、カテゴリごとに通常の地図探索ができます。",
+        en: "Sorted by distance from you, with normal category-by-category browsing."
+      }
     },
     {
       id: "late_night",
-      label: "朝まで過ごす",
-      copy: "終電後の避難導線",
-      targetCategories: ["lodging", "convenience", "toilet", "atm", "coin_locker"],
+      label: { ja: "朝まで過ごす", en: "Until Morning" },
+      copy: { ja: "終電後の避難導線", en: "After the last train" },
+      targetCategories: ["lodging", "convenience", "toilet", "karaoke", "shisha_bar"],
       aggregateCategories: true,
-      preferredTags: ["24h", "overnight_friendly", "shower_available", "suitcase_ok", "large"],
+      preferredTags: ["24h", "overnight_friendly", "shower_available", "free_drink_bar", "group_friendly"],
       negativeTags: [],
-      categoryBoosts: { lodging: 5, convenience: 2, toilet: 1, atm: 1, coin_locker: 1 },
+      categoryBoosts: { lodging: 5, convenience: 2, toilet: 1, karaoke: 3, shisha_bar: 2 },
       sortStrategy: ["distance", "modeScore", "freshness", "reliability"],
-      emptyStateMessage: "朝まで向きの候補が見つかりませんでした。宿泊・ネットかコンビニを個別に確認してください。",
-      summary: "終電後に必要な宿泊・休憩・現金・荷物導線をまとめて、朝までしのげる候補を優先します。"
+      emptyStateMessage: {
+        ja: "朝まで向きの候補が見つかりませんでした。宿泊・ネカフェかコンビニを個別に確認してください。",
+        en: "No good options found for staying until morning. Try checking Lodging or Convenience Store individually."
+      },
+      summary: {
+        ja: "終電後に必要な宿泊・休憩・時間つぶし導線をまとめて、朝までしのげる候補を優先します。",
+        en: "Prioritizes lodging, rest, and time-killing options you'd need to make it through until morning."
+      }
     },
     {
       id: "toilet_now",
-      label: "トイレ急ぎ",
-      copy: "近くて使いやすい順",
+      label: { ja: "トイレ急ぎ", en: "Toilet Now" },
+      copy: { ja: "近くて使いやすい順", en: "Nearest & easiest" },
       targetCategories: ["toilet"],
       aggregateCategories: false,
       preferredTags: ["24h", "free", "clean", "gender_separated"],
       negativeTags: ["dirty", "long_wait"],
       categoryBoosts: { toilet: 4 },
       sortStrategy: ["distance", "modeScore", "freshness"],
-      emptyStateMessage: "近くで使いやすいトイレが見つかりませんでした。通常のトイレ一覧に切り替えて探してください。",
-      summary: "いま一番早く使えそうなトイレを、距離と使いやすさで優先表示します。"
+      emptyStateMessage: {
+        ja: "近くで使いやすいトイレが見つかりませんでした。通常のトイレ一覧に切り替えて探してください。",
+        en: "No easy-to-use toilet found nearby. Try switching to the normal Toilet list."
+      },
+      summary: {
+        ja: "いま一番早く使えそうなトイレを、距離と使いやすさで優先表示します。",
+        en: "Prioritizes the toilet you can use soonest, by distance and ease of use."
+      }
     },
     {
       id: "smoking_now",
-      label: "今吸える場所",
-      copy: "使いやすさ優先",
+      label: { ja: "今吸える場所", en: "Smoke Now" },
+      copy: { ja: "使いやすさ優先", en: "Easiest first" },
       targetCategories: ["smoking"],
       aggregateCategories: false,
       preferredTags: ["indoor", "24h", "rain_ok"],
       negativeTags: ["crowded", "hidden", "unsafe"],
       categoryBoosts: { smoking: 4 },
       sortStrategy: ["distance", "modeScore", "freshness", "reliability"],
-      emptyStateMessage: "近くで使いやすい喫煙所が見つかりませんでした。通常の喫煙所一覧で候補を広げてください。",
-      summary: "近さに加えて、屋内・24時間・混雑しにくさを加味して、現実的に使える喫煙所を優先します。"
+      emptyStateMessage: {
+        ja: "近くで使いやすい喫煙所が見つかりませんでした。通常の喫煙所一覧で候補を広げてください。",
+        en: "No easy-to-use smoking area found nearby. Try the normal Smoking Area list for more options."
+      },
+      summary: {
+        ja: "近さに加えて、屋内・24時間・混雑しにくさを加味して、現実的に使える喫煙所を優先します。",
+        en: "Prioritizes distance plus indoor, 24h, and low-crowding, for a smoking area you can actually use."
+      }
     }
   ];
 
@@ -71,41 +194,59 @@
   // <=50 chars, meant to render as a single-line chip caption.
   var TAG_COPY = {
     smoking: {
-      indoor: "屋内",
-      outdoor: "屋外",
-      rain_ok: "雨OK",
-      crowded: "混雑",
-      hidden: "見つけにくい",
-      unsafe: "注意",
-      "24h": "24h"
+      indoor: { ja: "屋内", en: "Indoor" },
+      outdoor: { ja: "屋外", en: "Outdoor" },
+      rain_ok: { ja: "雨OK", en: "Rain OK" },
+      crowded: { ja: "混雑", en: "Crowded" },
+      hidden: { ja: "見つけにくい", en: "Hard to find" },
+      unsafe: { ja: "注意", en: "Caution" },
+      "24h": { ja: "24h", en: "24h" }
     },
     toilet: {
-      clean: "清潔",
-      dirty: "汚れ",
-      free: "無料",
-      long_wait: "待ち",
-      gender_separated: "男女別",
-      "24h": "24h"
+      clean: { ja: "清潔", en: "Clean" },
+      dirty: { ja: "汚れ", en: "Dirty" },
+      free: { ja: "無料", en: "Free" },
+      long_wait: { ja: "待ち", en: "Wait" },
+      gender_separated: { ja: "男女別", en: "Gender-separated" },
+      "24h": { ja: "24h", en: "24h" }
     },
     coin_locker: {
-      small: "小型",
-      medium: "中型",
-      large: "大型",
-      suitcase_ok: "スーツケース可",
-      suitcase_too_big: "大型不可",
-      "24h": "24h"
+      small: { ja: "小型", en: "Small" },
+      medium: { ja: "中型", en: "Medium" },
+      large: { ja: "大型", en: "Large" },
+      suitcase_ok: { ja: "スーツケース可", en: "Suitcase OK" },
+      suitcase_too_big: { ja: "大型不可", en: "No large luggage" },
+      "24h": { ja: "24h", en: "24h" }
     },
     lodging: {
-      shower_available: "シャワーあり",
-      no_shower: "シャワーなし",
-      price_band_budget: "予算",
-      price_band_mid: "標準",
-      price_band_high: "高価格",
-      "24h": "24h",
-      overnight_friendly: "深夜対応"
+      shower_available: { ja: "シャワーあり", en: "Shower available" },
+      no_shower: { ja: "シャワーなし", en: "No shower" },
+      price_band_budget: { ja: "予算", en: "Budget" },
+      price_band_mid: { ja: "標準", en: "Mid-range" },
+      price_band_high: { ja: "高価格", en: "High-end" },
+      "24h": { ja: "24h", en: "24h" },
+      overnight_friendly: { ja: "深夜対応", en: "Overnight-friendly" }
     },
-    convenience: { "24h": "24h", atm_instore: "ATM併設", phone_charging: "充電可" },
-    atm: { "24h": "24h", international_card_ok: "海外カード" }
+    convenience: {
+      "24h": { ja: "24h", en: "24h" },
+      atm_instore: { ja: "ATM併設", en: "ATM inside" },
+      phone_charging: { ja: "充電可", en: "Charging available" }
+    },
+    atm: {
+      "24h": { ja: "24h", en: "24h" },
+      international_card_ok: { ja: "海外カード", en: "Intl. cards OK" },
+      convenience_colocated: { ja: "コンビニ併設", en: "Inside convenience store" }
+    },
+    karaoke: {
+      "24h": { ja: "24h", en: "24h" },
+      free_drink_bar: { ja: "フリードリンク", en: "Free drink bar" },
+      one_person_ok: { ja: "一人カラオケ可", en: "Solo-friendly" }
+    },
+    shisha_bar: {
+      "24h": { ja: "24h", en: "24h" },
+      group_friendly: { ja: "グループ向け", en: "Group-friendly" },
+      reservation_recommended: { ja: "予約推奨", en: "Reservation recommended" }
+    }
   };
 
   var NON_FILTER_TAG_IDS = {
@@ -116,16 +257,94 @@
   };
 
   var NONE_FILTER_TAG_ID = "__none__";
+  var SMOKING_UNOFFICIAL_TOGGLE_ID = "__smoking_unofficial__";
 
   var DISCLAIMER_JA = "⚠ 非公式情報・内容は変更される場合があります・ご利用は自己責任でお願いします";
   var DISCLAIMER_EN = "⚠ Unofficial Information / Subject to change / Use at your own risk";
 
+  var FILTER_NONE_LABEL = { ja: "条件指定なし", en: "No filter" };
+  var INCLUDE_UNOFFICIAL_LABEL = { ja: "非公式導線を含む", en: "Include unofficial spots" };
+  var ALL_CATEGORIES_LABEL = { ja: "まとめ", en: "All" };
+  var FAQ_HEADING = { ja: "よくある質問", en: "Frequently Asked Questions" };
+
+  // Mirrors build.py's FAQ_ITEMS (same questions/answers) -- that copy is
+  // the SSG version a non-JS crawler sees (always Japanese); this one is
+  // what renderFaq() below swaps in once JS runs, same "JS takes over
+  // after SSG paints" pattern renderList() already uses for #poi-list.
+  // Keep both in sync by hand; there is no shared source of truth between
+  // the Python and JS builds (same tradeoff as CATEGORIES vs build.py's
+  // own category list, see build.py's own comment on that).
+  var FAQ_ITEMS = [
+    {
+      ja: {
+        q: "歌舞伎町に無料の喫煙所はありますか？",
+        a: "はい。本サイトのデータは「無料で使える屋外の指定喫煙所」のみを喫煙所カテゴリに掲載しています(店舗内の喫煙可能スペースは含みません)。カテゴリ「喫煙所」からタップ1つで一覧を確認できます。"
+      },
+      en: {
+        q: "Are there free smoking areas in Kabukicho?",
+        a: "Yes. This site's smoking category only lists free, outdoor designated smoking areas (not in-store smoking spaces). Tap the \"Smoking Area\" category to see the list."
+      }
+    },
+    {
+      ja: {
+        q: "歌舞伎町のトイレは無料で使えますか？",
+        a: "掲載しているトイレの多くは無料の公共トイレですが、施設ごとに条件が異なる場合があります。各POIカードのタグ(free/clean/gender_separatedなど)で個別に確認してください。"
+      },
+      en: {
+        q: "Are the toilets in Kabukicho free to use?",
+        a: "Most listed toilets are free public toilets, but conditions vary by facility. Check each listing's tags (free/clean/gender-separated, etc.) individually."
+      }
+    },
+    {
+      ja: {
+        q: "深夜でも使えるコインロッカーはありますか？",
+        a: "「24h」タグが付いているコインロッカー・コンビニ・ATMは24時間利用可能です。カテゴリ内でタグ絞り込みを使うと深夜対応の施設だけに絞れます。"
+      },
+      en: {
+        q: "Are there coin lockers usable late at night?",
+        a: "Coin lockers, convenience stores, and ATMs tagged \"24h\" are available around the clock. Use the tag filter within a category to narrow down to overnight-friendly spots only."
+      }
+    },
+    {
+      ja: {
+        q: "掲載されている情報はどのくらい新しいですか？",
+        a: "各POIには最終確認日(last_updated)と信頼度スコアがあり、8日から1ヶ月以内に確認された情報には更新目安バッジ、1ヶ月以上確認されていない情報には注意バッジが付きます。"
+      },
+      en: {
+        q: "How up to date is the listed information?",
+        a: "Each listing has a last-checked date and a reliability score. Info checked 8-30 days ago gets a freshness badge, and info not checked for over a month gets a caution badge."
+      }
+    },
+    {
+      ja: {
+        q: "非公式(グレーゾーン)の情報とは何ですか？",
+        a: "風俗営業関連施設など、公式な出典で裏付けが取りにくい場所には「⚠ 非公式情報」の注意書きを表示しています。利用は自己責任でお願いします。"
+      },
+      en: {
+        q: "What does \"unofficial\" (gray-zone) information mean?",
+        a: "Places that are hard to verify from official sources (e.g. adult-entertainment-adjacent venues) are shown with an \"⚠ Unofficial Information\" warning. Use at your own risk."
+      }
+    }
+  ];
+
+  function faqHtml() {
+    var itemsHtml = FAQ_ITEMS.map(function (item) {
+      var entry = item[CURRENT_LANG] || item.ja;
+      return "<details><summary>" + escapeHtml(entry.q) + "</summary><p>" + escapeHtml(entry.a) + "</p></details>";
+    }).join("");
+    return "<h2>" + escapeHtml(tr(FAQ_HEADING)) + "</h2>" + itemsHtml;
+  }
+
+  function renderFaq() {
+    if (typeof document === "undefined") return;
+    var section = document.getElementById("faq-section");
+    if (!section) return;
+    section.innerHTML = faqHtml();
+  }
+
   // Kabukicho's approximate centroid -- used as the map's default center
   // before (or in place of) a real geolocation fix.
   var KABUKICHO_CENTER = { lat: 35.6949, lng: 139.7028 };
-  var REFINED_POSITION_CACHE_KEY = "kabukicho_refined_positions_v2";
-  var MAX_ACCEPTABLE_GEOCODE_DRIFT_METERS = 600;
-  var ENABLE_RUNTIME_REFINEMENT = false;
 
   var state = {
     activeMode: MODES[0].id,
@@ -150,15 +369,11 @@
     // (TAG_COPY[categoryId]); carrying a filter across categories would
     // silently no-op or, worse, coincidentally match an unrelated tag.
     activeFilters: {},
+    includeUnofficialSmoking: false,
     expandedCardKey: null,
     controlsOpen: false,
     focusedPoiKey: null,
-    mapFailureReason: "loading",
-    geocoder: null,
-    refinedPositions: {},
-    skippedRefinements: {},
-    refineInFlight: false,
-    refineQueue: []
+    mapFailureReason: "loading"
   };
 
   var MODE_ALL_CATEGORY_ID = "__mode_all__";
@@ -227,10 +442,17 @@
   }
 
   function passesActiveFilters(poi) {
+    if (poi && poi.category === "smoking" && poi.type === "unofficial" && !state.includeUnofficialSmoking) {
+      return false;
+    }
     var activeTags = Object.keys(state.activeFilters).filter(function (t) { return state.activeFilters[t]; });
     if (!activeTags.length) return true;
     var tags = poi.tags || [];
     return activeTags.every(function (t) { return tags.indexOf(t) !== -1; });
+  }
+
+  function isSmokingCategoryActive() {
+    return state.activeCategory === "smoking";
   }
 
   function getFilteredPois(categoryId) {
@@ -276,22 +498,43 @@
       return;
     }
 
-    var overlayMaxByMode = {
-      nearby: "72dvh",
-      toilet_now: "76dvh",
-      smoking_now: "76dvh",
-      late_night: "80dvh"
-    };
-
     panel.style.setProperty("transform", "translateY(0)");
     panel.style.setProperty("opacity", "1");
-    panel.style.setProperty("pointer-events", "auto", "important");
-    panel.style.setProperty("max-height", "84px", "important");
+    panel.style.setProperty("pointer-events", "auto");
+    panel.style.setProperty("max-height", "84px");
+  }
 
-    if (overlay) {
-      var overlayMax = overlayMaxByMode[state.activeMode] || "74dvh";
-      overlay.style.setProperty("max-height", overlayMax, "important");
-      overlay.style.setProperty("overflow", "visible", "important");
+  // Focus trap state for the mobile control-panel modal. Desktop shows the
+  // same panel inline (not as a modal -- see style.css's 1024px breakpoint),
+  // so the trap and aria-modal flag only ever activate when isMobileViewport().
+  var controlsFocusTrigger = null;
+
+  function getFocusableElements(container) {
+    if (!container) return [];
+    var selector = 'a[href], button:not([disabled]), input:not([disabled]), ' +
+      'select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    return Array.prototype.slice.call(container.querySelectorAll(selector)).filter(function (el) {
+      return !el.hidden && el.offsetParent !== null;
+    });
+  }
+
+  function handleControlsPanelKeydown(event) {
+    if (event.key === "Escape" || event.keyCode === 27) {
+      setControlsOpen(false);
+      return;
+    }
+    if (event.key !== "Tab" && event.keyCode !== 9) return;
+    var panel = document.getElementById("control-panel");
+    var focusable = getFocusableElements(panel);
+    if (!focusable.length) return;
+    var first = focusable[0];
+    var last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
     }
   }
 
@@ -300,6 +543,23 @@
     if (typeof document === "undefined") return;
 
     document.body.classList.toggle("controls-open", state.controlsOpen);
+
+    var mapPane = document.getElementById("map-pane");
+    if (mapPane) {
+      if (state.controlsOpen) {
+        mapPane.style.zIndex = "1";
+        mapPane.style.pointerEvents = "none";
+        mapPane.style.visibility = "hidden";
+        mapPane.style.opacity = "0";
+        mapPane.style.filter = "saturate(0.55) blur(0.8px)";
+      } else {
+        mapPane.style.removeProperty("z-index");
+        mapPane.style.removeProperty("pointer-events");
+        mapPane.style.removeProperty("visibility");
+        mapPane.style.removeProperty("opacity");
+        mapPane.style.removeProperty("filter");
+      }
+    }
 
     var backdrop = document.getElementById("controls-backdrop");
     if (backdrop) backdrop.hidden = !state.controlsOpen;
@@ -311,9 +571,31 @@
 
     var close = document.getElementById("controls-close");
     if (close) {
-      var label = state.controlsOpen ? "閉じる" : "開く";
+      var label = tr(state.controlsOpen ? { ja: "閉じる", en: "Close" } : { ja: "開く", en: "Open" });
       close.textContent = label;
-      close.setAttribute("aria-label", "条件パネルを" + label);
+      close.setAttribute("aria-label", tr({ ja: "条件パネルを" + label, en: "Filter panel: " + label }));
+    }
+
+    var panel = document.getElementById("control-panel");
+    var isModalContext = isMobileViewport();
+    if (panel) panel.setAttribute("aria-modal", isModalContext && state.controlsOpen ? "true" : "false");
+
+    if (isModalContext) {
+      if (state.controlsOpen) {
+        controlsFocusTrigger = document.activeElement;
+        document.addEventListener("keydown", handleControlsPanelKeydown, true);
+        setTimeout(function () {
+          var focusable = getFocusableElements(panel);
+          if (focusable.length) focusable[0].focus();
+          else if (panel) panel.focus();
+        }, 0);
+      } else {
+        document.removeEventListener("keydown", handleControlsPanelKeydown, true);
+        if (controlsFocusTrigger && typeof controlsFocusTrigger.focus === "function") {
+          controlsFocusTrigger.focus();
+        }
+        controlsFocusTrigger = null;
+      }
     }
 
     syncDesktopControlsInlineState();
@@ -328,6 +610,7 @@
     renderList();
     renderMarkers();
     setControlsOpen(false);
+    scrollListToTop();
     trackClick({
       ui_area: "panel_controls",
       ui_action: "filter_apply",
@@ -346,12 +629,16 @@
     return mode.targetCategories.filter(function (categoryId) { return state.loadFailed[categoryId]; });
   }
 
+  function countUnit(n) {
+    return tr({ ja: n + "件", en: n + (n === 1 ? " place" : " places") });
+  }
+
   function getVisibleCountLabel(pois, totalInCategory) {
-    if (!pois.length) return "0件";
+    if (!pois.length) return countUnit(0);
     if (Object.keys(state.activeFilters).some(function (t) { return state.activeFilters[t]; })) {
-      return pois.length + " / " + totalInCategory + "件";
+      return pois.length + " / " + countUnit(totalInCategory);
     }
-    return pois.length + "件";
+    return countUnit(pois.length);
   }
 
   function hasActiveFilterSelections() {
@@ -387,8 +674,6 @@
   }
 
   function refinedPoiPosition(poi) {
-    var key = getPoiKey(poi);
-    if (state.refinedPositions[key]) return state.refinedPositions[key];
     return rawPoiPosition(poi);
   }
 
@@ -421,15 +706,14 @@
     var updated = new Date(lastUpdated);
     var now = new Date();
     var days = Math.floor((now - updated) / (1000 * 60 * 60 * 24));
-    if (days <= 7) return { cls: "freshness-recent", text: "✓ 最近更新されました" };
-    if (days <= 30) return { cls: "freshness-month", text: "✓✓ 1ヶ月以内に確認" };
-    return { cls: "freshness-stale", text: "⚠ 情報が古い可能性あり" };
+    if (days <= 7) return null;
+    if (days <= 30) return { cls: "freshness-month", text: { ja: "1ヶ月以内に確認", en: "Checked within 1 month" } };
+    return { cls: "freshness-stale", text: { ja: "⚠ 情報が古い可能性あり", en: "⚠ Info may be outdated" } };
   }
 
   function freshnessWeight(lastUpdated) {
     var fresh = freshnessBadge(lastUpdated);
     if (!fresh) return 0;
-    if (fresh.cls === "freshness-recent") return 3;
     if (fresh.cls === "freshness-month") return 2;
     return 1;
   }
@@ -445,193 +729,6 @@
       list.forEach(function (poi) { all.push(poi); });
     });
     return all;
-  }
-
-  function loadRefinedPositionCache() {
-    if (typeof window === "undefined" || !window.localStorage) return;
-    try {
-      var raw = window.localStorage.getItem(REFINED_POSITION_CACHE_KEY);
-      if (!raw) return;
-      var parsed = JSON.parse(raw);
-      if (!parsed || typeof parsed !== "object") return;
-      Object.keys(parsed).forEach(function (key) {
-        var item = parsed[key] || {};
-        var lat = toFiniteNumber(item.lat);
-        var lng = toFiniteNumber(item.lng);
-        if (lat === null || lng === null) return;
-        state.refinedPositions[key] = { lat: lat, lng: lng };
-      });
-    } catch (error) {
-      // Ignore invalid cache contents.
-    }
-  }
-
-  function saveRefinedPositionCache() {
-    if (typeof window === "undefined" || !window.localStorage) return;
-    try {
-      window.localStorage.setItem(REFINED_POSITION_CACHE_KEY, JSON.stringify(state.refinedPositions));
-    } catch (error) {
-      // Storage can fail in private mode or quota pressure.
-    }
-  }
-
-  function scoreLocationType(type) {
-    if (type === "ROOFTOP") return 120;
-    if (type === "RANGE_INTERPOLATED") return 80;
-    if (type === "GEOMETRIC_CENTER") return 40;
-    return 10;
-  }
-
-  function extractAddressHints(poi) {
-    var hints = [];
-    var body = [poi.name || "", poi.description || "", poi.gray_zone_note || ""].join(" ");
-    var regex = /(?:東京都)?新宿区[^。\n,、]{0,40}\d{1,3}-\d{1,3}(?:-\d{1,3})?/g;
-    var match;
-    while ((match = regex.exec(body)) !== null) {
-      var hint = (match[0] || "").trim();
-      if (hint && hints.indexOf(hint) === -1) hints.push(hint);
-    }
-    return hints;
-  }
-
-  function buildGeocodeQueries(poi) {
-    var queries = [];
-    var hints = extractAddressHints(poi);
-    hints.forEach(function (hint) {
-      queries.push((poi.name || "") + " " + hint);
-      queries.push(hint);
-    });
-    queries.push((poi.name || "") + " 東京都新宿区歌舞伎町");
-    queries.push((poi.name || "") + " 新宿");
-    queries.push((poi.name || "") + " Kabukicho");
-
-    return queries
-      .map(function (q) { return q.replace(/\s+/g, " ").trim(); })
-      .filter(function (q, idx, arr) { return q && arr.indexOf(q) === idx; })
-      .slice(0, 5);
-  }
-
-  function scoreGeocodeResult(result, original) {
-    if (!result || !result.geometry || !result.geometry.location) return null;
-    var pos = {
-      lat: result.geometry.location.lat(),
-      lng: result.geometry.location.lng()
-    };
-    var drift = haversineDistanceMeters(original.lat, original.lng, pos.lat, pos.lng);
-    if (drift > MAX_ACCEPTABLE_GEOCODE_DRIFT_METERS) return null;
-
-    var addr = (result.formatted_address || "") + " " + ((result.address_components || []).map(function (c) {
-      return c.long_name || "";
-    }).join(" "));
-    var inShinjuku = addr.indexOf("新宿") !== -1 || addr.toLowerCase().indexOf("shinjuku") !== -1;
-
-    var score = 1000 - drift;
-    score += scoreLocationType(result.geometry.location_type || "");
-    if (inShinjuku) score += 90;
-    if (result.partial_match) score -= 120;
-
-    return {
-      position: pos,
-      score: score
-    };
-  }
-
-  function geocodePoiWithQueries(poi, done) {
-    if (!state.geocoder) {
-      done(false);
-      return;
-    }
-    var key = getPoiKey(poi);
-    var original = rawPoiPosition(poi);
-    if (!original) {
-      state.skippedRefinements[key] = true;
-      done(false);
-      return;
-    }
-
-    var queries = buildGeocodeQueries(poi);
-    var best = null;
-    var idx = 0;
-    var searchBounds = new google.maps.LatLngBounds(
-      { lat: KABUKICHO_CENTER.lat - 0.025, lng: KABUKICHO_CENTER.lng - 0.025 },
-      { lat: KABUKICHO_CENTER.lat + 0.025, lng: KABUKICHO_CENTER.lng + 0.025 }
-    );
-
-    function runNextQuery() {
-      if (idx >= queries.length) {
-        if (!best) {
-          state.skippedRefinements[key] = true;
-          done(false);
-          return;
-        }
-        state.refinedPositions[key] = best.position;
-        saveRefinedPositionCache();
-        done(true);
-        return;
-      }
-
-      var q = queries[idx];
-      idx += 1;
-      state.geocoder.geocode(
-        { address: q, region: "JP", bounds: searchBounds },
-        function (results, status) {
-          if (status === "OK" && results && results.length) {
-            results.slice(0, 4).forEach(function (result) {
-              var scored = scoreGeocodeResult(result, original);
-              if (!scored) return;
-              if (!best || scored.score > best.score) best = scored;
-            });
-          }
-          runNextQuery();
-        }
-      );
-    }
-
-    runNextQuery();
-  }
-
-  function findPoiByKey(key) {
-    var all = getAllPoisFlat();
-    for (var i = 0; i < all.length; i += 1) {
-      if (getPoiKey(all[i]) === key) return all[i];
-    }
-    return null;
-  }
-
-  function scheduleRefinementQueue() {
-    if (!ENABLE_RUNTIME_REFINEMENT) return;
-    if (state.refineInFlight || !state.geocoder || !state.refineQueue.length) return;
-    var nextKey = state.refineQueue.shift();
-    var poi = findPoiByKey(nextKey);
-    if (!poi) {
-      scheduleRefinementQueue();
-      return;
-    }
-
-    state.refineInFlight = true;
-    geocodePoiWithQueries(poi, function (updated) {
-      state.refineInFlight = false;
-      if (updated) {
-        renderMarkers();
-        renderList();
-        if (!state.map) renderMapFallback(state.mapFailureReason || "loading");
-      }
-      if (state.refineQueue.length) {
-        setTimeout(function () { scheduleRefinementQueue(); }, 180);
-      }
-    });
-  }
-
-  function enqueueRefinementForPois(pois) {
-    if (!ENABLE_RUNTIME_REFINEMENT) return;
-    if (!pois || !pois.length) return;
-    pois.forEach(function (poi) {
-      var key = getPoiKey(poi);
-      if (state.refinedPositions[key] || state.skippedRefinements[key]) return;
-      if (state.refineQueue.indexOf(key) !== -1) return;
-      state.refineQueue.push(key);
-    });
-    scheduleRefinementQueue();
   }
 
   function mapsUrlForPoi(poi) {
@@ -653,8 +750,8 @@
     if (mode.id === "nearby") return "";
     return (
       '<div class="mode-summary">' +
-      '<span class="mode-summary-title">' + escapeHtml(mode.label) + '</span>' +
-      '<span class="mode-summary-copy">' + escapeHtml(mode.summary) + '</span>' +
+      '<span class="mode-summary-title">' + escapeHtml(tr(mode.label)) + '</span>' +
+      '<span class="mode-summary-copy">' + escapeHtml(tr(mode.summary)) + '</span>' +
       '</div>'
     );
   }
@@ -676,24 +773,31 @@
     var activeFilterCount = Object.keys(state.activeFilters).filter(function (key) { return state.activeFilters[key]; }).length;
     var categoryLabel;
     if (state.activeCategory === MODE_ALL_CATEGORY_ID) {
-      categoryLabel = "まとめ";
+      categoryLabel = tr({ ja: "まとめ", en: "All" });
     } else {
       var category = getCategoryDefinition(state.activeCategory);
-      categoryLabel = category ? category.label : "カテゴリ";
+      categoryLabel = category ? tr(category.label) : tr({ ja: "カテゴリ", en: "Category" });
     }
 
     var pills = [
-      '<span class="current-context-pill">' + escapeHtml(mode.label) + '</span>',
+      '<span class="current-context-pill">' + escapeHtml(tr(mode.label)) + '</span>',
       '<span class="current-context-pill">' + escapeHtml(categoryLabel) + '</span>',
       '<span class="current-context-pill">' + escapeHtml(getVisibleCountLabel(pois, totalInCategory)) + '</span>'
     ];
-    if (activeFilterCount) pills.push('<span class="current-context-pill">絞り込み ' + activeFilterCount + '</span>');
+    if (activeFilterCount) {
+      pills.push('<span class="current-context-pill">' + escapeHtml(tr({ ja: "絞り込み ", en: "Filters " }) + activeFilterCount) + '</span>');
+    }
+    if (isSmokingCategoryActive() && state.includeUnofficialSmoking) {
+      pills.push('<span class="current-context-pill">' + escapeHtml(tr({ ja: "非公式導線を含む", en: "Including unofficial spots" })) + '</span>');
+    }
 
     var note = aggregateFailures.length
-      ? "一部カテゴリの読み込みに失敗しているため、結果は部分表示です。"
+      ? tr({ ja: "一部カテゴリの読み込みに失敗しているため、結果は部分表示です。", en: "Some categories failed to load, so results are partial." })
+      : (isSmokingCategoryActive() && state.includeUnofficialSmoking
+        ? tr({ ja: "非公式導線を含めて表示しています。注意書きを確認し、自己責任で利用してください。", en: "Showing unofficial spots too. Read the warnings and use at your own risk." })
       : (mode.id === "nearby"
-        ? "必要な施設だけを短く見て、詳細はタップで展開できます。"
-        : mode.summary);
+        ? tr({ ja: "必要な施設だけを短く見て、詳細はタップで展開できます。", en: "A quick view of what you need -- tap any card for details." })
+        : tr(mode.summary)));
 
     var html =
       '<div class="current-context-head">' + pills.join("") + '</div>' +
@@ -760,23 +864,24 @@
     var modeId = state.activeMode;
     var tags = poi.tags || [];
     if (modeId === "late_night") {
-      if (poi.category === "lodging" && tags.indexOf("overnight_friendly") !== -1) return "朝まで滞在向き";
-      if (poi.category === "lodging" && tags.indexOf("shower_available") !== -1) return "シャワーあり";
-      if (poi.category === "convenience" && tags.indexOf("24h") !== -1) return "24時間の補給拠点";
-      if (poi.category === "atm" && tags.indexOf("24h") !== -1) return "深夜の現金確保";
-      if (poi.category === "coin_locker" && (tags.indexOf("large") !== -1 || tags.indexOf("suitcase_ok") !== -1)) return "荷物を預けやすい";
-      if (poi.category === "toilet" && tags.indexOf("24h") !== -1) return "深夜でも使いやすい";
-      return "終電後に役立つ候補";
+      if (poi.category === "lodging" && tags.indexOf("overnight_friendly") !== -1) return { ja: "朝まで滞在向き", en: "Good until morning" };
+      if (poi.category === "lodging" && tags.indexOf("shower_available") !== -1) return { ja: "シャワーあり", en: "Has a shower" };
+      if (poi.category === "convenience" && tags.indexOf("24h") !== -1) return { ja: "24時間の補給拠点", en: "24h supply stop" };
+      if (poi.category === "karaoke" && tags.indexOf("free_drink_bar") !== -1) return { ja: "フリードリンクで長居しやすい", en: "Free drinks, easy to stay long" };
+      if (poi.category === "karaoke" && tags.indexOf("one_person_ok") !== -1) return { ja: "一人でも入りやすい", en: "Solo-friendly" };
+      if (poi.category === "shisha_bar" && tags.indexOf("group_friendly") !== -1) return { ja: "グループで時間つぶしやすい", en: "Good for killing time with a group" };
+      if (poi.category === "toilet" && tags.indexOf("24h") !== -1) return { ja: "深夜でも使いやすい", en: "Usable late at night" };
+      return { ja: "終電後に役立つ候補", en: "Useful after the last train" };
     }
     if (modeId === "toilet_now") {
-      if (tags.indexOf("24h") !== -1 && tags.indexOf("free") !== -1) return "24時間・無料";
-      if (tags.indexOf("clean") !== -1) return "清潔寄り";
-      return "今使いやすい候補";
+      if (tags.indexOf("24h") !== -1 && tags.indexOf("free") !== -1) return { ja: "24時間・無料", en: "24h & free" };
+      if (tags.indexOf("clean") !== -1) return { ja: "清潔寄り", en: "Tends to be clean" };
+      return { ja: "今使いやすい候補", en: "Easy to use right now" };
     }
     if (modeId === "smoking_now") {
-      if (tags.indexOf("indoor") !== -1) return "屋内で使いやすい";
-      if (tags.indexOf("24h") !== -1) return "時間を気にしにくい";
-      return "喫煙しやすい候補";
+      if (tags.indexOf("indoor") !== -1) return { ja: "屋内で使いやすい", en: "Easy to use, indoor" };
+      if (tags.indexOf("24h") !== -1) return { ja: "時間を気にしにくい", en: "No need to watch the clock" };
+      return { ja: "喫煙しやすい候補", en: "Easy smoking option" };
     }
     return "";
   }
@@ -791,32 +896,36 @@
     var categoryId = poi.category || state.activeCategory;
     var modeId = state.activeMode;
     var candidates = {
-      "24h": { tag: "24h", label: "24時間", tone: "strong", base: 70 },
-      free: { tag: "free", label: "無料", tone: "strong", base: 72 },
-      clean: { tag: "clean", label: "清潔", tone: "strong", base: 64 },
-      gender_separated: { tag: "gender_separated", label: "男女別", tone: "neutral", base: 55 },
-      indoor: { tag: "indoor", label: "屋内", tone: "strong", base: 66 },
-      rain_ok: { tag: "rain_ok", label: "雨でも可", tone: "neutral", base: 58 },
-      overnight_friendly: { tag: "overnight_friendly", label: "朝まで可", tone: "strong", base: 76 },
-      shower_available: { tag: "shower_available", label: "シャワー", tone: "strong", base: 73 },
-      no_shower: { tag: "no_shower", label: "シャワーなし", tone: "warn", base: 40 },
-      suitcase_ok: { tag: "suitcase_ok", label: "スーツケース可", tone: "strong", base: 71 },
-      large: { tag: "large", label: "大型対応", tone: "strong", base: 67 },
-      medium: { tag: "medium", label: "中型対応", tone: "neutral", base: 48 },
-      small: { tag: "small", label: "小型のみ", tone: "neutral", base: 42 },
-      suitcase_too_big: { tag: "suitcase_too_big", label: "大型不可", tone: "warn", base: 38 },
-      international_card_ok: { tag: "international_card_ok", label: "海外カード", tone: "neutral", base: 62 },
-      atm_instore: { tag: "atm_instore", label: "ATMあり", tone: "neutral", base: 54 },
-      phone_charging: { tag: "phone_charging", label: "充電可", tone: "neutral", base: 52 },
-      price_band_budget: { tag: "price_band_budget", label: "低価格", tone: "strong", base: 68 },
-      price_band_mid: { tag: "price_band_mid", label: "標準価格", tone: "neutral", base: 44 },
-      price_band_high: { tag: "price_band_high", label: "高価格", tone: "neutral", base: 28 },
-      crowded: { tag: "crowded", label: "混雑注意", tone: "warn", base: 46 },
-      long_wait: { tag: "long_wait", label: "待ち時間あり", tone: "warn", base: 50 },
-      dirty: { tag: "dirty", label: "清潔さ注意", tone: "warn", base: 48 },
-      unsafe: { tag: "unsafe", label: "周辺注意", tone: "warn", base: 51 },
-      hidden: { tag: "hidden", label: "見つけにくい", tone: "warn", base: 43 },
-      outdoor: { tag: "outdoor", label: "屋外", tone: "neutral", base: 36 }
+      "24h": { tag: "24h", label: { ja: "24時間", en: "24 hours" }, tone: "strong", base: 70 },
+      free: { tag: "free", label: { ja: "無料", en: "Free" }, tone: "strong", base: 72 },
+      clean: { tag: "clean", label: { ja: "清潔", en: "Clean" }, tone: "strong", base: 64 },
+      gender_separated: { tag: "gender_separated", label: { ja: "男女別", en: "Gender-separated" }, tone: "neutral", base: 55 },
+      indoor: { tag: "indoor", label: { ja: "屋内", en: "Indoor" }, tone: "strong", base: 66 },
+      rain_ok: { tag: "rain_ok", label: { ja: "雨でも可", en: "OK in rain" }, tone: "neutral", base: 58 },
+      overnight_friendly: { tag: "overnight_friendly", label: { ja: "朝まで可", en: "Good until morning" }, tone: "strong", base: 76 },
+      shower_available: { tag: "shower_available", label: { ja: "シャワー", en: "Shower" }, tone: "strong", base: 73 },
+      no_shower: { tag: "no_shower", label: { ja: "シャワーなし", en: "No shower" }, tone: "warn", base: 40 },
+      suitcase_ok: { tag: "suitcase_ok", label: { ja: "スーツケース可", en: "Suitcase OK" }, tone: "strong", base: 71 },
+      large: { tag: "large", label: { ja: "大型対応", en: "Large size OK" }, tone: "strong", base: 67 },
+      medium: { tag: "medium", label: { ja: "中型対応", en: "Medium size OK" }, tone: "neutral", base: 48 },
+      small: { tag: "small", label: { ja: "小型のみ", en: "Small only" }, tone: "neutral", base: 42 },
+      suitcase_too_big: { tag: "suitcase_too_big", label: { ja: "大型不可", en: "No large luggage" }, tone: "warn", base: 38 },
+      international_card_ok: { tag: "international_card_ok", label: { ja: "海外カード", en: "Intl. cards" }, tone: "neutral", base: 62 },
+      atm_instore: { tag: "atm_instore", label: { ja: "ATMあり", en: "ATM inside" }, tone: "neutral", base: 54 },
+      phone_charging: { tag: "phone_charging", label: { ja: "充電可", en: "Charging" }, tone: "neutral", base: 52 },
+      price_band_budget: { tag: "price_band_budget", label: { ja: "低価格", en: "Budget" }, tone: "strong", base: 68 },
+      price_band_mid: { tag: "price_band_mid", label: { ja: "標準価格", en: "Mid-range" }, tone: "neutral", base: 44 },
+      price_band_high: { tag: "price_band_high", label: { ja: "高価格", en: "High-end" }, tone: "neutral", base: 28 },
+      crowded: { tag: "crowded", label: { ja: "混雑注意", en: "Can be crowded" }, tone: "warn", base: 46 },
+      long_wait: { tag: "long_wait", label: { ja: "待ち時間あり", en: "May have to wait" }, tone: "warn", base: 50 },
+      dirty: { tag: "dirty", label: { ja: "清潔さ注意", en: "Cleanliness varies" }, tone: "warn", base: 48 },
+      unsafe: { tag: "unsafe", label: { ja: "周辺注意", en: "Use caution" }, tone: "warn", base: 51 },
+      hidden: { tag: "hidden", label: { ja: "見つけにくい", en: "Hard to find" }, tone: "warn", base: 43 },
+      outdoor: { tag: "outdoor", label: { ja: "屋外", en: "Outdoor" }, tone: "neutral", base: 36 },
+      free_drink_bar: { tag: "free_drink_bar", label: { ja: "フリードリンク", en: "Free drink bar" }, tone: "strong", base: 65 },
+      one_person_ok: { tag: "one_person_ok", label: { ja: "一人カラオケ可", en: "Solo-friendly" }, tone: "neutral", base: 50 },
+      group_friendly: { tag: "group_friendly", label: { ja: "グループ向け", en: "Group-friendly" }, tone: "neutral", base: 50 },
+      reservation_recommended: { tag: "reservation_recommended", label: { ja: "予約推奨", en: "Reservation recommended" }, tone: "warn", base: 44 }
     };
     var categoryPriority = {
       toilet: ["free", "24h", "clean", "gender_separated", "long_wait", "dirty"],
@@ -824,12 +933,14 @@
       convenience: ["24h", "atm_instore", "phone_charging"],
       atm: ["24h", "international_card_ok"],
       coin_locker: ["suitcase_ok", "large", "24h", "medium", "small", "suitcase_too_big"],
-      lodging: ["overnight_friendly", "shower_available", "24h", "price_band_budget", "price_band_mid", "price_band_high", "no_shower"]
+      lodging: ["overnight_friendly", "shower_available", "24h", "price_band_budget", "price_band_mid", "price_band_high", "no_shower"],
+      karaoke: ["free_drink_bar", "24h", "one_person_ok"],
+      shisha_bar: ["24h", "group_friendly", "reservation_recommended"]
     };
     var modeBoosts = {
       toilet_now: { free: 30, "24h": 34, clean: 28, gender_separated: 18, long_wait: 8, dirty: 12 },
       smoking_now: { indoor: 34, rain_ok: 28, "24h": 24, crowded: 10, unsafe: 10, hidden: 8 },
-      late_night: { overnight_friendly: 34, shower_available: 28, suitcase_ok: 22, large: 20, "24h": 20, price_band_budget: 16 }
+      late_night: { overnight_friendly: 34, shower_available: 28, free_drink_bar: 22, group_friendly: 20, "24h": 20, price_band_budget: 16 }
     };
     var order = categoryPriority[categoryId] || Object.keys(candidates);
     var boosts = modeBoosts[modeId] || {};
@@ -866,25 +977,28 @@
     // businesses whose own note text said the opposite.
     var isGrayZone = poi.type === "unofficial";
     var tagCopy = TAG_COPY[categoryId] || {};
+    var freshness = freshnessBadge(poi.last_updated);
     var judgmentSignals = getJudgmentSignals(poi);
     var quickTagsHtml = judgmentSignals
       .map(function (signal) {
-        return '<span class="signal-chip signal-chip-' + signal.tone + '">' + escapeHtml(signal.label) + "</span>";
+        return '<span class="signal-chip signal-chip-' + signal.tone + '">' + escapeHtml(tr(signal.label)) + "</span>";
       })
       .join("");
-    var freshHtml = "";
+    var freshHtml = freshness
+      ? '<span class="freshness-badge ' + freshness.cls + '">' + escapeHtml(tr(freshness.text)) + "</span>"
+      : "";
     var distanceHtml =
       typeof poi._distanceMeters === "number"
-        ? '<span class="distance-badge">📍 現在地から ' + formatDistance(poi._distanceMeters) + "</span>"
+        ? '<span class="distance-badge">📍 ' + escapeHtml(tr({ ja: "現在地から", en: "From you:" })) + " " + formatDistance(poi._distanceMeters) + "</span>"
         : "";
     var mode = getModeDefinition(state.activeMode);
     var modeBadgeHtml = mode.id !== "nearby"
-      ? '<span class="mode-badge">' + escapeHtml(mode.label) + "</span>"
+      ? '<span class="mode-badge">' + escapeHtml(tr(mode.label)) + "</span>"
       : "";
     var category = getCategoryDefinition(poi.category || categoryId);
     var categoryBadgeHtml =
       mode.aggregateCategories && state.activeCategory === MODE_ALL_CATEGORY_ID && category
-        ? '<span class="mode-badge">' + escapeHtml(category.icon + " " + category.label) + "</span>"
+        ? '<span class="mode-badge">' + escapeHtml(category.icon + " " + tr(category.label)) + "</span>"
         : "";
     // reliability_score (1-5) is collected for every entry but was never
     // surfaced -- only flag the low end (<=2, ~8 of ~90 entries) rather
@@ -893,14 +1007,14 @@
     // flag instead of cluttering every card with a routine "OK" signal.
     var lowReliabilityHtml =
       typeof poi.reliability_score === "number" && poi.reliability_score <= 2
-        ? '<span class="reliability-badge">ℹ️ 情報の確度: 参考程度</span>'
+        ? '<span class="reliability-badge">ℹ️ ' + escapeHtml(tr({ ja: "情報の確度: 参考程度", en: "Confidence: reference only" })) + "</span>"
         : "";
     var priorityLabel = modePriorityLabel(poi);
     var priorityHtml = priorityLabel
-      ? '<div class="priority-line">' + escapeHtml(priorityLabel) + "</div>"
+      ? '<div class="priority-line">' + escapeHtml(tr(priorityLabel)) + "</div>"
       : "";
     var featuredLabelHtml = options.featured
-      ? '<div class="featured-kicker">この条件で最初に見る候補</div>'
+      ? '<div class="featured-kicker">' + escapeHtml(tr({ ja: "この条件で最初に見る候補", en: "Top pick for this filter" })) + "</div>"
       : "";
     var grayZoneHtml = isGrayZone
       ? '<div class="gray-zone-banner">' + DISCLAIMER_JA + "<br>" + DISCLAIMER_EN +
@@ -914,7 +1028,7 @@
     var detailTagsHtml = (poi.tags || [])
       .filter(function (tag) { return !signalTagMap[tag]; })
       .map(function (tag) {
-        var caption = tagCopy[tag] || tag;
+        var caption = tr(tagCopy[tag]) || tag;
         return '<span class="tag-chip">' + escapeHtml(caption) + "</span>";
       })
       .join("");
@@ -922,9 +1036,16 @@
     if (mode.aggregateCategories && state.activeCategory === MODE_ALL_CATEGORY_ID && categoryBadgeHtml) {
       collapsedMetaHtml += categoryBadgeHtml;
     }
-    var supportingHtml = collapsedMetaHtml
-      ? '<div class="poi-card-quick-tags">' + collapsedMetaHtml + '</div>'
-      : '<p class="poi-card-supporting">' + escapeHtml(summaryLine) + '</p>';
+    var supportingParts = [];
+    if (summaryLine) {
+      supportingParts.push('<span class="poi-card-summary">' + escapeHtml(summaryLine) + "</span>");
+    }
+    if (collapsedMetaHtml) {
+      supportingParts.push('<div class="poi-card-quick-tags">' + collapsedMetaHtml + '</div>');
+    }
+    var supportingHtml = supportingParts.length
+      ? '<div class="poi-card-supporting">' + supportingParts.join("") + "</div>"
+      : "";
     var detailMetaHtml = modeBadgeHtml + categoryBadgeHtml;
 
     return (
@@ -932,10 +1053,10 @@
       '<button class="poi-card-head" type="button" data-card-toggle="' + escapeHtml(poiKey) + '" aria-expanded="' + (expanded ? "true" : "false") + '">' +
       '<div class="poi-card-main">' +
       '<div class="poi-card-topline">' + featuredLabelHtml + priorityHtml + '</div>' +
-      "<h2>" + escapeHtml(poi.name) + "</h2>" +
+      "<h3>" + escapeHtml(poi.name) + "</h3>" +
       supportingHtml +
       '</div>' +
-      '<div class="poi-card-side">' + distanceHtml + '<span class="poi-card-toggle-text">' + (expanded ? '閉じる' : '詳細') + '</span><span class="poi-card-chevron">⌄</span></div>' +
+      '<div class="poi-card-side">' + distanceHtml + '<span class="poi-card-toggle-text">' + escapeHtml(tr(expanded ? { ja: '閉じる', en: 'Close' } : { ja: '詳細', en: 'Details' })) + '</span><span class="poi-card-chevron">⌄</span></div>' +
       '</button>' +
       '<div class="poi-card-detail"' + (expanded ? '' : ' hidden') + '>' +
       (detailMetaHtml ? '<div class="card-meta-row">' + detailMetaHtml + '</div>' : '') +
@@ -987,28 +1108,28 @@
   }
 
   function inlineSponsoredHtml(index) {
-    var slotNum = Math.floor(index / 5) + 1;
+    var slotNum = Math.floor(index / 7) + 1;
     var title;
     var copy;
     if (state.activeMode === "late_night") {
-      title = "終電後サポート提携枠";
-      copy = "朝まで利用しやすい宿泊・休憩・荷物預かりサービスの提携先を掲載します。";
+      title = { ja: "終電後サポート提携枠", en: "After-last-train partner slot" };
+      copy = { ja: "朝まで利用しやすい宿泊・休憩・荷物預かりサービスの提携先を掲載します。", en: "Partner listings for lodging, rest, and luggage services good until morning." };
     } else if (state.activeMode === "toilet_now") {
-      title = "周辺サービス提携枠";
-      copy = "移動前後に使いやすい関連サービスの提携先を掲載します。";
+      title = { ja: "周辺サービス提携枠", en: "Nearby service partner slot" };
+      copy = { ja: "移動前後に使いやすい関連サービスの提携先を掲載します。", en: "Partner listings for services useful before or after moving on." };
     } else if (state.activeMode === "smoking_now") {
-      title = "喫煙者向け提携枠";
-      copy = "休憩導線に合わせた周辺サービスをこの位置に表示します。";
+      title = { ja: "喫煙者向け提携枠", en: "Smoker-oriented partner slot" };
+      copy = { ja: "休憩導線に合わせた周辺サービスをこの位置に表示します。", en: "Nearby services matched to your break, shown here." };
     } else {
-      title = "関連サービス提携枠";
-      copy = "一覧閲覧中に邪魔しない位置で、比較検討しやすい提携情報を掲載します。";
+      title = { ja: "関連サービス提携枠", en: "Related service partner slot" };
+      copy = { ja: "一覧閲覧中に邪魔しない位置で、比較検討しやすい提携情報を掲載します。", en: "Partner info placed to compare without interrupting your browsing." };
     }
 
     return (
-      '<aside class="inline-sponsored-card" aria-label="スポンサー情報 ' + slotNum + '">' +
+      '<aside class="inline-sponsored-card" aria-label="' + escapeHtml(tr({ ja: "スポンサー情報 ", en: "Sponsored " }) + slotNum) + '">' +
       '<span class="inline-sponsored-label">SPONSORED</span>' +
-      '<strong>' + escapeHtml(title) + '</strong>' +
-      '<p>' + escapeHtml(copy) + '</p>' +
+      '<strong>' + escapeHtml(tr(title)) + '</strong>' +
+      '<p>' + escapeHtml(tr(copy)) + '</p>' +
       '</aside>'
     );
   }
@@ -1019,7 +1140,7 @@
     pois.forEach(function (poi, localIndex) {
       var absoluteIndex = offset + localIndex;
       html += renderCard(poi, poi.category || categoryId, absoluteIndex);
-      if ((localIndex + 1) % 5 === 0 && localIndex < pois.length - 1) {
+      if ((localIndex + 1) % 7 === 0 && localIndex < pois.length - 1) {
         html += inlineSponsoredHtml(localIndex);
       }
     });
@@ -1029,10 +1150,10 @@
   function locationHintHtml() {
     if (state.locationStatus === "granted") return "";
     if (state.locationStatus === "requesting") {
-      return '<div class="location-hint">📡 現在地を取得しています…</div>';
+      return '<div class="location-hint">📡 ' + escapeHtml(tr({ ja: "現在地を取得しています…", en: "Getting your location…" })) + '</div>';
     }
     if (state.locationStatus === "denied" || state.locationStatus === "unsupported") {
-      return '<div class="location-hint">📍 現在地が取得できないため、標準の順番で表示しています。</div>';
+      return '<div class="location-hint">📍 ' + escapeHtml(tr({ ja: "現在地が取得できないため、標準の順番で表示しています。", en: "Couldn't get your location, so showing the default order." })) + '</div>';
     }
     return "";
   }
@@ -1045,7 +1166,8 @@
 
     if (state.loadFailed[state.activeCategory]) {
       container.innerHTML =
-        '<p class="no-results">⚠ データの読み込みに失敗しました。<br>通信環境をご確認のうえ、ページを再読み込みしてください。</p>';
+        '<p class="no-results">⚠ ' + escapeHtml(tr({ ja: "データの読み込みに失敗しました。", en: "Failed to load data." })) +
+        '<br>' + escapeHtml(tr({ ja: "通信環境をご確認のうえ、ページを再読み込みしてください。", en: "Check your connection and reload the page." })) + '</p>';
       renderCurrentContext([], 0, []);
       return;
     }
@@ -1059,28 +1181,28 @@
     clearExpandedCardIfMissing(pois);
     var hasActiveFilter = Object.keys(state.activeFilters).some(function (t) { return state.activeFilters[t]; });
     var partialLoadHtml = aggregateFailures.length
-      ? '<div class="partial-load-note">⚠ 一部カテゴリを読み込めなかったため、表示結果は完全ではありません。</div>'
+      ? '<div class="partial-load-note">⚠ ' + escapeHtml(tr({ ja: "一部カテゴリを読み込めなかったため、表示結果は完全ではありません。", en: "Some categories failed to load, so results are incomplete." })) + '</div>'
       : "";
 
     renderCurrentContext(pois, totalInCategory, aggregateFailures);
 
     if (!pois.length) {
       var emptyMessage = hasActiveFilter
-        ? '<p class="no-results">選択した条件に該当する場所が見つかりませんでした。<br>絞り込みを解除するか、別の条件をお試しください。</p>'
-        : '<p class="no-results">' + escapeHtml(mode.emptyStateMessage || "このカテゴリに該当する場所が見つかりませんでした。別のカテゴリを選択してください。") + '</p>';
+        ? '<p class="no-results">' + escapeHtml(tr({ ja: "選択した条件では候補がありませんでした。", en: "No results for the selected filters." })) + '<br>' + escapeHtml(tr({ ja: "絞り込みを1つ外すか、別のモードに切り替えてください。", en: "Try removing a filter or switching modes." })) + '</p>'
+        : '<p class="no-results">' + escapeHtml(tr(mode.emptyStateMessage) || tr({ ja: "このカテゴリに該当する場所が見つかりませんでした。別のカテゴリを選ぶか、条件を変えてみてください。", en: "No matching places found in this category. Try another category or change your filters." })) + '</p>';
       container.innerHTML = modeSummaryHtml() + locationHintHtml() + partialLoadHtml + emptyMessage;
       return;
     }
     var countNoteHtml =
       hasActiveFilter
-        ? '<p class="filter-count-note">' + pois.length + " / " + totalInCategory + " 件を表示中</p>"
+        ? '<p class="filter-count-note">' + escapeHtml(tr({ ja: pois.length + " / " + totalInCategory + " 件を表示中", en: "Showing " + pois.length + " / " + totalInCategory })) + '</p>'
         : "";
     var cardsHtml;
     if (state.activeMode === "late_night" && state.activeCategory === MODE_ALL_CATEGORY_ID && pois.length > 1) {
       cardsHtml =
         '<section class="featured-result">' + renderCard(pois[0], pois[0].category || state.activeCategory, 0, { featured: true }) + '</section>' +
         '<section class="result-cluster">' +
-        '<h3 class="result-cluster-title">他の候補</h3>' +
+        '<h3 class="result-cluster-title">' + escapeHtml(tr({ ja: "他の候補", en: "Other options" })) + '</h3>' +
         cardsWithInlineSponsored(pois.slice(1), state.activeCategory, 1) +
         '</section>';
     } else {
@@ -1112,19 +1234,27 @@
       return;
     }
     bar.hidden = false;
-    var noneActive = !hasActiveFilterSelections();
+    var noneActive = !hasActiveFilterSelections() && !(isSmokingCategoryActive() && state.includeUnofficialSmoking);
     var chips = [
       '<button class="filter-chip filter-chip-none" data-tag="' + NONE_FILTER_TAG_ID + '" aria-pressed="' + noneActive + '">' +
       '<span class="filter-chip-check" aria-hidden="true"></span>' +
-      '<span class="filter-chip-label">条件指定なし</span>' +
+      '<span class="filter-chip-label">' + escapeHtml(tr(FILTER_NONE_LABEL)) + '</span>' +
       '</button>'
     ];
+    if (isSmokingCategoryActive()) {
+      chips.push(
+        '<button class="filter-chip filter-chip-unofficial" data-tag="' + SMOKING_UNOFFICIAL_TOGGLE_ID + '" aria-pressed="' + (state.includeUnofficialSmoking ? "true" : "false") + '">' +
+        '<span class="filter-chip-check" aria-hidden="true"></span>' +
+        '<span class="filter-chip-label">' + escapeHtml(tr(INCLUDE_UNOFFICIAL_LABEL)) + '</span>' +
+        '</button>'
+      );
+    }
     chips = chips.concat(tagIds.map(function (tagId) {
       var active = !!state.activeFilters[tagId];
       return (
         '<button class="filter-chip" data-tag="' + tagId + '" aria-pressed="' + active + '">' +
         '<span class="filter-chip-check" aria-hidden="true"></span>' +
-        '<span class="filter-chip-label">' + escapeHtml(tagCopy[tagId]) + '</span>' +
+        '<span class="filter-chip-label">' + escapeHtml(tr(tagCopy[tagId])) + '</span>' +
         "</button>"
       );
     }));
@@ -1135,12 +1265,22 @@
         var tagId = btn.getAttribute("data-tag");
         if (tagId === NONE_FILTER_TAG_ID) {
           state.activeFilters = {};
+          state.includeUnofficialSmoking = false;
           trackClick({
             ui_area: "panel_filter",
             ui_action: "filter_toggle",
             ui_label: "条件指定なし",
             ui_filter_id: NONE_FILTER_TAG_ID,
             ui_selected: true
+          });
+        } else if (tagId === SMOKING_UNOFFICIAL_TOGGLE_ID) {
+          state.includeUnofficialSmoking = !state.includeUnofficialSmoking;
+          trackClick({
+            ui_area: "panel_filter",
+            ui_action: "filter_toggle",
+            ui_label: "非公式導線を含む",
+            ui_filter_id: SMOKING_UNOFFICIAL_TOGGLE_ID,
+            ui_selected: state.includeUnofficialSmoking
           });
         } else {
           state.activeFilters[tagId] = !state.activeFilters[tagId];
@@ -1150,13 +1290,16 @@
           trackClick({
             ui_area: "panel_filter",
             ui_action: "filter_toggle",
-            ui_label: tagCopy[tagId] || tagId,
+            ui_label: (tagCopy[tagId] && tagCopy[tagId].ja) || tagId,
             ui_filter_id: tagId,
             ui_selected: !!state.activeFilters[tagId]
           });
         }
         // Reflect chip selection immediately so taps feel responsive.
         renderFilterBar();
+        renderList();
+        renderMarkers();
+        scrollListToTop();
       });
     });
   }
@@ -1168,7 +1311,7 @@
     var navItems = [];
     var mode = getModeDefinition(state.activeMode);
     if (mode.aggregateCategories) {
-      navItems.push({ id: MODE_ALL_CATEGORY_ID, label: "まとめ", icon: "🌙" });
+      navItems.push({ id: MODE_ALL_CATEGORY_ID, label: ALL_CATEGORIES_LABEL, icon: "🌙" });
     }
     navItems = navItems.concat(CATEGORIES.filter(function (cat) {
       return allowed.indexOf(cat.id) !== -1;
@@ -1178,7 +1321,7 @@
       return (
         '<button class="nav-btn" data-category="' + item.id + '" aria-pressed="' + pressed + '">' +
         '<span class="nav-icon">' + item.icon + "</span>" +
-        "<span>" + escapeHtml(item.label) + "</span>" +
+        "<span>" + escapeHtml(tr(item.label)) + "</span>" +
         "</button>"
       );
     }).join("");
@@ -1207,14 +1350,19 @@
   }
 
   function renderModeBar() {
+    // data-active-mode drives the desktop control panel's per-mode overlay
+    // height in style.css (see [data-active-mode] rules) -- set here rather
+    // than only in syncDesktopControlsInlineState so it also updates when
+    // the mode changes while the panel is already open, not just on open/close.
+    document.body.setAttribute("data-active-mode", state.activeMode);
     var bar = document.getElementById("mode-bar");
     if (!bar) return;
     bar.innerHTML = MODES.map(function (mode) {
       var pressed = mode.id === state.activeMode ? "true" : "false";
       return (
         '<button class="mode-chip" data-mode="' + mode.id + '" aria-pressed="' + pressed + '">' +
-        '<span class="mode-chip-title">' + escapeHtml(mode.label) + '</span>' +
-        '<span class="mode-chip-copy">' + escapeHtml(mode.copy) + '</span>' +
+        '<span class="mode-chip-title">' + escapeHtml(tr(mode.label)) + '</span>' +
+        '<span class="mode-chip-copy">' + escapeHtml(tr(mode.copy)) + '</span>' +
         '</button>'
       );
     }).join("");
@@ -1258,28 +1406,40 @@
     if (reason === "auth") {
       return {
         kicker: "MAP FALLBACK",
-        title: "地図APIは認証エラーです",
-        note: "この端末のURLがGoogle Cloud側の許可リファラに入っていない可能性があります。下の簡易マップで位置関係は確認できます。"
+        title: { ja: "地図APIは認証エラーです", en: "Map API authentication error" },
+        note: {
+          ja: "この端末のURLがGoogle Cloud側の許可リファラに入っていない可能性があります。下の簡易マップで位置関係は確認できます。",
+          en: "This device's URL may not be in Google Cloud's allowed referrers. You can still check relative positions on the simple map below."
+        }
       };
     }
     if (reason === "network") {
       return {
         kicker: "MAP FALLBACK",
-        title: "地図APIの読み込みに失敗しました",
-        note: "通信または外部APIの問題です。下の簡易マップで位置関係は確認できます。"
+        title: { ja: "地図APIの読み込みに失敗しました", en: "Map API failed to load" },
+        note: {
+          ja: "通信または外部APIの問題です。下の簡易マップで位置関係は確認できます。",
+          en: "A network or external API issue. You can still check relative positions on the simple map below."
+        }
       };
     }
     if (reason === "missing_key") {
       return {
         kicker: "MAP FALLBACK",
-        title: "地図APIキーが未設定です",
-        note: "本番ではGoogle Mapsを表示しつつ、キーが無い環境でもこの簡易マップが残ります。"
+        title: { ja: "地図APIキーが未設定です", en: "Map API key not set" },
+        note: {
+          ja: "本番ではGoogle Mapsを表示しつつ、キーが無い環境でもこの簡易マップが残ります。",
+          en: "Production shows Google Maps, but this simple map remains available even without a key."
+        }
       };
     }
     return {
       kicker: "MAP OVERVIEW",
-      title: "位置関係を簡易表示しています",
-      note: "Google Mapsの読み込み前でも、カテゴリ内の位置関係を先に確認できます。"
+      title: { ja: "位置関係を簡易表示しています", en: "Showing a simplified layout" },
+      note: {
+        ja: "Google Mapsの読み込み前でも、カテゴリ内の位置関係を先に確認できます。",
+        en: "You can check relative positions within a category even before Google Maps finishes loading."
+      }
     };
   }
 
@@ -1329,7 +1489,7 @@
       return '<span class="' + classes.join(" ") + '" style="left:' + x + '%;top:' + y + '%" title="' + escapeHtml(poi.name) + '"></span>';
     }).join("");
     var userHtml = state.userLocation
-      ? '<span class="map-fallback-user-dot" style="left:' + normalize(state.userLocation.lng, minLng, lngRange) + '%;top:' + (90 - normalize(state.userLocation.lat, minLat, latRange)) + '%" title="現在地"></span>'
+      ? '<span class="map-fallback-user-dot" style="left:' + normalize(state.userLocation.lng, minLng, lngRange) + '%;top:' + (90 - normalize(state.userLocation.lat, minLat, latRange)) + '%" title="' + escapeHtml(tr({ ja: "現在地", en: "Your location" })) + '"></span>'
       : "";
 
     fallback.hidden = false;
@@ -1338,17 +1498,17 @@
       '<div class="map-fallback-surface">' +
       '<div class="map-fallback-header">' +
       '<span class="map-fallback-kicker">' + escapeHtml(copy.kicker) + '</span>' +
-      '<strong class="map-fallback-title">' + escapeHtml(copy.title) + '</strong>' +
-      '<span class="map-fallback-note">' + escapeHtml(copy.note) + '</span>' +
+      '<strong class="map-fallback-title">' + escapeHtml(tr(copy.title)) + '</strong>' +
+      '<span class="map-fallback-note">' + escapeHtml(tr(copy.note)) + '</span>' +
       '</div>' +
       '<div class="map-fallback-grid">' +
       '<div class="map-fallback-dots">' + dotsHtml + '</div>' +
       '<div class="map-fallback-user">' + userHtml + '</div>' +
       '</div>' +
       '<div class="map-fallback-legend">' +
-      '<span class="map-fallback-legend-item"><span class="map-fallback-legend-swatch poi"></span>候補</span>' +
-      (focusedKey ? '<span class="map-fallback-legend-item"><span class="map-fallback-legend-swatch focused"></span>選択中</span>' : '') +
-      (state.userLocation ? '<span class="map-fallback-legend-item"><span class="map-fallback-legend-swatch user"></span>現在地</span>' : '') +
+      '<span class="map-fallback-legend-item"><span class="map-fallback-legend-swatch poi"></span>' + escapeHtml(tr({ ja: "候補", en: "Options" })) + '</span>' +
+      (focusedKey ? '<span class="map-fallback-legend-item"><span class="map-fallback-legend-swatch focused"></span>' + escapeHtml(tr({ ja: "選択中", en: "Selected" })) + '</span>' : '') +
+      (state.userLocation ? '<span class="map-fallback-legend-item"><span class="map-fallback-legend-swatch user"></span>' + escapeHtml(tr({ ja: "現在地", en: "You" })) + '</span>' : '') +
       '</div>' +
       '</div>';
   }
@@ -1408,7 +1568,6 @@
       state.map.fitBounds(bounds, mapFitBoundsPadding());
     }
     hideMapFallback();
-    enqueueRefinementForPois(pois);
   }
 
   function openInfoWindow(poi, marker) {
@@ -1437,7 +1596,15 @@
     var close = document.getElementById("controls-close");
     var panelHead = document.querySelector(".controls-panel-head");
     var backdrop = document.getElementById("controls-backdrop");
-    var apply = document.getElementById("filter-apply");
+    var langToggle = document.getElementById("lang-toggle");
+
+    if (langToggle) {
+      langToggle.addEventListener("click", function () {
+        var nextLang = CURRENT_LANG === "ja" ? "en" : "ja";
+        setLanguage(nextLang);
+        trackEvent("language_change", analyticsContext({ ui_action: "language_" + nextLang }));
+      });
+    }
 
     function openControls() { setControlsOpen(true); }
     function toggleControls() { setControlsOpen(!state.controlsOpen); }
@@ -1490,7 +1657,6 @@
         ui_trigger_id: "controls_backdrop"
       });
     });
-    if (apply) apply.addEventListener("click", applyFilterSelection);
 
     if (typeof window !== "undefined") {
       window.addEventListener("resize", function () {
@@ -1514,7 +1680,7 @@
     state.userMarker = new google.maps.Marker({
       position: state.userLocation,
       map: state.map,
-      title: "現在地",
+      title: tr({ ja: "現在地", en: "Your location" }),
       icon: {
         path: google.maps.SymbolPath.CIRCLE,
         scale: 8,
@@ -1539,6 +1705,7 @@
       function (position) {
         state.userLocation = { lat: position.coords.latitude, lng: position.coords.longitude };
         state.locationStatus = "granted";
+        trackEvent("geolocation_permission", analyticsContext({ ui_action: "geolocation_granted" }));
         renderUserMarker();
         renderMarkers();
         renderList();
@@ -1546,6 +1713,7 @@
       },
       function () {
         state.locationStatus = "denied";
+        trackEvent("geolocation_permission", analyticsContext({ ui_action: "geolocation_denied" }));
         renderList();
         if (!state.map) renderMapFallback(state.mapFailureReason || "loading");
       },
@@ -1559,7 +1727,6 @@
   if (typeof window !== "undefined") {
     window.initKabukichoMap = function () {
       state.mapFailureReason = null;
-      state.geocoder = new google.maps.Geocoder();
       state.map = new google.maps.Map(document.getElementById("map"), {
         center: state.userLocation || KABUKICHO_CENTER,
         zoom: mapDefaultZoom(),
@@ -1568,7 +1735,6 @@
         fullscreenControl: false
       });
       renderMarkers();
-      enqueueRefinementForPois(getAllPoisFlat());
       // A location fix from before the map finished loading (distance
       // sorting doesn't wait on the map) has no marker yet -- add it now.
       if (state.userLocation) renderUserMarker();
@@ -1640,6 +1806,9 @@
   // defined there.
   if (typeof document !== "undefined") {
     document.addEventListener("DOMContentLoaded", function () {
+      CURRENT_LANG = detectInitialLang();
+      applyLanguageChrome();
+      renderFaq();
       setupControlsSurface();
       renderMapFallback("loading");
       renderModeBar();
@@ -1647,7 +1816,6 @@
       renderFilterBar();
       renderCurrentContext([], 0, []);
       loadAll().then(function () {
-        if (ENABLE_RUNTIME_REFINEMENT) loadRefinedPositionCache();
         renderList();
         renderMapFallback(state.mapFailureReason || "loading");
         // Map init (initKabukichoMap) fires asynchronously once the Google
@@ -1667,6 +1835,30 @@
   // the browser (module is undefined there), so this has no effect on
   // the shipped product.
   if (typeof module !== "undefined" && module.exports) {
-    module.exports = { haversineDistanceMeters: haversineDistanceMeters, formatDistance: formatDistance, freshnessBadge: freshnessBadge };
+    module.exports = {
+      haversineDistanceMeters: haversineDistanceMeters,
+      formatDistance: formatDistance,
+      freshnessBadge: freshnessBadge,
+      sortPoisForMode: sortPoisForMode,
+      getJudgmentSignals: getJudgmentSignals,
+      passesActiveFilters: passesActiveFilters,
+      ensureActiveCategoryAllowed: ensureActiveCategoryAllowed,
+      renderCard: renderCard,
+      MODE_ALL_CATEGORY_ID: MODE_ALL_CATEGORY_ID,
+      tr: tr,
+      faqHtml: faqHtml,
+      // Test-only: flips CURRENT_LANG without the DOM-touching side effects
+      // setLanguage() has (title/meta/render* calls that assume a real
+      // document) -- setLanguage() itself is intentionally not exported,
+      // same reason renderList/renderModeBar/etc. aren't: they're DOM
+      // mutators, not the pure/string-building functions this test harness
+      // targets (see the file comment below).
+      setLangForTest: function (lang) { CURRENT_LANG = lang === "en" ? "en" : "ja"; },
+      // Exposed only so tests can set up state (activeMode/activeCategory/
+      // activeFilters/includeUnofficialSmoking) before calling the
+      // functions above -- never mutated by browser code from outside
+      // this file.
+      state: state
+    };
   }
 })();

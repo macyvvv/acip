@@ -16,7 +16,7 @@ raise SystemExit(1)
 PY
 )"
 
-python3 "$ROOT/platform/system/platform/scripts/validate_all.py" >/tmp/repo_os_validate_all.log
+python3 "$ROOT/platform/system/scripts/validate_all.py" >/tmp/repo_os_validate_all.log
 PYTEST_OUTPUT="$(python3 -m pytest -q 2>&1)"
 STATUS_JSON="$ROOT/platform/system/runtime/operator_status/latest.json"
 STATUS_MD="$ROOT/platform/system/runtime/operator_status/latest.md"

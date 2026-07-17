@@ -75,14 +75,14 @@
     "name": "アパホテル新宿歌舞伎町タワー",
     "lat": 35.695935,
     "lng": 139.700657,
-    "description": "ビジネスホテル。JR新宿駅東口から徒歩6分、東急歌舞伎町タワーエリア内。",
+    "description": "ビジネスホテル。JR新宿駅東口から徒歩6分。住所は歌舞伎町1-20-2(東急歌舞伎町タワーとは別棟)。",
     "category": "lodging",
     "tags": [
       "shower_available",
       "overnight_friendly",
       "price_band_mid"
     ],
-    "last_updated": "2026-07-11",
+    "last_updated": "2026-07-17",
     "reliability_score": 5,
     "source_type": "official",
     "type": "official",
@@ -93,7 +93,7 @@
     "name": "アパホテル新宿歌舞伎町中央",
     "lat": 35.695558,
     "lng": 139.702846,
-    "description": "166室のビジネスホテル。JR新宿駅東口から徒歩7分。",
+    "description": "166室のビジネスホテル。JR新宿駅東口から徒歩7分。住所は歌舞伎町2-26-5。",
     "category": "lodging",
     "tags": [
       "shower_available",
@@ -111,7 +111,7 @@
     "name": "東横イン東京新宿歌舞伎町",
     "lat": 35.6968,
     "lng": 139.7045,
-    "description": "ビジネスホテルチェーン。東新宿駅から徒歩3分。",
+    "description": "ビジネスホテルチェーン。歌舞伎町2-20-15、東新宿駅から徒歩3分。",
     "category": "lodging",
     "tags": [
       "shower_available",
@@ -186,22 +186,23 @@
   },
   {
     "name": "HOTEL & SPA J-MEX 新宿歌舞伎町(アダルト専用)",
-    "lat": 35.693825,
-    "lng": 139.703356,
-    "description": "アダルト専用ラブホテル。カラオケ・VOD・大画面テレビを完備した客室。",
+    "lat": 35.694608,
+    "lng": 139.7027,
+    "description": "歌舞伎町2-5-6のアダルト専用ラブホテル。カラオケ・VOD・大画面テレビを完備した客室。座標は暫定値(OpenStreetMapsジオコーディング)のため、公式サイト(jht-j-mex.jp)での一次確認を推奨。",
     "category": "lodging",
     "tags": [
       "shower_available",
       "overnight_friendly",
       "price_band_mid"
     ],
-    "last_updated": "2026-07-11",
-    "reliability_score": 3,
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
     "source_type": "observed",
     "type": "official",
-    "verification_method": "web-search-2026-07",
+    "verification_method": "coord-review-2026-07-17",
     "gray_zone_note": "許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリーです。",
-    "licensed_as": "love_hotel_business_act"
+    "licensed_as": "love_hotel_business_act",
+    "coord_verified": "corrected"
   },
   {
     "name": "HOTEL Perrier(アダルト専用)",
@@ -337,8 +338,8 @@
   },
   {
     "name": "グランカスタマ歌舞伎町店",
-    "lat": 35.6958,
-    "lng": 139.6994,
+    "lat": 35.696037,
+    "lng": 139.702141,
     "description": "歌舞伎町2-37-1、B1F〜3Fの温浴施設付きネットカフェ・漫画喫茶チェーン。西武新宿駅から徒歩3分。24時間営業、シャワー・大浴場・ランドリー完備。",
     "category": "lodging",
     "tags": [
@@ -347,13 +348,14 @@
       "price_band_budget",
       "24h"
     ],
-    "last_updated": "2026-07-12",
+    "last_updated": "2026-07-17",
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "web-search-2026-07",
+    "verification_method": "google-maps-place-2026-07-17",
     "gray_zone_note": "ネットカフェの宿泊利用は旅館業法上の宿泊施設としての許可を得たものではありません。事業自体は適法ですが、法的・安全面ではグレーゾーンに近いものとして扱ってください。",
-    "licensed_as": "internet_cafe_no_lodging_license"
+    "licensed_as": "internet_cafe_no_lodging_license",
+    "coord_verified": "corrected"
   },
   {
     "name": "ホテルグレイスリー新宿",
@@ -371,7 +373,8 @@
     "source_type": "official",
     "type": "official",
     "verification_method": "web-search-2026-07",
-    "licensed_as": "hotel_business_act"
+    "licensed_as": "hotel_business_act",
+    "coord_verified": "verified"
   },
   {
     "name": "HOTEL GROOVE SHINJUKU, A PARKROYAL Hotel",
@@ -389,6 +392,1154 @@
     "source_type": "official",
     "type": "official",
     "verification_method": "web-search-2026-07",
+    "licensed_as": "hotel_business_act",
+    "coord_verified": "verified"
+  },
+  {
+    "name": "HOTEL KABUKI(アダルト専用)",
+    "lat": 35.6951,
+    "lng": 139.7021,
+    "description": "歌舞伎町1-16-9、MEGAドン・キホーテ歌舞伎町店裏のアダルト向けブティックホテル。2023年開業。全室ジャクジー付きスイート。新宿駅から徒歩5分。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly",
+      "price_band_mid"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "official",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "許可を得たラブホテル系ブティックホテルで、この地区では一般的かつ合法な宿泊カテゴリーです。",
     "licensed_as": "hotel_business_act"
+  },
+  {
+    "name": "HOTEL i",
+    "lat": 35.694535,
+    "lng": 139.702335,
+    "description": "歌舞伎町1-13のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "HOTEL Fine",
+    "lat": 35.693888,
+    "lng": 139.702289,
+    "description": "歌舞伎町1-16のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "レンタルルーム ピンクフラミンゴ",
+    "lat": 35.695208,
+    "lng": 139.7021,
+    "description": "歌舞伎町1-23のレンタルルーム(休憩スペース)。旅館業法の許可を得たホテルではなく、貸室業として営業していると見られる。",
+    "category": "lodging",
+    "tags": [
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の検証済みPOI(歌舞伎町1丁目周辺)からの概算推定値であり、未検証。旅館業法上の許可(ホテル営業許可)を得たラブホテルではなく、貸室(レンタルルーム)業として案内されている情報源が複数あり、宿泊業としての法的位置づけが曖昧なため利用は自己判断で。",
+    "licensed_as": "unlicensed_rental_room"
+  },
+  {
+    "name": "レンタルルーム ビスタ",
+    "lat": 35.694988,
+    "lng": 139.702227,
+    "description": "歌舞伎町1-23のレンタルルーム(休憩スペース)。旅館業法の許可を得たホテルではなく、貸室業として営業していると見られる。",
+    "category": "lodging",
+    "tags": [
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の検証済みPOI(歌舞伎町1丁目周辺)からの概算推定値であり、未検証。旅館業法上の許可(ホテル営業許可)を得たラブホテルではなく、貸室(レンタルルーム)業として案内されている情報源が複数あり、宿泊業としての法的位置づけが曖昧なため利用は自己判断で。",
+    "licensed_as": "unlicensed_rental_room"
+  },
+  {
+    "name": "レンタルルーム PRIME10room",
+    "lat": 35.695116,
+    "lng": 139.701871,
+    "description": "歌舞伎町1-24のレンタルルーム(休憩スペース)。旅館業法の許可を得たホテルではなく、貸室業として営業していると見られる。",
+    "category": "lodging",
+    "tags": [
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の検証済みPOI(歌舞伎町1丁目周辺)からの概算推定値であり、未検証。旅館業法上の許可(ホテル営業許可)を得たラブホテルではなく、貸室(レンタルルーム)業として案内されている情報源が複数あり、宿泊業としての法的位置づけが曖昧なため利用は自己判断で。",
+    "licensed_as": "unlicensed_rental_room"
+  },
+  {
+    "name": "レンタルルームR",
+    "lat": 35.695231,
+    "lng": 139.702311,
+    "description": "歌舞伎町1-26のレンタルルーム(休憩スペース)。旅館業法の許可を得たホテルではなく、貸室業として営業していると見られる。",
+    "category": "lodging",
+    "tags": [
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の検証済みPOI(歌舞伎町1丁目周辺)からの概算推定値であり、未検証。旅館業法上の許可(ホテル営業許可)を得たラブホテルではなく、貸室(レンタルルーム)業として案内されている情報源が複数あり、宿泊業としての法的位置づけが曖昧なため利用は自己判断で。",
+    "licensed_as": "unlicensed_rental_room"
+  },
+  {
+    "name": "レンタルルーム ROOMS",
+    "lat": 35.694863,
+    "lng": 139.702048,
+    "description": "歌舞伎町1-9のレンタルルーム(休憩スペース)。旅館業法の許可を得たホテルではなく、貸室業として営業していると見られる。",
+    "category": "lodging",
+    "tags": [
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の検証済みPOI(歌舞伎町1丁目周辺)からの概算推定値であり、未検証。旅館業法上の許可(ホテル営業許可)を得たラブホテルではなく、貸室(レンタルルーム)業として案内されている情報源が複数あり、宿泊業としての法的位置づけが曖昧なため利用は自己判断で。",
+    "licensed_as": "unlicensed_rental_room"
+  },
+  {
+    "name": "HOTEL STELLATE",
+    "lat": 35.695808,
+    "lng": 139.705041,
+    "description": "歌舞伎町2-11のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "オリオン",
+    "lat": 35.696169,
+    "lng": 139.705075,
+    "description": "歌舞伎町2-11のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "HOTEL URBAN STAGE",
+    "lat": 35.696038,
+    "lng": 139.705044,
+    "description": "歌舞伎町2-11のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "イマージュ",
+    "lat": 35.695924,
+    "lng": 139.705027,
+    "description": "歌舞伎町2-11のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "レンタルルーム bloom",
+    "lat": 35.695308,
+    "lng": 139.7063,
+    "description": "歌舞伎町2-11のレンタルルーム(休憩スペース)。旅館業法の許可を得たホテルではなく、貸室業として営業していると見られる。",
+    "category": "lodging",
+    "tags": [
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の検証済みPOI(歌舞伎町2丁目周辺)からの概算推定値であり、未検証。旅館業法上の許可(ホテル営業許可)を得たラブホテルではなく、貸室(レンタルルーム)業として案内されている情報源が複数あり、宿泊業としての法的位置づけが曖昧なため利用は自己判断で。",
+    "licensed_as": "unlicensed_rental_room"
+  },
+  {
+    "name": "HOTEL THE HOTEL",
+    "lat": 35.69614,
+    "lng": 139.705538,
+    "description": "歌舞伎町2-12のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "HOTEL GRAY",
+    "lat": 35.695982,
+    "lng": 139.705651,
+    "description": "歌舞伎町2-12のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "HOTEL SEKITEI EMPEROR TOWER",
+    "lat": 35.696006,
+    "lng": 139.705512,
+    "description": "歌舞伎町2-12のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "HOTEL W-BAGUS",
+    "lat": 35.696478,
+    "lng": 139.705223,
+    "description": "歌舞伎町2-13のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "ホテル セリオ",
+    "lat": 35.697103,
+    "lng": 139.705729,
+    "description": "歌舞伎町2-15のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "ホテルバリアンリゾート東新宿店",
+    "lat": 35.696318,
+    "lng": 139.705455,
+    "description": "歌舞伎町2-19のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の検証済みPOIからの概算推定値であり、未検証(正確な位置と異なる可能性がある)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "ホテルブレス",
+    "lat": 35.693608,
+    "lng": 139.7055,
+    "description": "歌舞伎町2-2のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の検証済みPOIからの概算推定値であり、未検証(正確な位置と異なる可能性がある)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "ホテル松月",
+    "lat": 35.693388,
+    "lng": 139.705627,
+    "description": "歌舞伎町2-2のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の検証済みPOIからの概算推定値であり、未検証(正確な位置と異なる可能性がある)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "HOTEL 8",
+    "lat": 35.696181,
+    "lng": 139.706614,
+    "description": "歌舞伎町2-2のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "ホテルバリアンリゾート新宿フォレスト店",
+    "lat": 35.696098,
+    "lng": 139.705582,
+    "description": "歌舞伎町2-20のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の検証済みPOIからの概算推定値であり、未検証(正確な位置と異なる可能性がある)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "ホテルバリアンリゾート新宿アイランド店",
+    "lat": 35.696226,
+    "lng": 139.705226,
+    "description": "歌舞伎町2-22のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の検証済みPOIからの概算推定値であり、未検証(正確な位置と異なる可能性がある)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "HOTEL SEASON",
+    "lat": 35.695753,
+    "lng": 139.704272,
+    "description": "歌舞伎町2-23のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "HOTEL PASHA RESORT",
+    "lat": 35.695854,
+    "lng": 139.70295,
+    "description": "歌舞伎町2-27のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "HOTEL ジロー",
+    "lat": 35.696341,
+    "lng": 139.705666,
+    "description": "歌舞伎町2-28のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の検証済みPOIからの概算推定値であり、未検証(正確な位置と異なる可能性がある)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "ホテル 愛",
+    "lat": 35.696398,
+    "lng": 139.703066,
+    "description": "歌舞伎町2-28のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "ホテル アランド新宿",
+    "lat": 35.696527,
+    "lng": 139.703108,
+    "description": "歌舞伎町2-28のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "ホテルバリアンリゾート新宿グランピング店",
+    "lat": 35.695973,
+    "lng": 139.705403,
+    "description": "歌舞伎町2-29のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の検証済みPOIからの概算推定値であり、未検証(正確な位置と異なる可能性がある)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "ホテル ラピア",
+    "lat": 35.696714,
+    "lng": 139.703325,
+    "description": "歌舞伎町2-29のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "ブロンモード新宿",
+    "lat": 35.696868,
+    "lng": 139.703236,
+    "description": "歌舞伎町2-29のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "ホテル パル新宿店",
+    "lat": 35.696433,
+    "lng": 139.70528,
+    "description": "歌舞伎町2-30のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の検証済みPOIからの概算推定値であり、未検証(正確な位置と異なる可能性がある)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "HOTEL La MODE 新宿",
+    "lat": 35.697328,
+    "lng": 139.703284,
+    "description": "歌舞伎町2-30のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "HOTEL CEAN新宿",
+    "lat": 35.696136,
+    "lng": 139.705794,
+    "description": "歌舞伎町2-31のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の検証済みPOIからの概算推定値であり、未検証(正確な位置と異なる可能性がある)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "HOTEL MALTA",
+    "lat": 35.697691,
+    "lng": 139.702867,
+    "description": "歌舞伎町2-32のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "HOTEL Sun",
+    "lat": 35.696069,
+    "lng": 139.705122,
+    "description": "歌舞伎町2-33のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の検証済みPOIからの概算推定値であり、未検証(正確な位置と異なる可能性がある)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "ビーナス",
+    "lat": 35.6974,
+    "lng": 139.702855,
+    "description": "歌舞伎町2-33のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "ホテル ジャルディーノ新宿",
+    "lat": 35.696813,
+    "lng": 139.702901,
+    "description": "歌舞伎町2-34のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "LABIO",
+    "lat": 35.696202,
+    "lng": 139.702718,
+    "description": "歌舞伎町2-35のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "XO歌舞伎町",
+    "lat": 35.696514,
+    "lng": 139.705592,
+    "description": "歌舞伎町2-35のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の検証済みPOIからの概算推定値であり、未検証(正確な位置と異なる可能性がある)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "HOTEL K",
+    "lat": 35.695895,
+    "lng": 139.705615,
+    "description": "歌舞伎町2-35のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の検証済みPOIからの概算推定値であり、未検証(正確な位置と異なる可能性がある)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "HOTEL WAKO",
+    "lat": 35.696362,
+    "lng": 139.705056,
+    "description": "歌舞伎町2-35のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の検証済みPOIからの概算推定値であり、未検証(正確な位置と異なる可能性がある)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "ホテル LISTO",
+    "lat": 35.695899,
+    "lng": 139.702631,
+    "description": "歌舞伎町2-36のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "ホテルいいじま",
+    "lat": 35.696322,
+    "lng": 139.705894,
+    "description": "歌舞伎町2-38のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の検証済みPOIからの概算推定値であり、未検証(正確な位置と異なる可能性がある)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "カラフルP&A新宿",
+    "lat": 35.697195,
+    "lng": 139.70057,
+    "description": "歌舞伎町2-45のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "すいこう苑",
+    "lat": 35.695874,
+    "lng": 139.705215,
+    "description": "歌舞伎町2-45のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の検証済みPOIからの概算推定値であり、未検証(正確な位置と異なる可能性がある)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "HOTEL BON",
+    "lat": 35.697019,
+    "lng": 139.700627,
+    "description": "歌舞伎町2-45のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "HOTEL YUKA",
+    "lat": 35.696604,
+    "lng": 139.705348,
+    "description": "歌舞伎町2-45のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の検証済みPOIからの概算推定値であり、未検証(正確な位置と異なる可能性がある)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "ホテルプティバリ東新宿店",
+    "lat": 35.694388,
+    "lng": 139.702827,
+    "description": "歌舞伎町2-5のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の検証済みPOIからの概算推定値であり、未検証(正確な位置と異なる可能性がある)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "HOTEL G7",
+    "lat": 35.696815,
+    "lng": 139.706088,
+    "description": "歌舞伎町2-5のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "パセオ",
+    "lat": 35.694516,
+    "lng": 139.702471,
+    "description": "歌舞伎町2-5のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の検証済みPOIからの概算推定値であり、未検証(正確な位置と異なる可能性がある)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "GRAND CHARIOT",
+    "lat": 35.695873,
+    "lng": 139.706198,
+    "description": "歌舞伎町2-6のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "遊楽膳",
+    "lat": 35.696551,
+    "lng": 139.706433,
+    "description": "歌舞伎町2-6のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "HOTEL SENSE",
+    "lat": 35.695914,
+    "lng": 139.706005,
+    "description": "歌舞伎町2-6のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "XO新宿",
+    "lat": 35.694631,
+    "lng": 139.702911,
+    "description": "歌舞伎町2-6のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の検証済みPOIからの概算推定値であり、未検証(正確な位置と異なる可能性がある)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "ミント歌舞伎町",
+    "lat": 35.696606,
+    "lng": 139.706071,
+    "description": "歌舞伎町2-6のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "ホテル エクセレント",
+    "lat": 35.695699,
+    "lng": 139.705962,
+    "description": "歌舞伎町2-7のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "W-ARAMIS",
+    "lat": 35.695434,
+    "lng": 139.705777,
+    "description": "歌舞伎町2-7のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "晏 -AN-",
+    "lat": 35.695585,
+    "lng": 139.705821,
+    "description": "歌舞伎町2-7のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "HOTEL PROUD",
+    "lat": 35.69577,
+    "lng": 139.705831,
+    "description": "歌舞伎町2-7のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "ホテルAVYSS",
+    "lat": 35.695608,
+    "lng": 139.7061,
+    "description": "歌舞伎町2-8のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の検証済みPOIからの概算推定値であり、未検証(正確な位置と異なる可能性がある)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "HOTEL D-WAVE",
+    "lat": 35.695118,
+    "lng": 139.705728,
+    "description": "歌舞伎町2-8のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
+  },
+  {
+    "name": "HOTEL FORSION",
+    "lat": 35.695743,
+    "lng": 139.705243,
+    "description": "歌舞伎町2-9のアダルト向けラブホテル。",
+    "category": "lodging",
+    "tags": [
+      "shower_available",
+      "overnight_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。許可を得たラブホテルで、この地区では一般的かつ合法な宿泊カテゴリー。",
+    "licensed_as": "love_hotel_business_act"
   }
 ]
