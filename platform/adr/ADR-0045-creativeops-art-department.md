@@ -28,7 +28,37 @@ double-exposure, chromatic drift, etc.) rather than left as unrealized
 prose, subject to the same horror-grammar boundary
 (`BRAND_IDENTITY.md`) already binding `lighting-design`.
 
-Updated counts: 20 specialists, 33 total interactive roles.
+## Amendment (2026-07-18): `visualops`
+
+Same review session: the operator observed that `color-coordination` and
+`lighting-design` findings can genuinely overlap on the same defect
+(confirmed live — Nao's hair rendering "dark navy" instead of her
+spec's "light ocean-blue" could be a palette/prompt-language problem or
+an insufficient-fill-light problem; neither specialist's mandate covers
+determining which), producing a real risk of each correctly reporting
+"my part is correct" while the actual on-screen defect gets no owner. The
+operator explicitly asked for "a small ops or orchestrator for visual
+effects" to resolve this rather than routing every such case to
+`creativeops`, which also carries sound/accessibility cohesion and
+shouldn't have to personally adjudicate every color-vs-lighting boundary
+dispute.
+
+Added `visualops`: a narrow sub-coordinator nested under `creativeops`,
+managing exactly `color-coordination`, `lighting-design`, `visual-effects`
+and owning only the attribution question when two of them plausibly
+explain the same defect. Escalates to `creativeops` for anything crossing
+into sound/accessibility or requiring a content-strategy tradeoff.
+
+This is the repository's first 3-tier interactive role
+(OpsBoard → CreativeOps → VisualOps → 3 specialists). Precedent for a
+similar sub-coordinator if a future tightly-coupled-specialist-trio shows
+the same overlapping-ownership problem elsewhere — not a general
+license to add sub-tiers speculatively; each one still needs its own
+concrete triggering incident, per CORE_PRINCIPLES #9.
+
+Updated counts: 12 Ops (unchanged — `visualops` reports to `creativeops`,
+not directly to OpsBoard), 21 specialist-tier roles (including
+`visualops`), 34 total interactive roles.
 
 ## Context
 
