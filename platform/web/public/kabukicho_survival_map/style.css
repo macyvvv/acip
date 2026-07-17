@@ -923,16 +923,6 @@ body.controls-open .left-pane-controls {
   overflow: hidden;
 }
 
-.poi-card-summary {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-  color: #574d42;
-  font-size: 0.8rem;
-  line-height: 1.38;
-}
-
 .poi-card-side {
   display: grid;
   justify-items: end;

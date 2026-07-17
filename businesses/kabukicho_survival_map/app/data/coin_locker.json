@@ -126,8 +126,8 @@
   },
   {
     "name": "東急歌舞伎町タワー地下1階コインロッカー",
-    "lat": 35.6963,
-    "lng": 139.7033,
+    "lat": 35.695935,
+    "lng": 139.700657,
     "description": "歌舞伎町一番街アーチ入口から徒歩約1分、地下1階の24時間利用可能な大型ロッカー群(300台超)。",
     "category": "coin_locker",
     "tags": [
@@ -140,14 +140,14 @@
     "reliability_score": 3,
     "source_type": "observed",
     "type": "unofficial",
-    "verification_method": "coord-review-2026-07-17",
+    "verification_method": "osm-cross-reference-2026-07-17",
     "gray_zone_note": "東急歌舞伎町タワー公式FAQには掲載されておらず(公式には1階の有人手荷物預かりのみ案内)、複数の旅行ガイドが独自に報告している情報です。施設側による確認は取れていないため、現地で確認してからご利用ください。",
-    "coord_verified": "corrected"
+    "coord_verified": "verified"
   },
   {
     "name": "東急歌舞伎町タワー4階シネマフロアロッカー",
-    "lat": 35.6963,
-    "lng": 139.7033,
+    "lat": 35.695935,
+    "lng": 139.700657,
     "description": "映画館フロアのエレベーター横にある電子決済専用の小型ロッカー。小型200円/中型300円、利用制限180分、主に映画鑑賞者向け。",
     "category": "coin_locker",
     "tags": [
@@ -158,13 +158,13 @@
     "reliability_score": 3,
     "source_type": "observed",
     "type": "official",
-    "verification_method": "coord-review-2026-07-17",
-    "coord_verified": "corrected"
+    "verification_method": "osm-cross-reference-2026-07-17",
+    "coord_verified": "verified"
   },
   {
     "name": "東急歌舞伎町タワー10階(109シネマズプレミアム新宿)ロッカー",
-    "lat": 35.6963,
-    "lng": 139.7033,
+    "lat": 35.695935,
+    "lng": 139.700657,
     "description": "10階109シネマズプレミアム新宿フロア、エレベーター横のキャッシュレス専用ロッカー(IC/タッチ/QR対応)。",
     "category": "coin_locker",
     "tags": [
@@ -175,8 +175,8 @@
     "reliability_score": 3,
     "source_type": "observed",
     "type": "official",
-    "verification_method": "coord-review-2026-07-17",
-    "coord_verified": "corrected"
+    "verification_method": "osm-cross-reference-2026-07-17",
+    "coord_verified": "verified"
   },
   {
     "name": "Zepp新宿ロッカー(地下1階・地下4階)",
