@@ -12,7 +12,7 @@
 # Google Maps JS API key), KABUKICHO_GA_ID, KABUKICHO_ADSENSE_CLIENT,
 # KABUKICHO_SITE_URL (this site's own final URL -- activates
 # sitemap.xml/canonical generation in build.py).
-name = "kabukicho-survival-map"
+name = "kabukichosurvivalmap"
 compatibility_date = "2026-07-17"
 
 [assets]
