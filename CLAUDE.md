@@ -65,10 +65,13 @@ minimal_launch_brief_generator, repository_operational_summary）と
 
 ## Interactive Agent Layer
 
-`.claude/agents/` はinteractive Claude Code rolesの正本。現在は10 Ops、15 specialist agents、
-`opsboard`の計26役割で構成する。BusinessOps、ProductOps、LegalOpsと配下7役割は
-`platform/adr/ADR-0041`で、cross-cutting役のEpistemicsOpsは`platform/adr/ADR-0043`で追加された
-interactive-only rolesであり、unattended registryには存在しない。
+`.claude/agents/` はinteractive Claude Code rolesの正本。現在は11 Ops、15 specialist agents、
+`opsboard`の計27役割で構成する。BusinessOps、ProductOps、LegalOpsと配下7役割は
+`platform/adr/ADR-0041`で、cross-cutting役のEpistemicsOpsは`platform/adr/ADR-0043`で、同じく
+cross-cutting役のTrainerOpsは`platform/adr/ADR-0044`で追加されたinteractive-only rolesであり、
+unattended registryには存在しない。トレーナー役が蒸留した汎用的な教訓は
+`platform/docs/current/PORTABLE_AGENT_LESSONS.md`にacip非依存の形でまとめ、他プロジェクトへの
+持ち出しを想定する。
 
 元の8 business-content rolesは自動実行側にも定義がある。`platform/adr/ADR-0039`の
 dual-authority ruleに従い、共有役割のIO、contract、permissionを実質変更する場合は両方を
