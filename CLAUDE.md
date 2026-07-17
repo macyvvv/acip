@@ -65,8 +65,8 @@ minimal_launch_brief_generator, repository_operational_summary）と
 
 ## Interactive Agent Layer
 
-`.claude/agents/` はinteractive Claude Code rolesの正本。現在は12 Ops、19 specialist agents、
-`opsboard`の計32役割で構成する。BusinessOps、ProductOps、LegalOpsと配下7役割は
+`.claude/agents/` はinteractive Claude Code rolesの正本。現在は12 Ops、20 specialist agents、
+`opsboard`の計33役割で構成する。BusinessOps、ProductOps、LegalOpsと配下7役割は
 `platform/adr/ADR-0041`で、cross-cutting役のEpistemicsOpsは`platform/adr/ADR-0043`で、同じく
 cross-cutting役のTrainerOpsは`platform/adr/ADR-0044`で、somiaの美術担当CreativeOpsと配下4役割は
 `platform/adr/ADR-0045`で追加されたinteractive-only rolesであり、

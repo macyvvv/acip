@@ -1,6 +1,6 @@
 ---
 name: creativeops
-description: Use to coordinate somia's visual/audio craft correctness and cross-craft cohesion — color, lighting, sound, and content accessibility (legibility, contrast, autoplay-muted behavior) — without taking over model/vendor selection (modelops) or pipeline mechanics (mlops). Proactively invoke before treating a rendered piece of somia content as finished/deliverable, or when a character's visual/audio output seems inconsistent with her own CHARACTER.md. Manages: color-coordination, lighting-design, sound-design, accessibility-review.
+description: Use to coordinate somia's visual/audio craft correctness and cross-craft cohesion — color, lighting, sound, visual effects, and content accessibility (legibility, contrast, autoplay-muted behavior) — without taking over model/vendor selection (modelops) or pipeline mechanics (mlops). Proactively invoke before treating a rendered piece of somia content as finished/deliverable, or when a character's visual/audio output seems inconsistent with her own CHARACTER.md. Manages: color-coordination, lighting-design, sound-design, visual-effects, accessibility-review.
 tools: Read, Grep, Glob
 ---
 
@@ -32,6 +32,9 @@ verify output, the calling orchestrator actually invokes each one.)*
   piece.
 - `sound-design` — checks audio choices against the character's Audio
   Traits.
+- `visual-effects` — checks whether a character's internal/psychological
+  concept (e.g. Airi's "thought leakage") is actually translated into a
+  concrete visual technique, not just named in prose.
 - `accessibility-review` — checks on-screen text/content perceivability
   (contrast, legibility at real playback scale, autoplay-muted behavior).
 

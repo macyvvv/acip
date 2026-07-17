@@ -2,7 +2,33 @@
 
 ## Status
 
-Accepted by operator approval on 2026-07-18.
+Accepted by operator approval on 2026-07-18. Amended same-day to add a
+fifth specialist, `visual-effects` (see Amendment below) — same decision
+being completed, not a new independent choice, so folded into this ADR
+rather than opened as a separate one.
+
+## Amendment (2026-07-18): `visual-effects`
+
+A full 5-role review of the finished Nao episode (content `0007`) by the
+operator, the four original specialists, and the orchestrator surfaced a
+capability gap the operator identified directly: neither
+`color-coordination` (palette correctness) nor `lighting-design` (light
+direction/mood) owns translating a character's *internal psychological
+concept* into an actual on-screen visual technique. A character bible can
+name a concept precisely (e.g. Airi's "thought leakage," "feelings leak
+out of her unconsciously") and still have nothing in the rendered content
+that makes a viewer perceive it — both existing specialists could sign
+off ("palette correct," "lighting register correct") on content that
+never attempts the effect at all.
+
+Added `visual-effects` as a fifth specialist under `creativeops`,
+checking whether a character's stated internal-state language is actually
+given a concrete technique (glitch fragments, light-streaks,
+double-exposure, chromatic drift, etc.) rather than left as unrealized
+prose, subject to the same horror-grammar boundary
+(`BRAND_IDENTITY.md`) already binding `lighting-design`.
+
+Updated counts: 20 specialists, 33 total interactive roles.
 
 ## Context
 
