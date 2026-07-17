@@ -70,7 +70,7 @@ The business-agent automation platform is live in production:
 - Level 3c: policy-based unattended publishing, same shape as 3a for the
   publish step.
 - Level 3b (scheduled/unattended trigger, `platform/adr/ADR-0038`): the runner
-  (`platform/system/platform/scripts/business_agent/run_scheduled_execution.py`) and its
+  (`platform/system/scripts/business_agent/run_scheduled_execution.py`) and its
   kill switch are built, but nothing invokes it on a schedule yet -- no
   cron/launchd entry exists. Real consequence: 15 `candidate` tasks sit
   stalled in `platform/system/runtime/business_agent_tasks/queue.json`. Whether to
@@ -88,10 +88,12 @@ chain, minimal_launch_brief_generator, repository_operational_summary) and
 `platform/app/tools/approval_console_mvp`.
 
 GitHub is the Single Source of Truth. Nothing merges to `main` without a
-PR; the local pre-push hook (`bash platform/system/platform/scripts/git/install_hooks.sh`)
+PR; the local pre-push hook (`bash platform/system/scripts/git/install_hooks.sh`)
 is the real enforcement today -- see `platform/docs/current/MAIN_PROTECTION_
-POLICY.md` for why this is opt-in-per-clone and not backed by native
-GitHub branch protection (private repo, free plan).
+POLICY.md` for why this is opt-in-per-clone and not (yet) backed by native
+GitHub branch protection. This repo is actually public, not private as
+previously documented here -- native protection is available for free and
+simply hasn't been enabled (operator decision pending, see that doc).
 
 ---
 
@@ -116,7 +118,7 @@ Zero stale `candidate` tasks left unaddressed (executed or explicitly
 discarded with reason), Level 3b's scheduling status recorded as a
 deliberate decision either way, `CLAUDE.md`/PROJECT/STATE reference the
 live `.claude/agents/` structure, `python -m pytest -q` and
-`python platform/system/platform/scripts/validate_all.py` both clean.
+`python platform/system/scripts/validate_all.py` both clean.
 
 ---
 

@@ -11,7 +11,7 @@ Human → GitHub Issue → GitHub sync → Supervisor selection → Execution �
 
 ### Intake
 - A human creates a GitHub Issue.
-- `platform/system/platform/scripts/sync_github_issues.py` syncs open issues into `platform/system/runtime/github/open_issues.json`.
+- `platform/system/scripts/sync_github_issues.py` syncs open issues into `platform/system/runtime/github/open_issues.json`.
 
 ### Eligibility
 - The supervisor reads the synced issue mirror and repository runtime state.
@@ -38,7 +38,7 @@ Human → GitHub Issue → GitHub sync → Supervisor selection → Execution �
 - `platform/system/runtime/handoff/completion/latest.json`
 
 ## Validation Touchpoints
-- `python3 platform/system/platform/scripts/validate_all.py`
+- `python3 platform/system/scripts/validate_all.py`
 - Canonical pytest command from `platform/docs/current/VALIDATION_COMMAND_POLICY.md`
 
 ## Current Assessment

@@ -136,7 +136,7 @@ class ValidationOrchestrator:
                     "# VALIDATION_STATE",
                     "",
                     f"last_validation_status: {'success' if result.overall_success else 'failure'}",
-                    f"last_validation_command: python3 platform/system/platform/scripts/validate_all.py",
+                    f"last_validation_command: python3 platform/system/scripts/validate_all.py",
                     f"last_validation_report_json: platform/system/runtime/validation/validation_report.json",
                     f"last_validation_report_md: platform/system/runtime/validation/VALIDATION_REPORT.md",
                     f"validation_owner: {result.validation_owner}",

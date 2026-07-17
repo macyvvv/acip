@@ -23,7 +23,7 @@ def test_build_and_write_reports(tmp_path: Path) -> None:
     orchestrator = ValidationOrchestrator(tmp_path)
     result = ValidationOrchestrationResult(
         validation_steps=[
-            ValidationStepResult(command="python platform/system/platform/scripts/validate_ep_0100.py", exit_code=0, success=True),
+            ValidationStepResult(command="python platform/system/scripts/validate_ep_0100.py", exit_code=0, success=True),
         ],
         pytest_result=ValidationStepResult(command="python -m pytest -q", exit_code=0, success=True),
         overall_success=True,

@@ -15,7 +15,7 @@ When a task needs research-then-documentation for a business, you are the one wh
 
 ## What you own
 - `platform/system/runtime/data/kabukicho/*.json` — one array per POI category (smoking/toilet/convenience/atm/coin_locker/lodging). Required fields per issue #33: name, lat/lng, description, category, tags, last_updated, reliability_score (1-5), source_type, type. Verify every entry still matches this shape after a bulk edit — a missing field fails silently in `app.js`'s render, not loudly.
-- `businesses/platform/somia/content/CONTENT/<id>/` — script.md/prompt.md/metadata.json/audio.json, parsed by `platform/system/platform/scripts/platform/somia/content_spec.py`'s `load_content_spec()`. Run it against every content dir after a batch add; a malformed heading (e.g. a missing `## Text` section) fails silently unless checked.
+- `businesses/platform/somia/content/CONTENT/<id>/` — script.md/prompt.md/metadata.json/audio.json, parsed by `platform/system/scripts/platform/somia/content_spec.py`'s `load_content_spec()`. Run it against every content dir after a batch add; a malformed heading (e.g. a missing `## Text` section) fails silently unless checked.
 - Data freshness: `last_updated` staleness (kabukicho's freshness badges: ≤7d recent, ≤30d ok, else stale), and `reliability_score` distribution.
 - Cross-file consistency: category counts, no duplicate entries, no orphaned references between a product's `CATEGORIES`/`TAG_COPY` config (in app.js) and its actual data files' categories/tags.
 

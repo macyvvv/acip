@@ -19,7 +19,7 @@ VIDEO_MODEL = "fal-ai/pika/v2.2/image-to-video"
 # Observed failure mode: Pika 2.2 unreliably drifts a stylized/illustrated
 # keyframe toward photorealism over the course of the clip, even with a
 # negative_prompt set. This is a known limitation of this provider, not
-# just a prompt-tuning gap — see platform/system/platform/scripts/platform/somia/providers_kling.py
+# just a prompt-tuning gap — see platform/system/scripts/platform/somia/providers_kling.py
 # for the alternative adopted after this kept recurring.
 DEFAULT_NEGATIVE_PROMPT = os.environ.get(
     "SOMIA_PIKA_NEGATIVE_PROMPT",

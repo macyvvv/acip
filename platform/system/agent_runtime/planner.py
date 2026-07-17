@@ -16,8 +16,8 @@ def build_plan(context: RuntimeContext) -> RuntimePlan:
             "Produce approval-ready report",
         ],
         validation=[
-            "python platform/system/platform/scripts/agent_runtime/run_dry_run_cycle.py",
-            "python platform/system/platform/scripts/agent_runtime/validate_agent_runtime_mvp.py",
+            "python platform/system/scripts/agent_runtime/run_dry_run_cycle.py",
+            "python platform/system/scripts/agent_runtime/validate_agent_runtime_mvp.py",
         ],
         prohibited_actions=[
             "runtime external execution",

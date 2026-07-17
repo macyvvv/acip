@@ -8,7 +8,7 @@ from system.orchestrator.validation_orchestrator import ValidationOrchestrationR
 def test_completion_report_automation_builds_report() -> None:
     automation = CompletionReportAutomation(".")
     validation = ValidationOrchestrationResult(
-        validation_steps=[ValidationStepResult(command="python platform/system/platform/scripts/validate_all.py", exit_code=0, success=True)],
+        validation_steps=[ValidationStepResult(command="python platform/system/scripts/validate_all.py", exit_code=0, success=True)],
         pytest_result=ValidationStepResult(command="python -m pytest -q", exit_code=0, success=True),
         overall_success=True,
     )

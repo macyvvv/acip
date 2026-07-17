@@ -9,6 +9,6 @@ def build_queue_item(plan: RuntimePlan) -> QueueItem:
         owner="Codex/scripts",
         objective=plan.objective,
         status="approval_ready",
-        validation="python platform/system/platform/scripts/agent_runtime/validate_agent_runtime_mvp.py",
+        validation="python platform/system/scripts/agent_runtime/validate_agent_runtime_mvp.py",
         done_condition="Dry-run cycle generates context, plan, queue, review, and approval-ready artifacts.",
     )

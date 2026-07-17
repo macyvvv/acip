@@ -40,7 +40,7 @@ out ahead -- in time, money, or effort -- not merely "engaged."
    them at their usage level -- not a bare question with no informational
    payoff.
 2. **Every specific figure is sourced.** Verified via
-   `platform/system/platform/scripts/dataops/verify_sourced_facts.py` against a
+   `platform/system/scripts/dataops/verify_sourced_facts.py` against a
    `market_research` fact sheet with a `verified_as_of` date. Never a
    number from memory/training data.
 3. **States uncertainty honestly.** If research found conflicting or
@@ -71,8 +71,8 @@ out ahead -- in time, money, or effort -- not merely "engaged."
 - `doc_creation`/`marketing` may not introduce unsourced figures (see the
   same date's updates to `platform/system/agent_runtime/role_prompts/doc_creation.md`
   and `.claude/agents/doc-creation.md`, plus
-  `platform/system/platform/scripts/dataops/verify_sourced_facts.py`).
-- A human finalizing content via `platform/system/platform/scripts/publishing/finalize_content.py`
+  `platform/system/scripts/dataops/verify_sourced_facts.py`).
+- A human finalizing content via `platform/system/scripts/publishing/finalize_content.py`
   should check a draft against this standard before finalizing. This
   standard is a checklist for that human judgment, not a claim that
   everything here is machine-enforced end-to-end -- only the sourced-figure

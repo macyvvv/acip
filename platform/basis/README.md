@@ -10,7 +10,7 @@ what's still current:
   durable concern. Read this first.
 - **[057_boundary_validation_policy.md](057_boundary_validation_policy.md)**
   — kept standalone; maps to real, distinct enforcement
-  (`platform/system/platform/scripts/selftest/check_boundaries.py`, wired into
+  (`platform/system/scripts/selftest/check_boundaries.py`, wired into
   `boundary-validation.yml`).
 - **[REPOSITORY_CONVENTIONS.md](REPOSITORY_CONVENTIONS.md)** — kept
   standalone; actively used naming-convention reference.

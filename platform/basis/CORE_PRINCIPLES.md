@@ -17,12 +17,13 @@ read the last principle first.
 ## 1. PR-required; no direct push to `main`
 
 Every change flows through a feature branch and a pull request. Enforced
-today by a real local pre-push hook (`platform/system/platform/scripts/git/
-prevent_main_push.sh`, activated via `bash platform/system/platform/scripts/git/
+today by a real local pre-push hook (`platform/system/scripts/git/
+prevent_main_push.sh`, activated via `bash platform/system/scripts/git/
 install_hooks.sh`) — but that hook lives in `.git/hooks/`, which git never
 tracks, so it's opt-in per clone, not automatic. There is no GitHub-side
-branch protection configured or available (this repo is private on
-GitHub's free plan). See `platform/docs/current/MAIN_PROTECTION_POLICY.md` for the
+branch protection configured yet -- this repo is actually public, so native
+protection is available for free; simply not enabled as of this writing
+(operator decision, not a plan limitation). See `platform/docs/current/MAIN_PROTECTION_POLICY.md` for the
 full, honest enforcement-boundary account — including what a real remote
 backstop would need to look like if this gap is ever worth closing further.
 
@@ -135,7 +136,7 @@ stale.
 
 - [`057_boundary_validation_policy.md`](057_boundary_validation_policy.md)
   — maps to real, distinct enforcement
-  (`platform/system/platform/scripts/selftest/check_boundaries.py`, wired into
+  (`platform/system/scripts/selftest/check_boundaries.py`, wired into
   `boundary-validation.yml`) with enough specific detail to be worth its
   own file rather than compressing into a principle above.
 - [`REPOSITORY_CONVENTIONS.md`](REPOSITORY_CONVENTIONS.md) — actively used

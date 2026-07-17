@@ -37,7 +37,7 @@ open task for this pipeline.
 
 `SOMIA_VIDEO_PROVIDER=dry_run` (the default) still proves the code path
 without any API key or cost. All fal.ai calls share the queue/upload
-plumbing in `platform/system/platform/scripts/platform/somia/fal_client.py`.
+plumbing in `platform/system/scripts/platform/somia/fal_client.py`.
 
 ## Rejected approaches (do not repeat)
 
@@ -66,14 +66,14 @@ plumbing in `platform/system/platform/scripts/platform/somia/fal_client.py`.
 
 ## Current code state vs the validated pipeline
 
-`platform/system/platform/scripts/platform/somia/render_content.py` + the provider adapters currently
+`platform/system/scripts/platform/somia/render_content.py` + the provider adapters currently
 implement only: text→image keyframe (Illustrious/flux/pika) → image-to-
 video. They do **not** yet do reference img2img (stage 1), ffmpeg post
 (stage 3), the mmaudio pass (stage 4), or muxing (stage 5). Those were run
 as one-off scripts during testing. Wiring stages 1/3/4/5 into the
 provider/pipeline code is the main follow-up.
 
-Provider registry (`platform/system/platform/scripts/platform/somia/providers.py`, vendor-agnostic
+Provider registry (`platform/system/scripts/platform/somia/providers.py`, vendor-agnostic
 via `fal_client.py`):
 - `illustrious_kling` — adopted default direction (Illustrious keyframe +
   Kling video).

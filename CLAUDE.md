@@ -1,7 +1,7 @@
 # CLAUDE.md
 
-本リポジトリで唯一の正本の運用指示書。`AGENTS.md` と `platform/.platform/system/*` は旧
-ChatGPT+Codex時代の記録として残すのみで、正本ではない（生きた優先順位は
+本リポジトリで唯一の正本の運用指示書。`AGENTS.md` と `.codex/agents/*`（Codex CLI形式の
+エージェント定義）は旧ChatGPT+Codex時代の記録として残すのみで、正本ではない（生きた優先順位は
 `platform/docs/current/STATE.md` のRuntime Notes: `PROJECT.md` → `STATE.md` →
 `CLAUDE.md` → `platform/basis/` → `platform/adr/` → Issue → PR → Conversation）。旧ファイル群の
 儀式的フォーマット（Conclusion/Next Actionの強制順序、「Current Phase:」
@@ -54,8 +54,8 @@ minimal_launch_brief_generator, repository_operational_summary）と
 - `main` への直接pushは禁止。常に feature branch → commit → push → PR →
   人間レビュー/マージ。ローカルガードは初回のみ
   `bash platform/system/scripts/git/install_hooks.sh` で有効化（`.git/hooks/`は
-  git非追跡のためclone毎に手動要。GitHub側のbranch protectionは無料プランの
-  privateリポジトリのため未設定 — 詳細は`platform/docs/current/MAIN_PROTECTION_POLICY.md`）。
+  git非追跡のためclone毎に手動要。GitHub側のbranch protectionは実はpublicリポジトリのため
+  無料でも設定可能だが、現時点では未設定 — 詳細は`platform/docs/current/MAIN_PROTECTION_POLICY.md`）。
 - 新しいdoc/script/workflowを追加する前に、同等のものが既に存在しないか
   （`platform/basis/`, `platform/adr/`, `platform/docs/current/`, `platform/system/`）確認し、あれば拡張・修正する。
   このリポジトリは重複が既に問題化している。

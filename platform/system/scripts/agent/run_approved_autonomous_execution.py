@@ -2,11 +2,21 @@
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
+
+# business_agent_execution_adapter.py's DEFAULT_CLI_TIMEOUT_SECONDS=60 is too
+# short for real generation work -- run_scheduled_execution.py already learned
+# this the hard way (see its own comment) and sets this env var before
+# invoking the same adapter. This script is the other real caller of
+# ApprovedAutonomousExecution.run() (manual/interactive use), so it needs the
+# same default. setdefault, not assignment, so an operator's own explicit env
+# var (e.g. for a manual dry-run) is never silently overridden.
+os.environ.setdefault("CLAUDE_EXECUTION_TIMEOUT_SECONDS", "240")
 
 from system.core.approved_autonomous_execution import ApprovedAutonomousExecution
 
