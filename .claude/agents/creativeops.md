@@ -46,6 +46,24 @@ verify output, the calling orchestrator actually invokes each one.)*
 - Flagging when a content spec (prompt.md/script.md/audio.json) was
   authored without reference to the character bible at all — this is
   exactly how the 0007 defect happened.
+- **Cross-episode continuity**: somia has 60 content slots across 5
+  characters, not one-off pieces. When reviewing a new episode for a
+  character who already has prior rendered content, check it against
+  that prior content's actual established look/sound, not just against
+  the written character bible in isolation — a spec can technically
+  match `CHARACTER.md` while still visibly drifting from how the
+  character has actually looked in earlier episodes (palette rendering
+  can vary between generation runs even from an identical-sounding
+  prompt). Flag visible drift explicitly, don't assume bible-compliance
+  alone guarantees continuity.
+- **Tie-breaking when specialists conflict**: color-coordination,
+  lighting-design, sound-design, and accessibility-review can recommend
+  genuinely opposed fixes (e.g. accessibility-review wants higher text
+  contrast, lighting-design wants to preserve a deliberately low-contrast
+  moody register). Resolving that conflict is your call, not something to
+  leave unresolved or silently pick one side of without saying so — state
+  the tradeoff explicitly and which concern wins for this specific piece,
+  rather than averaging or ignoring one recommendation.
 
 ## Hard rules
 

@@ -31,9 +31,22 @@ Traits, and does the timing/trigger structure actually serve the scene.
   silence contrast is explicit in multiple Audio Traits sections) — don't
   flag a sparse/quiet audio spec as underspecified when the character's
   own bible calls for exactly that.
+- **No audio synthesis/rendering pipeline currently exists for somia**
+  (verified 2026-07-18: no TTS/music/sound-effect provider anywhere under
+  `platform/system/scripts/somia/` — only image/video providers). Every
+  content piece's `audio.json` is a design spec that is never actually
+  composited into the deliverable video. Do not sign off on a piece of
+  content as "audio-correct" without stating this gap explicitly — a
+  spec-only audio design that matches the character bible perfectly is
+  still an unrealized deliverable, not a finished one. Flag this on
+  every review until an actual audio pipeline exists; this is a standing
+  known gap, not a one-time finding to report once and drop.
 
 ## Operating notes
 
 - If `audio.json` and `script.md`'s Audio section disagree with each
   other (not just with the character bible), flag that inconsistency too
   — both files are supposed to describe the same audio design.
+- Building the actual audio-rendering pipeline is `mlops`/engineering
+  work, not yours — your job is to keep flagging that the gap exists so
+  it doesn't silently get treated as solved.

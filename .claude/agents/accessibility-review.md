@@ -25,6 +25,13 @@ viewer choosing to unmute).
   supplement to audio a muted viewer never hears.
 - Timing: is the text on screen long enough to actually read, not just
   technically present for a fraction of a second.
+- **Photosensitive/flashing-content safety**: rapid flashing, strobing, or
+  high-contrast glitch effects carry a real seizure-trigger risk for
+  photosensitive viewers. This is not hypothetical for somia specifically
+  — Airi's `CHARACTER.md` names "glitch" as an explicit, repeated visual
+  motif (texture, UI fragments, "digital elements... intruding"). Check
+  any rendered output using glitch/flicker effects for flash rate and
+  intensity, not just whether the effect matches Airi's intended mood.
 
 ## Hard rules
 
