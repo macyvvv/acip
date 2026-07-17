@@ -30,7 +30,7 @@ from system.core.dotenv import load_dotenv  # noqa: E402
 # index.html is handled separately from the other static files -- it's a
 # template with SSG:* markers that get substituted with generated content
 # (see _render_index_html), not a plain copy.
-STATIC_FILES = ("app.js", "style.css")
+STATIC_FILES = ("app.js", "style.css", "privacy.html", "terms.html")
 INDEX_TEMPLATE = PRODUCT_DIR / "index.html"
 # Cross-product utilities (platform/app/shared/) copied in flat alongside this
 # product's own static files -- same "committed local copy of a canonical
@@ -76,7 +76,7 @@ FAQ_ITEMS = [
     ),
     (
         "掲載されている情報はどのくらい新しいですか？",
-        "各POIには最終確認日(last_updated)と信頼度スコアがあり、7日以内に確認済みの場所には「最近更新されました」のバッジが表示されます。1ヶ月以上確認されていない情報には注意バッジが付きます。",
+        "各POIには最終確認日(last_updated)と信頼度スコアがあり、8日から1ヶ月以内に確認された情報には更新目安バッジ、1ヶ月以上確認されていない情報には注意バッジが付きます。",
     ),
     (
         "非公式(グレーゾーン)の情報とは何ですか？",

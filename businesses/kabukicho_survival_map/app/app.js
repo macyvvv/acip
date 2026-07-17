@@ -105,7 +105,7 @@
       overnight_friendly: "深夜対応"
     },
     convenience: { "24h": "24h", atm_instore: "ATM併設", phone_charging: "充電可" },
-    atm: { "24h": "24h", international_card_ok: "海外カード" }
+    atm: { "24h": "24h", international_card_ok: "海外カード", convenience_colocated: "コンビニ併設" }
   };
 
   var NON_FILTER_TAG_IDS = {
@@ -116,6 +116,7 @@
   };
 
   var NONE_FILTER_TAG_ID = "__none__";
+  var SMOKING_UNOFFICIAL_TOGGLE_ID = "__smoking_unofficial__";
 
   var DISCLAIMER_JA = "⚠ 非公式情報・内容は変更される場合があります・ご利用は自己責任でお願いします";
   var DISCLAIMER_EN = "⚠ Unofficial Information / Subject to change / Use at your own risk";
@@ -123,9 +124,6 @@
   // Kabukicho's approximate centroid -- used as the map's default center
   // before (or in place of) a real geolocation fix.
   var KABUKICHO_CENTER = { lat: 35.6949, lng: 139.7028 };
-  var REFINED_POSITION_CACHE_KEY = "kabukicho_refined_positions_v2";
-  var MAX_ACCEPTABLE_GEOCODE_DRIFT_METERS = 600;
-  var ENABLE_RUNTIME_REFINEMENT = false;
 
   var state = {
     activeMode: MODES[0].id,
@@ -150,15 +148,11 @@
     // (TAG_COPY[categoryId]); carrying a filter across categories would
     // silently no-op or, worse, coincidentally match an unrelated tag.
     activeFilters: {},
+    includeUnofficialSmoking: false,
     expandedCardKey: null,
     controlsOpen: false,
     focusedPoiKey: null,
-    mapFailureReason: "loading",
-    geocoder: null,
-    refinedPositions: {},
-    skippedRefinements: {},
-    refineInFlight: false,
-    refineQueue: []
+    mapFailureReason: "loading"
   };
 
   var MODE_ALL_CATEGORY_ID = "__mode_all__";
@@ -227,10 +221,17 @@
   }
 
   function passesActiveFilters(poi) {
+    if (poi && poi.category === "smoking" && poi.type === "unofficial" && !state.includeUnofficialSmoking) {
+      return false;
+    }
     var activeTags = Object.keys(state.activeFilters).filter(function (t) { return state.activeFilters[t]; });
     if (!activeTags.length) return true;
     var tags = poi.tags || [];
     return activeTags.every(function (t) { return tags.indexOf(t) !== -1; });
+  }
+
+  function isSmokingCategoryActive() {
+    return state.activeCategory === "smoking";
   }
 
   function getFilteredPois(categoryId) {
@@ -276,22 +277,43 @@
       return;
     }
 
-    var overlayMaxByMode = {
-      nearby: "72dvh",
-      toilet_now: "76dvh",
-      smoking_now: "76dvh",
-      late_night: "80dvh"
-    };
-
     panel.style.setProperty("transform", "translateY(0)");
     panel.style.setProperty("opacity", "1");
-    panel.style.setProperty("pointer-events", "auto", "important");
-    panel.style.setProperty("max-height", "84px", "important");
+    panel.style.setProperty("pointer-events", "auto");
+    panel.style.setProperty("max-height", "84px");
+  }
 
-    if (overlay) {
-      var overlayMax = overlayMaxByMode[state.activeMode] || "74dvh";
-      overlay.style.setProperty("max-height", overlayMax, "important");
-      overlay.style.setProperty("overflow", "visible", "important");
+  // Focus trap state for the mobile control-panel modal. Desktop shows the
+  // same panel inline (not as a modal -- see style.css's 1024px breakpoint),
+  // so the trap and aria-modal flag only ever activate when isMobileViewport().
+  var controlsFocusTrigger = null;
+
+  function getFocusableElements(container) {
+    if (!container) return [];
+    var selector = 'a[href], button:not([disabled]), input:not([disabled]), ' +
+      'select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    return Array.prototype.slice.call(container.querySelectorAll(selector)).filter(function (el) {
+      return !el.hidden && el.offsetParent !== null;
+    });
+  }
+
+  function handleControlsPanelKeydown(event) {
+    if (event.key === "Escape" || event.keyCode === 27) {
+      setControlsOpen(false);
+      return;
+    }
+    if (event.key !== "Tab" && event.keyCode !== 9) return;
+    var panel = document.getElementById("control-panel");
+    var focusable = getFocusableElements(panel);
+    if (!focusable.length) return;
+    var first = focusable[0];
+    var last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
     }
   }
 
@@ -300,6 +322,23 @@
     if (typeof document === "undefined") return;
 
     document.body.classList.toggle("controls-open", state.controlsOpen);
+
+    var mapPane = document.getElementById("map-pane");
+    if (mapPane) {
+      if (state.controlsOpen) {
+        mapPane.style.zIndex = "1";
+        mapPane.style.pointerEvents = "none";
+        mapPane.style.visibility = "hidden";
+        mapPane.style.opacity = "0";
+        mapPane.style.filter = "saturate(0.55) blur(0.8px)";
+      } else {
+        mapPane.style.removeProperty("z-index");
+        mapPane.style.removeProperty("pointer-events");
+        mapPane.style.removeProperty("visibility");
+        mapPane.style.removeProperty("opacity");
+        mapPane.style.removeProperty("filter");
+      }
+    }
 
     var backdrop = document.getElementById("controls-backdrop");
     if (backdrop) backdrop.hidden = !state.controlsOpen;
@@ -316,6 +355,28 @@
       close.setAttribute("aria-label", "条件パネルを" + label);
     }
 
+    var panel = document.getElementById("control-panel");
+    var isModalContext = isMobileViewport();
+    if (panel) panel.setAttribute("aria-modal", isModalContext && state.controlsOpen ? "true" : "false");
+
+    if (isModalContext) {
+      if (state.controlsOpen) {
+        controlsFocusTrigger = document.activeElement;
+        document.addEventListener("keydown", handleControlsPanelKeydown, true);
+        setTimeout(function () {
+          var focusable = getFocusableElements(panel);
+          if (focusable.length) focusable[0].focus();
+          else if (panel) panel.focus();
+        }, 0);
+      } else {
+        document.removeEventListener("keydown", handleControlsPanelKeydown, true);
+        if (controlsFocusTrigger && typeof controlsFocusTrigger.focus === "function") {
+          controlsFocusTrigger.focus();
+        }
+        controlsFocusTrigger = null;
+      }
+    }
+
     syncDesktopControlsInlineState();
   }
 
@@ -328,6 +389,7 @@
     renderList();
     renderMarkers();
     setControlsOpen(false);
+    scrollListToTop();
     trackClick({
       ui_area: "panel_controls",
       ui_action: "filter_apply",
@@ -387,8 +449,6 @@
   }
 
   function refinedPoiPosition(poi) {
-    var key = getPoiKey(poi);
-    if (state.refinedPositions[key]) return state.refinedPositions[key];
     return rawPoiPosition(poi);
   }
 
@@ -421,15 +481,14 @@
     var updated = new Date(lastUpdated);
     var now = new Date();
     var days = Math.floor((now - updated) / (1000 * 60 * 60 * 24));
-    if (days <= 7) return { cls: "freshness-recent", text: "✓ 最近更新されました" };
-    if (days <= 30) return { cls: "freshness-month", text: "✓✓ 1ヶ月以内に確認" };
+    if (days <= 7) return null;
+    if (days <= 30) return { cls: "freshness-month", text: "1ヶ月以内に確認" };
     return { cls: "freshness-stale", text: "⚠ 情報が古い可能性あり" };
   }
 
   function freshnessWeight(lastUpdated) {
     var fresh = freshnessBadge(lastUpdated);
     if (!fresh) return 0;
-    if (fresh.cls === "freshness-recent") return 3;
     if (fresh.cls === "freshness-month") return 2;
     return 1;
   }
@@ -445,193 +504,6 @@
       list.forEach(function (poi) { all.push(poi); });
     });
     return all;
-  }
-
-  function loadRefinedPositionCache() {
-    if (typeof window === "undefined" || !window.localStorage) return;
-    try {
-      var raw = window.localStorage.getItem(REFINED_POSITION_CACHE_KEY);
-      if (!raw) return;
-      var parsed = JSON.parse(raw);
-      if (!parsed || typeof parsed !== "object") return;
-      Object.keys(parsed).forEach(function (key) {
-        var item = parsed[key] || {};
-        var lat = toFiniteNumber(item.lat);
-        var lng = toFiniteNumber(item.lng);
-        if (lat === null || lng === null) return;
-        state.refinedPositions[key] = { lat: lat, lng: lng };
-      });
-    } catch (error) {
-      // Ignore invalid cache contents.
-    }
-  }
-
-  function saveRefinedPositionCache() {
-    if (typeof window === "undefined" || !window.localStorage) return;
-    try {
-      window.localStorage.setItem(REFINED_POSITION_CACHE_KEY, JSON.stringify(state.refinedPositions));
-    } catch (error) {
-      // Storage can fail in private mode or quota pressure.
-    }
-  }
-
-  function scoreLocationType(type) {
-    if (type === "ROOFTOP") return 120;
-    if (type === "RANGE_INTERPOLATED") return 80;
-    if (type === "GEOMETRIC_CENTER") return 40;
-    return 10;
-  }
-
-  function extractAddressHints(poi) {
-    var hints = [];
-    var body = [poi.name || "", poi.description || "", poi.gray_zone_note || ""].join(" ");
-    var regex = /(?:東京都)?新宿区[^。\n,、]{0,40}\d{1,3}-\d{1,3}(?:-\d{1,3})?/g;
-    var match;
-    while ((match = regex.exec(body)) !== null) {
-      var hint = (match[0] || "").trim();
-      if (hint && hints.indexOf(hint) === -1) hints.push(hint);
-    }
-    return hints;
-  }
-
-  function buildGeocodeQueries(poi) {
-    var queries = [];
-    var hints = extractAddressHints(poi);
-    hints.forEach(function (hint) {
-      queries.push((poi.name || "") + " " + hint);
-      queries.push(hint);
-    });
-    queries.push((poi.name || "") + " 東京都新宿区歌舞伎町");
-    queries.push((poi.name || "") + " 新宿");
-    queries.push((poi.name || "") + " Kabukicho");
-
-    return queries
-      .map(function (q) { return q.replace(/\s+/g, " ").trim(); })
-      .filter(function (q, idx, arr) { return q && arr.indexOf(q) === idx; })
-      .slice(0, 5);
-  }
-
-  function scoreGeocodeResult(result, original) {
-    if (!result || !result.geometry || !result.geometry.location) return null;
-    var pos = {
-      lat: result.geometry.location.lat(),
-      lng: result.geometry.location.lng()
-    };
-    var drift = haversineDistanceMeters(original.lat, original.lng, pos.lat, pos.lng);
-    if (drift > MAX_ACCEPTABLE_GEOCODE_DRIFT_METERS) return null;
-
-    var addr = (result.formatted_address || "") + " " + ((result.address_components || []).map(function (c) {
-      return c.long_name || "";
-    }).join(" "));
-    var inShinjuku = addr.indexOf("新宿") !== -1 || addr.toLowerCase().indexOf("shinjuku") !== -1;
-
-    var score = 1000 - drift;
-    score += scoreLocationType(result.geometry.location_type || "");
-    if (inShinjuku) score += 90;
-    if (result.partial_match) score -= 120;
-
-    return {
-      position: pos,
-      score: score
-    };
-  }
-
-  function geocodePoiWithQueries(poi, done) {
-    if (!state.geocoder) {
-      done(false);
-      return;
-    }
-    var key = getPoiKey(poi);
-    var original = rawPoiPosition(poi);
-    if (!original) {
-      state.skippedRefinements[key] = true;
-      done(false);
-      return;
-    }
-
-    var queries = buildGeocodeQueries(poi);
-    var best = null;
-    var idx = 0;
-    var searchBounds = new google.maps.LatLngBounds(
-      { lat: KABUKICHO_CENTER.lat - 0.025, lng: KABUKICHO_CENTER.lng - 0.025 },
-      { lat: KABUKICHO_CENTER.lat + 0.025, lng: KABUKICHO_CENTER.lng + 0.025 }
-    );
-
-    function runNextQuery() {
-      if (idx >= queries.length) {
-        if (!best) {
-          state.skippedRefinements[key] = true;
-          done(false);
-          return;
-        }
-        state.refinedPositions[key] = best.position;
-        saveRefinedPositionCache();
-        done(true);
-        return;
-      }
-
-      var q = queries[idx];
-      idx += 1;
-      state.geocoder.geocode(
-        { address: q, region: "JP", bounds: searchBounds },
-        function (results, status) {
-          if (status === "OK" && results && results.length) {
-            results.slice(0, 4).forEach(function (result) {
-              var scored = scoreGeocodeResult(result, original);
-              if (!scored) return;
-              if (!best || scored.score > best.score) best = scored;
-            });
-          }
-          runNextQuery();
-        }
-      );
-    }
-
-    runNextQuery();
-  }
-
-  function findPoiByKey(key) {
-    var all = getAllPoisFlat();
-    for (var i = 0; i < all.length; i += 1) {
-      if (getPoiKey(all[i]) === key) return all[i];
-    }
-    return null;
-  }
-
-  function scheduleRefinementQueue() {
-    if (!ENABLE_RUNTIME_REFINEMENT) return;
-    if (state.refineInFlight || !state.geocoder || !state.refineQueue.length) return;
-    var nextKey = state.refineQueue.shift();
-    var poi = findPoiByKey(nextKey);
-    if (!poi) {
-      scheduleRefinementQueue();
-      return;
-    }
-
-    state.refineInFlight = true;
-    geocodePoiWithQueries(poi, function (updated) {
-      state.refineInFlight = false;
-      if (updated) {
-        renderMarkers();
-        renderList();
-        if (!state.map) renderMapFallback(state.mapFailureReason || "loading");
-      }
-      if (state.refineQueue.length) {
-        setTimeout(function () { scheduleRefinementQueue(); }, 180);
-      }
-    });
-  }
-
-  function enqueueRefinementForPois(pois) {
-    if (!ENABLE_RUNTIME_REFINEMENT) return;
-    if (!pois || !pois.length) return;
-    pois.forEach(function (poi) {
-      var key = getPoiKey(poi);
-      if (state.refinedPositions[key] || state.skippedRefinements[key]) return;
-      if (state.refineQueue.indexOf(key) !== -1) return;
-      state.refineQueue.push(key);
-    });
-    scheduleRefinementQueue();
   }
 
   function mapsUrlForPoi(poi) {
@@ -688,12 +560,17 @@
       '<span class="current-context-pill">' + escapeHtml(getVisibleCountLabel(pois, totalInCategory)) + '</span>'
     ];
     if (activeFilterCount) pills.push('<span class="current-context-pill">絞り込み ' + activeFilterCount + '</span>');
+    if (isSmokingCategoryActive() && state.includeUnofficialSmoking) {
+      pills.push('<span class="current-context-pill">非公式導線を含む</span>');
+    }
 
     var note = aggregateFailures.length
       ? "一部カテゴリの読み込みに失敗しているため、結果は部分表示です。"
+      : (isSmokingCategoryActive() && state.includeUnofficialSmoking
+        ? "非公式導線を含めて表示しています。注意書きを確認し、自己責任で利用してください。"
       : (mode.id === "nearby"
         ? "必要な施設だけを短く見て、詳細はタップで展開できます。"
-        : mode.summary);
+        : mode.summary));
 
     var html =
       '<div class="current-context-head">' + pills.join("") + '</div>' +
@@ -866,13 +743,16 @@
     // businesses whose own note text said the opposite.
     var isGrayZone = poi.type === "unofficial";
     var tagCopy = TAG_COPY[categoryId] || {};
+    var freshness = freshnessBadge(poi.last_updated);
     var judgmentSignals = getJudgmentSignals(poi);
     var quickTagsHtml = judgmentSignals
       .map(function (signal) {
         return '<span class="signal-chip signal-chip-' + signal.tone + '">' + escapeHtml(signal.label) + "</span>";
       })
       .join("");
-    var freshHtml = "";
+    var freshHtml = freshness
+      ? '<span class="freshness-badge ' + freshness.cls + '">' + escapeHtml(freshness.text) + "</span>"
+      : "";
     var distanceHtml =
       typeof poi._distanceMeters === "number"
         ? '<span class="distance-badge">📍 現在地から ' + formatDistance(poi._distanceMeters) + "</span>"
@@ -922,9 +802,16 @@
     if (mode.aggregateCategories && state.activeCategory === MODE_ALL_CATEGORY_ID && categoryBadgeHtml) {
       collapsedMetaHtml += categoryBadgeHtml;
     }
-    var supportingHtml = collapsedMetaHtml
-      ? '<div class="poi-card-quick-tags">' + collapsedMetaHtml + '</div>'
-      : '<p class="poi-card-supporting">' + escapeHtml(summaryLine) + '</p>';
+    var supportingParts = [];
+    if (summaryLine) {
+      supportingParts.push('<span class="poi-card-summary">' + escapeHtml(summaryLine) + "</span>");
+    }
+    if (collapsedMetaHtml) {
+      supportingParts.push('<div class="poi-card-quick-tags">' + collapsedMetaHtml + '</div>');
+    }
+    var supportingHtml = supportingParts.length
+      ? '<div class="poi-card-supporting">' + supportingParts.join("") + "</div>"
+      : "";
     var detailMetaHtml = modeBadgeHtml + categoryBadgeHtml;
 
     return (
@@ -932,7 +819,7 @@
       '<button class="poi-card-head" type="button" data-card-toggle="' + escapeHtml(poiKey) + '" aria-expanded="' + (expanded ? "true" : "false") + '">' +
       '<div class="poi-card-main">' +
       '<div class="poi-card-topline">' + featuredLabelHtml + priorityHtml + '</div>' +
-      "<h2>" + escapeHtml(poi.name) + "</h2>" +
+      "<h3>" + escapeHtml(poi.name) + "</h3>" +
       supportingHtml +
       '</div>' +
       '<div class="poi-card-side">' + distanceHtml + '<span class="poi-card-toggle-text">' + (expanded ? '閉じる' : '詳細') + '</span><span class="poi-card-chevron">⌄</span></div>' +
@@ -987,7 +874,7 @@
   }
 
   function inlineSponsoredHtml(index) {
-    var slotNum = Math.floor(index / 5) + 1;
+    var slotNum = Math.floor(index / 7) + 1;
     var title;
     var copy;
     if (state.activeMode === "late_night") {
@@ -1019,7 +906,7 @@
     pois.forEach(function (poi, localIndex) {
       var absoluteIndex = offset + localIndex;
       html += renderCard(poi, poi.category || categoryId, absoluteIndex);
-      if ((localIndex + 1) % 5 === 0 && localIndex < pois.length - 1) {
+      if ((localIndex + 1) % 7 === 0 && localIndex < pois.length - 1) {
         html += inlineSponsoredHtml(localIndex);
       }
     });
@@ -1066,8 +953,8 @@
 
     if (!pois.length) {
       var emptyMessage = hasActiveFilter
-        ? '<p class="no-results">選択した条件に該当する場所が見つかりませんでした。<br>絞り込みを解除するか、別の条件をお試しください。</p>'
-        : '<p class="no-results">' + escapeHtml(mode.emptyStateMessage || "このカテゴリに該当する場所が見つかりませんでした。別のカテゴリを選択してください。") + '</p>';
+        ? '<p class="no-results">選択した条件では候補がありませんでした。<br>絞り込みを1つ外すか、別のモードに切り替えてください。</p>'
+        : '<p class="no-results">' + escapeHtml(mode.emptyStateMessage || "このカテゴリに該当する場所が見つかりませんでした。別のカテゴリを選ぶか、条件を変えてみてください。") + '</p>';
       container.innerHTML = modeSummaryHtml() + locationHintHtml() + partialLoadHtml + emptyMessage;
       return;
     }
@@ -1112,13 +999,21 @@
       return;
     }
     bar.hidden = false;
-    var noneActive = !hasActiveFilterSelections();
+    var noneActive = !hasActiveFilterSelections() && !(isSmokingCategoryActive() && state.includeUnofficialSmoking);
     var chips = [
       '<button class="filter-chip filter-chip-none" data-tag="' + NONE_FILTER_TAG_ID + '" aria-pressed="' + noneActive + '">' +
       '<span class="filter-chip-check" aria-hidden="true"></span>' +
       '<span class="filter-chip-label">条件指定なし</span>' +
       '</button>'
     ];
+    if (isSmokingCategoryActive()) {
+      chips.push(
+        '<button class="filter-chip filter-chip-unofficial" data-tag="' + SMOKING_UNOFFICIAL_TOGGLE_ID + '" aria-pressed="' + (state.includeUnofficialSmoking ? "true" : "false") + '">' +
+        '<span class="filter-chip-check" aria-hidden="true"></span>' +
+        '<span class="filter-chip-label">非公式導線を含む</span>' +
+        '</button>'
+      );
+    }
     chips = chips.concat(tagIds.map(function (tagId) {
       var active = !!state.activeFilters[tagId];
       return (
@@ -1135,12 +1030,22 @@
         var tagId = btn.getAttribute("data-tag");
         if (tagId === NONE_FILTER_TAG_ID) {
           state.activeFilters = {};
+          state.includeUnofficialSmoking = false;
           trackClick({
             ui_area: "panel_filter",
             ui_action: "filter_toggle",
             ui_label: "条件指定なし",
             ui_filter_id: NONE_FILTER_TAG_ID,
             ui_selected: true
+          });
+        } else if (tagId === SMOKING_UNOFFICIAL_TOGGLE_ID) {
+          state.includeUnofficialSmoking = !state.includeUnofficialSmoking;
+          trackClick({
+            ui_area: "panel_filter",
+            ui_action: "filter_toggle",
+            ui_label: "非公式導線を含む",
+            ui_filter_id: SMOKING_UNOFFICIAL_TOGGLE_ID,
+            ui_selected: state.includeUnofficialSmoking
           });
         } else {
           state.activeFilters[tagId] = !state.activeFilters[tagId];
@@ -1157,6 +1062,9 @@
         }
         // Reflect chip selection immediately so taps feel responsive.
         renderFilterBar();
+        renderList();
+        renderMarkers();
+        scrollListToTop();
       });
     });
   }
@@ -1207,6 +1115,11 @@
   }
 
   function renderModeBar() {
+    // data-active-mode drives the desktop control panel's per-mode overlay
+    // height in style.css (see [data-active-mode] rules) -- set here rather
+    // than only in syncDesktopControlsInlineState so it also updates when
+    // the mode changes while the panel is already open, not just on open/close.
+    document.body.setAttribute("data-active-mode", state.activeMode);
     var bar = document.getElementById("mode-bar");
     if (!bar) return;
     bar.innerHTML = MODES.map(function (mode) {
@@ -1408,7 +1321,6 @@
       state.map.fitBounds(bounds, mapFitBoundsPadding());
     }
     hideMapFallback();
-    enqueueRefinementForPois(pois);
   }
 
   function openInfoWindow(poi, marker) {
@@ -1437,7 +1349,6 @@
     var close = document.getElementById("controls-close");
     var panelHead = document.querySelector(".controls-panel-head");
     var backdrop = document.getElementById("controls-backdrop");
-    var apply = document.getElementById("filter-apply");
 
     function openControls() { setControlsOpen(true); }
     function toggleControls() { setControlsOpen(!state.controlsOpen); }
@@ -1490,7 +1401,6 @@
         ui_trigger_id: "controls_backdrop"
       });
     });
-    if (apply) apply.addEventListener("click", applyFilterSelection);
 
     if (typeof window !== "undefined") {
       window.addEventListener("resize", function () {
@@ -1539,6 +1449,7 @@
       function (position) {
         state.userLocation = { lat: position.coords.latitude, lng: position.coords.longitude };
         state.locationStatus = "granted";
+        trackEvent("geolocation_permission", analyticsContext({ ui_action: "geolocation_granted" }));
         renderUserMarker();
         renderMarkers();
         renderList();
@@ -1546,6 +1457,7 @@
       },
       function () {
         state.locationStatus = "denied";
+        trackEvent("geolocation_permission", analyticsContext({ ui_action: "geolocation_denied" }));
         renderList();
         if (!state.map) renderMapFallback(state.mapFailureReason || "loading");
       },
@@ -1559,7 +1471,6 @@
   if (typeof window !== "undefined") {
     window.initKabukichoMap = function () {
       state.mapFailureReason = null;
-      state.geocoder = new google.maps.Geocoder();
       state.map = new google.maps.Map(document.getElementById("map"), {
         center: state.userLocation || KABUKICHO_CENTER,
         zoom: mapDefaultZoom(),
@@ -1568,7 +1479,6 @@
         fullscreenControl: false
       });
       renderMarkers();
-      enqueueRefinementForPois(getAllPoisFlat());
       // A location fix from before the map finished loading (distance
       // sorting doesn't wait on the map) has no marker yet -- add it now.
       if (state.userLocation) renderUserMarker();
@@ -1647,7 +1557,6 @@
       renderFilterBar();
       renderCurrentContext([], 0, []);
       loadAll().then(function () {
-        if (ENABLE_RUNTIME_REFINEMENT) loadRefinedPositionCache();
         renderList();
         renderMapFallback(state.mapFailureReason || "loading");
         // Map init (initKabukichoMap) fires asynchronously once the Google
@@ -1667,6 +1576,21 @@
   // the browser (module is undefined there), so this has no effect on
   // the shipped product.
   if (typeof module !== "undefined" && module.exports) {
-    module.exports = { haversineDistanceMeters: haversineDistanceMeters, formatDistance: formatDistance, freshnessBadge: freshnessBadge };
+    module.exports = {
+      haversineDistanceMeters: haversineDistanceMeters,
+      formatDistance: formatDistance,
+      freshnessBadge: freshnessBadge,
+      sortPoisForMode: sortPoisForMode,
+      getJudgmentSignals: getJudgmentSignals,
+      passesActiveFilters: passesActiveFilters,
+      ensureActiveCategoryAllowed: ensureActiveCategoryAllowed,
+      renderCard: renderCard,
+      MODE_ALL_CATEGORY_ID: MODE_ALL_CATEGORY_ID,
+      // Exposed only so tests can set up state (activeMode/activeCategory/
+      // activeFilters/includeUnofficialSmoking) before calling the
+      // functions above -- never mutated by browser code from outside
+      // this file.
+      state: state
+    };
   }
 })();

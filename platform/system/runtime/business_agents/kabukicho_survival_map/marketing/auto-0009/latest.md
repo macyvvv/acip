@@ -1,0 +1,69 @@
+# BUSINESS_AGENT_EXECUTION
+
+business_id: kabukicho_survival_map
+role_id: marketing
+task_id: auto-0009
+adapter_mode: execute
+resolved_model: claude-sonnet-5
+success: true
+exit_code: 0
+
+## stdout
+# Marketing — Kabukicho Survival Map
+
+**Business:** kabukicho_survival_map | **Role:** marketing | **Task:** built on market_research/task-0008-lodging-deep
+
+Per contract, this is read-only marketing output — no files modified; the execution adapter (if any) persists this as the artifact.
+
+## Building on prior work
+
+- auto-0001: core positioning — confirmed / caution / gray-zone orientation guide.
+- task-0001-promo-plan/auto-0002: first lodging mention — used "Booth Net Cafe & Capsule (~¥3,000/night)" as the missed-last-train backup hook, when the dataset had only 2 real lodging entries.
+- auto-0004–auto-0008: established the recurring pattern — each deep-dive found the old dataset undercounting a category by roughly an order of magnitude, plus a category-specific structural trap (customer-only toilets, 5pm-closing Japan Post ATMs, gated Zepp lockers).
+- **task-0008-lodging-deep (this task's input):** 11 new named, addressed lodging entries (up from 2), bringing the real total to 13 — the research explicitly flags this is *short* of the 15–20 target and recommends a Japanese-language follow-up rather than padding. The structural finding here is different from prior deep-dives: it's not one undercount, it's three distinct legal categories that need different framing — licensed hotels/capsules (`hotel_business_act`), unlicensed internet/manga cafes (`internet_cafe_no_lodging_license`, explicitly gray-zone-adjacent), and licensed love hotels (`love_hotel_business_act`, legal and common in this district but a different room typology).
+
+## Positioning for this dataset
+
+**Not every "place to sleep" in Kabukicho is the same kind of business, and knowing which kind you're booking matters more here than in most districts.** A capsule hotel, a 24h internet cafe, and a love hotel can all show up in the same search radius, but only two of the three are licensed lodging, and the research surfaced a real data-quality problem inside the dataset itself (one manga cafe's operating status is unconfirmed, one love hotel's transit-proximity claim doesn't reconcile with its own address). This product's edge is naming the category honestly — not treating "somewhere to sleep tonight" as a single undifferentiated bucket — and flagging which specific listings are solid versus which need a second look before you rely on them.
+
+## Audience segments to target
+
+1. **Missed-last-train arrivals needing a bed right now, no advance booking** — the same audience task-0001 targeted with Booth Net Cafe & Capsule; this dataset gives more walk-up-plausible options (capsule hotels, internet cafes) to name alongside it.
+2. **First-time budget travelers who hit "love hotel" in search results and hesitate, unsure if it's an appropriate or safe category to book** — a distinct confusion this product can resolve factually, without judgment.
+3. **Travelers defaulting to a manga cafe as their overnight lodging plan** — need the legal distinction (not licensed lodging) and the specific data-quality caveat (one branch's operating status is unconfirmed) before they build a plan around it.
+
+## Channel-specific copy
+
+**1. Audience: Missed-last-train arrivals needing a bed with no advance booking.**
+**Channel: Travel forum / subreddit reply (r/JapanTravel, r/tokyo) — practical Q&A style.**
+
+> If you've missed the last train and need somewhere tonight, don't default to hunting for a business hotel — APA and Toyoko Inn branches near Kabukicho are solid but built around advance reservations, not 3am walk-ins. The categories worth checking on foot instead: Green Plaza Shinjuku Capsule Hotel (593 men-only capsules plus a separate 30-bunk women's section, on-site sauna) and Kaikatsu Club Shinjuku Kabukicho-ten, a 24h internet cafe near the entrance to Kabukicho 1-chome. One honest caveat: walk-in availability wasn't independently verified venue-by-venue for this research pass — call ahead or check the venue's own booking page before you're standing outside at 3am, don't assume it based on this post alone.
+
+**2. Audience: First-time budget travelers uncertain whether love hotels are a safe, normal thing to book.**
+**Channel: Instagram carousel / short-form video for a budget-travel-to-Japan account.**
+
+> Slide 1 (hook): "You'll see 'love hotel' in Kabukicho search results — here's what that actually means." Slide 2 (payoff, delivered here): it's a licensed, legal lodging category in Japan under its own business-licensing framework, distinct from a standard hotel mainly in room layout (private entry, larger rooms, sometimes in-room karaoke/VOD) and pricing structure — not a gray-zone or unsafe choice. Slide 3: two specifically citable options in Kabukicho — HOTEL & SPA J-MEX Shinjuku Kabukicho (karaoke, VOD, large-screen TV in rooms) and HOTEL Perrier (43-room boutique property, reopened Nov 2019). Slide 4 (honest limit): a third commonly-listed option, Hotel Moana Shinjuku, is left off this list — its own source material claims a transit-distance detail that doesn't reconcile with its stated address, so it's flagged as unverified rather than recommended. CTA: "Full lodging map linked" (link pending deployment).
+> *(Provisional: requires the live product to demo on-screen — cannot be scripted further until deployment exists, per the standing deployment caveat from task-0001-promo-plan.)*
+
+**3. Audience: Travelers planning to use a manga/internet cafe as their overnight lodging plan.**
+**Channel: Safety-niche newsletter or long-form thread, continuing auto-0001's "confirmed / caution / gray-zone" framing.**
+
+> Kabukicho's internet and manga cafes (Kaikatsu Club Shinjuku Kabukicho-ten, Gran Cyber Cafe Bagus Shinjuku) are genuinely 24h and genuinely cheap, but they are not licensed lodging under Japan's Hotel Business Act — worth knowing if you're building your only overnight plan around one, since it's a different legal category than a hotel room, not just a cheaper version of one. One name to be specifically cautious about: GeraGera Manga Cafe Shinjuku in the Humax Pavilion building shows up in older listings, but current sources suggest it may have closed — treat it as unconfirmed, not a backup plan, until you've checked a live source closer to your travel date.
+
+## Notes on scope
+
+- No copy claims walk-in availability as confirmed fact for any specific venue — the underlying research didn't verify reservation policy venue-by-venue, and copy #1 states that limitation directly rather than implying certainty.
+- Hotel Moana Shinjuku is named only to explain why it's *excluded* from the recommendation in copy #2 — its address/proximity inconsistency (flagged at `reliability_score: 2` in the source research) is stated plainly rather than smoothed over.
+- GeraGera Manga Cafe Shinjuku is named only as a caution in copy #3, matching its `reliability_score: 2` / `type: unofficial` status in the research — not presented as a live recommendation.
+- Love hotels are framed factually and without euphemism or judgment throughout, consistent with the research's `love_hotel_business_act` classification and the task's instruction to treat this as a standard legal category in this specific district.
+- No copy has been posted or scheduled. Per contract, this role has no posting IO; publishing requires the separate policy-gated pipeline (ADR-0035) and human finalization.
+
+## Self-critique (changes made before finalizing)
+
+- **Specificity:** an earlier draft of copy #1 said capsule hotels and internet cafes "usually take walk-ins" — cut, since that policy wasn't actually verified in the source research; replaced with a named-venue list plus an explicit "call ahead, this wasn't verified" caveat instead of an implied blanket claim.
+- **Payoff completeness:** copy #2's hook ("here's what that actually means") is resolved in the same piece with the licensing explanation and two specifically named, sourced venues, rather than left as a stub; it also delivers the honest limit (Hotel Moana excluded) instead of stopping at the reassuring part.
+- **Experience honesty:** no first-person "I stayed there" or "I booked this" claims anywhere — all three pieces use sourced/documented framing and, where the source data itself is shaky (Hotel Moana, GeraGera), say so explicitly rather than presenting it with false confidence.
+- **Template-detection:** the three pieces use three different structures on purpose — forum-practical-caveat / carousel-hook-then-exclusion / newsletter-legal-distinction-then-specific-warning — continuing the varied-structure pattern from auto-0005 through auto-0008 rather than reusing one template. Copy #3 in particular breaks from the "correct a wrong assumption" frame the other two use, since the legal-category distinction here isn't a misconception to correct so much as a fact travelers likely don't have at all.
+
+Marketing content produced and returned — no files written by this task.
+
