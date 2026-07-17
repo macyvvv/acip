@@ -27,13 +27,17 @@ wins and the character spec should be revised, not the other way around.
 2. **Immersion** (没入感) — the viewer's sense of actually being present
    in the character's world/moment, not watching it from outside.
 3. **Longing/frustration** (もどかしさ) — the "almost, not quite" quality
-   already present in every individual character's own Dependency
-   Trigger/Failure Condition (Mina's "almost comfort," Nao's "close but
-   unreachable," Yui's unresolved anxiety, Rena's withheld access,
-   Airi's glimpsed-not-explained interior) — this document now names it
-   as the brand-level organizing principle those were all already
-   independently expressing, not a coincidence across five separate
-   character docs.
+   clearly present in most characters' own Dependency Trigger/Failure
+   Condition (Mina's "almost comfort," Nao's "close but unreachable,"
+   Yui's unresolved anxiety, Airi's glimpsed-not-explained interior).
+   Rena is the exception, not a fifth confirming case: her actual
+   mechanic (RENA.md) is ambient control/authority radiating from her
+   without any overt act, not withheld access or an "almost" quality —
+   don't force her into this pattern. Four of five independently
+   expressing the same principle is itself the finding this document
+   names; overstating it as all five would be exactly the kind of
+   unfounded pattern-match `epistemicsops` exists to catch (caught
+   2026-07-18, this correction is that catch).
 4. **Emptiness/hollowness** (空虚さ) — newly named at the brand level;
    **not yet explicitly present in any individual CHARACTER.md.** This is
    a real gap, not something to retrofit into all five characters right
