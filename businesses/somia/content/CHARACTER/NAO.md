@@ -45,11 +45,29 @@ with a withheld backstory — the mystery is elemental, not secretive.
 
 ## Visual Identity
 
-- Color: light ocean-blue, white, silver (bright and airy — not
-  graphite/dark)
+- Color: overall palette is light ocean-blue, white, silver (bright and
+  airy — not graphite/dark). Hair specifically is a natural dark-to-light
+  gradient (dark navy-blue roots/mass, lightening to pale ocean-blue at
+  wind-caught tips), matching the reference sheets
+  (`businesses/somia/content/CONTENT/ref_nao/character_sheets/
+  somia_nao01.png`, `somia_nao02.png`) — corrected 2026-07-18 after this
+  line's prior wording ("not graphite/dark" read as applying to hair
+  too) was found to contradict the actual reference art, which
+  consistently renders dark-navy-dominant hair. The "bright and airy,
+  not dark" rule describes the overall scene/palette register (skin,
+  clothing, setting, lighting), not a mandate for uniformly light hair.
 - Visual motif: natural light, wind-blown hair, water droplets, sky/sea
   backdrops, sheer/light fabric
-- Accessory: natural-material jewelry (stone, shell, feather motifs)
+- Eyes: clear blue (瞳は澄んだ青)
+- Signature item: blue teardrop gemstone earring — her one recurring,
+  close-in accessory across nearly all reference-sheet poses (occluded
+  by hair/arm/angle in a few, not a rule that it must always be visible).
+  Broader accessory motif family: natural-material jewelry (stone,
+  shell, feather).
+- Outfit register: loose, long-sleeve, wide/off-shoulder-neckline
+  draped knit top, soft matte finish — distinct from any sheer/gauze
+  curtain or fabric present in a scene (don't conflate the two when
+  both appear in the same setting).
 - Setting: windows, open sky, ocean — bright, high-key lighting
 
 ## Audio Traits
