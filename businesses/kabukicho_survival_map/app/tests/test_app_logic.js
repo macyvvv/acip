@@ -243,5 +243,60 @@ test("renderCard: type=official with no gray_zone_note shows neither banner nor 
   assert.ok(html.indexOf("info-note") === -1);
 });
 
+// -- tr() / i18n -----------------------------------------------------
+
+test("tr: resolves a {ja,en} object to the current language, defaulting to ja", function () {
+  app.setLangForTest("ja");
+  assert.strictEqual(app.tr({ ja: "こんにちは", en: "Hello" }), "こんにちは");
+  app.setLangForTest("en");
+  assert.strictEqual(app.tr({ ja: "こんにちは", en: "Hello" }), "Hello");
+  app.setLangForTest("ja");
+});
+
+test("tr: plain strings and null/undefined pass through unchanged regardless of language", function () {
+  app.setLangForTest("en");
+  assert.strictEqual(app.tr("plain string"), "plain string");
+  assert.strictEqual(app.tr(null), null);
+  assert.strictEqual(app.tr(undefined), undefined);
+  app.setLangForTest("ja");
+});
+
+test("tr: falls back to ja, then en, if the current language's key is missing", function () {
+  app.setLangForTest("en");
+  assert.strictEqual(app.tr({ ja: "日本語のみ" }), "日本語のみ");
+  app.setLangForTest("ja");
+  assert.strictEqual(app.tr({ en: "English only" }), "English only");
+  app.setLangForTest("ja");
+});
+
+test("renderCard: category/mode labels switch language via CURRENT_LANG", function () {
+  app.setLangForTest("ja");
+  var jaHtml = app.renderCard(basePoi({ type: "official", tags: ["24h"] }), "smoking", 0, {});
+  assert.ok(jaHtml.indexOf("24時間") !== -1 || jaHtml.indexOf("24h") !== -1);
+  app.setLangForTest("en");
+  var enHtml = app.renderCard(basePoi({ type: "official", tags: ["24h"] }), "smoking", 0, {});
+  assert.ok(enHtml.indexOf("24 hours") !== -1 || enHtml.indexOf("24h") !== -1);
+  app.setLangForTest("ja");
+});
+
+// -- faqHtml() --------------------------------------------------------
+
+test("faqHtml: renders Japanese questions by default", function () {
+  app.setLangForTest("ja");
+  var html = app.faqHtml();
+  assert.ok(html.indexOf("よくある質問") !== -1);
+  assert.ok(html.indexOf("歌舞伎町に無料の喫煙所はありますか？") !== -1);
+  assert.ok(html.indexOf("<details>") !== -1 && html.indexOf("<summary>") !== -1);
+});
+
+test("faqHtml: renders English questions when CURRENT_LANG is en", function () {
+  app.setLangForTest("en");
+  var html = app.faqHtml();
+  assert.ok(html.indexOf("Frequently Asked Questions") !== -1);
+  assert.ok(html.indexOf("Are there free smoking areas in Kabukicho?") !== -1);
+  assert.ok(html.indexOf("よくある質問") === -1, "should not mix in Japanese heading when lang is en");
+  app.setLangForTest("ja");
+});
+
 console.log(passed + " passed, " + failures + " failed");
 process.exit(failures > 0 ? 1 : 0);

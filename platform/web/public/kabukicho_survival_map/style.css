@@ -137,6 +137,24 @@ body.controls-open {
   letter-spacing: 0.04em;
 }
 
+.lang-toggle {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.4em;
+  padding: 8px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fffdf9;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  -webkit-tap-highlight-color: transparent;
+}
+
 .app-layout {
   position: relative;
   flex: 1 1 auto;

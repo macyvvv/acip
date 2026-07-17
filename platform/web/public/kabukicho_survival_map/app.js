@@ -22,6 +22,85 @@
     return value[CURRENT_LANG] || value.ja || value.en || "";
   }
 
+  var LANG_STORAGE_KEY = "kabukicho_lang";
+  var PAGE_TITLE = {
+    ja: "歌舞伎町サバイバルマップ | 喫煙所・トイレ・ロッカー・宿泊情報",
+    en: "Kabukicho Survival Map: Smoking Areas, Toilets, Lockers & Lodging"
+  };
+  var PAGE_DESCRIPTION = {
+    ja: "歌舞伎町の喫煙所・トイレ・ATM・コインロッカー・宿泊施設を状況別にすぐ探せる地図。信頼度・最終確認日つきのPOI情報をスマホで手早く確認できます。",
+    en: "Find smoking areas, public toilets, ATMs, coin lockers, and affordable lodging in Kabukicho. Mobile-first map with verified POI details and freshness badges."
+  };
+  var PAGE_HEADING = { ja: "歌舞伎町サバイバルマップ", en: "Kabukicho Survival Map" };
+  var PAGE_SUBTITLE = { ja: "近くで今使える場所を、状況別にすばやく探す", en: "Quickly find what you need nearby, by situation" };
+  var CONTROLS_TOGGLE_LABEL = { ja: "条件", en: "Filters" };
+
+  // Detects a stored preference first (an explicit prior choice always
+  // wins), then falls back to the device's own language -- a tourist whose
+  // phone is set to English gets an English UI on first visit without
+  // having to find the toggle.
+  function detectInitialLang() {
+    if (typeof window !== "undefined" && window.localStorage) {
+      try {
+        var stored = window.localStorage.getItem(LANG_STORAGE_KEY);
+        if (stored === "ja" || stored === "en") return stored;
+      } catch (error) {
+        // Storage can fail in private mode or quota pressure -- fall through.
+      }
+    }
+    if (typeof navigator !== "undefined" && navigator.language) {
+      return navigator.language.toLowerCase().indexOf("ja") === 0 ? "ja" : "en";
+    }
+    return "ja";
+  }
+
+  // Updates every static/chrome element that depends on CURRENT_LANG but
+  // isn't already covered by the regular render* functions -- <title>,
+  // meta description, h1/subtitle, the controls-toggle label, and the
+  // toggle button's own text. Split out from setLanguage() so the initial
+  // DOMContentLoaded pass can apply the detected language once, cheaply,
+  // before the first real render (instead of running a full re-render
+  // immediately followed by another one).
+  function applyLanguageChrome() {
+    if (typeof document === "undefined") return;
+    document.documentElement.lang = CURRENT_LANG;
+    document.title = tr(PAGE_TITLE);
+    var descriptionTag = document.getElementById("page-description");
+    if (descriptionTag) descriptionTag.setAttribute("content", tr(PAGE_DESCRIPTION));
+    var headingEl = document.getElementById("page-heading");
+    if (headingEl) headingEl.textContent = tr(PAGE_HEADING);
+    var subtitleEl = document.getElementById("page-subtitle");
+    if (subtitleEl) subtitleEl.textContent = tr(PAGE_SUBTITLE);
+    var controlsToggleLabelEl = document.getElementById("controls-toggle-label");
+    if (controlsToggleLabelEl) controlsToggleLabelEl.textContent = tr(CONTROLS_TOGGLE_LABEL);
+    var langToggle = document.getElementById("lang-toggle");
+    if (langToggle) {
+      langToggle.textContent = CURRENT_LANG === "ja" ? "EN" : "日本語";
+      langToggle.setAttribute("aria-label", CURRENT_LANG === "ja" ? "Switch to English" : "日本語に切り替え");
+    }
+  }
+
+  function setLanguage(lang) {
+    CURRENT_LANG = lang === "en" ? "en" : "ja";
+    if (typeof window !== "undefined" && window.localStorage) {
+      try {
+        window.localStorage.setItem(LANG_STORAGE_KEY, CURRENT_LANG);
+      } catch (error) {
+        // Storage can fail in private mode or quota pressure -- non-fatal.
+      }
+    }
+    if (typeof document === "undefined") return;
+
+    applyLanguageChrome();
+    renderModeBar();
+    renderNav();
+    renderFilterBar();
+    renderList();
+    renderMarkers();
+    renderFaq();
+    renderCurrentContext(getCurrentVisiblePois(), (state.data[state.activeCategory] || []).length, getAggregateLoadFailures(getModeDefinition(state.activeMode)));
+  }
+
   // Category order matches doc_creation/task-0001-seo-copy's recommended
   // sort: by frequency/urgency, not alphabetically.
   var CATEGORIES = [
@@ -174,6 +253,82 @@
   var FILTER_NONE_LABEL = { ja: "条件指定なし", en: "No filter" };
   var INCLUDE_UNOFFICIAL_LABEL = { ja: "非公式導線を含む", en: "Include unofficial spots" };
   var ALL_CATEGORIES_LABEL = { ja: "まとめ", en: "All" };
+  var FAQ_HEADING = { ja: "よくある質問", en: "Frequently Asked Questions" };
+
+  // Mirrors build.py's FAQ_ITEMS (same questions/answers) -- that copy is
+  // the SSG version a non-JS crawler sees (always Japanese); this one is
+  // what renderFaq() below swaps in once JS runs, same "JS takes over
+  // after SSG paints" pattern renderList() already uses for #poi-list.
+  // Keep both in sync by hand; there is no shared source of truth between
+  // the Python and JS builds (same tradeoff as CATEGORIES vs build.py's
+  // own category list, see build.py's own comment on that).
+  var FAQ_ITEMS = [
+    {
+      ja: {
+        q: "歌舞伎町に無料の喫煙所はありますか？",
+        a: "はい。本サイトのデータは「無料で使える屋外の指定喫煙所」のみを喫煙所カテゴリに掲載しています(店舗内の喫煙可能スペースは含みません)。カテゴリ「喫煙所」からタップ1つで一覧を確認できます。"
+      },
+      en: {
+        q: "Are there free smoking areas in Kabukicho?",
+        a: "Yes. This site's smoking category only lists free, outdoor designated smoking areas (not in-store smoking spaces). Tap the \"Smoking Area\" category to see the list."
+      }
+    },
+    {
+      ja: {
+        q: "歌舞伎町のトイレは無料で使えますか？",
+        a: "掲載しているトイレの多くは無料の公共トイレですが、施設ごとに条件が異なる場合があります。各POIカードのタグ(free/clean/gender_separatedなど)で個別に確認してください。"
+      },
+      en: {
+        q: "Are the toilets in Kabukicho free to use?",
+        a: "Most listed toilets are free public toilets, but conditions vary by facility. Check each listing's tags (free/clean/gender-separated, etc.) individually."
+      }
+    },
+    {
+      ja: {
+        q: "深夜でも使えるコインロッカーはありますか？",
+        a: "「24h」タグが付いているコインロッカー・コンビニ・ATMは24時間利用可能です。カテゴリ内でタグ絞り込みを使うと深夜対応の施設だけに絞れます。"
+      },
+      en: {
+        q: "Are there coin lockers usable late at night?",
+        a: "Coin lockers, convenience stores, and ATMs tagged \"24h\" are available around the clock. Use the tag filter within a category to narrow down to overnight-friendly spots only."
+      }
+    },
+    {
+      ja: {
+        q: "掲載されている情報はどのくらい新しいですか？",
+        a: "各POIには最終確認日(last_updated)と信頼度スコアがあり、8日から1ヶ月以内に確認された情報には更新目安バッジ、1ヶ月以上確認されていない情報には注意バッジが付きます。"
+      },
+      en: {
+        q: "How up to date is the listed information?",
+        a: "Each listing has a last-checked date and a reliability score. Info checked 8-30 days ago gets a freshness badge, and info not checked for over a month gets a caution badge."
+      }
+    },
+    {
+      ja: {
+        q: "非公式(グレーゾーン)の情報とは何ですか？",
+        a: "風俗営業関連施設など、公式な出典で裏付けが取りにくい場所には「⚠ 非公式情報」の注意書きを表示しています。利用は自己責任でお願いします。"
+      },
+      en: {
+        q: "What does \"unofficial\" (gray-zone) information mean?",
+        a: "Places that are hard to verify from official sources (e.g. adult-entertainment-adjacent venues) are shown with an \"⚠ Unofficial Information\" warning. Use at your own risk."
+      }
+    }
+  ];
+
+  function faqHtml() {
+    var itemsHtml = FAQ_ITEMS.map(function (item) {
+      var entry = item[CURRENT_LANG] || item.ja;
+      return "<details><summary>" + escapeHtml(entry.q) + "</summary><p>" + escapeHtml(entry.a) + "</p></details>";
+    }).join("");
+    return "<h2>" + escapeHtml(tr(FAQ_HEADING)) + "</h2>" + itemsHtml;
+  }
+
+  function renderFaq() {
+    if (typeof document === "undefined") return;
+    var section = document.getElementById("faq-section");
+    if (!section) return;
+    section.innerHTML = faqHtml();
+  }
 
   // Kabukicho's approximate centroid -- used as the map's default center
   // before (or in place of) a real geolocation fix.
@@ -1332,9 +1487,9 @@
       '<div class="map-fallback-user">' + userHtml + '</div>' +
       '</div>' +
       '<div class="map-fallback-legend">' +
-      '<span class="map-fallback-legend-item"><span class="map-fallback-legend-swatch poi"></span>候補</span>' +
-      (focusedKey ? '<span class="map-fallback-legend-item"><span class="map-fallback-legend-swatch focused"></span>選択中</span>' : '') +
-      (state.userLocation ? '<span class="map-fallback-legend-item"><span class="map-fallback-legend-swatch user"></span>現在地</span>' : '') +
+      '<span class="map-fallback-legend-item"><span class="map-fallback-legend-swatch poi"></span>' + escapeHtml(tr({ ja: "候補", en: "Options" })) + '</span>' +
+      (focusedKey ? '<span class="map-fallback-legend-item"><span class="map-fallback-legend-swatch focused"></span>' + escapeHtml(tr({ ja: "選択中", en: "Selected" })) + '</span>' : '') +
+      (state.userLocation ? '<span class="map-fallback-legend-item"><span class="map-fallback-legend-swatch user"></span>' + escapeHtml(tr({ ja: "現在地", en: "You" })) + '</span>' : '') +
       '</div>' +
       '</div>';
   }
@@ -1422,6 +1577,15 @@
     var close = document.getElementById("controls-close");
     var panelHead = document.querySelector(".controls-panel-head");
     var backdrop = document.getElementById("controls-backdrop");
+    var langToggle = document.getElementById("lang-toggle");
+
+    if (langToggle) {
+      langToggle.addEventListener("click", function () {
+        var nextLang = CURRENT_LANG === "ja" ? "en" : "ja";
+        setLanguage(nextLang);
+        trackEvent("language_change", analyticsContext({ ui_action: "language_" + nextLang }));
+      });
+    }
 
     function openControls() { setControlsOpen(true); }
     function toggleControls() { setControlsOpen(!state.controlsOpen); }
@@ -1623,6 +1787,9 @@
   // defined there.
   if (typeof document !== "undefined") {
     document.addEventListener("DOMContentLoaded", function () {
+      CURRENT_LANG = detectInitialLang();
+      applyLanguageChrome();
+      renderFaq();
       setupControlsSurface();
       renderMapFallback("loading");
       renderModeBar();
@@ -1659,6 +1826,15 @@
       ensureActiveCategoryAllowed: ensureActiveCategoryAllowed,
       renderCard: renderCard,
       MODE_ALL_CATEGORY_ID: MODE_ALL_CATEGORY_ID,
+      tr: tr,
+      faqHtml: faqHtml,
+      // Test-only: flips CURRENT_LANG without the DOM-touching side effects
+      // setLanguage() has (title/meta/render* calls that assume a real
+      // document) -- setLanguage() itself is intentionally not exported,
+      // same reason renderList/renderModeBar/etc. aren't: they're DOM
+      // mutators, not the pure/string-building functions this test harness
+      // targets (see the file comment below).
+      setLangForTest: function (lang) { CURRENT_LANG = lang === "en" ? "en" : "ja"; },
       // Exposed only so tests can set up state (activeMode/activeCategory/
       // activeFilters/includeUnofficialSmoking) before calling the
       // functions above -- never mutated by browser code from outside
