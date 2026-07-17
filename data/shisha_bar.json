@@ -1,0 +1,370 @@
+[
+  {
+    "name": "シーシャ カフェ&バー C.STAND 新宿歌舞伎町靖国通り2号店",
+    "lat": 35.69486,
+    "lng": 139.702521,
+    "description": "歌舞伎町1-6-3の靖国通り沿いのシーシャカフェ&バー。",
+    "category": "shisha_bar",
+    "tags": [
+      "group_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "シーシャ カフェ&ダーツバー C.STAND 新宿区役所通り横店",
+    "lat": 35.695045,
+    "lng": 139.701573,
+    "description": "歌舞伎町1-1-19の新宿区役所通り沿い、ダーツも楽しめるシーシャバー。",
+    "category": "shisha_bar",
+    "tags": [
+      "group_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "シーシャ am",
+    "lat": 35.69498,
+    "lng": 139.702538,
+    "description": "歌舞伎町1-26-7の地下2階、観葉植物に囲まれた落ち着いた空間のシーシャバー。32席。",
+    "category": "shisha_bar",
+    "tags": [
+      "group_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 3,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07+osm-poi-crossref",
+    "gray_zone_note": "OpenStreetMap上に個別POIとして登録された座標を採用(建物レベルでの相互参照あり)。"
+  },
+  {
+    "name": "シーシャ カフェ&バー C.STAND+ 新宿歌舞伎町店",
+    "lat": 35.69544,
+    "lng": 139.702453,
+    "description": "歌舞伎町1-18-8のシーシャカフェ&バーC.STANDの歌舞伎町店。",
+    "category": "shisha_bar",
+    "tags": [
+      "group_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "シーシャ 煙間-エンマ- 歌舞伎町店",
+    "lat": 35.694643,
+    "lng": 139.702123,
+    "description": "歌舞伎町1-14-3の新宿駅から徒歩4分、女子会やデートにも人気のラグジュアリーなシーシャバー。",
+    "category": "shisha_bar",
+    "tags": [
+      "group_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "シーシャ 煙間-エンマ- 歌舞伎町神座ビル2号店",
+    "lat": 35.695433,
+    "lng": 139.701692,
+    "description": "歌舞伎町1-14-1の煙間-エンマ-の歌舞伎町2号店。",
+    "category": "shisha_bar",
+    "tags": [
+      "group_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "NORTH VILLAGE 歌舞伎町店",
+    "lat": 35.695078,
+    "lng": 139.702693,
+    "description": "歌舞伎町1-12-3の歌舞伎町のシーシャバー。",
+    "category": "shisha_bar",
+    "tags": [
+      "group_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "サキュバスシーシャAbyss 歌舞伎町店",
+    "lat": 35.694783,
+    "lng": 139.701633,
+    "description": "歌舞伎町1-23-15の歌舞伎町のシーシャバー。",
+    "category": "shisha_bar",
+    "tags": [
+      "group_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "NORTH VILLAGE 歌舞伎町2号店",
+    "lat": 35.695601,
+    "lng": 139.702183,
+    "description": "歌舞伎町1-12-6のNORTH VILLAGEの歌舞伎町2号店。",
+    "category": "shisha_bar",
+    "tags": [
+      "group_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "DINING BAR KUJIRA",
+    "lat": 35.696155,
+    "lng": 139.704928,
+    "description": "歌舞伎町2-23-1の風鈴会館地下、ダイニングバー併設のシーシャ店。",
+    "category": "shisha_bar",
+    "tags": [
+      "group_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "Music Bar RUN",
+    "lat": 35.694676,
+    "lng": 139.702464,
+    "description": "歌舞伎町1-10-3の音楽をテーマにしたシーシャ・バー。",
+    "category": "shisha_bar",
+    "tags": [
+      "group_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "shisha Bar mahimahi",
+    "lat": 35.69655,
+    "lng": 139.705808,
+    "description": "歌舞伎町2-38-8の歌舞伎町2丁目のシーシャバー。",
+    "category": "shisha_bar",
+    "tags": [
+      "group_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "煙屋 紅洛煙",
+    "lat": 35.695388,
+    "lng": 139.706227,
+    "description": "歌舞伎町2-8-3の和風テイストのシーシャ専門店。",
+    "category": "shisha_bar",
+    "tags": [
+      "group_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "PukuPuku NEON 新宿店",
+    "lat": 35.695216,
+    "lng": 139.701466,
+    "description": "歌舞伎町1-2-1のネオン装飾が特徴的なシーシャ店。",
+    "category": "shisha_bar",
+    "tags": [
+      "group_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "butler shisha",
+    "lat": 35.695368,
+    "lng": 139.702676,
+    "description": "歌舞伎町1-2-7の歌舞伎町のシーシャバー。",
+    "category": "shisha_bar",
+    "tags": [
+      "group_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "Suutopia 新宿歌舞伎町店",
+    "lat": 35.694576,
+    "lng": 139.701894,
+    "description": "歌舞伎町1-3-10の歌舞伎町のシーシャバー。",
+    "category": "shisha_bar",
+    "tags": [
+      "group_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "Suutopia 新宿歌舞伎町2号店",
+    "lat": 35.695608,
+    "lng": 139.701811,
+    "description": "歌舞伎町1-18-8のSuutopiaの歌舞伎町2号店。",
+    "category": "shisha_bar",
+    "tags": [
+      "group_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "シーシャ&バー C.STAND DARTS+ 西武新宿・歌舞伎町3号店",
+    "lat": 35.69488,
+    "lng": 139.702748,
+    "description": "歌舞伎町1-26-7のダーツも楽しめるシーシャ&バー。",
+    "category": "shisha_bar",
+    "tags": [
+      "group_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "SHISHA BOUTIQUE FREAKS",
+    "lat": 35.694904,
+    "lng": 139.701427,
+    "description": "歌舞伎町1-17-7の新宿リカム3ビル地下、ブティック風シーシャ店。",
+    "category": "shisha_bar",
+    "tags": [
+      "group_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "シーシャバー石榴",
+    "lat": 35.695623,
+    "lng": 139.702438,
+    "description": "歌舞伎町1-23-12の和とラグジュアリーが融合したデザインのシーシャバー。",
+    "category": "shisha_bar",
+    "tags": [
+      "group_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "シーシャカフェ&バーmuse 歌舞伎町店",
+    "lat": 35.69452,
+    "lng": 139.702288,
+    "description": "歌舞伎町1-16-2の歌舞伎町のシーシャカフェ&バー。",
+    "category": "shisha_bar",
+    "tags": [
+      "group_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "musch新宿歌舞伎町",
+    "lat": 35.69543,
+    "lng": 139.701468,
+    "description": "歌舞伎町1-6-6の歌舞伎町のシーシャ店。",
+    "category": "shisha_bar",
+    "tags": [
+      "group_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  },
+  {
+    "name": "ShisyaBAR Triton 新宿歌舞伎町",
+    "lat": 35.695205,
+    "lng": 139.702851,
+    "description": "歌舞伎町1-3-15の歌舞伎町のシーシャバー。",
+    "category": "shisha_bar",
+    "tags": [
+      "group_friendly"
+    ],
+    "last_updated": "2026-07-17",
+    "reliability_score": 2,
+    "source_type": "observed",
+    "type": "official",
+    "verification_method": "web-search-2026-07",
+    "gray_zone_note": "座標は近傍の実測済みPOIからの概算推定値であり未検証(正確な位置と異なる可能性がある)。"
+  }
+]
