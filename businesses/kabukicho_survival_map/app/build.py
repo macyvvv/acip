@@ -296,11 +296,16 @@ def build() -> None:
     adsense_client = os.environ.get("KABUKICHO_ADSENSE_CLIENT", "").strip()
 
     # DB-first flow: export canonical runtime JSON from SQLite before copying
-    # any data into product/public bundles.
-    subprocess.run(
-        [sys.executable, str(PRODUCT_DIR / "scripts" / "poi_db_sync.py"), "export-json"],
-        check=True,
-    )
+    # any data into product/public bundles. Skippable for hosting platforms
+    # whose build image ships a Python without the stdlib sqlite3 module
+    # (observed on Cloudflare's asdf-installed Python 3.13) -- the JSON under
+    # DATA_SOURCE is already the DB's export as of the last commit, so a
+    # deploy-time build can safely use it as-is without re-exporting.
+    if os.environ.get("KABUKICHO_SKIP_DB_EXPORT", "").strip().lower() not in ("1", "true", "yes"):
+        subprocess.run(
+            [sys.executable, str(PRODUCT_DIR / "scripts" / "poi_db_sync.py"), "export-json"],
+            check=True,
+        )
 
     local_data_dir = PRODUCT_DIR / "data"
     public_data_dir = PUBLIC_DIR / "data"
