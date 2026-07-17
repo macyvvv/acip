@@ -28,9 +28,18 @@ register, and does it stay consistent within the piece itself.
   as horror, not intimacy, even for characters whose register is
   naturally low-key (Airi, Rena). Flag lighting choices that drift into
   that territory regardless of whether the character's palette is
-  technically dark.
+  technically dark. This is the same 違和感/horror boundary named in
+  `BRAND_IDENTITY.md`'s Brand Hierarchy section (added 2026-07-18) — 違和感
+  (productive incongruity) is a deliberate brand tool; dread-grammar is
+  the specific failure mode to catch, not moodiness/darkness itself.
 - Don't approve from a generic "moody lighting is good" instinct — check
   against the specific character's stated register.
+- On-screen text tone is in scope for this check too, not just light
+  itself — a text line that reads as a warning rather than wistful can
+  tip a piece into the same horror-adjacent territory as bad lighting
+  (this is exactly how the 0007 "Close, but never quite here." flag
+  happened — caught here, not by accessibility-review, since it's a
+  mood/register call, not a legibility one).
 
 ## Operating notes
 

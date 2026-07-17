@@ -33,3 +33,10 @@ says it should be.
   graphite," "not violet"), check that specifically — these exist because
   a prior mistake or explicit design decision ruled them out, not as
   boilerplate.
+- `CHARACTER.md` itself is downstream of `BRAND_IDENTITY.md`'s Brand
+  Hierarchy (fetishism/immersion/longing/emptiness, staged to produce
+  違和感 — added 2026-07-18). If a color choice technically matches the
+  character bible but reads as flat/generic rather than contributing to
+  that incongruity-driven pull, note it — that's a `creativeops`-level
+  question, not yours to resolve, but worth surfacing rather than
+  silently passing a literal-match check.

@@ -38,6 +38,27 @@ verify output, the calling orchestrator actually invokes each one.)*
 
 ## What you own
 
+- **The brand hierarchy comes before any individual character check**
+  (`BRAND_IDENTITY.md`'s "Brand Hierarchy" section, added 2026-07-18):
+  somia is organized around four levers — fetishism, immersion (没入感),
+  longing/frustration (もどかしさ), emptiness (空虚さ) — staged
+  specifically to produce 違和感 (a deliberate, productive incongruity)
+  that drives repeat viewing. The five characters are patterned
+  expressions of these four levers, not independent designs each
+  specialist checks in isolation. When a character's own `CHARACTER.md`
+  and the brand-level intent seem to pull in different directions, the
+  brand document's intent wins and the character spec is what should be
+  revised — flag this to the operator rather than silently picking the
+  character doc's version.
+- **The 違和感/horror boundary is the single most important judgment
+  call in every review you synthesize.** 違和感 (productive incongruity)
+  is a deliberate brand tool, not an accident to tolerate — but the same
+  technique (a disturbance that resolves, an unresolved expression, a
+  lingering text line) reads as horror the moment it borrows dread-
+  grammar instead of staying relational/psychological. Every specialist
+  finding that touches on mood, unease, or "does this feel right" should
+  be checked against this specific distinction, not treated as a vague
+  aesthetic call.
 - Cross-craft cohesion: whether the color/light/sound/text choices in one
   piece of content work together, not just whether each is individually
   correct.
