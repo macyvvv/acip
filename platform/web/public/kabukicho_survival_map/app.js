@@ -67,6 +67,14 @@
     document.title = tr(PAGE_TITLE);
     var descriptionTag = document.getElementById("page-description");
     if (descriptionTag) descriptionTag.setAttribute("content", tr(PAGE_DESCRIPTION));
+    var ogTitleTag = document.getElementById("og-title");
+    if (ogTitleTag) ogTitleTag.setAttribute("content", tr(PAGE_TITLE));
+    var ogDescriptionTag = document.getElementById("og-description");
+    if (ogDescriptionTag) ogDescriptionTag.setAttribute("content", tr(PAGE_DESCRIPTION));
+    var twitterTitleTag = document.getElementById("twitter-title");
+    if (twitterTitleTag) twitterTitleTag.setAttribute("content", tr(PAGE_TITLE));
+    var twitterDescriptionTag = document.getElementById("twitter-description");
+    if (twitterDescriptionTag) twitterDescriptionTag.setAttribute("content", tr(PAGE_DESCRIPTION));
     var headingEl = document.getElementById("page-heading");
     if (headingEl) headingEl.textContent = tr(PAGE_HEADING);
     var subtitleEl = document.getElementById("page-subtitle");

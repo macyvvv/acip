@@ -30,7 +30,7 @@ from system.core.dotenv import load_dotenv  # noqa: E402
 # index.html is handled separately from the other static files -- it's a
 # template with SSG:* markers that get substituted with generated content
 # (see _render_index_html), not a plain copy.
-STATIC_FILES = ("app.js", "style.css", "privacy.html", "terms.html")
+STATIC_FILES = ("app.js", "style.css", "privacy.html", "terms.html", "favicon.svg")
 INDEX_TEMPLATE = PRODUCT_DIR / "index.html"
 # Cross-product utilities (platform/app/shared/) copied in flat alongside this
 # product's own static files -- same "committed local copy of a canonical
@@ -213,8 +213,11 @@ def _render_index_html(category_data: list[tuple[dict, list[dict]]], site_url: s
     )
     template = template.replace("<!-- SSG:FAQ_CONTENT -->", _render_faq_html())
     if site_url:
-        canonical_tag = '<link rel="canonical" href="' + _escape(site_url) + '">'
-        template = template.replace("</head>", canonical_tag + "\n</head>", 1)
+        extra_tags = (
+            '<link rel="canonical" href="' + _escape(site_url) + '">\n'
+            '<meta property="og:url" content="' + _escape(site_url) + '">'
+        )
+        template = template.replace("</head>", extra_tags + "\n</head>", 1)
     return template
 
 
