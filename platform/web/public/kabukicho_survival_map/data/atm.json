@@ -13,7 +13,8 @@
     "reliability_score": 3,
     "source_type": "inferred",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "セブン銀行ATM(セブン-イレブン新宿東宝ビル店)",
@@ -29,7 +30,8 @@
     "reliability_score": 3,
     "source_type": "inferred",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "セブン銀行ATM(セブン-イレブン新宿駅靖国通り店)",
@@ -45,7 +47,8 @@
     "reliability_score": 3,
     "source_type": "inferred",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "セブン銀行ATM(セブン-イレブン歌舞伎町1-26-6店)",
@@ -61,7 +64,8 @@
     "reliability_score": 3,
     "source_type": "inferred",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "セブン銀行ATM(セブン-イレブン歌舞伎町二丁目中央店)",
@@ -77,7 +81,8 @@
     "reliability_score": 3,
     "source_type": "inferred",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "セブン銀行ATM(セブン-イレブン歌舞伎町二丁目東店)",
@@ -109,7 +114,8 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "lawsonbank-atm-map-2026-07"
+    "verification_method": "lawsonbank-atm-map-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "ローソン銀行ATM(都営東新宿駅前共同出張所)",
@@ -125,7 +131,8 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "lawsonbank-atm-map-2026-07"
+    "verification_method": "lawsonbank-atm-map-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "三菱UFJ銀行 西武新宿駅前ATMコーナー",
@@ -140,7 +147,8 @@
     "reliability_score": 4,
     "source_type": "observed",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "三菱UFJ銀行 新宿サブナードATMコーナー",
@@ -155,7 +163,8 @@
     "reliability_score": 4,
     "source_type": "observed",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "イオン銀行ATM(ミニストップ新宿歌舞伎町店・2号機)",
@@ -171,7 +180,8 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "みずほ銀行ATM(ミニストップ新宿歌舞伎町店・1号機)",
@@ -186,7 +196,8 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "ATM(ミニストップ歌舞伎町二丁目店)",
@@ -202,7 +213,8 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "ministop-map-detail-2026-07"
+    "verification_method": "ministop-map-detail-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "ゆうちょ銀行ATM(ファミリーマート歌舞伎町店)",
@@ -218,7 +230,8 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "familymart-store-api-c23-2026-07"
+    "verification_method": "familymart-store-api-c23-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "E-net ATM(ファミリーマート歌舞伎町一丁目店)",
@@ -234,7 +247,8 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "familymart-store-api-c23-2026-07"
+    "verification_method": "familymart-store-api-c23-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "E-net ATM(ファミリーマート歌舞伎町北店)",
@@ -250,7 +264,8 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "familymart-store-api-c23-2026-07"
+    "verification_method": "familymart-store-api-c23-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "ゆうちょ銀行ATM(ファミリーマート新宿区役所通り店)",
@@ -266,7 +281,8 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "familymart-store-api-c23-2026-07"
+    "verification_method": "familymart-store-api-c23-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "ゆうちょ銀行ATM(ファミリーマート新宿歌舞伎町店)",
@@ -281,7 +297,8 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "新宿歌舞伎町郵便局 ATM",
@@ -294,7 +311,8 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "新宿区役所前郵便局 ATM",
@@ -307,7 +325,8 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "SMBC信託銀行プレスティア 新宿東口支店ATM",
@@ -323,7 +342,8 @@
     "source_type": "official",
     "type": "official",
     "verification_method": "web-search-2026-07",
-    "gray_zone_note": "歌舞伎町の町丁境界外に位置していますが、外国人向け銀行サービスとして最寄りのATMのため参考掲載しています(地区内の施設ではありません)。"
+    "gray_zone_note": "歌舞伎町の町丁境界外に位置していますが、外国人向け銀行サービスとして最寄りのATMのため参考掲載しています(地区内の施設ではありません)。",
+    "coord_verified": "verified"
   },
   {
     "name": "ローソン銀行ATM(新宿歌舞伎町二丁目共同出張所)",
@@ -339,6 +359,7 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "lawsonbank-atm-map-2026-07"
+    "verification_method": "lawsonbank-atm-map-2026-07",
+    "coord_verified": "verified"
   }
 ]

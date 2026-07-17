@@ -85,7 +85,8 @@
     "reliability_score": 3,
     "source_type": "observed",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "西武新宿駅北口コインロッカー",
@@ -103,7 +104,8 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "西武新宿駅地下通路・サブナードロッカー",
@@ -119,12 +121,13 @@
     "reliability_score": 3,
     "source_type": "official",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "東急歌舞伎町タワー地下1階コインロッカー",
-    "lat": 35.695935,
-    "lng": 139.700657,
+    "lat": 35.6963,
+    "lng": 139.7033,
     "description": "歌舞伎町一番街アーチ入口から徒歩約1分、地下1階の24時間利用可能な大型ロッカー群(300台超)。",
     "category": "coin_locker",
     "tags": [
@@ -133,60 +136,64 @@
       "suitcase_ok",
       "24h"
     ],
-    "last_updated": "2026-07-11",
+    "last_updated": "2026-07-17",
     "reliability_score": 3,
     "source_type": "observed",
     "type": "unofficial",
-    "verification_method": "web-search-2026-07",
-    "gray_zone_note": "東急歌舞伎町タワー公式FAQには掲載されておらず(公式には1階の有人手荷物預かりのみ案内)、複数の旅行ガイドが独自に報告している情報です。施設側による確認は取れていないため、現地で確認してからご利用ください。"
+    "verification_method": "coord-review-2026-07-17",
+    "gray_zone_note": "東急歌舞伎町タワー公式FAQには掲載されておらず(公式には1階の有人手荷物預かりのみ案内)、複数の旅行ガイドが独自に報告している情報です。施設側による確認は取れていないため、現地で確認してからご利用ください。",
+    "coord_verified": "corrected"
   },
   {
     "name": "東急歌舞伎町タワー4階シネマフロアロッカー",
-    "lat": 35.695935,
-    "lng": 139.700657,
+    "lat": 35.6963,
+    "lng": 139.7033,
     "description": "映画館フロアのエレベーター横にある電子決済専用の小型ロッカー。小型200円/中型300円、利用制限180分、主に映画鑑賞者向け。",
     "category": "coin_locker",
     "tags": [
       "small",
       "medium"
     ],
-    "last_updated": "2026-07-11",
+    "last_updated": "2026-07-17",
     "reliability_score": 3,
     "source_type": "observed",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "coord-review-2026-07-17",
+    "coord_verified": "corrected"
   },
   {
     "name": "東急歌舞伎町タワー10階(109シネマズプレミアム新宿)ロッカー",
-    "lat": 35.695935,
-    "lng": 139.700657,
+    "lat": 35.6963,
+    "lng": 139.7033,
     "description": "10階109シネマズプレミアム新宿フロア、エレベーター横のキャッシュレス専用ロッカー(IC/タッチ/QR対応)。",
     "category": "coin_locker",
     "tags": [
       "small",
       "medium"
     ],
-    "last_updated": "2026-07-11",
+    "last_updated": "2026-07-17",
     "reliability_score": 3,
     "source_type": "observed",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "coord-review-2026-07-17",
+    "coord_verified": "corrected"
   },
   {
     "name": "Zepp新宿ロッカー(地下1階・地下4階)",
-    "lat": 35.695841,
-    "lng": 139.703762,
+    "lat": 35.6963,
+    "lng": 139.7033,
     "description": "東急歌舞伎町タワー地下のライブ会場内ロッカー、計840台(地下1階690台、地下4階150台)。現金専用400円、両替機あり。入場後のみ利用可能で、入場前の荷物預かりには使えません。",
     "category": "coin_locker",
     "tags": [
       "small",
       "medium"
     ],
-    "last_updated": "2026-07-11",
+    "last_updated": "2026-07-17",
     "reliability_score": 4,
     "source_type": "observed",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "coord-review-2026-07-17",
+    "coord_verified": "corrected"
   },
   {
     "name": "ヒューマックスパビリオン新宿歌舞伎町 コインロッカー",
@@ -219,7 +226,8 @@
     "reliability_score": 2,
     "source_type": "observed",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "アドホック新宿ビル コインロッカー",
@@ -239,18 +247,19 @@
   },
   {
     "name": "マンボー歌舞伎町ネットルーム入口ロッカー",
-    "lat": 35.695841,
-    "lng": 139.703762,
+    "lat": 35.696,
+    "lng": 139.7048,
     "description": "西武新宿駅・東新宿駅から徒歩約5分、インターネットカフェ「マンボー」入口そばのコインロッカー。",
     "category": "coin_locker",
     "tags": [
       "small"
     ],
-    "last_updated": "2026-07-11",
+    "last_updated": "2026-07-17",
     "reliability_score": 2,
     "source_type": "observed",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "coord-review-2026-07-17",
+    "coord_verified": "corrected"
   },
   {
     "name": "ゴジラロード・カラオケ館歌舞伎町本店入口ロッカー",
@@ -283,6 +292,7 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   }
 ]

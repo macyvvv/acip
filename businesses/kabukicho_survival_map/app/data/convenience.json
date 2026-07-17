@@ -13,7 +13,8 @@
     "source_type": "observed",
     "type": "official",
     "verification_method": "lawsonbank-atm-map-2026-07",
-    "gray_zone_note": "ローソン銀行公式APIで新宿駅周辺候補(西武新宿駅北口/大江戸線新宿駅前/NL新宿駅西)が複数ヒットし、当該エントリとの同一性を一意に確定できないためATM有無は保留。"
+    "gray_zone_note": "ローソン銀行公式APIで新宿駅周辺候補(西武新宿駅北口/大江戸線新宿駅前/NL新宿駅西)が複数ヒットし、当該エントリとの同一性を一意に確定できないためATM有無は保留。",
+    "coord_verified": "verified"
   },
   {
     "name": "セブン-イレブン歌舞伎町1-2-13店",
@@ -30,7 +31,8 @@
     "source_type": "observed",
     "type": "unofficial",
     "verification_method": "web-search-2026-07",
-    "gray_zone_note": "情報源によって店舗名の表記が異なりますが、住所の方が信頼できる識別情報です。"
+    "gray_zone_note": "情報源によって店舗名の表記が異なりますが、住所の方が信頼できる識別情報です。",
+    "coord_verified": "verified"
   },
   {
     "name": "セブン-イレブン新宿東宝ビル店",
@@ -46,7 +48,8 @@
     "reliability_score": 4,
     "source_type": "observed",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "セブン-イレブン新宿駅靖国通り店",
@@ -62,7 +65,8 @@
     "reliability_score": 3,
     "source_type": "observed",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "セブン-イレブン歌舞伎町1-26-6店",
@@ -78,7 +82,8 @@
     "reliability_score": 3,
     "source_type": "observed",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "セブン-イレブン歌舞伎町二丁目中央店",
@@ -94,7 +99,8 @@
     "reliability_score": 4,
     "source_type": "observed",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "セブン-イレブン歌舞伎町二丁目東店",
@@ -127,7 +133,8 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "lawsonbank-atm-map-2026-07"
+    "verification_method": "lawsonbank-atm-map-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "ローソン歌舞伎町二丁目店",
@@ -159,7 +166,8 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "lawsonbank-atm-map-2026-07"
+    "verification_method": "lawsonbank-atm-map-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "ファミリーマート歌舞伎町店",
@@ -175,7 +183,8 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "familymart-store-api-c23-2026-07"
+    "verification_method": "familymart-store-api-c23-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "ファミリーマート新宿歌舞伎町一番街店",
@@ -191,7 +200,8 @@
     "source_type": "official",
     "type": "official",
     "verification_method": "web-search-2026-07",
-    "gray_zone_note": "2026-07時点のファミリーマート公式API(/api/points/xn7)で同名・同住所一致を確認できず、ATM有無は未確定のため保留。"
+    "gray_zone_note": "2026-07時点のファミリーマート公式API(/api/points/xn7)で同名・同住所一致を確認できず、ATM有無は未確定のため保留。",
+    "coord_verified": "verified"
   },
   {
     "name": "ファミリーマート歌舞伎町一丁目店",
@@ -207,7 +217,8 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "familymart-store-api-c23-2026-07"
+    "verification_method": "familymart-store-api-c23-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "ファミリーマート新宿ゴールデン街店",
@@ -223,7 +234,8 @@
     "source_type": "official",
     "type": "official",
     "verification_method": "web-search-2026-07",
-    "gray_zone_note": "歌舞伎町の内部ではなく境界付近に位置しています。"
+    "gray_zone_note": "歌舞伎町の内部ではなく境界付近に位置しています。",
+    "coord_verified": "verified"
   },
   {
     "name": "ファミリーマート歌舞伎町北店",
@@ -239,7 +251,8 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "familymart-store-api-c23-2026-07"
+    "verification_method": "familymart-store-api-c23-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "ファミリーマート新宿歌舞伎町店",
@@ -255,7 +268,8 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "ファミリーマート新宿区役所通り店",
@@ -271,7 +285,8 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "familymart-store-api-c23-2026-07"
+    "verification_method": "familymart-store-api-c23-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "ミニストップ新宿歌舞伎町店",
@@ -287,7 +302,8 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "web-search-2026-07"
+    "verification_method": "web-search-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "ミニストップ歌舞伎町二丁目店",
@@ -303,7 +319,8 @@
     "reliability_score": 4,
     "source_type": "official",
     "type": "official",
-    "verification_method": "ministop-map-detail-2026-07"
+    "verification_method": "ministop-map-detail-2026-07",
+    "coord_verified": "verified"
   },
   {
     "name": "ローソン新宿歌舞伎町二丁目店(2-29-1)",
@@ -320,6 +337,7 @@
     "source_type": "official",
     "type": "official",
     "verification_method": "lawsonbank-atm-map-2026-07",
-    "gray_zone_note": "同名系のローソンが近接しているため、住所(歌舞伎町2-29-1)で識別してください。"
+    "gray_zone_note": "同名系のローソンが近接しているため、住所(歌舞伎町2-29-1)で識別してください。",
+    "coord_verified": "verified"
   }
 ]
