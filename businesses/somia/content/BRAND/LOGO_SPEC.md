@@ -16,9 +16,12 @@
 
 ## Asset File
 
-- No image asset is committed yet — this file is the spec, not the file.
-  Add the actual logo file (svg/png) under `platform/somia/BRAND/` when available;
-  Claude cannot generate the image itself.
+- `businesses/somia/content/BRAND/assets/somia_logo1.png` (added 2026-07-18).
+  This is a circular presentation/hero graphic (gradient disc background,
+  black moon outline + white star + "somia" wordmark) — it does not itself
+  satisfy the "single color only, never both black and white at once"
+  overlay-mark rule above. Treat it as source art to extract the actual
+  single-color overlay mark from, not as the overlay asset itself.
 
 ## Placement
 
