@@ -24,12 +24,12 @@
 
   var LANG_STORAGE_KEY = "kabukicho_lang";
   var PAGE_TITLE = {
-    ja: "歌舞伎町サバイバルマップ | 喫煙所・トイレ・ロッカー・宿泊情報",
-    en: "Kabukicho Survival Map: Smoking Areas, Toilets, Lockers & Lodging"
+    ja: "歌舞伎町サバイバルマップ | 終電後・24時間の困りごとをすぐ探せる地図",
+    en: "Kabukicho Survival Map: Find What You Need, Even After the Last Train"
   };
   var PAGE_DESCRIPTION = {
-    ja: "歌舞伎町の喫煙所・トイレ・ATM・コインロッカー・宿泊施設を状況別にすぐ探せる地図。信頼度・最終確認日つきのPOI情報をスマホで手早く確認できます。",
-    en: "Find smoking areas, public toilets, ATMs, coin lockers, and affordable lodging in Kabukicho. Mobile-first map with verified POI details and freshness badges."
+    ja: "歌舞伎町で今すぐ使える喫煙所・24時間トイレ・ATM・コインロッカー・宿泊施設を状況別に検索。終電を逃した時も、朝まで過ごせる候補をすぐ確認できます。信頼度・最終確認日つきの実地検証データ。",
+    en: "Find smoking areas, 24h toilets, ATMs, coin lockers, and lodging in Kabukicho right now, filtered by situation -- including what's open if you miss the last train. Verified POI details with freshness badges."
   };
   var PAGE_HEADING = { ja: "歌舞伎町サバイバルマップ", en: "Kabukicho Survival Map" };
   var PAGE_SUBTITLE = { ja: "近くで今使える場所を、状況別にすばやく探す", en: "Quickly find what you need nearby, by situation" };
@@ -337,6 +337,26 @@
       en: {
         q: "What does \"unofficial\" (gray-zone) information mean?",
         a: "Places that are hard to verify from official sources (e.g. adult-entertainment-adjacent venues) are shown with an \"⚠ Unofficial Information\" warning. Use at your own risk."
+      }
+    },
+    {
+      ja: {
+        q: "歌舞伎町で24時間使えるトイレはどこですか？",
+        a: "「西武新宿駅前公衆便所」「Haijia(東京都健康プラザ ハイジア)1階トイレ」「四季の路(新宿遊歩道公園)トイレ」など、「24h」タグ付きの数か所が24時間利用できます。それ以外の施設内トイレは営業時間内のみで、東急歌舞伎町タワーのトイレは認証式でテナント利用者限定です。カテゴリ「トイレ」からタグで絞り込んで確認してください。"
+      },
+      en: {
+        q: "Which toilets in Kabukicho are open 24 hours?",
+        a: "A handful of listings tagged \"24h\" -- including the public toilet in front of Seibu-Shinjuku Station, the 1F toilet at Haijia (Tokyo Health Plaza), and the Shiki-no-Michi park toilet -- are open around the clock. Other in-facility toilets are only open during business hours, and the Tokyu Kabukicho Tower toilet requires an authenticated tenant-store customer. Filter the \"Toilet\" category by tag to check."
+      }
+    },
+    {
+      ja: {
+        q: "歌舞伎町で終電を逃したらどうすればいいですか？",
+        a: "「朝まで過ごす」モードに切り替えると、宿泊・コンビニ・トイレを中心に、営業中の一部のカラオケ・シーシャバーも含めた候補を状況別に表示します。個別の営業時間・24時間対応かどうかは各POIカードのタグと最終確認日で確認してください(カラオケ・シーシャバーは店舗によって深夜営業時間が異なります)。"
+      },
+      en: {
+        q: "What should I do if I miss the last train in Kabukicho?",
+        a: "Switch to \"Until Morning\" mode to see lodging, convenience stores, and toilets, plus karaoke and shisha bars that happen to be open. Late-night hours vary by individual karaoke/shisha venue, so check each listing's tags and last-checked date rather than assuming category-wide 24-hour availability."
       }
     }
   ];
