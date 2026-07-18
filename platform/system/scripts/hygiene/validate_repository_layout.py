@@ -31,9 +31,8 @@ ROOT_ALLOWLIST = {
     ".env.example",
     ".github",
     "requirements-dev.txt",
-    "netlify.toml",
+    "wrangler.toml",
     "selftest.yml",
-    "netlify.toml",
     # Transitional compatibility links maintained at root.
     ".system",
     "adr",

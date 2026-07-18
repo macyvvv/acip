@@ -3,7 +3,7 @@
 Current root entries (target policy):
 
 - Canonical containers: `platform/`, `businesses/`
-- Minimal config/meta: `README.md`, `AGENTS.md`, `CLAUDE.md`, `VERSION`, `.gitignore`, `.env`, `.env.example`, `.github/`, `.git/`, `.claude/`, `requirements-dev.txt`, `netlify.toml`, `selftest.yml`
+- Minimal config/meta: `README.md`, `AGENTS.md`, `CLAUDE.md`, `VERSION`, `.gitignore`, `.env`, `.env.example`, `.github/`, `.git/`, `.claude/`, `requirements-dev.txt`, `wrangler.toml`, `selftest.yml`
 - Compatibility symlinks may temporarily remain during migration until all references are updated.
 
 Local machine artifacts (ignored by layout validation): `.DS_Store`, `.pytest_cache/`, `.venv/`.
@@ -71,6 +71,8 @@ See the archive README for why this correctly triggered a
 permission-classifier pause first (a contradiction with an earlier,
 less rigorous claim in the same session) before being resolved with
 direct evidence.
+
+**`netlify.toml` replaced by `wrangler.toml` (2026-07-18).** kabukicho_survival_map moved from Netlify to Cloudflare Workers earlier this session (DNS cutover, SSL, GitHub Pages custom-domain removal); `netlify.toml` was left in the repo afterward with no corresponding action taken on Netlify's own GitHub App connection, which kept firing failing deploy-status checks on every unrelated PR. Removed the file and its allowlist entry; the Netlify GitHub App/site itself still needs disconnecting from Netlify's or GitHub's own dashboard (not something a repo commit can do) -- see the operator note in the removal commit.
 
 ## Policy
 
