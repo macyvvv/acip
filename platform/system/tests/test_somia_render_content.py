@@ -11,7 +11,7 @@ from system.scripts.somia.render_content import render
 
 
 def _write_content_dir(base: Path) -> Path:
-    content_dir = base / "somia" / "CONTENT" / "0001"
+    content_dir = base / "businesses" / "somia" / "content" / "CONTENT" / "0001"
     content_dir.mkdir(parents=True)
     (content_dir / "prompt.md").write_text(
         "\n".join(
@@ -73,7 +73,7 @@ def test_load_content_spec_parses_sections(tmp_path: Path) -> None:
 
 
 def test_load_content_spec_missing_file_raises(tmp_path: Path) -> None:
-    content_dir = tmp_path / "somia" / "CONTENT" / "0002"
+    content_dir = tmp_path / "businesses" / "somia" / "content" / "CONTENT" / "0002"
     content_dir.mkdir(parents=True)
     with pytest.raises(ContentSpecError):
         load_content_spec(content_dir)
@@ -103,10 +103,12 @@ def test_get_provider_rejects_unknown_name() -> None:
 def test_render_updates_metadata_with_render_record(tmp_path: Path) -> None:
     _write_content_dir(tmp_path)
     render_record = render("0001", provider_name="dry_run", root=tmp_path)
-    metadata = json.loads((tmp_path / "somia" / "CONTENT" / "0001" / "metadata.json").read_text(encoding="utf-8"))
+    metadata = json.loads(
+        (tmp_path / "businesses" / "somia" / "content" / "CONTENT" / "0001" / "metadata.json").read_text(encoding="utf-8")
+    )
     assert metadata["render"] == render_record
     assert metadata["hypothesis"] == "test"
     assert metadata["render"]["provider"] == "dry_run"
     # Paths are stored repo-relative so committing metadata.json doesn't churn per machine.
-    assert render_record["video_path"] == "platform/somia/CONTENT/0001/video.dry_run.txt"
-    assert render_record["keyframe_path"] == "platform/somia/CONTENT/0001/keyframe.dry_run.txt"
+    assert render_record["video_path"] == "businesses/somia/content/CONTENT/0001/video.dry_run.txt"
+    assert render_record["keyframe_path"] == "businesses/somia/content/CONTENT/0001/keyframe.dry_run.txt"

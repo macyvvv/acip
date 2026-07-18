@@ -13,6 +13,61 @@ an art project. The goal is content people come back to compulsively:
   viewer who wants to keep coming back to her
 - presence that feels close, intense, and worth returning to daily
 
+## Brand Hierarchy — the four levers, and the mechanism they drive (2026-07-18)
+
+The brand comes first; the five characters are patterned expressions of
+it, not the source of it. Every character-level spec should trace back to
+these four emotional levers, not the reverse — when a character's
+CHARACTER.md and this document seem to disagree, this document's intent
+wins and the character spec should be revised, not the other way around.
+
+**The four levers:**
+1. **Fetishism** (relational/emotional, not explicit sexuality — see
+   "What Somia Is Not" below).
+2. **Immersion** (没入感) — the viewer's sense of actually being present
+   in the character's world/moment, not watching it from outside.
+3. **Longing/frustration** (もどかしさ) — the "almost, not quite" quality
+   clearly present in most characters' own Dependency Trigger/Failure
+   Condition (Mina's "almost comfort," Nao's "close but unreachable,"
+   Yui's unresolved anxiety, Airi's glimpsed-not-explained interior).
+   Rena is the exception, not a fifth confirming case: her actual
+   mechanic (RENA.md) is ambient control/authority radiating from her
+   without any overt act, not withheld access or an "almost" quality —
+   don't force her into this pattern. Four of five independently
+   expressing the same principle is itself the finding this document
+   names; overstating it as all five would be exactly the kind of
+   unfounded pattern-match `epistemicsops` exists to catch (caught
+   2026-07-18, this correction is that catch).
+4. **Emptiness/hollowness** (空虚さ) — newly named at the brand level;
+   **not yet explicitly present in any individual CHARACTER.md.** This is
+   a real gap, not something to retrofit into all five characters right
+   now by guessing — when a character's spec is next revised or a new
+   one authored, reasoning through what "emptiness" means for that
+   specific character (not a generic sad/hollow filter) is real design
+   work for that moment, not something to rush across all five today.
+
+**The mechanism:** these four levers are staged specifically to produce
+**違和感** — a deliberate, productive sense of incongruity/unease — which
+is what actually creates the "something about this keeps pulling me
+back" pull (何度も見たくなる) this brand is built for. 違和感 is not a
+side effect to tolerate; it is the actual mechanism connecting the four
+levers to repeat viewing. The cross-character signature technique below
+(visual noise at the internal-thought beat) is one concrete tool for
+staging it, not the only one — pacing, framing, and the "almost, not
+quite" resolution of every piece's final beat are also 違和感-staging
+tools already in use.
+
+**The one hard boundary on 違和感**: it must stay on the fetishism/
+fascination side of the line, never the fear/dread side — see "What
+Somia Is Not" below. The same incongruity technique (a brief disturbance
+that resolves, an expression that doesn't fully resolve, a text line
+that lingers) reads as *productive* unease when it's clearly relational/
+psychological, and as *horror* when it borrows dread-grammar (empty
+space implying an unseen threat, a jump/startle beat, text that reads as
+a warning rather than a wistful line). Every 違和感-staging decision
+should be checked against this distinction explicitly, not assumed safe
+because the underlying lever (fetishism, longing) is legitimate.
+
 ## Character Age & Identity Policy
 
 - Every character is an adult (18+). This is fixed and non-negotiable in
@@ -43,12 +98,37 @@ an art project. The goal is content people come back to compulsively:
   visual environment (see `platform/somia/CHARACTER/*.md`) — e.g. Mina/Nao/Yui read
   warm and domestic, Airi/Rena read moody and withdrawn (dim room,
   screen-glow, quiet control). Both are valid; neither is universal.
-- The one rule that applies to every character regardless of tone: no
-  horror or suspense grammar. Empty/abandoned spaces, a figure suddenly
-  present, and ominous on-screen text read as horror when actually
-  rendered, not as intimacy or mood, even when the words look atmospheric
-  on the page. A moody, screen-lit room a character actually inhabits is
-  fine; an empty corridor implying something unseen is not.
+- **Cross-character signature technique — visual noise at the moment of
+  internal thought.** Every character has exactly one beat per piece
+  where her composed exterior briefly lets an internal reaction through
+  — a controlled break, not a resolution (see each character's own
+  Dependency Trigger / Failure Condition). At that specific beat, a burst
+  of visual noise should be perceptible at **consistent
+  strength/prominence across all five characters** — this is a brand-wide
+  signature, not an Airi-exclusive trait, added 2026-07-18 after review
+  found `visual-effects` had incorrectly scoped it to Airi alone. The
+  concrete texture of that noise is native to each character's own
+  visual world, not a single copy-pasted effect:
+  - Airi (digital/screen world): glitch fragments, UI-fragment tears,
+    chromatic drift — already documented in her own CHARACTER.md.
+  - Nao (natural/elemental world): a brief ripple/refraction distortion
+    in light through water or moving fabric, not a digital artifact —
+    the "noise" reads as a natural-world disturbance, never a screen
+    artifact, to stay inside her elemental register.
+  - Mina/Rena/Yui: not yet specified per-character (author when their
+    next content piece is planned) — do not invent a texture for them
+    speculatively; each needs the same "what's her world's native
+    disturbance" reasoning Nao and Airi got, not a generic filler effect.
+  - The strength/prominence of the noise burst must match across
+    characters even though the texture differs — a barely-visible flicker
+    for one character and an overt glitch for another would violate the
+    "consistent strength" requirement.
+- This technique is a direct application of the 違和感 boundary above: a
+  digital-glitch texture forced onto a character whose world has no
+  digital elements (e.g. Nao) reads as "something wrong intruding" rather
+  than "an internal moment breaking through." Keep the texture native to
+  the character's own world specifically to stay on the fascination side
+  of that line.
 - The character relationship is the product surface.
 - Mystery (undisclosed identity/backstory) is a deliberate hook, not a
   gap to be filled in. Dread is the thing to avoid, not mystery itself.

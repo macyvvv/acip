@@ -1,9 +1,11 @@
 {
-  "base_layer": "soft ambient bed",
-  "noise_type": "high-frequency detail with sparse events",
+  "base_layer": "soft wind and sea ambient bed",
+  "noise_type": "high-frequency detail, particle-like texture, sparse events",
   "frequency_range": "8kHz+",
   "trigger_timing": [
-    "silence entry"
+    "held ambient bed 0.0-10.0s (Act 1, no incident)",
+    "wind swell at ~12.0s (Act 2 turn anticipation, coincides with the light-refraction/earring-glint beat), sustained through the ~15-18s acknowledgment hold",
+    "pull back to sparse/silent by ~27.0s (Act 3 return + loop point, strong silence contrast per Nao's Audio Traits)"
   ],
-  "silence_duration": 1.4
+  "silence_duration": 1.0
 }

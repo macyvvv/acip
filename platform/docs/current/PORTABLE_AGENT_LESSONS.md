@@ -105,3 +105,25 @@ concern plainly, and state why it's true rather than just asserting it.
   or invocation mechanism that role actually has access to. Role
   documentation drifts from role reality the same way any other
   documentation does.
+
+## Image-generation prompt engineering (SDXL/CLIP-family models)
+
+- **These models don't parse grammatical negation.** Writing "NOT a tank
+  top" or "NOT off-shoulder" inside a *positive* prompt tends to reinforce
+  the excluded concept rather than remove it -- the negation word itself
+  carries little to no weight in the text encoder's embedding. Put every
+  concept you want absent from the output only in a dedicated negative
+  prompt, never as a negation clause in the positive one. Confirmed by a
+  real failure: a positive prompt accumulating several "NOT X" clauses
+  produced a broken, unusable generation, not just a subtle miss.
+- **There is a hard effective prompt-attention budget, roughly 75 tokens.**
+  Past that point, later tokens get diluted or dropped, and there is no
+  reliable reordering or trimming trick that reliably preserves everything
+  once a prompt is over budget -- confirmed across four consecutive
+  attempts that each combined multiple competing requirements (character
+  identity plus a scene) in one prompt, where each attempt sacrificed a
+  *different* required element depending on ordering. When one prompt
+  cannot fit everything it needs to carry reliably, don't assume adding
+  more descriptive detail is free, and consider whether the task should be
+  split into multiple generation passes instead of one prompt trying to
+  do everything.

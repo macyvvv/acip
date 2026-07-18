@@ -17,7 +17,7 @@ from system.scripts.somia.providers import VideoGenerationError, get_provider
 
 
 def _build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Render a platform/somia/CONTENT/<id> spec into a video via a pluggable provider.")
+    parser = argparse.ArgumentParser(description="Render a businesses/somia/content/CONTENT/<id> spec into a video via a pluggable provider.")
     parser.add_argument("--content-id", required=True, help="e.g. 0001")
     parser.add_argument("--provider", default=None, help="Overrides SOMIA_VIDEO_PROVIDER env var. Defaults to dry_run.")
     return parser
@@ -25,7 +25,7 @@ def _build_parser() -> argparse.ArgumentParser:
 
 def render(content_id: str, *, provider_name: str | None = None, root: Path | None = None) -> dict:
     root = root or get_repo_root()
-    content_dir = root / "somia" / "CONTENT" / content_id
+    content_dir = root / "businesses" / "somia" / "content" / "CONTENT" / content_id
     spec = load_content_spec(content_dir)
     provider = get_provider(provider_name)
     result = provider.generate(spec, content_dir)
@@ -34,10 +34,7 @@ def render(content_id: str, *, provider_name: str | None = None, root: Path | No
         if not path:
             return path
         try:
-            relative = Path(path).resolve().relative_to(root)
-            if relative.parts and relative.parts[0] == "somia":
-                return str(Path("platform") / relative)
-            return str(relative)
+            return str(Path(path).resolve().relative_to(root))
         except ValueError:
             return path
 

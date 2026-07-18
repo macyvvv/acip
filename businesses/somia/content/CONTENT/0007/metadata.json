@@ -1,5 +1,24 @@
 {
   "character": "Nao",
-  "variation_type": "silence_duration",
-  "hypothesis": "Tests whether silence-heavy endings make Nao feel more detached."
+  "variation_type": "flagship_episode",
+  "hypothesis": "Nao's first complete episode: one brief viewer-acknowledgment beat inside an otherwise unreachable register, ending on a loop-friendly final frame, tests whether the 'almost, not quite' + seamless-loop combination drives repeat viewing per BRAND_IDENTITY.md's core concept.",
+  "render": {
+    "provider": "illustrious_kling",
+    "model": "https://huggingface.co/OnomaAIResearch/Illustrious-XL-v2.0/resolve/main/Illustrious-XL-v2.0.safetensors (fal-ai/lora) + fal-ai/kling-video/v2.5-turbo/pro/image-to-video",
+    "keyframe_path": "businesses/somia/content/CONTENT/0007/keyframe.png",
+    "video_path": "businesses/somia/content/CONTENT/0007/video.mp4",
+    "rendered_at": "2026-07-17T17:42:06.214064+00:00",
+    "notes": "keyframe=https://huggingface.co/OnomaAIResearch/Illustrious-XL-v2.0/resolve/main/Illustrious-XL-v2.0.safetensors via fal-ai/lora, video=kling v2.5-turbo/pro duration=10s. duration: spec requested 12s, rendered 10s (Kling caps at 10s) on_screen_text: not composited into the video (requires a separate compositing pass) prompting: this checkpoint needs Danbooru-tag-style prompts (comma-separated tags, not prose) to render cleanly -- write image_prompt accordingly",
+    "spec_deviations": [
+      "duration: spec requested 12s, rendered 10s (Kling caps at 10s)",
+      "prompting: this checkpoint needs Danbooru-tag-style prompts (comma-separated tags, not prose) to render cleanly -- write image_prompt accordingly"
+    ]
+  },
+  "post_processing": {
+    "step": "on_screen_text compositing (manual, not part of render_content.py's automated output)",
+    "output_path": "businesses/somia/content/CONTENT/0007/video_final.mp4",
+    "method": "Text rendered via Chrome headless screenshot of an HTML page (Didot serif, white text on a solid black background -- Chrome's --screenshot CLI flag does not produce true alpha transparency), then composited onto video.mp4 with ffmpeg: [text]format=rgba,colorkey=0x000000:0.20:0.10 (keys out the black background) -> fade in 7.0-7.6s, fade out 9.0-9.6s -> overlay onto the base video. Do not use ffmpeg's blend=screen mode for this: it introduced a magenta/purple color-range cast across the whole frame (a PC-range-vs-video-range mismatch between the PNG and the h264 video), confirmed by a before/after frame comparison -- colorkey+overlay avoided this entirely.",
+    "completed_at": "2026-07-18T02:47:00+00:00",
+    "verified": "Extracted frames at 5.0s (no text, pre-fade-in) and 8.0s (text visible, correct color) via ffmpeg -ss + -frames:v 1, visually confirmed."
+  }
 }
