@@ -88,85 +88,113 @@ Participant/Organizer 側は「参照導線のみ」を持つ。
 
 1. URL: `/`
 2. Primary Decision: 自分の役割（参加者/主催者）を選ぶ
-3. Supports: F23 参照リンク, F26 遷移リンク
+3. Target Psychological Barrier: どこから始めればよいか迷う不安
+4. UX Responsibility: 自分の役割を直感的に選択させる
+5. Supports: F23 参照リンク, F26 遷移リンク
 
 ### P1 Participant Discover
 
 1. URL: `/participant/discover`
 2. Primary Decision: 参加候補を選ぶ
-3. Supports: F1, F9, F10, F11, F12, F13
+3. Target Psychological Barrier: 自分に合わないイベントを選ぶ不安、初参加で浮くのではないかという不安
+4. UX Responsibility: 条件を比較しやすい単位で提示する、初参加者向けの不安を隠さず明示する
+5. Supports: F1, F9, F10, F11, F12, F13
 
 ### P2 Participant Entry
 
 1. URL: `/participant/entry`
 2. Primary Decision: エントリーを完了する
-3. Supports: F2, F3, F14, F15
+3. Target Psychological Barrier: 初回連絡を送る緊張、返信が来ないことへの不安
+4. UX Responsibility: 連絡テンプレートを用意する、送信前に必要情報を明示する
+5. Supports: F2, F3, F14, F15
 
 ### P3 Participant Build
 
 1. URL: `/participant/build`
 2. Primary Decision: 中盤の補完行動を決める
-3. Supports: F4, F20, F23(参照)
+3. Target Psychological Barrier: どこまで貢献すべきかの迷い、未成立曲が多いときの焦り
+4. UX Responsibility: 優先度を明確にする、補完の判断基準を示す、準備負荷を分散する
+5. Supports: F4, F20, F23(参照)
 
 ### P4 Participant Run
 
 1. URL: `/participant/run`
 2. Primary Decision: 当日行動を確定する
-3. Supports: F24, F25, F26(参照)
+3. Target Psychological Barrier: 当日になってからの不安増大、実際の進行についていけない懸念
+4. UX Responsibility: 当日チェックリストを短く提示する、迷ったら次に何をすべきかを示す
+5. Supports: F24, F25, F26(参照)
 
 ### P5 Participant Review
 
 1. URL: `/participant/review`
 2. Primary Decision: 次回参加可否を決める
-3. Supports: F28, F30
+3. Target Psychological Barrier: 楽しかったが次回も行けるか不安、何を基準に次回を選ぶべきか曖昧な状態
+4. UX Responsibility: 振り返りを行動に変換する、継続判断の材料を短くまとめる
+5. Supports: F28, F30
 
 ### P6 Organizer Discover-Entry
 
 1. URL: `/organizer/setup`
 2. Primary Decision: 募集設計を確定する
-3. Supports: F5, F16, F17, F18
+3. Target Psychological Barrier: どこまで準備すればよいか分からない不安、設計条件が曖昧で決めきれない迷い
+4. UX Responsibility: 開催条件を明示する、判断に必要な前提を揃える、参加者が不安にならない設計を作る
+5. Supports: F5, F16, F17, F18
 
 ### P7 Organizer Build
 
 1. URL: `/organizer/build`
 2. Primary Decision: 未成立対策の優先介入を決める
-3. Supports: F6, F19, F21, F22, F23(参照)
+3. Target Psychological Barrier: 未成立が増えると焦りが増す、どこに介入すべきか判断が難しい
+4. UX Responsibility: 未成立の優先順位を示す、介入すべき曲を可視化する、停滞を放置しない
+5. Supports: F6, F19, F21, F22, F23(参照)
 
 ### P8 Organizer Run
 
 1. URL: `/organizer/run`
 2. Primary Decision: 当日運営の対応順を決める
-3. Supports: F7, F24(参照), F25(参照), F26(参照), F27
+3. Target Psychological Barrier: 当日変更が重なると対応が追いつかない焦り、伝達漏れが事故につながる不安
+4. UX Responsibility: 緊急連絡の窓口を一本化する、当日判断を迷わせない、集金等の責務を抜けなく実行する
+5. Supports: F7, F24(参照), F25(参照), F26(参照), F27
 
 ### P9 Organizer Review
 
 1. URL: `/organizer/review`
 2. Primary Decision: 次回改善項目を確定する
-3. Supports: F8, F29, F31
+3. Target Psychological Barrier: 疲労で振り返りが後回しになりやすい、改善点が多いと次回に落とし込めない
+4. UX Responsibility: 改善点を1-3件に絞る、再利用できるテンプレを残す、継続可否を冷静に判断する
+5. Supports: F8, F29, F31
 
 ### P10 Shared Timeline (Canonical)
 
 1. URL: `/timeline`
 2. Primary Decision: 全体進捗を確認する
-3. Canonical Feature: F23
+3. Target Psychological Barrier: 全体の状況が見えないことによる孤立感
+4. UX Responsibility: 全参加者が同じ進捗を共有し、不透明性を排除する
+5. Canonical Feature: F23
 
 ### P11 Emergency Hub (Canonical)
 
 1. URL: `/emergency`
 2. Primary Decision: 当日変更を送信する
-3. Canonical Feature: F26
+3. Target Psychological Barrier: 変更連絡を見落とす不安、復旧方法が分からない焦り
+4. UX Responsibility: 緊急連絡先をすぐ見つけられるようにする、変更影響を即時に伝える
+5. Canonical Feature: F26
 
 ### P12 Community Health
 
 1. URL: `/community/health`
 2. Primary Decision: 偏在・疲弊の注意状態を確認する
-3. Canonical Feature: F32
+3. Target Psychological Barrier: 人が集まらない、負荷が偏ることへの慢性的不安
+4. UX Responsibility: コミュニティの健全性を数値で可視化し、偏在を検知する
+5. Canonical Feature: F32
 
 ### P13 Legal Hub
 
 1. URL: `/legal`
 2. Primary Decision: 規約・同意・権利行使情報を確認する
-3. Children:
+3. Target Psychological Barrier: 権利や個人情報がどう扱われるかの不安
+4. UX Responsibility: 規約と同意状態を明瞭にし、後からのトラブルを防ぐ
+5. Children:
    - `/legal/terms`
    - `/legal/privacy`
    - `/legal/data-rights`
@@ -175,42 +203,56 @@ Participant/Organizer 側は「参照導線のみ」を持つ。
 
 1. URL: `/pricing`
 2. Primary Decision: 利用プランを選択する
+3. Target Psychological Barrier: 費用対効果が見合わない懸念
+4. UX Responsibility: プランの価値と費用を比較しやすくする
 
 ### P15 Participant Trust & Fit
 
 1. URL: `/participant/trust-fit`
 2. Primary Decision: 初参加でも進めるかを判断する
-3. Supports: F11, F13
+3. Target Psychological Barrier: 参加後に負荷が高すぎるのではという懸念、条件が曖昧で判断できないストレス
+4. UX Responsibility: 判断材料に根拠を添える、候補を絞るための優先順位を示す
+5. Supports: F11, F13
 
 ### P16 Participant Access Planner
 
 1. URL: `/participant/access-planner`
 2. Primary Decision: 移動リスクを許容できるか判断する
-3. Supports: F10
+3. Target Psychological Barrier: 迷ったまま会場に行くことへの緊張
+4. UX Responsibility: アクセス方法や物理的ハードルを事前に明確にする
+5. Supports: F10
 
 ### P17 Organizer Momentum Monitor
 
 1. URL: `/organizer/momentum`
 2. Primary Decision: 初動48時間で介入するかを判断する
-3. Supports: F18, F16
+3. Target Psychological Barrier: 初動が弱いと失敗感が早く来る焦り、募集文が伝わるか分からない不安
+4. UX Responsibility: 反応データを見て修正する、募集文のテンプレートを維持する
+5. Supports: F18, F16
 
 ### P18 Organizer Rescue Queue
 
 1. URL: `/organizer/rescue`
 2. Primary Decision: 未成立救済の実行順を確定する
-3. Supports: F19, F21, F22
+3. Target Psychological Barrier: 声かけが空回りする不安、人に依存して成立を作る負担感
+4. UX Responsibility: 誰に何を頼むかを明確にする、演奏順の仮決定と調整責務を持つ
+5. Supports: F19, F21, F22
 
 ### P19 Runbook & Recovery
 
 1. URL: `/run/recovery`
 2. Primary Decision: 当日変更時の復旧手順を選ぶ
-3. Supports: F26, F27, F7
+3. Target Psychological Barrier: 優先順を誤ると全体が崩れる緊張、現場で判断し続ける負荷感
+4. UX Responsibility: 復旧手順を短く提示する、当日判断の認知負荷を下げる
+5. Supports: F26, F27, F7
 
 ### P20 Retention Hub
 
 1. URL: `/review/retention`
 2. Primary Decision: 次回参加/開催の次アクションを決める
-3. Supports: F8, F28, F29, F30, F31
+3. Target Psychological Barrier: 負荷が高いと継続開催をためらう、一度うまくいかないと離脱しやすい心理
+4. UX Responsibility: KPIや進捗を次回に引き継ぐ、離脱理由を言語化できるようにする
+5. Supports: F8, F28, F29, F30, F31
 
 ## 7. Final Sitemap (Target Architecture)
 
@@ -290,14 +332,16 @@ Participant/Organizer 側は「参照導線のみ」を持つ。
 
 1. Beneficiary（受益者）
 2. Primary Decision（主要意思決定）
-3. Evidence Scope（表示根拠範囲）
-4. Uncertainty Note（不確実性文言）
-5. Primary Event（主要計測イベント）
-6. Success Metric（成功指標）
-7. Fallback Route（失敗時遷移）
-8. Owner（責任ロール）
-9. Next One Action（次に押す1アクション）
-10. Mobile Completion Path（3タップ以内の一次行動導線）
+3. Target Psychological Barrier（解消すべき心理障壁）
+4. UX Responsibility（行動を促すためのUX責務）
+5. Evidence Scope（表示根拠範囲）
+6. Uncertainty Note（不確実性文言）
+7. Primary Event（主要計測イベント）
+8. Success Metric（成功指標）
+9. Fallback Route（失敗時遷移）
+10. Owner（責任ロール）
+11. Next One Action（次に押す1アクション）
+12. Mobile Completion Path（3タップ以内の一次行動導線）
 
 ## 11. Coverage Check
 
@@ -315,8 +359,9 @@ Participant/Organizer 側は「参照導線のみ」を持つ。
 ### 11.3 Behavior Coverage
 
 1. 4セグメント x 5段階の主要行動に Primary Page が割当済みである。
-2. Trigger/Decide/Act/Verify のうち Act と Verify が各段階で実行可能である。
-3. 初参加不安解消、初動48時間介入、当日復旧、終了後継続化の4導線が存在する。
+2. 全ての心理障壁が、いずれかのページの Target Psychological Barrier として網羅されている。
+3. Trigger/Decide/Act/Verify のうち Act と Verify が各段階で実行可能である。
+4. 初参加不安解消、初動48時間介入、当日復旧、終了後継続化の4導線が存在する。
 
 ### 11.4 Function-to-Action Bridge
 
