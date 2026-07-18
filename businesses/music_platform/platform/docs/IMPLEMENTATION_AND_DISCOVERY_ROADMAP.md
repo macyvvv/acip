@@ -62,6 +62,8 @@ DataOps / MLOps が毎スプリントで以下を更新する。
 3. セグメント別性能差（初心者/リピーター、主催者/参加者）
 4. 公開可否判定（Go / Conditional Go / No-Go）
 
+公開可否判定は DevOps / DataOps / MLOps の三者で確定する。
+
 ## Role Plan
 
 ### DataOps
@@ -186,6 +188,11 @@ Exit Criteria:
 2. セグメント別効果差が可視化
 3. 重大障害時の復旧手順が実証済み
 
+注記:
+
+1. KPI計測は Baseline（短期3指標）と Full（全指標）を分離運用する。
+2. Baseline は基盤完了時点で着手し、Full はWBS-5/6/7完了後に有効化する。
+
 ### Phase 3 (Week 10-12): Scale and Re-prioritize
 
 目標: 効果のあった機能を拡張し、次サイクルへ接続
@@ -235,9 +242,27 @@ Exit Criteria:
 
 1つでも未達なら公開せず、前回正常版を継続する。
 
+判定責任:
+
+1. Data Gate 最終責任: DataOps
+2. ML Gate 最終責任: MLOps
+3. Ops Gate 最終責任: DevOps
+4. 公開可否の最終確定: DevOps/DataOps/MLOps の三者合意
+
 ## Next Action
 
 1. `IMPLEMENTATION_WBS_DETAILED.md` を基準に全機能の実装計画を確定
 2. WBS-1/2/3（基盤）を先行実装
 3. WBS-5/6/7を依存関係順に実装
 4. WBS-9.2 の `insight_register` 仕様に基づき、知見抽出と再実装連携を運用開始
+
+進捗メモ（2026-07-18）:
+
+1. 基盤実装（A-001〜A-008）と Baseline KPI/B-002 Foundation監査を実装済み
+2. WBS-0.2契約拡張（segment付与）と WBS-2.4連動のbackfillを実装し、segment readiness は解消済み
+3. `runtime/ops/reports/segment_effect_report_latest.json` を週次生成し、4セグメント差分の可視化を開始
+4. `runtime/ops/reports/stage_transition_latest.json` で Stage2/Stage3 判定を自動出力
+
+現時点の制約:
+
+1. Stage3 を `go` に上げるには実時間の履歴蓄積が必要（`drift_history_status_latest.json` の required_active_days 到達）

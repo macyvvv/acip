@@ -1,0 +1,13 @@
+{
+  "generated_at_utc": "2026-07-18T08:50:14+00:00",
+  "decision": "conditional",
+  "reasons": [
+    "drift_yellow"
+  ],
+  "inputs": {
+    "quality": "businesses/music_platform/runtime/ops/reports/quality_gate_latest.json",
+    "drift": "businesses/music_platform/runtime/ops/reports/drift_latest.json",
+    "sli": "businesses/music_platform/runtime/ops/reports/sli_latest.json",
+    "policy": "businesses/music_platform/platform/app/ops/gate_policy.json"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "run_id": "weekly_20260718T082555Z",
+  "started_at_utc": "2026-07-18T08:25:55+00:00",
+  "finished_at_utc": "2026-07-18T08:26:00+00:00",
+  "status": "success",
+  "step": "gate_signoff.py",
+  "artifact_id": null,
+  "snapshot_id": null,
+  "message": "ok"
+}

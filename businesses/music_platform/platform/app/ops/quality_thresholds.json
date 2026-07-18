@@ -1,0 +1,16 @@
+{
+  "events": {
+    "max_null_event_url_rate": 0.0,
+    "max_null_organizer_rate": 0.05,
+    "max_duplicate_event_observation_rate": 0.0
+  },
+  "songs": {
+    "max_null_song_title_rate": 0.01,
+    "max_null_artist_rate": 0.02,
+    "max_duplicate_song_observation_rate": 0.0,
+    "max_orphan_song_entity_rate": 0.0
+  },
+  "freshness": {
+    "max_latest_observation_age_days": 30
+  }
+}

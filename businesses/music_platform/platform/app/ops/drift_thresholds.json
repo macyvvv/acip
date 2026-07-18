@@ -1,0 +1,16 @@
+{
+  "window": {
+    "baseline_days": 28,
+    "recent_days": 7
+  },
+  "thresholds": {
+    "event_count_psi": {
+      "green_max": 0.1,
+      "yellow_max": 0.2
+    },
+    "song_count_psi": {
+      "green_max": 0.1,
+      "yellow_max": 0.2
+    }
+  }
+}

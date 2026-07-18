@@ -1,0 +1,10 @@
+{
+  "run_id": "weekly_20260718T083642Z",
+  "started_at_utc": "2026-07-18T08:36:42+00:00",
+  "finished_at_utc": "2026-07-18T08:36:47+00:00",
+  "status": "failed",
+  "step": "segment_readiness.py",
+  "artifact_id": null,
+  "snapshot_id": null,
+  "message": "step_failed:segment_readiness.py:rc=1"
+}

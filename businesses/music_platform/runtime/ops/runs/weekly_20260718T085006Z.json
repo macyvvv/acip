@@ -1,0 +1,10 @@
+{
+  "run_id": "weekly_20260718T085006Z",
+  "started_at_utc": "2026-07-18T08:50:06+00:00",
+  "finished_at_utc": "2026-07-18T08:50:15+00:00",
+  "status": "success",
+  "step": "stage_transition_check.py",
+  "artifact_id": null,
+  "snapshot_id": null,
+  "message": "ok"
+}

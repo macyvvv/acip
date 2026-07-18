@@ -1,0 +1,25 @@
+{
+  "generated_at_utc": "2026-07-18T08:50:11+00:00",
+  "window": {
+    "baseline_days": 28,
+    "recent_days": 7
+  },
+  "data_sufficiency": {
+    "min_active_days": 7,
+    "event_recent_active_days": 1,
+    "song_recent_active_days": 1,
+    "insufficient_history": true
+  },
+  "metrics": {
+    "event_count_psi": 17.762799176147077,
+    "song_count_psi": 17.762799176147077
+  },
+  "status": {
+    "event_count_psi": "red",
+    "song_count_psi": "red"
+  },
+  "overall": "yellow",
+  "notes": [
+    "insufficient_history"
+  ]
+}

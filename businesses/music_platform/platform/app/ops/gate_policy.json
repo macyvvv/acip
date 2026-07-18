@@ -1,0 +1,14 @@
+{
+  "sli": {
+    "max_failure_rate": 0.01,
+    "max_p95_latency_seconds": 2.0,
+    "max_critical_incidents": 0,
+    "min_runs_for_enforcement": 20
+  },
+  "rules": {
+    "no_go_if_quality_fail": true,
+    "no_go_if_drift_red": true,
+    "no_go_if_sli_breach": true,
+    "conditional_if_drift_yellow": true
+  }
+}

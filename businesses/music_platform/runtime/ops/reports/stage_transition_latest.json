@@ -1,0 +1,26 @@
+{
+  "generated_at_utc": "2026-07-18T08:50:15+00:00",
+  "stage2": {
+    "status": "conditional",
+    "conditions": {
+      "quality_pass": true,
+      "gate_not_no_go": true,
+      "tri_party_signed": true,
+      "foundation_audit_pass": true,
+      "segment_ready": true,
+      "segment_effect_ready": true
+    }
+  },
+  "stage3": {
+    "status": "conditional",
+    "conditions": {
+      "all_stage2_conditions": true,
+      "drift_history_ready": false,
+      "gate_is_go": false
+    },
+    "blockers": [
+      "drift_history_ready",
+      "gate_is_go"
+    ]
+  }
+}

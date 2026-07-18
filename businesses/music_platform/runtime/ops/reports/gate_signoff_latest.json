@@ -1,0 +1,15 @@
+{
+  "generated_at_utc": "2026-07-18T08:50:14+00:00",
+  "gate_decision": "conditional",
+  "gate_reasons": [
+    "drift_yellow"
+  ],
+  "approvers": {
+    "devops": "system-devops",
+    "dataops": "system-dataops",
+    "mlops": "system-mlops"
+  },
+  "missing_roles": [],
+  "signed": true,
+  "promotion_allowed": true
+}

@@ -1,0 +1,26 @@
+{
+  "generated_at_utc": "2026-07-18T08:50:11+00:00",
+  "db": "businesses/music_platform/runtime/crawl/bandoff_research_merged.db",
+  "status": "pass",
+  "metrics": {
+    "null_event_url_rate": 0.0,
+    "null_organizer_rate": 0.0,
+    "duplicate_event_observation_rate": 0.0,
+    "null_song_title_rate": 2.3731548720869524e-05,
+    "null_artist_rate": 2.3731548720869524e-05,
+    "duplicate_song_observation_rate": 0.0,
+    "orphan_song_entity_rate": 0.0,
+    "latest_observation_age_days": 0.9267603820189834
+  },
+  "checks": {
+    "events.max_null_event_url_rate": true,
+    "events.max_null_organizer_rate": true,
+    "events.max_duplicate_event_observation_rate": true,
+    "songs.max_null_song_title_rate": true,
+    "songs.max_null_artist_rate": true,
+    "songs.max_duplicate_song_observation_rate": true,
+    "songs.max_orphan_song_entity_rate": true,
+    "freshness.max_latest_observation_age_days": true
+  },
+  "failed_checks": []
+}

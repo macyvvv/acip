@@ -1,0 +1,28 @@
+{
+  "generated_at_utc": "2026-07-18T08:50:12+00:00",
+  "segment_required_fields": [
+    "actor_role",
+    "user_type",
+    "journey_stage",
+    "segment_label"
+  ],
+  "available_fields": [
+    "actor_role",
+    "journey_stage",
+    "segment_label",
+    "user_type"
+  ],
+  "missing_fields": [],
+  "quality_checks": {
+    "event_actor_role_valid": true,
+    "event_user_type_valid": true,
+    "event_journey_stage_valid": true,
+    "event_segment_label_valid": true,
+    "song_actor_role_valid": true,
+    "song_user_type_valid": true,
+    "song_journey_stage_valid": true,
+    "song_segment_label_valid": true
+  },
+  "segment_effect_ready": true,
+  "next_action": "Segment effect reporting can be enabled"
+}

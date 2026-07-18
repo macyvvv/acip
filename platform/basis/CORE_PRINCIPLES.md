@@ -132,6 +132,30 @@ stale.
 *Traces to: the triggering incident for this entire review — see
 `platform/adr/ADR-0037-governance-layer-overhaul.md`.*
 
+## 10. Governance-layer audits are not one-time; the same pattern recurs
+
+Unenforced, code-adjacent "policy" prose has independently piled up at
+least three separate times in this repository's history: the original
+44-file `platform/basis/` corpus, an 11-directory root scaffold, and a
+`runtime/workers` + `runtime/governor` pair — each discovered and
+archived separately (ADR-0037; and again in the 2026-07-17 doc-vs-reality
+audit that also found `platform/system/platform/scripts/`, a duplicate
+legacy shim directory that had drifted into ~40 files' worth of stale
+references before anyone noticed). The common shape: a document or path
+that once had a real reason to exist stops being read or executed by
+anything, but nothing removes it, so it silently starts asserting things
+that are no longer true (a plan constraint, a directory that no longer
+matches reality, a policy nobody re-verifies). One cleanup pass does not
+inoculate the repository against the next occurrence.
+
+*Traces to: ADR-0037 (first occurrence) and the 2026-07-17 audit that
+found the repo's own governance docs asserting it was a private,
+free-plan repo — false on both counts, and used to justify skipping
+GitHub-side branch protection that was actually available for free the
+whole time. A periodic (not one-off) "does this still match reality, and
+is it still referenced by anything real?" pass is the durable fix; not
+automated as of this writing.*
+
 ## What's still standalone in `platform/basis/`, not folded in here
 
 - [`057_boundary_validation_policy.md`](057_boundary_validation_policy.md)

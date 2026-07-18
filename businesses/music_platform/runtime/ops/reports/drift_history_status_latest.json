@@ -1,0 +1,9 @@
+{
+  "generated_at_utc": "2026-07-18T08:50:11+00:00",
+  "required_active_days": 7,
+  "event_active_days": 1,
+  "song_active_days": 1,
+  "min_active_days": 1,
+  "remaining_days_for_stable_drift": 6,
+  "drift_history_ready": false
+}

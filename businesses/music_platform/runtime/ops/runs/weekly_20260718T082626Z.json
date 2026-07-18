@@ -1,0 +1,10 @@
+{
+  "run_id": "weekly_20260718T082626Z",
+  "started_at_utc": "2026-07-18T08:26:26+00:00",
+  "finished_at_utc": "2026-07-18T08:26:31+00:00",
+  "status": "blocked",
+  "step": "release_gate.py",
+  "artifact_id": null,
+  "snapshot_id": null,
+  "message": "release_no_go"
+}

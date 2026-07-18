@@ -1,0 +1,33 @@
+{
+  "generated_at_utc": "2026-07-18T08:50:13+00:00",
+  "required_segments": [
+    "participant_beginner",
+    "participant_repeater",
+    "organizer_beginner",
+    "organizer_repeater"
+  ],
+  "missing_segments": [],
+  "segment_effect_ready": true,
+  "organizer_metrics": {
+    "organizer_beginner": {
+      "events": 194,
+      "avg_fill_ratio": 0.42669113916321466,
+      "open_event_ratio": 0.7938144329896907
+    },
+    "organizer_repeater": {
+      "events": 1172,
+      "avg_fill_ratio": 0.524868495781251,
+      "open_event_ratio": 0.8327645051194539
+    }
+  },
+  "participant_metrics": {
+    "participant_beginner": {
+      "songs": 3412,
+      "assignment_completeness": 0.2508792497069168
+    },
+    "participant_repeater": {
+      "songs": 38134,
+      "assignment_completeness": 1.0
+    }
+  }
+}
