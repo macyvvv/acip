@@ -57,6 +57,113 @@ wins and the character spec should be revised, not the other way around.
    opposite of this lever — so is staging her as calm/composed/deliberate
    in her use of the viewer (too controlled) or as settled into needing
    the viewer specifically (too resolved).
+
+   **Reference vocabulary (2026-07-18, enrichment pass — philosophy /
+   psychology / liberal arts).** Not a justification exercise; these are
+   real intellectual traditions that give the mechanism above precise,
+   citable vocabulary. Each is marked as a tight/precise mapping or a
+   looser, more poetic one — don't cite a loose one as if it were exact.
+
+   *Philosophy:*
+   - **Kierkegaard's aesthetic stage of existence** (*Either/Or*) is the
+     central pillar. **Stemning** (mood) is genuinely felt in the moment
+     but has no continuity across moments — real, not performed, and not
+     built to last, which is exactly this lever's "real but passing."
+     **Det Interessante** ("the interesting," from "The Rotation of
+     Method") names もどかしさ directly: a situation must stay open and
+     unresolved, because resolution/consummation is what kills it.
+     *The Sickness Unto Death*'s self "not yet chosen/crystallized" is a
+     precise name for 幼稚性 as a structural incompleteness of selfhood,
+     not a personality flaw — and the move from the aesthetic to the
+     **ethical** stage (where a particular other matters *as such*,
+     durably) is exactly the move this brand forbids any character from
+     completing. Usable phrasing: *"the mood is real, the mood is not a
+     self yet"; "resolution is the enemy of the interesting."*
+   - **Velleman's "arrest" (Velleman, "Love as a Moral Emotion," *Ethics*
+     1999) and Frankfurt's "bestowal"** (*The Reasons of Love*, 2004) —
+     from the analytic philosophy debate on whether love is grounded in a
+     person's properties (making them fungible) or in a particular,
+     irreplaceable bond. Love, on this account, is what *arrests* the
+     default sense that people are interchangeable and fixes on *this*
+     person; it *bestows* importance rather than responding to
+     pre-existing value. The failure condition this brand names is
+     precisely the **non-occurrence of that arrest** — wanted at the
+     level of the moment/properties, never bestowed at the level of the
+     particular person. Tight, precise mapping, not a loose analogy.
+   - **Buber's I-Thou / I-It** (*I and Thou*) — I-It (relating to someone
+     as a bundle of functions/qualities) is the *default* mode; I-Thou
+     (meeting as whole persons in "the Between") is an achievement
+     requiring both parties to be sufficiently formed selves. Useful for
+     "not intentional": the failure to reach I-Thou isn't a choice, it's
+     that one party isn't whole enough yet to address a Thou at all.
+   - **Levinas's face-to-face encounter** (*Totality and Infinity*) —
+     useful only as a contrastive foil, not a positive mapping: it names
+     precisely the one thing that must never happen (the viewer's face
+     actually summoning her into responsibility for him specifically).
+     Good boundary-marker for where a piece has crossed from fetishism
+     into something this brand doesn't want.
+
+   *Psychology:*
+   - **Kohut's selfobject concept** (*The Analysis of the Self*, 1971) is
+     the tightest clinical mapping available. A selfobject is someone
+     related to not as a separate center of subjectivity but as a
+     function that regulates one's own self-cohesion — and critically,
+     Kohut is explicit this produces **genuine, non-performed affect** in
+     the person having the need. This is the precise clinical version of
+     "the want is real, not performed... but never recognizes the viewer
+     as separately real."
+   - **Ainsworth's attachment bond vs. affiliative bond** (*Attachment as
+     an Organizational Construct*, 1989) — not every warm, proximity-
+     seeking relationship meets the operational bar of attachment (safe
+     haven, secure base, separation distress). A relationship can be
+     genuinely affectionate and still be merely **affiliative** — the
+     exact clinical name for "she does not depend on the viewer... only
+     incidentally present."
+   - **Winnicott's "ruthless love" / capacity for concern** (*The
+     Capacity to Be Alone*, 1958, and later work) — a normal, non-
+     pathological developmental stage of real, intense want that is
+     structurally unable to register the other's separate stake in it.
+     Explicitly not damage or cruelty — the best available source for
+     "driven by immaturity, not intent" without moralizing the character.
+   - Looser fits, worth knowing but not over-citing: **disorganized
+     attachment** (Main & Solomon) names the approach-withdraw
+     choreography but its etiology is fear-based, which conflicts with
+     this document's fear/dread boundary below — use only for surface
+     choreography, never for cause. **Erikson's intimacy-vs-isolation
+     stage** supports "still searching" as an active, unresolved
+     developmental task, but at a broader/looser grain than the above.
+
+   *Liberal arts:*
+   - **物の哀れ (mono no aware) and 無常 (mujō)** — not a mood to sprinkle
+     on, but a specific compositional technique: pathos is generated by
+     *juxtaposing* a fleeting natural image against a felt moment in the
+     same beat, so the feeling borrows the image's evanescence instead of
+     being stated outright. Directly usable: stage an acknowledgment beat
+     against a natural event already mid-motion (a wave already
+     receding, light already changing) rather than letting the moment
+     resolve on the character alone. The existing water/light-refraction
+     signature effect could be timed to *begin decaying* rather than
+     resolve cleanly — mujō's actual grammar is the falling, not the fall
+     completed.
+   - **Naiads / 水霊・精霊 (suirei/seirei)** — a nymph's or water-kami's
+     allure is a property of her nature, not a decision about whoever
+     encounters her; the traveler's presence is incidental to water
+     behaving the way water behaves. Precise structural match for "the
+     viewer is only incidentally present during that search." Concrete
+     use: stage her acknowledgment beats as weather-like events (wind
+     shifting, light changing) rather than gestural ones aimed at camera.
+   - **Jung's puer aeternus** (eternal youth archetype) — technically
+     **puella aeterna** for a female character — names 幼稚性 as
+     structural resistance to settling into one form, not a flaw:
+     approaches things with real intensity, moves on not from rejection
+     but because staying was never structurally available.
+   - **Barthes's *A Lover's Discourse*** (1977) — not a mapping onto Nao,
+     but vocabulary for the *viewer's* side: the waiting lover
+     constructs meaning from partial presence/absence largely by
+     themselves. Reframes もどかしさ as something the viewer is already
+     doing to themselves, which content only needs to leave room for by
+     not over-resolving a beat.
+
 2. **Immersion** (没入感) — the viewer's sense of actually being present
    in the character's world/moment, not watching it from outside.
 3. **Longing/frustration** (もどかしさ) — the "almost, not quite" quality
