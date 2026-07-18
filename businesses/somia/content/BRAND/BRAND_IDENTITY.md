@@ -23,7 +23,40 @@ wins and the character spec should be revised, not the other way around.
 
 **The four levers:**
 1. **Fetishism** (relational/emotional, not explicit sexuality — see
-   "What Somia Is Not" below).
+   "What Somia Is Not" below). **What this actually means mechanistically
+   (clarified 2026-07-18, operator, refined same day):** apparent
+   closeness — proximity, a cohabitation-like dynamic, a moment of
+   acknowledgment — is never the character recognizing the viewer as a
+   specific, irreplaceable person. But this is **not** cold or
+   calculating on her part, and it is **not** a stable dependency on the
+   viewer either — both would be too settled, too resolved, for what
+   this actually is:
+   - **The want is real, not performed** — in the moment, she genuinely
+     wants; it isn't indifference wearing a warm mask.
+   - **The want is temporary and not love** — it doesn't accumulate into
+     real attachment to the viewer specifically.
+   - **It's driven by her own immaturity (幼稚性), not intent** — she
+     isn't strategically using the viewer; she's emotionally unsettled/
+     unformed in a way that makes her pull the viewer in and let go
+     inconsistently. The viewer experiences this as being jerked around
+     (振り回される) — a byproduct of her own instability, not a plan.
+   - **She does not depend on the viewer.** She is still searching for
+     something to depend on (依存先を探している) and has not found it;
+     the viewer is incidentally present during that search, not its
+     destination. Do not stage her as attached to or reliant on the
+     viewer specifically — that would resolve the searching into a
+     settled relationship, which is exactly what this lever forbids.
+   This is the precise, load-bearing meaning of "the viewer is not
+   included in the character's world": not distance/coldness as the
+   visible register (she can look warm, intimate, momentarily fixated),
+   but that whatever warmth appears is real-but-passing, ungoverned by
+   her, and never resolves into the viewer mattering to her specifically
+   or her depending on the viewer. A piece that stages an acknowledgment
+   moment as *directed at, and rewarding, the specific viewer watching*
+   (e.g. a smile timed and framed as a gift to "you") is staging the
+   opposite of this lever — so is staging her as calm/composed/deliberate
+   in her use of the viewer (too controlled) or as settled into needing
+   the viewer specifically (too resolved).
 2. **Immersion** (没入感) — the viewer's sense of actually being present
    in the character's world/moment, not watching it from outside.
 3. **Longing/frustration** (もどかしさ) — the "almost, not quite" quality
@@ -134,7 +167,28 @@ because the underlying lever (fetishism, longing) is legitimate.
   gap to be filled in. Dread is the thing to avoid, not mystery itself.
 - Hidden backstory exists, but it is not exposed as a narrative dump.
 - Visual grammar: intentional lighting (warm lamp glow or cool
-  screen-glow, matched to the character), a lived-in space, a personal
-  object the character holds (see each character's nurture item), and an
-  expression that acknowledges the viewer rather than looking past them.
+  screen-glow, matched to the character), a lived-in space, and a
+  personal object the character holds (see each character's nurture
+  item). **Correction (2026-07-18, operator):** the prior version of this
+  line said an expression should "acknowledge the viewer rather than
+  looking past them" — this directly contradicts Lever 1's actual
+  mechanism above and is wrong. Any acknowledgment beat should read as
+  self-directed (soothing her own complex, a private moment the camera
+  happened to catch), never as address to, or recognition of, the
+  specific viewer. An expression staged as "for you" is staging
+  inclusion, which is the explicit failure condition this brand exists to
+  avoid.
+
+## Fetishism lever — direct implication for staging, per content 0007's review (2026-07-18)
+
+Confirms and sharpens `.claude/agents/` philosopher/psychologist review
+findings on Nao's episode 1: pairing a reward cue (e.g. a signature-item
+light glint) with an acknowledgment beat, synchronized as if the glint is
+a small gift timed to the viewer's moment of being noticed, stages
+inclusion — the opposite of Lever 1. If a piece uses the cross-character
+signature noise-burst technique at the same beat as an acknowledgment
+moment, the two must not read as one coordinated "reward" event; keep
+them causally unlinked (the noise-burst is native to her world reacting
+to something in her world, not a synchronized flourish for the viewer's
+benefit).
 

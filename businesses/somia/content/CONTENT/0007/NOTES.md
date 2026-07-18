@@ -1,73 +1,108 @@
-# Status: paused, 2026-07-18
+# Status: in progress, direction found, 2026-07-18 (superseded most of this file's earlier content)
 
-This episode is **not finished** and no version currently produces a
-correct render end-to-end. Read this before running anything in this
-directory or trusting `script.md`/`prompt.md` at face value.
+The token-budget wall documented below (and in
+`.claude/skills/writing-illustrious-xl-prompts/SKILL.md`) is effectively
+**resolved** by a different method than anything tried before it. The
+LoRA-training tangent (still described further down for the record) is
+no longer the leading path -- it's not needed.
 
 ## What's actually true right now
 
-- `script.md`'s v5 section and `prompt.md`'s v5.1 note describe the
-  token-budget dilution problem as "fixed below" via tag reordering. That
-  is not accurate as of this writing: after v5.1's reorder, four more
-  single-stage keyframe attempts were made, and each one still sacrificed
-  a different required element (scene, then outfit, then face/earring
-  visibility). The reordering mitigated but did not solve the problem.
-  See `.claude/skills/writing-illustrious-xl-prompts/SKILL.md` for the
-  full account.
-- `render_3act.py` presents itself as the active render path (its
-  docstring and script.md both describe it as the current plan), but it
-  is currently blocked by the token-budget issue at the keyframe step. Do
-  not assume it's ready to run as-is.
-- `render_two_stage.py` is the current (unfinished) attempt at a
-  workaround: Stage 1 (identity-only portrait) works well. Stage 2
-  (`fal-ai/lora/inpaint` scene outpainting) does not yet honor the scene
-  prompt in the masked region -- it currently just extends the existing
-  background color smoothly instead of generating the window/curtain/sea
-  scene. `stage1_portrait.png`, `stage2_canvas.png`, `stage2_mask.png`,
-  `stage2_composed.png` in this directory are that attempt's outputs, not
-  a finished deliverable.
+- **`fal-ai/kling-video/o1/reference-to-video` works well and is the new
+  leading path.** Instead of generating an SDXL/Illustrious-XL keyframe
+  that must carry both identity AND scene tokens (the root cause of every
+  prior failure), this endpoint conditions the *video* model directly on
+  a reference portrait image (`elements: [{frontal_image_url,
+  reference_image_urls}]`) and spends the entire text prompt on
+  scene/motion/camera only. A validation test (`test_kling_reference_to_video.py`,
+  output `kling_reference_test.mp4` / `kling_ref_frame_*.png`) produced
+  clean Illustrious-XL-style linework, consistent face/hair/earring
+  across the clip, and a correct window/curtain/sea scene -- no
+  token-budget dilution, no garbled text, no distortion. This is
+  fully headless/API-driven, unlike the Live2D direction that was
+  considered and set aside (see below).
+- **The reference portrait's outfit was wrong** (inherited a
+  sailor-collar/ribbon/button look from `stage1_portrait.png`'s
+  `PORTRAIT_PROMPT` in `render_two_stage.py`, root-caused to "cardigan"
+  pulling in school-uniform training-data associations on this
+  checkpoint) -- **fixed**: `PORTRAIT_PROMPT`/`NEGATIVE_PROMPT` in
+  `render_two_stage.py` corrected after a fresh direct re-check of
+  `ref_nao/character_sheets/somia_nao01.png`/`somia_nao02.png` (not the
+  TRANSCRIPTION.md summary alone). `stage1_portrait.png` has **not yet
+  been regenerated** with the corrected prompt -- do that before the next
+  `test_kling_reference_to_video.py` run.
+- **The scenario/mechanism itself was found weak, independent of visual
+  execution.** Three independent reviews (scenario-writing, a
+  philosophical read, a psychological read) converged: Act 2 as designed
+  (v5) reads as a generic "she notices you and smiles" trope, legible as
+  meaningful mainly to someone who already knows the design intent, not a
+  cold viewer. The operator then precisely clarified the brand's
+  Fetishism lever (now the authoritative version in
+  `businesses/somia/content/BRAND/BRAND_IDENTITY.md`): warmth she shows is
+  real-but-passing, driven by her own 幼稚性 (immaturity/unsettledness),
+  never a deliberate acknowledgment of the viewer and never a stable
+  dependency on the viewer -- she's still searching for what she actually
+  needs (依存先を探している), and the viewer is only incidentally
+  present. **`script.md` v6 rewrites Act 2, Signature Item, and Visual
+  accordingly**: the earring-glint-synced-to-the-turn staging (v5) is
+  reversed (it read as a reward timed to the viewer, i.e. staging
+  inclusion); the turn/smile is now specified as self-directed/private,
+  not a composed acknowledgment. `NAO.md`'s Dependency Trigger section
+  and Visual Identity/Outfit section were updated to match.
+- **A psychological finding worth remembering for future episodes**: a
+  fixed-timing, byte-identical video loop is not good repeat-watch
+  psychology (habituation, not variable reward, is the operative
+  mechanism for an unchanging stimulus) -- and genuine per-*playback*
+  variation is technically impossible with a single pre-rendered file (no
+  live/procedural generation in this pipeline). The realistic implication
+  discussed: a single clip's job may be a strong first watch, with
+  cross-episode variety (not within-clip variety) doing the work of
+  sustained repeat engagement. Not yet resolved into a concrete
+  cross-episode plan.
 
-## Decision point (operator, 2026-07-18)
+## Live2D (considered, set aside for this episode)
 
-After the two-stage attempt's Stage 2 partially failed, the operator
-decided to stop further trial-and-error prompt iteration on this episode
-and move to evaluating a genuinely different method, rather than continue
-tweaking prompts/staging. The leading candidate discussed but **not yet
-researched or confirmed**: training a dedicated LoRA on Nao's reference
-sheet images, loaded via `fal-ai/lora`'s own `loras` parameter, so her
-identity is baked into model weights instead of needing full re-description
-in prompt tokens on every generation. This would remove the token-budget
-conflict at its root. No feasibility research (fal.ai LoRA-training
-tooling, cost, turnaround time) has been done yet.
+A pivot to rigging Nao as a Live2D model (identity locked once via a
+static rig, reused across episodes, decoupled from per-episode scene
+generation) was seriously evaluated. devops's operational critique found
+real, not cosmetic, blockers: Cubism Editor is a Windows-only GUI
+application with no path to running in this repo's headless/agent-driven
+automation (not on this Mac session, not on any existing GitHub Actions
+runner); a community GUI-automation tool (`live2d-automation`) claiming
+to bridge that gap is unverified, single-maintainer, and GUI-automation
+tools of that kind break silently on vendor UI updates; this repo has no
+Git LFS and already strains under committed binary MP4/PNG assets, which
+Live2D rig files would worsen; the FREE tier's commercial-use eligibility
+is revenue-threshold-gated with no compliance tripwire in this repo. Net
+finding: this would not become a single scriptable pipeline step like
+`render_content.py` -- it splits into an automated half and a permanently
+manual, off-repo half. Not pursued further once the Kling
+reference-to-video approach validated as a fully-automatable alternative
+that solves the same root problem.
 
-## LoRA-training feasibility research (2026-07-18, partial)
+## LoRA-training research (2026-07-18, kept for the record -- not the current path)
 
-Checked fal.ai's own explore page (`fal.ai/explore/best-lora-trainers`) and
-its SDXL model listings directly (primary source, not a secondary/blog
-summary): fal.ai's *inference* endpoints (`fal-ai/lora`, the one already
-used by this pipeline) accept a `loras` parameter to load a trained LoRA
-for SDXL-family generation -- that part is confirmed and already how this
-pipeline works today. But fal.ai's own dedicated **LoRA-training**
-endpoint (`fal-ai/flux-lora-fast-training`) trains FLUX only. No
-SDXL-family (and by extension Illustrious-XL) training endpoint was found
-listed on fal.ai as of this check. This means training a Nao-specific
-Illustrious-XL LoRA likely cannot be done via fal.ai's own training
-tooling -- it would need a different training service or platform (e.g.
-Kohya-based local/rented-GPU training, or another host's SDXL trainer)
-whose output LoRA weights could then be uploaded/loaded into fal.ai's
-`fal-ai/lora` inference endpoint. This has not been researched yet, and
-this finding itself has not been double-checked against fal.ai's changelog
-for anything added after this check -- verify current state before relying
-on it.
+fal.ai's own dedicated LoRA-*training* endpoint
+(`fal-ai/flux-lora-fast-training`) trains FLUX only; no SDXL/
+Illustrious-XL training endpoint was found on fal.ai. Its *inference*
+endpoints (`fal-ai/lora`) do accept a `loras` parameter for
+externally-trained weights. Civitai's on-site trainer has a native
+"illustrious" base-model preset and produces downloadable/portable
+epochs (confirmed via primary sources), making it the strongest
+candidate *if* this direction is ever revisited -- but it's superseded by
+the reference-to-video approach above for this episode's actual problem.
 
 ## Before resuming work here
 
-1. Read this file and `script.md`'s Design Note history in full.
-2. Do not resume prompt-tweaking on the single-stage (`render_3act.py`) or
-   two-stage (`render_two_stage.py`) pipelines as-is -- that path was
-   explicitly paused, not abandoned-but-still-live.
-3. If picking up the LoRA-training direction: fal.ai itself does not
-   appear to offer SDXL/Illustrious-XL LoRA training (see above) -- next
-   step is researching an alternative training path (cost, turnaround,
-   whether the resulting weights are loadable into fal.ai's `fal-ai/lora`
-   inference), not assuming fal.ai alone can do it end-to-end.
+1. Read this file and `script.md`'s full Design Note history (through v6).
+2. Regenerate `stage1_portrait.png` via `render_two_stage.py`'s
+   `generate_portrait()` with the corrected `PORTRAIT_PROMPT` before
+   trusting it as the reference for `test_kling_reference_to_video.py`.
+3. The 3-act full episode has not yet been produced via the
+   `fal-ai/kling-video/o1/reference-to-video` approach -- only a single
+   5s validation clip exists. Building the full 30s/3-act version with
+   this method (and verifying the v6 Act 2 staging actually renders as
+   self-directed rather than viewer-directed) is the next real step, not
+   yet done.
+4. `render_3act.py` (single-stage keyframe+Kling chain) is superseded --
+   do not resume it.

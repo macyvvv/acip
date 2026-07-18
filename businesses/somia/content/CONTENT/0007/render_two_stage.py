@@ -46,13 +46,15 @@ NEGATIVE_PROMPT = (
     "bad anatomy, blurry, jpeg artifacts, nsfw, nudity, sexual content, revealing clothing, "
     "cleavage, exposed skin emphasis, bare shoulder, off shoulder, exposed collarbone, "
     "tank top, camisole, thin straps, sleeveless, revealing neckline, child, loli, school "
-    "uniform, age indicators, direct eye contact, confrontational expression, flat colors, "
-    "minimalist, abstract, poster art, silhouette, graphic design, solid color background, "
-    "uniform single-tone hair, black hair, brown eyes, no earring, heavy makeup, sharp "
-    "features, generic face, indoor artificial lighting, empty room, abandoned space, "
-    "horror atmosphere, dark atmosphere, heavy decoration, flashy colors, excessive "
-    "ornamentation, text, watermark, caption, logo, UI, letters, words, subtitles, border, "
-    "frame, chart, diagram, sketch lines, monochrome, grid, collage, multiple panels"
+    "uniform, sailor collar, sailor fuku, neck ribbon, ribbon, bow, bowtie, necktie, "
+    "buttons, button front, double breasted, lace collar, frilled collar, ruffled collar, "
+    "choker, high collar shirt, blazer, age indicators, direct eye contact, confrontational "
+    "expression, flat colors, minimalist, abstract, poster art, silhouette, graphic design, "
+    "solid color background, uniform single-tone hair, black hair, brown eyes, no earring, "
+    "heavy makeup, sharp features, generic face, indoor artificial lighting, empty room, "
+    "abandoned space, horror atmosphere, dark atmosphere, heavy decoration, flashy colors, "
+    "excessive ornamentation, text, watermark, caption, logo, UI, letters, words, subtitles, "
+    "border, frame, chart, diagram, sketch lines, monochrome, grid, collage, multiple panels"
 )
 
 # Stage 1: identity only, no scene tags at all -- full token budget spent
@@ -64,12 +66,28 @@ NEGATIVE_PROMPT = (
 # earring to a single small teardrop (the reference's actual design, not
 # a dangling multi-gem drop) and strengthened the dark-to-light hair
 # contrast language.
+# 2026-07-18: re-checked directly against somia_nao01.png/somia_nao02.png
+# (not the prior written transcription alone) after stage1_portrait.png
+# rendered a sailor-collar/ribbon/button-front school top. The bare word
+# "cardigan" is what did it -- on this checkpoint's Danbooru-tag training
+# set, "cardigan" alone co-occurs heavily with school-uniform layering
+# (sailor collar, neck ribbon, blazer buttons), so it pulled that whole
+# cluster in even with no scene tags competing for budget. The reference
+# art itself shows no cardigan structure at all: every panel on both
+# sheets is a loose, soft, sheer/gauze blouse with wide draped sleeves,
+# no buttons, no collar hardware, no ribbon -- described directly on the
+# sheet as "薄絹素材" (thin sheer fabric that lets light through). Dropped
+# "cardigan" and "high neckline" (the latter likely pulling the
+# lace/ruffle choker-collar look), replaced with tags matching what the
+# sheets actually show, and moved the excluded garment details into
+# NEGATIVE_PROMPT per Rule 1 of the Illustrious-XL prompting skill.
 PORTRAIT_PROMPT = (
     "1girl, solo, adult woman, portrait, upper body, delicate soft face, gentle round blue "
     "eyes, soft eyebrows, delicate fine linework, long straight hair, deep navy blue hair at "
     "top blending to pale sky blue at the ends, two tone blue hair, single small blue "
-    "teardrop earring, soft long sleeve cardigan, covered shoulders, high neckline, pale "
-    "ice-blue top, illustration, anime style, clean plain background"
+    "teardrop earring, loose soft blouse, wide loose sleeves, soft draped sheer fabric, "
+    "covered shoulders, round modest neckline, pale ice-blue and white top, illustration, "
+    "anime style, clean plain background"
 )
 
 # Stage 2: scene only -- the portrait's identity is already fixed pixel
