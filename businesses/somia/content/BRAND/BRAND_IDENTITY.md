@@ -23,7 +23,152 @@ wins and the character spec should be revised, not the other way around.
 
 **The four levers:**
 1. **Fetishism** (relational/emotional, not explicit sexuality — see
-   "What Somia Is Not" below).
+   "What Somia Is Not" below). **What this actually means mechanistically
+   (clarified 2026-07-18, operator, refined same day):** apparent
+   closeness — proximity, a cohabitation-like dynamic, a moment of
+   acknowledgment — is never the character recognizing the viewer as a
+   specific, irreplaceable person. But this is **not** cold or
+   calculating on her part, and it is **not** a stable dependency on the
+   viewer either — both would be too settled, too resolved, for what
+   this actually is:
+   - **The want is real, not performed** — in the moment, she genuinely
+     wants; it isn't indifference wearing a warm mask.
+   - **The want is temporary and not love** — it doesn't accumulate into
+     real attachment to the viewer specifically.
+   - **It's driven by her own immaturity (幼稚性), not intent** — she
+     isn't strategically using the viewer; she's emotionally unsettled/
+     unformed in a way that makes her pull the viewer in and let go
+     inconsistently. The viewer experiences this as being jerked around
+     (振り回される) — a byproduct of her own instability, not a plan.
+   - **She does not depend on the viewer.** She is still searching for
+     something to depend on (依存先を探している) and has not found it;
+     the viewer is incidentally present during that search, not its
+     destination. Do not stage her as attached to or reliant on the
+     viewer specifically — that would resolve the searching into a
+     settled relationship, which is exactly what this lever forbids.
+   This is the precise, load-bearing meaning of "the viewer is not
+   included in the character's world": not distance/coldness as the
+   visible register (she can look warm, intimate, momentarily fixated),
+   but that whatever warmth appears is real-but-passing, ungoverned by
+   her, and never resolves into the viewer mattering to her specifically
+   or her depending on the viewer. A piece that stages an acknowledgment
+   moment as *directed at, and rewarding, the specific viewer watching*
+   (e.g. a smile timed and framed as a gift to "you") is staging the
+   opposite of this lever — so is staging her as calm/composed/deliberate
+   in her use of the viewer (too controlled) or as settled into needing
+   the viewer specifically (too resolved).
+
+   **Reference vocabulary (2026-07-18, enrichment pass — philosophy /
+   psychology / liberal arts).** Not a justification exercise; these are
+   real intellectual traditions that give the mechanism above precise,
+   citable vocabulary. Each is marked as a tight/precise mapping or a
+   looser, more poetic one — don't cite a loose one as if it were exact.
+
+   *Philosophy:*
+   - **Kierkegaard's aesthetic stage of existence** (*Either/Or*) is the
+     central pillar. **Stemning** (mood) is genuinely felt in the moment
+     but has no continuity across moments — real, not performed, and not
+     built to last, which is exactly this lever's "real but passing."
+     **Det Interessante** ("the interesting," from "The Rotation of
+     Method") names もどかしさ directly: a situation must stay open and
+     unresolved, because resolution/consummation is what kills it.
+     *The Sickness Unto Death*'s self "not yet chosen/crystallized" is a
+     precise name for 幼稚性 as a structural incompleteness of selfhood,
+     not a personality flaw — and the move from the aesthetic to the
+     **ethical** stage (where a particular other matters *as such*,
+     durably) is exactly the move this brand forbids any character from
+     completing. Usable phrasing: *"the mood is real, the mood is not a
+     self yet"; "resolution is the enemy of the interesting."*
+   - **Velleman's "arrest" (Velleman, "Love as a Moral Emotion," *Ethics*
+     1999) and Frankfurt's "bestowal"** (*The Reasons of Love*, 2004) —
+     from the analytic philosophy debate on whether love is grounded in a
+     person's properties (making them fungible) or in a particular,
+     irreplaceable bond. Love, on this account, is what *arrests* the
+     default sense that people are interchangeable and fixes on *this*
+     person; it *bestows* importance rather than responding to
+     pre-existing value. The failure condition this brand names is
+     precisely the **non-occurrence of that arrest** — wanted at the
+     level of the moment/properties, never bestowed at the level of the
+     particular person. Tight, precise mapping, not a loose analogy.
+   - **Buber's I-Thou / I-It** (*I and Thou*) — I-It (relating to someone
+     as a bundle of functions/qualities) is the *default* mode; I-Thou
+     (meeting as whole persons in "the Between") is an achievement
+     requiring both parties to be sufficiently formed selves. Useful for
+     "not intentional": the failure to reach I-Thou isn't a choice, it's
+     that one party isn't whole enough yet to address a Thou at all.
+   - **Levinas's face-to-face encounter** (*Totality and Infinity*) —
+     useful only as a contrastive foil, not a positive mapping: it names
+     precisely the one thing that must never happen (the viewer's face
+     actually summoning her into responsibility for him specifically).
+     Good boundary-marker for where a piece has crossed from fetishism
+     into something this brand doesn't want.
+
+   *Psychology:*
+   - **Kohut's selfobject concept** (*The Analysis of the Self*, 1971) is
+     the tightest clinical mapping available. A selfobject is someone
+     related to not as a separate center of subjectivity but as a
+     function that regulates one's own self-cohesion — and critically,
+     Kohut is explicit this produces **genuine, non-performed affect** in
+     the person having the need. This is the precise clinical version of
+     "the want is real, not performed... but never recognizes the viewer
+     as separately real."
+   - **Ainsworth's attachment bond vs. affiliative bond** (*Attachment as
+     an Organizational Construct*, 1989) — not every warm, proximity-
+     seeking relationship meets the operational bar of attachment (safe
+     haven, secure base, separation distress). A relationship can be
+     genuinely affectionate and still be merely **affiliative** — the
+     exact clinical name for "she does not depend on the viewer... only
+     incidentally present."
+   - **Winnicott's "ruthless love" / capacity for concern** (*The
+     Capacity to Be Alone*, 1958, and later work) — a normal, non-
+     pathological developmental stage of real, intense want that is
+     structurally unable to register the other's separate stake in it.
+     Explicitly not damage or cruelty — the best available source for
+     "driven by immaturity, not intent" without moralizing the character.
+   - Looser fits, worth knowing but not over-citing: **disorganized
+     attachment** (Main & Solomon) names the approach-withdraw
+     choreography but its etiology is fear-based, which conflicts with
+     this document's fear/dread boundary below — use only for surface
+     choreography, never for cause. **Erikson's intimacy-vs-isolation
+     stage** supports "still searching" as an active, unresolved
+     developmental task, but at a broader/looser grain than the above.
+
+   *Liberal arts:*
+   - **物の哀れ (mono no aware) and 無常 (mujō)** — not a mood to sprinkle
+     on, but a specific compositional technique, general to any
+     character's world: pathos is generated by *juxtaposing* a fleeting
+     image from her environment against a felt moment in the same beat,
+     so the feeling borrows the image's evanescence instead of being
+     stated outright. Mujō's actual grammar is the falling, not the fall
+     completed — a signature effect (any character's) reads truer to this
+     technique decaying/still-in-motion than resolving cleanly. The
+     concrete natural-imagery vocabulary differs per character's own
+     world (see each CHARACTER.md) — this entry is the general technique
+     only, not a specific image set.
+   - **Jung's puer aeternus** (eternal youth archetype) — **puella
+     aeterna** for a female character, which all five somia characters
+     are — names 幼稚性 as structural resistance to settling into one
+     form, not a flaw: approaches things with real intensity, moves on
+     not from rejection but because staying was never structurally
+     available. Applies to the lever generally, not to one character's
+     register.
+   - **Barthes's *A Lover's Discourse*** (1977) — not a mapping onto any
+     character, but vocabulary for the *viewer's* side, brand-wide: the
+     waiting lover constructs meaning from partial presence/absence
+     largely by themselves. Reframes もどかしさ as something the viewer
+     is already doing to themselves, which content only needs to leave
+     room for by not over-resolving a beat.
+
+   **Character-specific application of this vocabulary belongs in each
+   character's own CHARACTER.md, not here** — e.g. which mythological/
+   natural register fits her particular world (a water-spirit register
+   fits an elemental/nature-coded character; it would be a poor,
+   unexamined fit forced onto a digital- or authority-coded one). See
+   `NAO.md`'s own Reference Vocabulary section for a worked example. Do
+   not assume Nao's specific imagery generalizes to Airi, Mina, Rena, or
+   Yui — each needs the same "what actually fits her own world" reasoning
+   done independently, not a copy-paste.
+
 2. **Immersion** (没入感) — the viewer's sense of actually being present
    in the character's world/moment, not watching it from outside.
 3. **Longing/frustration** (もどかしさ) — the "almost, not quite" quality
@@ -134,7 +279,28 @@ because the underlying lever (fetishism, longing) is legitimate.
   gap to be filled in. Dread is the thing to avoid, not mystery itself.
 - Hidden backstory exists, but it is not exposed as a narrative dump.
 - Visual grammar: intentional lighting (warm lamp glow or cool
-  screen-glow, matched to the character), a lived-in space, a personal
-  object the character holds (see each character's nurture item), and an
-  expression that acknowledges the viewer rather than looking past them.
+  screen-glow, matched to the character), a lived-in space, and a
+  personal object the character holds (see each character's nurture
+  item). **Correction (2026-07-18, operator):** the prior version of this
+  line said an expression should "acknowledge the viewer rather than
+  looking past them" — this directly contradicts Lever 1's actual
+  mechanism above and is wrong. Any acknowledgment beat should read as
+  self-directed (soothing her own complex, a private moment the camera
+  happened to catch), never as address to, or recognition of, the
+  specific viewer. An expression staged as "for you" is staging
+  inclusion, which is the explicit failure condition this brand exists to
+  avoid.
+
+## Fetishism lever — direct implication for staging, per content 0007's review (2026-07-18)
+
+Confirms and sharpens `.claude/agents/` philosopher/psychologist review
+findings on Nao's episode 1: pairing a reward cue (e.g. a signature-item
+light glint) with an acknowledgment beat, synchronized as if the glint is
+a small gift timed to the viewer's moment of being noticed, stages
+inclusion — the opposite of Lever 1. If a piece uses the cross-character
+signature noise-burst technique at the same beat as an acknowledgment
+moment, the two must not read as one coordinated "reward" event; keep
+them causally unlinked (the noise-burst is native to her world reacting
+to something in her world, not a synchronized flourish for the viewer's
+benefit).
 

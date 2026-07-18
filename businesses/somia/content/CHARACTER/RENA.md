@@ -27,6 +27,69 @@ viewer still feels governed by her presence.
   failure state — the control must stay ambient, not pointed.
 - What she is *not* thinking matters more than what she is thinking.
 
+## Reference Vocabulary — Rena-specific application (2026-07-18)
+
+**Framing note:** the brand-wide Fetishism-lever vocabulary in
+`BRAND_IDENTITY.md` (Kierkegaard's aesthetic stage, Velleman/Frankfurt on
+arrest/bestowal, Kohut, Ainsworth, Winnicott, puella aeterna) is built
+around *genuine-but-passing want driven by her own immaturity/searching*
+— a character who hasn't found what she depends on yet. `BRAND_IDENTITY.md`
+already flags Rena as the exception to this pattern (her trigger is
+ambient control/authority, not searching or もどかしさ), and this file
+confirms it: nothing here wants, searches, or fails to settle. Forcing
+that vocabulary onto her would misdescribe her mechanic, not sharpen it.
+Two brand-wide philosophers are ruled out explicitly rather than silently
+skipped: **Buber's I-Thou/I-It** doesn't map — it's about whether two
+parties are formed enough to meet as mutual selves, and Rena's dynamic is
+pointedly not mutual (gaze initiative is always hers). **Levinas's
+face-to-face** is an even worse fit here than as the brand-wide
+contrastive foil elsewhere — Levinas's face summons the *viewer of the
+face* into responsibility for the other; Rena's mechanic runs the
+opposite direction (she is the one whose gaze does the summoning/
+measuring). The entries below are a different vocabulary set, chosen for
+what her mechanic actually is: authority that radiates without an act,
+control staged through stillness and the gaze itself.
+
+- **Sartre's *le regard* (the Look)**, *Being and Nothingness* Part 3 —
+  the one brand-wide-adjacent philosophical concept that fits Rena *more
+  precisely* than it fits any other character (flagged as a poor fit for
+  Nao's Act 2 in an earlier review, rightly so — Nao's mechanic isn't
+  about the gaze as such). Sartre: to be looked at is to feel oneself
+  become an object, measured and fixed by a perspective that isn't one's
+  own, with no need for the Other to say or do anything — a near-literal
+  description of "gaze initiative always belongs to her" and control
+  "radiating from her without any overt act." Concrete use: keep her
+  eyes the only actively "working" element in a shot — no gesture, no
+  address — and let the camera's proximity/angle do the work of making
+  the viewer feel positioned/measured.
+- **Walter Benjamin's "aura"** (*The Work of Art in the Age of Mechanical
+  Reproduction*, 1935) — Benjamin's definition, "the unique apparition of
+  a distance, however close it may be," names her Keywords line ("a gaze
+  that measures distance") almost exactly. A real aesthetic-theory
+  account of a quality that commands attention without any assertive
+  act, distinct from charisma-as-performance (Weber's charismatic
+  authority is built on stage/mission/recognition — a worse fit, since
+  her authority is explicitly not enacted). Concrete use: even in close
+  framing, keep one static element (the wine glass, the space between
+  her and the camera) that reasserts distance, so proximity never
+  collapses into intimacy.
+- **気配 (kehai)** — a term from Japanese aesthetic/critical vocabulary
+  (noh, tea ceremony, everyday perception) for a presence sensed
+  ambiently, registered before or without direct confirmation by the
+  senses. Precisely names "control through stillness, not action": her
+  authority should register in a shot even before her face or expression
+  confirms anything. Concrete use: open a beat on a partial cue (a shift
+  in the room's low-spotlight shadow, a hand at the glass) that reads as
+  *her* before her expression is legible.
+- **間 (ma)** — the charged interval/pause, time doing structural work,
+  not empty time. The precise name for "she spends more time setting
+  [the wine glass] down than drinking from it" and "build pressure
+  through space and silence, not action." Concrete use: hold on a small
+  gesture completing (the glass touching the table) a half-beat longer
+  than the action requires; let the held silence carry the pressure —
+  distinct from kehai (a presence sensed) in that ma is about
+  timing/pacing rather than presence-detection.
+
 ## Pose & Expression (any one of, not fixed to a single pose)
 
 - Elbow propped, controlling the moment with her gaze (the classic

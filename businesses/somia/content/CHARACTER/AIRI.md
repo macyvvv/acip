@@ -34,6 +34,75 @@ in, present, quietly hoping to be noticed.
   and "want to be understood" at the same time — collapsing that into
   one clear feeling is the failure mode.
 
+## Reference Vocabulary — Airi-specific application (2026-07-18)
+
+The brand-wide philosophy/psychology/liberal-arts reference vocabulary for
+the Fetishism lever lives in `BRAND_IDENTITY.md` (mechanism-level, applies
+to all five characters). The entries below are Airi-specific applications
+tied to her own digital/screen-lit register (`Keywords`, `Mood`, `Hard
+Constraints` above) — do not port these onto another character's world,
+and do not port Nao's water/nature vocabulary onto her.
+
+- **垣間見る (kaimami, "glimpsing through a gap")** — the classical
+  Heian-literature device (*Genji Monogatari* and others) where a private
+  female interior moment is seen only by accident, through a gap in a
+  fence, blind, or curtain, never through invitation or address to the
+  viewer. It is the closest literary precedent to Airi's own `Mood` line
+  ("the feeling of having seen something you weren't supposed to see")
+  almost verbatim, and it structurally forbids exactly what her Hard
+  Constraints forbid — sustained eye contact, an expression staged "for"
+  the one looking. The gap/aperture in kaimami is a physical screen
+  (blind, fence-slat); for Airi the literal screen (monitor) is that same
+  aperture, which makes this an unusually tight, not loose, fit. Concrete
+  use: frame her internal-thought beat as if caught through a gap that
+  wasn't meant to be open — partial framing (edge of monitor, reflection,
+  a sliver of her face past the screen's glow) rather than a clean,
+  deliberate reveal.
+- **Goffman's front-stage/back-stage and "leaky" performance** (*The
+  Presentation of Self in Everyday Life*, 1959; "leakage" as a term of
+  art also appears in his later *Strategic Interaction*, 1969) — Goffman
+  distinguishes the managed, presented self (front stage) from the
+  unmanaged private self (back stage), and names the involuntary bleed of
+  back-stage affect into a front-stage performance "leakage." This maps
+  precisely onto Airi's Character Concept ("feelings leak out of her
+  unconsciously") — it is a real technical vocabulary for involuntary
+  self-disclosure, not a loose analogy, and it's specifically about
+  performance/exposure rather than psychodynamics, which is the register
+  her screen-mediated life calls for. Concrete use: stage her controlled
+  exterior (screen-focused, composed posture) as the front stage, and let
+  the signature glitch/UI-fragment beat be the visible leak of the
+  back-stage self through it — the noise-burst *is* the leakage moment,
+  not decoration around it.
+- **Digital-native "real but passing, then gone" — presence/status
+  ephemera, not mono no aware.** Mono no aware/mujō (brand-wide) is a
+  poor, unexamined fit here if applied directly: its grammar is *natural*
+  transience (a falling petal, fading light) and its pathos comes from
+  organic decay, while Airi's world runs on *rupture* — glitch, error, a
+  fragment that cuts rather than fades. Forcing petal-and-season imagery
+  onto a glitch aesthetic would contradict her own Hard Constraint that
+  digital elements should feel "intruding," not decorative/lyrical. The
+  digital-register version of "real, felt, then gone" that actually fits
+  her world is **status ephemera** — a presence indicator going from
+  online to idle, a notification badge appearing and clearing, a
+  connection dropping mid-signal. These are real, not performed, in the
+  moment they register, and they vanish without resolution or
+  explanation, which is the exact shape of her Dependency Trigger.
+  Concrete use: a UI fragment (status dot, unread-count glyph, a
+  connection-strength icon) can appear legible-adjacent for under a
+  second inside the glitch texture and then clear — never legible enough
+  to read as content, per her Hard Constraints, but present long enough
+  to register as "something changed and is already gone."
+- **付喪神 (tsukumogami) — flagged as a poor fit, not adopted.** The
+  folklore of long-used objects gaining a spirit doesn't map cleanly onto
+  Airi: she isn't an object gaining consciousness, and her interiority
+  isn't caused by prolonged use of the screen the way a tsukumogami's
+  animacy is caused by age. The apparent resonance (an ordinarily inert
+  object becoming unexpectedly expressive) is really about *her*
+  becoming visible *through* the screen, not the screen itself becoming
+  alive — collapsing those two would misattribute her interiority to the
+  device. Not recommended for use; noted here so it isn't independently
+  proposed again later without this reasoning attached.
+
 ## Pose & Expression (any one of, not fixed to a single pose)
 
 - Hugging her knees, curled inward (closed-off posture)
