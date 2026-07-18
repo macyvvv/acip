@@ -40,13 +40,34 @@ in prompt tokens on every generation. This would remove the token-budget
 conflict at its root. No feasibility research (fal.ai LoRA-training
 tooling, cost, turnaround time) has been done yet.
 
+## LoRA-training feasibility research (2026-07-18, partial)
+
+Checked fal.ai's own explore page (`fal.ai/explore/best-lora-trainers`) and
+its SDXL model listings directly (primary source, not a secondary/blog
+summary): fal.ai's *inference* endpoints (`fal-ai/lora`, the one already
+used by this pipeline) accept a `loras` parameter to load a trained LoRA
+for SDXL-family generation -- that part is confirmed and already how this
+pipeline works today. But fal.ai's own dedicated **LoRA-training**
+endpoint (`fal-ai/flux-lora-fast-training`) trains FLUX only. No
+SDXL-family (and by extension Illustrious-XL) training endpoint was found
+listed on fal.ai as of this check. This means training a Nao-specific
+Illustrious-XL LoRA likely cannot be done via fal.ai's own training
+tooling -- it would need a different training service or platform (e.g.
+Kohya-based local/rented-GPU training, or another host's SDXL trainer)
+whose output LoRA weights could then be uploaded/loaded into fal.ai's
+`fal-ai/lora` inference endpoint. This has not been researched yet, and
+this finding itself has not been double-checked against fal.ai's changelog
+for anything added after this check -- verify current state before relying
+on it.
+
 ## Before resuming work here
 
 1. Read this file and `script.md`'s Design Note history in full.
 2. Do not resume prompt-tweaking on the single-stage (`render_3act.py`) or
    two-stage (`render_two_stage.py`) pipelines as-is -- that path was
    explicitly paused, not abandoned-but-still-live.
-3. If picking up the LoRA-training direction, that needs its own
-   feasibility research first (does fal.ai expose a LoRA-training
-   endpoint for this checkpoint, cost, turnaround), not a jump straight to
-   training.
+3. If picking up the LoRA-training direction: fal.ai itself does not
+   appear to offer SDXL/Illustrious-XL LoRA training (see above) -- next
+   step is researching an alternative training path (cost, turnaround,
+   whether the resulting weights are loadable into fal.ai's `fal-ai/lora`
+   inference), not assuming fal.ai alone can do it end-to-end.
