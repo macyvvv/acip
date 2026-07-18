@@ -32,13 +32,18 @@ caught directly:
    universal across every frame. This spec previously never named it
    explicitly enough for the model to render it reliably, and it did not
    read as a recognizable signature item in the actual output.
-3. **Outfit drifted from the reference.** The reference sheets show a
-   loose, long-sleeve, wide/off-shoulder-neckline sheer-knit top — not a
-   tank top or camisole. This spec's `prompt.md` only described the
-   window's sheer curtain in detail and never gave her own clothing an
-   explicit description, so the model defaulted to a generic thin-strap
-   top. Fixed below with an explicit clothing line separate from the
-   curtain description.
+3. **Outfit drifted from the reference — twice.** v4's first attempt
+   only described the window's curtain, never her own clothing, so the
+   model defaulted to a generic thin-strap top. v4's fix ("wide
+   off-shoulder-neckline") was itself still wrong: the operator caught
+   this directly after v4's corrected render ("露出を避けてください...
+   薄手のカーディガンのイメージ" — avoid exposure, image of a thin
+   cardigan) and asked for a full re-transcription of both reference
+   sheets before touching this file again. See
+   `ref_nao/character_sheets/TRANSCRIPTION.md` (new, 2026-07-18) for the
+   complete verbatim transcription and its cross-check table. v5 (this
+   pass) corrects to a loose, high-necked, covered cardigan-like top —
+   see Outfit section below.
 4. **The single "one internal moment" beat became a repeated oscillation**
    in the 3-act chained render — profile, turn to camera, back to
    profile, turn to camera *again* near the loop point. The operator's
@@ -68,12 +73,35 @@ caught directly:
    reference sheets' ディテールメモ), missing from every prior version's
    prompt.
 
-**Process requirement for this pass** (per the operator): this redesign
-must be reviewed by the full creative team (color-coordination,
-lighting-design, sound-design, visual-effects, accessibility-review,
-visualops, creativeops) plus epistemicsops, checked line-by-line against
-`CHARACTER.md` and the actual reference sheet images for completeness and
-consistency, with no open findings, *before* any new rendering is run.
+**v5 additions (2026-07-18, after v4's actual render attempt):**
+
+6. **The v4 keyframe generation call itself broke** — not a subtle
+   art-direction miss, a flat/abstract/poster-like output, unusable.
+   Root cause: v4's prompt had become long descriptive prose with "NOT X"
+   clauses written *inside the positive prompt* (e.g. "NOT a tank top").
+   Illustrious-XL's CLIP text encoder doesn't understand grammatical
+   negation — those tokens get embedded as concepts to include regardless
+   of "NOT," and the long-prose format itself degrades this checkpoint's
+   output (the provider's own code comment already warned: short
+   Danbooru-style tags only, not prose). Fixed in v5: every exclusion
+   moved to the negative prompt as a short tag; positive prompt rewritten
+   as short comma-separated tags stating only positive facts.
+7. **"Nao's delicacy is lost compared to the reference"** (operator,
+   after the corrected-but-still-off-shoulder v4 keyframe). The
+   TRANSCRIPTION.md re-read found the reference sheets' own detail notes
+   use 繊細 (delicate/fine) explicitly for how her hair and hands are
+   drawn — concrete art-direction language, not just character-writing
+   flavor text. Added explicit "delicate soft facial features," "delicate
+   fine linework," "soft eyebrows" tags, never present in any prior
+   version.
+
+**Process requirement for this pass** (per the operator, restated for
+v5): this redesign must be reviewed by the full creative team
+(color-coordination, lighting-design, sound-design, visual-effects,
+accessibility-review, visualops, creativeops) plus epistemicsops, checked
+line-by-line against `CHARACTER.md`, `TRANSCRIPTION.md`, and the actual
+reference sheet images for completeness and consistency, with no open
+findings, *before* any new rendering is run.
 
 ## Signature Item (new section — was missing from prior passes)
 
@@ -90,15 +118,20 @@ cross-character signature light-disturbance technique (a brief glint/
 flare off the stone exactly as she turns), reinforcing rather than
 competing with the water/curtain-light version already in the design.
 
-## Outfit (new section — was previously undifferentiated from the curtain)
+## Outfit (v5, corrected after operator review — was wrong in v4 too)
 
-Loose, long-sleeve, wide/off-shoulder neckline sheer-knit top, pale
-ice-blue-white, soft draped silhouette — per the reference sheets'
-Image Key ("装飾品:天然石、薄絹素材" / sheer-fabric material) and every
-pose variation shown. Explicitly NOT a tank top, camisole, or
-thin-strap garment — this must be stated as its own prompt clause,
-separate from the window curtain's own sheer-fabric description, since
-conflating the two in v3's prompt is exactly what caused the drift.
+Loose, long-sleeve, soft cardigan-like knit top, high/modest neckline,
+covered shoulders, minimal skin exposure, pale ice-blue-white, soft
+draped silhouette. v4 corrected the tank-top drift but still specified
+"wide off-shoulder neckline," which the operator flagged directly ("極力
+露出を避けてください... 薄手のカーディガンのイメージ" — avoid exposure as
+much as possible, image of a thin cardigan). Cross-checked against
+`ref_nao/character_sheets/TRANSCRIPTION.md`'s full re-transcription: only
+1-2 of 10+ reference panels show any incidental shoulder-adjacent drape,
+never a deliberate off-shoulder cut — the reference garment is
+consistently loose, high-necked, and covered. Explicitly NOT a tank top,
+camisole, thin-strap, or off-shoulder garment — stated as its own prompt
+clause, separate from the window curtain's own sheer-fabric description.
 
 ## Timeline (~30s across 3 chained 10s clips)
 

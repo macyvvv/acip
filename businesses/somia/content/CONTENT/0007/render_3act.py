@@ -30,38 +30,62 @@ GUIDANCE_SCALE = 7.5
 CFG_SCALE = 0.4  # lowered from 0.5 default per the staged-prompt experiment (prompt.md)
 DURATION = "10"
 
+# Illustrious-XL/Danbooru-family checkpoints need short comma-separated tags,
+# not prose, and their CLIP text encoder does not understand grammatical
+# negation -- writing "NOT a tank top" in the POSITIVE prompt tends to add
+# "tank top" as a concept rather than exclude it. Every excluded concept
+# below lives only in NEGATIVE_PROMPT as a short tag; the positive prompt
+# (BASE_DESC etc.) states only what should be present, never what shouldn't.
+# Lesson learned live this session: a first attempt with prose + in-prompt
+# negations produced a broken, flat/abstract keyframe -- confirms this is a
+# real constraint, not a style preference.
 NEGATIVE_PROMPT = (
     "photorealistic, photo, 3d, western cartoon, disney, pixar, low quality, worst quality, "
     "bad anatomy, blurry, jpeg artifacts, nsfw, nudity, sexual content, revealing clothing, "
-    "cleavage, exposed skin emphasis, tank top, camisole, thin straps, sleeveless, child, "
-    "loli, school uniform, age indicators, direct sustained eye contact from the start, "
-    "confrontational expression, flat uniform hair color with no gradient, entirely "
-    "graphite-dark hair with no light tips, entirely light-blue hair with no dark roots, "
-    "black hair, brown eyes, no earring, missing earring, indoor artificial lighting, "
-    "empty room, abandoned space, horror atmosphere, text, watermark, caption, logo, UI, "
-    "letters, words, subtitles, border, frame, chart, diagram, sketch lines, monochrome, "
-    "grid, collage, multiple panels"
+    "cleavage, exposed skin emphasis, bare shoulder, off shoulder, exposed collarbone, "
+    "tank top, camisole, thin straps, sleeveless, revealing neckline, child, loli, school "
+    "uniform, age indicators, direct eye contact, confrontational expression, flat colors, "
+    "minimalist, abstract, poster art, silhouette, graphic design, solid color background, "
+    "uniform single-tone hair, black hair, brown eyes, no earring, heavy makeup, sharp "
+    "features, generic face, indoor artificial lighting, empty room, abandoned space, "
+    "horror atmosphere, dark atmosphere, heavy decoration, flashy colors, excessive "
+    "ornamentation, text, watermark, caption, logo, UI, letters, words, subtitles, border, "
+    "frame, chart, diagram, sketch lines, monochrome, grid, collage, multiple panels"
 )
 KLING_NEGATIVE_PROMPT = "blur, distort, low quality, photorealistic, photo, realistic skin texture, 3D render, live action"
 
+# Positive-only, terse tags. Hair gradient and earring/outfit are stated as
+# concrete positive facts, not as "not X" corrections. Outfit corrected
+# 2026-07-18 (operator): NOT off-shoulder -- a thin, soft cardigan-like
+# covered top, minimal exposure, per TRANSCRIPTION.md's cross-check of
+# both reference sheets (only 1-2 of 10+ panels show any incidental
+# shoulder drape; none show a deliberately shoulder-baring cut).
+# "Delicate" (繊細) linework/features added per the same transcription --
+# explicit art-direction language from the reference sheets' own detail
+# notes, not just a generic "detailed" tag.
+# Kept short deliberately: CLIP's effective attention window is ~75 tokens.
+# The first attempt at this trimmed BASE_DESC was still too long combined
+# with per-act scene/pose tags -- later tokens (profile view, window/
+# curtain/ocean scene) got diluted/ignored, producing a close-up portrait
+# against a flat background instead of the intended window scene. Fixed by
+# (a) trimming BASE_DESC to identity-only essentials, (b) putting each
+# act's scene+pose tags FIRST in the combined prompt, character-identity
+# tags after -- scene/pose changes per act and must survive if anything
+# gets truncated; identity tags are more forgiving.
+# v5.2 (same day): even the scene-first reorder still overflowed the
+# effective token budget once both scene tags AND identity tags were
+# present -- covered-shoulder/cardigan got dropped this time, reverting
+# to a sleeveless dress. Cut ruthlessly instead of reordering again:
+# every tag below is load-bearing (caused a real, observed defect when
+# missing in some prior attempt); nothing decorative/redundant kept.
 BASE_DESC = (
-    "adult woman, long wind-blown wet-look hair in a natural dark-to-light gradient (dark "
-    "navy-blue roots and mass, gradually lightening to luminous pale ocean-blue at the "
-    "wind-caught tips where light catches it -- a real gradient, not flat/uniform single-tone "
-    "hair, not graphite-flat dark throughout), clear blue eyes, blue teardrop gemstone "
-    "earring, loose long-sleeve wide off-shoulder-neckline draped ice-blue-white knit top "
-    "(soft silhouette, matte-finish fabric, NOT a tank top, NOT a camisole, NOT thin-strap), "
-    "standing at open window, translucent sheer white window curtain blowing in wind "
-    "(visually distinct from her matte knit top -- curtain is see-through gauze, top is soft "
-    "opaque knit), light ocean-blue white silver palette, high-key natural lighting, water "
-    "droplets on hair, serene atmosphere, illustration, anime style, luminous natural light, "
-    "cinematic medium shot, clean single-character illustration"
+    "dark navy roots pale blue tips gradient hair, blue teardrop earring, long sleeve "
+    "cardigan, covered shoulders, high neckline"
 )
 
 ACT1_IMAGE_PROMPT = (
-    f"1girl, solo, {BASE_DESC}, looking outward toward sky and sea, profile view, "
-    "gentle calm expression, quiet resolve, wind motion, coastal window setting clearly "
-    "established, blue earring clearly visible at ear"
+    "1girl, solo, adult woman, profile view, at open window, curtain, sea, sky, wind, "
+    f"{BASE_DESC}"
 )
 ACT1_MOTION = (
     "A genuinely held presence establishing the situation clearly (a woman at a coastal "
