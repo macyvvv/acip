@@ -1,0 +1,7 @@
+{
+  "run_id": "snapshot_20260718T085006Z",
+  "generated_at_utc": "2026-07-18T08:50:08+00:00",
+  "source_db": "businesses/music_platform/runtime/crawl/bandoff_research_merged.db",
+  "snapshot_db": "businesses/music_platform/runtime/ops/snapshots/bandoff_research_merged_20260718T085006Z.db",
+  "sha256": "89d1a0ed7ddfa22a0e75544e1693cdcfb46373831ebe81336d65e28a9865ad7f"
+}

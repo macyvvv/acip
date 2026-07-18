@@ -1,0 +1,10 @@
+{
+  "run_id": "weekly_20260718T081650Z",
+  "started_at_utc": "2026-07-18T08:16:50+00:00",
+  "finished_at_utc": "2026-07-18T08:16:54+00:00",
+  "status": "failed",
+  "step": "release_gate.py",
+  "artifact_id": null,
+  "snapshot_id": null,
+  "message": "step_failed:release_gate.py:rc=3"
+}

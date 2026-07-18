@@ -1,0 +1,12 @@
+{
+  "generated_at_utc": "2026-07-18T08:50:12+00:00",
+  "metrics": {
+    "open_event_ratio": 0.8272327964860908,
+    "avg_fill_ratio": 0.5113821540708421,
+    "assignment_completeness": 0.9384778318008954
+  },
+  "coverage": {
+    "events_latest_count": 1366,
+    "songs_latest_count": 41546
+  }
+}

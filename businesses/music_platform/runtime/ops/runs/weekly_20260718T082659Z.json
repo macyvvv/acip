@@ -1,0 +1,10 @@
+{
+  "run_id": "weekly_20260718T082659Z",
+  "started_at_utc": "2026-07-18T08:26:59+00:00",
+  "finished_at_utc": "2026-07-18T08:27:04+00:00",
+  "status": "success",
+  "step": "instrumentation_audit_foundation.py",
+  "artifact_id": null,
+  "snapshot_id": null,
+  "message": "ok"
+}

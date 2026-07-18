@@ -1,0 +1,8 @@
+{
+  "generated_at_utc": "2026-07-18T08:50:14+00:00",
+  "runs_count": 6,
+  "sli_enforceable": true,
+  "failure_rate": 0.3333333333333333,
+  "p95_latency_seconds": 5.0,
+  "critical_incidents": 0
+}
