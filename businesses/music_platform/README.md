@@ -13,3 +13,9 @@ Business canonical root placeholder.
 - content/
 - runtime/
 - platform/docs/
+
+## Canonical Docs
+
+- [User Value Analytics Canon](platform/docs/USER_VALUE_ANALYTICS_CANON.md)
+- [Implementation and Discovery Roadmap](platform/docs/IMPLEMENTATION_AND_DISCOVERY_ROADMAP.md)
+- [Implementation WBS Detailed](platform/docs/IMPLEMENTATION_WBS_DETAILED.md)
