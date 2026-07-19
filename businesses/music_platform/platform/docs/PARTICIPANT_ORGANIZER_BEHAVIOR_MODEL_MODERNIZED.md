@@ -33,6 +33,19 @@
 3. Organizer Beginner（主催者-初心者）
 4. Organizer Repeater（主催者-リピーター）
 
+### 3.1 Role Relationship (ADR-0049)
+
+Organizer の2セグメントは Participant の対応セグメントの**スーパーセット**である。
+主催者は参加者の全権利（会の探索・参加登録・曲エントリー・演奏・自分の担当管理・
+緊急連絡）を保持したまま、主催者固有の権利（会の設定・成立形成の俯瞰・例外処理・
+当日運営・最終運営責任）を追加で負う。主催者は演奏参加できる。
+
+以降 §4 の "Organizer Beginner" / "Organizer Repeater" 各段階の記述は、**主催者固有の
+追加行動のみ**を示す。主催者は同時に対応する Participant セグメントの行動（Discover/
+Entry/Build/Run/Reviewの各項）も並行して行う前提であり、これは省略せず両方読むこと。
+情報設計への含意は `SITEMAP.md` §3 原則1・§9 境界を参照：主催者面は参加者面への加算
+であり、置き換えではない。
+
 ## 4. Behavior Decomposition by Stage
 
 本節は、各段階を「行動トリガー -> 判断 -> 実行 -> 確認」に分解する。

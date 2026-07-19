@@ -16,6 +16,10 @@
 
 という一連の行動を、心理障壁と責務つきで書き起こす。
 
+**役割関係(ADR-0049):** 本書は全ユーザー共通の基盤行動を定義する。主催者は本書の
+行動を全て行った上で `ORGANIZER_BEHAVIOR_MODEL.md` の主催者固有行動を追加で持つ
+（主催者は参加者のスーパーセット）。
+
 ## 2. Design View
 
 参加者の行動は、単なる「参加」ではなく次の5段階で進む。
@@ -67,6 +71,11 @@
 4. 候補を絞るための優先順位を示す
 
 ### 4.2 Entry
+
+注記(ADR-0049 §3): 以下の行動1-5（会への参加登録＝EventParticipation）と行動6
+（曲別エントリー＝SongEntry）は、同一ページではなく別ページで実現する
+（`/participant/join` と `/songs/entry`）。「Entry」はステージ名であり、
+1ページを意味しない。
 
 #### 行動（Entry）
 
@@ -193,12 +202,13 @@
 本書で定義した行動は、以下のページ群に接続される。
 
 1. `/participant/discover`
-2. `/participant/entry`
-3. `/participant/build`
-4. `/participant/run`
-5. `/participant/review`
-6. `/participant/trust-fit`
-7. `/participant/access-planner`
+2. `/participant/join`
+3. `/songs/entry`
+4. `/participant/build`
+5. `/participant/run`
+6. `/participant/review`
+7. `/participant/trust-fit`
+8. `/participant/access-planner`
 
 ## 8. Review Rule
 

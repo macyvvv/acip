@@ -333,3 +333,27 @@ Costs and risks:
 - `businesses/music_platform/platform/docs/SITEMAP.md`
 - `businesses/music_platform/platform/docs/USER_VALUE_ANALYTICS_CANON.md`
 - データモデル、API、モックアップ、テスト
+
+## Amendment (2026-07-19, see ADR-0049)
+
+`ADR-0049` により本ADRの読み替えと追加が確定した。本ADR自体の決定（two-stage
+participation model、canonical part list、song-part slot model、accessible slot
+representation、member visibility boundary、automated formation support、
+fairness/caps/auditability、event-level constraints、absence communication、
+Minimum Data Contracts）は変更しない。以下の2点のみ読み替える。
+
+1. **"Human and Machine Responsibilities" の Participant / Organizer は排他的な
+   責任集合ではない。** Organizer は Participant の全権利（会の探索・参加登録・
+   曲エントリー・演奏・自分の担当管理・緊急連絡）を保持したまま、本ADRが列挙する
+   Organizer 固有の権利（会固有の募集枠/上限/成立規則/準備期間/通知ポリシーの設定、
+   例外処理、当日復旧と最終運営責任）を追加で負う。主催者は演奏参加できる。
+   Platform Super User は会の参加ロールではなく別軸の運営者ロールであり、本ADRの
+   分離（主催者に dry_run/実行切替/停止を与えない）はそのまま維持される。
+2. **収益モデルは本ADRの対象外だった。** `ADR-0049` により、プラットフォーム運営者の
+   収益源はアフィリエイトのみと確定した。本ADR §Context の「参加費は場代・設備費・
+   運営費」はユーザー間費用の性質を述べたものであり、運営者収益の記述ではない。
+   アフィリエイト推薦は本ADR §6-7 の推薦ガードレール（根拠+不確実性、断定回避、
+   能力評価を条件に使わない）に従い、収益層は成立/公平性層を汚染しない。
+
+詳細は `platform/adr/ADR-0049-music-platform-business-model-and-role-refinement.md`
+を参照。

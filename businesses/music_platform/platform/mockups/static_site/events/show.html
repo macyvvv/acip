@@ -9,55 +9,58 @@
 <body>
   <main class="shell">
     <header class="topbar">
-      <a class="pill" href="./index.html">← Events</a>
+      <a class="brand" href="../index.html">music platform<small>music session</small></a>
       <a class="pill emergency-pill" href="../emergency/index.html">緊急連絡</a>
     </header>
-    <section class="page stack">
-      <div class="hero">
-        <div class="eyebrow">Event detail</div>
-        <h1>1990s J-Rock Session</h1>
-        <p class="lead">空きパートと締切を見て、参加するか決める。</p>
-        <div class="assurance">技術審査なし。完璧でなくてよい。本人が準備して参加したい範囲で選べる。</div>
-        <div class="meta"><span>参加締切: 8/10 23:59</span><span>曲締切: 8/15 23:59</span><span>推薦締切: 8/18 12:00</span></div>
-        <div class="hero-tools">
-          <button class="help" type="button" aria-expanded="false">演奏会の前提<span class="help-tip"><b>補足</b>発表会ではなく演奏会。参加費は視聴品質への対価ではなく、演奏参加の場代・設備費・運営費。</span></button>
-          <button class="help" type="button" aria-expanded="false">推薦について<span class="help-tip"><b>補足</b>推薦が来ても断れる。辞退理由は能力評価には使わない。</span></button>
+    <section class="page">
+      <div class="layout">
+        <div class="hero">
+          <div class="eyebrow">受付中</div>
+          <h1>8/24 渋谷アニソンセッション</h1>
+          <div class="deadline">参加締切 8/10 23:59</div>
+          <div class="actions">
+            <a class="action accent" href="../auth/participant.html">参加登録</a>
+            <a class="action secondary" href="../songs/index.html">曲を見る</a>
+          </div>
         </div>
-        <div class="actions">
-          <a class="action accent" href="../participant/join.html">この会に参加登録する</a>
-          <a class="action secondary" href="../songs/index.html">曲と空きパートを見る</a>
-        </div>
+        <aside class="rail">
+          <div class="section-label">状態</div>
+          <ul class="state-list">
+            <li><b>成立</b><span>12 / 18曲</span></li>
+            <li><b>不足</b><span>Gt 4 / Ba 3 / Key 2</span></li>
+            <li><b>あなた</b><span>ログイン前</span></li>
+            <li><b>場所</b><span>渋谷 / 15:40受付</span></li>
+          </ul>
+        </aside>
       </div>
-      <article class="next-action compact">
-        <div class="section-label">次にやること</div>
-        <h2>参加締切前に会への参加登録をする</h2>
-        <p>まず会への参加登録を保存する。曲への参加はその後に選ぶ。</p>
-      </article>
-      <div class="page-layout">
+      <div class="grid two">
         <article class="card">
-          <div class="record-panel">
-            <div class="section-label">保存される内容</div>
-            <ul class="record-list">
-              <li><b>Event</b><span>1990s J-Rock Session</span></li>
-              <li><b>参加締切</b><span>2026-08-10 23:59。締切後の新規演奏参加なし</span></li>
-              <li><b>曲締切</b><span>2026-08-15 23:59</span></li>
-              <li><b>推薦締切</b><span>2026-08-18 12:00</span></li>
-            </ul>
+          <h2>締切</h2>
+          <ul class="state-list">
+            <li><b>参加</b><span>8/10 23:59</span></li>
+            <li><b>曲</b><span>8/13 23:59</span></li>
+            <li><b>推薦</b><span>8/14 12:00</span></li>
+          </ul>
+        </article>
+        <article class="card">
+          <h2>空きパート</h2>
+          <div class="part-grid">
+            <div class="part">Vo <span class="mark filled">■</span></div>
+            <div class="part">Gt <span class="mark open">△</span></div>
+            <div class="part">Ba <span class="mark open">△</span></div>
+            <div class="part">Dr <span class="mark filled">■</span></div>
           </div>
         </article>
-        <aside class="stack">
-          <div class="state-panel">
-            <div class="section-label">現在の状態</div>
-            <ul class="state-list">
-              <li><b>参加</b><span>未登録</span></li>
-              <li><b>締切</b><span>参加登録受付中</span></li>
-              <li><b>空き</b><span>Gt / Key に必須空き</span></li>
-            </ul>
-          </div>
-        </aside>
       </div>
     </section>
   </main>
+  <nav class="bottom-nav">
+    <a href="../index.html">Home</a>
+    <a class="active" href="../events/index.html">Events</a>
+    <a href="../songs/index.html">Songs</a>
+    <a href="../participant/my.html">My</a>
+    <a href="../emergency/index.html">Emergency</a>
+  </nav>
   <script src="../assets/app.js"></script>
 </body>
 </html>

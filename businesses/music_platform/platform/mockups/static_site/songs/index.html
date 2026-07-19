@@ -9,48 +9,70 @@
 <body>
   <main class="shell">
     <header class="topbar">
-      <a class="pill" href="../events/show.html">← Event</a>
+      <a class="brand" href="../index.html">music platform<small>music session</small></a>
       <a class="pill emergency-pill" href="../emergency/index.html">緊急連絡</a>
     </header>
-    <section class="page stack">
+    <section class="page">
       <div class="hero">
-        <div class="eyebrow">Song slots</div>
-        <h1>自分に合う空きスロットを選ぶ。</h1>
-        <p class="lead">`■` は参加済み/充足済み、`△` は空き枠。旧来の丸記号は使わない。</p>
-      <div class="meta"><span>曲エントリー締切: 8/15 23:59</span><span>あなた: gt / ba / cho</span></div>
-        <div class="actions"><a class="action secondary" href="./closed.html">曲締切後の表示を見る</a></div>
+        <div class="eyebrow">曲別エントリー受付中</div>
+        <h1>空きパート</h1>
+        <div class="deadline">曲別エントリー締切 8/13 23:59</div>
+        <div class="actions"><a class="action secondary" href="../participant/my.html">自分の担当</a></div>
       </div>
-      <article class="next-action compact">
-        <div class="section-label">次にやること</div>
-        <h2>参加できる空きスロットを1つ選ぶ</h2>
-        <p>曲締切前に、本人の承諾で曲への参加登録を作成する。</p>
-      </article>
       <div class="grid two">
-        <article class="card state-panel">
-          <div class="section-label">曲の状態</div>
-          <span class="status warn">あとGtで必須枠充足</span>
-          <h2>透明少女</h2>
-          <div class="slot-row"><span class="slot-mark">■</span><div>Vo <small>参加済み</small></div><strong>1/1</strong></div>
-          <div class="slot-row"><span class="slot-mark open">△</span><div>Gt 必須 <small>あなたの登録パートに一致</small></div><strong>0/1</strong></div>
-          <div class="actions"><a class="action" href="./show.html">曲詳細を見る</a></div>
+        <article class="card song-card">
+          <div class="song-head"><h3>星間飛行</h3><span class="status warn">あとGt</span></div>
+          <div class="part-grid">
+            <div class="part">Vo <span class="mark filled">■</span></div>
+            <div class="part">Gt <span class="mark open">△</span></div>
+            <div class="part">Ba <span class="mark filled">■</span></div>
+            <div class="part">Dr <span class="mark filled">■</span></div>
+          </div>
+          <ul class="state-list"><li><b>あなた</b><span>Gt可 / 追加可</span></li></ul>
+          <div class="actions"><a class="action accent" data-modal="entry-gt" href="#">Gtで入る</a></div>
         </article>
-        <article class="card state-panel">
-          <div class="section-label">曲の状態</div>
-          <span class="status open">成立確認済み</span>
-          <h2>丸の内サディスティック</h2>
-          <div class="slot-row"><span class="slot-mark">■</span><div>Vo</div><strong>1/1</strong></div>
-          <div class="slot-row"><span class="slot-mark open">△</span><div>Cho 任意</div><strong>0/2</strong></div>
-          <div class="actions"><a class="action secondary" href="./show.html">曲詳細を見る</a></div>
+        <article class="card song-card">
+          <div class="song-head"><h3>God knows...</h3><span class="status ok">成立</span></div>
+          <div class="part-grid">
+            <div class="part">Vo <span class="mark filled">■</span></div>
+            <div class="part">Gt <span class="mark filled">■</span></div>
+            <div class="part">Ba <span class="mark filled">■</span></div>
+            <div class="part">Dr <span class="mark filled">■</span></div>
+          </div>
+          <div class="actions"><a class="action secondary" href="show.html">詳細</a></div>
+        </article>
+        <article class="card song-card">
+          <div class="song-head"><h3>Butter-Fly</h3><span class="status warn">あとBa/Key</span></div>
+          <div class="part-grid">
+            <div class="part">Vo <span class="mark filled">■</span></div>
+            <div class="part">Gt <span class="mark filled">■</span></div>
+            <div class="part">Ba <span class="mark open">△</span></div>
+            <div class="part">Key <span class="mark open">△</span></div>
+          </div>
+          <ul class="state-list"><li><b>あなた</b><span>Ba可 / Key可 / 追加可</span></li></ul>
+          <div class="actions">
+            <a class="action accent" data-modal="entry-ba" href="#">Baで入る</a>
+            <a class="action secondary" data-modal="entry-key" href="#">Keyで入る</a>
+          </div>
+        </article>
+        <article class="card song-card">
+          <div class="song-head"><h3>透明人間</h3><span class="status bad">締切後</span></div>
+          <ul class="state-list"><li><b>受付</b><span>終了</span></li></ul>
+          <div class="actions"><a class="action ghost" href="closed.html">詳細</a></div>
         </article>
       </div>
     </section>
+    <div class="modal" id="entry-gt"><div class="modal-card"><h2>星間飛行 / Gt</h2><ul class="state-list"><li><b>担当</b><span>2 / 4曲以上</span></li><li><b>空き</b><span>埋まります</span></li></ul><div class="actions"><a class="action accent" href="../participant/my.html">確定</a><button class="action ghost" data-close-modal type="button">戻る</button></div></div></div>
+    <div class="modal" id="entry-ba"><div class="modal-card"><h2>Butter-Fly / Ba</h2><ul class="state-list"><li><b>担当</b><span>2 / 4曲以上</span></li><li><b>残り</b><span>Key</span></li></ul><div class="actions"><a class="action accent" href="../participant/my.html">確定</a><button class="action ghost" data-close-modal type="button">戻る</button></div></div></div>
+    <div class="modal" id="entry-key"><div class="modal-card"><h2>Butter-Fly / Key</h2><ul class="state-list"><li><b>担当</b><span>2 / 4曲以上</span></li><li><b>残り</b><span>Ba</span></li></ul><div class="actions"><a class="action accent" href="../participant/my.html">確定</a><button class="action ghost" data-close-modal type="button">戻る</button></div></div></div>
   </main>
   <nav class="bottom-nav">
     <a href="../index.html">Home</a>
     <a href="../events/index.html">Events</a>
-    <a class="active" href="./index.html">Songs</a>
+    <a class="active" href="../songs/index.html">Songs</a>
     <a href="../participant/my.html">My</a>
     <a href="../emergency/index.html">Emergency</a>
   </nav>
+  <script src="../assets/app.js"></script>
 </body>
 </html>
