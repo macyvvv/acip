@@ -136,24 +136,57 @@ overly cute expression.
 
 ## Nurture Item
 
-A small angular hairpin, a mug, a tablet, a small plant near the desk —
-things she keeps close without seeming to notice.
+A small triangular metal hairpin (see Visual Identity's 2026-07-20
+redesign for the exact geometry), a mug, a tablet, a small plant near
+the desk — things she keeps close without seeming to notice.
 
 ## Visual Identity
 
-- Color: deep navy, purple, cyan
+**Hair redesigned 2026-07-20** (operator, worked out with ChatGPT while
+scoping `platform/app/tools/somia_dataset_generator`'s LoRA training
+dataset for Airi — authoritative going forward; the prior "black-to-
+dark-blue, slightly messy waves, long" description below is obsolete
+and must not be reproduced). Full locked contract lives in
+`platform/app/tools/somia_dataset_generator/specs/characters/airi.yaml`
+(`identity_lock`/`outfit_lock`/`style_lock`/`negative_lock`) — treat
+that file as the detailed source of truth for dataset generation;
+this section is the human-readable summary kept in sync with it.
+
+- Color: cool, restrained navy, indigo, muted violet, and charcoal
+  (narrower and cooler than the old "deep navy, purple, cyan" — drop
+  cyan)
 - Light: monitor light, pale-blue reflection
 - Texture: glitch, UI fragments, a sense of humidity
 - Motif: code, notifications, rain traces on the window
 - Props: mug, tablet, small plant
-- Setting: a night room, a cluttered desk — inhabited, not abandoned
-- Hair: black-to-dark-blue, slightly messy waves, minimal ornamentation,
-  metal accessories (pins/earrings) read as cold
-- Eyes: deep, reflect pale blue from the screen, often unfocused
-- Clothing: a loose, off-shoulder dark cut-and-sewn top (thin knit
-  cut-sew / カットソー) — soft, draping, thin fabric that slips off one
-  shoulder. NOT a hoodie, NOT a tracksuit/jersey, NOT a thick sweater.
+- Setting: a dim private room, a cluttered desk — inhabited, not
+  abandoned; monitor glow, a window at night; background stays
+  subordinate and never becomes a readable UI
+- **Hair (redesigned): a short-to-medium layered wolf cut** — compact
+  crown volume, broken shaggy layers, a tapered nape, uneven face-
+  framing strands. The silhouette must read immediately as a wolf cut,
+  never as long straight hair or a bob. Dark navy-black base with
+  restrained violet-blue accents concentrated in selected inner layers
+  and tips. Longest strands end at the neck-to-shoulder line and must
+  never extend down the chest or back — this is a primary roster-level
+  discriminator (Mina/Nao/Rena are the long-haired characters); a
+  render with long hair is an automatic rejection even if face,
+  palette, and hairpin are otherwise correct. One metallic **triangular**
+  hairpin at the side of the bangs, geometry and placement preserved —
+  never removed, duplicated, or reshaped.
+- Eyes: narrow delicate face, subdued violet-blue eyes; often reflect
+  pale blue from the screen, often unfocused
+- Clothing: a dark charcoal/black oversized off-shoulder knit top, soft
+  slouched silhouette (thin knit cut-sew / カットソー) — a restrained
+  thin inner strap may show only where natural. NOT a hoodie, NOT
+  tactical/armor-coded, NOT formal eveningwear, NOT a tracksuit/jersey,
+  NOT a thick sweater. Dark, understated lower garment when visible.
 - Habit: pulls her sleeve up to her mouth — a self-protective gesture
+- Presence: withdrawn, mentally preoccupied, as if caught in a thought
+  loop rather than posing — a quietly tired neutral expression, lowered
+  or averted gaze, slight irritation held inward, brief fragile
+  softness without a broad smile. Never a bright/cheerful smile, an
+  energetic or cute-idol pose, or a prolonged frontal gaze.
 
 ## Hidden Backstory
 

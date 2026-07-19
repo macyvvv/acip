@@ -1,11 +1,14 @@
 {
-  "base_layer": "low floor-level room hush",
-  "noise_type": "cushion-fabric shift texture",
-  "frequency_range": "150-600Hz",
+  "base_layer": "quiet room hush, low ambient stillness, held throughout without dropping out -- every cue below modulates this bed rather than appearing as a separate layer",
+  "noise_type": "close, high-frequency detail, sparse particle-like breath/fabric texture",
+  "frequency_range": "6kHz+",
   "trigger_timing": [
-    "half-rise",
-    "resettle down",
-    "silence entry"
+    "single near-imperceptible breath-catch in the bed at ~3.0-4.5s (Act 1), timed to the head-lift/gaze-drift -- external non-visual trigger for the 'notices presence' beat",
+    "fabric-shift/grip-tightening texture building through Act 2 (9.0-18.0s), including a faint secondary grip-adjustment during the 14.5-18.0s hood-stall hold",
+    "the room-hush bed itself briefly takes on a comb-filter/pitch-bend quality at ~23.0s (Act 3 spatial-disturbance beat), rising and resolving within ~4-6 frames at 24fps, then returning to the plain bed -- a modulation of the continuous bed, not a new discrete sound, since the disturbance is the room's event, not hers",
+    "near-total silence 23.5-25.0s (Act 3, a real pause before 'Maybe it's fine. Maybe.')",
+    "settling blanket/breath-release texture through Act 4 (28.0-37.0s)"
   ],
-  "silence_duration": 1.2
+  "silence_duration": 1.5,
+  "sourcing_note": "Built 2026-07-19. Base bed: 'シーンと静まり返る教室' (quiet-room ambience, soundeffect-lab.info, free-for-commercial, no attribution required), looped/trimmed to 41.25s, volume 0.35, 1.5s fade-in / 1.75s fade-out. Disturbance cue: 'Interior door lock' click (BigSoundBank, CC0, by Joseph SARDIN), processed via ffmpeg aecho (6-tap decaying repeats at 16-96ms) to build a real comb-filtered flutter tail, then the first 45ms trimmed off to remove the direct impulse per the review's requirement (only the tail remains). Inserted at 23.0s per trigger_timing. Bed additionally ducked to volume 0.06 across 23.5-25.0s for the near-total-silence beat. Mixed to businesses/somia/content/CONTENT/0035/sfx/full_mix.wav and muxed onto final_video_41s.mp4 as final_0035_yui_with_audio.mp4. Source files kept in CONTENT/0035/sfx/ (room_hush_soundeffectlab_classquiet1.mp3, doorlock_bigsoundbank_0037.mp3) for reproducibility. Pitch-bend modulation on the bed itself (beyond the flutter tail's natural comb-filter character) was not additionally layered -- the tail's own aecho artifact carries the 'takes on a comb-filter quality' description well enough on review; revisit only if a future listen finds it too subtle."
 }

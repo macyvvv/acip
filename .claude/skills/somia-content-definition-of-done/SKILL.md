@@ -49,6 +49,21 @@ time" are not evidence it happened this time.
    (via visualops/creativeops), plus epistemicsops if any claim about the
    content's fidelity to source material is being asserted. Don't report a
    redesign as ready before this review actually happened.
+7. **Philosopher, psychologist, and liberal-arts lenses, every review, not
+   just when a scenario is first authored** (operator standing
+   instruction, 2026-07-18). These caught the two most consequential
+   findings on content 0007: that the Fetishism-lever mechanism didn't
+   read to a cold viewer despite matching brand docs on paper, and that a
+   rendered beat (sustained direct-camera eye contact + composed smile)
+   contradicted the self-directed staging the spec called for even though
+   the prompt text asked for the opposite. Craft-level review
+   (creativeops/color-coordination/etc.) and evidence-level review
+   (epistemicsops) do not substitute for these three lenses — dispatch all
+   of them (as separate agents, framed explicitly per
+   `.claude/agents/*.md` conventions or as directly-prompted lenses when no
+   dedicated role exists) whenever reviewing a somia scenario or a
+   rendered output against the Fetishism lever's intent, not only at
+   initial concept-authoring time.
 
 ## What this replaces
 

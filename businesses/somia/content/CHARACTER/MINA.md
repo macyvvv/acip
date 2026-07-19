@@ -133,6 +133,15 @@ Never exposed directly. The absence is part of the character design.
 - Visual motif: warm light, strong background blur, steam motion
 - Setting: a warm, domestic space (kitchen, soft-lit room)
 - Accessory: crescent hairpin
+- **Canonical identity portrait, locked (2026-07-19, operator).** First
+  candidate from `render_character_portraits.py` (see
+  `businesses/somia/content/BRAND/PORTRAIT_METHODOLOGY.md` for the
+  generation method, adapted from Nao's locked-portrait process) was
+  approved on the first draw, no iteration needed. Locked to
+  `businesses/somia/content/CONTENT/ref_mina/canonical_portrait_v1.png`.
+  Future Mina content should reuse this file as the constant identity
+  reference (same pattern as Nao's `elements` conditioning in
+  `render_final_3act.py`) rather than regenerating.
 
 ## Audio Traits
 

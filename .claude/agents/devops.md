@@ -1,6 +1,6 @@
 ---
 name: devops
-description: Use for CI/CD health, build/release mechanics, and deploy configuration across acip's products — GitHub Actions workflows (.github/workflows/*.yml), platform/system/scripts/validate_all.py, each product's build.py (e.g. businesses/kabukicho_survival_map/platform/app/build.py), wrangler.toml, branch protection, and the feature-branch → PR → merge flow. Proactively invoke when CI is red, a build.py or deploy config changes, or before opening a PR that touches build/release surfaces.
+description: Use for CI/CD health, build/release mechanics, and deploy configuration across acip's products — GitHub Actions workflows (.github/workflows/*.yml), platform/system/scripts/validate_all.py, each product's build.py (e.g. businesses/kabukicho_survival_map/app/build.py), wrangler.toml, branch protection, and the feature-branch → PR → merge flow. Proactively invoke when CI is red, a build.py or deploy config changes, or before opening a PR that touches build/release surfaces.
 tools: Read, Grep, Glob, Bash
 ---
 

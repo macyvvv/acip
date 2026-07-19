@@ -1,5 +1,17 @@
 {
   "character": "Yui",
-  "variation_type": "scenario",
-  "hypothesis": "Tests whether a return-to-frame beat reads as a quiet choice to stay rather than relief or resolution."
+  "variation_type": "flagship_episode",
+  "hypothesis": "Yui's first complete episode: her full five-step Daily Loop (notice, anxious, withdraw, hesitate, stays anyway) staged as one continuous private sequence with no viewer-address beat at all, ending on a posture built from the start to loop back to the opening frame, tests whether existence-permission anxiety (distinct from Nao's relational-acknowledgment mechanic) drives repeat viewing on its own terms per BRAND_IDENTITY.md's Fetishism lever.",
+  "builds_into_stub": "0035",
+  "stub_sources": ["0031", "0033", "0035", "0037", "0038", "0039", "0040"],
+  "act_structure": {
+    "act_1": "0.0-9.0s: notices presence, anxiety begins",
+    "act_2": "9.0-18.0s: anxiety peaks, withdrawal begins",
+    "act_3": "18.0-28.0s: withdrawal completes into a private calculation to leave, then hesitates",
+    "act_4": "28.0-37.0s: hesitation resolves into staying, settles toward opening posture",
+    "bridge": "37.0-41.0s: image-to-video interpolation approaching (not landing on) Act 1's opening frame"
+  },
+  "status": "video_and_audio_assembled_pending_final_qc",
+  "review_pass": "2026-07-19: philosophy-review, character-psychology, liberal-arts-review, filmmaker, apparel-stylist, visual-effects, sound-design all completed at scenario stage; all findings applied to script.md/prompt.md/audio.json. See script.md's Review Pass section for the full list.",
+  "generation_note": "2026-07-19: all 4 acts + loop bridge generated via render_yui_0035.py (fal-ai/kling-video/o1), assembled into final_video_41s.mp4. Known accepted defect: the locked canonical_portrait_v1.png itself carries a subtly pointed/elf-like ear, which reference-to-video's image-conditioning reproduced across two independent Act 1 draws despite explicit text negation -- operator chose to keep the portrait rather than re-lock it; see YUI.md Visual Identity's second accepted-imperfection note. Real-recording sourced audio (soundeffect-lab.info quiet-room bed + BigSoundBank CC0 door-lock click processed into a flutter-echo tail) mixed and muxed as final_0035_yui_with_audio.mp4. Still open: VFX signature-disturbance compositing (authored, not yet composited into the video), on-screen text overlay, and color/lighting/accessibility QC pass on the actual rendered footage."
 }

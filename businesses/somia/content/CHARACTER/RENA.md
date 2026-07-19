@@ -145,6 +145,18 @@ Keep hidden; do not convert into explicit exposition.
 - Motif: flowers, wine, ornaments
 - Setting: opulent, dim, controlled interiors — the space itself should
   feel governed, not chaotic
+- **Canonical identity portrait, locked (2026-07-19, operator).** Took
+  four draws to converge: v1's "matte black fitted top... light-absorbing
+  fabric" wording pulled a combat/tactical-harness aesthetic instead of
+  luxury (plus a garbled text-label artifact on the chest); v2 fixed the
+  outfit via explicit formal-eveningwear vocabulary (black velvet gown)
+  but kept a smile that read as too warm for her register; v3 dropped the
+  smile for a cool/detached expression but rendered in a loose sketch/
+  marker style inconsistent with Nao/Mina/Yui's clean cel-shaded look,
+  and hair came out silver rather than black; v4 added explicit
+  clean-cel-shading style anchors and reinforced black hair — approved on
+  that draw. Locked to
+  `businesses/somia/content/CONTENT/ref_rena/canonical_portrait_v1.png`.
 
 ## Audio Traits
 

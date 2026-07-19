@@ -124,6 +124,60 @@ through atmosphere.
 - Clothing: oversized hoodie worn like something to hide inside
 - Background motif: soft room with blurred edges and unstable spacing
 - Eyes: large, glossy/teary impression
+- **Canonical identity portrait, locked (2026-07-19, operator).** v1 from
+  `render_character_portraits.py` was rejected: eyes read as off-taste
+  glittery sparkle/star-highlight rendering and overshot "teary
+  impression" into literal streaming tears. v2 reworded the eye clause
+  toward calm/delicate rendering and explicitly excluded
+  crying/sparkle/star-pupil terms -- approved on that draw. Locked to
+  `businesses/somia/content/CONTENT/ref_yui/canonical_portrait_v1.png`.
+  **Known accepted imperfection**: hair rendered silver/light gray rather
+  than the black stated above, across both draws -- operator approved
+  anyway rather than keep re-rolling; flag if this needs revisiting later
+  (per `PORTRAIT_METHODOLOGY.md`, pin a `seed` first if it does, since
+  two independent draws is a real pattern and re-rolling ungrounded is
+  unlikely to fix it).
+  **Second known accepted imperfection (found 2026-07-19, content 0035
+  production)**: the locked portrait itself shows a subtly pointed/
+  elf-like right ear, visible past the hair. This was not caught at
+  lock-in review (subtle in a headshot crop) but became far more visible
+  once `reference-to-video` generation extrapolated a fuller shot from
+  it -- confirmed as image-conditioning, not a prompt-wording problem,
+  since two independent Act 1 video draws with explicit "ordinary
+  rounded human ears, not pointed, not elf ears" negative language in
+  the prompt both still rendered pointed ears (image conditioning
+  dominates text negation for this trait). Operator chose to keep the
+  locked portrait as-is rather than incur further generation cost
+  re-rolling it -- do not keep adding "no elf ears" fighting language to
+  new prompts for this character, since it demonstrably does not work;
+  treat the pointed-ear trait as part of her accepted rendered identity
+  going forward unless the portrait is deliberately relocked later.
+
+## Audio Traits
+
+**Added 2026-07-19, drafted from content 0035 (her first episode) — a
+real gap sound-design review found: unlike Nao/Airi/Rena/Mina, this
+section didn't exist before this episode's production.** Distilled from
+0035's audio design, itself built to match her Surface Behavior
+("pauses frequently") and Visual Identity registers:
+
+- Close, high-frequency detail (6kHz+), sparse particle-like breath/
+  fabric texture — never a dense continuous bed
+- Real silence as a deliberate structural element, not just
+  low-activity — a full ~1.5s near-total quiet gap is usable and
+  correct at a hesitation beat, matching "pauses frequently"
+- Her signature-disturbance audio cue (see Signature Disturbance,
+  content 0035) is a brief comb-filter/pitch-bend modulation of the
+  *existing* ambient bed, never a new discrete sound appearing from
+  silence — because her disturbance is the room's event, not something
+  she causes, a discrete onset risks misattributing it to her the way
+  an early Nao sound cue was corrected away from
+- The proposed real flutter-echo source was sourced and built
+  2026-07-19 (a BigSoundBank CC0 door-lock click, processed via ffmpeg
+  aecho into a real comb-filtered tail with the direct impulse
+  trimmed off) — see `CONTENT/0035/audio.json`'s `sourcing_note` for
+  the exact chain. Validated against this episode's final mix; treat
+  as her baseline disturbance-audio technique going forward.
 
 ## Character Boundary
 

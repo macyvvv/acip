@@ -1,0 +1,33 @@
+schema_version: 1
+policy_id: airi_v1
+dimensions:
+  framing:
+    close_up: 10
+    upper_body: 14
+    three_quarter: 10
+    full_body: 6
+  angle:
+    front: 12
+    three_quarter_left: 10
+    three_quarter_right: 10
+    profile_left: 4
+    profile_right: 4
+  expression:
+    quietly_tired_neutral: 12
+    lowered_gaze: 8
+    slight_inward_irritation: 8
+    fragile_softness: 8
+    pensive: 4
+  gaze:
+    averted_left: 10
+    averted_right: 10
+    lowered: 12
+    brief_near_camera: 8
+  environment:
+    dim_private_room: 12
+    monitor_glow: 10
+    window_at_night: 8
+    quiet_desk: 6
+    simple_dark_background: 4
+constraints:
+  minimum_per_bucket: 2
