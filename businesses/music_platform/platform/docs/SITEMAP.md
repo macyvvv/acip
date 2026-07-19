@@ -53,6 +53,16 @@
 
 補足: 旧表現 `day-of` は本書では `Run` に統一する。
 
+参加モデルは ADR-0046 に従い、会への `EventParticipation` と曲別の `SongEntry` を
+分離する。セッション会/演奏会は演奏参加の場であり、参加費は視聴品質への対価ではない。
+演奏技術、上手さ、曲品質は参加資格、推薦条件、成立判定、ページ導線の評価軸にしない。
+通常の候補抽出と通知は機械が担い、本人承諾なしに曲へ自動エントリーしない。
+演奏参加は参加締切までに確定した事前登録者のみを対象とし、飛び入り参加は扱わない。
+参加締切は開催日前に置き、曲別エントリー締切、推薦通知締切、Run導線より上位の
+ゲートとして扱う。
+`dry_run` と推薦通知エンジンの実行切替は Platform Super User 権限であり、主催者向け
+通常機能には含めない。
+
 ## 5. Function Classification (MECE)
 
 ### 5.1 Participant Functions
@@ -68,16 +78,17 @@
 1. Discover: F5
 2. Entry: F16, F17, F18
 3. Build: F6, F19, F21, F22
-4. Run: F7, F27
+4. Run: F7
 5. Review: F8, F29, F31
 
 ### 5.3 Shared / Platform Functions
 
 1. Shared Timeline: F23
 2. Emergency Communication: F26
-3. Community Health: F32
+3. Automated Notification Gate: F27
+4. Community Health: F32
 
-注記: F23/F26/F32 は Shared として一次分類し、
+注記: F23/F26/F27/F32 は Shared / Platform として一次分類し、
 Participant/Organizer 側は「参照導線のみ」を持つ。
 
 ## 6. Page Blueprint
@@ -103,9 +114,9 @@ Participant/Organizer 側は「参照導線のみ」を持つ。
 ### P2 Participant Entry
 
 1. URL: `/participant/entry`
-2. Primary Decision: エントリーを完了する
-3. Target Psychological Barrier: 初回連絡を送る緊張、返信が来ないことへの不安
-4. UX Responsibility: 連絡テンプレートを用意する、送信前に必要情報を明示する
+2. Primary Decision: 会への参加登録と最初の曲別エントリーを完了する
+3. Target Psychological Barrier: 参加登録と曲別エントリーの違いが分からない不安、自分が参加してよいか過度に技術面で悩む不安
+4. UX Responsibility: EventParticipationとSongEntryを分けて提示する、参加可能パート・通知可否・担当上限を登録させる、参加締切を明示する、技術審査ではないことを明示する
 5. Supports: F2, F3, F14, F15
 
 ### P3 Participant Build
@@ -154,7 +165,7 @@ Participant/Organizer 側は「参照導線のみ」を持つ。
 2. Primary Decision: 当日運営の対応順を決める
 3. Target Psychological Barrier: 当日変更が重なると対応が追いつかない焦り、伝達漏れが事故につながる不安
 4. UX Responsibility: 緊急連絡の窓口を一本化する、当日判断を迷わせない、集金等の責務を抜けなく実行する
-5. Supports: F7, F24(参照), F25(参照), F26(参照), F27
+5. Supports: F7, F24(参照), F25(参照), F26(参照), F27(参照)
 
 ### P9 Organizer Review
 
@@ -188,7 +199,15 @@ Participant/Organizer 側は「参照導線のみ」を持つ。
 4. UX Responsibility: コミュニティの健全性を数値で可視化し、偏在を検知する
 5. Canonical Feature: F32
 
-### P13 Legal Hub
+### P13 Platform Notification Gate
+
+1. URL: `/platform/notification-gate`
+2. Primary Decision: 推薦通知エンジンの送信可否を確定する
+3. Target Psychological Barrier: 誤通知、過通知、二重送信、停止遅れへの運用不安
+4. UX Responsibility: dry_run結果、候補、除外理由、通知件数、停止状態をPlatform Super Userに限定して表示する
+5. Canonical Feature: F27
+
+### P14 Legal Hub
 
 1. URL: `/legal`
 2. Primary Decision: 規約・同意・権利行使情報を確認する
@@ -199,14 +218,14 @@ Participant/Organizer 側は「参照導線のみ」を持つ。
    - `/legal/privacy`
    - `/legal/data-rights`
 
-### P14 Pricing / Plan
+### P15 Pricing / Plan
 
 1. URL: `/pricing`
 2. Primary Decision: 利用プランを選択する
 3. Target Psychological Barrier: 費用対効果が見合わない懸念
 4. UX Responsibility: プランの価値と費用を比較しやすくする
 
-### P15 Participant Trust & Fit
+### P16 Participant Trust & Fit
 
 1. URL: `/participant/trust-fit`
 2. Primary Decision: 初参加でも進めるかを判断する
@@ -214,7 +233,7 @@ Participant/Organizer 側は「参照導線のみ」を持つ。
 4. UX Responsibility: 判断材料に根拠を添える、候補を絞るための優先順位を示す
 5. Supports: F11, F13
 
-### P16 Participant Access Planner
+### P17 Participant Access Planner
 
 1. URL: `/participant/access-planner`
 2. Primary Decision: 移動リスクを許容できるか判断する
@@ -222,7 +241,7 @@ Participant/Organizer 側は「参照導線のみ」を持つ。
 4. UX Responsibility: アクセス方法や物理的ハードルを事前に明確にする
 5. Supports: F10
 
-### P17 Organizer Momentum Monitor
+### P18 Organizer Momentum Monitor
 
 1. URL: `/organizer/momentum`
 2. Primary Decision: 初動48時間で介入するかを判断する
@@ -230,15 +249,15 @@ Participant/Organizer 側は「参照導線のみ」を持つ。
 4. UX Responsibility: 反応データを見て修正する、募集文のテンプレートを維持する
 5. Supports: F18, F16
 
-### P18 Organizer Rescue Queue
+### P19 Organizer Rescue Queue
 
 1. URL: `/organizer/rescue`
-2. Primary Decision: 未成立救済の実行順を確定する
-3. Target Psychological Barrier: 声かけが空回りする不安、人に依存して成立を作る負担感
-4. UX Responsibility: 誰に何を頼むかを明確にする、演奏順の仮決定と調整責務を持つ
+2. Primary Decision: 未成立救済の機械推薦状況と例外対応順を確定する
+3. Target Psychological Barrier: 自動推薦が適切に動いているか分からない不安、例外対応と通常運用の境界が曖昧になる負担感
+4. UX Responsibility: 候補、除外理由、通知状況を明確にする、主催者が扱う例外だけを分離する、演奏順の仮決定と調整責務を持つ
 5. Supports: F19, F21, F22
 
-### P19 Runbook & Recovery
+### P20 Runbook & Recovery
 
 1. URL: `/run/recovery`
 2. Primary Decision: 当日変更時の復旧手順を選ぶ
@@ -246,7 +265,7 @@ Participant/Organizer 側は「参照導線のみ」を持つ。
 4. UX Responsibility: 復旧手順を短く提示する、当日判断の認知負荷を下げる
 5. Supports: F26, F27, F7
 
-### P20 Retention Hub
+### P21 Retention Hub
 
 1. URL: `/review/retention`
 2. Primary Decision: 次回参加/開催の次アクションを決める
@@ -271,12 +290,13 @@ Participant/Organizer 側は「参照導線のみ」を持つ。
 11. `/timeline`
 12. `/emergency`
 13. `/community/health`
-14. `/participant/trust-fit`
-15. `/participant/access-planner`
-16. `/organizer/momentum`
-17. `/organizer/rescue`
-18. `/run/recovery`
-19. `/review/retention`
+14. `/platform/notification-gate`
+15. `/participant/trust-fit`
+16. `/participant/access-planner`
+17. `/organizer/momentum`
+18. `/organizer/rescue`
+19. `/run/recovery`
+20. `/review/retention`
 
 ### 7.2 Governance / Business Routes
 
@@ -316,8 +336,9 @@ Participant/Organizer 側は「参照導線のみ」を持つ。
 ### 8.3 Wave 3
 
 1. `/community/health`
-2. `/legal/*`
-3. `/pricing`
+2. `/platform/notification-gate`
+3. `/legal/*`
+4. `/pricing`
 
 ## 9. Access and Responsibility Boundaries
 
@@ -325,6 +346,10 @@ Participant/Organizer 側は「参照導線のみ」を持つ。
 2. `/emergency` は F26 の正本入力面とする。
 3. `/community/health` は運営向け参照面とし、一般公開は集約情報に限定する。
 4. Participant/Organizer ページでの F23/F26 は「要約表示 + 正本ページ遷移」のみ許可する。
+5. `/participant/entry` は EventParticipation と SongEntry の境界を明示し、参加可能パート、成立支援通知可否、担当上限を参加登録時に取得する。参加締切後は演奏参加登録を受け付けず、当日参加導線として再利用しない。
+6. `/organizer/rescue` は機械推薦の確認と例外処理に限定し、通常時の個別声かけ業務を主催者責務として復活させない。
+7. `dry_run`、推薦通知エンジンの実行切替、全体またはイベント単位の停止判断は Platform Super User 権限であり、主催者ページへ露出しない。
+8. 静的モックは `platform/mockups/static_site/README.md` の route mapping を正本とし、`.html` ファイル名は本番URLではなく、Sitemap抽象ルートの検証用ページとして扱う。
 
 ## 10. Minimum Acceptance Contract
 
@@ -366,7 +391,7 @@ Participant/Organizer 側は「参照導線のみ」を持つ。
 ### 11.4 Function-to-Action Bridge
 
 1. F1-F32 は少なくとも1つの実行ページに接続される。
-2. F23/F26/F32 は canonical page を持ち、役割ページでは参照導線のみを持つ。
+2. F23/F26/F27/F32 は canonical page を持ち、役割ページでは参照導線のみを持つ。
 
 ## 12. Function to Page Mapping (Action View)
 
@@ -386,14 +411,15 @@ Participant/Organizer 側は「参照導線のみ」を持つ。
 2. F16, F18 -> `/organizer/momentum`
 3. F6 -> `/organizer/build`
 4. F19, F21, F22 -> `/organizer/rescue`
-5. F7, F27 -> `/organizer/run`
+5. F7 -> `/organizer/run`
 6. F8, F29, F31 -> `/review/retention` and `/organizer/review`
 
 ### 12.3 Shared
 
 1. F23 -> `/timeline`
 2. F26 -> `/emergency` and `/run/recovery`
-3. F32 -> `/community/health`
+3. F27 -> `/platform/notification-gate`
+4. F32 -> `/community/health`
 
 ## 13. Governance
 

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notification gate</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="pill" href="./index.html">← Platform</a>
+      <span class="pill">Platform操作中の緊急連絡は対象イベント画面から行う</span>
+    </header>
+    <section class="page stack">
+      <div class="hero">
+        <div class="eyebrow">dry_run / kill switch</div>
+        <h1>送信前に、候補・除外・件数を監査する。</h1>
+        <p class="lead">推薦通知締切を過ぎた会には送信しない。二重送信と過通知を防ぐ。</p>
+      </div>
+      <div class="grid two">
+        <article class="card record-panel">
+          <div class="section-label">Platform監査</div>
+          <span class="status open">dry_run OK</span>
+          <h2>候補 21 / 除外 9</h2>
+          <p>run_id: dryrun-20260808-001 / rule_version: rec-2026-08-a / idempotency_key: preview-001</p>
+          <p>exclusion: over_song_cap 4 / cooldown 3 / deadline_closed 2</p>
+          <div class="actions"><a class="action accent" data-disabled href="#">送信を有効化</a></div>
+        </article>
+        <article class="card state-panel">
+          <div class="section-label">現在の状態</div>
+          <span class="status closed">締切ブロック</span>
+          <h2>City Pop Night</h2>
+          <p>推薦通知締切を過ぎているため送信不可。</p>
+        </article>
+      </div>
+      <article class="next-action compact">
+        <div class="section-label">次にやること</div>
+        <h2>dry_run差分を確認して送信可否を決める</h2>
+        <p>主催者ではなくPlatform Super Userだけが実行切替を扱う。</p>
+      </article>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

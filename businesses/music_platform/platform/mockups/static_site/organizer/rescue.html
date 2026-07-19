@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Organizer rescue</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="pill" href="./dashboard.html">← Dashboard</a>
+      <a class="pill emergency-pill" href="../emergency/index.html">緊急連絡</a>
+    </header>
+    <section class="page stack">
+      <div class="hero">
+        <div class="eyebrow">Machine status + exceptions</div>
+        <h1>通常案件は機械。主催者は例外だけ。</h1>
+        <p class="lead">dry_run、送信実行、停止判断は表示しない。ここでは候補ゼロや特殊編成を扱う。</p>
+      </div>
+      <div class="grid two">
+        <article class="card state-panel">
+          <div class="section-label">機械処理の状態</div>
+          <span class="status open">機械処理中</span>
+          <h2>透明少女 / Gt</h2>
+          <p>候補8名。通知済み3名。主催者操作なし。</p>
+        </article>
+        <article class="card record-panel">
+          <div class="section-label">主催者の例外記録</div>
+          <span class="status warn">例外対応</span>
+          <h2>変拍子曲 / Dr</h2>
+          <p>候補ゼロ。推奨順: 1. 任意枠化 2. 曲順変更 3. 曲差替え。</p>
+          <div class="actions"><a class="action secondary" data-disabled href="#">例外メモを残す</a></div>
+        </article>
+      </div>
+      <article class="next-action compact">
+        <div class="section-label">次にやること</div>
+        <h2>推奨順に例外メモを残す</h2>
+        <p>主催者が通常声かけをするのではなく、会の条件を調整する。</p>
+      </article>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
