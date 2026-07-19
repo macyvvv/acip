@@ -23,8 +23,25 @@ platform/system/runtime/publishing/oauth2/
 # somia generated render outputs — reproducible from specs, large binaries.
 # Specs (script.md/prompt.md/metadata.json) are the source of truth, not the
 # generated media. Keep these out of git; store finals in external storage.
+# (Path prefix corrected 2026-07-20: the actual content tree is
+# businesses/somia/content/CONTENT/, not businesses/platform/somia/... --
+# the old prefix never matched anything, so generated media was silently
+# untracked-but-not-ignored. Patterns also widened to cover every filename
+# shape the render scripts actually produce, not just keyframe/video.)
 businesses/somia/content/CONTENT/**/keyframe*.png
 businesses/somia/content/CONTENT/**/video*.mp4
+businesses/somia/content/CONTENT/**/final_*.mp4
+businesses/somia/content/CONTENT/**/final_*.png
+businesses/somia/content/CONTENT/**/bridge_*.png
+businesses/somia/content/CONTENT/**/a2start_*.png
+businesses/somia/content/CONTENT/**/variant_*.mp4
+businesses/somia/content/CONTENT/**/*_variant_*.mp4
+businesses/somia/content/CONTENT/**/kling_reference_test.mp4
+businesses/somia/content/CONTENT/**/*.wav
+businesses/somia/content/CONTENT/**/final_concat_list.txt
+businesses/somia/content/CONTENT/**/_check_*.png
+businesses/somia/content/CONTENT/**/.final_act*_last_frame_candidates/
+businesses/somia/content/CONTENT/**/sfx/
 businesses/somia/content/CONTENT/**/*.dry_run.txt
 businesses/somia/content/CONTENT/**/.fal_checkpoint_*.json
 businesses/somia/content/proto_images/
