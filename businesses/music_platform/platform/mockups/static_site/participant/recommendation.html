@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recommendation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="pill" href="./my.html">← My</a>
+      <a class="pill emergency-pill" href="../emergency/index.html">緊急連絡</a>
+    </header>
+    <section class="page stack">
+      <div class="hero">
+        <div class="eyebrow">おすすめ参加候補</div>
+        <h1>この曲のBaが空いている。</h1>
+        <p class="lead">機械が候補を出した理由を見て、本人が承諾または辞退する。</p>
+        <div class="assurance">推薦は断ってよい。辞退理由は能力評価に使わない。</div>
+        <div class="hero-tools">
+          <button class="help" type="button" aria-expanded="false">辞退の扱い<span class="help-tip"><b>補足</b>辞退理由は能力評価には使わない。通知抑制と不適切推薦の削減にだけ使う。</span></button>
+        </div>
+      </div>
+      <div class="page-layout">
+        <article class="card record-panel">
+          <div class="section-label">推薦監査</div>
+          <ul class="record-list">
+            <li><b>Candidate</b><span>あなた / Ba / 通知許可あり</span></li>
+            <li><b>候補理由</b><span>パート一致、必須枠不足、担当上限内</span></li>
+            <li><b>状態</b><span>通知済み / 参加者の判断待ち</span></li>
+            <li><b>通知日時</b><span>2026-08-08 10:30</span></li>
+            <li><b>再通知抑制</b><span>辞退時に自動設定</span></li>
+            <li><b>Audit</b><span>rule_version rec-2026-08-a</span></li>
+            <li><b>結果</b><span>承諾時だけ曲への参加登録を作成</span></li>
+          </ul>
+        <div class="actions">
+          <a class="action accent" href="../songs/entry.html">承諾して曲へ参加する</a>
+          <a class="action secondary" href="./my.html">今回は辞退する</a>
+          <a class="action secondary" href="./recommendation-closed.html">推薦締切後の表示を見る</a>
+        </div>
+        </article>
+        <aside class="stack">
+          <div class="state-panel">
+            <div class="section-label">現在の状態</div>
+            <ul class="state-list">
+              <li><b>推薦</b><span>承諾待ち</span></li>
+              <li><b>期限</b><span>推薦締切前</span></li>
+            </ul>
+          </div>
+          <div class="record-panel">
+            <div class="section-label">辞退時に保存する内容</div>
+            <ul class="record-list">
+              <li><b>理由</b><span>練習期間不足 / 曲を知らない / 担当曲数を増やさない</span></li>
+              <li><b>通知停止</b><span>この曲だけ停止できる</span></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+      <article class="next-action compact">
+        <div class="section-label">次にやること</div>
+        <h2>承諾するか、辞退理由を選ぶ</h2>
+        <p>どちらを選んでも能力評価には使われない。</p>
+      </article>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

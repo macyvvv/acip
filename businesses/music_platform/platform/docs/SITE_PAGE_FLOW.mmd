@@ -1,0 +1,114 @@
+flowchart TD
+  %% Static HTML mock flow.
+  %% No walk-in participation. Only pre-registered participants may play.
+  %% Deadlines are first-class states: participation, song entry, recommendation.
+  %% Pages are durable states; sheets are short decisions/confirmations.
+  %% Submit sheets must be idempotent and show pending/sent states.
+
+  subgraph Pages["Build first"]
+    Home["/index.html<br/>participant-first value"]
+    Events["/events/index.html<br/>parts + formation + deadlines"]
+    Event["/events/show.html<br/>join decision + trust + song preview"]
+    Join["/participant/join.html<br/>EventParticipation"]
+    Closed["/events/closed.html<br/>deadline fallback"]
+    Songs["/songs/index.html<br/>matched slots first"]
+    Song["/songs/show.html<br/>song, slots, members"]
+    Entry["/songs/entry.html<br/>SongEntry confirmation"]
+    My["/participant/my.html<br/>assignments + recommendations"]
+    Rec["/participant/recommendation.html<br/>accept/decline in-page"]
+    PRun["/participant/run.html<br/>registered participant day-of"]
+    Emergency["/emergency/index.html<br/>impact-first change"]
+    OSetup["/organizer/setup.html<br/>rules + slots + publish readiness"]
+    ODash["/organizer/dashboard.html<br/>formation source"]
+    ORescue["/organizer/rescue.html<br/>machine status + exceptions"]
+    ORun["/organizer/run.html<br/>registered day-of ops"]
+    PAdmin["/platform/index.html<br/>privileged entry"]
+    Gate["/platform/notification-gate.html<br/>deadlines + dry_run + kill switch"]
+    Timeline["/timeline/index.html<br/>event progress source of truth"]
+  end
+
+  subgraph States["State gates"]
+    Registered{"registered?"}
+    PartDeadline{"participation deadline open?"}
+    SongDeadline{"song entry deadline open?"}
+    RecDeadline{"recommendation deadline open?"}
+  end
+
+  subgraph Sheets["Sheets / modals"]
+    Trust["trust / first-timer fit"]
+    JoinSent["join submitted"]
+    Slot["slot select"]
+    Member["member public activity"]
+    RecDecision["recommendation decision"]
+    Decline["decline reason + cooldown"]
+    Impact["impact preview"]
+    Sent["emergency sent state"]
+    Publish["publish readiness"]
+    OException["organizer exception"]
+    Audit["notification audit"]
+    Status["notification status summary<br/>read-only for organizer"]
+    GEmergency["global emergency button"]
+  end
+
+  Home --> Events --> Event
+  Event --> Trust --> Event
+  Event --> Registered
+  Registered -- no --> PartDeadline
+  Registered -- yes --> SongDeadline
+  PartDeadline -- open --> Join
+  PartDeadline -- closed --> Closed --> Events
+  Join --> JoinSent --> Songs
+  SongDeadline -- open --> Songs
+  SongDeadline -- closed --> My
+
+  Songs --> Song
+  Song --> Slot --> SongDeadline
+  Song --> Member --> Song
+  SongDeadline -- open_after_slot --> Entry
+  SongDeadline -- closed_after_slot --> My
+  Entry -- consent_creates_SongEntry_source_direct_or_recommendation --> My
+
+  My --> Rec --> RecDecision
+  RecDecision -- accept --> RecDeadline
+  RecDeadline -- open --> Entry
+  RecDeadline -- closed --> My
+  RecDecision -- decline --> Decline --> My
+  My --> PRun
+
+  Home -.-> GEmergency
+  Event -.-> GEmergency
+  Join -.-> GEmergency
+  Songs -.-> GEmergency
+  Song -.-> GEmergency
+  Entry -.-> GEmergency
+  My -.-> GEmergency
+  Rec -.-> GEmergency
+  PRun -.-> GEmergency
+  OSetup -.-> GEmergency
+  ODash -.-> GEmergency
+  ORescue -.-> GEmergency
+  ORun -.-> GEmergency
+  GEmergency --> Emergency --> Registered
+  Registered -- registered_change --> Impact --> Sent --> Emergency
+  Registered -- not_registered_no_event_contact_target --> Closed
+  Sent -.-> Timeline
+  Sent -.-> PRun
+  Sent -.-> ORun
+
+  Home --> OSetup --> Publish --> ODash
+  ODash --> ORescue
+  ORescue -. reads .-> Status
+  ORescue -- candidate_zero_or_conflict_or_special_formation --> OException --> ORescue
+  ORescue -- normal_machine_status_only --> ODash
+  ODash --> ORun
+  ORun -. incident .-> Emergency
+
+  PAdmin --> Gate
+  Gate --> RecDeadline
+  RecDeadline -- open_for_send --> Audit
+  RecDeadline -- closed_blocks_send --> Gate
+  Gate --> Audit --> Gate
+  Gate -. status_only_no_dry_run_controls .-> Status
+
+  Timeline -. deadlines_formation_notifications_emergency .-> My
+  Timeline -. deadlines_formation_notifications_emergency .-> ODash

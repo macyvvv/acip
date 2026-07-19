@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Organizer dashboard</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="pill" href="./setup.html">← Setup</a>
+      <a class="pill emergency-pill" href="../emergency/index.html">緊急連絡</a>
+    </header>
+    <section class="page stack">
+      <div class="hero">
+        <div class="eyebrow">Formation source</div>
+        <h1>未成立の原因だけを見る。</h1>
+        <p class="lead">主催者の画面は、通常推薦の操作ではなく、状況確認と例外処理に集中する。</p>
+        <div class="hero-tools">
+          <button class="help" type="button" aria-expanded="false">通常声かけ<span class="help-tip"><b>補足</b>通常の個別声かけを主催者責務として復活させない。</span></button>
+        </div>
+        <div class="actions">
+          <a class="action accent" href="./rescue.html">救済キューを見る</a>
+          <a class="action secondary" href="./run.html">当日運営へ</a>
+        </div>
+      </div>
+      <div class="page-layout">
+        <article class="card state-panel">
+          <div class="section-label">現在の状態</div>
+          <ul class="state-list">
+            <li><b>未成立</b><span>4曲 / うち候補あり3曲</span></li>
+            <li><b>推薦</b><span>送信済み12 / 承諾4 / 辞退3</span></li>
+            <li><b>例外</b><span>候補ゼロ1 / 特殊編成1</span></li>
+          </ul>
+        </article>
+        <aside class="stack">
+          <div class="record-panel">
+            <div class="section-label">主催者の責務</div>
+            <ul class="record-list">
+              <li><b>設定</b><span>募集枠、締切、上限、成立規則</span></li>
+              <li><b>例外</b><span>候補ゼロ、規約衝突、特殊編成</span></li>
+              <li><b>除外</b><span>dry_run、送信実行、停止判断</span></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+      <article class="next-action compact">
+        <div class="section-label">次にやること</div>
+        <h2>候補ゼロと特殊編成だけ確認する</h2>
+        <p>通常推薦は機械処理の状態を見るだけでよい。</p>
+      </article>
+    </section>
+  </main>
+  <nav class="bottom-nav">
+    <a href="./setup.html">Setup</a>
+    <a class="active" href="./dashboard.html">Dash</a>
+    <a href="./rescue.html">Rescue</a>
+    <a href="./run.html">Run</a>
+    <a href="../emergency/index.html">Emergency</a>
+  </nav>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

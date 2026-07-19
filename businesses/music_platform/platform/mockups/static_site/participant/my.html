@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My page</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="pill" href="../songs/index.html">← Songs</a>
+      <a class="pill emergency-pill" href="../emergency/index.html">緊急連絡</a>
+    </header>
+    <section class="page stack">
+      <div class="hero">
+        <div class="eyebrow">My assignments</div>
+        <h1>次にやることだけを見る。</h1>
+        <p class="lead">参加登録済み。曲エントリー2件。推薦1件は承諾待ち。</p>
+        <div class="hero-tools">
+          <button class="help" type="button" aria-expanded="false">Myページとは<span class="help-tip"><b>補足</b>主催者のDMや記憶ではなく、登録済み状態と次アクションを見る正本。</span></button>
+        </div>
+        <div class="actions">
+          <a class="action accent" href="./recommendation.html">推薦を見る</a>
+          <a class="action secondary" href="./run.html">当日チェックへ</a>
+        </div>
+      </div>
+      <div class="page-layout">
+        <article class="card record-panel">
+            <div class="section-label">保存済みの内容</div>
+          <ul class="record-list">
+            <li><b>参加</b><span>会への参加登録済み</span></li>
+            <li><b>担当曲</b><span>透明少女 / Gt、リライト / Ba</span></li>
+            <li><b>通知許可</b><span>成立支援通知 ON</span></li>
+            <li><b>上限</b><span>2曲まで</span></li>
+          </ul>
+        </article>
+        <aside class="stack">
+          <div class="state-panel">
+            <div class="section-label">現在の状態</div>
+            <ul class="state-list">
+              <li><b>推薦</b><span>1件 承諾待ち</span></li>
+              <li><b>曲締切</b><span>8/15 23:59</span></li>
+              <li><b>開催日</b><span>8/24</span></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+      <article class="next-action compact">
+        <div class="section-label">次にやること</div>
+        <h2>承諾待ちの推薦を確認する</h2>
+        <p>承諾して曲に入るか、理由を選んで辞退する。</p>
+      </article>
+    </section>
+  </main>
+  <nav class="bottom-nav">
+    <a href="../index.html">Home</a>
+    <a href="../events/index.html">Events</a>
+    <a href="../songs/index.html">Songs</a>
+    <a class="active" href="./my.html">My</a>
+    <a href="../emergency/index.html">Emergency</a>
+  </nav>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

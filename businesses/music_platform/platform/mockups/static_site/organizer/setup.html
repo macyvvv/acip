@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Organizer setup</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="pill" href="../index.html">← Home</a>
+      <a class="pill emergency-pill" href="../emergency/index.html">緊急連絡</a>
+    </header>
+    <section class="page stack">
+      <div class="hero">
+        <div class="eyebrow">Organizer setup</div>
+        <h1>募集前に、締切と成立ルールを固める。</h1>
+        <p class="lead">主催者は通常の個別声かけを担わない。機械推薦が動けるよう、枠・上限・締切を設定する。</p>
+        <div class="hero-tools">
+          <button class="help" type="button" aria-expanded="false">主催者権限<span class="help-tip"><b>補足</b>dry_run と通知エンジン実行切替は Platform Super User だけが扱う。</span></button>
+        </div>
+      </div>
+      <div class="page-layout">
+        <form class="card form-grid">
+          <div class="section-label">主催者が保存する内容</div>
+          <label>参加締切 <input value="2026-08-10 23:59"></label>
+          <label>曲別エントリー締切 <input value="2026-08-15 23:59"></label>
+          <label>推薦通知締切 <input value="2026-08-18 12:00"></label>
+          <label>最大担当曲数 <select><option>参加者ごと2曲まで</option><option>参加者ごと3曲まで</option></select></label>
+          <div class="actions"><a class="action accent" href="./dashboard.html">設定を保存して公開準備へ</a></div>
+        </form>
+        <aside class="stack">
+          <div class="state-panel">
+            <div class="section-label">現在の状態</div>
+            <ul class="state-list">
+              <li><b>公開</b><span>未公開</span></li>
+              <li><b>必須設定</b><span>締切3種と上限が必要</span></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+      <article class="next-action compact">
+        <div class="section-label">次にやること</div>
+        <h2>締切3種と上限を保存する</h2>
+        <p>公開後は、この設定をもとに参加登録と推薦が制御される。</p>
+      </article>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
