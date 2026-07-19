@@ -166,14 +166,26 @@ class ValidationOrchestrator:
         )
 
     def _resolve_pytest_command(self) -> list[str]:
+        ignores = [f"--ignore={path}" for path in self._self_contained_package_dirs()]
+
         if self._interpreter_has_pytest(sys.executable):
-            return [sys.executable, "-m", "pytest", "-q"]
+            return [sys.executable, "-m", "pytest", "-q", *ignores]
 
         known_good = Path("/Library/Developer/CommandLineTools/usr/bin/python3")
         if known_good.exists():
-            return [str(known_good), "-m", "pytest", "-q"]
+            return [str(known_good), "-m", "pytest", "-q", *ignores]
 
-        return [sys.executable, "-m", "pytest", "-q"]
+        return [sys.executable, "-m", "pytest", "-q", *ignores]
+
+    def _self_contained_package_dirs(self) -> list[str]:
+        # A directory with its own pyproject.toml manages its own dependency set
+        # (installed via editable install, not the root requirements-dev.txt) and
+        # ships its own CI workflow -- the root pytest run has neither the package
+        # nor its deps installed, so its tests must be collected separately, not here.
+        found = []
+        for pyproject in sorted(self.root.glob("platform/app/**/pyproject.toml")):
+            found.append(str((pyproject.parent / "tests").relative_to(self.root)))
+        return found
 
     def _interpreter_has_pytest(self, interpreter: str) -> bool:
         probe = subprocess.run(
