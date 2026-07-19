@@ -1,5 +1,6 @@
 schema_version: 1
 policy_id: airi_v1
+seed: 20260101
 dimensions:
   framing:
     close_up: 10
