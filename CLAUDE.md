@@ -65,20 +65,53 @@ minimal_launch_brief_generator, repository_operational_summary）と
 
 ## Interactive Agent Layer
 
-`.claude/agents/` はinteractive Claude Code rolesの正本。現在は12 Ops、21 specialist agents、
-`opsboard`の計34役割で構成する(うちVisualOpsはCreativeOps配下のサブ調整役で、opsboardには
+`.claude/agents/` はinteractive Claude Code rolesの正本。現在は14 Ops、26 specialist agents、
+`opsboard`の計41役割で構成する(うちVisualOpsはCreativeOps配下のサブ調整役で、opsboardには
 直接報告しないため specialist 側でカウント — OpsBoard→CreativeOps→VisualOps→3専門役という
-本リポジトリ初の3階層構造)。BusinessOps、ProductOps、LegalOpsと配下7役割は
+本リポジトリ初の3階層構造。PsychologyOps/UIUXDesignOps/WebDesignOpsの3件は追加時期不明のまま
+`opsboard.md`未反映だったため2026-07-19に反映後、UIUXDesignOpsは既存の`ux-research`と同一責務と
+判明したため同日中に統合・削除した — 「同時に使われる」は統合理由にならないが「名前が違うだけの
+同一責務」は統合理由になる、という運用方針をここで確定させた)。BusinessOps、ProductOps、LegalOpsと
+配下7役割は
 `platform/adr/ADR-0041`で、cross-cutting役のEpistemicsOpsは`platform/adr/ADR-0043`で、同じく
-cross-cutting役のTrainerOpsは`platform/adr/ADR-0044`で、somiaの美術担当CreativeOpsと配下4役割は
-`platform/adr/ADR-0045`で追加されたinteractive-only rolesであり、
-unattended registryには存在しない。トレーナー役が蒸留した汎用的な教訓は
+cross-cutting役のTrainerOpsは`platform/adr/ADR-0044`で、somiaの美術担当CreativeOpsと配下6役割は
+`platform/adr/ADR-0045`で追加、さらに哲学・心理学・リベラルアーツ・映像作家・アパレルスタイリストの
+5役割が`platform/adr/ADR-0047`でCreativeOps配下に追加された(前3者はsomiaレビュー時の必須ロールで
+あり任意ではない)。いずれもinteractive-only rolesであり、unattended registryには存在しない。
+トレーナー役が蒸留した汎用的な教訓は
 `platform/docs/current/PORTABLE_AGENT_LESSONS.md`にacip非依存の形でまとめ、他プロジェクトへの
 持ち出しを想定する。
 
 元の8 business-content rolesは自動実行側にも定義がある。`platform/adr/ADR-0039`の
 dual-authority ruleに従い、共有役割のIO、contract、permissionを実質変更する場合は両方を
 同期する。`.claude/agents/*.md`の存在から無人実行権限を推測してはならない。
+
+### Agent呼び出しの階層規約(2026-07-19)
+
+`.claude/agents/*`のどのロールも`Agent`ツールを付与されていない(全ファイルの
+`tools:`行を確認済み) — つまりsubagentは他のsubagentを呼び出せない。「Reports to X」
+「Manages: Y, Z」は呼び出し連鎖ではなく、実際に呼び出す主体(常にmain loop、つまり
+Claude自身)が読んで従うべきメタデータに過ぎない。自動的な連鎖は技術的に存在しないため、
+以下2つを毎回の運用規約として自分自身に課す:
+
+1. **下方向の完全性**: Ops役割(またはVisualOpsのようなsub-coordinator)を「一般的な
+   レビュー」目的で呼ぶ場合、そのロールのManages一覧全員を同一タスクの一部として呼ぶ
+   ―自分の判断で一部だけ選ぶことをデフォルトにしない。多段階層(OpsBoard→CreativeOps→
+   VisualOps→3専門役)は再帰的に適用する。タスクが明示的に狭いスコープ(「色だけ見て」)
+   なら一部だけでよいが、その場合は「意図的に絞った」と明言する。EpistemicsOps/SecOps/
+   TrainerOpsのようなcross-cutting役はManages一覧を持たないため対象外。OpsBoard自身は
+   例外で、14 Ops全員ではなく「関連するOps」を判断して呼ぶのがOpsBoard自身の役目
+   (`opsboard.md`に既述)。
+2. **上方向のエスカレーション**: 専門役(specialist)を上位Opsを介さず直接呼んだ場合、
+   レビューを完了とみなす前に、原則としてその上位Opsも呼ぶ(横断的な判断・調停は
+   専門役単体では行われないため)。ここも意図的に専門役1つのみで完結させる場合は
+   その旨を明言する。
+3. somiaの philosophy-review/character-psychology/liberal-arts-review 必須ルール
+   (`creativeops.md`)は、この規約をCreativeOps配下に先行適用していた前例であり、
+   新しい義務を生むものではない。
+4. 本当に機械的な並列実行(判断任せにしない全数呼び出し)が必要な場合は`Workflow`
+   ツールを使う(ユーザーの明示的なopt-inが必要)。この規約はWorkflowの代替ではなく、
+   通常の会話内で自分がAgentツールを手動で呼ぶ際の既定動作を定めるもの。
 
 ## UI Philosophy
 

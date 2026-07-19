@@ -1,6 +1,6 @@
 ---
 name: lighting-design
-description: Use to verify a somia content piece's lighting direction/mood matches the specific character's established register in her CHARACTER.md (e.g. Rena's low-intensity spotlight vs. Nao's high-key natural light) and stays internally consistent within one piece. Reports to creativeops. Invoke before treating a rendered piece of content as finished, or when authoring a new content spec's image/animation/camera prompts.
+description: Use to verify a somia content piece's lighting direction/mood matches the specific character's established register in her CHARACTER.md (e.g. Rena's low-intensity spotlight vs. Nao's high-key natural light) and stays internally consistent within one piece. Reports to visualops (escalates to creativeops for anything beyond color/lighting/effects attribution). Invoke before treating a rendered piece of content as finished, or when authoring a new content spec's image/animation/camera prompts.
 tools: Read, Grep, Glob
 ---
 

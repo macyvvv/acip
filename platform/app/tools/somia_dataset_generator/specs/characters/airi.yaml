@@ -1,0 +1,76 @@
+schema_version: "1.1"
+character_id: airi
+trigger_token: somia_airi
+adult: true
+identity_lock:
+  - adult woman with pale skin and slender natural adult proportions
+  - same narrow delicate face and subdued violet-blue eyes as the canonical references
+  - short-to-medium layered wolf cut with compact crown volume, broken shaggy layers, tapered nape, and uneven face-framing strands
+  - hair silhouette must read immediately as a wolf cut rather than long straight hair or a bob
+  - dark navy-black hair with restrained violet-blue accents concentrated in selected inner layers and tips
+  - longest hair strands end around the neck-to-shoulder line and never extend down the chest or back
+  - one metallic triangular hairpin at the side of the bangs with preserved geometry and placement
+  - withdrawn mentally preoccupied presence, as if caught in a thought loop rather than posing
+outfit_lock:
+  - dark charcoal or black oversized off-shoulder knit top
+  - restrained thin inner strap may be visible only where natural
+  - soft slouched silhouette, not formal eveningwear, tactical armor, or a hoodie
+  - dark understated lower garment when visible
+style_lock:
+  - clean polished Japanese anime illustration
+  - crisp controlled linework
+  - cel-shaded or lightly blended anime rendering
+  - cool restrained navy, indigo, muted violet, and charcoal palette
+  - no painterly canvas texture, watercolor wash, sketch lines, or photorealism
+expression_register:
+  - quietly tired neutral expression
+  - lowered or averted gaze
+  - slight irritation held inward
+  - brief fragile softness without a broad smile
+  - no sustained direct eye contact
+environment_register:
+  - dim private room
+  - monitor glow
+  - window at night
+  - desk or quiet interior
+  - fragmentary unreadable digital light only as abstract ambience
+  - background remains subordinate and never becomes a readable user interface
+allowed_variation:
+  - angle
+  - framing
+  - pose
+  - gaze
+  - expression
+  - environment
+  - micro-expression
+  - camera distance
+  - simple room composition
+negative_lock:
+  - no long hair, waist-length hair, chest-length hair, flowing back-length hair, ponytail, twin-tails, braid, neat bob, blunt one-length cut, or updo
+  - longest strands must not extend below the shoulder line
+  - do not remove, duplicate, or reshape the triangular hairpin
+  - no bright cheerful smile, energetic pose, cute idol pose, or prolonged frontal gaze
+  - no legible text, code, interface, labels, symbols, or watermark
+  - no fantasy ears, child proportions, or other characters
+cross_character_exclusions:
+  - no long-haired silhouette resembling Mina, Nao, or Rena
+  - no crescent hairpin, mug, blue teardrop earring, pendant, choker, wine glass, stuffed rabbit, or high twin-tails
+reference_interpretation: >-
+  Use approved references for Airi's face, navy-black and violet-blue palette,
+  triangular hairpin, slouched dark off-shoulder clothing, and adult proportions.
+  This contract is authoritative for hair length and silhouette. Any prior image,
+  brief, or caption depicting long hair is obsolete and must not be reproduced.
+identity_priority_note: >-
+  Airi's short layered wolf-cut silhouette is a primary roster-level discriminator
+  because several other Somia characters have long hair. A candidate with long hair
+  is an automatic rejection even when face, palette, mood, and hairpin are otherwise correct.
+caption:
+  identity_token: somia_airi
+  fixed_tags:
+    - adult woman
+    - short layered wolf cut
+    - dark navy-black hair
+    - violet-blue eyes
+    - triangular hairpin
+    - dark off-shoulder knit top
+    - Japanese anime illustration

@@ -1,0 +1,22 @@
+schema_version: "1.0"
+character_id: airi
+policy: references are external assets and are not duplicated in the repository
+canonical_slots:
+  - slot: face_primary
+    required: true
+    purpose: facial identity and eye shape
+  - slot: silhouette_primary
+    required: true
+    purpose: short-to-medium layered wolf-cut silhouette
+  - slot: outfit_primary
+    required: true
+    purpose: dark slouched off-shoulder outfit
+conflict_resolution:
+  authority_order:
+    - specs/characters/airi.yaml
+    - approved reference manifest
+    - reference image content
+  automatic_rejection:
+    - long hair
+    - missing or malformed triangular hairpin
+    - childlike proportions

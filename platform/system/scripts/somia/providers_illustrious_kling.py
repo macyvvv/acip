@@ -6,6 +6,7 @@ import os
 
 from system.scripts.somia import fal_client
 from system.scripts.somia.content_spec import ContentSpec
+from system.scripts.somia.prompt_budget import check_prompt_budget
 from system.scripts.somia.providers import RenderResult, VideoGenerationProvider, register_provider
 
 # flux/dev (general-purpose, Western-trained) read as "Disney-style" in
@@ -58,6 +59,7 @@ class IllustriousKlingProvider(VideoGenerationProvider):
     name = "illustrious_kling"
 
     def generate(self, spec: ContentSpec, output_dir: Path) -> RenderResult:
+        check_prompt_budget(spec.image_prompt, label="illustrious_kling image_prompt")
         key = fal_client.api_key()
         output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -69,6 +71,12 @@ class IllustriousKlingProvider(VideoGenerationProvider):
                 "prompt": spec.image_prompt,
                 "negative_prompt": spec.negative_prompt or DEFAULT_NEGATIVE_PROMPT,
                 "guidance_scale": DEFAULT_GUIDANCE_SCALE,
+                # Without this, fal.ai hard-truncates prompts at ~77 CLIP
+                # tokens instead of chunking/averaging past it (confirmed
+                # against fal.ai's own fal-ai/lora API docs, 2026-07-19) --
+                # discovered via Yui's portrait regeneration failures; see
+                # businesses/somia/content/BRAND/PORTRAIT_METHODOLOGY.md.
+                "prompt_weighting": True,
             },
             key,
             keyframe_checkpoint,

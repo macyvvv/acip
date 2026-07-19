@@ -1,6 +1,6 @@
 ---
 name: color-coordination
-description: Use to verify a somia content piece's actual color choices (keyframe image prompt, rendered keyframe/video) match the specific character's own CHARACTER.md Visual Identity section. Reports to creativeops. Invoke before treating a rendered piece of content as finished, or when authoring a new content spec's image prompt.
+description: Use to verify a somia content piece's actual color choices (keyframe image prompt, rendered keyframe/video) match the specific character's own CHARACTER.md Visual Identity section. Reports to visualops (escalates to creativeops for anything beyond color/lighting/effects attribution). Invoke before treating a rendered piece of content as finished, or when authoring a new content spec's image prompt.
 tools: Read, Grep, Glob
 ---
 
