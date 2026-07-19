@@ -32,7 +32,10 @@
 
 ## 3. IA Principles
 
-1. Role First: 参加者と主催者で入口を分離する。
+1. Role First, Additive: 参加者面を全ユーザー共通の基盤とし、主催者面はその基盤への
+   加算面として提供する（ADR-0049）。主催者は参加者の全権利（会の探索・参加登録・
+   曲エントリー・演奏・自分の担当管理・緊急連絡）を保持したまま主催者固有の権利を
+   追加で持つ。主催者ページが参加者導線（Events/Songs/My等）を置き換えてはならない。
 2. Stage First: Discover -> Entry -> Build -> Run -> Review の順で配置する。
 3. One Primary Decision per Page: 1ページに主要意思決定は1つだけ置く。
 4. Shared Canonical Source: 共有機能は正本ページを1つ定義する。
@@ -63,6 +66,11 @@
 `dry_run` と推薦通知エンジンの実行切替は Platform Super User 権限であり、主催者向け
 通常機能には含めない。
 
+`ADR-0049` により次を追加で確定する。主催者は参加者のスーパーセットであり、演奏参加
+できる（詳細は §3 原則1、§9 境界）。`EventParticipation`（会への参加登録、P2 Participant
+Join）と `SongEntry`（曲別担当、P22 Song Entry）は別ページとする。プラットフォーム運営者の
+収益源はアフィリエイトのみとし、収益層は成立/公平性層を汚染しない（詳細は §5.4）。
+
 ## 5. Function Classification (MECE)
 
 ### 5.1 Participant Functions
@@ -74,6 +82,9 @@
 5. Review: F28, F30
 
 ### 5.2 Organizer Functions
+
+注記(ADR-0049): 主催者は §5.1 Participant Functions を**全て追加で保持する**
+（主催者は参加者のスーパーセット）。以下は主催者に**固有追加**される機能のみを示す。
 
 1. Discover: F5
 2. Entry: F16, F17, F18
@@ -90,6 +101,18 @@
 
 注記: F23/F26/F27/F32 は Shared / Platform として一次分類し、
 Participant/Organizer 側は「参照導線のみ」を持つ。
+
+### 5.4 Business / Monetization Functions (Affiliate)
+
+ADR-0049により、プラットフォーム運営者の収益源はアフィリエイトのみとする。
+機能定義は `USER_VALUE_ANALYTICS_CANON.md` の F33/F34 を正本とする。
+
+1. Organizer Setup 内文脈: F33 スタジオ推薦
+2. Song Entry 内文脈: F34 機材・譜面推薦
+
+原則: これらは既存動線に文脈依存で挿入する推薦であり、独立した広告ページを持たない。
+収益条件（提携有無、手数料）は成立判定、推薦順位、参加資格に一切影響しない
+（§9 境界を参照）。
 
 ## 6. Page Blueprint
 
@@ -111,13 +134,15 @@ Participant/Organizer 側は「参照導線のみ」を持つ。
 4. UX Responsibility: 条件を比較しやすい単位で提示する、初参加者向けの不安を隠さず明示する
 5. Supports: F1, F9, F10, F11, F12, F13
 
-### P2 Participant Entry
+### P2 Participant Join
 
-1. URL: `/participant/entry`
-2. Primary Decision: 会への参加登録と最初の曲別エントリーを完了する
-3. Target Psychological Barrier: 参加登録と曲別エントリーの違いが分からない不安、自分が参加してよいか過度に技術面で悩む不安
-4. UX Responsibility: EventParticipationとSongEntryを分けて提示する、参加可能パート・通知可否・担当上限を登録させる、参加締切を明示する、技術審査ではないことを明示する
-5. Supports: F2, F3, F14, F15
+1. URL: `/participant/join`
+2. Primary Decision: 会への参加登録（EventParticipation）を完了する
+3. Target Psychological Barrier: 自分が参加してよいか過度に技術面で悩む不安、送信不安
+4. UX Responsibility: 参加可能パート・通知可否・担当上限を登録させる、参加締切を明示する、
+   技術審査ではないことを明示する、登録後は曲別エントリー（P22 Song Entry, `/songs/entry`）
+   へ進む導線を提示するが強制しない（ADR-0049 §3: EventParticipationとSongEntryは別面）
+5. Supports: F3, F15
 
 ### P3 Participant Build
 
@@ -273,13 +298,25 @@ Participant/Organizer 側は「参照導線のみ」を持つ。
 4. UX Responsibility: KPIや進捗を次回に引き継ぐ、離脱理由を言語化できるようにする
 5. Supports: F8, F28, F29, F30, F31
 
+### P22 Song Entry
+
+1. URL: `/songs/entry`
+2. Primary Decision: 特定曲の空きスロットへSongEntryを確定する
+3. Target Psychological Barrier: 送信不安、担当負荷が上振れする不安、演奏技術を審査されるのではという不安
+4. UX Responsibility: 必須/任意・募集人数・現在の担当者を`■`/`△`で提示する
+   （ADR-0046 §4）、確定後の担当負荷を事前提示する、締切前は変更可能を明示する、
+   演奏技術を評価しない旨を明示する、直接エントリーと推薦経由エントリーを区別する、
+   会準備の文脈でF34（機材・譜面推薦）を提示できる（§5.4、断定回避・成立判定への
+   不関与を条件とする）
+5. Supports: F2, F14, F34
+
 ## 7. Final Sitemap (Target Architecture)
 
 ### 7.1 Core Routes
 
 1. `/`
 2. `/participant/discover`
-3. `/participant/entry`
+3. `/participant/join`
 4. `/participant/build`
 5. `/participant/run`
 6. `/participant/review`
@@ -297,6 +334,7 @@ Participant/Organizer 側は「参照導線のみ」を持つ。
 18. `/organizer/rescue`
 19. `/run/recovery`
 20. `/review/retention`
+21. `/songs/entry`
 
 ### 7.2 Governance / Business Routes
 
@@ -313,13 +351,14 @@ Participant/Organizer 側は「参照導線のみ」を持つ。
 ### 8.1 Wave 1 (MVP)
 
 1. `/participant/discover`
-2. `/participant/entry`
-3. `/organizer/setup`
-4. `/organizer/build`
-5. `/organizer/run`
-6. `/emergency`
-7. `/participant/trust-fit`
-8. `/run/recovery`
+2. `/participant/join`
+3. `/songs/entry`
+4. `/organizer/setup`
+5. `/organizer/build`
+6. `/organizer/run`
+7. `/emergency`
+8. `/participant/trust-fit`
+9. `/run/recovery`
 
 ### 8.2 Wave 2
 
@@ -346,10 +385,12 @@ Participant/Organizer 側は「参照導線のみ」を持つ。
 2. `/emergency` は F26 の正本入力面とする。
 3. `/community/health` は運営向け参照面とし、一般公開は集約情報に限定する。
 4. Participant/Organizer ページでの F23/F26 は「要約表示 + 正本ページ遷移」のみ許可する。
-5. `/participant/entry` は EventParticipation と SongEntry の境界を明示し、参加可能パート、成立支援通知可否、担当上限を参加登録時に取得する。参加締切後は演奏参加登録を受け付けず、当日参加導線として再利用しない。
+5. `/participant/join` は EventParticipation 専用面とし、参加可能パート、成立支援通知可否、担当上限を参加登録時に取得する。参加締切後は演奏参加登録を受け付けず、当日参加導線として再利用しない。SongEntryは同一ページに統合せず `/songs/entry`（P22）に分離する（ADR-0049 §3）。
 6. `/organizer/rescue` は機械推薦の確認と例外処理に限定し、通常時の個別声かけ業務を主催者責務として復活させない。
 7. `dry_run`、推薦通知エンジンの実行切替、全体またはイベント単位の停止判断は Platform Super User 権限であり、主催者ページへ露出しない。
 8. 静的モックは `platform/mockups/static_site/README.md` の route mapping を正本とし、`.html` ファイル名は本番URLではなく、Sitemap抽象ルートの検証用ページとして扱う。
+9. 主催者面（`/organizer/*`）は参加者面（`/participant/*`, `/songs/*`, `/timeline`, `/emergency`）への**加算**であり、置き換えではない（ADR-0049 §2）。主催者ロールを持つユーザーの参加者導線（ナビゲーション、演奏エントリー、緊急連絡）を、主催者コンソールへの遷移によって失わせてはならない。
+10. アフィリエイト機能（F33/F34, §5.4）は独立ページを持たず、既存ページ（`/organizer/setup`, `/songs/entry`）の文脈内に挿入する。収益条件（提携有無、手数料）は成立判定、推薦順位、参加資格、公平性ロジックに一切参照・影響してはならない（ADR-0049 §1）。
 
 ## 10. Minimum Acceptance Contract
 
@@ -374,6 +415,8 @@ Participant/Organizer 側は「参照導線のみ」を持つ。
 
 1. F1-F32 の全機能に Primary Page が1つ割り当てられている。
 2. Shared機能 F23/F26/F32 は Canonical Page が1つ定義されている。
+3. Business/Monetization機能 F33/F34（ADR-0049）は既存ページへの文脈内挿入として
+   割り当てられ、独立ページを持たない（§12.4）。
 
 ### 11.2 Operational Coverage
 
@@ -400,10 +443,11 @@ Participant/Organizer 側は「参照導線のみ」を持つ。
 1. F1, F9, F12 -> `/participant/discover`
 2. F10 -> `/participant/access-planner`
 3. F11, F13 -> `/participant/trust-fit`
-4. F2, F3, F14, F15 -> `/participant/entry`
-5. F4, F20 -> `/participant/build`
-6. F24, F25 -> `/participant/run`
-7. F28, F30 -> `/participant/review`
+4. F3, F15 -> `/participant/join`
+5. F2, F14 -> `/songs/entry`
+6. F4, F20 -> `/participant/build`
+7. F24, F25 -> `/participant/run`
+8. F28, F30 -> `/participant/review`
 
 ### 12.2 Organizer
 
@@ -420,6 +464,11 @@ Participant/Organizer 側は「参照導線のみ」を持つ。
 2. F26 -> `/emergency` and `/run/recovery`
 3. F27 -> `/platform/notification-gate`
 4. F32 -> `/community/health`
+
+### 12.4 Business / Monetization (Affiliate)
+
+1. F33 -> `/organizer/setup`（文脈内挿入、独立ページなし）
+2. F34 -> `/songs/entry`（文脈内挿入、独立ページなし）
 
 ## 13. Governance
 

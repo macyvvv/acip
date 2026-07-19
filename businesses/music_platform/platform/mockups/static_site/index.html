@@ -4,59 +4,59 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>music platform</title>
-  <link rel="stylesheet" href="./assets/styles.css">
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
   <main class="shell">
     <header class="topbar">
-      <div class="brand">music platform<small>バンオフ体験の近代化</small></div>
-      <a class="pill emergency-pill" href="./emergency/index.html">緊急連絡</a>
+      <a class="brand" href="index.html">music platform<small>music session</small></a>
+      <a class="pill emergency-pill" href="emergency/index.html">緊急連絡</a>
     </header>
-    <section class="page stack">
-      <div class="hero">
-        <div class="eyebrow">Mobile first band-off flow</div>
-        <h1>演奏したい人が、空きパートを見て、締切前に参加できる。</h1>
-        <p class="lead">従来のバンオフ的な曲・パート成立体験を、スマホ前提、締切明確、技術評価なし、機械的な未成立救済で扱う。</p>
+    <section class="page">
+      <div class="hero home-hero">
+        <div class="eyebrow">次に進む</div>
+        <h1>どちらで使いますか？</h1>
         <div class="actions">
-          <a class="action accent" href="./events/index.html">参加できる会を探す</a>
-          <a class="action secondary" href="./organizer/setup.html">主催者として準備する</a>
-        </div>
-        <div class="meta">
-          <span>技術審査なし</span>
-          <span>飛び入り演奏なし</span>
-          <span>■ 参加済み / △ 空き</span>
-        </div>
-        <div class="hero-tools">
-          <button class="help" type="button" aria-expanded="false">この画面の見方<span class="help-tip"><b>説明は補助情報</b>画面上に残るカードは責務・状態。補足説明はこのようなフローティングで確認する。</span></button>
+          <a class="action accent" href="auth/participant.html">参加する</a>
+          <a class="action secondary" href="auth/organizer.html">主催する</a>
         </div>
       </div>
-      <div class="grid three">
-        <article class="card record-panel">
-          <div class="section-label">保存される内容</div>
-          <h3>責務として残る情報</h3>
-          <p>参加可能パート、通知可否、担当上限、締切、曲への参加登録、推薦監査ログ。</p>
+      <div class="grid two">
+        <article class="card">
+          <div class="section-label">参加中</div>
+          <h2>8/24 渋谷アニソンセッション</h2>
+          <ul class="state-list">
+            <li><b>締切</b><span>参加 8/10 / 曲 8/13</span></li>
+            <li><b>曲</b><span>12成立 / 4不足</span></li>
+            <li><b>あなた</b><span>ログイン前</span></li>
+          </ul>
+          <div class="actions">
+            <a class="action accent" href="auth/participant.html">参加登録</a>
+            <a class="action secondary" href="events/show.html">会の詳細</a>
+          </div>
         </article>
-        <article class="card state-panel">
-          <div class="section-label">現在の状態</div>
-          <h3>今の状態</h3>
-          <p>参加登録済み、締切前、空き枠あり、推薦承諾待ち、当日変更あり。</p>
+        <article class="card">
+          <div class="section-label">未返信</div>
+          <h2>推薦 1件</h2>
+          <ul class="state-list">
+            <li><b>曲</b><span>Butter-Fly</span></li>
+            <li><b>パート</b><span>Ba</span></li>
+            <li><b>期限</b><span>8/14 12:00</span></li>
+          </ul>
+          <div class="actions">
+            <a class="action accent" href="auth/participant.html">返答する</a>
+          </div>
         </article>
       </div>
-      <article class="next-action">
-        <div class="section-label">次にやること</div>
-        <h2>まず参加者導線を確認する</h2>
-        <p>Home → Events → Event Detail → Join → Songs → 曲への参加登録 → My の順に確認する。</p>
-        <div class="actions"><a class="action accent" href="./events/index.html">Eventsへ進む</a></div>
-      </article>
     </section>
   </main>
   <nav class="bottom-nav">
-    <a class="active" href="./index.html">Home</a>
-    <a href="./events/index.html">Events</a>
-    <a href="./songs/index.html">Songs</a>
-    <a href="./participant/my.html">My</a>
-    <a href="./emergency/index.html">Emergency</a>
+    <a class="active" href="index.html">Home</a>
+    <a href="events/index.html">Events</a>
+    <a href="songs/index.html">Songs</a>
+    <a href="participant/my.html">My</a>
+    <a href="emergency/index.html">Emergency</a>
   </nav>
-  <script src="./assets/app.js"></script>
+  <script src="assets/app.js"></script>
 </body>
 </html>

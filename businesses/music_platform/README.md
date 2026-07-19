@@ -26,11 +26,13 @@ Business canonical root placeholder.
 - [Static Mock User Review Plan](platform/docs/STATIC_MOCK_USER_REVIEW_PLAN.md)
 - [Static Mock Execution Report](platform/docs/STATIC_MOCK_EXECUTION_REPORT.md)
 - [ADR-0046: Participation and Automated Formation Support](../../platform/adr/ADR-0046-music-platform-participation-and-automated-formation-support.md)
+- [ADR-0049: Business Model and Role Refinement](../../platform/adr/ADR-0049-music-platform-business-model-and-role-refinement.md)
 - [Static Site Mock](platform/mockups/static_site/README.md)
 
 Current doc ownership:
 
 - `ADR-0046` is the decision source for participation, song entries, automated formation support, and responsibility boundaries.
+- `ADR-0049` amends `ADR-0046`'s responsibility model (Organizer is a superset of Participant, not exclusive) and adds the affiliate-only business model; see its Amendment section in `ADR-0046` for the exact scope.
 - `SITEMAP.md` is the information architecture source.
 - `platform/mockups/static_site/` is a static UX-order mock only; it is not the production route, API, auth, or notification implementation.
 - `USER_VALUE_ANALYTICS_CANON.md` is the value, analytics, and function backlog source.

@@ -3,67 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Join event</title>
+  <title>参加登録</title>
   <link rel="stylesheet" href="../assets/styles.css">
+  <meta http-equiv="refresh" content="0; url=entry.html">
 </head>
 <body>
   <main class="shell">
-    <header class="topbar">
-      <a class="pill" href="../events/show.html">← Event</a>
-      <a class="pill emergency-pill" href="../emergency/index.html">緊急連絡</a>
-    </header>
-    <section class="page stack">
+    <section class="page">
       <div class="hero">
-        <div class="eyebrow">会への参加登録</div>
-        <h1>まず会への参加を確定する。</h1>
-        <p class="lead">この時点で参加可能パートを登録する。これが機械的な未成立救済の前提になる。</p>
-        <div class="assurance">これは技術評価ではない。参加できる可能性のあるパートを、本人の判断で登録する。</div>
-        <div class="notice warning">参加締切: 8/10 23:59。締切後は新規演奏参加登録不可。</div>
-        <div class="hero-tools">
-          <button class="help" type="button" aria-expanded="false">パート登録とは<span class="help-tip"><b>補足</b>機械推薦の条件として使う。演奏技術の評価やランクではない。</span></button>
-        </div>
+        <h1>参加登録へ移動します</h1>
+        <div class="actions"><a class="action accent" href="entry.html">参加登録へ</a></div>
       </div>
-      <div class="page-layout">
-        <form class="card form-grid">
-          <div class="section-label">保存する内容</div>
-          <label>メインパート
-            <select><option>ギター</option><option>ボーカル</option><option>ベース</option><option>ドラム</option><option>キーボード/ピアノ</option></select>
-          </label>
-          <label>その他できるパート
-            <input value="コーラス, ベース">
-          </label>
-          <label>参加可能日程
-            <select><option>終日参加できる</option><option>前半のみ参加できる</option><option>後半のみ参加できる</option></select>
-          </label>
-          <label>成立支援通知
-            <select><option>受け取る。断ってもよい</option><option>受け取らない</option></select>
-          </label>
-          <label>最大担当曲数
-            <select><option>2曲まで</option><option>3曲まで</option><option>1曲だけ</option></select>
-          </label>
-          <div class="actions">
-            <a class="action accent" href="../songs/index.html">会への参加登録を保存して曲を見る</a>
-            <a class="action secondary" href="../events/show.html">戻る</a>
-          </div>
-        </form>
-        <aside class="stack">
-          <div class="state-panel">
-            <div class="section-label">現在の状態</div>
-            <ul class="state-list">
-              <li><b>参加</b><span>未登録</span></li>
-              <li><b>締切</b><span>受付中</span></li>
-              <li><b>次</b><span>保存後に曲への参加登録へ進める</span></li>
-            </ul>
-          </div>
-        </aside>
-      </div>
-      <article class="next-action compact">
-        <div class="section-label">次にやること</div>
-        <h2>参加可能パートと日程を保存する</h2>
-        <p>保存後に、曲ごとの空きスロットを選べる。</p>
-      </article>
     </section>
   </main>
-  <script src="../assets/app.js"></script>
 </body>
 </html>
