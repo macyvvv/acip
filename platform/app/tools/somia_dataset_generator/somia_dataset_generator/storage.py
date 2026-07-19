@@ -20,5 +20,11 @@ def atomic_write_text(path: Path, content: str) -> None:
 def write_jsonl(path: Path, rows: list[dict]) -> None:
     atomic_write_text(path, "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows))
 
+def read_jsonl(path: Path) -> list[dict]:
+    if not path.exists():
+        return []
+    with path.open("r", encoding="utf-8") as fh:
+        return [json.loads(line) for line in fh if line.strip()]
+
 def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
