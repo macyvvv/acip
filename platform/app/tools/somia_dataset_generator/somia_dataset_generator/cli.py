@@ -39,7 +39,9 @@ def main():
             report = validate_run(Path(args.runs) / args.run_id)
             print(
                 f"run {args.run_id}: {report['accepted']} accepted, {report['rejected']} rejected, "
-                f"coverage_violations={len(report['coverage_violations'])}"
+                f"near_duplicate_groups={len(report['near_duplicate_groups'])}, "
+                f"coverage_violations={len(report['coverage_violations'])}, "
+                f"pairwise_coverage_violations={len(report['pairwise_coverage_violations'])}"
             )
         elif args.character:
             validate_character(character_spec_path(args.character))

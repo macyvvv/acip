@@ -39,3 +39,27 @@ jobs:
         run: python -m somia_dataset_generator plan --character airi --count 4 --runs .ci-runs
       - name: Generate --dry-run (Airi, count=3, no API key required)
         run: python -m somia_dataset_generator generate --character airi --count 3 --dry-run --runs .ci-runs
+
+  wheel:
+    # Builds a real wheel and runs it from an installed, non-editable location
+    # outside the source checkout. An editable install (the `test` job above)
+    # would silently pass even if specs/schemas/config weren't packaged into
+    # the wheel as package data -- this catches that class of bug.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build wheel
+        run: python -m pip install --upgrade pip build && python -m build --wheel --outdir dist
+      - name: Install wheel into a clean venv
+        run: |
+          python -m venv /tmp/wheel-verify-venv
+          /tmp/wheel-verify-venv/bin/pip install dist/*.whl
+      - name: Run CLI from outside the source checkout
+        working-directory: /tmp
+        run: |
+          /tmp/wheel-verify-venv/bin/somia-dataset validate --character airi
+          /tmp/wheel-verify-venv/bin/somia-dataset plan --character airi --count 4 --runs /tmp/wheel-verify-runs
+          /tmp/wheel-verify-venv/bin/somia-dataset generate --character airi --count 3 --dry-run --runs /tmp/wheel-verify-runs

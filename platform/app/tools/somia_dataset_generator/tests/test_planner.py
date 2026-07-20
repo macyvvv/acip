@@ -1,5 +1,11 @@
 from somia_dataset_generator.paths import character_spec_path
-from somia_dataset_generator.planner import coverage_report, coverage_violations, create_plan
+from somia_dataset_generator.planner import (
+    coverage_report,
+    coverage_violations,
+    create_plan,
+    pairwise_coverage_report,
+    pairwise_coverage_violations,
+)
 from somia_dataset_generator.validation import validate_character
 
 
@@ -86,3 +92,34 @@ def test_coverage_violations_empty_when_minimum_not_set():
     report = {"framing": {"close": 0}}
     policy = {"dimensions": {"framing": {"close": 1}}, "constraints": {}}
     assert coverage_violations(report, policy) == []
+
+
+def test_pairwise_coverage_report_counts_bucket_combinations():
+    records = [
+        {"dimensions": {"framing": "close", "angle": "front"}},
+        {"dimensions": {"framing": "close", "angle": "front"}},
+        {"dimensions": {"framing": "full", "angle": "profile"}},
+    ]
+    report = pairwise_coverage_report(records, ["framing", "angle"])
+    assert report == {"framing*angle": {"close*front": 2, "full*profile": 1}}
+
+
+def test_pairwise_coverage_report_has_no_entry_for_a_missing_pair_dimension():
+    records = [{"dimensions": {"framing": "close"}}]
+    report = pairwise_coverage_report(records, ["framing", "angle"])
+    assert report == {"framing*angle": {}}
+
+
+def test_pairwise_coverage_violations_flags_missing_combinations():
+    policy = {
+        "dimensions": {"framing": {"close": 1, "full": 1}, "angle": {"front": 1}},
+        "constraints": {"minimum_per_pair_bucket": 1},
+    }
+    pairwise = {"framing*angle": {"close*front": 1}}
+    violations = pairwise_coverage_violations(pairwise, policy)
+    assert violations == ["framing*angle: full*front = 0 accepted, minimum 1 required"]
+
+
+def test_pairwise_coverage_violations_empty_when_minimum_not_set():
+    policy = {"dimensions": {"framing": {"close": 1}, "angle": {"front": 1}}, "constraints": {}}
+    assert pairwise_coverage_violations({}, policy) == []

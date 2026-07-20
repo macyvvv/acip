@@ -1,3 +1,4 @@
+from itertools import combinations
 import random
 
 from .models import PlanItem
@@ -72,6 +73,55 @@ def coverage_violations(coverage: dict[str, dict[str, int]], policy: dict) -> li
                 violations.append(
                     f"{dimension_name}.{bucket_name}: {actual} accepted, minimum {minimum} required"
                 )
+    return violations
+
+
+def pairwise_coverage_report(records: list[dict], dimension_names: list[str]) -> dict[str, dict[str, int]]:
+    """Tally counts for every (bucket_a, bucket_b) combination across each
+    unordered pair of dimensions. A marginal per-dimension report can hide a
+    real gap -- e.g. profile_left always paired with full_body and never
+    with close_up, even though both buckets individually meet their minimum
+    -- so this is a finer-grained check on top of coverage_report(), not a
+    replacement for it."""
+    report: dict[str, dict[str, int]] = {}
+    for dim_a, dim_b in combinations(dimension_names, 2):
+        pair_key = f"{dim_a}*{dim_b}"
+        counts: dict[str, int] = {}
+        for record in records:
+            dimensions = record["dimensions"]
+            bucket_a = dimensions.get(dim_a)
+            bucket_b = dimensions.get(dim_b)
+            if bucket_a is None or bucket_b is None:
+                continue
+            combo_key = f"{bucket_a}*{bucket_b}"
+            counts[combo_key] = counts.get(combo_key, 0) + 1
+        report[pair_key] = counts
+    return report
+
+
+def pairwise_coverage_violations(pairwise_coverage: dict[str, dict[str, int]], policy: dict) -> list[str]:
+    """Returns human-readable violation messages for any (bucket_a, bucket_b)
+    combination whose accepted count is below
+    constraints.minimum_per_pair_bucket. Disabled (returns []) unless the
+    policy sets a positive threshold -- opt-in the same way
+    minimum_per_bucket is, since a full pairwise grid can be large relative
+    to a small/smoke-test count."""
+    minimum = policy.get("constraints", {}).get("minimum_per_pair_bucket", 0)
+    if minimum <= 0:
+        return []
+    violations: list[str] = []
+    dims = policy["dimensions"]
+    for dim_a, dim_b in combinations(dims, 2):
+        pair_key = f"{dim_a}*{dim_b}"
+        counted = pairwise_coverage.get(pair_key, {})
+        for bucket_a in dims[dim_a]:
+            for bucket_b in dims[dim_b]:
+                combo_key = f"{bucket_a}*{bucket_b}"
+                actual = counted.get(combo_key, 0)
+                if actual < minimum:
+                    violations.append(
+                        f"{pair_key}: {combo_key} = {actual} accepted, minimum {minimum} required"
+                    )
     return violations
 
 
