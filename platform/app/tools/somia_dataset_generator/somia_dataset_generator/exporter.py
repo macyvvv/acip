@@ -6,13 +6,33 @@ import json
 import shutil
 
 from .config import load_yaml
-from .paths import runtime_config_path
+from .paths import character_spec_path, runtime_config_path
 from .run import mark_exported, read_run_state
 from .storage import atomic_write_text, read_jsonl
 
 
 def _prompt_sha256(prompt: str) -> str:
     return hashlib.sha256(prompt.encode("utf-8")).hexdigest()
+
+
+def _caption_prefix(character_id: str, cache: dict) -> list[str]:
+    """Prompt Builder v2 design doc §4: the export caption should lead with
+    `caption.identity_token` + `caption.fixed_tags` when the character spec
+    declares them, instead of the raw `character_id` -- `trigger_token`'s
+    only plausible real use is as this caption token. Falls back to the
+    original `[character_id]` prefix if the spec can't be loaded or doesn't
+    declare a `caption` object, so a caption-metadata problem never blocks
+    export of already-accepted images."""
+    if character_id not in cache:
+        try:
+            spec = load_yaml(character_spec_path(character_id))
+            caption = spec.get("caption") or {}
+            identity_token = caption.get("identity_token")
+            fixed_tags = caption.get("fixed_tags") or []
+            cache[character_id] = [identity_token, *fixed_tags] if identity_token else [character_id]
+        except (FileNotFoundError, ValueError):
+            cache[character_id] = [character_id]
+    return cache[character_id]
 
 
 def export_run(run_dir: Path) -> Path:
@@ -41,12 +61,13 @@ def export_run(run_dir: Path) -> Path:
     accepted_rows = [row for row in review_rows if row["accepted"]]
 
     manifest_entries = []
+    caption_prefix_cache: dict = {}
     for row in accepted_rows:
         src = run_dir / row["image"]
         dst = images_dir / src.name
         shutil.copy2(src, dst)
 
-        caption = ", ".join([row["character_id"], *row["dimensions"].values()])
+        caption = ", ".join([*_caption_prefix(row["character_id"], caption_prefix_cache), *row["dimensions"].values()])
         (captions_dir / f"{src.stem}.txt").write_text(caption, encoding="utf-8")
 
         prompt = row.get("prompt") or ""

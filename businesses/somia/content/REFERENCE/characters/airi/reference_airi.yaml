@@ -1,0 +1,100 @@
+version: 2.0
+status: approved
+character_id: airi
+priority: canonical
+
+reference_images:
+  - reference_primary.png
+  - reference_secondary.png
+
+specification:
+  path: specs/characters/airi.yaml
+
+authority:
+  order:
+    - reference.yaml
+    - reference_images
+    - character_specification
+    - generator_prompt
+    - generated_output
+
+identity:
+  age: adult
+  personality:
+    - quiet
+    - gentle
+    - emotionally_reserved
+    - introspective
+    - kind
+
+appearance:
+  face:
+    jaw: softly_rounded
+    cheeks: soft
+    chin: delicate
+    nose: refined
+    lips: natural
+    skin: fair_translucent
+    eyes:
+      size: large
+      eyelashes: long
+      impression:
+        - gentle
+        - fragile
+        - calm
+
+  hair:
+    authority: reference_images
+    note: Hair length, silhouette and style are defined by the approved reference images.
+
+  body:
+    silhouette: slender_feminine
+    shoulders: narrow
+    neck: slender
+    collarbone: graceful
+
+emotion:
+  primary:
+    - fragile
+    - gentle
+    - calm
+    - quietly_lonely
+  secondary:
+    - reassuring
+    - introspective
+
+must_preserve:
+  - identity
+  - hairstyle
+  - hair_color
+  - facial_structure
+  - eye_color
+  - emotional_tone
+
+allowed_variation:
+  - expression
+  - pose
+  - camera
+  - composition
+  - lighting
+  - background
+
+prohibited:
+  - childlike_appearance
+  - masculine_facial_structure
+  - bishounen_proportions
+  - exaggerated_sexualization
+
+lora:
+  reject_if:
+    - childlike
+    - masculine
+    - identity_break
+    - hairstyle_mismatch
+    - facial_structure_mismatch
+
+revision:
+  version: 2.0
+  summary:
+    - Reference images are now the canonical authority.
+    - Character specification must conform to this file.
