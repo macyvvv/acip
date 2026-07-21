@@ -126,6 +126,74 @@ def test_missing_fields_fixture_yields_not_found_everywhere() -> None:
 
     assert fields["page_title"].confidence == "not_found"
     assert fields["phone"].confidence == "not_found"
+    assert fields["sns_urls"].confidence == "not_found"
+
+
+# -- SNS link extraction ------------------------------------------------
+# Regression: found for real against 3 of the 4 Ueno pilot stores (esora,
+# のわ, Voyage) -- their official pages had real X/Twitter links in
+# <a href>, but extract_fields() never looked for them at all, so
+# store_sns stayed empty even though the data was already fetched and
+# cached. See artifacts/census-pivot-2026-07-21/ for how this was found.
+
+
+def test_sns_links_are_extracted_and_deduped_by_platform() -> None:
+    html = (FIXTURES / "sns_links_page.html").read_text(encoding="utf-8")
+    fields = collect.extract_fields(html)
+
+    assert fields["sns_urls"].confidence == "extracted"
+    sns = json.loads(fields["sns_urls"].value)
+    platforms = {entry["platform"] for entry in sns}
+    assert platforms == {"x", "instagram", "line"}
+
+
+def test_sns_link_query_string_and_fragment_are_stripped() -> None:
+    html = (FIXTURES / "sns_links_page.html").read_text(encoding="utf-8")
+    sns = collect.extract_sns_urls(html)
+
+    x_entry = next(entry for entry in sns if entry["platform"] == "x")
+    assert x_entry["url"] == "https://twitter.com/example_store"
+
+
+def test_non_sns_links_are_not_captured() -> None:
+    html = (FIXTURES / "sns_links_page.html").read_text(encoding="utf-8")
+    sns = collect.extract_sns_urls(html)
+
+    assert all("example-unrelated-blog" not in entry["url"] for entry in sns)
+
+
+def test_malformed_double_url_is_rejected_in_favor_of_the_clean_one() -> None:
+    # Regression: のわ's real lit.link page contains
+    # href="https://www.instagram.com/https:nowa_concafe/" (a mis-pasted
+    # handle) BEFORE the correct .../nowa_concafe/ elsewhere on the page.
+    html = (
+        '<a href="https://www.instagram.com/https:nowa_concafe/">broken, appears first</a>'
+        '<a href="https://www.instagram.com/nowa_concafe/">correct, appears second</a>'
+    )
+    sns = collect.extract_sns_urls(html)
+
+    instagram = next(entry for entry in sns if entry["platform"] == "instagram")
+    assert instagram["url"] == "https://www.instagram.com/nowa_concafe"
+
+
+def test_cdn_media_asset_on_lit_link_subdomain_is_not_captured() -> None:
+    # Regression: lit.link's own asset CDN (prd.storage.lit.link) serves
+    # images, not profile pages, but "endswith .lit.link" matched it.
+    html = (
+        '<a href="https://prd.storage.lit.link/images/creator/abc/def.png">not a profile</a>'
+        '<a href="https://lit.link/en/nowa0709">the real profile</a>'
+    )
+    sns = collect.extract_sns_urls(html)
+
+    assert [entry["platform"] for entry in sns] == ["lit.link"]
+    assert sns[0]["url"] == "https://lit.link/en/nowa0709"
+
+
+def test_clean_fixture_has_no_sns_links() -> None:
+    html = (FIXTURES / "clean_store_page.html").read_text(encoding="utf-8")
+    fields = collect.extract_fields(html)
+
+    assert fields["sns_urls"].confidence == "not_found"
 
 
 # -- draft assembly -----------------------------------------------------------
@@ -142,6 +210,17 @@ def test_draft_is_explicitly_marked_not_a_valid_store_artifact() -> None:
     assert "reliability_score" not in draft
     assert set(collect.ALWAYS_NEEDS_REVIEW) <= set(draft["needs_review"])
     assert draft["phone"] == "03-1234-5678"
+
+
+def test_draft_includes_sns_urls_when_present() -> None:
+    html = (FIXTURES / "sns_links_page.html").read_text(encoding="utf-8")
+    draft = collect.draft_store_artifact(
+        "sns-store-001", "https://example-store.invalid/", html, "2026-07-21T00:00:00Z"
+    )
+
+    assert "sns_urls" not in draft["needs_review"]
+    platforms = {entry["platform"] for entry in draft["sns_urls"]}
+    assert platforms == {"x", "instagram", "line"}
 
 
 def test_next_recheck_due_is_provisional_interval_from_retrieval() -> None:

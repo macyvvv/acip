@@ -70,10 +70,25 @@ def enrich_store_from_url(
         (store_id, timestamp, url, url),
     )
 
+    sns_urls = draft.get("sns_urls", [])
+    for entry in sns_urls:
+        conn.execute(
+            "INSERT INTO store_sns (store_id, platform, url) VALUES (?, ?, ?) "
+            "ON CONFLICT(store_id, platform) DO UPDATE SET url = excluded.url",
+            (store_id, entry["platform"], entry["url"]),
+        )
+    if sns_urls:
+        conn.execute(
+            "INSERT INTO store_change_log (store_id, changed_at, field, previous_value, new_value, "
+            "change_type, source_url) VALUES (?, ?, 'sns_urls', NULL, ?, 'sns_change', ?)",
+            (store_id, timestamp, json.dumps(sns_urls, ensure_ascii=False), url),
+        )
+
     return {
         "store_id": store_id,
         "outcome": "has_official_source",
         "needs_review": draft["needs_review"],
+        "sns_urls": sns_urls,
         "draft_path": str(cache_root / f"{store_id}.draft.json"),
     }
 

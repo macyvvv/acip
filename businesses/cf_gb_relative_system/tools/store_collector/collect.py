@@ -146,6 +146,68 @@ class _TitleMetaParser(HTMLParser):
             self.title = (self.title or "") + data
 
 
+_HREF_RE = re.compile(r'href=["\'](https?://[^"\']+)["\']', re.IGNORECASE)
+
+# (domain suffix, platform label, allow_subdomains). lit.link's own CDN
+# asset host (prd.storage.lit.link) is a real subdomain that serves images,
+# not a profile -- found for real against のわ's page -- so lit.link
+# requires an exact netloc match, not "endswith .lit.link".
+_SNS_DOMAIN_PLATFORMS = (
+    ("twitter.com", "x", True),
+    ("x.com", "x", True),
+    ("instagram.com", "instagram", True),
+    ("line.me", "line", True),
+    ("lin.ee", "line", True),
+    ("facebook.com", "facebook", True),
+    ("tiktok.com", "tiktok", True),
+    ("lit.link", "lit.link", False),
+)
+
+_MEDIA_EXTENSIONS = (".png", ".jpg", ".jpeg", ".gif", ".webp", ".svg", ".mp4", ".mov")
+
+
+def _detect_sns_platform(url: str) -> str | None:
+    netloc = urlparse(url).netloc.lower()
+    if netloc.startswith("www."):
+        netloc = netloc[4:]
+    for domain, platform, allow_subdomains in _SNS_DOMAIN_PLATFORMS:
+        if netloc == domain or (allow_subdomains and netloc.endswith("." + domain)):
+            return platform
+    return None
+
+
+def _looks_like_valid_sns_link(url: str) -> bool:
+    """Reject two real-world garbage patterns found against actual Ueno
+    pilot pages: a CDN media asset mis-tagged as a platform link (lit.link's
+    prd.storage.lit.link/images/...), and a mis-pasted double URL where a
+    store entered "https:handle" as their own username on a link-in-bio
+    tool (のわ's page literally contains
+    href="https://www.instagram.com/https:nowa_concafe/" alongside the
+    correct .../nowa_concafe/ elsewhere on the same page)."""
+    path = urlparse(url).path.lower()
+    if path.endswith(_MEDIA_EXTENSIONS):
+        return False
+    if "http" in path:
+        return False
+    return True
+
+
+def extract_sns_urls(html: str) -> list[dict]:
+    """Find SNS links in <a href> attributes. Returns a deduped
+    platform->url list, sorted by platform for determinism. When multiple
+    candidate URLs exist for the same platform, prefers the first
+    valid-looking one over a malformed one that happens to appear earlier
+    in the page."""
+    found: dict[str, str] = {}
+    for href in _HREF_RE.findall(html):
+        platform = _detect_sns_platform(href)
+        if platform is None or not _looks_like_valid_sns_link(href):
+            continue
+        clean_url = href.split("?", 1)[0].split("#", 1)[0].rstrip("/")
+        found.setdefault(platform, clean_url)
+    return [{"platform": platform, "url": url} for platform, url in sorted(found.items())]
+
+
 _TEL_HREF_RE = re.compile(r'href=["\']tel:([+\d\-() ]+)["\']', re.IGNORECASE)
 # Negative lookaround excludes matches embedded inside a longer hyphenated
 # hex run (e.g. a UUID like "...29-1086-4173-9248-315b..." otherwise
@@ -186,6 +248,11 @@ def extract_fields(html: str) -> dict[str, ExtractedField]:
         fields["phone"] = ExtractedField(phone_matches[0].strip(), "ambiguous")
     else:
         fields["phone"] = ExtractedField("", "not_found")
+
+    sns_urls = extract_sns_urls(html)
+    fields["sns_urls"] = ExtractedField(
+        json.dumps(sns_urls, ensure_ascii=False), "extracted" if sns_urls else "not_found"
+    )
 
     for name in ALWAYS_NEEDS_REVIEW:
         fields[name] = ExtractedField("", "not_found")
@@ -280,6 +347,8 @@ def draft_store_artifact(store_id: str, url: str, html: str, retrieved_at: str) 
     }
     if fields["phone"].confidence == "extracted":
         draft["phone"] = fields["phone"].value
+    if fields["sns_urls"].confidence == "extracted":
+        draft["sns_urls"] = json.loads(fields["sns_urls"].value)
     return draft
 
 

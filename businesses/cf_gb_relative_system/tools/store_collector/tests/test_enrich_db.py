@@ -16,8 +16,8 @@ import enrich_db  # noqa: E402
 FIXTURES = Path(__file__).resolve().parents[1] / "tests" / "fixtures"
 
 
-def _fake_fetcher(status: int = 200):
-    body = (FIXTURES / "clean_store_page.html").read_text(encoding="utf-8")
+def _fake_fetcher(status: int = 200, fixture: str = "clean_store_page.html"):
+    body = (FIXTURES / fixture).read_text(encoding="utf-8")
 
     def fetcher(url: str, user_agent: str) -> collect.FetchResult:
         return collect.FetchResult(url=url, status=status, body=body)
@@ -60,6 +60,41 @@ def test_successful_enrich_promotes_tier_to_has_official_source(tmp_path: Path) 
     enrichment = conn.execute("SELECT official_url, phone FROM store_enrichment WHERE store_id = ?", (store_id,)).fetchone()
     assert enrichment["official_url"] == "https://example-store.invalid/"
     assert enrichment["phone"] == "03-1234-5678"
+
+
+def test_successful_enrich_writes_discovered_sns_links(tmp_path: Path) -> None:
+    # Regression: store_sns stayed empty in the real Ueno run even though
+    # 3 of 4 fetched pages had real SNS links -- extract_fields() never
+    # looked for them, so nothing ever reached this table.
+    conn, store_id = _censused_db(tmp_path)
+
+    result = enrich_db.enrich_store_from_url(
+        conn, store_id, "https://example-store.invalid/",
+        cache_root=tmp_path / "cache", fetcher=_fake_fetcher(fixture="sns_links_page.html"),
+    )
+
+    assert {entry["platform"] for entry in result["sns_urls"]} == {"x", "instagram", "line"}
+
+    rows = conn.execute("SELECT platform, url FROM store_sns WHERE store_id = ? ORDER BY platform", (store_id,)).fetchall()
+    assert [row["platform"] for row in rows] == ["instagram", "line", "x"]
+
+    log_types = [
+        row["field"]
+        for row in conn.execute("SELECT field FROM store_change_log WHERE store_id = ?", (store_id,))
+    ]
+    assert "sns_urls" in log_types
+
+
+def test_enrich_without_sns_links_writes_no_store_sns_rows(tmp_path: Path) -> None:
+    conn, store_id = _censused_db(tmp_path)
+
+    result = enrich_db.enrich_store_from_url(
+        conn, store_id, "https://example-store.invalid/",
+        cache_root=tmp_path / "cache", fetcher=_fake_fetcher(),  # clean_store_page.html, no SNS links
+    )
+
+    assert result["sns_urls"] == []
+    assert conn.execute("SELECT COUNT(*) FROM store_sns WHERE store_id = ?", (store_id,)).fetchone()[0] == 0
 
 
 def test_failed_fetch_does_not_touch_tier_or_write_enrichment(tmp_path: Path) -> None:
