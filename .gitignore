@@ -84,3 +84,9 @@ system/runtime/scheduler/audit/
 # (its sibling switch, which IS tracked normally).
 platform/system/runtime/scheduler/merge_circuit.json
 system/runtime/scheduler/merge_circuit.json
+
+# cf_gb_relative_system store_collector's local run output (raw fetched
+# HTML, fetch-attempt log, draft records) -- operator-run-locally only,
+# never wired into CI, and drafts are unverified/unconfirmed by design
+# until a human promotes them into data/stores/. Not source.
+businesses/cf_gb_relative_system/tools/store_collector/cache/

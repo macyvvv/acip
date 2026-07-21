@@ -1,0 +1,69 @@
+# store_collector
+
+Official-source-only store data collector for `cf_gb_relative_system`.
+Operator-run-locally only -- **never wired into CI execution**, and its
+output is never treated as a valid `schemas/store-artifact.json` record by
+itself. Stdlib only, no third-party dependencies.
+
+## What it does
+
+```
+python collect.py <store_id> <url>
+```
+
+1. Checks `artifacts/S-011/source-register.json` before doing anything.
+   Refuses (`SourceDenied`) if the URL's domain is on the deny list (the
+   named competitor aggregators), or if the `store-official-website` /
+   `store-official-sns` category review has expired -- fail-closed, same
+   principle as `templates/legal-policy.yaml`. **Never fetch a third-party
+   aggregator/listing site with this tool.** Only a store's own official
+   website or SNS page.
+2. Fetches the URL with a standard browser `User-Agent` header (plain
+   `urllib.request` -- several small-business sites 403 the default UA;
+   see `artifacts/ueno-pilot-2026-07-21/README.md` for how this was found).
+3. Caches the raw response under `cache/<store_id>.html`, and appends
+   every attempt -- success or failure -- to `cache/fetch_log.jsonl` with
+   `content_hash` (sha256), `http_status`, and `outcome`. Logging failures
+   too (not just successes) is deliberate: it's the only way to later
+   distinguish "we never found this store" from "we stopped trying."
+4. Runs best-effort extraction (page title, meta description, a phone
+   number pattern) and writes `cache/<store_id>.draft.json`.
+
+## The draft is not a store record
+
+`hours`, `pricing_model`, `price_items`, `address`, and `store_name` are
+**always** left in `needs_review` -- free-text HTML parsing cannot reliably
+turn them into the structured shapes `schemas/store-artifact.json`
+requires. `verification_method` and `reliability_score` are never set by
+this tool at all. A human (or an LLM reviewing the cached raw HTML) must:
+
+1. Read `cache/<store_id>.html` and the draft's `needs_review` list.
+2. Fill in every required `schemas/store-artifact.json` field by hand,
+   sourced from that same page (or reject the store if the page doesn't
+   actually support it).
+3. Explicitly choose `verification_method` (typically `official-site`) and
+   a `reliability_score` -- these represent a confirmed judgement, not a
+   raw scrape.
+4. Only then write `data/stores/<store_id>.json`.
+
+## Why this isn't in `app/`
+
+`app/requirements.lock` declares "no third-party runtime dependencies" as
+a promise about the *shipped product skeleton* (packaged by
+`app/build_artifact.py`). This tool makes live outbound HTTP requests and
+is an internal ops tool, not part of the release artifact -- keeping it in
+a sibling `tools/` directory means it can never accidentally get bundled,
+and its live-network nature never risks the `build-preview` CI job.
+
+## Testing
+
+`tests/` uses only local HTML fixtures and an injected fake fetcher --
+**no test in this directory makes a live HTTP request.** Run with:
+
+```
+python -m pytest businesses/cf_gb_relative_system/tools/store_collector/tests
+```
+
+`cache/` is gitignored (see repo-root `.gitignore`): it is real-run output,
+not source, and drafts are unverified by design until a human promotes
+them.

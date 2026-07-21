@@ -141,6 +141,11 @@
       "type": "string",
       "format": "uri"
     },
+    "phone": {
+      "type": "string",
+      "pattern": "^0[0-9]{1,4}-?[0-9]{1,4}-?[0-9]{3,4}$",
+      "description": "Store's own published contact number, from an official source only."
+    },
     "sns_urls": {
       "type": "array",
       "items": {
