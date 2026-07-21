@@ -147,7 +147,12 @@ class _TitleMetaParser(HTMLParser):
 
 
 _TEL_HREF_RE = re.compile(r'href=["\']tel:([+\d\-() ]+)["\']', re.IGNORECASE)
-_PHONE_TEXT_RE = re.compile(r"0\d{1,4}-\d{1,4}-\d{3,4}")
+# Negative lookaround excludes matches embedded inside a longer hyphenated
+# hex run (e.g. a UUID like "...29-1086-4173-9248-315b..." otherwise
+# false-positives as a phone number -- found for real against esora's and
+# のわ's pages, both Strikingly/lit.link builder platforms that embed
+# UUIDs in inline JSON).
+_PHONE_TEXT_RE = re.compile(r"(?<![0-9a-fA-F-])0\d{1,4}-\d{1,4}-\d{3,4}(?![0-9a-fA-F-])")
 
 
 @dataclass(frozen=True)

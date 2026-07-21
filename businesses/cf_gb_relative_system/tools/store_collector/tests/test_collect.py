@@ -100,6 +100,18 @@ def test_clean_fixture_extracts_title_description_and_unambiguous_phone() -> Non
     assert fields["phone"].value == "03-1234-5678"
 
 
+def test_phone_regex_does_not_match_uuid_fragments() -> None:
+    # Regression: found for real against esora's (Strikingly) and のわ's
+    # (lit.link) pages -- both embed page-builder UUIDs in inline JSON,
+    # and the old loose regex mis-extracted a fragment as a confident
+    # "extracted" phone number (086-4173-9248 / 054-6829-423), which would
+    # have skipped needs_review entirely.
+    html = '<html><body><script>{"id":"f_dfc8ff29-1086-4173-9248-315bbea1a"}</script></body></html>'
+    fields = collect.extract_fields(html)
+
+    assert fields["phone"].confidence == "not_found"
+
+
 def test_fields_requiring_structured_judgement_always_need_review() -> None:
     html = (FIXTURES / "clean_store_page.html").read_text(encoding="utf-8")
     fields = collect.extract_fields(html)
