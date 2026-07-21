@@ -12,7 +12,15 @@ already read, not from an automated request this tool makes.
 
 Input shape (one file per area):
     [{"name_raw": "...", "existence_confidence": "confirmed_exists"|"probable"|"unconfirmed",
-      "discovery_note": "..."}, ...]
+      "discovery_note": "...", "store_type": "concept_cafe"|"girls_bar"}, ...]
+
+`store_type` is optional -- omit it (defaults to "unknown") when the
+search results genuinely don't make it clear yet; set it whenever it's
+already obvious from which query/listing surfaced the name (a
+"ガールズバー" search result is a girls_bar) rather than leaving a fact
+you already have sitting unrecorded. See enrich_db.update_store_category()
+to set/correct store_type and concept_theme (e.g. "魔法学園", "水着",
+"うさぎ") later, independent of official-source enrichment.
 """
 
 from __future__ import annotations
@@ -73,13 +81,14 @@ def ingest_area_census(
             continue
 
         conn.execute(
-            "INSERT INTO stores (store_id, area_id, name_raw, discovery_method, discovered_at, "
+            "INSERT INTO stores (store_id, area_id, name_raw, store_type, discovery_method, discovered_at, "
             "existence_confidence, status, completeness_tier, created_at, updated_at) "
-            "VALUES (?, ?, ?, ?, ?, ?, 'unknown', 'known', ?, ?)",
+            "VALUES (?, ?, ?, ?, ?, ?, ?, 'unknown', 'known', ?, ?)",
             (
                 store_id,
                 area_id,
                 name_raw,
+                candidate.get("store_type", "unknown"),
                 candidate.get("discovery_method", "web-search"),
                 timestamp,
                 candidate.get("existence_confidence", "probable"),

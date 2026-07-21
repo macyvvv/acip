@@ -17,13 +17,20 @@ python census.py <area_id> <area_display_name> candidates/<area>_census.json
 
 Inserts a `stores` row per name at `completeness_tier='known'` -- name +
 area only, nothing else required. `candidates/*_census.json` is
-`[{"name_raw", "existence_confidence", "discovery_note"}, ...]`, compiled by
-a human/LLM web-search pass using **varied general search queries**, never
-by systematically paging through one aggregator site's full area listing
-(see `artifacts/S-011/source-register.json`'s `search-engine-discovery`
-entry, amended 2026-07-21, for the exact conditions this must satisfy).
-There is no search-API credential in this environment either way, so this
-step is never fully automated -- only the DB write is.
+`[{"name_raw", "existence_confidence", "discovery_note", "store_type"}, ...]`,
+compiled by a human/LLM web-search pass using **varied general search
+queries**, never by systematically paging through one aggregator site's
+full area listing (see `artifacts/S-011/source-register.json`'s
+`search-engine-discovery` entry, amended 2026-07-21, for the exact
+conditions this must satisfy). There is no search-API credential in this
+environment either way, so this step is never fully automated -- only the
+DB write is.
+
+`store_type` (`concept_cafe`/`girls_bar`) is optional but should be set
+whenever it's already obvious from the query that surfaced the name (a
+"ガールズバー" search result already tells you the type) -- omitting a
+fact you already have just means backfilling it later via
+`update_store_category()`.
 
 **Step 2 -- enrichment** (depth: optional, per store, whenever a verified
 official source exists):
@@ -64,6 +71,27 @@ python collect_batch.py candidates/<area>.json   # [{"store_id","url","name_hint
    UUIDs). Writes `official_url` + a confidently-extracted `phone` into
    `store_enrichment`, and promotes the store's `completeness_tier` from
    `known` to `has_official_source`. Nothing else is auto-written.
+
+## store_type and concept_theme
+
+`stores.store_type` (`concept_cafe`/`girls_bar`/`unknown`) and
+`store_enrichment.concept_theme` (free text, e.g. `魔法学園`, `水着`,
+`うさぎ`, `くまが働くお店`) are independent of the fetch/enrich pipeline --
+set/correct either one at any time, at any tier (including `known`, before
+any URL has ever been fetched for that store), with:
+
+```bash
+python -c "
+import db, enrich_db
+with db.open_db() as conn:
+    enrich_db.update_store_category(conn, '<store_id>', store_type='girls_bar',
+        concept_theme='水着', source_url='<where this was learned>')
+"
+```
+
+Both arguments are optional (pass whichever you have); `source_url` is
+always required, matching the traceability discipline every other write in
+this tool follows. Never inferred automatically.
 
 ## completeness_tier: known -> has_official_source -> enriched -> verified
 

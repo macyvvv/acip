@@ -67,3 +67,45 @@ def test_open_db_rolls_back_on_exception(tmp_path: Path) -> None:
 
     with db.open_db(db_path) as conn:
         assert conn.execute("SELECT COUNT(*) FROM areas").fetchone()[0] == 0
+
+
+def test_column_migration_adds_concept_theme_to_pre_existing_table(tmp_path: Path) -> None:
+    # Simulate a DB created before concept_theme existed: build
+    # store_enrichment without it, then confirm ensure_schema() (which a
+    # real re-run always calls) adds it without losing existing data.
+    db_path = tmp_path / "stores.db"
+    conn = db.connect_db(db_path)
+    conn.executescript(
+        """
+        CREATE TABLE areas (area_id TEXT PRIMARY KEY, display_name TEXT NOT NULL, line_hint TEXT);
+        CREATE TABLE stores (
+            store_id TEXT PRIMARY KEY, area_id TEXT NOT NULL, name_raw TEXT NOT NULL,
+            store_type TEXT NOT NULL DEFAULT 'unknown', discovery_method TEXT NOT NULL,
+            discovered_at TEXT NOT NULL, existence_confidence TEXT NOT NULL DEFAULT 'probable',
+            status TEXT NOT NULL DEFAULT 'unknown', completeness_tier TEXT NOT NULL DEFAULT 'known',
+            created_at TEXT NOT NULL, updated_at TEXT NOT NULL
+        );
+        CREATE TABLE store_enrichment (
+            store_id TEXT PRIMARY KEY, official_url TEXT, phone TEXT, updated_at TEXT NOT NULL
+        );
+        """
+    )
+    conn.execute(
+        "INSERT INTO areas VALUES ('ueno', '上野', NULL)"
+    )
+    conn.execute(
+        "INSERT INTO stores VALUES ('ueno-x', 'ueno', 'X', 'unknown', 'web-search', 't', 'probable', 'unknown', 'known', 't', 't')"
+    )
+    conn.execute("INSERT INTO store_enrichment (store_id, official_url, phone, updated_at) VALUES ('ueno-x', 'https://x.invalid', NULL, 't')")
+    conn.commit()
+    conn.close()
+
+    conn = db.connect_db(db_path)
+    db.ensure_schema(conn)  # must not raise, must not drop the existing row
+
+    columns = {row["name"] for row in conn.execute("PRAGMA table_info(store_enrichment)")}
+    assert "concept_theme" in columns
+
+    row = conn.execute("SELECT official_url, concept_theme FROM store_enrichment WHERE store_id = 'ueno-x'").fetchone()
+    assert row["official_url"] == "https://x.invalid"
+    assert row["concept_theme"] is None

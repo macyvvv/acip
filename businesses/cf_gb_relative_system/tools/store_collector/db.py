@@ -58,6 +58,7 @@ CREATE TABLE IF NOT EXISTS store_enrichment (
     coordinate_precision TEXT,
     official_url TEXT,
     phone TEXT,
+    concept_theme TEXT,
     hours_json TEXT,
     pricing_model TEXT,
     price_items_json TEXT,
@@ -102,8 +103,24 @@ def connect_db(db_path: Path | str = DEFAULT_DB_PATH) -> sqlite3.Connection:
     return conn
 
 
+# Columns added after the table's initial CREATE -- "CREATE TABLE IF NOT
+# EXISTS" alone is a no-op against an already-existing table from an older
+# run, so a new column needs its own idempotent ALTER TABLE here.
+_COLUMN_MIGRATIONS = (
+    ("store_enrichment", "concept_theme", "TEXT"),
+)
+
+
+def _apply_column_migrations(conn: sqlite3.Connection) -> None:
+    for table, column, column_type in _COLUMN_MIGRATIONS:
+        existing = {row["name"] for row in conn.execute(f"PRAGMA table_info({table})")}
+        if column not in existing:
+            conn.execute(f"ALTER TABLE {table} ADD COLUMN {column} {column_type}")
+
+
 def ensure_schema(conn: sqlite3.Connection) -> None:
     conn.executescript(_SCHEMA)
+    _apply_column_migrations(conn)
     conn.commit()
 
 

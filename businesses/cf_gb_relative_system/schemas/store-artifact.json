@@ -45,6 +45,11 @@
       "type": "string",
       "minLength": 1
     },
+    "concept_theme": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Specific concept/theme, distinct from the coarse store_type category, e.g. 魔法学園, 水着, うさぎ, くまが働くお店. Often known from search context before any official source is fetched, but never inferred automatically -- set explicitly via enrich_db.update_store_category() with a stated source."
+    },
     "area": {
       "type": "string",
       "minLength": 1,

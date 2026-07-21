@@ -183,3 +183,65 @@ def confirm_verified_fields(
         "change_type, source_url) VALUES (?, ?, 'completeness_tier', NULL, 'verified', 'correction', ?)",
         (store_id, timestamp, source_url),
     )
+
+
+def update_store_category(
+    conn,
+    store_id: str,
+    *,
+    store_type: str | None = None,
+    concept_theme: str | None = None,
+    source_url: str,
+    now: datetime | None = None,
+) -> None:
+    """Set/correct a store's coarse category (concept_cafe/girls_bar) and/or
+    its specific concept/theme (free text, e.g. "魔法学園", "水着", "うさぎ",
+    "くまが働くお店") -- independent of official-source enrichment, since
+    this is very often already obvious from search context (a
+    "ガールズバー" search result IS a girls_bar) well before any URL gets
+    fetched. Both arguments are optional so store_type and concept_theme
+    can be set at different times by different calls; at least one must be
+    given. Never inferred automatically -- always an explicit call with a
+    stated source_url, same discipline as confirm_verified_fields()."""
+    if store_type is None and concept_theme is None:
+        raise ValueError("update_store_category requires store_type and/or concept_theme")
+
+    now = now or datetime.now(timezone.utc)
+    timestamp = now.isoformat().replace("+00:00", "Z")
+
+    existing = conn.execute(
+        "SELECT store_type FROM stores WHERE store_id = ?", (store_id,)
+    ).fetchone()
+    if existing is None:
+        raise ValueError(f"{store_id!r} has no census row")
+
+    if store_type is not None:
+        previous_type = existing["store_type"]
+        conn.execute(
+            "UPDATE stores SET store_type = ?, updated_at = ? WHERE store_id = ?",
+            (store_type, timestamp, store_id),
+        )
+        if previous_type != store_type:
+            conn.execute(
+                "INSERT INTO store_change_log (store_id, changed_at, field, previous_value, new_value, "
+                "change_type, source_url) VALUES (?, ?, 'store_type', ?, ?, 'correction', ?)",
+                (store_id, timestamp, previous_type, store_type, source_url),
+            )
+
+    if concept_theme is not None:
+        previous_theme_row = conn.execute(
+            "SELECT concept_theme FROM store_enrichment WHERE store_id = ?", (store_id,)
+        ).fetchone()
+        previous_theme = previous_theme_row["concept_theme"] if previous_theme_row else None
+        conn.execute(
+            "INSERT INTO store_enrichment (store_id, concept_theme, updated_at) VALUES (?, ?, ?) "
+            "ON CONFLICT(store_id) DO UPDATE SET concept_theme = excluded.concept_theme, "
+            "updated_at = excluded.updated_at",
+            (store_id, concept_theme, timestamp),
+        )
+        if previous_theme != concept_theme:
+            conn.execute(
+                "INSERT INTO store_change_log (store_id, changed_at, field, previous_value, new_value, "
+                "change_type, source_url) VALUES (?, ?, 'concept_theme', ?, ?, 'correction', ?)",
+                (store_id, timestamp, previous_theme, concept_theme, source_url),
+            )

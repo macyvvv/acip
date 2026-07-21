@@ -224,3 +224,67 @@ def test_confirm_verified_fields_promotes_to_verified(tmp_path: Path) -> None:
     assert "initial_capture" in log_types  # from census
     assert "url_change" in log_types  # from enrich
     assert "correction" in log_types  # from confirm
+
+
+def test_update_store_category_sets_store_type(tmp_path: Path) -> None:
+    conn, store_id = _censused_db(tmp_path)
+
+    enrich_db.update_store_category(
+        conn, store_id, store_type="girls_bar", source_url="https://example-store.invalid/"
+    )
+
+    row = conn.execute("SELECT store_type FROM stores WHERE store_id = ?", (store_id,)).fetchone()
+    assert row["store_type"] == "girls_bar"
+
+
+def test_update_store_category_sets_concept_theme(tmp_path: Path) -> None:
+    conn, store_id = _censused_db(tmp_path)
+
+    enrich_db.update_store_category(
+        conn, store_id, concept_theme="魔法学園", source_url="https://example-store.invalid/"
+    )
+
+    row = conn.execute("SELECT concept_theme FROM store_enrichment WHERE store_id = ?", (store_id,)).fetchone()
+    assert row["concept_theme"] == "魔法学園"
+
+
+def test_update_store_category_works_before_any_enrichment_row_exists(tmp_path: Path) -> None:
+    # concept_theme is very often known from search context alone, before
+    # any URL has ever been fetched for this store -- must not require
+    # enrich_store_from_url to have run first.
+    conn, store_id = _censused_db(tmp_path)
+    assert conn.execute("SELECT COUNT(*) FROM store_enrichment WHERE store_id = ?", (store_id,)).fetchone()[0] == 0
+
+    enrich_db.update_store_category(
+        conn, store_id, concept_theme="うさぎ", source_url="web-search: 上野 うさぎ コンカフェ"
+    )
+
+    row = conn.execute("SELECT concept_theme FROM store_enrichment WHERE store_id = ?", (store_id,)).fetchone()
+    assert row["concept_theme"] == "うさぎ"
+
+
+def test_update_store_category_logs_only_actual_changes(tmp_path: Path) -> None:
+    conn, store_id = _censused_db(tmp_path)
+
+    enrich_db.update_store_category(conn, store_id, store_type="girls_bar", source_url="s1")
+    enrich_db.update_store_category(conn, store_id, store_type="girls_bar", source_url="s2")  # no-op, same value
+
+    count = conn.execute(
+        "SELECT COUNT(*) FROM store_change_log WHERE store_id = ? AND field = 'store_type'", (store_id,)
+    ).fetchone()[0]
+    assert count == 1
+
+
+def test_update_store_category_requires_at_least_one_field(tmp_path: Path) -> None:
+    conn, store_id = _censused_db(tmp_path)
+
+    with pytest.raises(ValueError, match="store_type and/or concept_theme"):
+        enrich_db.update_store_category(conn, store_id, source_url="s1")
+
+
+def test_update_store_category_requires_an_existing_census_row(tmp_path: Path) -> None:
+    conn = db.connect_db(tmp_path / "stores.db")
+    db.ensure_schema(conn)
+
+    with pytest.raises(ValueError, match="no census row"):
+        enrich_db.update_store_category(conn, "nonexistent", store_type="girls_bar", source_url="s1")

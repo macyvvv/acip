@@ -77,6 +77,35 @@ def test_ingest_creates_known_tier_rows() -> None:
     assert esora["existence_confidence"] == "confirmed_exists"
 
 
+def test_ingest_defaults_store_type_to_unknown_when_not_given() -> None:
+    conn = db.connect_db(":memory:")
+    db.ensure_schema(conn)
+
+    census.ingest_area_census(conn, "ueno", "上野", [{"name_raw": "esora"}])
+
+    row = conn.execute("SELECT store_type FROM stores WHERE name_raw = 'esora'").fetchone()
+    assert row["store_type"] == "unknown"
+
+
+def test_ingest_records_store_type_when_already_known_from_search_context() -> None:
+    # Regression: every store from the real Ueno/Okachimachi/Yushima runs
+    # ended up store_type='unknown' even though most were discovered via a
+    # query that already said which one (e.g. "ガールズバー") -- the field
+    # was known but never recorded. census.py must accept it when given.
+    conn = db.connect_db(":memory:")
+    db.ensure_schema(conn)
+
+    census.ingest_area_census(
+        conn,
+        "ueno",
+        "上野",
+        [{"name_raw": "Noisy Cats", "store_type": "girls_bar"}],
+    )
+
+    row = conn.execute("SELECT store_type FROM stores WHERE name_raw = 'Noisy Cats'").fetchone()
+    assert row["store_type"] == "girls_bar"
+
+
 def test_ingest_is_idempotent_on_rerun() -> None:
     conn = db.connect_db(":memory:")
     db.ensure_schema(conn)
