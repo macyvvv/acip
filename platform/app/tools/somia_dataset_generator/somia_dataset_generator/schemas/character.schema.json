@@ -19,8 +19,8 @@
     "identity_lock": {"$ref": "#/$defs/nonEmptyStringArray"},
     "outfit_lock": {"$ref": "#/$defs/nonEmptyStringArray"},
     "style_lock": {"$ref": "#/$defs/nonEmptyStringArray"},
-    "expression_register": {"$ref": "#/$defs/nonEmptyStringArray"},
-    "environment_register": {"$ref": "#/$defs/nonEmptyStringArray"},
+    "expression_register": {"$ref": "#/$defs/register"},
+    "environment_register": {"$ref": "#/$defs/register"},
     "allowed_variation": {"$ref": "#/$defs/nonEmptyStringArray"},
     "negative_lock": {"$ref": "#/$defs/nonEmptyStringArray"},
     "cross_character_exclusions": {"$ref": "#/$defs/nonEmptyStringArray"},
@@ -42,6 +42,18 @@
       "minItems": 1,
       "uniqueItems": true,
       "items": {"type": "string", "minLength": 2}
+    },
+    "register": {
+      "description": "v1 shape: unconditional list, joined in full regardless of the sampled bucket. v2 shape: object keyed by sampling-policy bucket name, one entry selected per sampled bucket (Prompt Builder v2 Expression Engine).",
+      "oneOf": [
+        {"$ref": "#/$defs/nonEmptyStringArray"},
+        {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": {"pattern": "^[a-z][a-z0-9_]*$"},
+          "additionalProperties": {"type": "string", "minLength": 2}
+        }
+      ]
     }
   }
 }

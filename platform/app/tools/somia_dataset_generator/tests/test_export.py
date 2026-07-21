@@ -4,6 +4,8 @@ from pathlib import Path
 import pytest
 
 from somia_dataset_generator.exporter import export_run
+from somia_dataset_generator.paths import character_spec_path
+from somia_dataset_generator.config import load_yaml
 from somia_dataset_generator.run import read_run_state
 
 
@@ -48,9 +50,35 @@ def test_export_ships_only_accepted_images(tmp_path: Path):
 
     assert (out / "images" / "0001.png").is_file()
     assert not (out / "images" / "0002.png").exists()
-    assert (out / "captions" / "0001.txt").read_text() == "airi, close_up"
+
+    # Prompt Builder v2 (design doc §4): the caption leads with
+    # caption.identity_token + caption.fixed_tags from the real character
+    # spec, not the raw character_id, when the spec declares them.
+    caption = load_yaml(character_spec_path("airi"))["caption"]
+    expected_caption = ", ".join([caption["identity_token"], *caption["fixed_tags"], "close_up"])
+    assert (out / "captions" / "0001.txt").read_text() == expected_caption
+
     assert (out / "metadata" / "0001.json").is_file()
     assert not (out / "metadata" / "0002.json").exists()
+
+
+def test_export_caption_falls_back_to_character_id_when_spec_unavailable(tmp_path: Path):
+    run_dir = tmp_path / "run_unknown_character"
+    (run_dir / "raw").mkdir(parents=True)
+    (run_dir / "raw" / "0001.png").write_bytes(b"fake-png-bytes-1")
+    run_state = {"run_id": "run_unknown_character", "character_id": "nonexistent_character", "requested_count": 1, "status": "completed"}
+    (run_dir / "run.json").write_text(json.dumps(run_state), encoding="utf-8")
+    review_rows = [{
+        "slot": 1, "character_id": "nonexistent_character", "specification_version": "1.1", "policy_id": "p1",
+        "image": "raw/0001.png", "sha256": "hash-1", "dimensions": {"framing": "close_up"},
+        "prompt": "prompt one", "accepted": True, "issues": [],
+    }]
+    (run_dir / "review.jsonl").write_text(
+        "".join(json.dumps(r) + "\n" for r in review_rows), encoding="utf-8"
+    )
+
+    out = export_run(run_dir)
+    assert (out / "captions" / "0001.txt").read_text() == "nonexistent_character, close_up"
 
 
 def test_export_manifest_has_required_fields(tmp_path: Path):

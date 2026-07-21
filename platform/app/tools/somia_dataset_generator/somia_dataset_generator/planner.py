@@ -2,7 +2,7 @@ from itertools import combinations
 import random
 
 from .models import PlanItem
-from .prompt_builder import build_prompt
+from .prompt_builder import build_prompt, validate_dimension_registers
 
 
 def _apportion(values: dict[str, int], count: int) -> dict[str, int]:
@@ -129,6 +129,7 @@ def create_plan(character: dict, policy: dict, count: int, seed: int | None = No
     if count <= 0:
         raise ValueError("count must be positive")
     dims = policy["dimensions"]
+    validate_dimension_registers(character, policy)
     resolved_seed = seed if seed is not None else policy.get("seed", 0)
     streams = _stratified_streams(dims, count, resolved_seed)
     items: list[PlanItem] = []

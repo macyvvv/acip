@@ -3,14 +3,16 @@ character_id: airi
 trigger_token: somia_airi
 adult: true
 identity_lock:
-  - adult woman with pale skin and slender natural adult proportions
-  - same narrow delicate face and subdued violet-blue eyes as the canonical references
-  - short-to-medium layered wolf cut with compact crown volume, broken shaggy layers, tapered nape, and uneven face-framing strands
-  - hair silhouette must read immediately as a wolf cut rather than long straight hair or a bob
-  - dark navy-black hair with restrained violet-blue accents concentrated in selected inner layers and tips
-  - longest hair strands end around the neck-to-shoulder line and never extend down the chest or back
-  - one metallic triangular hairpin at the side of the bangs with preserved geometry and placement
-  - withdrawn mentally preoccupied presence, as if caught in a thought loop rather than posing
+  - unambiguously adult feminine identity; must never read as androgynous, adolescent-male, or bishounen, while remaining slender and delicate
+  - softly rounded feminine jawline with a delicate chin, subtle cheek volume, and a smooth delicate facial contour, no angular or pointed masculine chin
+  - naturally shaped lips and a narrow refined nose, balanced facial proportions matching the canonical references
+  - large, soft, delicate eyes with a gentle eyelid shape and subtly longer eyelashes, carrying a gentle, fragile, calm impression; same narrow face and subdued violet-blue eyes as the canonical references
+  - adult woman with fair, translucent-looking skin and slender natural adult proportions, achieved without exaggerated sexualization or disproportionate anatomy
+  - slender, slightly elongated neck with narrow delicate shoulders and a graceful collarbone line, graceful upper-body proportions
+  - long, loosely tousled wavy hair flowing past the shoulders toward the chest and back, not tightly styled or cut short
+  - dark navy-black hair deepening toward blue in shadow, with restrained violet-blue accent highlights concentrated in select strands and tips
+  - one metallic triangular hairpin near the front hairline with preserved geometry and placement
+  - quiet, gentle, kind, emotionally reserved, and introspective presence; withdrawn and mentally preoccupied, as if caught in a thought loop rather than posing
 outfit_lock:
   - dark charcoal or black oversized off-shoulder knit top
   - restrained thin inner strap may be visible only where natural
@@ -23,9 +25,9 @@ style_lock:
   - cool restrained navy, indigo, muted violet, and charcoal palette
   - no painterly canvas texture, watercolor wash, sketch lines, or photorealism
 expression_register:
-  - quietly tired neutral expression
+  - quiet, gentle, calm, introspective, emotionally restrained presence, not a tired, hollow, or sullen expression
+  - faintly moist or luminous eyes carrying fragile softness and quiet loneliness, a transparent, reassuring, ethereal emotional quality
   - lowered or averted gaze
-  - slight irritation held inward
   - brief fragile softness without a broad smile
   - no sustained direct eye contact
 environment_register:
@@ -46,29 +48,38 @@ allowed_variation:
   - camera distance
   - simple room composition
 negative_lock:
-  - no long hair, waist-length hair, chest-length hair, flowing back-length hair, ponytail, twin-tails, braid, neat bob, blunt one-length cut, or updo
-  - longest strands must not extend below the shoulder line
+  - no androgynous, adolescent-male, or bishounen facial structure or proportions
+  - no angular jaw, pointed masculine chin, or flat/severe cheek structure
+  - no broad shoulders, thick neck, or straight masculine torso
+  - no childlike appearance, juvenile facial structure, or childlike body cues
+  - no exaggerated breasts or overtly sexualized proportions
   - do not remove, duplicate, or reshape the triangular hairpin
+  - no twin-tails, tight braid, blunt one-length bob, or updo that removes the loose wavy texture
   - no bright cheerful smile, energetic pose, cute idol pose, or prolonged frontal gaze
   - no legible text, code, interface, labels, symbols, or watermark
   - no fantasy ears, child proportions, or other characters
 cross_character_exclusions:
-  - no long-haired silhouette resembling Mina, Nao, or Rena
+  - no sleek straight matte hair resembling Rena, no dark-to-pale-blue gradient wind-blown hair resembling Nao, no twin tails resembling Yui, and no soft bun with escaped strands resembling Mina -- Airi's silhouette is loosely tousled dark wavy hair with violet-blue accent tips and the triangular hairpin
   - no crescent hairpin, mug, blue teardrop earring, pendant, choker, wine glass, stuffed rabbit, or high twin-tails
 reference_interpretation: >-
-  Use approved references for Airi's face, navy-black and violet-blue palette,
-  triangular hairpin, slouched dark off-shoulder clothing, and adult proportions.
-  This contract is authoritative for hair length and silhouette. Any prior image,
-  brief, or caption depicting long hair is obsolete and must not be reproduced.
+  Use businesses/somia/content/REFERENCE/characters/airi/reference_primary.png
+  and reference_secondary.png as Airi's canonical design (2026-07-20, supersedes
+  the prior short wolf-cut-era contract). Reproduce her face, long loosely wavy
+  dark-navy-black hair with violet-blue accent tips, triangular hairpin, slouched
+  dark off-shoulder clothing, and adult feminine proportions as shown in these
+  references.
 identity_priority_note: >-
-  Airi's short layered wolf-cut silhouette is a primary roster-level discriminator
-  because several other Somia characters have long hair. A candidate with long hair
-  is an automatic rejection even when face, palette, mood, and hairpin are otherwise correct.
+  Airi's loosely tousled long wavy hair with violet-blue accent tips and the
+  triangular hairpin is a primary roster-level discriminator because several
+  other Somia characters also have long or flowing hair. A candidate matching
+  Rena's sleek straight hair, Nao's pale-blue gradient wind-blown hair, Yui's
+  twin tails, or Mina's soft bun is an automatic rejection even when face,
+  palette, mood, and hairpin are otherwise correct.
 caption:
   identity_token: somia_airi
   fixed_tags:
     - adult woman
-    - short layered wolf cut
+    - long wavy dark hair
     - dark navy-black hair
     - violet-blue eyes
     - triangular hairpin

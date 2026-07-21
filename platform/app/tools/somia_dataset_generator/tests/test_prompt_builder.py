@@ -13,9 +13,9 @@ def test_prompt_contains_primary_airi_discriminators():
         "gaze": "lowered",
         "environment": "monitor_glow",
     })
-    assert "short-to-medium layered wolf cut" in prompt
+    assert "loosely tousled wavy hair" in prompt
     assert "triangular hairpin" in prompt
-    assert "no long hair" in prompt
+    assert "no androgynous, adolescent-male, or bishounen facial structure" in prompt
     assert "adult fictional woman" in prompt
 
 def test_prompt_rejects_dimension_not_in_allowed_variation():
