@@ -86,7 +86,9 @@ platform/system/runtime/scheduler/merge_circuit.json
 system/runtime/scheduler/merge_circuit.json
 
 # cf_gb_relative_system store_collector's local run output (raw fetched
-# HTML, fetch-attempt log, draft records) -- operator-run-locally only,
-# never wired into CI, and drafts are unverified/unconfirmed by design
-# until a human promotes them into data/stores/. Not source.
+# HTML, fetch-attempt log, draft records, and the SQLite stores.db itself
+# -- census-pivot 2026-07-21) -- operator-run-locally only, never wired
+# into CI. This is real-run data about real, named businesses, not
+# source, and stays local until the operator decides otherwise.
 businesses/cf_gb_relative_system/tools/store_collector/cache/
+businesses/cf_gb_relative_system/tools/store_collector/data/

@@ -50,22 +50,25 @@
     {
       "schema_version": "source-register:v1",
       "source_id": "search-engine-discovery",
-      "description": "General web search, used only to locate a store's own official URL -- not used as a content source itself.",
+      "description": "General web search, used to locate a store's own official URL, and (per the 2026-07-21 census-pivot amendment) to compile a bare name+area existence census -- not used as a content source itself in either case.",
       "owner_or_url": "general web search",
       "acquisition_method": "search-engine-discovery-only",
-      "terms_reference": "not applicable -- used for URL discovery only, no content extracted from search results",
+      "terms_reference": "not applicable -- used for URL discovery and name-only census, no content extracted from search results",
       "decision": "conditional",
-      "decision_basis": "Using search to find a primary source URL carries no meaningful reuse risk as long as no snippet text is copied into a store record.",
+      "decision_basis": "Using search to find a primary source URL, or to notice a store's bare name+existence, carries no meaningful reuse risk as long as (a) no snippet text/description is copied into a record beyond the name itself, and (b) the name list is compiled from varied general search queries rather than by systematically paging through one aggregator's own area listing -- the latter would extract the substantial value of that aggregator's compilation (selection/curation), which is exactly the database-right/編集著作物 concern the deny entries below target, even though each individual captured fact (a name) is not itself protectable.",
       "conditions": [
-        "discovery only: use the found URL as the acquisition_method=official-site-direct-visit / official-sns-direct-visit source",
-        "never copy search-result snippet text into a store-artifact field"
+        "URL discovery: use the found URL as the acquisition_method=official-site-direct-visit / official-sns-direct-visit source; never copy search-result snippet text into a store-artifact field",
+        "name census: source names via varied general web-search queries only, never by systematically paging/crawling one aggregator's full area listing to enumerate it",
+        "name census: no single source (aggregator or otherwise) may account for most names captured in an area's census -- density should look organically mixed, not derived from one site",
+        "name census: capture the name and area/station only -- no tagline, category, description, address, hours, or price from a listing page; those require independent verification via the store's own official source before being recorded at all",
+        "name census: never report or imply a completeness/coverage claim referencing a specific competitor site's own listing"
       ],
-      "decision_owner": "legalops (draft research, 2026-07-21)",
+      "decision_owner": "legalops (draft research, 2026-07-21; census-pivot amendment 2026-07-21)",
       "verified_at": "2026-07-21T00:00:00Z",
       "next_review_at": "2027-01-21T00:00:00Z",
-      "fields_covered": [],
+      "fields_covered": ["store_name (census only)"],
       "classification": "facts_only",
-      "downstream_use": "URL discovery step preceding a store-official-website/store-official-sns capture",
+      "downstream_use": "URL discovery step preceding a store-official-website/store-official-sns capture; and bare name+area census rows (tools/store_collector/census.py) pending enrichment",
       "stop_method": "not applicable (no persistent connection to disable)"
     },
     {

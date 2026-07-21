@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://acip.local/cf-gb-relative-system/schemas/store-artifact/v1",
   "title": "Store artifact",
-  "description": "A single concept-cafe/girls-bar store's current state plus append-only change history. Validates one file under businesses/cf_gb_relative_system/data/stores/<store_id>.json. Store-level facts only -- individual cast (キャスト) names, photos, or any other cast-identifying data MUST NOT appear anywhere in this document (out of Phase 1/2 scope per Business Strategy.md section 20/21; no consent infrastructure exists yet).",
+  "description": "A single concept-cafe/girls-bar store's current state plus append-only change history -- the validation contract for a row assembled from tools/store_collector's stores/store_enrichment tables (SQLite is the storage; this schema validates the shape before a write, it is not itself a file format). Store-level facts only -- individual cast (キャスト) names, photos, or any other cast-identifying data MUST NOT appear anywhere in this document (out of Phase 1/2 scope per Business Strategy.md section 20/21; no consent infrastructure exists yet). Census-pivot (2026-07-21): most fields are conditionally required based on `completeness_tier`, not universally required -- a bare census row (name + existence only) is a valid document.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -11,16 +11,10 @@
     "store_name",
     "store_type",
     "status",
-    "address",
     "area",
-    "hours",
-    "pricing_model",
-    "price_items",
+    "completeness_tier",
     "source_url",
-    "retrieved_at",
-    "last_confirmed_at",
-    "verification_method",
-    "reliability_score",
+    "first_seen_at",
     "change_log"
   ],
   "properties": {
@@ -29,7 +23,7 @@
     },
     "store_id": {
       "type": "string",
-      "description": "Stable slug/hash derived from normalize(store_name + address). Used as the dedupe key.",
+      "description": "Stable slug/hash derived from normalize(store_name + area). Used as the dedupe key.",
       "pattern": "^[a-z0-9][a-z0-9_-]{2,127}$"
     },
     "store_name": {
@@ -37,11 +31,15 @@
       "minLength": 1
     },
     "store_type": {
-      "enum": ["concept_cafe", "girls_bar"],
-      "description": "Business Strategy.md section 20 in-scope categories only. Any other category requires a scope-expansion ADR before use."
+      "enum": ["concept_cafe", "girls_bar", "unknown"],
+      "description": "Business Strategy.md section 20 in-scope categories, or `unknown` at census time before this can be confirmed. Any category outside concept_cafe/girls_bar requires a scope-expansion ADR before use."
     },
     "status": {
-      "enum": ["open", "temporarily_closed", "permanently_closed", "relocated"]
+      "enum": ["open", "temporarily_closed", "permanently_closed", "relocated", "unknown"]
+    },
+    "completeness_tier": {
+      "enum": ["known", "has_official_source", "enriched", "verified"],
+      "description": "known: name+existence only (census). has_official_source: an official site/SNS URL has been identified. enriched: hours/pricing/address populated from that source. verified: verification_method+reliability_score+last_verified_at confirmed and within its Freshness SLO. Only `verified` counts toward the Verified Fresh Store Coverage KPI numerator -- never report a bare count across tiers as if it were coverage."
     },
     "address": {
       "type": "string",
@@ -50,7 +48,7 @@
     "area": {
       "type": "string",
       "minLength": 1,
-      "description": "Ward/district label used for the Yamanote-loop area-coverage KPI, e.g. 歌舞伎町, 秋葉原."
+      "description": "Ward/district/station label used for area-coverage KPIs across the eventual multi-area rollout, e.g. 上野, 歌舞伎町, 秋葉原."
     },
     "nearest_station": {
       "type": "string"
@@ -135,7 +133,7 @@
     },
     "price_unavailable_reason": {
       "type": "string",
-      "description": "Required when price_items is empty -- explain why pricing could not be captured yet."
+      "description": "Required when price_items is present but empty -- explain why pricing could not be captured yet."
     },
     "url": {
       "type": "string",
@@ -172,17 +170,19 @@
       "type": "array",
       "minItems": 1,
       "items": {
-        "type": "string",
-        "format": "uri"
-      }
+        "type": "string"
+      },
+      "description": "At completeness_tier=known this may be a non-URL provenance note (e.g. \"web-search: varied queries, 2026-07-21\") rather than a fetchable URL -- a census entry has no single fetched page. At has_official_source and above, entries must be real fetchable source URLs."
     },
-    "retrieved_at": {
+    "first_seen_at": {
       "type": "string",
-      "format": "date-time"
+      "format": "date-time",
+      "description": "When this store was first noticed to exist (census time). Distinct from last_verified_at, which tracks when any detail was last confirmed."
     },
-    "last_confirmed_at": {
+    "last_verified_at": {
       "type": "string",
-      "format": "date-time"
+      "format": "date-time",
+      "description": "When any field was last independently confirmed against an official source. Absent for known-tier rows."
     },
     "verification_method": {
       "enum": ["web-search", "official-site", "on-site-visit", "user-report", "sns-post"]
@@ -223,8 +223,7 @@
             ]
           },
           "source_url": {
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "source_artifact_id": {
             "type": "string"
@@ -241,10 +240,53 @@
             "type": "array",
             "maxItems": 0
           }
-        }
+        },
+        "required": ["price_items"]
       },
       "then": {
         "required": ["price_unavailable_reason"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "completeness_tier": {
+            "enum": ["has_official_source", "enriched", "verified"]
+          }
+        },
+        "required": ["completeness_tier"]
+      },
+      "then": {
+        "anyOf": [
+          {"required": ["url"]},
+          {"required": ["sns_urls"], "properties": {"sns_urls": {"minItems": 1}}}
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "completeness_tier": {
+            "enum": ["enriched", "verified"]
+          }
+        },
+        "required": ["completeness_tier"]
+      },
+      "then": {
+        "required": ["address", "hours", "pricing_model", "price_items"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "completeness_tier": {
+            "const": "verified"
+          }
+        },
+        "required": ["completeness_tier"]
+      },
+      "then": {
+        "required": ["verification_method", "reliability_score", "last_verified_at"]
       }
     }
   ]
