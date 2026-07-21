@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -8,6 +9,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import census  # noqa: E402
 import db  # noqa: E402
+
+TOOL_ROOT = Path(__file__).resolve().parents[1]
 
 
 def test_slugify_is_stable_and_area_scoped() -> None:
@@ -18,6 +21,27 @@ def test_slugify_is_stable_and_area_scoped() -> None:
     assert a == b
     assert a != c
     assert a.startswith("ueno-")
+
+
+def test_slugify_of_japanese_only_name_is_stable_across_processes() -> None:
+    # Regression: the original implementation fell back to Python's
+    # builtin hash() for names with no ASCII characters at all (e.g.
+    # "うさぎだから"), which is salted per-process by design
+    # (PYTHONHASHSEED) -- the real Ueno run produced a different store_id
+    # every time the script was re-invoked as a fresh process, so a later
+    # enrich_db call against the store_id from an earlier run failed with
+    # "has no census row" even though the store really had been censused.
+    # A single pytest process can't observe this (hash() is stable within
+    # one process), so this must be checked across two real subprocesses.
+    script = (
+        "import sys; sys.path.insert(0, %r); import census; "
+        "print(census.slugify_store_id('うさぎだから', 'ueno'))" % str(TOOL_ROOT)
+    )
+    first = subprocess.run([sys.executable, "-c", script], capture_output=True, text=True, check=True)
+    second = subprocess.run([sys.executable, "-c", script], capture_output=True, text=True, check=True)
+
+    assert first.stdout.strip() == second.stdout.strip()
+    assert first.stdout.strip().startswith("ueno-")
 
 
 def test_slugify_handles_japanese_only_names() -> None:

@@ -85,6 +85,73 @@ def test_successful_enrich_writes_discovered_sns_links(tmp_path: Path) -> None:
     assert "sns_urls" in log_types
 
 
+def test_fetching_an_sns_url_directly_records_it_as_store_sns_not_official_url(tmp_path: Path) -> None:
+    # Most of these stores have no separate homepage at all -- the way to
+    # find them is searching the store name and fetching their SNS profile
+    # directly, not fetching a homepage that happens to link to SNS.
+    conn, store_id = _censused_db(tmp_path)
+
+    result = enrich_db.enrich_store_from_url(
+        conn, store_id, "https://twitter.com/example_handle",
+        cache_root=tmp_path / "cache", fetcher=_fake_fetcher(),  # page content itself is irrelevant here
+    )
+
+    assert result["fetched_url_was_sns"] is True
+    assert {"platform": "x", "url": "https://twitter.com/example_handle"} in result["sns_urls"]
+
+    enrichment = conn.execute(
+        "SELECT official_url FROM store_enrichment WHERE store_id = ?", (store_id,)
+    ).fetchone()
+    assert enrichment["official_url"] is None
+
+    sns_row = conn.execute(
+        "SELECT url FROM store_sns WHERE store_id = ? AND platform = 'x'", (store_id,)
+    ).fetchone()
+    assert sns_row["url"] == "https://twitter.com/example_handle"
+
+
+def test_directly_fetched_sns_url_wins_over_same_platform_page_noise(tmp_path: Path) -> None:
+    # Regression: fetching an X profile page directly recorded
+    # https://api.x.com instead of the profile URL we actually targeted --
+    # the page's own boilerplate chrome links to api.x.com, and that
+    # write happened AFTER (and so clobbered) the correct direct-URL
+    # write. Found for real against 3 different stores in the Ueno batch.
+    conn, store_id = _censused_db(tmp_path)
+    noisy_x_profile_html = (
+        "<html><body>"
+        '<a href="https://api.x.com/1.1/something">internal chrome</a>'
+        "</body></html>"
+    )
+
+    def fetcher(url: str, user_agent: str) -> collect.FetchResult:
+        return collect.FetchResult(url=url, status=200, body=noisy_x_profile_html)
+
+    enrich_db.enrich_store_from_url(
+        conn, store_id, "https://twitter.com/real_handle",
+        cache_root=tmp_path / "cache", fetcher=fetcher,
+    )
+
+    sns_row = conn.execute(
+        "SELECT url FROM store_sns WHERE store_id = ? AND platform = 'x'", (store_id,)
+    ).fetchone()
+    assert sns_row["url"] == "https://twitter.com/real_handle"
+
+
+def test_fetching_a_homepage_url_still_sets_official_url(tmp_path: Path) -> None:
+    conn, store_id = _censused_db(tmp_path)
+
+    result = enrich_db.enrich_store_from_url(
+        conn, store_id, "https://example-store.invalid/",
+        cache_root=tmp_path / "cache", fetcher=_fake_fetcher(),
+    )
+
+    assert result["fetched_url_was_sns"] is False
+    enrichment = conn.execute(
+        "SELECT official_url FROM store_enrichment WHERE store_id = ?", (store_id,)
+    ).fetchone()
+    assert enrichment["official_url"] == "https://example-store.invalid/"
+
+
 def test_enrich_without_sns_links_writes_no_store_sns_rows(tmp_path: Path) -> None:
     conn, store_id = _censused_db(tmp_path)
 

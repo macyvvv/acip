@@ -18,6 +18,7 @@ Input shape (one file per area):
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import unicodedata
@@ -32,9 +33,21 @@ _SLUG_STRIP_RE = re.compile(r"[^a-z0-9]+")
 
 
 def slugify_store_id(name_raw: str, area_id: str) -> str:
+    """Deterministic slug: same (name_raw, area_id) must produce the same
+    store_id in every process, every run, forever -- it's the DB primary
+    key and the join target every enrichment call looks up by. Python's
+    builtin hash() is salted per-process (PYTHONHASHSEED) specifically to
+    prevent this kind of stability; using it here was a real bug -- a
+    Japanese-only name got a different store_id on every fresh run, and a
+    later enrich_db call against the "same" store_id from an earlier run
+    would raise "has no census row" even though the store really was
+    censused. Use hashlib.sha256 (always deterministic) instead."""
     normalized = unicodedata.normalize("NFKC", name_raw).lower()
     ascii_only = normalized.encode("ascii", "ignore").decode("ascii")
-    slug_source = ascii_only if ascii_only.strip() else str(abs(hash(normalized)))
+    if ascii_only.strip():
+        slug_source = ascii_only
+    else:
+        slug_source = hashlib.sha256(normalized.encode("utf-8")).hexdigest()[:16]
     slug = _SLUG_STRIP_RE.sub("-", slug_source).strip("-") or "store"
     return f"{area_id}-{slug}"[:120]
 

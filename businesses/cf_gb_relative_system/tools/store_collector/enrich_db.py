@@ -53,42 +53,78 @@ def enrich_store_from_url(
     draft = collect.draft_store_artifact(store_id, url, html, record["attempted_at"])
     phone = draft.get("phone")
 
-    conn.execute(
-        "INSERT INTO store_enrichment (store_id, official_url, phone, updated_at) VALUES (?, ?, ?, ?) "
-        "ON CONFLICT(store_id) DO UPDATE SET official_url = excluded.official_url, "
-        "phone = COALESCE(excluded.phone, store_enrichment.phone), updated_at = excluded.updated_at",
-        (store_id, url, phone, timestamp),
-    )
-    if existing["completeness_tier"] == "known":
-        conn.execute(
-            "UPDATE stores SET completeness_tier = 'has_official_source', updated_at = ? WHERE store_id = ?",
-            (timestamp, store_id),
-        )
-    conn.execute(
-        "INSERT INTO store_change_log (store_id, changed_at, field, previous_value, new_value, "
-        "change_type, source_url) VALUES (?, ?, 'official_url', NULL, ?, 'url_change', ?)",
-        (store_id, timestamp, url, url),
-    )
-
-    sns_urls = draft.get("sns_urls", [])
-    for entry in sns_urls:
+    # SNS links found ON the fetched page are written first, then (below)
+    # the fetched URL's own platform entry is written LAST if it is itself
+    # an SNS link -- so it wins the ON CONFLICT UPDATE for that platform.
+    # This ordering matters: fetching an X/Instagram profile page directly
+    # (most of these stores have no separate homepage at all -- the way to
+    # find them is searching the store name and fetching their SNS profile
+    # directly) surfaces that platform's own boilerplate chrome (help
+    # links, share widgets) as same-platform <a href> noise; the URL we
+    # deliberately targeted must never lose to that noise.
+    sns_urls_on_page = draft.get("sns_urls", [])
+    for entry in sns_urls_on_page:
         conn.execute(
             "INSERT INTO store_sns (store_id, platform, url) VALUES (?, ?, ?) "
             "ON CONFLICT(store_id, platform) DO UPDATE SET url = excluded.url",
             (store_id, entry["platform"], entry["url"]),
         )
-    if sns_urls:
+    if sns_urls_on_page:
         conn.execute(
             "INSERT INTO store_change_log (store_id, changed_at, field, previous_value, new_value, "
             "change_type, source_url) VALUES (?, ?, 'sns_urls', NULL, ?, 'sns_change', ?)",
-            (store_id, timestamp, json.dumps(sns_urls, ensure_ascii=False), url),
+            (store_id, timestamp, json.dumps(sns_urls_on_page, ensure_ascii=False), url),
         )
 
+    # If the URL being fetched is itself an SNS platform link, record it
+    # as that store's own SNS entry instead of overwriting official_url
+    # with a non-homepage link.
+    fetched_url_platform = collect._detect_sns_platform(url)
+    if fetched_url_platform:
+        clean_self_url = url.split("?", 1)[0].split("#", 1)[0].rstrip("/")
+        conn.execute(
+            "INSERT INTO store_sns (store_id, platform, url) VALUES (?, ?, ?) "
+            "ON CONFLICT(store_id, platform) DO UPDATE SET url = excluded.url",
+            (store_id, fetched_url_platform, clean_self_url),
+        )
+        conn.execute(
+            "INSERT INTO store_enrichment (store_id, phone, updated_at) VALUES (?, ?, ?) "
+            "ON CONFLICT(store_id) DO UPDATE SET "
+            "phone = COALESCE(excluded.phone, store_enrichment.phone), updated_at = excluded.updated_at",
+            (store_id, phone, timestamp),
+        )
+        conn.execute(
+            "INSERT INTO store_change_log (store_id, changed_at, field, previous_value, new_value, "
+            "change_type, source_url) VALUES (?, ?, 'sns_urls', NULL, ?, 'sns_change', ?)",
+            (store_id, timestamp, json.dumps([{"platform": fetched_url_platform, "url": clean_self_url}], ensure_ascii=False), url),
+        )
+    else:
+        conn.execute(
+            "INSERT INTO store_enrichment (store_id, official_url, phone, updated_at) VALUES (?, ?, ?, ?) "
+            "ON CONFLICT(store_id) DO UPDATE SET official_url = excluded.official_url, "
+            "phone = COALESCE(excluded.phone, store_enrichment.phone), updated_at = excluded.updated_at",
+            (store_id, url, phone, timestamp),
+        )
+        conn.execute(
+            "INSERT INTO store_change_log (store_id, changed_at, field, previous_value, new_value, "
+            "change_type, source_url) VALUES (?, ?, 'official_url', NULL, ?, 'url_change', ?)",
+            (store_id, timestamp, url, url),
+        )
+    if existing["completeness_tier"] == "known":
+        conn.execute(
+            "UPDATE stores SET completeness_tier = 'has_official_source', updated_at = ? WHERE store_id = ?",
+            (timestamp, store_id),
+        )
+
+    all_sns_urls = sns_urls_on_page + (
+        [{"platform": fetched_url_platform, "url": url}] if fetched_url_platform else []
+    )
     return {
         "store_id": store_id,
         "outcome": "has_official_source",
         "needs_review": draft["needs_review"],
-        "sns_urls": sns_urls,
+        "sns_urls": all_sns_urls,
+        "fetched_url_was_sns": bool(fetched_url_platform),
         "draft_path": str(cache_root / f"{store_id}.draft.json"),
     }
 

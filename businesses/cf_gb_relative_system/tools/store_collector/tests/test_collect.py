@@ -155,6 +155,23 @@ def test_sns_link_query_string_and_fragment_are_stripped() -> None:
     assert x_entry["url"] == "https://twitter.com/example_store"
 
 
+def test_share_button_and_platform_api_boilerplate_is_rejected() -> None:
+    # Regression: found for real on Candy Side's official site (a Facebook
+    # share button and an X share-intent link) and on X's own profile
+    # pages (which link to api.x.com in their own chrome) -- these are not
+    # a store's own account and must never be captured as one.
+    html = (
+        '<a href="https://www.facebook.com/sharer/sharer.php?u=https://example.invalid">Share on Facebook</a>'
+        '<a href="https://twitter.com/share?url=https://example.invalid">Tweet this</a>'
+        '<a href="https://api.x.com/1.1/something">internal</a>'
+        '<a href="https://twitter.com/real_store_handle">the real account</a>'
+    )
+    sns = collect.extract_sns_urls(html)
+
+    assert [entry["platform"] for entry in sns] == ["x"]
+    assert sns[0]["url"] == "https://twitter.com/real_store_handle"
+
+
 def test_non_sns_links_are_not_captured() -> None:
     html = (FIXTURES / "sns_links_page.html").read_text(encoding="utf-8")
     sns = collect.extract_sns_urls(html)

@@ -165,6 +165,16 @@ _SNS_DOMAIN_PLATFORMS = (
 
 _MEDIA_EXTENSIONS = (".png", ".jpg", ".jpeg", ".gif", ".webp", ".svg", ".mp4", ".mov")
 
+# Boilerplate/widget paths and hosts that are never a store's own profile:
+# share buttons ("post this page to Facebook/X") and platform-internal API
+# subdomains that happen to appear as <a href> targets on a platform's own
+# page chrome. Found for real: Candy Side's official site has a Facebook
+# share button (facebook.com/sharer/sharer.php) and an X share link
+# (twitter.com/share); fetching an X profile page directly surfaces
+# api.x.com in its own nav/boilerplate.
+_SNS_NOISE_HOSTS = ("api.x.com", "api.twitter.com")
+_SNS_NOISE_PATH_SEGMENTS = ("sharer", "share.php", "/share", "/intent/")
+
 
 def _detect_sns_platform(url: str) -> str | None:
     netloc = urlparse(url).netloc.lower()
@@ -177,14 +187,23 @@ def _detect_sns_platform(url: str) -> str | None:
 
 
 def _looks_like_valid_sns_link(url: str) -> bool:
-    """Reject two real-world garbage patterns found against actual Ueno
-    pilot pages: a CDN media asset mis-tagged as a platform link (lit.link's
-    prd.storage.lit.link/images/...), and a mis-pasted double URL where a
+    """Reject real-world garbage patterns found against actual Ueno pilot
+    pages: a CDN media asset mis-tagged as a platform link (lit.link's
+    prd.storage.lit.link/images/...); a mis-pasted double URL where a
     store entered "https:handle" as their own username on a link-in-bio
     tool (のわ's page literally contains
     href="https://www.instagram.com/https:nowa_concafe/" alongside the
-    correct .../nowa_concafe/ elsewhere on the same page)."""
-    path = urlparse(url).path.lower()
+    correct .../nowa_concafe/ elsewhere on the same page); and share-button/
+    platform-API boilerplate that isn't a profile at all (Candy Side's
+    official site links to facebook.com/sharer/sharer.php and
+    twitter.com/share; X's own profile pages link to api.x.com)."""
+    parsed = urlparse(url)
+    netloc = parsed.netloc.lower()
+    path = parsed.path.lower()
+    if netloc in _SNS_NOISE_HOSTS:
+        return False
+    if any(segment in path for segment in _SNS_NOISE_PATH_SEGMENTS):
+        return False
     if path.endswith(_MEDIA_EXTENSIONS):
         return False
     if "http" in path:
