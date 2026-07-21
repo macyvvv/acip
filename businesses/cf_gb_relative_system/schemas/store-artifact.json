@@ -1,0 +1,246 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acip.local/cf-gb-relative-system/schemas/store-artifact/v1",
+  "title": "Store artifact",
+  "description": "A single concept-cafe/girls-bar store's current state plus append-only change history. Validates one file under businesses/cf_gb_relative_system/data/stores/<store_id>.json. Store-level facts only -- individual cast (キャスト) names, photos, or any other cast-identifying data MUST NOT appear anywhere in this document (out of Phase 1/2 scope per Business Strategy.md section 20/21; no consent infrastructure exists yet).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "store_id",
+    "store_name",
+    "store_type",
+    "status",
+    "address",
+    "area",
+    "hours",
+    "pricing_model",
+    "price_items",
+    "source_url",
+    "retrieved_at",
+    "last_confirmed_at",
+    "verification_method",
+    "reliability_score",
+    "change_log"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "store-artifact:v1"
+    },
+    "store_id": {
+      "type": "string",
+      "description": "Stable slug/hash derived from normalize(store_name + address). Used as the dedupe key.",
+      "pattern": "^[a-z0-9][a-z0-9_-]{2,127}$"
+    },
+    "store_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "store_type": {
+      "enum": ["concept_cafe", "girls_bar"],
+      "description": "Business Strategy.md section 20 in-scope categories only. Any other category requires a scope-expansion ADR before use."
+    },
+    "status": {
+      "enum": ["open", "temporarily_closed", "permanently_closed", "relocated"]
+    },
+    "address": {
+      "type": "string",
+      "minLength": 1
+    },
+    "area": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Ward/district label used for the Yamanote-loop area-coverage KPI, e.g. 歌舞伎町, 秋葉原."
+    },
+    "nearest_station": {
+      "type": "string"
+    },
+    "lines": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "lat": {
+      "type": "number",
+      "minimum": -90,
+      "maximum": 90
+    },
+    "lng": {
+      "type": "number",
+      "minimum": -180,
+      "maximum": 180
+    },
+    "coordinate_source": {
+      "type": "string",
+      "description": "How lat/lng was obtained, e.g. official-site-map-embed, geocoded-from-address, nearby-poi-estimate."
+    },
+    "coordinate_precision": {
+      "enum": ["verified", "geocoded", "estimated"]
+    },
+    "hours": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["day_of_week", "open", "close"],
+        "properties": {
+          "day_of_week": {
+            "enum": ["mon", "tue", "wed", "thu", "fri", "sat", "sun", "holiday", "irregular"]
+          },
+          "open": {
+            "type": "string",
+            "pattern": "^([01][0-9]|2[0-9]):[0-5][0-9]$",
+            "description": "24h+ clock allowed (e.g. 25:00 for past-midnight close) is expressed by continuing past 23:59 in `close`, not here."
+          },
+          "close": {
+            "type": "string",
+            "pattern": "^([01][0-9]|2[0-9]|3[0-9]):[0-5][0-9]$"
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "pricing_model": {
+      "enum": ["time_based_seat_charge", "set_fee", "flat_fee", "mixed"]
+    },
+    "price_items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["label", "amount_jpy", "unit"],
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "amount_jpy": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "unit": {
+            "type": "string",
+            "description": "e.g. per_30min, per_visit, per_set, per_drink."
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "price_unavailable_reason": {
+      "type": "string",
+      "description": "Required when price_items is empty -- explain why pricing could not be captured yet."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "sns_urls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["platform", "url"],
+        "properties": {
+          "platform": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    "cast_headcount": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Aggregate count only. No individual cast names, photos, or other identifying fields are permitted anywhere in this document."
+    },
+    "source_url": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "retrieved_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "last_confirmed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "verification_method": {
+      "enum": ["web-search", "official-site", "on-site-visit", "user-report", "sns-post"]
+    },
+    "reliability_score": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5
+    },
+    "change_log": {
+      "type": "array",
+      "description": "Append-only. Satisfies Business Strategy.md section 8's requirement to retain 営業時間履歴/システム変更履歴/イベント履歴/SNS変更履歴/URL変更履歴/閉店・移転履歴. Never rewrite or delete an existing entry.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["changed_at", "field", "change_type", "source_url"],
+        "properties": {
+          "changed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "field": {
+            "type": "string"
+          },
+          "previous_value": {},
+          "new_value": {},
+          "change_type": {
+            "enum": [
+              "initial_capture",
+              "hours_change",
+              "pricing_change",
+              "status_change",
+              "sns_change",
+              "url_change",
+              "relocation",
+              "correction",
+              "other"
+            ]
+          },
+          "source_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "source_artifact_id": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "price_items": {
+            "type": "array",
+            "maxItems": 0
+          }
+        }
+      },
+      "then": {
+        "required": ["price_unavailable_reason"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acip.local/cf-gb-relative-system/schemas/source-register/v1",
+  "title": "Data source register entry",
+  "description": "One entry per data source (or source category) considered for store-artifact collection. Implements OUTCOME_BACKLOG.md task S-011 (Data source台帳) and feeds S-012 (legal Allow/Conditional/Deny judgment). `decision` here is a DRAFT recommendation only -- per OUTCOME_BACKLOG.md S-012C, final risk acceptance is Human/counsel-only and must be recorded separately before a source may feed a production pipeline.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "source_id",
+    "description",
+    "acquisition_method",
+    "terms_reference",
+    "decision",
+    "decision_basis",
+    "decision_owner",
+    "verified_at",
+    "next_review_at",
+    "fields_covered",
+    "classification",
+    "downstream_use",
+    "stop_method"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "source-register:v1"
+    },
+    "source_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_-]{2,63}$"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 3
+    },
+    "owner_or_url": {
+      "type": "string",
+      "description": "Specific URL for a single named source, or a description of the category for a source class (e.g. 'individual store official websites')."
+    },
+    "acquisition_method": {
+      "enum": ["official-site-direct-visit", "official-sns-direct-visit", "search-engine-discovery-only", "third-party-aggregator-scrape", "manual-store-submission"]
+    },
+    "terms_reference": {
+      "type": "string",
+      "description": "What was checked: robots.txt presence/content, ToS URL, or 'none published' if unverifiable. robots.txt absence is never treated as permission."
+    },
+    "decision": {
+      "enum": ["allow", "conditional", "deny"],
+      "description": "DRAFT recommendation from LegalOps research, not a final Human/counsel clearance (S-012C)."
+    },
+    "decision_basis": {
+      "type": "string",
+      "minLength": 3,
+      "description": "Reasoning, e.g. 'facts are not copyrightable; no verbatim copy of expressive content' or 'compiled listing likely carries database-right/編集著作物 protection'."
+    },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Required for decision=conditional, e.g. 'facts only, no verbatim text/photo copy', 'store-level data only, no cast-identifying fields'."
+    },
+    "decision_owner": {
+      "type": "string",
+      "description": "Role or person who recorded this draft, e.g. legalops. Human/counsel sign-off is tracked separately, not here."
+    },
+    "verified_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "next_review_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "An expired review date makes this entry stale; treat as deny until re-verified (fail-closed, matching templates/legal-policy.yaml)."
+    },
+    "fields_covered": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "classification": {
+      "enum": ["facts_only", "contains_pii"],
+      "description": "contains_pii sources must not be connected to the pipeline in this phase (no consent infrastructure exists yet)."
+    },
+    "downstream_use": {
+      "type": "string"
+    },
+    "stop_method": {
+      "type": "string",
+      "description": "How to halt use of this source if it becomes unsafe (e.g. remove from allowlist config, revoke collector credential)."
+    }
+  }
+}
