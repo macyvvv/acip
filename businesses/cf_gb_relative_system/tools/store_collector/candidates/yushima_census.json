@@ -1,0 +1,6 @@
+[
+  {"name_raw": "Girls Bar LANDX", "store_type": "girls_bar", "existence_confidence": "confirmed_exists", "discovery_note": "web-search: LANDX 湯島 ガールズバー + 公式サイト直接確認"},
+  {"name_raw": "湯島ガールズバー coco（旧ES）", "store_type": "girls_bar", "existence_confidence": "confirmed_exists", "discovery_note": "web-search: coco 湯島 ガールズバー + 公式SNS直接確認"},
+  {"name_raw": "Girls-Land-", "existence_confidence": "unconfirmed", "discovery_note": "web-search: 湯島 コンセプトカフェ 店舗 (name only, no official source found yet)"},
+  {"name_raw": "BAR YY", "existence_confidence": "unconfirmed", "discovery_note": "web-search: 湯島 コンセプトカフェ 店舗 (name only, no official source found yet)"}
+]

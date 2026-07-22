@@ -3,14 +3,11 @@
     "platform/system/core/business_registry.py"
   ],
   "summary": {
-    "business_count": 4,
+    "business_count": 5,
     "active_count": 2,
-    "greenfield_count": 2,
+    "greenfield_count": 3,
     "dormant_count": 0,
-    "drifted_business_ids": [
-      "kabukicho_survival_map",
-      "somia"
-    ]
+    "drifted_business_ids": []
   },
   "businesses": [
     {
@@ -25,8 +22,8 @@
         36
       ],
       "historical_issue_numbers": [],
-      "content_root_exists": false,
-      "product_code_path_exists": false,
+      "content_root_exists": true,
+      "product_code_path_exists": true,
       "notes": "Location/survival guide product for Kabukicho. Fixed 2026-07-14: previously pointed at kabukicho_survival_map_mvp (an earlier, much smaller, superseded prototype) -- see CLAUDE.md's explicit warning not to confuse the two. This is the real, from-scratch app."
     },
     {
@@ -34,14 +31,14 @@
       "display_name": "Somia",
       "status": "active",
       "content_root": "businesses/platform/somia/content",
-      "product_code_path": "platform/system/platform/scripts/somia",
+      "product_code_path": "platform/system/scripts/somia",
       "tracking_issue_numbers": [
         45,
         46
       ],
       "historical_issue_numbers": [],
-      "content_root_exists": false,
-      "product_code_path_exists": false,
+      "content_root_exists": true,
+      "product_code_path_exists": true,
       "notes": "AI character media / video content business. Image/video generation roles require paid vendor APIs (fal.ai/Kling)."
     },
     {
@@ -66,9 +63,21 @@
       "product_code_path": null,
       "tracking_issue_numbers": [],
       "historical_issue_numbers": [],
-      "content_root_exists": false,
+      "content_root_exists": true,
       "product_code_path_exists": false,
       "notes": "Provisional slug. Text-only content for Twitter/Threads/note.com, monetized via impressions and affiliate links. No existing code; zero external generation cost, so this is the platform pilot business."
+    },
+    {
+      "business_id": "cf_gb_relative_system",
+      "display_name": "CF/GB Relative System",
+      "status": "greenfield",
+      "content_root": "businesses/cf_gb_relative_system/app",
+      "product_code_path": "businesses/cf_gb_relative_system/app",
+      "tracking_issue_numbers": [],
+      "historical_issue_numbers": [],
+      "content_root_exists": true,
+      "product_code_path_exists": true,
+      "notes": "Greenfield business registered for the Phase -1 enabling work. The app path is canonical; executable product code is introduced by the delivery-skeleton work package."
     }
   ]
 }

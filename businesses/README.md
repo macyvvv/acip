@@ -13,3 +13,4 @@ Existing roots remain valid until migration phases update references and runtime
 - text_syndicate
 - dreamcore_video
 - physics_math_visualization
+- cf_gb_relative_system

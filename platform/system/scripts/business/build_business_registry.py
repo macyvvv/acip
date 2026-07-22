@@ -4,25 +4,19 @@ import json
 import sys
 from pathlib import Path
 
-
-def _resolve_repo_root() -> Path:
-    current = Path(__file__).resolve()
-    for candidate in current.parents:
-        if (candidate / ".git").exists() or (candidate / "pyproject.toml").exists() or (candidate / "README.md").exists():
-            return candidate
-    raise RuntimeError(f"Unable to locate repository root from {__file__}")
-
-
-ROOT = _resolve_repo_root()
-sys.path.insert(0, str(ROOT))
+_PLATFORM_ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(_PLATFORM_ROOT))
 
 from system.core.business_registry import build_business_registry
+from system.core.path_resolver import get_repo_root
+
+REPO_ROOT = get_repo_root()
 
 
 def main() -> int:
-    runtime_dir = ROOT / "system" / "runtime" / "business"
+    runtime_dir = _PLATFORM_ROOT / "system" / "runtime" / "business"
     runtime_dir.mkdir(parents=True, exist_ok=True)
-    registry = build_business_registry(ROOT)
+    registry = build_business_registry(REPO_ROOT)
     json_path = runtime_dir / "business_registry.json"
     md_path = runtime_dir / "business_registry.md"
     json_path.write_text(json.dumps(registry, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

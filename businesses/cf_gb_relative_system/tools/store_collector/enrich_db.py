@@ -1,0 +1,247 @@
+"""DB-backed enrichment layer on top of collect.py's fetch+extract pipeline.
+
+Maps a fetch onto an EXISTING census row (census.py must have run for this
+store_id first) rather than creating standalone drafts -- this keeps the
+census-before-depth ordering the whole pivot is about; enrich_store_from_url
+raises if the store_id has no census row.
+
+Two tiers this module can produce:
+  has_official_source -- automatic, from a successful fetch. Only
+                          official_url and a confidently-extracted phone
+                          are written; everything else stays NULL/unset,
+                          same "never auto-set verification_method" rule
+                          collect.py already enforces.
+  verified            -- confirm_verified_fields() only, never called
+                          automatically. A human (or an LLM reviewing the
+                          cached raw HTML + needs_review list) must supply
+                          every field explicitly.
+"""
+
+from __future__ import annotations
+
+import json
+from datetime import datetime, timezone
+from pathlib import Path
+
+import collect
+import db
+
+
+def enrich_store_from_url(
+    conn,
+    store_id: str,
+    url: str,
+    cache_root: Path | None = None,
+    fetcher: collect.Fetcher = collect.default_fetcher,
+    now: datetime | None = None,
+) -> dict:
+    now = now or datetime.now(timezone.utc)
+    timestamp = now.isoformat().replace("+00:00", "Z")
+    cache_root = cache_root or (collect.TOOL_ROOT / "cache")
+
+    existing = conn.execute(
+        "SELECT store_id, completeness_tier FROM stores WHERE store_id = ?", (store_id,)
+    ).fetchone()
+    if existing is None:
+        raise ValueError(f"{store_id!r} has no census row -- run census.py before enrich_db.py")
+
+    record = collect.fetch_and_cache(url, store_id, cache_root, fetcher=fetcher, now=now)
+    if record["outcome"] != "success":
+        return {"store_id": store_id, "outcome": record["outcome"]}
+
+    html = Path(record["raw_path"]).read_text(encoding="utf-8")
+    draft = collect.draft_store_artifact(store_id, url, html, record["attempted_at"])
+    phone = draft.get("phone")
+
+    # SNS links found ON the fetched page are written first, then (below)
+    # the fetched URL's own platform entry is written LAST if it is itself
+    # an SNS link -- so it wins the ON CONFLICT UPDATE for that platform.
+    # This ordering matters: fetching an X/Instagram profile page directly
+    # (most of these stores have no separate homepage at all -- the way to
+    # find them is searching the store name and fetching their SNS profile
+    # directly) surfaces that platform's own boilerplate chrome (help
+    # links, share widgets) as same-platform <a href> noise; the URL we
+    # deliberately targeted must never lose to that noise.
+    sns_urls_on_page = draft.get("sns_urls", [])
+    for entry in sns_urls_on_page:
+        conn.execute(
+            "INSERT INTO store_sns (store_id, platform, url) VALUES (?, ?, ?) "
+            "ON CONFLICT(store_id, platform) DO UPDATE SET url = excluded.url",
+            (store_id, entry["platform"], entry["url"]),
+        )
+    if sns_urls_on_page:
+        conn.execute(
+            "INSERT INTO store_change_log (store_id, changed_at, field, previous_value, new_value, "
+            "change_type, source_url) VALUES (?, ?, 'sns_urls', NULL, ?, 'sns_change', ?)",
+            (store_id, timestamp, json.dumps(sns_urls_on_page, ensure_ascii=False), url),
+        )
+
+    # If the URL being fetched is itself an SNS platform link, record it
+    # as that store's own SNS entry instead of overwriting official_url
+    # with a non-homepage link.
+    fetched_url_platform = collect._detect_sns_platform(url)
+    if fetched_url_platform:
+        clean_self_url = url.split("?", 1)[0].split("#", 1)[0].rstrip("/")
+        conn.execute(
+            "INSERT INTO store_sns (store_id, platform, url) VALUES (?, ?, ?) "
+            "ON CONFLICT(store_id, platform) DO UPDATE SET url = excluded.url",
+            (store_id, fetched_url_platform, clean_self_url),
+        )
+        conn.execute(
+            "INSERT INTO store_enrichment (store_id, phone, updated_at) VALUES (?, ?, ?) "
+            "ON CONFLICT(store_id) DO UPDATE SET "
+            "phone = COALESCE(excluded.phone, store_enrichment.phone), updated_at = excluded.updated_at",
+            (store_id, phone, timestamp),
+        )
+        conn.execute(
+            "INSERT INTO store_change_log (store_id, changed_at, field, previous_value, new_value, "
+            "change_type, source_url) VALUES (?, ?, 'sns_urls', NULL, ?, 'sns_change', ?)",
+            (store_id, timestamp, json.dumps([{"platform": fetched_url_platform, "url": clean_self_url}], ensure_ascii=False), url),
+        )
+    else:
+        conn.execute(
+            "INSERT INTO store_enrichment (store_id, official_url, phone, updated_at) VALUES (?, ?, ?, ?) "
+            "ON CONFLICT(store_id) DO UPDATE SET official_url = excluded.official_url, "
+            "phone = COALESCE(excluded.phone, store_enrichment.phone), updated_at = excluded.updated_at",
+            (store_id, url, phone, timestamp),
+        )
+        conn.execute(
+            "INSERT INTO store_change_log (store_id, changed_at, field, previous_value, new_value, "
+            "change_type, source_url) VALUES (?, ?, 'official_url', NULL, ?, 'url_change', ?)",
+            (store_id, timestamp, url, url),
+        )
+    if existing["completeness_tier"] == "known":
+        conn.execute(
+            "UPDATE stores SET completeness_tier = 'has_official_source', updated_at = ? WHERE store_id = ?",
+            (timestamp, store_id),
+        )
+
+    all_sns_urls = sns_urls_on_page + (
+        [{"platform": fetched_url_platform, "url": url}] if fetched_url_platform else []
+    )
+    return {
+        "store_id": store_id,
+        "outcome": "has_official_source",
+        "needs_review": draft["needs_review"],
+        "sns_urls": all_sns_urls,
+        "fetched_url_was_sns": bool(fetched_url_platform),
+        "draft_path": str(cache_root / f"{store_id}.draft.json"),
+    }
+
+
+def confirm_verified_fields(
+    conn,
+    store_id: str,
+    *,
+    address: str,
+    hours: list[dict],
+    pricing_model: str,
+    price_items: list[dict],
+    verification_method: str,
+    reliability_score: int,
+    source_url: str,
+    now: datetime | None = None,
+) -> None:
+    """Human/LLM-confirmed promotion to completeness_tier='verified'.
+
+    Never called automatically by census.py or enrich_store_from_url --
+    every argument here represents a fact a reviewer explicitly confirmed
+    against the store's own official source, not a machine guess."""
+    now = now or datetime.now(timezone.utc)
+    timestamp = now.isoformat().replace("+00:00", "Z")
+
+    existing = conn.execute("SELECT store_id FROM stores WHERE store_id = ?", (store_id,)).fetchone()
+    if existing is None:
+        raise ValueError(f"{store_id!r} has no census row")
+
+    conn.execute(
+        "INSERT INTO store_enrichment (store_id, address, hours_json, pricing_model, price_items_json, "
+        "verification_method, reliability_score, last_verified_at, updated_at) "
+        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) "
+        "ON CONFLICT(store_id) DO UPDATE SET address=excluded.address, hours_json=excluded.hours_json, "
+        "pricing_model=excluded.pricing_model, price_items_json=excluded.price_items_json, "
+        "verification_method=excluded.verification_method, reliability_score=excluded.reliability_score, "
+        "last_verified_at=excluded.last_verified_at, updated_at=excluded.updated_at",
+        (
+            store_id,
+            address,
+            json.dumps(hours, ensure_ascii=False),
+            pricing_model,
+            json.dumps(price_items, ensure_ascii=False),
+            verification_method,
+            reliability_score,
+            timestamp,
+            timestamp,
+        ),
+    )
+    conn.execute(
+        "UPDATE stores SET completeness_tier = 'verified', updated_at = ? WHERE store_id = ?",
+        (timestamp, store_id),
+    )
+    conn.execute(
+        "INSERT INTO store_change_log (store_id, changed_at, field, previous_value, new_value, "
+        "change_type, source_url) VALUES (?, ?, 'completeness_tier', NULL, 'verified', 'correction', ?)",
+        (store_id, timestamp, source_url),
+    )
+
+
+def update_store_category(
+    conn,
+    store_id: str,
+    *,
+    store_type: str | None = None,
+    concept_theme: str | None = None,
+    source_url: str,
+    now: datetime | None = None,
+) -> None:
+    """Set/correct a store's coarse category (concept_cafe/girls_bar) and/or
+    its specific concept/theme (free text, e.g. "魔法学園", "水着", "うさぎ",
+    "くまが働くお店") -- independent of official-source enrichment, since
+    this is very often already obvious from search context (a
+    "ガールズバー" search result IS a girls_bar) well before any URL gets
+    fetched. Both arguments are optional so store_type and concept_theme
+    can be set at different times by different calls; at least one must be
+    given. Never inferred automatically -- always an explicit call with a
+    stated source_url, same discipline as confirm_verified_fields()."""
+    if store_type is None and concept_theme is None:
+        raise ValueError("update_store_category requires store_type and/or concept_theme")
+
+    now = now or datetime.now(timezone.utc)
+    timestamp = now.isoformat().replace("+00:00", "Z")
+
+    existing = conn.execute(
+        "SELECT store_type FROM stores WHERE store_id = ?", (store_id,)
+    ).fetchone()
+    if existing is None:
+        raise ValueError(f"{store_id!r} has no census row")
+
+    if store_type is not None:
+        previous_type = existing["store_type"]
+        conn.execute(
+            "UPDATE stores SET store_type = ?, updated_at = ? WHERE store_id = ?",
+            (store_type, timestamp, store_id),
+        )
+        if previous_type != store_type:
+            conn.execute(
+                "INSERT INTO store_change_log (store_id, changed_at, field, previous_value, new_value, "
+                "change_type, source_url) VALUES (?, ?, 'store_type', ?, ?, 'correction', ?)",
+                (store_id, timestamp, previous_type, store_type, source_url),
+            )
+
+    if concept_theme is not None:
+        previous_theme_row = conn.execute(
+            "SELECT concept_theme FROM store_enrichment WHERE store_id = ?", (store_id,)
+        ).fetchone()
+        previous_theme = previous_theme_row["concept_theme"] if previous_theme_row else None
+        conn.execute(
+            "INSERT INTO store_enrichment (store_id, concept_theme, updated_at) VALUES (?, ?, ?) "
+            "ON CONFLICT(store_id) DO UPDATE SET concept_theme = excluded.concept_theme, "
+            "updated_at = excluded.updated_at",
+            (store_id, concept_theme, timestamp),
+        )
+        if previous_theme != concept_theme:
+            conn.execute(
+                "INSERT INTO store_change_log (store_id, changed_at, field, previous_value, new_value, "
+                "change_type, source_url) VALUES (?, ?, 'concept_theme', ?, ?, 'correction', ?)",
+                (store_id, timestamp, previous_theme, concept_theme, source_url),
+            )
